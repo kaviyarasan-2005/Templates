@@ -215,7 +215,7 @@
 
     <section class="hero" style="padding: 140px 0 80px;">
         <div class="container">
-            <div class="hero-badge">// PORTFOLIO</div>
+            <div class="hero-badge"> PORTFOLIO</div>
             <h1>TRUSTED BY<br>INDUSTRY LEADERS</h1>
             <p>Real projects. Real results. See how CloudVault powers businesses worldwide.</p>
         </div>
@@ -537,20 +537,17 @@
 
     <script src="main.js"></script>
     <script>
-        // Portfolio Filter Functionality
+
         document.addEventListener('DOMContentLoaded', () => {
             const filterBtns = document.querySelectorAll('.filter-btn');
             const portfolioCards = document.querySelectorAll('.portfolio-card');
 
             filterBtns.forEach(btn => {
                 btn.addEventListener('click', () => {
-                    // Update active state
                     filterBtns.forEach(b => b.classList.remove('active'));
                     btn.classList.add('active');
 
                     const filter = btn.dataset.filter;
-
-                    // Filter cards
                     portfolioCards.forEach(card => {
                         if (filter === 'all' || card.dataset.category === filter) {
                             card.style.display = '';
