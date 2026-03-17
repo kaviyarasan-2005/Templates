@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard | ForgeCoreManufacturing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>body{overflow-x:hidden}</style>
+</head>
+<body class="admin-body">
+
+<div class="admin-layout">
+  <!-- Sidebar -->
+  <aside class="admin-sidebar" id="admin-sidebar">
+    <div class="admin-sidebar-header">
+      <div class="nav-logo-icon" style="width:36px;height:36px">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      </div>
+      <span class="admin-sidebar-brand">ForgeCore<span>Admin</span></span>
+      <button class="admin-sidebar-close" id="sidebar-close"><i class="fas fa-times"></i></button>
+    </div>
+    <nav class="admin-nav">
+      <div class="admin-nav-section">Overview</div>
+      <a href="#" class="admin-nav-link active"><i class="fas fa-chart-line"></i> Dashboard</a>
+      <a href="#" class="admin-nav-link"><i class="fas fa-ticket-alt"></i> Quotes / RFQ</a>
+      <a href="#" class="admin-nav-link"><i class="fas fa-clipboard-list"></i> Orders</a>
+      <a href="#" class="admin-nav-link"><i class="fas fa-boxes"></i> Inventory</a>
+      <div class="admin-nav-section">Management</div>
+      <a href="#" class="admin-nav-link"><i class="fas fa-users"></i> Customers</a>
+      <a href="#" class="admin-nav-link"><i class="fas fa-user-tie"></i> Team</a>
+      <a href="#" class="admin-nav-link"><i class="fas fa-industry"></i> Production</a>
+      <a href="#" class="admin-nav-link"><i class="fas fa-certificate"></i> Quality</a>
+      <div class="admin-nav-section">System</div>
+      <a href="#" class="admin-nav-link"><i class="fas fa-cog"></i> Settings</a>
+      <a href="#" class="admin-nav-link"><i class="fas fa-shield-alt"></i> Security</a>
+      <a href="#" class="admin-nav-link"><i class="fas fa-chart-bar"></i> Reports</a>
+    </nav>
+    <div class="admin-sidebar-footer">
+      <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=36&h=36&fit=crop&crop=face" class="admin-avatar" alt="Admin">
+      <div>
+        <div style="font-weight:600;font-size:.85rem;color:var(--gray-800)">Michael Torres</div>
+        <div style="font-size:.75rem;color:var(--gray-500)">Plant Manager</div>
+      </div>
+      <a href="login.html" class="admin-logout"><i class="fas fa-sign-out-alt"></i></a>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <div class="admin-main">
+    <!-- Topbar -->
+    <header class="admin-topbar">
+      <div class="admin-topbar-left">
+        <button class="admin-menu-btn" id="sidebar-toggle"><i class="fas fa-bars"></i></button>
+        <div class="admin-breadcrumb">Dashboard <span>/</span> Overview</div>
+      </div>
+      <div class="admin-topbar-right">
+        <div class="admin-search">
+          <i class="fas fa-search"></i>
+          <input type="text" placeholder="Search orders, quotes…">
+        </div>
+        <button class="admin-icon-btn"><i class="fas fa-bell"></i><span class="badge">3</span></button>
+        <button class="admin-icon-btn"><i class="fas fa-envelope"></i><span class="badge">7</span></button>
+        <button class="rtl-btn" id="rtl-toggle-btn"><i class="fas fa-globe"></i></button>
+      </div>
+    </header>
+
+    <!-- Content -->
+    <div class="admin-content">
+      <div class="admin-page-header">
+        <div>
+          <h1>Dashboard Overview</h1>
+          <p>Welcome back, Michael. Here's what's happening today.</p>
+        </div>
+        <div class="admin-page-actions">
+          <a href="#" class="btn btn-outline btn-sm"><i class="fas fa-download"></i> Export</a>
+          <a href="#" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i> New Quote</a>
+        </div>
+      </div>
+
+      <!-- Stat Cards -->
+      <div class="admin-stats">
+        <div class="stat-card">
+          <div class="stat-icon" style="background:rgba(30,58,138,.1);color:var(--primary)"><i class="fas fa-file-invoice-dollar"></i></div>
+          <div class="stat-body">
+            <div class="stat-label">Active Quotes</div>
+            <div class="stat-value" data-target="47">0</div>
+            <div class="stat-change up"><i class="fas fa-arrow-up"></i> 12% this week</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon" style="background:rgba(6,182,212,.1);color:var(--secondary)"><i class="fas fa-industry"></i></div>
+          <div class="stat-body">
+            <div class="stat-label">In Production</div>
+            <div class="stat-value" data-target="23">0</div>
+            <div class="stat-change up"><i class="fas fa-arrow-up"></i> 5% this week</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon" style="background:rgba(16,185,129,.1);color:var(--success)"><i class="fas fa-shipping-fast"></i></div>
+          <div class="stat-body">
+            <div class="stat-label">Shipped This Month</div>
+            <div class="stat-value" data-target="158">0</div>
+            <div class="stat-change up"><i class="fas fa-arrow-up"></i> 8% vs last month</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon" style="background:rgba(245,158,11,.1);color:var(--warning)"><i class="fas fa-dollar-sign"></i></div>
+          <div class="stat-body">
+            <div class="stat-label">Revenue (MTD)</div>
+            <div class="stat-value">$1.24M</div>
+            <div class="stat-change up"><i class="fas fa-arrow-up"></i> 18% vs last month</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Charts Row -->
+      <div class="admin-grid-2">
+        <div class="admin-card">
+          <div class="admin-card-header">
+            <h3>Production Volume</h3>
+            <select class="admin-select"><option>Last 7 days</option><option>Last 30 days</option><option>Last 90 days</option></select>
+          </div>
+          <div class="chart-placeholder">
+            <svg viewBox="0 0 400 150" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:150px">
+              <defs><linearGradient id="cg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1e3a8a" stop-opacity=".3"/><stop offset="100%" stop-color="#1e3a8a" stop-opacity="0"/></linearGradient></defs>
+              <polyline fill="url(#cg)" stroke="none" points="0,150 0,110 50,90 100,100 150,60 200,80 250,45 300,65 350,30 400,50 400,150"/>
+              <polyline fill="none" stroke="#1e3a8a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" points="0,110 50,90 100,100 150,60 200,80 250,45 300,65 350,30 400,50"/>
+              <circle cx="350" cy="30" r="5" fill="#1e3a8a"/>
+              <circle cx="250" cy="45" r="5" fill="#06b6d4"/>
+            </svg>
+          </div>
+        </div>
+        <div class="admin-card">
+          <div class="admin-card-header">
+            <h3>Order Status Breakdown</h3>
+            <select class="admin-select"><option>This Month</option><option>Last Month</option></select>
+          </div>
+          <div class="donut-chart-wrap">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" style="width:160px;height:160px">
+              <circle cx="100" cy="100" r="70" fill="none" stroke="#e2e8f0" stroke-width="28"/>
+              <circle cx="100" cy="100" r="70" fill="none" stroke="#1e3a8a" stroke-width="28" stroke-dasharray="176 263" stroke-dashoffset="0" transform="rotate(-90 100 100)"/>
+              <circle cx="100" cy="100" r="70" fill="none" stroke="#06b6d4" stroke-width="28" stroke-dasharray="88 351" stroke-dashoffset="-176" transform="rotate(-90 100 100)"/>
+              <circle cx="100" cy="100" r="70" fill="none" stroke="#10b981" stroke-width="28" stroke-dasharray="44 395" stroke-dashoffset="-264" transform="rotate(-90 100 100)"/>
+              <text x="100" y="104" text-anchor="middle" font-size="18" font-weight="700" fill="#1e293b">158</text>
+              <text x="100" y="120" text-anchor="middle" font-size="10" fill="#64748b">Total Orders</text>
+            </svg>
+            <div class="donut-legend">
+              <div class="legend-item"><span style="background:#1e3a8a"></span> In Production (40%)</div>
+              <div class="legend-item"><span style="background:#06b6d4"></span> Awaiting QC (20%)</div>
+              <div class="legend-item"><span style="background:#10b981"></span> Shipped (10%)</div>
+              <div class="legend-item"><span style="background:#e2e8f0"></span> Pending (30%)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recent Tickets Table -->
+      <div class="admin-card" style="margin-top:24px">
+        <div class="admin-card-header">
+          <h3>Recent Quotes / Tickets</h3>
+          <a href="#" class="btn btn-outline btn-sm">View All</a>
+        </div>
+        <div class="admin-table-wrap">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Ticket #</th>
+                <th>Customer</th>
+                <th>Part / Description</th>
+                <th>Qty</th>
+                <th>Material</th>
+                <th>Status</th>
+                <th>Assigned</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="ticket-id">#RFQ-2847</span></td>
+                <td><div class="customer-cell"><img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=28&h=28&fit=crop&crop=face" alt=""> Airbus Group</div></td>
+                <td>Titanium bracket assembly × 12</td>
+                <td>500</td>
+                <td>Ti-6Al-4V</td>
+                <td><span class="badge-status new">New</span></td>
+                <td>Sarah K.</td>
+                <td><a href="#" class="table-action"><i class="fas fa-eye"></i></a></td>
+              </tr>
+              <tr>
+                <td><span class="ticket-id">#ORD-1193</span></td>
+                <td><div class="customer-cell"><img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?w=28&h=28&fit=crop&crop=face" alt=""> Ford Motor Co.</div></td>
+                <td>CNC-milled gearbox housing</td>
+                <td>1,200</td>
+                <td>6061-T6 Al</td>
+                <td><span class="badge-status in-progress">In Prod.</span></td>
+                <td>James M.</td>
+                <td><a href="#" class="table-action"><i class="fas fa-eye"></i></a></td>
+              </tr>
+              <tr>
+                <td><span class="ticket-id">#ORD-1188</span></td>
+                <td><div class="customer-cell"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=28&h=28&fit=crop&crop=face" alt=""> Lockheed Martin</div></td>
+                <td>Stainless flange ring set</td>
+                <td>300</td>
+                <td>316L SS</td>
+                <td><span class="badge-status review">QC Review</span></td>
+                <td>Emma R.</td>
+                <td><a href="#" class="table-action"><i class="fas fa-eye"></i></a></td>
+              </tr>
+              <tr>
+                <td><span class="ticket-id">#ORD-1176</span></td>
+                <td><div class="customer-cell"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=28&h=28&fit=crop&crop=face" alt=""> General Electric</div></td>
+                <td>Inconel turbine blade blanks</td>
+                <td>80</td>
+                <td>Inconel 718</td>
+                <td><span class="badge-status shipped">Shipped</span></td>
+                <td>Tom B.</td>
+                <td><a href="#" class="table-action"><i class="fas fa-eye"></i></a></td>
+              </tr>
+              <tr>
+                <td><span class="ticket-id">#RFQ-2843</span></td>
+                <td><div class="customer-cell"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=28&h=28&fit=crop&crop=face" alt=""> Raytheon Tech</div></td>
+                <td>Copper EDM electrodes × 40</td>
+                <td>40</td>
+                <td>C11000 Cu</td>
+                <td><span class="badge-status new">New</span></td>
+                <td>Unassigned</td>
+                <td><a href="#" class="table-action"><i class="fas fa-eye"></i></a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Activity Feed -->
+      <div class="admin-grid-2" style="margin-top:24px">
+        <div class="admin-card">
+          <div class="admin-card-header"><h3>Activity Feed</h3></div>
+          <div class="activity-feed">
+            <div class="activity-item"><div class="activity-dot" style="background:var(--secondary)"></div><div><strong>New RFQ #2847</strong> received from Airbus Group<div class="activity-time">2 minutes ago</div></div></div>
+            <div class="activity-item"><div class="activity-dot" style="background:var(--success)"></div><div><strong>Order #1176</strong> shipped to General Electric<div class="activity-time">1 hour ago</div></div></div>
+            <div class="activity-item"><div class="activity-dot" style="background:var(--warning)"></div><div><strong>QC Hold</strong> flagged on batch B-4421<div class="activity-time">3 hours ago</div></div></div>
+            <div class="activity-item"><div class="activity-dot" style="background:var(--primary)"></div><div><strong>New customer</strong> Raytheon Tech onboarded<div class="activity-time">Yesterday</div></div></div>
+            <div class="activity-item"><div class="activity-dot" style="background:var(--secondary)"></div><div><strong>Invoice #8821</strong> paid — $48,000<div class="activity-time">Yesterday</div></div></div>
+          </div>
+        </div>
+        <div class="admin-card">
+          <div class="admin-card-header"><h3>Quick Actions</h3></div>
+          <div class="quick-actions">
+            <a href="#" class="quick-action-btn"><i class="fas fa-file-invoice-dollar"></i><span>New Quote</span></a>
+            <a href="#" class="quick-action-btn"><i class="fas fa-clipboard-check"></i><span>QC Check</span></a>
+            <a href="#" class="quick-action-btn"><i class="fas fa-users"></i><span>Customers</span></a>
+            <a href="#" class="quick-action-btn"><i class="fas fa-download"></i><span>Reports</span></a>
+            <a href="#" class="quick-action-btn"><i class="fas fa-calendar-alt"></i><span>Schedule</span></a>
+            <a href="#" class="quick-action-btn"><i class="fas fa-cog"></i><span>Settings</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="assets/js/main.js"></script>
+<script src="assets/js/rtl-toggle.js"></script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - TechAssist IT Support</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <a href="index.html" class="logo"><div class="logo-icon"><i class="fas fa-headset"></i></div> TechAssist</a>
+      <nav class="admin-nav">
+        <div class="admin-nav-section">
+          <div class="admin-nav-label">Main</div>
+          <a href="#" class="active"><i class="fas fa-chart-pie"></i> Dashboard</a>
+          <a href="#"><i class="fas fa-ticket"></i> Tickets</a>
+          <a href="#"><i class="fas fa-users"></i> Clients</a>
+          <a href="#"><i class="fas fa-server"></i> Assets</a>
+        </div>
+        <div class="admin-nav-section">
+          <div class="admin-nav-label">Management</div>
+          <a href="#"><i class="fas fa-user-gear"></i> Team</a>
+          <a href="#"><i class="fas fa-file-invoice-dollar"></i> Billing</a>
+          <a href="#"><i class="fas fa-chart-bar"></i> Reports</a>
+        </div>
+        <div class="admin-nav-section">
+          <div class="admin-nav-label">System</div>
+          <a href="#"><i class="fas fa-gear"></i> Settings</a>
+          <a href="index.html"><i class="fas fa-arrow-right-from-bracket"></i> Back to Site</a>
+        </div>
+      </nav>
+    </aside>
+    <main class="admin-main">
+      <div class="admin-topbar">
+        <div class="admin-welcome"><h2>Dashboard</h2><p>Welcome back, Admin. Here's what's happening today.</p></div>
+        <div class="header-actions">
+          <button class="rtl-toggle" title="Toggle RTL/LTR"><i class="fas fa-globe-asia"></i></button>
+        </div>
+      </div>
+      <div class="admin-stats">
+        <div class="stat-card"><div class="stat-card-header"><div class="stat-card-icon blue"><i class="fas fa-ticket"></i></div><span class="stat-card-change up">+12%</span></div><div class="number">1,284</div><div class="label">Total Tickets</div></div>
+        <div class="stat-card"><div class="stat-card-header"><div class="stat-card-icon cyan"><i class="fas fa-clock"></i></div><span class="stat-card-change up">+8%</span></div><div class="number">142</div><div class="label">Open Tickets</div></div>
+        <div class="stat-card"><div class="stat-card-header"><div class="stat-card-icon green"><i class="fas fa-check-circle"></i></div><span class="stat-card-change up">+23%</span></div><div class="number">1,097</div><div class="label">Resolved</div></div>
+        <div class="stat-card"><div class="stat-card-header"><div class="stat-card-icon amber"><i class="fas fa-users"></i></div><span class="stat-card-change down">-2%</span></div><div class="number">2,547</div><div class="label">Active Clients</div></div>
+      </div>
+      <div class="admin-table-wrap">
+        <div class="admin-table-header"><h3>Recent Tickets</h3><a href="#" class="btn btn-sm btn-outline">View All</a></div>
+        <table class="admin-table">
+          <thead><tr><th>Ticket ID</th><th>Subject</th><th>Client</th><th>Priority</th><th>Status</th><th>Date</th></tr></thead>
+          <tbody>
+            <tr><td>#TK-4521</td><td>Server downtime on Node 3</td><td>Nexgen Corp</td><td><span class="priority-dot high"></span>High</td><td><span class="status-badge open">Open</span></td><td>Mar 17, 2026</td></tr>
+            <tr><td>#TK-4520</td><td>VPN connection issues</td><td>Cloudify Inc</td><td><span class="priority-dot medium"></span>Medium</td><td><span class="status-badge progress">In Progress</span></td><td>Mar 17, 2026</td></tr>
+            <tr><td>#TK-4519</td><td>Email migration to O365</td><td>DataVault</td><td><span class="priority-dot low"></span>Low</td><td><span class="status-badge progress">In Progress</span></td><td>Mar 16, 2026</td></tr>
+            <tr><td>#TK-4518</td><td>Firewall rule update request</td><td>TechStart</td><td><span class="priority-dot medium"></span>Medium</td><td><span class="status-badge resolved">Resolved</span></td><td>Mar 16, 2026</td></tr>
+            <tr><td>#TK-4517</td><td>New employee onboarding - 5 users</td><td>GrowthLab</td><td><span class="priority-dot low"></span>Low</td><td><span class="status-badge resolved">Resolved</span></td><td>Mar 15, 2026</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+    <button class="admin-sidebar-toggle"><i class="fas fa-bars"></i></button>
+  </div>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/rtl-toggle.js"></script>
+</body>
+</html>

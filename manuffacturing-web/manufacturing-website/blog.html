@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ForgeCoreManufacturing — Precision manufacturing solutions. ISO certified quality since 1994.">
+  <title>Blog & News | ForgeCoreManufacturing</title>
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+<body>
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <div class="nav-logo-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <span class="nav-logo-text">Forge<span>Core</span></span>
+      </a>
+      <ul class="nav-menu">
+        <li class="nav-item">
+          <a href="#" class="nav-link">Home <i class="fas fa-chevron-down chevron"></i></a>
+          <div class="dropdown">
+            <a href="index.html" class="dropdown-link"><i class="fas fa-home"></i> Home Version 1</a>
+            <a href="index-v2.html" class="dropdown-link"><i class="fas fa-layer-group"></i> Home Version 2</a>
+          </div>
+        </li>
+        <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">Company <i class="fas fa-chevron-down chevron"></i></a>
+          <div class="dropdown">
+            <a href="about.html" class="dropdown-link"><i class="fas fa-users"></i> About Us</a>
+            <a href="infrastructure.html" class="dropdown-link"><i class="fas fa-industry"></i> Infrastructure</a>
+            <a href="blog.html" class="dropdown-link"><i class="fas fa-newspaper"></i> Blog / News</a>
+          </div>
+        </li>
+        <li class="nav-item"><a href="products.html" class="nav-link">Products</a></li>
+        <li class="nav-item"><a href="pricing.html" class="nav-link">Pricing</a></li>
+        <li class="nav-item"><a href="help-center.html" class="nav-link">Help Center</a></li>
+        <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="rtl-btn" id="rtl-toggle-btn" title="Toggle RTL/LTR" aria-label="Toggle text direction">
+          <i class="fas fa-globe"></i>
+        </button>
+        <a href="login.html" class="btn btn-outline btn-sm">Login</a>
+        <a href="register.html" class="btn btn-primary btn-sm">Get Started</a>
+        <button class="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </div>
+</nav>
+<!-- Mobile Overlay -->
+<div class="mobile-overlay" role="dialog" aria-modal="true">
+  <div class="mobile-overlay-header">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+      <span class="nav-logo-text" style="color:white">Forge<span>Core</span></span>
+    </a>
+    <button class="mobile-close" aria-label="Close menu"><i class="fas fa-times"></i></button>
+  </div>
+  <nav class="mobile-nav">
+    <a href="#" class="mobile-nav-link" data-sub="ms-home"><i class="fas fa-home"></i> Home <i class="fas fa-chevron-down chevron" style="margin-left:auto;font-size:.7rem"></i></a>
+    <div class="mobile-sub" id="ms-home">
+      <a href="index.html">Home Version 1</a>
+      <a href="index-v2.html">Home Version 2</a>
+    </div>
+    <a href="services.html" class="mobile-nav-link"><i class="fas fa-cogs"></i> Services</a>
+    <a href="products.html" class="mobile-nav-link"><i class="fas fa-boxes"></i> Products</a>
+    <a href="#" class="mobile-nav-link" data-sub="ms-company"><i class="fas fa-building"></i> Company <i class="fas fa-chevron-down chevron" style="margin-left:auto;font-size:.7rem"></i></a>
+    <div class="mobile-sub" id="ms-company">
+      <a href="about.html">About Us</a>
+      <a href="infrastructure.html">Infrastructure</a>
+      <a href="blog.html">Blog / News</a>
+    </div>
+    <a href="pricing.html" class="mobile-nav-link"><i class="fas fa-tag"></i> Pricing</a>
+    <a href="help-center.html" class="mobile-nav-link"><i class="fas fa-question-circle"></i> Help Center</a>
+    <a href="contact.html" class="mobile-nav-link"><i class="fas fa-envelope"></i> Contact</a>
+    <a href="admin-dashboard.html" class="mobile-nav-link"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+  </nav>
+  <div class="mobile-nav-footer">
+    <a href="login.html" class="btn btn-outline-white" style="flex:1;justify-content:center">Login</a>
+    <a href="register.html" class="btn btn-secondary" style="flex:1;justify-content:center">Get Started</a>
+  </div>
+</div>
+
+<main>
+  <section class="page-hero">
+    <div class="container"><div class="page-hero-inner">
+      <h1>Blog &amp; Industry News</h1>
+      <p>Insights, technical articles, and company updates from the ForgeCoreManufacturing team.</p>
+      <nav class="breadcrumb"><a href="index.html">Home</a><span class="sep">/</span><span>Blog</span></nav>
+    </div></div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 320px;gap:48px;align-items:start">
+        <!-- Posts -->
+        <div>
+          <!-- Featured Post -->
+          <div class="card blog-card" style="margin-bottom:32px">
+            <div class="blog-card-img" style="aspect-ratio:21/9">
+              <img src="https://images.unsplash.com/photo-1565953552206-8a5d6f5da4b4?w=900&q=80" alt="Industry 4.0" loading="lazy">
+            </div>
+            <div class="blog-card-body">
+              <div class="blog-meta">
+                <span class="category">Industry 4.0</span>
+                <span class="date"><i class="far fa-calendar"></i> Nov 14, 2025</span>
+                <span class="read-time"><i class="far fa-clock"></i> 8 min read</span>
+              </div>
+              <h3 style="font-size:1.5rem;margin-bottom:14px">How AI and Machine Vision Are Transforming Quality Control in Precision Manufacturing</h3>
+              <p>Artificial intelligence and machine vision systems are revolutionizing in-process quality inspection, catching defects in real-time and reducing scrap rates by up to 73%. Here's how we implemented this technology at our Detroit facility.</p>
+              <a href="#" class="btn btn-primary" style="margin-top:20px">Read Full Article</a>
+            </div>
+          </div>
+
+          <!-- Grid Posts -->
+          <div class="grid grid-2">
+            <div class="card blog-card">
+              <div class="blog-card-img"><img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=600&q=80" alt="CNC Tolerances" loading="lazy"></div>
+              <div class="blog-card-body">
+                <div class="blog-meta"><span class="category">Technical</span><span class="date"><i class="far fa-calendar"></i> Oct 28, 2025</span></div>
+                <h3>Understanding GD&amp;T: A Practical Guide for Purchasing Engineers</h3>
+                <p>Geometric Dimensioning and Tolerancing explained in plain language to help you communicate your design intent more effectively.</p>
+              </div>
+              <div class="blog-card-footer">
+                <div class="blog-author"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80" alt="Dr. Raj Patel"><span>Dr. Raj Patel</span></div>
+                <a href="#" class="btn btn-outline btn-sm">Read More</a>
+              </div>
+            </div>
+            <div class="card blog-card">
+              <div class="blog-card-img"><img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&q=80" alt="Supply Chain" loading="lazy"></div>
+              <div class="blog-card-body">
+                <div class="blog-meta"><span class="category">Supply Chain</span><span class="date"><i class="far fa-calendar"></i> Oct 12, 2025</span></div>
+                <h3>5 Strategies to Reduce Lead Times Without Sacrificing Quality</h3>
+                <p>How vendor-managed inventory, pre-stocking programs, and lean manufacturing reduce lead times by an average of 35%.</p>
+              </div>
+              <div class="blog-card-footer">
+                <div class="blog-author"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80" alt="Linda Park"><span>Linda Park</span></div>
+                <a href="#" class="btn btn-outline btn-sm">Read More</a>
+              </div>
+            </div>
+            <div class="card blog-card">
+              <div class="blog-card-img"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Material Selection" loading="lazy"></div>
+              <div class="blog-card-body">
+                <div class="blog-meta"><span class="category">Materials</span><span class="date"><i class="far fa-calendar"></i> Sep 30, 2025</span></div>
+                <h3>Titanium vs. Aluminum: When to Use Which in Aerospace Applications</h3>
+                <p>A technical comparison of strength-to-weight ratios, machinability, cost, and application suitability for aerospace structural components.</p>
+              </div>
+              <div class="blog-card-footer">
+                <div class="blog-author"><img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&q=80" alt="Thomas Reeves"><span>Thomas Reeves</span></div>
+                <a href="#" class="btn btn-outline btn-sm">Read More</a>
+              </div>
+            </div>
+            <div class="card blog-card">
+              <div class="blog-card-img"><img src="https://images.unsplash.com/photo-1533750349088-cd871a92f312?w=600&q=80" alt="Company News" loading="lazy"></div>
+              <div class="blog-card-body">
+                <div class="blog-meta"><span class="category">Company News</span><span class="date"><i class="far fa-calendar"></i> Sep 15, 2025</span></div>
+                <h3>ForgeCoreManufacturing Achieves NADCAP Accreditation for NDT &amp; Heat Treating</h3>
+                <p>We are proud to announce our successful NADCAP audit for non-destructive testing and heat treating, expanding our aerospace capability.</p>
+              </div>
+              <div class="blog-card-footer">
+                <div class="blog-author"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="Marcus Webb"><span>Marcus Webb</span></div>
+                <a href="#" class="btn btn-outline btn-sm">Read More</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pagination -->
+          <div style="display:flex;align-items:center;justify-content:center;gap:8px;margin-top:48px">
+            <button class="btn btn-outline btn-sm" disabled><i class="fas fa-chevron-left"></i></button>
+            <button class="btn btn-primary btn-sm">1</button>
+            <button class="btn btn-outline btn-sm">2</button>
+            <button class="btn btn-outline btn-sm">3</button>
+            <button class="btn btn-outline btn-sm"><i class="fas fa-chevron-right"></i></button>
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="blog-sidebar">
+          <div class="blog-widget">
+            <h4>Search Articles</h4>
+            <div class="search-input"><i class="fas fa-search"></i><input type="text" placeholder="Search..."></div>
+          </div>
+          <div class="blog-widget">
+            <h4>Recent Posts</h4>
+            <div class="recent-post">
+              <img src="https://images.unsplash.com/photo-1565953552206-8a5d6f5da4b4?w=120&q=70" alt="">
+              <div><div class="rp-title">AI and Machine Vision in Quality Control</div><div class="rp-date">Nov 14, 2025</div></div>
+            </div>
+            <div class="recent-post">
+              <img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=120&q=70" alt="">
+              <div><div class="rp-title">Understanding GD&amp;T for Engineers</div><div class="rp-date">Oct 28, 2025</div></div>
+            </div>
+            <div class="recent-post">
+              <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=120&q=70" alt="">
+              <div><div class="rp-title">5 Strategies to Reduce Lead Times</div><div class="rp-date">Oct 12, 2025</div></div>
+            </div>
+          </div>
+          <div class="blog-widget">
+            <h4>Categories</h4>
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <a href="#" style="display:flex;justify-content:space-between;font-size:.9rem;color:var(--gray-700);padding:8px 0;border-bottom:1px solid var(--gray-100)">Industry 4.0 <span class="badge badge-primary">3</span></a>
+              <a href="#" style="display:flex;justify-content:space-between;font-size:.9rem;color:var(--gray-700);padding:8px 0;border-bottom:1px solid var(--gray-100)">Technical <span class="badge badge-primary">8</span></a>
+              <a href="#" style="display:flex;justify-content:space-between;font-size:.9rem;color:var(--gray-700);padding:8px 0;border-bottom:1px solid var(--gray-100)">Materials <span class="badge badge-primary">5</span></a>
+              <a href="#" style="display:flex;justify-content:space-between;font-size:.9rem;color:var(--gray-700);padding:8px 0;border-bottom:1px solid var(--gray-100)">Supply Chain <span class="badge badge-primary">4</span></a>
+              <a href="#" style="display:flex;justify-content:space-between;font-size:.9rem;color:var(--gray-700);padding:8px 0">Company News <span class="badge badge-primary">6</span></a>
+            </div>
+          </div>
+          <div class="blog-widget">
+            <h4>Tags</h4>
+            <div class="tag-cloud">
+              <a href="#" class="tag">CNC Machining</a><a href="#" class="tag">Aerospace</a><a href="#" class="tag">Quality</a><a href="#" class="tag">Titanium</a><a href="#" class="tag">ISO 9001</a><a href="#" class="tag">Lean</a><a href="#" class="tag">Metrology</a><a href="#" class="tag">GD&T</a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo" style="display:inline-flex">
+          <div class="nav-logo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+          <span class="nav-logo-text" style="color:white">Forge<span>Core</span></span>
+        </a>
+        <p>Precision manufacturing solutions trusted by industry leaders worldwide. ISO 9001:2015 certified. Quality guaranteed since 1994.</p>
+        <div class="footer-socials">
+          <a href="#" class="footer-social-btn" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="footer-social-btn" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="footer-social-btn" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="footer-social-btn" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Quick Links</h5>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="infrastructure.html">Infrastructure</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <ul class="footer-links">
+          <li><a href="services.html">Precision Machining</a></li>
+          <li><a href="services.html">Metal Fabrication</a></li>
+          <li><a href="services.html">Quality Assurance</a></li>
+          <li><a href="services.html">Prototype Development</a></li>
+          <li><a href="services.html">Surface Treatment</a></li>
+          <li><a href="services.html">Supply Chain Mgmt</a></li>
+          <li><a href="pricing.html">Pricing Plans</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Stay Updated</h5>
+        <p style="color:rgba(255,255,255,.5);font-size:.88rem;margin-bottom:16px">Subscribe for industry insights and company updates.</p>
+        <form class="newsletter-form" onsubmit="return false">
+          <input type="email" placeholder="Enter your email" aria-label="Email">
+          <button type="submit">Subscribe</button>
+        </form>
+        <div style="margin-top:24px">
+          <p style="font-size:.8rem;color:rgba(255,255,255,.4);margin-bottom:10px">Certified &amp; Compliant</p>
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <span style="background:rgba(255,255,255,.08);padding:5px 10px;border-radius:6px;font-size:.75rem;color:rgba(255,255,255,.6)">ISO 9001:2015</span>
+            <span style="background:rgba(255,255,255,.08);padding:5px 10px;border-radius:6px;font-size:.75rem;color:rgba(255,255,255,.6)">AS9100D</span>
+            <span style="background:rgba(255,255,255,.08);padding:5px 10px;border-radius:6px;font-size:.75rem;color:rgba(255,255,255,.6)">IATF 16949</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 ForgeCoreManufacturing. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Cookie Policy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/rtl-toggle.js"></script>
+</body>
+</html>

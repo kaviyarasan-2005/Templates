@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ForgeCoreManufacturing — Precision manufacturing solutions. ISO certified quality since 1994.">
+  <title>Products | ForgeCoreManufacturing</title>
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+<body>
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <div class="nav-logo-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <span class="nav-logo-text">Forge<span>Core</span></span>
+      </a>
+      <ul class="nav-menu">
+        <li class="nav-item">
+          <a href="#" class="nav-link">Home <i class="fas fa-chevron-down chevron"></i></a>
+          <div class="dropdown">
+            <a href="index.html" class="dropdown-link"><i class="fas fa-home"></i> Home Version 1</a>
+            <a href="index-v2.html" class="dropdown-link"><i class="fas fa-layer-group"></i> Home Version 2</a>
+          </div>
+        </li>
+        <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">Company <i class="fas fa-chevron-down chevron"></i></a>
+          <div class="dropdown">
+            <a href="about.html" class="dropdown-link"><i class="fas fa-users"></i> About Us</a>
+            <a href="infrastructure.html" class="dropdown-link"><i class="fas fa-industry"></i> Infrastructure</a>
+            <a href="blog.html" class="dropdown-link"><i class="fas fa-newspaper"></i> Blog / News</a>
+          </div>
+        </li>
+        <li class="nav-item"><a href="products.html" class="nav-link  active">Products</a></li>
+        <li class="nav-item"><a href="pricing.html" class="nav-link">Pricing</a></li>
+        <li class="nav-item"><a href="help-center.html" class="nav-link">Help Center</a></li>
+        <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="rtl-btn" id="rtl-toggle-btn" title="Toggle RTL/LTR" aria-label="Toggle text direction">
+          <i class="fas fa-globe"></i>
+        </button>
+        <a href="login.html" class="btn btn-outline btn-sm">Login</a>
+        <a href="register.html" class="btn btn-primary btn-sm">Get Started</a>
+        <button class="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </div>
+</nav>
+<!-- Mobile Overlay -->
+<div class="mobile-overlay" role="dialog" aria-modal="true">
+  <div class="mobile-overlay-header">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+      <span class="nav-logo-text" style="color:white">Forge<span>Core</span></span>
+    </a>
+    <button class="mobile-close" aria-label="Close menu"><i class="fas fa-times"></i></button>
+  </div>
+  <nav class="mobile-nav">
+    <a href="#" class="mobile-nav-link" data-sub="ms-home"><i class="fas fa-home"></i> Home <i class="fas fa-chevron-down chevron" style="margin-left:auto;font-size:.7rem"></i></a>
+    <div class="mobile-sub" id="ms-home">
+      <a href="index.html">Home Version 1</a>
+      <a href="index-v2.html">Home Version 2</a>
+    </div>
+    <a href="services.html" class="mobile-nav-link"><i class="fas fa-cogs"></i> Services</a>
+    <a href="products.html" class="mobile-nav-link"><i class="fas fa-boxes"></i> Products</a>
+    <a href="#" class="mobile-nav-link" data-sub="ms-company"><i class="fas fa-building"></i> Company <i class="fas fa-chevron-down chevron" style="margin-left:auto;font-size:.7rem"></i></a>
+    <div class="mobile-sub" id="ms-company">
+      <a href="about.html">About Us</a>
+      <a href="infrastructure.html">Infrastructure</a>
+      <a href="blog.html">Blog / News</a>
+    </div>
+    <a href="pricing.html" class="mobile-nav-link"><i class="fas fa-tag"></i> Pricing</a>
+    <a href="help-center.html" class="mobile-nav-link"><i class="fas fa-question-circle"></i> Help Center</a>
+    <a href="contact.html" class="mobile-nav-link"><i class="fas fa-envelope"></i> Contact</a>
+    <a href="admin-dashboard.html" class="mobile-nav-link"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+  </nav>
+  <div class="mobile-nav-footer">
+    <a href="login.html" class="btn btn-outline-white" style="flex:1;justify-content:center">Login</a>
+    <a href="register.html" class="btn btn-secondary" style="flex:1;justify-content:center">Get Started</a>
+  </div>
+</div>
+
+<main>
+  <section class="page-hero">
+    <div class="container"><div class="page-hero-inner">
+      <h1>Product Range</h1>
+      <p>Precision-manufactured components for aerospace, automotive, defense, and industrial sectors.</p>
+      <nav class="breadcrumb"><a href="index.html">Home</a><span class="sep">/</span><span>Products</span></nav>
+    </div></div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <!-- Filter Buttons -->
+      <div class="products-filter">
+        <button class="filter-btn active" data-filter="all">All Products</button>
+        <button class="filter-btn" data-filter="aerospace">Aerospace</button>
+        <button class="filter-btn" data-filter="automotive">Automotive</button>
+        <button class="filter-btn" data-filter="industrial">Industrial</button>
+        <button class="filter-btn" data-filter="defense">Defense</button>
+        <button class="filter-btn" data-filter="energy">Energy</button>
+      </div>
+
+      <!-- Product Cards Grid -->
+      <div class="grid grid-3">
+        <div class="card product-card" data-category="aerospace">
+          <div class="product-card-img"><img src="https://images.unsplash.com/photo-1561489413-985b06da5bee?w=600&q=80" alt="Airframe Brackets" loading="lazy"></div>
+          <div class="product-card-body">
+            <span class="badge badge-primary">Aerospace</span>
+            <h3>Structural Airframe Brackets</h3>
+            <p>High-strength 7075-T6 aluminum brackets machined to AS9100D. Tolerance ±0.002mm. Available in bare, anodized, or alodine finish.</p>
+          </div>
+          <div class="product-card-footer"><a href="contact.html" class="btn btn-primary btn-sm">Request Quote</a><span style="font-size:.82rem;color:var(--gray-400)">Min 50 pcs</span></div>
+        </div>
+        <div class="card product-card" data-category="automotive">
+          <div class="product-card-img"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Engine Components" loading="lazy"></div>
+          <div class="product-card-body">
+            <span class="badge badge-secondary">Automotive</span>
+            <h3>Engine Block Components</h3>
+            <p>IATF 16949 certified cast and machined engine block inserts, liners, and valve seat rings in gray iron and ductile iron.</p>
+          </div>
+          <div class="product-card-footer"><a href="contact.html" class="btn btn-primary btn-sm">Request Quote</a><span style="font-size:.82rem;color:var(--gray-400)">Min 100 pcs</span></div>
+        </div>
+        <div class="card product-card" data-category="industrial">
+          <div class="product-card-img"><img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=600&q=80" alt="Industrial Castings" loading="lazy"></div>
+          <div class="product-card-body">
+            <span class="badge badge-success">Industrial</span>
+            <h3>Heavy Industrial Castings</h3>
+            <p>Gray iron, ductile iron, and carbon steel castings up to 500kg for pumps, compressors, valves, and gearboxes.</p>
+          </div>
+          <div class="product-card-footer"><a href="contact.html" class="btn btn-primary btn-sm">Request Quote</a><span style="font-size:.82rem;color:var(--gray-400)">Min 25 pcs</span></div>
+        </div>
+        <div class="card product-card" data-category="aerospace defense">
+          <div class="product-card-img"><img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=600&q=80" alt="Titanium Parts" loading="lazy"></div>
+          <div class="product-card-body">
+            <span class="badge badge-primary">Defense</span>
+            <h3>Titanium Structural Parts</h3>
+            <p>Grade 5 (Ti-6Al-4V) machined components for defense applications. ITAR compliant. Meets MIL-SPEC requirements.</p>
+          </div>
+          <div class="product-card-footer"><a href="contact.html" class="btn btn-primary btn-sm">Request Quote</a><span style="font-size:.82rem;color:var(--gray-400)">Min 10 pcs</span></div>
+        </div>
+        <div class="card product-card" data-category="energy">
+          <div class="product-card-img"><img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=600&q=80" alt="Turbine Components" loading="lazy"></div>
+          <div class="product-card-body">
+            <span class="badge" style="background:rgba(245,158,11,.1);color:#b45309">Energy</span>
+            <h3>Turbine Blade Platforms</h3>
+            <p>Inconel 718 and Hastelloy turbine platform sections for gas and steam turbines. Investment cast and precision machined.</p>
+          </div>
+          <div class="product-card-footer"><a href="contact.html" class="btn btn-primary btn-sm">Request Quote</a><span style="font-size:.82rem;color:var(--gray-400)">Min 20 pcs</span></div>
+        </div>
+        <div class="card product-card" data-category="automotive">
+          <div class="product-card-img"><img src="https://images.unsplash.com/photo-1625047509248-ec889cbff17f?w=600&q=80" alt="Braking Components" loading="lazy"></div>
+          <div class="product-card-body">
+            <span class="badge badge-secondary">Automotive</span>
+            <h3>Brake Caliper Housings</h3>
+            <p>Aluminum A380 die-cast and machined brake caliper bodies for passenger and commercial vehicles. IATF 16949 certified.</p>
+          </div>
+          <div class="product-card-footer"><a href="contact.html" class="btn btn-primary btn-sm">Request Quote</a><span style="font-size:.82rem;color:var(--gray-400)">Min 200 pcs</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Detail -->
+  <section class="section" style="background:var(--gray-50)">
+    <div class="container">
+      <div class="section-header">
+        <div class="eyebrow">Spotlight</div>
+        <h2>Featured Product: Aerospace Bracket Assembly</h2>
+      </div>
+      <div class="product-detail-card">
+        <div>
+          <img src="https://images.unsplash.com/photo-1616530940355-351fabd9524b?w=700&q=80" alt="Aerospace Bracket Assembly Detail" style="border-radius:var(--radius-lg);width:100%">
+        </div>
+        <div>
+          <span class="badge badge-primary" style="margin-bottom:16px">AS9100D Certified</span>
+          <h2 style="margin-bottom:16px">Wing Leading-Edge Rib Assembly</h2>
+          <p>A complex multi-piece aluminum assembly used in commercial aircraft wing structures. Machined from solid 7075-T651 billet with ±0.001mm critical dimension tolerances.</p>
+          <div class="product-spec-list">
+            <div class="product-spec"><i class="fas fa-check-circle"></i> Material: 7075-T651 Aluminum</div>
+            <div class="product-spec"><i class="fas fa-check-circle"></i> Tolerance: ±0.001mm on critical dims</div>
+            <div class="product-spec"><i class="fas fa-check-circle"></i> Finish: Type III Hard Anodize (0.002")</div>
+            <div class="product-spec"><i class="fas fa-check-circle"></i> Certification: AS9100D, NADCAP</div>
+            <div class="product-spec"><i class="fas fa-check-circle"></i> Lead Time: 4–6 weeks from PO</div>
+            <div class="product-spec"><i class="fas fa-check-circle"></i> Min Order: 50 assemblies</div>
+          </div>
+          <a href="contact.html" class="btn btn-primary btn-lg" style="margin-top:24px"><i class="fas fa-file-alt"></i> Request Technical Data Sheet</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo" style="display:inline-flex">
+          <div class="nav-logo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+          <span class="nav-logo-text" style="color:white">Forge<span>Core</span></span>
+        </a>
+        <p>Precision manufacturing solutions trusted by industry leaders worldwide. ISO 9001:2015 certified. Quality guaranteed since 1994.</p>
+        <div class="footer-socials">
+          <a href="#" class="footer-social-btn" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="footer-social-btn" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="footer-social-btn" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="footer-social-btn" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Quick Links</h5>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="infrastructure.html">Infrastructure</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <ul class="footer-links">
+          <li><a href="services.html">Precision Machining</a></li>
+          <li><a href="services.html">Metal Fabrication</a></li>
+          <li><a href="services.html">Quality Assurance</a></li>
+          <li><a href="services.html">Prototype Development</a></li>
+          <li><a href="services.html">Surface Treatment</a></li>
+          <li><a href="services.html">Supply Chain Mgmt</a></li>
+          <li><a href="pricing.html">Pricing Plans</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Stay Updated</h5>
+        <p style="color:rgba(255,255,255,.5);font-size:.88rem;margin-bottom:16px">Subscribe for industry insights and company updates.</p>
+        <form class="newsletter-form" onsubmit="return false">
+          <input type="email" placeholder="Enter your email" aria-label="Email">
+          <button type="submit">Subscribe</button>
+        </form>
+        <div style="margin-top:24px">
+          <p style="font-size:.8rem;color:rgba(255,255,255,.4);margin-bottom:10px">Certified &amp; Compliant</p>
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <span style="background:rgba(255,255,255,.08);padding:5px 10px;border-radius:6px;font-size:.75rem;color:rgba(255,255,255,.6)">ISO 9001:2015</span>
+            <span style="background:rgba(255,255,255,.08);padding:5px 10px;border-radius:6px;font-size:.75rem;color:rgba(255,255,255,.6)">AS9100D</span>
+            <span style="background:rgba(255,255,255,.08);padding:5px 10px;border-radius:6px;font-size:.75rem;color:rgba(255,255,255,.6)">IATF 16949</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 ForgeCoreManufacturing. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Cookie Policy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/rtl-toggle.js"></script>
+</body>
+</html>
