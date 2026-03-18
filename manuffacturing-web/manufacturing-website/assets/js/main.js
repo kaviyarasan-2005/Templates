@@ -114,9 +114,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ── Admin Sidebar Toggle ── */
   const adminSidebar = document.querySelector('.admin-sidebar');
+
+  // Desktop collapse toggle (old style)
   const sidebarToggle = document.querySelector('.sidebar-toggle-btn');
   sidebarToggle?.addEventListener('click', () => {
     adminSidebar?.classList.toggle('collapsed');
+  });
+
+  // Mobile open/close (new layout)
+  const sidebarOpenBtn = document.getElementById('sidebar-toggle');
+  const sidebarCloseBtn = document.getElementById('sidebar-close');
+
+  sidebarOpenBtn?.addEventListener('click', () => {
+    adminSidebar?.classList.add('mobile-open');
+    document.body.style.overflow = 'hidden';
+  });
+  sidebarCloseBtn?.addEventListener('click', () => {
+    adminSidebar?.classList.remove('mobile-open');
+    document.body.style.overflow = '';
+  });
+
+  // Close admin sidebar on outside click (mobile)
+  document.addEventListener('click', (e) => {
+    if (
+      adminSidebar?.classList.contains('mobile-open') &&
+      !adminSidebar.contains(e.target) &&
+      e.target !== sidebarOpenBtn
+    ) {
+      adminSidebar.classList.remove('mobile-open');
+      document.body.style.overflow = '';
+    }
   });
 
   /* ── Pricing Toggle (Monthly/Annual) ── */
@@ -234,9 +261,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }, { threshold: 0.5 });
 
-  document.querySelectorAll('[data-counter]').forEach(el => {
-    const val = parseInt(el.textContent);
-    if (!isNaN(val)) { el.dataset.target = val; counterObserver.observe(el); }
+  document.querySelectorAll('[data-counter], [data-target]').forEach(el => {
+    const val = parseInt(el.dataset.target || el.textContent);
+    if (!isNaN(val)) { el.dataset.target = val; el.textContent = '0'; counterObserver.observe(el); }
   });
 
   /* ── Newsletter form ── */
