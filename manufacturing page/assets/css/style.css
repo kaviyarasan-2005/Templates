@@ -311,8 +311,8 @@ button { cursor:pointer; }
 .form-check label { font-size:.88rem; color:var(--gray-600); }
 
 /* ===== ADMIN DASHBOARD ===== */
-.admin-layout { display:flex; min-height:100vh; padding-top:76px; }
-.admin-sidebar { width:260px; background:var(--primary); color:var(--white); padding:30px 0; position:fixed; top:76px; left:0; bottom:0; overflow-y:auto; transition:var(--transition); z-index:100; }
+.admin-layout { display:flex; min-height:100vh; padding-top:0px; }
+.admin-sidebar { width:260px; background:var(--primary); color:var(--white); padding:30px 0; position:fixed; top:0px; left:0; bottom:0; overflow-y:auto; transition:var(--transition); z-index:100; }
 [dir="rtl"] .admin-sidebar { left:auto; right:0; }
 .admin-sidebar .sidebar-header { padding:0 24px 25px; border-bottom:1px solid rgba(255,255,255,.1); margin-bottom:20px; }
 .admin-sidebar .sidebar-header h3 { font-size:1rem; font-weight:600; }
