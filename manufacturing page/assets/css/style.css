@@ -38,7 +38,7 @@
 /* ===== RESET ===== */
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 html { scroll-behavior:smooth; font-size:16px; }
-body { font-family:var(--font); color:var(--gray-800); background:var(--white); line-height:1.7; overflow-x:hidden; }
+body { margin-top: 0px; font-family:var(--font); color:var(--gray-800); background:var(--white); line-height:1.7; overflow-x:hidden; }
 a { text-decoration:none; color:inherit; transition:var(--transition); }
 ul { list-style:none; }
 img { max-width:100%; height:auto; display:block; }
@@ -117,8 +117,8 @@ button { cursor:pointer; }
 .mobile-menu .mobile-sub { padding-left:34px; }
 [dir="rtl"] .mobile-menu .mobile-sub { padding-left:0; padding-right:34px; }
 .mobile-menu .btn { width:100%; justify-content:center; margin-top:20px; }
-.overlay { position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,.5); z-index:1500; opacity:0; visibility:hidden; transition:var(--transition); }
-.overlay.active { opacity:1; visibility:visible; }
+/* .overlay { position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,.5); z-index:1500; opacity:0; visibility:hidden; transition:var(--transition); }
+.overlay.active { opacity:1; visibility:visible; } */
 
 /* ===== HERO V1 ===== */
 .hero { padding:140px 0 100px; background:linear-gradient(135deg,var(--gray-50) 0%,var(--white) 100%); overflow:hidden; position:relative; }
