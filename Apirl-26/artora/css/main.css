@@ -1,0 +1,35 @@
+/* ============================================================
+   ARTORA — Main CSS Entry Point
+   Art Gallery & Exhibition Space Template
+   ============================================================ */
+
+/* Base */
+@import 'base/variables.css';
+@import 'base/reset.css';
+@import 'base/typography.css';
+
+/* Components */
+@import 'components/buttons.css';
+@import 'components/cards.css';
+@import 'components/navigation.css';
+@import 'components/forms.css';
+@import 'components/misc.css';
+
+/* Layouts */
+@import 'layouts/layout.css';
+
+/* Pages */
+@import 'pages/admin.css';
+
+/* ── RTL Support ── */
+[dir="rtl"] {
+  .nav-logo { flex-direction: row-reverse; }
+  .mega-menu { right: 50%; left: auto; transform: translateX(50%); }
+  .mega-menu.active { transform: translateX(50%) translateY(0); }
+  .footer-bottom { flex-direction: row-reverse; }
+  blockquote { padding-left: 0; padding-right: var(--space-6); border-left: none; border-right: 2px solid var(--color-accent); }
+  .admin-layout { grid-template-columns: 1fr 260px; }
+  .admin-nav-link.active::before { left: auto; right: 0; }
+  .btn-arrow svg { transform: scaleX(-1); }
+  .btn-arrow:hover svg { transform: scaleX(-1) translateX(4px); }
+}

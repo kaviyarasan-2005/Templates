@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — Artora</title>
+  <meta name="description" content="Contact — Artora — Artora Gallery">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<nav class="site-nav" aria-label="Main navigation">
+  <div class="container">
+    <a href="index.html" class="nav-logo"><div class="nav-logo-mark"><span style="font-family:var(--font-display);font-size:.9rem;color:var(--color-accent)">A</span></div>ARTORA</a>
+    <ul class="nav-menu" role="list">
+      <li class="nav-item"><a href="exhibitions.html" class="nav-link">Exhibitions</a></li>
+      <li class="nav-item"><a href="artists.html" class="nav-link">Artists</a></li>
+      <li class="nav-item"><a href="artworks.html" class="nav-link">Collection</a></li>
+      <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+      <li class="nav-item"><a href="visit.html" class="nav-link">Visit</a></li>
+      <li class="nav-item"><a href="blog.html" class="nav-link">Journal</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="nav-action-btn" data-search-open aria-label="Search"><svg width="20" height="20"><use href="assets/icons/sprite.svg#icon-search"/></svg></button>
+      <button class="dark-toggle nav-action-btn" data-dark-toggle role="switch" aria-label="Toggle dark mode" style="width:44px;height:24px;padding:0;"></button>
+      <a href="membership.html" class="btn btn-accent btn-sm" style="margin-left:var(--space-2)">Become a Member</a>
+      <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="nav-drawer"><div class="nav-drawer-backdrop"></div><div class="nav-drawer-panel"><div style="display:flex;justify-content:space-between"><span class="nav-logo">ARTORA</span><button class="btn-ghost nav-hamburger active" style="display:flex"><span></span><span></span><span></span></button></div><nav class="drawer-menu"><a href="exhibitions.html" class="drawer-link">Exhibitions</a><a href="artists.html" class="drawer-link">Artists</a><a href="artworks.html" class="drawer-link">Collection</a><a href="about.html" class="drawer-link">About</a><a href="visit.html" class="drawer-link">Visit</a><a href="blog.html" class="drawer-link">Journal</a></nav></div></div>
+<div class="search-overlay"><div class="search-overlay-inner"><p class="eyebrow">Search</p><h2>What are you looking for?</h2><div class="search-input-wrap"><svg width="24" height="24"><use href="assets/icons/sprite.svg#icon-search"/></svg><input type="search" placeholder="Artists, exhibitions, artworks…"></div></div><button class="search-close" data-search-close>ESC to close</button></div>
+
+<main id="main" style="padding-top:var(--nav-height)">
+<section class="section">
+  <div class="container">
+    <div class="grid-2" style="gap:var(--space-10)">
+      <div>
+        <p class="eyebrow">Get in Touch</p>
+        <h1 style="margin-block:var(--space-4)">Contact Us</h1>
+        <p class="lead">Whether you have a question about our exhibitions, collection, or wish to discuss acquiring a work, we are happy to hear from you.</p>
+        <div style="margin-top:var(--space-7);display:flex;flex-direction:column;gap:var(--space-5)">
+          <div style="display:flex;gap:var(--space-4)">
+            <svg width="20" height="20" style="color:var(--color-accent);flex-shrink:0;margin-top:2px"><use href="assets/icons/sprite.svg#icon-map-pin"/></svg>
+            <div><p style="font-weight:500;margin-bottom:4px">Address</p><p style="font-size:var(--text-sm);color:var(--text-secondary)">141 West 25th Street<br>New York, NY 10001</p></div>
+          </div>
+          <div style="display:flex;gap:var(--space-4)">
+            <svg width="20" height="20" style="color:var(--color-accent);flex-shrink:0;margin-top:2px"><use href="assets/icons/sprite.svg#icon-clock"/></svg>
+            <div><p style="font-weight:500;margin-bottom:4px">Gallery Hours</p><p style="font-size:var(--text-sm);color:var(--text-secondary)">Tue–Thu 10:00–18:00<br>Fri 10:00–21:00 · Sat 10:00–20:00 · Sun 12:00–18:00</p></div>
+          </div>
+          <div style="display:flex;gap:var(--space-4)">
+            <svg width="20" height="20" style="color:var(--color-accent);flex-shrink:0;margin-top:2px"><use href="assets/icons/sprite.svg#icon-phone"/></svg>
+            <div><p style="font-weight:500;margin-bottom:4px">Phone</p><p style="font-size:var(--text-sm);color:var(--text-secondary)">+1 (212) 555-0192</p></div>
+          </div>
+          <div style="display:flex;gap:var(--space-4)">
+            <svg width="20" height="20" style="color:var(--color-accent);flex-shrink:0;margin-top:2px"><use href="assets/icons/sprite.svg#icon-mail"/></svg>
+            <div><p style="font-weight:500;margin-bottom:4px">Email</p><p style="font-size:var(--text-sm);color:var(--text-secondary)">info@artoragallery.com</p><p style="font-size:var(--text-sm);color:var(--text-secondary)">press@artoragallery.com</p></div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <form data-validate style="display:flex;flex-direction:column;gap:var(--space-4)">
+          <div style="display:flex;gap:var(--space-4)">
+            <div class="form-group" style="flex:1;margin:0">
+              <label class="form-label" for="fname">First Name</label>
+              <input type="text" id="fname" class="form-control" placeholder="Jane" required>
+            </div>
+            <div class="form-group" style="flex:1;margin:0">
+              <label class="form-label" for="lname">Last Name</label>
+              <input type="text" id="lname" class="form-control" placeholder="Doe" required>
+            </div>
+          </div>
+          <div class="form-group" style="margin:0">
+            <label class="form-label" for="email">Email</label>
+            <input type="email" id="email" class="form-control" placeholder="jane@example.com" required>
+            <p class="form-error" style="display:none">Please enter a valid email.</p>
+          </div>
+          <div class="form-group" style="margin:0">
+            <label class="form-label" for="subject">Subject</label>
+            <select id="subject" class="form-control">
+              <option>General Enquiry</option>
+              <option>Artwork Acquisition</option>
+              <option>Press & Media</option>
+              <option>Group Tours</option>
+              <option>Artist Submissions</option>
+              <option>Membership</option>
+            </select>
+          </div>
+          <div class="form-group" style="margin:0">
+            <label class="form-label" for="message">Message</label>
+            <textarea id="message" class="form-control" placeholder="Your message…" required style="min-height:160px"></textarea>
+          </div>
+          <label class="form-check">
+            <input type="checkbox"> <span style="font-size:var(--text-sm)">I consent to Artora storing my data to respond to this enquiry.</span>
+          </label>
+          <button type="submit" class="btn btn-primary btn-lg" style="justify-content:center">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="site-footer"><div class="container-wide"><div class="footer-grid"><div><div class="footer-logo">ARTORA</div><p class="footer-desc">A world-class contemporary art gallery.</p><div class="social-links"><a href="#" class="social-link"><svg width="16" height="16"><use href="assets/icons/sprite.svg#icon-instagram"/></svg></a><a href="#" class="social-link"><svg width="16" height="16"><use href="assets/icons/sprite.svg#icon-twitter"/></svg></a></div></div><div class="footer-col"><h4>Explore</h4><a href="exhibitions.html" class="footer-link">Exhibitions</a><a href="artists.html" class="footer-link">Artists</a><a href="artworks.html" class="footer-link">Collection</a></div><div class="footer-col"><h4>Visit</h4><a href="visit.html" class="footer-link">Plan Your Visit</a><a href="visit.html" class="footer-link">Hours</a></div><div class="footer-col"><h4>Connect</h4><a href="membership.html" class="footer-link">Membership</a><a href="contact.html" class="footer-link">Contact</a></div></div><div class="footer-bottom"><p>© 2026 Artora Gallery. All rights reserved.</p></div></div></footer>
+<div class="lightbox"><button class="lightbox-close">ESC / Close</button><button class="lightbox-nav lightbox-prev"><svg width="24" height="24"><use href="assets/icons/sprite.svg#icon-arrow-left"/></svg></button><img class="lightbox-img" src="" alt=""><button class="lightbox-nav lightbox-next"><svg width="24" height="24"><use href="assets/icons/sprite.svg#icon-arrow-right"/></svg></button><div class="lightbox-caption"><strong></strong></div></div>
+<div class="toast" role="alert" aria-live="polite"></div>
+<script src="js/main.js" type="module"></script></body></html>

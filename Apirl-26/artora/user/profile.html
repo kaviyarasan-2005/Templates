@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Profile — Artora</title>
+  <link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+<nav class="site-nav" style="background:var(--color-surface);border-bottom:1px solid var(--color-border)">
+  <div class="container"><a href="index.html" class="nav-logo"><div class="nav-logo-mark"><span style="font-family:var(--font-display);font-size:.9rem;color:var(--color-accent)">A</span></div>ARTORA</a>
+  <div style="display:flex;align-items:center;gap:var(--space-3)"><button class="dark-toggle nav-action-btn" data-dark-toggle style="width:44px;height:24px;padding:0;"></button><a href="index.html" class="btn btn-ghost btn-sm">← Back to Site</a></div></div>
+</nav>
+<div class="user-layout" style="padding-top:var(--nav-height)">
+  <aside class="user-sidebar">
+  <div style="display:flex;gap:var(--space-3);align-items:center">
+    <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=80&q=80" alt="User" style="width:48px;height:48px;border-radius:50%;object-fit:cover">
+    <div><p style="font-weight:500">Alexandra Kim</p><p class="caption">Collector Member</p></div>
+  </div>
+  <nav class="user-sidebar-nav">
+    <a href="user/index.html" class="user-nav-link "><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg> Dashboard</a>
+    <a href="user/favorites.html" class="user-nav-link "><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78Z"/></svg> Saved Works</a>
+    <a href="user/tickets.html" class="user-nav-link "><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><line x1="9" y1="2" x2="9" y2="22"/></svg> Tickets</a>
+    <a href="user/profile.html" class="user-nav-link active"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> Profile</a>
+    <div style="border-top:1px solid var(--color-border);margin-top:var(--space-5);padding-top:var(--space-5)">
+      <a href="login.html" class="user-nav-link" style="color:var(--error)"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg> Sign Out</a>
+    </div>
+  </nav>
+</aside>
+  <main class="user-main" id="main">
+    
+<h2 style="margin-bottom:var(--space-6)">My Profile</h2>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-6)">
+  <div style="background:var(--color-surface);border:1px solid var(--color-border);padding:var(--space-6)">
+    <h3 style="margin-bottom:var(--space-5)">Personal Details</h3>
+    <form style="display:flex;flex-direction:column;gap:var(--space-4)">
+      <div class="form-group" style="margin:0"><label class="form-label">First Name</label><input type="text" class="form-control" value="Alexandra"></div>
+      <div class="form-group" style="margin:0"><label class="form-label">Last Name</label><input type="text" class="form-control" value="Kim"></div>
+      <div class="form-group" style="margin:0"><label class="form-label">Email</label><input type="email" class="form-control" value="a.kim@email.com"></div>
+      <div class="form-group" style="margin:0"><label class="form-label">Phone</label><input type="tel" class="form-control" value="+1 (212) 555-9823"></div>
+      <button class="btn btn-accent" style="justify-content:center">Save Changes</button>
+    </form>
+  </div>
+  <div>
+    <div style="background:var(--color-surface);border:1px solid var(--color-border);padding:var(--space-6);margin-bottom:var(--space-4)">
+      <h3 style="margin-bottom:var(--space-4)">Membership</h3>
+      <div style="background:var(--color-primary);color:#fff;padding:var(--space-5)">
+        <p class="eyebrow" style="color:var(--color-accent)">Collector Member</p>
+        <p style="font-family:var(--font-display);font-size:var(--text-3xl);color:#fff;margin-block:var(--space-3)">Alexandra Kim</p>
+        <p style="font-size:var(--text-xs);color:rgba(255,255,255,.5)">Valid through Dec 31, 2026</p>
+      </div>
+      <a href="../membership.html" class="btn btn-outline" style="width:100%;justify-content:center;margin-top:var(--space-4)">Upgrade Membership</a>
+    </div>
+    <div style="background:var(--color-surface);border:1px solid var(--color-border);padding:var(--space-6)">
+      <h3 style="margin-bottom:var(--space-4)">Preferences</h3>
+      <div style="display:flex;flex-direction:column;gap:var(--space-3)">
+        <label class="form-check"><input type="checkbox" checked> <span style="font-size:var(--text-sm)">Exhibition opening invitations</span></label>
+        <label class="form-check"><input type="checkbox" checked> <span style="font-size:var(--text-sm)">Monthly newsletter</span></label>
+        <label class="form-check"><input type="checkbox"> <span style="font-size:var(--text-sm)">Acquisition alerts</span></label>
+        <label class="form-check"><input type="checkbox" checked> <span style="font-size:var(--text-sm)">Artist talk notifications</span></label>
+      </div>
+      <button class="btn btn-outline" style="margin-top:var(--space-4)">Save Preferences</button>
+    </div>
+  </div>
+</div>
+  </main>
+</div>
+<div class="toast" role="alert" aria-live="polite"></div>
+<script src="../js/main.js" type="module"></script>
+</body></html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Collection — Artora</title>
+  <meta name="description" content="Collection — Artora — Artora Gallery">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<nav class="site-nav" aria-label="Main navigation">
+  <div class="container">
+    <a href="index.html" class="nav-logo"><div class="nav-logo-mark"><span style="font-family:var(--font-display);font-size:.9rem;color:var(--color-accent)">A</span></div>ARTORA</a>
+    <ul class="nav-menu" role="list">
+      <li class="nav-item"><a href="exhibitions.html" class="nav-link">Exhibitions</a></li>
+      <li class="nav-item"><a href="artists.html" class="nav-link">Artists</a></li>
+      <li class="nav-item"><a href="artworks.html" class="nav-link">Collection</a></li>
+      <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+      <li class="nav-item"><a href="visit.html" class="nav-link">Visit</a></li>
+      <li class="nav-item"><a href="blog.html" class="nav-link">Journal</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="nav-action-btn" data-search-open aria-label="Search"><svg width="20" height="20"><use href="assets/icons/sprite.svg#icon-search"/></svg></button>
+      <button class="dark-toggle nav-action-btn" data-dark-toggle role="switch" aria-label="Toggle dark mode" style="width:44px;height:24px;padding:0;"></button>
+      <a href="membership.html" class="btn btn-accent btn-sm" style="margin-left:var(--space-2)">Become a Member</a>
+      <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="nav-drawer"><div class="nav-drawer-backdrop"></div><div class="nav-drawer-panel"><div style="display:flex;justify-content:space-between"><span class="nav-logo">ARTORA</span><button class="btn-ghost nav-hamburger active" style="display:flex"><span></span><span></span><span></span></button></div><nav class="drawer-menu"><a href="exhibitions.html" class="drawer-link">Exhibitions</a><a href="artists.html" class="drawer-link">Artists</a><a href="artworks.html" class="drawer-link">Collection</a><a href="about.html" class="drawer-link">About</a><a href="visit.html" class="drawer-link">Visit</a><a href="blog.html" class="drawer-link">Journal</a></nav></div></div>
+<div class="search-overlay"><div class="search-overlay-inner"><p class="eyebrow">Search</p><h2>What are you looking for?</h2><div class="search-input-wrap"><svg width="24" height="24"><use href="assets/icons/sprite.svg#icon-search"/></svg><input type="search" placeholder="Artists, exhibitions, artworks…"></div></div><button class="search-close" data-search-close>ESC to close</button></div>
+
+<main id="main">
+<section class="page-hero">
+  <div class="page-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1547826039-bfc35e0f1ea8?w=1600&q=80')"></div>
+  <div class="container page-hero-content"><p class="eyebrow">Over 12,000 Works</p><h1>The Collection</h1></div>
+</section>
+<section class="section">
+  <div class="container">
+    <div style="display:flex;gap:var(--space-5);align-items:flex-start">
+      <aside style="width:220px;flex-shrink:0;position:sticky;top:calc(var(--nav-height)+var(--space-5))">
+        <h4 style="font-size:var(--text-xs);letter-spacing:.15em;text-transform:uppercase;margin-bottom:var(--space-4)">Filter</h4>
+        <div style="margin-bottom:var(--space-5)">
+          <p style="font-size:var(--text-xs);letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-3)">Medium</p>
+          <label class="form-check" style="margin-bottom:var(--space-2)"><input type="checkbox" checked> <span style="font-size:var(--text-sm)">Painting</span></label>
+          <label class="form-check" style="margin-bottom:var(--space-2)"><input type="checkbox"> <span style="font-size:var(--text-sm)">Sculpture</span></label>
+          <label class="form-check" style="margin-bottom:var(--space-2)"><input type="checkbox"> <span style="font-size:var(--text-sm)">Photography</span></label>
+          <label class="form-check" style="margin-bottom:var(--space-2)"><input type="checkbox"> <span style="font-size:var(--text-sm)">Drawing</span></label>
+          <label class="form-check" style="margin-bottom:var(--space-2)"><input type="checkbox"> <span style="font-size:var(--text-sm)">New Media</span></label>
+        </div>
+        <div style="margin-bottom:var(--space-5)">
+          <p style="font-size:var(--text-xs);letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-3)">Era</p>
+          <label class="form-check" style="margin-bottom:var(--space-2)"><input type="checkbox" checked> <span style="font-size:var(--text-sm)">Contemporary (2000–)</span></label>
+          <label class="form-check" style="margin-bottom:var(--space-2)"><input type="checkbox"> <span style="font-size:var(--text-sm)">Modern (1940–2000)</span></label>
+          <label class="form-check" style="margin-bottom:var(--space-2)"><input type="checkbox"> <span style="font-size:var(--text-sm)">Historical</span></label>
+        </div>
+        <div>
+          <p style="font-size:var(--text-xs);letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-3)">Status</p>
+          <label class="form-check" style="margin-bottom:var(--space-2)"><input type="checkbox" checked> <span style="font-size:var(--text-sm)">Available</span></label>
+          <label class="form-check" style="margin-bottom:var(--space-2)"><input type="checkbox"> <span style="font-size:var(--text-sm)">On View</span></label>
+          <label class="form-check" style="margin-bottom:var(--space-2)"><input type="checkbox"> <span style="font-size:var(--text-sm)">Sold</span></label>
+        </div>
+        <button class="btn btn-outline" style="width:100%;justify-content:center;margin-top:var(--space-5)">Clear Filters</button>
+      </aside>
+      <div style="flex:1">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--space-5)">
+          <p style="font-size:var(--text-sm);color:var(--text-muted)">Showing 48 of 12,340 works</p>
+          <select class="form-control" style="width:auto">
+            <option>Sort: Recent</option>
+            <option>Sort: A–Z</option>
+            <option>Sort: Price ↑</option>
+            <option>Sort: Price ↓</option>
+          </select>
+        </div>
+        <div class="grid-3">
+          <article class="card card-artwork" data-animate><div class="card-artwork__image"><img src="https://images.unsplash.com/photo-1547826039-bfc35e0f1ea8?w=400&q=80" alt="Composition VII" loading="lazy"><button class="card-artwork__quick-view btn btn-sm btn-primary" data-quick-view>Quick View</button></div><div class="card-artwork__body"><p class="card-artwork__artist">Elena Vasquez</p><h4 class="card-artwork__title">Composition VII</h4><div style="display:flex;justify-content:space-between;align-items:center"><span class="card-artwork__meta">Oil on canvas, 2024</span><span class="status status-active">Available</span></div></div></article>
+          <article class="card card-artwork" data-animate data-delay="1"><div class="card-artwork__image"><img src="https://images.unsplash.com/photo-1549490349-8643362247b5?w=400&q=80" alt="Urban Fragments" loading="lazy"><button class="card-artwork__quick-view btn btn-sm btn-primary" data-quick-view>Quick View</button></div><div class="card-artwork__body"><p class="card-artwork__artist">Marcus Chen</p><h4 class="card-artwork__title">Urban Fragments</h4><div style="display:flex;justify-content:space-between;align-items:center"><span class="card-artwork__meta">Photography, 2023</span><span class="status status-active">Available</span></div></div></article>
+          <article class="card card-artwork" data-animate data-delay="2"><div class="card-artwork__image"><img src="https://images.unsplash.com/photo-1572947650440-e8a97ef053b2?w=400&q=80" alt="Void Form III" loading="lazy"><button class="card-artwork__quick-view btn btn-sm btn-primary" data-quick-view>Quick View</button></div><div class="card-artwork__body"><p class="card-artwork__artist">Yuki Tanaka</p><h4 class="card-artwork__title">Void Form III</h4><div style="display:flex;justify-content:space-between;align-items:center"><span class="card-artwork__meta">Marble, 2024</span><span class="status status-sold">Sold</span></div></div></article>
+          <article class="card card-artwork" data-animate><div class="card-artwork__image"><img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&q=80" alt="Woven Memory" loading="lazy"><button class="card-artwork__quick-view btn btn-sm btn-primary" data-quick-view>Quick View</button></div><div class="card-artwork__body"><p class="card-artwork__artist">Lena Brandt</p><h4 class="card-artwork__title">Woven Memory</h4><div style="display:flex;justify-content:space-between;align-items:center"><span class="card-artwork__meta">Ceramic, 2025</span><span class="status status-active">Available</span></div></div></article>
+          <article class="card card-artwork" data-animate data-delay="1"><div class="card-artwork__image"><img src="https://images.unsplash.com/photo-1541367777708-7905fe3296c0?w=400&q=80" alt="Untitled Red Study" loading="lazy"><button class="card-artwork__quick-view btn btn-sm btn-primary" data-quick-view>Quick View</button></div><div class="card-artwork__body"><p class="card-artwork__artist">Elena Vasquez</p><h4 class="card-artwork__title">Untitled (Red Study)</h4><div style="display:flex;justify-content:space-between;align-items:center"><span class="card-artwork__meta">Oil on canvas, 2022</span><span class="status status-inactive">On View</span></div></div></article>
+          <article class="card card-artwork" data-animate data-delay="2"><div class="card-artwork__image"><img src="https://images.unsplash.com/photo-1582730147924-d92f4da00252?w=400&q=80" alt="Horizon Line" loading="lazy"><button class="card-artwork__quick-view btn btn-sm btn-primary" data-quick-view>Quick View</button></div><div class="card-artwork__body"><p class="card-artwork__artist">Elena Vasquez</p><h4 class="card-artwork__title">Horizon Line</h4><div style="display:flex;justify-content:space-between;align-items:center"><span class="card-artwork__meta">Mixed media, 2025</span><span class="status status-active">Available</span></div></div></article>
+        </div>
+        <div class="pagination"><button class="page-btn active">1</button><button class="page-btn">2</button><button class="page-btn">3</button><button class="page-btn"><svg width="16" height="16"><use href="assets/icons/sprite.svg#icon-arrow-right"/></svg></button></div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="site-footer"><div class="container-wide"><div class="footer-grid"><div><div class="footer-logo">ARTORA</div><p class="footer-desc">A world-class contemporary art gallery.</p><div class="social-links"><a href="#" class="social-link"><svg width="16" height="16"><use href="assets/icons/sprite.svg#icon-instagram"/></svg></a><a href="#" class="social-link"><svg width="16" height="16"><use href="assets/icons/sprite.svg#icon-twitter"/></svg></a></div></div><div class="footer-col"><h4>Explore</h4><a href="exhibitions.html" class="footer-link">Exhibitions</a><a href="artists.html" class="footer-link">Artists</a><a href="artworks.html" class="footer-link">Collection</a></div><div class="footer-col"><h4>Visit</h4><a href="visit.html" class="footer-link">Plan Your Visit</a><a href="visit.html" class="footer-link">Hours</a></div><div class="footer-col"><h4>Connect</h4><a href="membership.html" class="footer-link">Membership</a><a href="contact.html" class="footer-link">Contact</a></div></div><div class="footer-bottom"><p>© 2026 Artora Gallery. All rights reserved.</p></div></div></footer>
+<div class="lightbox"><button class="lightbox-close">ESC / Close</button><button class="lightbox-nav lightbox-prev"><svg width="24" height="24"><use href="assets/icons/sprite.svg#icon-arrow-left"/></svg></button><img class="lightbox-img" src="" alt=""><button class="lightbox-nav lightbox-next"><svg width="24" height="24"><use href="assets/icons/sprite.svg#icon-arrow-right"/></svg></button><div class="lightbox-caption"><strong></strong></div></div>
+<div class="toast" role="alert" aria-live="polite"></div>
+<script src="js/main.js" type="module"></script></body></html>

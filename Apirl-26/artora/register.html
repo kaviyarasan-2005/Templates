@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Account — Artora</title>
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+<div style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:var(--space-8);background:var(--color-bg)">
+  <div style="max-width:480px;width:100%">
+    <div style="text-align:center;margin-bottom:var(--space-8)">
+      <a href="index.html" class="nav-logo" style="justify-content:center;margin-bottom:var(--space-5)"><div class="nav-logo-mark"><span style="font-family:var(--font-display);font-size:.9rem;color:var(--color-accent)">A</span></div>ARTORA</a>
+      <p class="eyebrow">Join the Community</p>
+      <h1 style="font-size:var(--text-4xl);margin-top:var(--space-3)">Create Your Account</h1>
+      <p style="color:var(--text-secondary);margin-top:var(--space-3)">Already have an account? <a href="login.html" style="color:var(--color-accent)">Sign in →</a></p>
+    </div>
+    <form data-validate style="display:flex;flex-direction:column;gap:var(--space-4)">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4)">
+        <div class="form-group" style="margin:0"><label class="form-label" for="fname">First Name</label><input type="text" id="fname" class="form-control" placeholder="Jane" required></div>
+        <div class="form-group" style="margin:0"><label class="form-label" for="lname">Last Name</label><input type="text" id="lname" class="form-control" placeholder="Doe" required></div>
+      </div>
+      <div class="form-group" style="margin:0"><label class="form-label" for="email">Email</label><input type="email" id="email" class="form-control" placeholder="jane@example.com" required></div>
+      <div class="form-group" style="margin:0"><label class="form-label" for="pw">Password</label><input type="password" id="pw" class="form-control" placeholder="Min. 8 characters" required></div>
+      <label class="form-check"><input type="checkbox" required> <span style="font-size:var(--text-sm)">Receive monthly newsletter with exhibitions and events</span></label>
+      <label class="form-check"><input type="checkbox" required> <span style="font-size:var(--text-sm)">I agree to the <a href="#" style="color:var(--color-accent)">Terms of Use</a> and <a href="#" style="color:var(--color-accent)">Privacy Policy</a></span></label>
+      <button type="submit" class="btn btn-primary btn-lg" style="justify-content:center">Create Account</button>
+    </form>
+    <p style="text-align:center;margin-top:var(--space-5);font-size:var(--text-xs);color:var(--text-muted)">Looking for membership benefits? <a href="membership.html" style="color:var(--color-accent)">View membership tiers →</a></p>
+  </div>
+</div>
+<script src="js/main.js" type="module"></script>
+</body></html>
