@@ -1,0 +1,109 @@
+/* ============================================
+   ART GALLERY — DARK MODE OVERRIDES
+   Applied via [data-theme="dark"] on <html>
+   ============================================ */
+
+[data-theme="dark"] {
+  --color-bg: #0a0a0a;
+  --color-bg-alt: #111111;
+  --color-text: #e5e5e5;
+  --color-text-secondary: #aaaaaa;
+  --color-primary: #D4AF37;
+  --color-primary-dark: #c9a42e;
+  --color-muted: #1a1a1a;
+  --color-border: #2a2a2a;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
+  --shadow-md: 0 4px 6px rgba(0,0,0,0.4);
+  --shadow-lg: 0 10px 25px rgba(0,0,0,0.5);
+  --shadow-xl: 0 20px 50px rgba(0,0,0,0.6);
+}
+
+[data-theme="dark"] img:not(.no-dim) {
+  filter: brightness(0.9);
+}
+
+[data-theme="dark"] .navbar {
+  background: #0a0a0a;
+  border-bottom-color: #1a1a1a;
+}
+
+[data-theme="dark"] .navbar__dropdown-menu {
+  background: #111;
+  border-color: #2a2a2a;
+}
+
+[data-theme="dark"] .card {
+  background: #111;
+  border-color: #2a2a2a;
+}
+
+[data-theme="dark"] .footer {
+  background: #050505;
+}
+
+[data-theme="dark"] .form-group__input {
+  background: #1a1a1a;
+  color: #e5e5e5;
+}
+[data-theme="dark"] .form-group__input:focus {
+  background: #111;
+}
+
+[data-theme="dark"] .auth-page__form-side {
+  background: #0a0a0a;
+}
+
+[data-theme="dark"] .auth-social-btn--google {
+  background: #1a1a1a;
+  color: #e5e5e5;
+  border-color: #2a2a2a;
+}
+[data-theme="dark"] .auth-social-btn--google:hover {
+  background: #222;
+}
+
+[data-theme="dark"] .pricing-card {
+  background: #111;
+  border-color: #2a2a2a;
+}
+
+[data-theme="dark"] .stat-card {
+  background: #111;
+  border-color: #2a2a2a;
+}
+
+[data-theme="dark"] .data-table th {
+  border-bottom-color: #2a2a2a;
+}
+[data-theme="dark"] .data-table td {
+  border-bottom-color: #1a1a1a;
+}
+[data-theme="dark"] .data-table tbody tr:hover {
+  background: #1a1a1a;
+}
+
+[data-theme="dark"] .timeline::before {
+  background: #2a2a2a;
+}
+[data-theme="dark"] .timeline__dot {
+  border-color: #0a0a0a;
+}
+
+[data-theme="dark"] .filter-pill {
+  border-color: #2a2a2a;
+}
+
+[data-theme="dark"] .newsletter input {
+  background: #1a1a1a;
+  border-color: #2a2a2a;
+  color: #e5e5e5;
+}
+
+[data-theme="dark"] .skeleton {
+  background: linear-gradient(90deg, #1a1a1a 25%, #2a2a2a 50%, #1a1a1a 75%);
+  background-size: 200% 100%;
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-track {
+  background: #111;
+}

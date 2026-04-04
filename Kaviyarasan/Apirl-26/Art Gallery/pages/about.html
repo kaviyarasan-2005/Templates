@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us — Aurelia Gallery</title>
+  <meta name="description" content="Learn about Aurelia Gallery's mission, our expert team, and 25+ years of dedication to contemporary art curation and exhibition.">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicons/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{colors:{gold:'#D4AF37',burgundy:'#722F37',copper:'#B87333'},fontFamily:{heading:['Playfair Display','Georgia','serif'],body:['Inter','system-ui','sans-serif']}}}}</script>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/dark-mode.css">
+  <link rel="stylesheet" href="../assets/css/rtl.css">
+  <style>
+    /* Critical Mobile Fixes */
+    @media (max-width: 640px) {
+      .navbar__logo-suffix { display: none !important; }
+      .navbar__actions .btn--primary, 
+      .navbar__actions #theme-toggle, 
+      .navbar__actions #rtl-toggle { display: none !important; }
+      .navbar__inner { padding-inline: 16px !important; }
+      .navbar__logo { font-size: 1.1rem !important; }
+      .navbar__actions { gap: 0 !important; }
+      html, body { overflow-x: hidden !important; width: 100% !important; position: relative !important; }
+      * { max-width: 100vw !important; }
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar" id="main-navbar" role="navigation" aria-label="Main navigation">
+    <div class="navbar__inner">
+      <a href="home-main.html" class="navbar__logo"><svg width="36" height="36" viewBox="0 0 36 36" fill="none"><rect width="36" height="36" rx="8" fill="#D4AF37"/><path d="M18 8L26 28H10L18 8Z" fill="white" opacity="0.9"/><circle cx="18" cy="20" r="4" fill="white" opacity="0.7"/></svg><span>Aurelia</span> <span class="navbar__logo-suffix">Gallery</span></a>
+      <div class="navbar__links">
+        <div class="navbar__dropdown"><a href="#" class="navbar__link navbar__dropdown-trigger" aria-expanded="false">Home <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></a><div class="navbar__dropdown-menu" role="menu"><a href="home-main.html" class="navbar__dropdown-item">Gallery Overview</a><a href="home-exhibition.html" class="navbar__dropdown-item">Current Exhibition</a></div></div>
+        <a href="about.html" class="navbar__link">About Us</a>
+        <a href="services.html" class="navbar__link">Services</a>
+        <a href="blog.html" class="navbar__link">Blog</a>
+        <a href="contact.html" class="navbar__link">Contact</a>
+              <div class="navbar__dropdown">
+          <a href="#" class="navbar__link navbar__dropdown-trigger" aria-expanded="false">Dashboard <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></a>
+          <div class="navbar__dropdown-menu" role="menu">
+            <a href="dashboard.html#user" class="navbar__dropdown-item" role="menuitem">User Dashboard</a>
+            <a href="dashboard.html#admin" class="navbar__dropdown-item" role="menuitem">Admin Dashboard</a>
+          </div>
+        </div>
+      </div>
+      <div class="navbar__actions">
+        <button class="navbar__icon-btn" id="rtl-toggle" aria-label="Toggle RTL"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></button>
+        <button class="navbar__icon-btn" id="theme-toggle" aria-label="Toggle theme"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
+        <a href="login.html" class="btn btn--primary btn--sm">Login</a>
+      </div>
+      <button class="navbar__hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+    <div class="navbar__mobile-menu" aria-hidden="true">
+      <a href="home-main.html" class="navbar__link">Gallery Overview</a>
+      <a href="home-exhibition.html" class="navbar__link">Current Exhibition</a>
+      <a href="about.html" class="navbar__link">About Us</a>
+      <a href="services.html" class="navbar__link">Services</a>
+      <a href="blog.html" class="navbar__link">Blog</a>
+      <a href="contact.html" class="navbar__link">Contact</a>
+      <div style="border-top:1px solid var(--color-border); width:100%; margin:8px 0;"></div>
+      <a href="dashboard.html#user" class="navbar__link">User Dashboard</a>
+      <a href="dashboard.html#admin" class="navbar__link">Admin Dashboard</a>
+      <div style="display:flex;gap:12px;margin-top:16px;">
+        <button class="navbar__icon-btn" id="mobile-rtl-toggle"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></button>
+        <button class="navbar__icon-btn" id="mobile-theme-toggle"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
+      </div>
+      <a href="login.html" class="btn btn--primary" style="margin-top:8px;">Login</a>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <section class="hero" style="min-height:50vh;" aria-labelledby="about-title">
+    <div class="hero__bg"><img src="https://images.unsplash.com/photo-1594388534984-7976f8e78a74?w=1400&h=600&fit=crop" alt="Gallery interior with visitors appreciating art" loading="eager"></div>
+    <div class="hero__overlay"></div>
+    <div class="hero__content reveal">
+      <p style="color:var(--color-primary);font-weight:600;letter-spacing:0.15em;text-transform:uppercase;font-size:0.875rem;margin-bottom:8px;">About Us</p>
+      <h1 id="about-title">Our Story &amp; Mission</h1>
+      <p>25 years of passion for contemporary art, emerging artists, and unforgettable exhibitions.</p>
+    </div>
+  </section>
+
+  <!-- OUR STORY -->
+  <section class="section" id="our-story" aria-labelledby="story-heading">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;">
+        <div class="reveal-left">
+          <p style="color:var(--color-primary);font-weight:600;letter-spacing:0.15em;text-transform:uppercase;font-size:0.875rem;margin-bottom:12px;">Est. 1998</p>
+          <h2 id="story-heading">Our Story</h2>
+          <p style="margin-top:20px;line-height:1.8;">Founded in 1998 by art collector and visionary Isabella Moretti, Aurelia Gallery began as a small exhibition space in downtown Manhattan with a bold mission: to bridge the gap between established masters and emerging voices in contemporary art.</p>
+          <p style="margin-top:16px;line-height:1.8;">Over the past 25 years, we have grown into one of the city's most respected galleries, hosting over 300 exhibitions, representing 150+ artists, and building lasting relationships with collectors, institutions, and art lovers worldwide.</p>
+          <p style="margin-top:16px;line-height:1.8;">Our commitment remains unchanged: to curate meaningful experiences that connect people with art that challenges, inspires, and transforms.</p>
+        </div>
+        <div class="reveal-right" style="border-radius:16px;overflow:hidden;">
+          <img src="https://images.unsplash.com/photo-1577720643272-265f09367456?w=600&h=500&fit=crop" alt="Aurelia Gallery exhibition space with artwork displays" style="width:100%;display:block;" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIMELINE -->
+  <section class="section" style="background:var(--color-muted);" id="history" aria-labelledby="history-heading">
+    <div class="container container--narrow">
+      <div class="section__header reveal">
+        <p style="color:var(--color-primary);font-weight:600;letter-spacing:0.15em;text-transform:uppercase;font-size:0.875rem;">Our Journey</p>
+        <h2 id="history-heading">Gallery Timeline</h2>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline__item reveal">
+          <div class="timeline__dot"></div>
+          <div class="timeline__date">1998</div>
+          <h3 class="timeline__title" style="font-size:1.25rem;">The Beginning</h3>
+          <p style="color:var(--color-text-secondary);font-size:0.9375rem;line-height:1.7;">Isabella Moretti opens the first Aurelia Gallery space on Gallery Row with an inaugural exhibition of 12 emerging artists.</p>
+        </div>
+        <div class="timeline__item reveal">
+          <div class="timeline__dot"></div>
+          <div class="timeline__date">2005</div>
+          <h3 class="timeline__title" style="font-size:1.25rem;">International Recognition</h3>
+          <p style="color:var(--color-text-secondary);font-size:0.9375rem;line-height:1.7;">Aurelia Gallery receives the International Contemporary Art Award, establishing its reputation on the global stage.</p>
+        </div>
+        <div class="timeline__item reveal">
+          <div class="timeline__dot"></div>
+          <div class="timeline__date">2012</div>
+          <h3 class="timeline__title" style="font-size:1.25rem;">Expansion</h3>
+          <p style="color:var(--color-text-secondary);font-size:0.9375rem;line-height:1.7;">Gallery expands to a 10,000 sq ft space, adding restoration facilities and a sculpture garden.</p>
+        </div>
+        <div class="timeline__item reveal">
+          <div class="timeline__dot"></div>
+          <div class="timeline__date">2020</div>
+          <h3 class="timeline__title" style="font-size:1.25rem;">Digital Innovation</h3>
+          <p style="color:var(--color-text-secondary);font-size:0.9375rem;line-height:1.7;">Launch of virtual exhibition platform, bringing art to global audiences with immersive digital experiences.</p>
+        </div>
+        <div class="timeline__item reveal">
+          <div class="timeline__dot"></div>
+          <div class="timeline__date">2026</div>
+          <h3 class="timeline__title" style="font-size:1.25rem;">Today &amp; Beyond</h3>
+          <p style="color:var(--color-text-secondary);font-size:0.9375rem;line-height:1.7;">Hosting 12+ exhibitions annually, representing 150+ artists, and continuing to shape the future of contemporary art.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section class="section" id="team" aria-labelledby="team-heading">
+    <div class="container">
+      <div class="section__header reveal">
+        <p style="color:var(--color-primary);font-weight:600;letter-spacing:0.15em;text-transform:uppercase;font-size:0.875rem;">Meet the Team</p>
+        <h2 id="team-heading">Our Expert Team</h2>
+        <p>Passionate professionals dedicated to bringing extraordinary art experiences to life.</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px;max-width:1120px;margin:0 auto;" data-stagger>
+        <!-- Member 1 -->
+        <div class="stagger-child" style="max-width:280px;margin:0 auto;width:100%;text-align:center;">
+          <div style="position:relative;width:160px;height:160px;margin:0 auto 16px;border-radius:50%;overflow:hidden;border:3px solid var(--color-border);transition:border-radius 0.5s ease,border-color 0.3s;">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop" alt="Isabella Moretti, Founder and Director" style="width:100%;height:100%;object-fit:cover;">
+          </div>
+          <h4 style="font-size:1.0625rem;margin-bottom:4px;">Isabella Moretti</h4>
+          <p style="font-size:0.8125rem;color:var(--color-primary);font-weight:500;margin-bottom:8px;">Founder &amp; Director</p>
+          <p style="font-size:0.8125rem;color:var(--color-text-secondary);line-height:1.6;">Visionary art collector with 30 years of experience shaping contemporary art discourse.</p>
+        </div>
+        <!-- Member 2 -->
+        <div class="stagger-child" style="max-width:280px;margin:0 auto;width:100%;text-align:center;">
+          <div style="position:relative;width:160px;height:160px;margin:0 auto 16px;border-radius:50%;overflow:hidden;border:3px solid var(--color-border);">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop" alt="Dr. Marcus Webb, Head Curator" style="width:100%;height:100%;object-fit:cover;">
+          </div>
+          <h4 style="font-size:1.0625rem;margin-bottom:4px;">Dr. Marcus Webb</h4>
+          <p style="font-size:0.8125rem;color:var(--color-primary);font-weight:500;margin-bottom:8px;">Head Curator</p>
+          <p style="font-size:0.8125rem;color:var(--color-text-secondary);line-height:1.6;">PhD in Art History from Yale. Curated 100+ exhibitions across three continents.</p>
+        </div>
+        <!-- Member 3 -->
+        <div class="stagger-child" style="max-width:280px;margin:0 auto;width:100%;text-align:center;">
+          <div style="position:relative;width:160px;height:160px;margin:0 auto 16px;border-radius:50%;overflow:hidden;border:3px solid var(--color-border);">
+            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop" alt="Elena Vasquez, Restoration Lead" style="width:100%;height:100%;object-fit:cover;">
+          </div>
+          <h4 style="font-size:1.0625rem;margin-bottom:4px;">Elena Vasquez</h4>
+          <p style="font-size:0.8125rem;color:var(--color-primary);font-weight:500;margin-bottom:8px;">Restoration Lead</p>
+          <p style="font-size:0.8125rem;color:var(--color-text-secondary);line-height:1.6;">Master conservator specializing in oil paintings and historical artwork preservation.</p>
+        </div>
+        <!-- Member 4 -->
+        <div class="stagger-child" style="max-width:280px;margin:0 auto;width:100%;text-align:center;">
+          <div style="position:relative;width:160px;height:160px;margin:0 auto 16px;border-radius:50%;overflow:hidden;border:3px solid var(--color-border);">
+            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop" alt="David Kim, Gallery Manager" style="width:100%;height:100%;object-fit:cover;">
+          </div>
+          <h4 style="font-size:1.0625rem;margin-bottom:4px;">David Kim</h4>
+          <p style="font-size:0.8125rem;color:var(--color-primary);font-weight:500;margin-bottom:8px;">Gallery Manager</p>
+          <p style="font-size:0.8125rem;color:var(--color-text-secondary);line-height:1.6;">Expert in gallery operations with a passion for creating seamless visitor experiences.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section" style="background:var(--color-muted);" id="testimonials" aria-labelledby="testimonials-heading">
+    <div class="container">
+      <div class="section__header reveal">
+        <h2 id="testimonials-heading">What People Say</h2>
+      </div>
+      <div class="grid grid--3" data-stagger>
+        <div class="card stagger-child" style="border:none;background:var(--color-bg);padding:32px;">
+          <p style="font-style:italic;margin-bottom:16px;color:var(--color-text-secondary);line-height:1.8;">"A truly world-class gallery. Every exhibition is thoughtfully curated and beautifully presented."</p>
+          <strong style="color:var(--color-text);font-size:0.9375rem;">— Margaret Thornton, Art Critic</strong>
+        </div>
+        <div class="card stagger-child" style="border:none;background:var(--color-bg);padding:32px;">
+          <p style="font-style:italic;margin-bottom:16px;color:var(--color-text-secondary);line-height:1.8;">"Aurelia Gallery changed my career. Their support for emerging artists is unmatched in the industry."</p>
+          <strong style="color:var(--color-text);font-size:0.9375rem;">— Rafael Santos, Contemporary Artist</strong>
+        </div>
+        <div class="card stagger-child" style="border:none;background:var(--color-bg);padding:32px;">
+          <p style="font-style:italic;margin-bottom:16px;color:var(--color-text-secondary);line-height:1.8;">"The restoration of my family's antique collection was handled with extraordinary care and expertise."</p>
+          <strong style="color:var(--color-text);font-size:0.9375rem;">— Anthony Richter, Collector</strong>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:48px;" class="reveal">
+        <a href="#" class="btn btn--secondary">Read More Reviews</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
+        <div><div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;"><svg width="32" height="32" viewBox="0 0 36 36" fill="none"><rect width="36" height="36" rx="8" fill="#D4AF37"/><path d="M18 8L26 28H10L18 8Z" fill="white" opacity="0.9"/><circle cx="18" cy="20" r="4" fill="white" opacity="0.7"/></svg><span style="font-family:var(--font-heading);font-size:1.25rem;font-weight:700;color:#fff;"><span style="color:var(--color-primary);">Aurelia</span> Gallery</span></div><p style="font-size:0.875rem;line-height:1.7;">A premier contemporary art gallery since 1998.</p></div>
+        <div><h4>Quick Links</h4><ul style="display:flex;flex-direction:column;gap:10px;"><li><a href="home-main.html" style="font-size:0.875rem;">Home</a></li><li><a href="about.html" style="font-size:0.875rem;">About</a></li><li><a href="services.html" style="font-size:0.875rem;">Services</a></li><li><a href="blog.html" style="font-size:0.875rem;">Blog</a></li></ul></div>
+        <div><h4>Contact</h4><ul style="display:flex;flex-direction:column;gap:10px;font-size:0.875rem;"><li>42 Gallery Row, NY 10012</li><li>+1 (212) 555-0198</li><li>hello@aureliagallery.com</li></ul></div>
+        <div><h4>Newsletter</h4><p style="font-size:0.875rem;margin-bottom:16px;">Stay updated with our latest exhibitions.</p><form class="newsletter"><input type="email" placeholder="Your email" aria-label="Email"><button type="submit" class="btn btn--primary btn--sm"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button></form></div>
+      </div>
+      <div class="footer__bottom"><p>&copy; 2026 Aurelia Gallery. All rights reserved.</p><div style="display:flex;gap:24px;"><a href="#" style="font-size:0.875rem;">Privacy</a><a href="#" style="font-size:0.875rem;">Terms</a></div></div>
+    </div>
+  </footer>
+
+  <script type="module" src="../assets/js/main.js"></script>
+  <script type="module" src="../assets/js/animations.js"></script>
+</body>
+</html>

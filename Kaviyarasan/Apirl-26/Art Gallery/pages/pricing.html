@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Memberships &amp; Tickets — Aurelia Gallery</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicons/favicon-32x32.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{colors:{gold:'#D4AF37',burgundy:'#722F37',copper:'#B87333'},fontFamily:{heading:['Playfair Display','Georgia','serif'],body:['Inter','system-ui','sans-serif']}}}}</script>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/dark-mode.css">
+  <style>
+    /* Critical Mobile Fixes */
+    @media (max-width: 640px) {
+      .navbar__logo-suffix { display: none !important; }
+      .navbar__actions .btn--primary, 
+      .navbar__actions #theme-toggle, 
+      .navbar__actions #rtl-toggle { display: none !important; }
+      .navbar__inner { padding-inline: 16px !important; }
+      .navbar__logo { font-size: 1.1rem !important; }
+      .navbar__actions { gap: 0 !important; }
+      html, body { overflow-x: hidden !important; width: 100% !important; position: relative !important; }
+      * { max-width: 100vw !important; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar" id="main-navbar">
+    <div class="navbar__inner">
+      <a href="home-main.html" class="navbar__logo"><svg width="36" height="36" viewBox="0 0 36 36" fill="none"><rect width="36" height="36" rx="8" fill="#D4AF37"/><path d="M18 8L26 28H10L18 8Z" fill="white" opacity="0.9"/><circle cx="18" cy="20" r="4" fill="white" opacity="0.7"/></svg><span>Aurelia</span> <span class="navbar__logo-suffix">Gallery</span></a>
+      <div class="navbar__links"><a href="home-main.html" class="navbar__link">Home</a><a href="about.html" class="navbar__link">About Us</a><a href="services.html" class="navbar__link">Services</a><a href="contact.html" class="navbar__link">Contact</a>        <div class="navbar__dropdown">
+          <a href="#" class="navbar__link navbar__dropdown-trigger" aria-expanded="false">Dashboard <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></a>
+          <div class="navbar__dropdown-menu" role="menu">
+            <a href="dashboard.html#user" class="navbar__dropdown-item" role="menuitem">User Dashboard</a>
+            <a href="dashboard.html#admin" class="navbar__dropdown-item" role="menuitem">Admin Dashboard</a>
+          </div>
+        </div>
+      </div>
+      <div class="navbar__actions"><a href="login.html" class="btn btn--primary btn--sm">Login</a></div>
+    </div>
+  </nav>
+
+  <section class="page-offset" style="text-align:center;padding-block:60px 40px;">
+    <div class="container reveal">
+      <span class="badge badge--gold" style="margin-bottom:16px;">Visitor Information</span>
+      <h1 style="font-size:clamp(2.5rem,5vw,3.5rem);margin-bottom:16px;">Tickets &amp; Memberships</h1>
+      <p style="max-width:600px;margin:0 auto;color:var(--color-text-secondary);line-height:1.8;">General admission is always free. Enhance your experience with guided tours or join our community as a member.</p>
+    </div>
+  </section>
+
+  <!-- PRICING CARDS -->
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      
+      <!-- Toggle (Monthly/Annually conceptual) -->
+      <div style="display:flex;justify-content:center;align-items:center;gap:12px;margin-bottom:48px;" class="reveal">
+        <span style="font-weight:500;">Individual</span>
+        <label style="position:relative;display:inline-block;width:56px;height:32px;cursor:pointer;">
+          <input type="checkbox" style="opacity:0;width:0;height:0;" id="pricing-toggle">
+          <span style="position:absolute;inset:0;background:var(--color-border);border-radius:16px;transition:.4s;"></span>
+          <span style="position:absolute;content:'';height:24px;width:24px;left:4px;bottom:4px;background:#fff;border-radius:50%;transition:.4s;box-shadow:0 2px 4px rgba(0,0,0,0.2);"></span>
+        </label>
+        <span style="font-weight:500;">Corporate</span>
+      </div>
+
+      <style>
+        input:checked + span { background: var(--color-primary); }
+        input:checked + span + span { transform: translateX(24px); }
+      </style>
+
+      <div class="grid grid--3" data-stagger>
+        <!-- Card 1 -->
+        <div class="card stagger-child" style="padding:40px 32px;border:1px solid var(--color-border);background:var(--color-bg);display:flex;flex-direction:column;">
+          <h3 style="font-size:1.5rem;margin-bottom:8px;">Guided Tour</h3>
+          <p style="color:var(--color-text-secondary);font-size:0.875rem;margin-bottom:24px;">Perfect for first-time visitors</p>
+          <div style="margin-bottom:32px;"><span style="font-size:3rem;font-family:var(--font-heading);font-weight:700;">$25</span> <span style="color:var(--color-text-secondary);font-size:0.875rem;">/ person</span></div>
+          <ul style="display:flex;flex-direction:column;gap:16px;margin-bottom:40px;flex:1;">
+            <li style="display:flex;align-items:center;gap:12px;font-size:0.9375rem;"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="var(--color-primary)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> 1-hour guided walkthrough</li>
+            <li style="display:flex;align-items:center;gap:12px;font-size:0.9375rem;"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="var(--color-primary)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Curatorial insights</li>
+            <li style="display:flex;align-items:center;gap:12px;font-size:0.9375rem;"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="var(--color-primary)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Exhibition brochure</li>
+          </ul>
+          <button class="btn btn--secondary" style="width:100%;">Book Tour</button>
+        </div>
+
+        <!-- Card 2 (Popular) -->
+        <div class="card stagger-child" style="padding:40px 32px;border:2px solid var(--color-primary);background:var(--color-bg);position:relative;display:flex;flex-direction:column;transform:scale(1.02);box-shadow:var(--shadow-xl);z-index:2;">
+          <div style="position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--color-primary);color:#fff;padding:4px 16px;border-radius:20px;font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;">Most Popular</div>
+          <h3 style="font-size:1.5rem;margin-bottom:8px;">Patron Member</h3>
+          <p style="color:var(--color-text-secondary);font-size:0.875rem;margin-bottom:24px;">For art enthusiasts</p>
+          <div style="margin-bottom:32px;"><span style="font-size:3rem;font-family:var(--font-heading);font-weight:700;">$150</span> <span style="color:var(--color-text-secondary);font-size:0.875rem;">/ year</span></div>
+          <ul style="display:flex;flex-direction:column;gap:16px;margin-bottom:40px;flex:1;">
+            <li style="display:flex;align-items:center;gap:12px;font-size:0.9375rem;"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="var(--color-primary)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Unlimited free bringing of guests</li>
+            <li style="display:flex;align-items:center;gap:12px;font-size:0.9375rem;"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="var(--color-primary)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Invites to opening receptions</li>
+            <li style="display:flex;align-items:center;gap:12px;font-size:0.9375rem;"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="var(--color-primary)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> 10% discount on framing</li>
+            <li style="display:flex;align-items:center;gap:12px;font-size:0.9375rem;"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="var(--color-primary)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Early access to acquisitions</li>
+          </ul>
+          <button class="btn btn--primary" style="width:100%;">Join as Patron</button>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card stagger-child" style="padding:40px 32px;border:1px solid var(--color-border);background:var(--color-bg);display:flex;flex-direction:column;">
+          <h3 style="font-size:1.5rem;margin-bottom:8px;">Benefactor</h3>
+          <p style="color:var(--color-text-secondary);font-size:0.875rem;margin-bottom:24px;">For established collectors</p>
+          <div style="margin-bottom:32px;"><span style="font-size:3rem;font-family:var(--font-heading);font-weight:700;">$500</span> <span style="color:var(--color-text-secondary);font-size:0.875rem;">/ year</span></div>
+          <ul style="display:flex;flex-direction:column;gap:16px;margin-bottom:40px;flex:1;">
+            <li style="display:flex;align-items:center;gap:12px;font-size:0.9375rem;"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="var(--color-primary)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> All Patron benefits</li>
+            <li style="display:flex;align-items:center;gap:12px;font-size:0.9375rem;"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="var(--color-primary)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Private artist studio visits</li>
+            <li style="display:flex;align-items:center;gap:12px;font-size:0.9375rem;"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="var(--color-primary)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Complimentary exhibition catalogs</li>
+            <li style="display:flex;align-items:center;gap:12px;font-size:0.9375rem;"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="var(--color-primary)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Private collection advisory</li>
+          </ul>
+          <button class="btn btn--secondary" style="width:100%;">Join as Benefactor</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER TRUNCATED FOR BREVITY IN THESE UTILITY PAGES -->
+  <script type="module" src="../assets/js/main.js"></script>
+  <script type="module" src="../assets/js/animations.js"></script>
+</body>
+</html>

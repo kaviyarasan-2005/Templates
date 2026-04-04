@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Under Maintenance — Aurelia Gallery</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicons/favicon-32x32.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{colors:{gold:'#D4AF37',burgundy:'#722F37',copper:'#B87333'},fontFamily:{heading:['Playfair Display','Georgia','serif'],body:['Inter','system-ui','sans-serif']}}}}</script>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    .loading-pulse {
+      width: 16px;
+      height: 16px;
+      background: var(--color-primary);
+      border-radius: 50%;
+      display: inline-block;
+      animation: pulse 1.5s infinite ease-in-out;
+    }
+    .loading-pulse:nth-child(2) { animation-delay: 0.2s; }
+    .loading-pulse:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes pulse {
+      0%, 100% { transform: scale(0.8); opacity: 0.5; }
+      50% { transform: scale(1.2); opacity: 1; }
+    }
+  </style>
+  <style>
+    /* Critical Mobile Fixes */
+    @media (max-width: 640px) {
+      .navbar__logo-suffix { display: none !important; }
+      .navbar__actions .btn--primary, 
+      .navbar__actions #theme-toggle, 
+      .navbar__actions #rtl-toggle { display: none !important; }
+      .navbar__inner { padding-inline: 16px !important; }
+      .navbar__logo { font-size: 1.1rem !important; }
+      .navbar__actions { gap: 0 !important; }
+      html, body { overflow-x: hidden !important; width: 100% !important; position: relative !important; }
+      * { max-width: 100vw !important; }
+    }
+  </style>
+</head>
+<body style="display:flex;align-items:center;justify-content:center;height:100vh;background:var(--color-bg);text-align:center;">
+  <div style="padding:40px;">
+    <svg width="64" height="64" viewBox="0 0 36 36" fill="none" style="margin:0 auto 24px;"><rect width="36" height="36" rx="8" fill="#D4AF37"/><path d="M18 8L26 28H10L18 8Z" fill="white" opacity="0.9"/><circle cx="18" cy="20" r="4" fill="white" opacity="0.7"/></svg>
+    <h1 style="font-family:var(--font-heading);font-size:3rem;margin-bottom:16px;">Curating Our Next Experience</h1>
+    <p style="color:var(--color-text-secondary);max-width:500px;margin:0 auto 32px;line-height:1.6;font-size:1.125rem;">Our website is temporarily down for planned maintenance and installation of our new digital exhibition spaces. We will be back online shortly.</p>
+    <div style="display:flex;justify-content:center;gap:12px;margin-bottom:40px;">
+      <div class="loading-pulse"></div>
+      <div class="loading-pulse"></div>
+      <div class="loading-pulse"></div>
+    </div>
+    <p style="font-size:0.875rem;color:var(--color-text-secondary);">For urgent inquiries, please contact <a href="mailto:hello@aureliagallery.com" style="color:var(--color-primary);">hello@aureliagallery.com</a></p>
+  </div>
+</body>
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Behind the Scenes: Preparing for 'Abstract Horizons'</title>
+  <meta name="description" content="An inside look at the curation process for our most ambitious contemporary exhibition of the year.">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicons/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{colors:{gold:'#D4AF37',burgundy:'#722F37',copper:'#B87333'},fontFamily:{heading:['Playfair Display','Georgia','serif'],body:['Inter','system-ui','sans-serif']}}}}</script>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/dark-mode.css">
+  <link rel="stylesheet" href="../assets/css/rtl.css">
+  <style>
+    /* Critical Mobile Fixes */
+    @media (max-width: 640px) {
+      .navbar__logo-suffix { display: none !important; }
+      .navbar__actions .btn--primary, 
+      .navbar__actions #theme-toggle, 
+      .navbar__actions #rtl-toggle { display: none !important; }
+      .navbar__inner { padding-inline: 16px !important; }
+      .navbar__logo { font-size: 1.1rem !important; }
+      .navbar__actions { gap: 0 !important; }
+      html, body { overflow-x: hidden !important; width: 100% !important; position: relative !important; }
+      * { max-width: 100vw !important; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar" id="main-navbar">
+    <div class="navbar__inner">
+      <a href="home-main.html" class="navbar__logo"><svg width="36" height="36" viewBox="0 0 36 36" fill="none"><rect width="36" height="36" rx="8" fill="#D4AF37"/><path d="M18 8L26 28H10L18 8Z" fill="white" opacity="0.9"/><circle cx="18" cy="20" r="4" fill="white" opacity="0.7"/></svg><span>Aurelia</span> <span class="navbar__logo-suffix">Gallery</span></a>
+      <div class="navbar__links">
+        <div class="navbar__dropdown"><a href="#" class="navbar__link navbar__dropdown-trigger" aria-expanded="false">Home <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></a><div class="navbar__dropdown-menu"><a href="home-main.html" class="navbar__dropdown-item">Gallery Overview</a><a href="home-exhibition.html" class="navbar__dropdown-item">Current Exhibition</a></div></div>
+        <a href="about.html" class="navbar__link">About Us</a>
+        <a href="services.html" class="navbar__link">Services</a>
+        <a href="blog.html" class="navbar__link active">Blog</a>
+        <a href="contact.html" class="navbar__link">Contact</a>
+              <div class="navbar__dropdown">
+          <a href="#" class="navbar__link navbar__dropdown-trigger" aria-expanded="false">Dashboard <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></a>
+          <div class="navbar__dropdown-menu" role="menu">
+            <a href="dashboard.html#user" class="navbar__dropdown-item" role="menuitem">User Dashboard</a>
+            <a href="dashboard.html#admin" class="navbar__dropdown-item" role="menuitem">Admin Dashboard</a>
+          </div>
+        </div>
+      </div>
+      <div class="navbar__actions">
+        <button class="navbar__icon-btn" id="rtl-toggle"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></button>
+        <button class="navbar__icon-btn" id="theme-toggle"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
+        <a href="login.html" class="btn btn--primary btn--sm">Login</a>
+      </div>
+      <button class="navbar__hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <!-- BREADCRUMB & HERO -->
+  <section class="page-offset" style="padding-block:40px 60px;">
+    <div class="container container--narrow reveal">
+      <div class="breadcrumb" style="margin-bottom:24px;justify-content:center;">
+        <a href="home-main.html">Home</a><span class="breadcrumb__sep">/</span><a href="blog.html">Blog</a><span class="breadcrumb__sep">/</span><span style="color:var(--color-text);">Behind the Scenes</span>
+      </div>
+      <div style="display:flex;justify-content:center;gap:8px;margin-bottom:16px;">
+        <span class="badge badge--gold">Exhibition News</span>
+      </div>
+      <h1 style="text-align:center;margin-bottom:24px;">Behind the Scenes: Preparing for 'Abstract Horizons'</h1>
+      <div style="display:flex;align-items:center;justify-content:center;gap:16px;color:var(--color-text-secondary);font-size:0.875rem;">
+        <div style="display:flex;align-items:center;gap:8px;">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=32&h=32&fit=crop" style="width:32px;height:32px;border-radius:50%;object-fit:cover;">
+          <span>Dr. Marcus Webb, Head Curator</span>
+        </div>
+        <span>&bull;</span>
+        <span>Oct 15, 2026</span>
+        <span>&bull;</span>
+        <span>5 min read</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED IMG -->
+  <div class="container" style="margin-bottom:64px;">
+    <img src="https://images.unsplash.com/photo-1536924940846-227afb31e2a5?w=1200&h=600&fit=crop" alt="Gallery team installing artwork" style="width:100%;border-radius:16px;max-height:600px;object-fit:cover;box-shadow:var(--shadow-lg);">
+  </div>
+
+  <!-- ARTICLE CONTENT -->
+  <section class="section" style="padding-top:0;">
+    <div class="container" style="display:flex;gap:40px;align-items:flex-start;">
+      
+      <!-- TOC Sidebar -->
+      <aside style="width:240px;flex-shrink:0;position:sticky;top:100px;" class="md-hidden">
+        <h4 style="font-size:0.875rem;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:16px;color:var(--color-text-secondary);">Table of Contents</h4>
+        <ul style="display:flex;flex-direction:column;gap:12px;font-size:0.875rem;">
+          <li><a href="#concept" style="color:var(--color-text);font-weight:500;">The Initial Concept</a></li>
+          <li><a href="#selection" style="color:var(--color-text-secondary);transition:color 0.2s;" onmouseover="this.style.color='var(--color-primary)'" onmouseout="this.style.color='var(--color-text-secondary)'">Selecting the Artists</a></li>
+          <li><a href="#spatial" style="color:var(--color-text-secondary);transition:color 0.2s;" onmouseover="this.style.color='var(--color-primary)'" onmouseout="this.style.color='var(--color-text-secondary)'">Spatial Design Challenges</a></li>
+          <li><a href="#conclusion" style="color:var(--color-text-secondary);transition:color 0.2s;" onmouseover="this.style.color='var(--color-primary)'" onmouseout="this.style.color='var(--color-text-secondary)'">Looking Forward</a></li>
+        </ul>
+      </aside>
+
+      <!-- Main Text -->
+      <article style="flex:1;min-width:0;line-height:1.8;font-size:1.125rem;color:var(--color-text-secondary);">
+        <p style="margin-bottom:24px;"><span style="font-family:var(--font-heading);font-size:4rem;float:left;line-height:1;margin-right:12px;color:var(--color-primary);">C</span>urating an exhibition of the magnitude of <em>Abstract Horizons</em> is a journey that begins months, sometimes years, before the first artwork is hung on our gallery walls. As we finalize the installation for our winter season opening, I wanted to pull back the curtain and share the intricate process of bringing this vision to life.</p>
+        
+        <h2 id="concept" style="font-family:var(--font-heading);font-size:2rem;color:var(--color-text);margin:40px 0 20px;">The Initial Concept</h2>
+        <p style="margin-bottom:24px;">The seed for Abstract Horizons was planted during a studio visit in Berlin nearly two years ago. I was struck by how artists from different backgrounds were intuitively gravitating toward similar abstract languages to express deeply personal emotional landscapes in an increasingly chaotic world.</p>
+        <p style="margin-bottom:24px;">The core question emerged: How does abstract art function as an emotional anchor today? We wanted to explore works that weren't just visually striking, but conceptually rigorous—pieces that invite viewers to project their own internal horizons onto the canvas.</p>
+
+        <blockquote style="font-family:var(--font-heading);font-size:1.5rem;font-style:italic;color:var(--color-text);border-left:4px solid var(--color-primary);padding-left:24px;margin:40px 0;">
+          "The core question emerged: How does abstract art function as an emotional anchor today?"
+        </blockquote>
+
+        <h2 id="selection" style="font-family:var(--font-heading);font-size:2rem;color:var(--color-text);margin:40px 0 20px;">Selecting the Artists</h2>
+        <p style="margin-bottom:24px;">Narrowing down the final selection to 8 artists was perhaps the most challenging phase. We sought a balance between established voices who have defined contemporary abstraction, and emerging talents who are pushing its boundaries.</p>
+        
+        <div style="display:flex;gap:24px;margin:32px 0;">
+          <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=400&h=400&fit=crop" style="width:50%;border-radius:8px;object-fit:cover;">
+          <img src="https://images.unsplash.com/photo-1544531586-fde5298cdd40?w=400&h=400&fit=crop" style="width:50%;border-radius:8px;object-fit:cover;">
+        </div>
+
+        <h2 id="spatial" style="font-family:var(--font-heading);font-size:2rem;color:var(--color-text);margin:40px 0 20px;">Spatial Design Challenges</h2>
+        <p style="margin-bottom:24px;">Working alongside our exhibition designers, we treated the gallery space itself as a canvas. The flow between the intense, saturated canvases of Lucia Feretti and the stark, minimalist bronze sculptures of Kenji Nakamura required careful choreography.</p>
+        <p style="margin-bottom:24px;">We constructed three temporary angled walls to create intimate viewing pockets within our main hall, allowing the larger gestural works to breathe without overwhelming the more delicate pieces.</p>
+
+        <h2 id="conclusion" style="font-family:var(--font-heading);font-size:2rem;color:var(--color-text);margin:40px 0 20px;">Looking Forward</h2>
+        <p style="margin-bottom:24px;">As we apply the final lighting adjustments and prepare to open the doors, the dialogue between these 24 artworks is finally audible. It's a conversation about color, shadow, and the infinite possibilities of form.</p>
+        <p style="margin-bottom:40px;">We invite you to join this conversation when Abstract Horizons opens to the public next week.</p>
+
+        <!-- Tags & Share -->
+        <div style="border-top:1px solid var(--color-border);border-bottom:1px solid var(--color-border);padding-block:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;">
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <span style="font-size:0.875rem;font-weight:600;color:var(--color-text);margin-right:8px;">Tags:</span>
+            <a href="#" class="filter-pill" style="font-size:0.75rem;padding:2px 10px;">Curation</a>
+            <a href="#" class="filter-pill" style="font-size:0.75rem;padding:2px 10px;">Exhibitions</a>
+            <a href="#" class="filter-pill" style="font-size:0.75rem;padding:2px 10px;">Contemporary</a>
+          </div>
+          <div style="display:flex;gap:12px;align-items:center;">
+            <span style="font-size:0.875rem;font-weight:600;color:var(--color-text);">Share:</span>
+            <a href="#" class="navbar__icon-btn" style="width:32px;height:32px;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+            <a href="#" class="navbar__icon-btn" style="width:32px;height:32px;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg></a>
+          </div>
+        </div>
+
+        <!-- Author Box -->
+        <div style="background:var(--color-bg-alt);padding:32px;border-radius:12px;margin-top:40px;display:flex;gap:24px;align-items:flex-start;">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop" style="width:80px;height:80px;border-radius:50%;object-fit:cover;">
+          <div>
+            <h4 style="font-size:1.125rem;color:var(--color-text);margin-bottom:8px;">Dr. Marcus Webb</h4>
+            <p style="font-size:0.875rem;line-height:1.6;margin-bottom:12px;">Head Curator at Aurelia Gallery. Dr. Webb specializes in post-war abstraction and contemporary installation art.</p>
+            <a href="about.html#team" style="font-size:0.875rem;color:var(--color-primary);font-weight:600;">More by this author &rarr;</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- RELATED POSTS -->
+  <section class="section" style="background:var(--color-muted);">
+    <div class="container">
+      <h2 style="font-size:2rem;margin-bottom:32px;text-align:center;">Related Articles</h2>
+      <div class="grid grid--3">
+        <article class="card">
+          <a href="#" class="card__image" style="display:block;"><img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=600&h=400&fit=crop" alt="Interview"></a>
+          <div class="card__body">
+            <span class="badge badge--gold" style="margin-bottom:8px;">Artist Interview</span>
+            <h3 style="font-size:1.125rem;margin-bottom:8px;"><a href="#">In the Studio with Lucia Feretti</a></h3>
+            <p style="font-size:0.875rem;color:var(--color-text-secondary);">The celebrated painter discusses her technique.</p>
+          </div>
+        </article>
+        <article class="card">
+          <a href="#" class="card__image" style="display:block;"><img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=600&h=400&fit=crop" alt="Education"></a>
+          <div class="card__body">
+            <span class="badge badge--gold" style="margin-bottom:8px;">Art Education</span>
+            <h3 style="font-size:1.125rem;margin-bottom:8px;"><a href="#">The Science of Art Conservation</a></h3>
+            <p style="font-size:0.875rem;color:var(--color-text-secondary);">Preserving masterpiece paintings.</p>
+          </div>
+        </article>
+        <article class="card">
+          <a href="#" class="card__image" style="display:block;"><img src="https://images.unsplash.com/photo-1544531586-fde5298cdd40?w=600&h=400&fit=crop" alt="Review"></a>
+          <div class="card__body">
+            <span class="badge badge--gold" style="margin-bottom:8px;">Exhibition Review</span>
+            <h3 style="font-size:1.125rem;margin-bottom:8px;"><a href="#">The Evolution of Modern Sculpture</a></h3>
+            <p style="font-size:0.875rem;color:var(--color-text-secondary);">Analyzing the form and shadow exhibition.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">...</footer>
+  
+  <style>
+    @media (max-width: 768px) { .md-hidden { display: none !important; } }
+  </style>
+  <script type="module" src="../assets/js/main.js"></script>
+</body>
+</html>

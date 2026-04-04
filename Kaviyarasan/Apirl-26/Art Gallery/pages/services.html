@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services — Aurelia Gallery</title>
+  <meta name="description" content="Professional art services including curation, restoration, custom framing, and private collection management.">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicons/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{colors:{gold:'#D4AF37',burgundy:'#722F37',copper:'#B87333'},fontFamily:{heading:['Playfair Display','Georgia','serif'],body:['Inter','system-ui','sans-serif']}}}}</script>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/dark-mode.css">
+  <link rel="stylesheet" href="../assets/css/rtl.css">
+  <style>
+    /* Critical Mobile Fixes */
+    @media (max-width: 640px) {
+      .navbar__logo-suffix { display: none !important; }
+      .navbar__actions .btn--primary, 
+      .navbar__actions #theme-toggle, 
+      .navbar__actions #rtl-toggle { display: none !important; }
+      .navbar__inner { padding-inline: 16px !important; }
+      .navbar__logo { font-size: 1.1rem !important; }
+      .navbar__actions { gap: 0 !important; }
+      html, body { overflow-x: hidden !important; width: 100% !important; position: relative !important; }
+      * { max-width: 100vw !important; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar" id="main-navbar" role="navigation" aria-label="Main navigation">
+    <div class="navbar__inner">
+      <a href="home-main.html" class="navbar__logo"><svg width="36" height="36" viewBox="0 0 36 36" fill="none"><rect width="36" height="36" rx="8" fill="#D4AF37"/><path d="M18 8L26 28H10L18 8Z" fill="white" opacity="0.9"/><circle cx="18" cy="20" r="4" fill="white" opacity="0.7"/></svg><span>Aurelia</span> <span class="navbar__logo-suffix">Gallery</span></a>
+      <div class="navbar__links">
+        <div class="navbar__dropdown"><a href="#" class="navbar__link navbar__dropdown-trigger" aria-expanded="false">Home <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></a><div class="navbar__dropdown-menu"><a href="home-main.html" class="navbar__dropdown-item">Gallery Overview</a><a href="home-exhibition.html" class="navbar__dropdown-item">Current Exhibition</a></div></div>
+        <a href="about.html" class="navbar__link">About Us</a>
+        <a href="services.html" class="navbar__link">Services</a>
+        <a href="blog.html" class="navbar__link">Blog</a>
+        <a href="contact.html" class="navbar__link">Contact</a>
+              <div class="navbar__dropdown">
+          <a href="#" class="navbar__link navbar__dropdown-trigger" aria-expanded="false">Dashboard <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></a>
+          <div class="navbar__dropdown-menu" role="menu">
+            <a href="dashboard.html#user" class="navbar__dropdown-item" role="menuitem">User Dashboard</a>
+            <a href="dashboard.html#admin" class="navbar__dropdown-item" role="menuitem">Admin Dashboard</a>
+          </div>
+        </div>
+      </div>
+      <div class="navbar__actions">
+        <button class="navbar__icon-btn" id="rtl-toggle" aria-label="Toggle RTL"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></button>
+        <button class="navbar__icon-btn" id="theme-toggle" aria-label="Toggle theme"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
+        <a href="login.html" class="btn btn--primary btn--sm">Login</a>
+      </div>
+      <button class="navbar__hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+    <div class="navbar__mobile-menu" aria-hidden="true">
+      <a href="home-main.html" class="navbar__link">Gallery Overview</a>
+      <a href="home-exhibition.html" class="navbar__link">Current Exhibition</a>
+      <a href="about.html" class="navbar__link">About Us</a>
+      <a href="services.html" class="navbar__link">Services</a>
+      <a href="blog.html" class="navbar__link">Blog</a>
+      <a href="contact.html" class="navbar__link">Contact</a>
+      <div style="border-top:1px solid var(--color-border); width:100%; margin:8px 0;"></div>
+      <a href="dashboard.html#user" class="navbar__link">User Dashboard</a>
+      <a href="dashboard.html#admin" class="navbar__link">Admin Dashboard</a>
+      <div style="display:flex;gap:12px;margin-top:16px;">
+        <button class="navbar__icon-btn" id="mobile-rtl-toggle"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></button>
+        <button class="navbar__icon-btn" id="mobile-theme-toggle"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
+      </div>
+      <a href="login.html" class="btn btn--primary" style="margin-top:8px;">Login</a>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <section class="page-offset" style="background:linear-gradient(135deg,rgba(212,175,55,0.1) 0%,rgba(114,47,55,0.05) 100%);padding-block:80px;text-align:center;">
+    <div class="container reveal">
+      <h1 style="font-size:clamp(2.5rem,5vw,4rem);margin-bottom:16px;">Professional Art Services</h1>
+      <p style="max-width:600px;margin:0 auto;color:var(--color-text-secondary);line-height:1.8;">Comprehensive solutions for artists, collectors, and institutions. From meticulous restoration to visionary curation.</p>
+    </div>
+  </section>
+
+  <!-- Z-PATTERN SERVICES GRID -->
+  <section class="section">
+    <div class="container">
+      
+      <!-- Service 1: Image Left, Text Right -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;margin-bottom:120px;" class="reveal">
+        <div style="border-radius:12px;overflow:hidden;box-shadow:var(--shadow-lg);">
+          <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=800&h=600&fit=crop" alt="Exhibition Curation" style="width:100%;display:block;" loading="lazy">
+        </div>
+        <div>
+          <span class="badge badge--gold" style="margin-bottom:16px;">01</span>
+          <h2 style="margin-bottom:16px;">Exhibition Curation</h2>
+          <p style="color:var(--color-text-secondary);line-height:1.8;margin-bottom:24px;">Our expert curators combine deep art historical knowledge with contemporary spatial design to create exhibitions that tell compelling visual stories. We handle everything from artwork selection to spatial planning and narrative development.</p>
+          <ul style="margin-bottom:32px;display:flex;flex-direction:column;gap:12px;color:var(--color-text-secondary);font-size:0.9375rem;">
+            <li style="display:flex;align-items:center;gap:8px;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Thematic narrative development</li>
+            <li style="display:flex;align-items:center;gap:8px;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Spatial design &amp; layout</li>
+            <li style="display:flex;align-items:center;gap:8px;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Lighting optimization</li>
+          </ul>
+          <a href="service-detail.html" class="btn btn--primary">Learn More</a>
+        </div>
+      </div>
+
+      <!-- Service 2: Text Left, Image Right -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;margin-bottom:120px;" class="reveal text-image-reverse">
+        <div style="order:1;" class="text-col">
+          <span class="badge badge--gold" style="margin-bottom:16px;">02</span>
+          <h2 style="margin-bottom:16px;">Art Restoration</h2>
+          <p style="color:var(--color-text-secondary);line-height:1.8;margin-bottom:24px;">Preserve the beauty and value of your collection with our meticulous restoration and conservation services. Our master conservators utilize both traditional techniques and modern scientific analysis to breathe new life into aging or damaged works.</p>
+          <ul style="margin-bottom:32px;display:flex;flex-direction:column;gap:12px;color:var(--color-text-secondary);font-size:0.9375rem;">
+            <li style="display:flex;align-items:center;gap:8px;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Oil painting conservation</li>
+            <li style="display:flex;align-items:center;gap:8px;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Varnish removal &amp; re-varnishing</li>
+            <li style="display:flex;align-items:center;gap:8px;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Tear repair &amp; relining</li>
+          </ul>
+          <a href="service-detail.html" class="btn btn--primary">Learn More</a>
+        </div>
+        <div style="border-radius:12px;overflow:hidden;box-shadow:var(--shadow-lg);order:2;" class="img-col">
+          <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=800&h=600&fit=crop" alt="Art Restoration" style="width:100%;display:block;" loading="lazy">
+        </div>
+      </div>
+
+      <!-- Service 3: Image Left, Text Right -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;" class="reveal">
+        <div style="border-radius:12px;overflow:hidden;box-shadow:var(--shadow-lg);">
+          <img src="https://images.unsplash.com/photo-1577720643272-265f09367456?w=800&h=600&fit=crop" alt="Custom Framing" style="width:100%;display:block;" loading="lazy">
+        </div>
+        <div>
+          <span class="badge badge--gold" style="margin-bottom:16px;">03</span>
+          <h2 style="margin-bottom:16px;">Custom Framing</h2>
+          <p style="color:var(--color-text-secondary);line-height:1.8;margin-bottom:24px;">Enhance and protect your artworks with museum-quality custom framing. We source the finest materials globally, offering conservation-grade matting, UV-protective glazing, and bespoke frame profiles designed to complement each specific piece.</p>
+          <ul style="margin-bottom:32px;display:flex;flex-direction:column;gap:12px;color:var(--color-text-secondary);font-size:0.9375rem;">
+            <li style="display:flex;align-items:center;gap:8px;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Conservation-grade materials</li>
+            <li style="display:flex;align-items:center;gap:8px;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Hand-finished mouldings</li>
+            <li style="display:flex;align-items:center;gap:8px;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Anti-reflective UV glass</li>
+          </ul>
+          <a href="service-detail.html" class="btn btn--primary">Learn More</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <style>
+    @media (max-width: 1024px) {
+      .text-image-reverse .text-col { order: 2 !important; }
+      .text-image-reverse .img-col { order: 1 !important; }
+    }
+  </style>
+
+  <!-- CTA -->
+  <section class="section" style="background:linear-gradient(135deg,var(--color-secondary) 0%,#1a1a1a 100%);text-align:center;color:#fff;">
+    <div class="container container--narrow reveal">
+      <h2 style="color:#fff;margin-bottom:16px;">Need a bespoke service?</h2>
+      <p style="color:rgba(255,255,255,0.75);margin-bottom:32px;">Contact our team to discuss customized solutions for your unique collection or exhibition needs.</p>
+      <a href="contact.html" class="btn btn--primary btn--lg">Get in Touch</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
+        <div><div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;"><svg width="32" height="32" viewBox="0 0 36 36" fill="none"><rect width="36" height="36" rx="8" fill="#D4AF37"/><path d="M18 8L26 28H10L18 8Z" fill="white" opacity="0.9"/><circle cx="18" cy="20" r="4" fill="white" opacity="0.7"/></svg><span style="font-family:var(--font-heading);font-size:1.25rem;font-weight:700;color:#fff;"><span style="color:var(--color-primary);">Aurelia</span> Gallery</span></div><p style="font-size:0.875rem;line-height:1.7;">A premier contemporary art gallery since 1998.</p></div>
+        <div><h4>Quick Links</h4><ul style="display:flex;flex-direction:column;gap:10px;"><li><a href="home-main.html" style="font-size:0.875rem;">Home</a></li><li><a href="about.html" style="font-size:0.875rem;">About</a></li><li><a href="services.html" style="font-size:0.875rem;">Services</a></li><li><a href="blog.html" style="font-size:0.875rem;">Blog</a></li></ul></div>
+        <div><h4>Contact</h4><ul style="display:flex;flex-direction:column;gap:10px;font-size:0.875rem;"><li>42 Gallery Row, NY 10012</li><li>+1 (212) 555-0198</li><li>hello@aureliagallery.com</li></ul></div>
+        <div><h4>Newsletter</h4><p style="font-size:0.875rem;margin-bottom:16px;">Stay updated with our latest exhibitions.</p><form class="newsletter"><input type="email" placeholder="Your email" aria-label="Email"><button type="submit" class="btn btn--primary btn--sm"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button></form></div>
+      </div>
+      <div class="footer__bottom"><p>&copy; 2026 Aurelia Gallery. All rights reserved.</p><div style="display:flex;gap:24px;"><a href="#" style="font-size:0.875rem;">Privacy</a><a href="#" style="font-size:0.875rem;">Terms</a></div></div>
+    </div>
+  </footer>
+
+  <script type="module" src="../assets/js/main.js"></script>
+  <script type="module" src="../assets/js/animations.js"></script>
+</body>
+</html>

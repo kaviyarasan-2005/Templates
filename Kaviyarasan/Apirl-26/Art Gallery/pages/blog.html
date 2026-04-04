@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery News &amp; Blog — Aurelia Gallery</title>
+  <meta name="description" content="Read the latest art news, exhibition insights, and artist interviews from Aurelia Gallery.">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicons/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{colors:{gold:'#D4AF37',burgundy:'#722F37',copper:'#B87333'},fontFamily:{heading:['Playfair Display','Georgia','serif'],body:['Inter','system-ui','sans-serif']}}}}</script>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/dark-mode.css">
+  <link rel="stylesheet" href="../assets/css/rtl.css">
+  <style>
+    /* Critical Mobile Fixes */
+    @media (max-width: 640px) {
+      .navbar__logo-suffix { display: none !important; }
+      .navbar__actions .btn--primary, 
+      .navbar__actions #theme-toggle, 
+      .navbar__actions #rtl-toggle { display: none !important; }
+      .navbar__inner { padding-inline: 16px !important; }
+      .navbar__logo { font-size: 1.1rem !important; }
+      .navbar__actions { gap: 0 !important; }
+      html, body { overflow-x: hidden !important; width: 100% !important; position: relative !important; }
+      * { max-width: 100vw !important; }
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar" id="main-navbar" role="navigation" aria-label="Main navigation">
+    <div class="navbar__inner">
+      <a href="home-main.html" class="navbar__logo"><svg width="36" height="36" viewBox="0 0 36 36" fill="none"><rect width="36" height="36" rx="8" fill="#D4AF37"/><path d="M18 8L26 28H10L18 8Z" fill="white" opacity="0.9"/><circle cx="18" cy="20" r="4" fill="white" opacity="0.7"/></svg><span>Aurelia</span> <span class="navbar__logo-suffix">Gallery</span></a>
+      <div class="navbar__links">
+        <div class="navbar__dropdown"><a href="#" class="navbar__link navbar__dropdown-trigger" aria-expanded="false">Home <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></a><div class="navbar__dropdown-menu"><a href="home-main.html" class="navbar__dropdown-item">Gallery Overview</a><a href="home-exhibition.html" class="navbar__dropdown-item">Current Exhibition</a></div></div>
+        <a href="about.html" class="navbar__link">About Us</a>
+        <a href="services.html" class="navbar__link">Services</a>
+        <a href="blog.html" class="navbar__link active">Blog</a>
+        <a href="contact.html" class="navbar__link">Contact</a>
+              <div class="navbar__dropdown">
+          <a href="#" class="navbar__link navbar__dropdown-trigger" aria-expanded="false">Dashboard <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></a>
+          <div class="navbar__dropdown-menu" role="menu">
+            <a href="dashboard.html#user" class="navbar__dropdown-item" role="menuitem">User Dashboard</a>
+            <a href="dashboard.html#admin" class="navbar__dropdown-item" role="menuitem">Admin Dashboard</a>
+          </div>
+        </div>
+      </div>
+      <div class="navbar__actions">
+        <button class="navbar__icon-btn" id="rtl-toggle"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></button>
+        <button class="navbar__icon-btn" id="theme-toggle"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
+        <a href="login.html" class="btn btn--primary btn--sm">Login</a>
+      </div>
+      <button class="navbar__hamburger"><span></span><span></span><span></span></button>
+    </div>
+    <div class="navbar__mobile-menu" aria-hidden="true">
+      <a href="home-main.html" class="navbar__link">Gallery Overview</a>
+      <a href="home-exhibition.html" class="navbar__link">Current Exhibition</a>
+      <a href="about.html" class="navbar__link">About Us</a>
+      <a href="services.html" class="navbar__link">Services</a>
+      <a href="blog.html" class="navbar__link">Blog</a>
+      <a href="contact.html" class="navbar__link">Contact</a>
+      <div style="border-top:1px solid var(--color-border); width:100%; margin:8px 0;"></div>
+      <a href="dashboard.html#user" class="navbar__link">User Dashboard</a>
+      <a href="dashboard.html#admin" class="navbar__link">Admin Dashboard</a>
+      <div style="display:flex;gap:12px;margin-top:16px;">
+        <button class="navbar__icon-btn" id="mobile-rtl-toggle"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></button>
+        <button class="navbar__icon-btn" id="mobile-theme-toggle"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
+      </div>
+      <a href="login.html" class="btn btn--primary" style="margin-top:8px;">Login</a>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <section class="page-offset" style="background:var(--color-bg-alt);padding-block:60px;">
+    <div class="container reveal">
+      <h1 style="font-size:clamp(2.5rem,5vw,3.5rem);margin-bottom:16px;text-align:center;">Gallery Journal</h1>
+      <p style="max-width:600px;margin:0 auto;color:var(--color-text-secondary);line-height:1.8;text-align:center;margin-bottom:32px;">Insights, news, and perspectives from the world of contemporary art.</p>
+      
+      <!-- Search & Filters -->
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px;border-top:1px solid var(--color-border);padding-top:24px;">
+        <div class="filter-pills" id="blog-filters" style="margin:0;">
+          <button class="filter-pill active" data-filter="all">All Posts</button>
+          <button class="filter-pill" data-filter="exhibition">Exhibition News</button>
+          <button class="filter-pill" data-filter="artist">Artist Interviews</button>
+          <button class="filter-pill" data-filter="education">Art Education</button>
+        </div>
+        <div style="position:relative;width:100%;max-width:300px;">
+          <input type="text" id="blog-search" placeholder="Search articles..." style="width:100%;height:44px;padding:0 16px 0 40px;border:1px solid var(--color-border);border-radius:22px;background:var(--color-bg);color:var(--color-text);">
+          <svg style="position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--color-text-secondary);" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </div>
+      </div>
+      <div style="font-size:0.875rem;color:var(--color-text-secondary);margin-top:16px;" id="search-result-count">Showing all 6 articles</div>
+    </div>
+  </section>
+
+  <!-- CONTENT -->
+  <section class="section" style="padding-top:40px;">
+    <div class="container" style="display:flex;gap:40px;align-items:flex-start;">
+      
+      <!-- MAIN GRID -->
+      <div style="flex:1;">
+        <div class="masonry" id="blog-grid" data-stagger>
+          
+          <!-- Post 1 -->
+          <article class="card stagger-child blog-post" data-category="exhibition">
+            <a href="blog-detail.html" class="card__image" style="display:block;">
+              <img src="https://images.unsplash.com/photo-1536924940846-227afb31e2a5?w=600&h=400&fit=crop" alt="Exhibition opening" loading="lazy">
+            </a>
+            <div class="card__body">
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;font-size:0.75rem;">
+                <span class="badge badge--gold">Exhibition News</span>
+                <span style="color:var(--color-text-secondary);">&bull; Oct 15, 2026</span>
+              </div>
+              <h3 style="font-size:1.25rem;margin-bottom:8px;font-family:var(--font-heading);line-height:1.4;">
+                <a href="blog-detail.html" style="color:var(--color-text);">Behind the Scenes: Preparing for 'Abstract Horizons'</a>
+              </h3>
+              <p style="font-size:0.875rem;color:var(--color-text-secondary);margin-bottom:16px;line-height:1.6;">An inside look at the curation process for our most ambitious contemporary exhibition of the year.</p>
+              <a href="blog-detail.html" class="card__link">Read Article <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+            </div>
+          </article>
+
+          <!-- Post 2 -->
+          <article class="card stagger-child blog-post" data-category="artist">
+            <a href="blog-detail.html" class="card__image" style="display:block;">
+              <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=600&h=600&fit=crop" alt="Artist interview" loading="lazy">
+            </a>
+            <div class="card__body">
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;font-size:0.75rem;">
+                <span class="badge badge--gold" style="background:rgba(114,47,55,0.15);color:var(--color-secondary);">Artist Interview</span>
+                <span style="color:var(--color-text-secondary);">&bull; Oct 02, 2026</span>
+              </div>
+              <h3 style="font-size:1.25rem;margin-bottom:8px;font-family:var(--font-heading);line-height:1.4;">
+                <a href="blog-detail.html" style="color:var(--color-text);">In the Studio with Lucia Feretti</a>
+              </h3>
+              <p style="font-size:0.875rem;color:var(--color-text-secondary);margin-bottom:16px;line-height:1.6;">The celebrated painter discusses her technique, inspiration, and the meaning behind 'Chromatic Reverie'.</p>
+              <a href="blog-detail.html" class="card__link">Read Article <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+            </div>
+          </article>
+
+          <!-- Post 3 -->
+          <article class="card stagger-child blog-post" data-category="education">
+            <a href="blog-detail.html" class="card__image" style="display:block;">
+              <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=600&h=450&fit=crop" alt="Art restoration" loading="lazy">
+            </a>
+            <div class="card__body">
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;font-size:0.75rem;">
+                <span class="badge badge--gold" style="background:rgba(184,115,51,0.15);color:var(--color-accent);">Art Education</span>
+                <span style="color:var(--color-text-secondary);">&bull; Sep 28, 2026</span>
+              </div>
+              <h3 style="font-size:1.25rem;margin-bottom:8px;font-family:var(--font-heading);line-height:1.4;">
+                <a href="blog-detail.html" style="color:var(--color-text);">The Science of Art Conservation</a>
+              </h3>
+              <p style="font-size:0.875rem;color:var(--color-text-secondary);margin-bottom:16px;line-height:1.6;">Our head restorer explains how modern science helps preserve masterpiece paintings for future generations.</p>
+              <a href="blog-detail.html" class="card__link">Read Article <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+            </div>
+          </article>
+
+          <!-- Post 4 -->
+          <article class="card stagger-child blog-post" data-category="exhibition">
+            <div class="card__body" style="padding-top:24px;">
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;font-size:0.75rem;">
+                <span class="badge badge--gold">Exhibition News</span>
+                <span style="color:var(--color-text-secondary);">&bull; Sep 15, 2026</span>
+              </div>
+              <h3 style="font-size:1.25rem;margin-bottom:8px;font-family:var(--font-heading);line-height:1.4;">
+                <a href="blog-detail.html" style="color:var(--color-text);">Announcing Our Fall 2026 Season Lineup</a>
+              </h3>
+              <p style="font-size:0.875rem;color:var(--color-text-secondary);margin-bottom:16px;line-height:1.6;">A preview of the exciting new exhibitions coming to Aurelia Gallery this autumn, featuring both established masters and rising stars.</p>
+              <a href="blog-detail.html" class="card__link">Read Article <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+            </div>
+          </article>
+        </div>
+
+        <div class="pagination" style="margin-top:40px;">
+          <button class="pagination__btn active">1</button>
+          <button class="pagination__btn">2</button>
+          <button class="pagination__btn">3</button>
+          <button class="pagination__btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></button>
+        </div>
+      </div>
+
+      <!-- SIDEBAR -->
+      <aside style="width:320px;flex-shrink:0;position:sticky;top:100px;" class="md-hidden">
+        <!-- Newsletter Widget -->
+        <div style="background:var(--color-bg);border:1px solid var(--color-border);border-radius:12px;padding:24px;margin-bottom:24px;box-shadow:var(--shadow-md);">
+          <h4 style="font-size:1.125rem;margin-bottom:8px;">Subscribe to Journal</h4>
+          <p style="font-size:0.875rem;color:var(--color-text-secondary);margin-bottom:16px;">Get the latest gallery news and articles delivered to your inbox.</p>
+          <form style="display:flex;flex-direction:column;gap:8px;">
+            <input type="email" placeholder="Email address" required style="width:100%;height:40px;padding:0 12px;border:1px solid var(--color-border);border-radius:6px;background:var(--color-muted);color:var(--color-text);">
+            <button type="submit" class="btn btn--primary btn--sm" style="width:100%;">Subscribe</button>
+          </form>
+        </div>
+
+        <!-- Popular Posts -->
+        <div style="margin-bottom:32px;">
+          <h4 style="font-size:1.125rem;margin-bottom:16px;padding-bottom:8px;border-bottom:2px solid var(--color-border);">Popular Content</h4>
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <a href="blog-detail.html" style="display:flex;gap:12px;align-items:flex-start;">
+              <img src="https://images.unsplash.com/photo-1544531586-fde5298cdd40?w=100&h=100&fit=crop" style="width:60px;height:60px;border-radius:6px;object-fit:cover;">
+              <div>
+                <h5 style="font-size:0.875rem;line-height:1.4;margin-bottom:4px;color:var(--color-text);font-weight:600;">The Evolution of Modern Sculpture</h5>
+                <span style="font-size:0.75rem;color:var(--color-text-secondary);">Aug 12, 2026</span>
+              </div>
+            </a>
+            <a href="blog-detail.html" style="display:flex;gap:12px;align-items:flex-start;">
+              <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=100&h=100&fit=crop" style="width:60px;height:60px;border-radius:6px;object-fit:cover;">
+              <div>
+                <h5 style="font-size:0.875rem;line-height:1.4;margin-bottom:4px;color:var(--color-text);font-weight:600;">Understanding Color Theory in Contemporary Art</h5>
+                <span style="font-size:0.75rem;color:var(--color-text-secondary);">Jul 05, 2026</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Tags -->
+        <div>
+          <h4 style="font-size:1.125rem;margin-bottom:16px;padding-bottom:8px;border-bottom:2px solid var(--color-border);">Popular Tags</h4>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;">
+            <a href="#" class="filter-pill" style="font-size:0.75rem;padding:4px 12px;">Contemporary</a>
+            <a href="#" class="filter-pill" style="font-size:0.75rem;padding:4px 12px;">Curation</a>
+            <a href="#" class="filter-pill" style="font-size:0.75rem;padding:4px 12px;">Emerging Artists</a>
+            <a href="#" class="filter-pill" style="font-size:0.75rem;padding:4px 12px;">Events</a>
+            <a href="#" class="filter-pill" style="font-size:0.75rem;padding:4px 12px;">Art History</a>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <style>
+    @media (max-width: 1024px) {
+      .masonry { columns: 2 !important; }
+    }
+    @media (max-width: 768px) {
+      .md-hidden { display: none !important; }
+      .masonry { columns: 1 !important; }
+    }
+  </style>
+
+  <!-- JS Logic for Client-side Search & Filter -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const searchInput = document.getElementById('blog-search');
+      const filterBtns = document.querySelectorAll('#blog-filters button');
+      const posts = document.querySelectorAll('.blog-post');
+      const countEl = document.getElementById('search-result-count');
+      
+      let currentFilter = 'all';
+      let currentQuery = '';
+
+      function render() {
+        let visibleCount = 0;
+        posts.forEach(post => {
+          const category = post.getAttribute('data-category');
+          const title = post.querySelector('h3').textContent.toLowerCase();
+          const desc = post.querySelector('p').textContent.toLowerCase();
+          
+          const matchesFilter = currentFilter === 'all' || category === currentFilter;
+          const matchesSearch = !currentQuery || title.includes(currentQuery) || desc.includes(currentQuery);
+          
+          if (matchesFilter && matchesSearch) {
+            post.style.display = '';
+            visibleCount++;
+          } else {
+            post.style.display = 'none';
+          }
+        });
+        
+        countEl.textContent = `Showing ${visibleCount} article${visibleCount !== 1 ? 's' : ''}`;
+      }
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          filterBtns.forEach(b => b.classList.remove('active'));
+          e.target.classList.add('active');
+          currentFilter = e.target.getAttribute('data-filter');
+          render();
+        });
+      });
+
+      if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+          currentQuery = e.target.value.toLowerCase().trim();
+          render();
+        });
+      }
+    });
+  </script>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
+        <div><div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;"><svg width="32" height="32" viewBox="0 0 36 36" fill="none"><rect width="36" height="36" rx="8" fill="#D4AF37"/><path d="M18 8L26 28H10L18 8Z" fill="white" opacity="0.9"/><circle cx="18" cy="20" r="4" fill="white" opacity="0.7"/></svg><span style="font-family:var(--font-heading);font-size:1.25rem;font-weight:700;color:#fff;"><span style="color:var(--color-primary);">Aurelia</span> Gallery</span></div><p style="font-size:0.875rem;line-height:1.7;">A premier contemporary art gallery since 1998.</p></div>
+        <div><h4>Quick Links</h4><ul style="display:flex;flex-direction:column;gap:10px;"><li><a href="home-main.html" style="font-size:0.875rem;">Home</a></li><li><a href="about.html" style="font-size:0.875rem;">About</a></li><li><a href="services.html" style="font-size:0.875rem;">Services</a></li><li><a href="blog.html" style="font-size:0.875rem;">Blog</a></li></ul></div>
+        <div><h4>Contact</h4><ul style="display:flex;flex-direction:column;gap:10px;font-size:0.875rem;"><li>42 Gallery Row, NY 10012</li><li>+1 (212) 555-0198</li><li>hello@aureliagallery.com</li></ul></div>
+        <div><h4>Newsletter</h4><p style="font-size:0.875rem;margin-bottom:16px;">Stay updated with our latest exhibitions.</p><form class="newsletter"><input type="email" placeholder="Your email" aria-label="Email"><button type="submit" class="btn btn--primary btn--sm"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button></form></div>
+      </div>
+      <div class="footer__bottom"><p>&copy; 2026 Aurelia Gallery. All rights reserved.</p><div style="display:flex;gap:24px;"><a href="#" style="font-size:0.875rem;">Privacy</a><a href="#" style="font-size:0.875rem;">Terms</a></div></div>
+    </div>
+  </footer>
+
+  <script type="module" src="../assets/js/main.js"></script>
+  <script type="module" src="../assets/js/animations.js"></script>
+</body>
+</html>

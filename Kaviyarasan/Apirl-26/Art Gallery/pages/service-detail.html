@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Service Detail — Aurelia Gallery</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicons/favicon-32x32.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{colors:{gold:'#D4AF37',burgundy:'#722F37',copper:'#B87333'},fontFamily:{heading:['Playfair Display','Georgia','serif'],body:['Inter','system-ui','sans-serif']}}}}</script>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/dark-mode.css">
+  <style>
+    /* Critical Mobile Fixes */
+    @media (max-width: 640px) {
+      .navbar__logo-suffix { display: none !important; }
+      .navbar__actions .btn--primary, 
+      .navbar__actions #theme-toggle, 
+      .navbar__actions #rtl-toggle { display: none !important; }
+      .navbar__inner { padding-inline: 16px !important; }
+      .navbar__logo { font-size: 1.1rem !important; }
+      .navbar__actions { gap: 0 !important; }
+      html, body { overflow-x: hidden !important; width: 100% !important; position: relative !important; }
+      * { max-width: 100vw !important; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar" id="main-navbar">
+    <div class="navbar__inner">
+      <a href="home-main.html" class="navbar__logo"><svg width="36" height="36" viewBox="0 0 36 36" fill="none"><rect width="36" height="36" rx="8" fill="#D4AF37"/><path d="M18 8L26 28H10L18 8Z" fill="white" opacity="0.9"/><circle cx="18" cy="20" r="4" fill="white" opacity="0.7"/></svg><span>Aurelia</span></a>
+      <div class="navbar__links"><a href="services.html" class="navbar__link active">Services</a></div>
+      <div class="navbar__actions"><a href="contact.html" class="btn btn--primary btn--sm">Inquire</a></div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="page-offset" style="background:var(--color-bg-alt);padding-block:60px;">
+    <div class="container container--narrow reveal">
+      <div class="breadcrumb" style="margin-bottom:24px;">
+        <a href="home-main.html">Home</a><span class="breadcrumb__sep">/</span><a href="services.html">Services</a><span class="breadcrumb__sep">/</span><span style="color:var(--color-text);">Custom Framing</span>
+      </div>
+      <h1 style="font-size:clamp(2.5rem,5vw,3.5rem);margin-bottom:24px;">Custom Framing</h1>
+      <p style="font-size:1.125rem;color:var(--color-text-secondary);line-height:1.8;margin-bottom:32px;">Museum-quality bespoke framing solutions designed to enhance aesthetics while providing unparalleled conservation protection for your artworks.</p>
+    </div>
+  </section>
+
+  <!-- CONTENT -->
+  <section class="section">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 340px;gap:64px;align-items:flex-start;">
+        
+        <div class="reveal-left">
+          <img src="https://images.unsplash.com/photo-1577720643272-265f09367456?w=1000&h=600&fit=crop" alt="Framing studio" style="width:100%;border-radius:12px;margin-bottom:40px;">
+          
+          <h2 style="font-size:2rem;margin-bottom:16px;">The Art of Presentation</h2>
+          <p style="color:var(--color-text-secondary);line-height:1.8;margin-bottom:24px;font-size:1.125rem;">A frame should never compete with the artwork; it should elevate it. Our artisanal framing department combines centuries-old woodworking techniques with modern conservation science.</p>
+          
+          <h3 style="font-size:1.5rem;margin:32px 0 16px;">Conservation Standards</h3>
+          <p style="color:var(--color-text-secondary);line-height:1.8;margin-bottom:24px;">We adhere strictly to Fine Art Trade Guild conservation standards. All inner materials—mats, backing boards, and hinging tapes—are 100% acid-free and pH neutral to prevent degradation over time.</p>
+
+          <!-- FAQ Accordion -->
+          <h3 style="font-size:1.5rem;margin:48px 0 24px;">Frequently Asked Questions</h3>
+          <div style="border-top:1px solid var(--color-border);">
+            <div class="accordion__item">
+              <button class="accordion__trigger" aria-expanded="false">
+                What type of glazing (glass) do you use?
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+              <div class="accordion__content">
+                <div class="accordion__content-inner">We exclusively use Museum Glass® and Optium Museum Acrylic®. These provide 99% UV protection to prevent fading while offering anti-reflective properties that make the glazing virtually invisible.</div>
+              </div>
+            </div>
+            <div class="accordion__item">
+              <button class="accordion__trigger" aria-expanded="false">
+                How long does custom framing take?
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+              <div class="accordion__content">
+                <div class="accordion__content-inner">Standard custom framing generally takes 2-3 weeks. Hand-carved or gilded bespoke frames can take 6-8 weeks due to the artisanal labor involved.</div>
+              </div>
+            </div>
+            <div class="accordion__item">
+              <button class="accordion__trigger" aria-expanded="false">
+                Can you frame oversized artworks?
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+              <div class="accordion__content">
+                <div class="accordion__content-inner">Yes, our facility is equipped to handle oversized and three-dimensional works. We utilize reinforced strainer systems to maintain structural integrity for massive scale pieces.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sticky Sidebar Widget -->
+        <aside style="position:sticky;top:100px;" class="reveal-right">
+          <div style="background:var(--color-bg);border:1px solid var(--color-border);border-radius:12px;padding:32px;box-shadow:var(--shadow-lg);">
+            <h3 style="font-size:1.5rem;margin-bottom:16px;">Request a Consultation</h3>
+            <p style="font-size:0.875rem;color:var(--color-text-secondary);margin-bottom:24px;">Bring your artwork to our gallery for a complimentary styling and conservation assessment.</p>
+            <form data-validate>
+              <div class="form-group"><input type="text" class="form-group__input" placeholder="Name" required></div>
+              <div class="form-group"><input type="email" class="form-group__input" placeholder="Email" required></div>
+              <div class="form-group"><textarea class="form-group__input" placeholder="Tell us about the artwork (size, medium)..." style="height:80px;padding-top:12px;" required></textarea></div>
+              <button type="submit" class="btn btn--primary" style="width:100%;">Book Appointment</button>
+            </form>
+            <div style="margin-top:24px;padding-top:24px;border-top:1px solid var(--color-border);text-align:center;">
+              <p style="font-size:0.75rem;color:var(--color-text-secondary);margin-bottom:8px;">Or call us directly:</p>
+              <a href="tel:+12125550198" style="font-weight:600;color:var(--color-text);">+1 (212) 555-0198</a>
+            </div>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+  <style>
+    @media (max-width: 1024px) {
+      .section > .container > div { grid-template-columns: 1fr !important; }
+      aside { position: static !important; }
+    }
+  </style>
+  <script type="module" src="../assets/js/main.js"></script>
+  <script type="module" src="../assets/js/animations.js"></script>
+  <script type="module" src="../assets/js/forms.js"></script>
+</body>
+</html>
