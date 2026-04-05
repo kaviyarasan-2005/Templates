@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 — Page Not Found | Vintage Vinyl</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/dark-mode.css">
+  <style>
+    html, body { height: 100%; }
+    .error-page {
+      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      text-align: center; padding: var(--space-8);
+      background: linear-gradient(135deg, var(--bg-primary), var(--bg-secondary));
+    }
+    .error-vinyl {
+      width: 200px; height: 200px; border-radius: 50%;
+      background: conic-gradient(from 0deg, #1a1a2e, #333, #1a1a2e, #333, #1a1a2e);
+      margin: 0 auto var(--space-8);
+      position: relative;
+      animation: spin 8s linear infinite;
+    }
+    .error-vinyl::after {
+      content: '404'; position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80px; height: 80px; border-radius: 50%;
+      background: var(--color-accent);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-accent); font-size: var(--text-xl); font-weight: 800;
+      color: var(--color-secondary);
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+</head>
+<body>
+  <div class="error-page">
+    <div>
+      <div class="error-vinyl"></div>
+      <h1 style="font-size:var(--text-4xl);margin-bottom:var(--space-4);">This Record Doesn't Exist</h1>
+      <p style="color:var(--text-muted);max-width:400px;margin:0 auto var(--space-8);font-size:var(--text-lg);">Looks like this page has been taken off the turntable. Let's get you back to the music.</p>
+      <div style="display:flex;gap:var(--space-4);justify-content:center;flex-wrap:wrap;">
+        <a href="../index.html" class="btn btn--primary btn--lg">Go Home</a>
+        <a href="contact.html" class="btn btn--secondary btn--lg">Contact Us</a>
+      </div>
+    </div>
+  </div>
+  <script src="../assets/js/theme-switcher.js"></script>
+</body>
+</html>

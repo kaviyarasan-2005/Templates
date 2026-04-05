@@ -1,0 +1,7 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="600" height="700" viewBox="0 0 600 700">
+  <rect width="600" height="700" fill="#171717"/>
+  <rect x="100" y="80" width="400" height="540" rx="12" fill="#dc2626" opacity="0.08"/>
+  <rect x="100" y="80" width="400" height="540" rx="12" fill="none" stroke="#dc2626" stroke-width="1.5" stroke-dasharray="8 4"/>
+  <text x="300" y="350" font-family="Arial" font-size="32" fill="#dc2626" text-anchor="middle" opacity="0.5">✦</text>
+  <text x="300" y="390" font-family="Arial" font-size="16" fill="#525252" text-anchor="middle">Blackwork</text>
+</svg>

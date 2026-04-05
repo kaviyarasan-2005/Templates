@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog — Vintage Vinyl | Stories, Guides & News</title>
+  <meta name="description" content="Explore articles about vinyl care, turntable setups, rare records, and music culture from the Vintage Vinyl blog.">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/dark-mode.css">
+  <link rel="stylesheet" href="../assets/css/rtl.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <nav class="navbar" id="navbar" aria-label="Main navigation">
+    <div class="navbar__inner">
+      <a href="../index.html" class="navbar__logo"><div class="navbar__logo-icon">V</div><span class="navbar__logo-text">Vintage Vinyl</span></a>
+      <ul class="navbar__menu">
+        <li class="navbar__dropdown">
+          <a href="../index.html" class="navbar__link">Home ▾</a>
+          <div class="navbar__dropdown-menu">
+            <a href="../index.html" class="navbar__dropdown-item">Home 1 (General)</a>
+            <a href="home-2.html" class="navbar__dropdown-item">Home 2 (Audiophile)</a>
+          </div>
+        </li>
+        <li><a href="about.html" class="navbar__link">About</a></li>
+        <li class="navbar__dropdown"><a href="services.html" class="navbar__link">Services ▾</a><div class="navbar__dropdown-menu"><a href="services.html" class="navbar__dropdown-item">All Services</a></div></li>
+        <li><a href="blog.html" class="navbar__link active">Blog</a></li>
+        <li><a href="pricing.html" class="navbar__link">Pricing</a></li>
+        <li><a href="contact.html" class="navbar__link">Contact</a></li>
+        <li class="navbar__dropdown">
+          <a href="dashboard-admin.html" class="navbar__link">Dashboard ▾</a>
+          <div class="navbar__dropdown-menu">
+            <a href="dashboard-admin.html" class="navbar__dropdown-item">Admin View</a>
+            <a href="dashboard-customer.html" class="navbar__dropdown-item">Customer View</a>
+          </div>
+        </li>
+      </ul>
+      <div class="navbar__actions">
+        <button class="navbar__icon-btn theme-toggle" aria-label="Toggle theme">🌙</button>
+        <button class="navbar__icon-btn dir-toggle" aria-label="Toggle RTL/LTR">🌐</button>
+        <a href="login.html" class="btn btn--primary btn--sm">Sign In</a>
+        <button class="navbar__hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+  <div class="mobile-menu__overlay" id="mobile-overlay"></div>
+  <div class="mobile-menu" id="mobile-menu"><button class="mobile-menu__close" aria-label="Close menu">✕</button><div class="mobile-menu__links"><a href="../index.html" class="mobile-menu__link">Home 1 (General)</a><a href="home-2.html" class="mobile-menu__link">Home 2 (Audiophile)</a><a href="about.html" class="mobile-menu__link">About</a><a href="services.html" class="mobile-menu__link">Services</a><a href="blog.html" class="mobile-menu__link active">Blog</a><a href="pricing.html" class="mobile-menu__link">Pricing</a><a href="contact.html" class="mobile-menu__link">Contact</a><a href="dashboard-admin.html" class="mobile-menu__link">Admin Dashboard</a><a href="dashboard-customer.html" class="mobile-menu__link">Customer Dashboard</a></div></div>
+
+  <main id="main-content" class="page-content">
+    <section class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="label section-header__label">Our Blog</span>
+          <h1 style="font-size:var(--text-5xl);">Stories & Guides</h1>
+          <p class="section-header__desc">Tips, history, and stories from the world of vinyl.</p>
+        </div>
+
+        <!-- Filter Bar -->
+        <div class="reveal" style="display:flex;gap:var(--space-3);margin-bottom:var(--space-10);flex-wrap:wrap;justify-content:center;">
+          <button class="btn btn--primary btn--sm" style="border-radius:var(--radius-full);">All Posts</button>
+          <button class="btn btn--outline btn--sm" style="border-radius:var(--radius-full);">Care Guide</button>
+          <button class="btn btn--outline btn--sm" style="border-radius:var(--radius-full);">Setup</button>
+          <button class="btn btn--outline btn--sm" style="border-radius:var(--radius-full);">Collecting</button>
+          <button class="btn btn--outline btn--sm" style="border-radius:var(--radius-full);">Culture</button>
+          <button class="btn btn--outline btn--sm" style="border-radius:var(--radius-full);">Reviews</button>
+        </div>
+
+        <div class="grid grid-3">
+          <div class="blog-card reveal reveal-delay-1">
+            <div class="blog-card__image-wrap"><img src="https://images.unsplash.com/photo-1461360228754-6e81c478b882?w=600&h=375&fit=crop" alt="Vinyl records collection" class="blog-card__img" width="600" height="375" loading="lazy"></div>
+            <div class="blog-card__body"><div class="blog-card__meta"><span class="blog-card__tag">Care Guide</span><span class="blog-card__date">Mar 28, 2026</span></div><h2 class="blog-card__title">The Ultimate Guide to Caring for Your Vinyl Collection</h2><p class="blog-card__excerpt">Learn the best practices for storing, cleaning, and handling your vinyl records.</p><a href="blog-detail.html" class="blog-card__read-more">Read Article →</a></div>
+          </div>
+          <div class="blog-card reveal reveal-delay-2">
+            <div class="blog-card__image-wrap"><img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600&h=375&fit=crop" alt="Turntable setup" class="blog-card__img" width="600" height="375" loading="lazy"></div>
+            <div class="blog-card__body"><div class="blog-card__meta"><span class="blog-card__tag">Setup</span><span class="blog-card__date">Mar 22, 2026</span></div><h2 class="blog-card__title">Setting Up Your First Turntable: A Beginner's Journey</h2><p class="blog-card__excerpt">Everything you need to know from choosing the right cartridge to speaker placement.</p><a href="blog-detail.html" class="blog-card__read-more">Read Article →</a></div>
+          </div>
+          <div class="blog-card reveal reveal-delay-3">
+            <div class="blog-card__image-wrap"><img src="https://images.unsplash.com/photo-1487180144351-b8472da7d491?w=600&h=375&fit=crop" alt="Rare records" class="blog-card__img" width="600" height="375" loading="lazy"></div>
+            <div class="blog-card__body"><div class="blog-card__meta"><span class="blog-card__tag">Collecting</span><span class="blog-card__date">Mar 15, 2026</span></div><h2 class="blog-card__title">10 Rare Records Worth a Fortune</h2><p class="blog-card__excerpt">From misprints to limited editions — discover which vinyl records have become priceless.</p><a href="blog-detail.html" class="blog-card__read-more">Read Article →</a></div>
+          </div>
+          <div class="blog-card reveal reveal-delay-1">
+            <div class="blog-card__image-wrap"><img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600&h=375&fit=crop" alt="Live music" class="blog-card__img" width="600" height="375" loading="lazy"></div>
+            <div class="blog-card__body"><div class="blog-card__meta"><span class="blog-card__tag">Culture</span><span class="blog-card__date">Mar 10, 2026</span></div><h2 class="blog-card__title">Why Vinyl Is Making a Comeback in the Digital Age</h2><p class="blog-card__excerpt">The vinyl renaissance isn't just nostalgia. Here's why audiophiles are going analog.</p><a href="blog-detail.html" class="blog-card__read-more">Read Article →</a></div>
+          </div>
+          <div class="blog-card reveal reveal-delay-2">
+            <div class="blog-card__image-wrap"><img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600&h=375&fit=crop" alt="Concert scene" class="blog-card__img" width="600" height="375" loading="lazy"></div>
+            <div class="blog-card__body"><div class="blog-card__meta"><span class="blog-card__tag">Reviews</span><span class="blog-card__date">Mar 5, 2026</span></div><h2 class="blog-card__title">Top 5 Budget Turntables Under $300</h2><p class="blog-card__excerpt">Quality doesn't have to break the bank. Our expert picks for entry-level turntables.</p><a href="blog-detail.html" class="blog-card__read-more">Read Article →</a></div>
+          </div>
+          <div class="blog-card reveal reveal-delay-3">
+            <div class="blog-card__image-wrap"><img src="https://images.unsplash.com/photo-1483412033650-1015ddeb83d1?w=600&h=375&fit=crop" alt="Record store" class="blog-card__img" width="600" height="375" loading="lazy"></div>
+            <div class="blog-card__body"><div class="blog-card__meta"><span class="blog-card__tag">Culture</span><span class="blog-card__date">Feb 28, 2026</span></div><h2 class="blog-card__title">A Day in the Life of a Record Store</h2><p class="blog-card__excerpt">Behind the scenes at Vintage Vinyl — from dawn deliveries to late-night listening.</p><a href="blog-detail.html" class="blog-card__read-more">Read Article →</a></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div><a href="../index.html" class="navbar__logo"><div class="navbar__logo-icon">V</div><span class="navbar__logo-text" style="color:#fff;">Vintage Vinyl</span></a><p class="footer__brand-desc">Brooklyn's premier vinyl destination since 2001.</p></div>
+        <div><h4 class="footer__heading">Links</h4><div class="footer__links"><a href="../index.html" class="footer__link">Home</a><a href="about.html" class="footer__link">About</a><a href="services.html" class="footer__link">Services</a><a href="contact.html" class="footer__link">Contact</a></div></div>
+        <div><h4 class="footer__heading">Services</h4><div class="footer__links"><a href="service-detail.html" class="footer__link">Cleaning</a><a href="service-detail.html" class="footer__link">Appraisal</a></div></div>
+        <div><h4 class="footer__heading">Contact</h4><div class="footer__links"><span class="footer__link">📍 42 Groove St, Brooklyn</span><span class="footer__link">📞 +1 (555) VINYL-01</span></div></div>
+      </div>
+      <div class="footer__bottom"><p class="footer__copyright">© 2026 Vintage Vinyl.</p></div>
+    </div>
+  </footer>
+  <script src="../assets/js/theme-switcher.js"></script>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

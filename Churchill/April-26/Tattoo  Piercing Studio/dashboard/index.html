@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - INK STUDIO</title>
+  <meta name="description" content="INK STUDIO dashboard — manage bookings, view stats, and explore studio operations.">
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicons/favicon.svg">
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="stylesheet" href="../assets/css/animations.css">
+  <link rel="stylesheet" href="../assets/css/dashboard.css">
+  <link rel="stylesheet" href="../assets/css/rtl.css">
+  <style>main{padding-top:0!important;}</style>
+</head>
+<body>
+  <div class="dashboard-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <button class="sidebar-toggle-btn" aria-label="Toggle sidebar">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <div class="sidebar-header">
+        <svg class="brand-icon" viewBox="0 0 40 40"><rect width="40" height="40" rx="8" fill="transparent" stroke="rgba(255,255,255,0.2)" stroke-width="1"/><path d="M12,8 L16,8 L28,32 L24,34 L18,34 Z" fill="#dc2626" opacity="0.9"/><path d="M14,8 L18,8 L30,32 L26,34 L20,34 Z" fill="#f59e0b" opacity="0.7"/></svg>
+        <span class="brand-name">INK <span>STUDIO</span></span>
+      </div>
+      <nav class="sidebar-nav">
+        <div class="sidebar-nav-title">Main Menu</div>
+        <a href="index.html" class="sidebar-link active">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          <span class="link-text">Dashboard</span>
+        </a>
+        <a href="#" class="sidebar-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          <span class="link-text">Analytics</span>
+        </a>
+        <a href="#" class="sidebar-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <span class="link-text">Users</span>
+          <span class="badge badge-info">256</span>
+        </a>
+        <a href="#" class="sidebar-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          <span class="link-text">Bookings</span>
+          <span class="badge badge-warning">12</span>
+        </a>
+        <a href="#" class="sidebar-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          <span class="link-text">Messages</span>
+          <span class="badge badge-error">3</span>
+        </a>
+        <div class="sidebar-nav-title" style="margin-top:var(--space-4);">Account</div>
+        <a href="#" class="sidebar-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <span class="link-text">Profile</span>
+        </a>
+        <a href="#" class="sidebar-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          <span class="link-text">Settings</span>
+        </a>
+        <a href="../index.html" class="sidebar-link" style="margin-top:var(--space-4);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+          <span class="link-text">Back to Site</span>
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="sidebar-user">
+          <div style="width:36px;height:36px;border-radius:50%;background:var(--color-blood-red);display:flex;align-items:center;justify-content:center;color:#fff;font-size:0.75rem;font-weight:700;flex-shrink:0;">MS</div>
+          <div class="sidebar-user-info">
+            <div class="sidebar-user-name">Marcus Steel</div>
+            <div class="sidebar-user-role">Admin</div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="dashboard-main">
+      <!-- Header -->
+      <header class="dashboard-header">
+        <div class="dashboard-header-left">
+          <button class="btn-icon dashboard-mobile-toggle" aria-label="Toggle sidebar" style="display:none;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+          <h1>Dashboard</h1>
+          <div class="breadcrumb"><a href="../index.html">Home</a><span>/</span><span>Dashboard</span></div>
+        </div>
+        <div class="dashboard-header-right">
+          <!-- Role Toggle -->
+          <div class="role-toggle">
+            <button class="role-toggle-btn active" data-role="admin">Admin</button>
+            <button class="role-toggle-btn" data-role="user">User</button>
+          </div>
+          <!-- Globe RTL/LTR Toggle -->
+          <button class="btn-icon globe-toggle-btn" aria-label="Toggle RTL/LTR" title="Click to toggle direction" style="display:flex;flex-direction:column;align-items:center;gap:2px;background:transparent;border:none;color:var(--text-secondary);cursor:pointer;width:40px;height:40px;border-radius:50%;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px;"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10A15.3 15.3 0 0 1 12 2z"/></svg>
+            
+          </button>
+          <button class="btn-icon" style="background:transparent;border:none;color:var(--text-secondary);cursor:pointer;width:40px;height:40px;border-radius:50%;position:relative;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+            <span class="notification-dot"></span>
+          </button>
+          <button class="btn-icon theme-toggle-btn" style="background:transparent;border:none;color:var(--text-secondary);cursor:pointer;width:40px;height:40px;border-radius:50%;">
+            <svg class="theme-icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+            <svg class="theme-icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          </button>
+        </div>
+      </header>
+
+      <!-- Content -->
+      <div class="dashboard-content">
+        <!-- ADMIN VIEW -->
+        <div class="admin-content">
+          <!-- Stats with Images -->
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-card-icon red" style="width:56px;height:56px;border-radius:var(--radius-lg);overflow:hidden;padding:0;">
+                <img src="../assets/images/dashboard/stat-revenue.png" alt="Revenue" style="width:100%;height:100%;object-fit:cover;border-radius:var(--radius-lg);">
+              </div>
+              <div class="stat-card-info">
+                <h3>$24,780</h3>
+                <p>Revenue This Month</p>
+                <div class="stat-card-trend up">↑ 12% from last month</div>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-card-icon blue" style="width:56px;height:56px;border-radius:var(--radius-lg);overflow:hidden;padding:0;">
+                <img src="../assets/images/dashboard/stat-appointments.png" alt="Appointments" style="width:100%;height:100%;object-fit:cover;border-radius:var(--radius-lg);">
+              </div>
+              <div class="stat-card-info">
+                <h3>148</h3>
+                <p>Appointments</p>
+                <div class="stat-card-trend up">↑ 8% from last month</div>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-card-icon green" style="width:56px;height:56px;border-radius:var(--radius-lg);overflow:hidden;padding:0;">
+                <img src="../assets/images/dashboard/stat-clients.png" alt="New Clients" style="width:100%;height:100%;object-fit:cover;border-radius:var(--radius-lg);">
+              </div>
+              <div class="stat-card-info">
+                <h3>42</h3>
+                <p>New Clients</p>
+                <div class="stat-card-trend up">↑ 24% from last month</div>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-card-icon gold" style="width:56px;height:56px;border-radius:var(--radius-lg);overflow:hidden;padding:0;">
+                <img src="../assets/images/dashboard/stat-messages.png" alt="Messages" style="width:100%;height:100%;object-fit:cover;border-radius:var(--radius-lg);">
+              </div>
+              <div class="stat-card-info">
+                <h3>18</h3>
+                <p>New Messages</p>
+                <div class="stat-card-trend down">↓ 3% from last month</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Charts Row -->
+          <div class="dashboard-grid dashboard-grid-2-1" style="margin-bottom:var(--space-6);">
+            <div class="dashboard-card">
+              <div class="dashboard-card-header"><h3>Appointments Overview</h3><select style="padding:var(--space-1) var(--space-3);border:1px solid var(--bg-tertiary);border-radius:var(--radius-sm);font-size:0.8125rem;background:var(--bg-primary);color:var(--text-primary);"><option>This Year</option><option>Last Year</option></select></div>
+              <div class="chart-container"><canvas id="lineChart"></canvas></div>
+            </div>
+            <div class="dashboard-card">
+              <div class="dashboard-card-header"><h3>Popular Services</h3></div>
+              <div class="chart-container"><canvas id="barChart"></canvas></div>
+            </div>
+          </div>
+
+          <!-- Recent Bookings Table -->
+          <div class="dashboard-card">
+            <div class="dashboard-card-header"><h3>Recent Bookings</h3><a href="#" style="font-size:0.8125rem;color:var(--color-blood-red);font-weight:500;">View All →</a></div>
+            <div class="data-table-container">
+              <table class="data-table" id="bookingsTable">
+                <thead><tr><th class="sortable">Client</th><th class="sortable">Service</th><th class="sortable">Artist</th><th class="sortable">Date</th><th>Status</th><th>Actions</th></tr></thead>
+                <tbody>
+                  <tr><td><div class="user-info"><div style="width:32px;height:32px;border-radius:50%;background:var(--color-blood-red);display:flex;align-items:center;justify-content:center;color:#fff;font-size:0.6rem;font-weight:700;">AJ</div><span>Alex Johnson</span></div></td><td>Full Sleeve</td><td>Marcus Steel</td><td>Apr 8, 2026</td><td><span class="badge badge-success">Confirmed</span></td><td><div class="actions"><button aria-label="View"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button><button aria-label="Edit"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button></div></td></tr>
+                  <tr><td><div class="user-info"><div style="width:32px;height:32px;border-radius:50%;background:var(--color-gold);display:flex;align-items:center;justify-content:center;color:#000;font-size:0.6rem;font-weight:700;">SK</div><span>Sarah Kim</span></div></td><td>Ear Piercing</td><td>Luna Rivera</td><td>Apr 10, 2026</td><td><span class="badge badge-warning">Pending</span></td><td><div class="actions"><button aria-label="View"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button><button aria-label="Edit"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button></div></td></tr>
+                  <tr><td><div class="user-info"><div style="width:32px;height:32px;border-radius:50%;background:var(--color-electric-blue);display:flex;align-items:center;justify-content:center;color:#fff;font-size:0.6rem;font-weight:700;">DM</div><span>David Martinez</span></div></td><td>Cover-up</td><td>Jake Chen</td><td>Apr 12, 2026</td><td><span class="badge badge-success">Confirmed</span></td><td><div class="actions"><button aria-label="View"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button><button aria-label="Edit"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button></div></td></tr>
+                  <tr><td><div class="user-info"><div style="width:32px;height:32px;border-radius:50%;background:var(--color-neon-pink);display:flex;align-items:center;justify-content:center;color:#fff;font-size:0.6rem;font-weight:700;">ER</div><span>Emma Rodriguez</span></div></td><td>Minimalist</td><td>Sasha Volkov</td><td>Apr 15, 2026</td><td><span class="badge badge-error">Cancelled</span></td><td><div class="actions"><button aria-label="View"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button><button aria-label="Edit"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button></div></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- USER VIEW (hidden by default) -->
+        <div class="user-content" style="display:none;">
+          <div class="stats-grid" style="grid-template-columns:repeat(2,1fr);">
+            <div class="stat-card" style="background:linear-gradient(135deg,var(--color-blood-red),#b91c1c);color:#fff;padding:var(--space-8);">
+              <div><h3 style="color:#fff;font-size:1.125rem;font-weight:600;margin-bottom:var(--space-2);">Next Appointment</h3><p style="color:rgba(255,255,255,0.8);font-size:1.5rem;font-weight:700;margin:0;">Apr 8, 2026</p><p style="color:rgba(255,255,255,0.6);font-size:0.875rem;margin:var(--space-2) 0 0;">Full Sleeve with Marcus Steel</p></div>
+            </div>
+            <div class="stat-card"><div class="stat-card-info"><h3>4</h3><p>Total Sessions</p></div></div>
+          </div>
+
+          <div class="dashboard-card" style="margin-top:var(--space-6);">
+            <div class="dashboard-card-header"><h3>My Appointments</h3></div>
+            <div class="data-table-container">
+              <table class="data-table">
+                <thead><tr><th>Service</th><th>Artist</th><th>Date</th><th>Status</th></tr></thead>
+                <tbody>
+                  <tr><td>Full Sleeve Session 3</td><td>Marcus Steel</td><td>Apr 8, 2026</td><td><span class="badge badge-warning">Upcoming</span></td></tr>
+                  <tr><td>Full Sleeve Session 2</td><td>Marcus Steel</td><td>Mar 15, 2026</td><td><span class="badge badge-success">Completed</span></td></tr>
+                  <tr><td>Full Sleeve Session 1</td><td>Marcus Steel</td><td>Feb 20, 2026</td><td><span class="badge badge-success">Completed</span></td></tr>
+                  <tr><td>Consultation</td><td>Marcus Steel</td><td>Feb 5, 2026</td><td><span class="badge badge-success">Completed</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div style="text-align:center;margin-top:var(--space-8);"><a href="../contact.html" class="btn btn-primary btn-lg">Book New Session</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <style>@media(max-width:768px){.dashboard-mobile-toggle{display:flex!important;}}</style>
+  <script src="../assets/js/theme-toggle.js"></script>
+  <script src="../assets/js/rtl-ltr.js"></script>
+  <script src="../assets/js/dashboard.js"></script>
+</body>
+</html>

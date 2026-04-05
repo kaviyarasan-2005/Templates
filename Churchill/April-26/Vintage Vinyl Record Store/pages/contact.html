@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us — Vintage Vinyl | Visit Our Brooklyn Store</title>
+  <meta name="description" content="Get in touch with Vintage Vinyl. Visit our Brooklyn store, call, email, or fill out our contact form.">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/dark-mode.css">
+  <link rel="stylesheet" href="../assets/css/rtl.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <nav class="navbar" id="navbar" aria-label="Main navigation">
+    <div class="navbar__inner">
+      <a href="../index.html" class="navbar__logo"><div class="navbar__logo-icon">V</div><span class="navbar__logo-text">Vintage Vinyl</span></a>
+      <ul class="navbar__menu">
+        <li class="navbar__dropdown">
+          <a href="../index.html" class="navbar__link">Home ▾</a>
+          <div class="navbar__dropdown-menu">
+            <a href="../index.html" class="navbar__dropdown-item">Home 1 (General)</a>
+            <a href="home-2.html" class="navbar__dropdown-item">Home 2 (Audiophile)</a>
+          </div>
+        </li>
+        <li><a href="about.html" class="navbar__link">About</a></li>
+        <li class="navbar__dropdown"><a href="services.html" class="navbar__link">Services ▾</a><div class="navbar__dropdown-menu"><a href="services.html" class="navbar__dropdown-item">All Services</a><a href="service-detail.html" class="navbar__dropdown-item">Record Cleaning</a></div></li>
+        <li><a href="blog.html" class="navbar__link">Blog</a></li>
+        <li><a href="pricing.html" class="navbar__link">Pricing</a></li>
+        <li><a href="contact.html" class="navbar__link active">Contact</a></li>
+        <li class="navbar__dropdown">
+          <a href="dashboard-admin.html" class="navbar__link">Dashboard ▾</a>
+          <div class="navbar__dropdown-menu">
+            <a href="dashboard-admin.html" class="navbar__dropdown-item">Admin View</a>
+            <a href="dashboard-customer.html" class="navbar__dropdown-item">Customer View</a>
+          </div>
+        </li>
+      </ul>
+      <div class="navbar__actions">
+        <button class="navbar__icon-btn theme-toggle" aria-label="Toggle theme">🌙</button>
+        <button class="navbar__icon-btn dir-toggle" aria-label="Toggle RTL/LTR">🌐</button>
+        <a href="login.html" class="btn btn--primary btn--sm">Sign In</a>
+        <button class="navbar__hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+  <div class="mobile-menu__overlay" id="mobile-overlay"></div>
+  <div class="mobile-menu" id="mobile-menu">
+    <button class="mobile-menu__close" aria-label="Close menu">✕</button>
+    <div class="mobile-menu__links">
+      <a href="../index.html" class="mobile-menu__link">Home 1 (General)</a><a href="home-2.html" class="mobile-menu__link">Home 2 (Audiophile)</a><a href="about.html" class="mobile-menu__link">About</a><a href="services.html" class="mobile-menu__link">Services</a><a href="blog.html" class="mobile-menu__link">Blog</a><a href="pricing.html" class="mobile-menu__link">Pricing</a><a href="contact.html" class="mobile-menu__link active">Contact</a><a href="dashboard-admin.html" class="mobile-menu__link">Admin Dashboard</a><a href="dashboard-customer.html" class="mobile-menu__link">Customer Dashboard</a>
+    </div>
+  </div>
+
+  <main id="main-content" class="page-content">
+    <section class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="label section-header__label">Get In Touch</span>
+          <h1 style="font-size:var(--text-5xl);">Contact Us</h1>
+          <p class="section-header__desc">Have a question, want to sell your collection, or just want to say hi? We'd love to hear from you.</p>
+        </div>
+
+        <div class="grid grid-4 reveal" style="margin-bottom:var(--space-16);">
+          <div class="card" style="text-align:center;"><div class="card__body"><div style="font-size:2rem;margin-bottom:var(--space-3);">📍</div><h3 class="card__title">Visit Us</h3><p class="card__subtitle mb-0">42 Groove Street<br>Brooklyn, NY 11201</p></div></div>
+          <div class="card" style="text-align:center;"><div class="card__body"><div style="font-size:2rem;margin-bottom:var(--space-3);">📞</div><h3 class="card__title">Call Us</h3><p class="card__subtitle mb-0">+1 (555) VINYL-01<br>Mon-Sat: 10AM-9PM</p></div></div>
+          <div class="card" style="text-align:center;"><div class="card__body"><div style="font-size:2rem;margin-bottom:var(--space-3);">✉️</div><h3 class="card__title">Email Us</h3><p class="card__subtitle mb-0">hello@vintagevinyl.com<br>We reply within 24h</p></div></div>
+          <div class="card" style="text-align:center;"><div class="card__body"><div style="font-size:2rem;margin-bottom:var(--space-3);">🕐</div><h3 class="card__title">Hours</h3><p class="card__subtitle mb-0">Mon-Sat: 10AM-9PM<br>Sun: 11AM-7PM</p></div></div>
+        </div>
+
+        <div class="grid grid-2 reveal" style="gap:var(--space-12);align-items:start;">
+          <div>
+            <h2 style="margin-bottom:var(--space-6);">Send Us a Message</h2>
+            <form id="contact-form" onsubmit="event.preventDefault();document.getElementById('form-success').style.display='block';">
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4);">
+                <div class="form-group"><label class="form-label" for="contact-name">Full Name</label><input type="text" id="contact-name" class="form-input" placeholder="John Doe" required></div>
+                <div class="form-group"><label class="form-label" for="contact-email">Email</label><input type="email" id="contact-email" class="form-input" placeholder="you@email.com" required></div>
+              </div>
+              <div class="form-group"><label class="form-label" for="contact-subject">Subject</label>
+                <select id="contact-subject" class="form-input" required>
+                  <option value="">Select a topic…</option>
+                  <option>General Inquiry</option>
+                  <option>Sell My Collection</option>
+                  <option>Record Cleaning</option>
+                  <option>Appraisal Request</option>
+                  <option>Event Booking</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="form-group"><label class="form-label" for="contact-message">Message</label><textarea id="contact-message" class="form-input" rows="5" placeholder="Tell us what you need…" required></textarea></div>
+              <button type="submit" class="btn btn--primary btn--lg">Send Message →</button>
+              <div id="form-success" style="display:none;margin-top:var(--space-4);padding:var(--space-4);background:rgba(46,139,87,0.1);border-radius:var(--radius-md);color:var(--color-success);font-weight:500;">✓ Message sent successfully! We'll get back to you soon.</div>
+            </form>
+          </div>
+          <div>
+            <h2 style="margin-bottom:var(--space-6);">Find Us</h2>
+            <div style="border-radius:var(--radius-xl);overflow:hidden;border:1px solid var(--border-color);">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3025.8!2d-73.98!3d40.69!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDQxJzI0LjAiTiA3M8KwNTgnNDguMCJX!5e0!3m2!1sen!2sus!4v1" width="100%" height="400" style="border:0;display:block;" allowfullscreen loading="lazy" title="Vintage Vinyl Location Map"></iframe>
+            </div>
+            <div style="margin-top:var(--space-6);">
+              <h3 style="font-size:var(--text-lg);margin-bottom:var(--space-3);">Follow Us</h3>
+              <div class="footer__socials">
+                <a href="#" class="footer__social" style="background:var(--bg-secondary);" aria-label="Facebook">f</a>
+                <a href="#" class="footer__social" style="background:var(--bg-secondary);" aria-label="Instagram">ig</a>
+                <a href="#" class="footer__social" style="background:var(--bg-secondary);" aria-label="Twitter">x</a>
+                <a href="#" class="footer__social" style="background:var(--bg-secondary);" aria-label="YouTube">yt</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div><a href="../index.html" class="navbar__logo"><div class="navbar__logo-icon">V</div><span class="navbar__logo-text" style="color:#fff;">Vintage Vinyl</span></a><p class="footer__brand-desc">Brooklyn's premier vinyl destination since 2001.</p></div>
+        <div><h4 class="footer__heading">Links</h4><div class="footer__links"><a href="../index.html" class="footer__link">Home</a><a href="about.html" class="footer__link">About</a><a href="services.html" class="footer__link">Services</a><a href="pricing.html" class="footer__link">Pricing</a></div></div>
+        <div><h4 class="footer__heading">Services</h4><div class="footer__links"><a href="service-detail.html" class="footer__link">Cleaning</a><a href="service-detail.html" class="footer__link">Appraisal</a><a href="service-detail.html" class="footer__link">Listening</a></div></div>
+        <div><h4 class="footer__heading">Contact</h4><div class="footer__links"><span class="footer__link">📍 42 Groove St, Brooklyn</span><span class="footer__link">📞 +1 (555) VINYL-01</span></div></div>
+      </div>
+      <div class="footer__bottom"><p class="footer__copyright">© 2026 Vintage Vinyl.</p><div class="footer__bottom-links"><a href="#" class="footer__bottom-link">Privacy</a><a href="#" class="footer__bottom-link">Terms</a></div></div>
+    </div>
+  </footer>
+  <script src="../assets/js/theme-switcher.js"></script>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

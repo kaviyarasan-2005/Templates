@@ -1,0 +1,7 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="600" height="550" viewBox="0 0 600 550">
+  <rect width="600" height="550" fill="#171717"/>
+  <rect x="100" y="80" width="400" height="390" rx="12" fill="#f59e0b" opacity="0.08"/>
+  <rect x="100" y="80" width="400" height="390" rx="12" fill="none" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="8 4"/>
+  <text x="300" y="275" font-family="Arial" font-size="32" fill="#f59e0b" text-anchor="middle" opacity="0.5">✦</text>
+  <text x="300" y="315" font-family="Arial" font-size="16" fill="#525252" text-anchor="middle">Cover-up</text>
+</svg>

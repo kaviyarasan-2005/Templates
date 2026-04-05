@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Account - INK STUDIO</title>
+  <meta name="description" content="Create your INK STUDIO account to book appointments and manage your tattoo journey.">
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicons/favicon.svg">
+  <link rel="stylesheet" href="assets/css/main.css"><link rel="stylesheet" href="assets/css/animations.css">
+  <style>
+    html,body{height:100%;overflow:hidden;}
+    main{padding-top:0!important;}
+    .register-layout{display:grid;grid-template-columns:1fr 1fr;min-height:100vh;}
+    .register-visual{background:linear-gradient(135deg,#0a0a0a 0%,#1a1a1a 60%);position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+    .register-visual::after{content:'';position:absolute;inset:0;background:url('assets/images/hero/hero-tools.png') center/cover;opacity:0.15;}
+    .register-visual-content{position:relative;z-index:2;text-align:center;padding:var(--space-8);}
+    .register-form-side{display:flex;align-items:center;justify-content:center;padding:var(--space-6);background:var(--bg-primary);overflow-y:auto;}
+    .register-card{width:100%;max-width:420px;}
+    .social-btn{display:flex;align-items:center;justify-content:center;gap:var(--space-3);width:100%;padding:0.625rem 1.5rem;border-radius:var(--radius-md);font-family:var(--font-body);font-size:0.875rem;font-weight:500;cursor:pointer;transition:all var(--transition-fast);min-height:44px;text-decoration:none;border:none;}
+    .social-btn svg{width:18px;height:18px;flex-shrink:0;}
+    .social-google{background:#fff;color:#333;border:1px solid #ddd;}
+    .social-facebook{background:#1877F2;color:#fff;}
+    .social-apple{background:#000;color:#fff;}
+    .divider{display:flex;align-items:center;gap:var(--space-4);margin:var(--space-4) 0;color:var(--text-muted);font-size:0.8125rem;}
+    .divider::before,.divider::after{content:'';flex:1;height:1px;background:var(--bg-tertiary);}
+    .input-wrapper{position:relative;}
+    .password-toggle{position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--text-muted);padding:4px;display:flex;}
+    @media(max-width:768px){.register-layout{grid-template-columns:1fr;}.register-visual{display:none;}}
+  </style>
+</head>
+<body>
+  <main>
+    <div class="register-layout">
+      <div class="register-visual">
+        <div class="register-visual-content">
+          <svg width="60" height="60" viewBox="0 0 40 40" style="margin-bottom:var(--space-6);"><rect width="40" height="40" rx="8" fill="transparent" stroke="rgba(255,255,255,0.2)" stroke-width="1"/><path d="M12,8 L16,8 L28,32 L24,34 L18,34 Z" fill="#dc2626" opacity="0.9"/><path d="M14,8 L18,8 L30,32 L26,34 L20,34 Z" fill="#f59e0b" opacity="0.7"/></svg>
+          <h2 style="color:#fff;font-size:2.5rem;margin-bottom:var(--space-4);">Join the<br>Movement</h2>
+          <p style="color:rgba(255,255,255,0.5);max-width:300px;margin:0 auto;">Create your account to book sessions, save designs, and be part of the INK STUDIO community.</p>
+        </div>
+      </div>
+      <div class="register-form-side">
+        <div class="register-card">
+          <div style="text-align:center;margin-bottom:var(--space-6);">
+            <a href="index.html" style="display:inline-flex;align-items:center;gap:var(--space-3);text-decoration:none;">
+              <svg width="36" height="36" viewBox="0 0 40 40"><rect width="40" height="40" rx="8" fill="#0a0a0a"/><path d="M12,8 L16,8 L28,32 L24,34 L18,34 Z" fill="#dc2626" opacity="0.9"/><path d="M14,8 L18,8 L30,32 L26,34 L20,34 Z" fill="#f59e0b" opacity="0.7"/></svg>
+              <span style="font-family:var(--font-accent);font-size:1.375rem;letter-spacing:0.15em;color:var(--text-primary);">INK <span style="color:var(--color-blood-red);">STUDIO</span></span>
+            </a>
+          </div>
+          <h1 style="font-size:1.5rem;text-align:center;margin-bottom:var(--space-2);">Create Account</h1>
+          <p style="text-align:center;margin-bottom:var(--space-6);color:var(--text-muted);font-size:0.875rem;">Sign up to get started</p>
+
+          <div style="display:flex;gap:var(--space-2);">
+            <button class="social-btn social-google" type="button"><svg viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>Google</button>
+            <button class="social-btn social-facebook" type="button"><svg viewBox="0 0 24 24" fill="#fff"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>Facebook</button>
+            <button class="social-btn social-apple" type="button"><svg viewBox="0 0 24 24" fill="#fff"><path d="M17.05 20.28c-.98.95-2.05.88-3.08.4-1.09-.5-2.08-.48-3.24 0-1.44.62-2.2.44-3.06-.4C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.32 2.32-1.55 4.22-3.74 4.25z"/></svg>Apple</button>
+          </div>
+          <div class="divider">OR</div>
+
+          <form data-validate id="registerForm">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-3);">
+              <div class="form-group"><label for="regName" class="form-label" style="font-size:0.8125rem;">Full Name *</label><input type="text" id="regName" class="form-input" placeholder="John Doe" required style="padding:0.625rem 0.875rem;font-size:0.875rem;"><span class="form-error"></span></div>
+              <div class="form-group"><label for="regPhone" class="form-label" style="font-size:0.8125rem;">Phone</label><input type="tel" id="regPhone" class="form-input" placeholder="+1 (555) 000" style="padding:0.625rem 0.875rem;font-size:0.875rem;"></div>
+            </div>
+            <div class="form-group"><label for="regEmail" class="form-label" style="font-size:0.8125rem;">Email *</label><input type="email" id="regEmail" class="form-input" placeholder="your@email.com" required style="padding:0.625rem 0.875rem;font-size:0.875rem;"><span class="form-error"></span></div>
+            <div class="form-group"><label for="regPassword" class="form-label" style="font-size:0.8125rem;">Password *</label><div class="input-wrapper"><input type="password" id="regPassword" class="form-input" placeholder="Min 8 characters" required minlength="8" style="padding:0.625rem 0.875rem;font-size:0.875rem;padding-right:44px;"><button type="button" class="password-toggle" aria-label="Show password"><svg class="icon-show" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg><svg class="icon-hide" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg></button></div><span class="form-error"></span></div>
+            <div class="form-group"><label for="regConfirm" class="form-label" style="font-size:0.8125rem;">Confirm Password *</label><input type="password" id="regConfirm" class="form-input" placeholder="Re-enter password" required data-match="regPassword" style="padding:0.625rem 0.875rem;font-size:0.875rem;"><span class="form-error"></span></div>
+            <div class="form-group"><label class="form-check"><input type="checkbox" required><span style="font-size:0.8125rem;">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></span></label></div>
+            <button type="submit" class="btn btn-primary" style="width:100%;"><span class="btn-text">Create Account</span></button>
+          </form>
+          <p style="text-align:center;margin-top:var(--space-4);font-size:0.875rem;color:var(--text-muted);">Already have an account? <a href="login.html" style="font-weight:600;">Sign In</a></p>
+        </div>
+      </div>
+    </div>
+  </main>
+  <script src="assets/js/theme-toggle.js"></script><script src="assets/js/forms.js"></script>
+</body>
+</html>

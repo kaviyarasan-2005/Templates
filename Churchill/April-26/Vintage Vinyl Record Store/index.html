@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vintage Vinyl — Premium Record Store & Audiophile Experience</title>
+  <meta name="description" content="Discover rare vinyl records, audiophile equipment, and a passionate community at Vintage Vinyl. Browse our curated collection of classic and contemporary vinyl.">
+  <meta property="og:title" content="Vintage Vinyl — Premium Record Store">
+  <meta property="og:description" content="Discover rare vinyl records, audiophile equipment, and a passionate community.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicons/apple-touch-icon.png">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MusicStore",
+    "name": "Vintage Vinyl",
+    "description": "Premium record store offering rare vinyl records, audiophile equipment, and expert services.",
+    "url": "https://vintagevinyl.com",
+    "telephone": "+1-555-VINYL-01",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "42 Groove Street",
+      "addressLocality": "Brooklyn",
+      "addressRegion": "NY",
+      "postalCode": "11201"
+    },
+    "openingHours": ["Mo-Sa 10:00-21:00", "Su 11:00-19:00"]
+  }
+  </script>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- ==================== NAVBAR ==================== -->
+  <nav class="navbar" id="navbar" aria-label="Main navigation">
+    <div class="navbar__inner">
+      <a href="index.html" class="navbar__logo" aria-label="Vintage Vinyl — Home">
+        <div class="navbar__logo-icon">V</div>
+        <span class="navbar__logo-text">Vintage Vinyl</span>
+      </a>
+
+      <ul class="navbar__menu" id="nav-menu">
+        <li class="navbar__dropdown">
+          <a href="index.html" class="navbar__link active">Home ▾</a>
+          <div class="navbar__dropdown-menu">
+            <a href="index.html" class="navbar__dropdown-item">Home 1 (General)</a>
+            <a href="pages/home-2.html" class="navbar__dropdown-item">Home 2 (Audiophile)</a>
+          </div>
+        </li>
+        <li><a href="pages/about.html" class="navbar__link">About</a></li>
+        <li class="navbar__dropdown">
+          <a href="pages/services.html" class="navbar__link">Services ▾</a>
+          <div class="navbar__dropdown-menu">
+            <a href="pages/services.html" class="navbar__dropdown-item">All Services</a>
+            <a href="pages/service-detail.html" class="navbar__dropdown-item">Record Cleaning</a>
+            <a href="pages/service-detail.html" class="navbar__dropdown-item">Vinyl Appraisal</a>
+            <a href="pages/service-detail.html" class="navbar__dropdown-item">Listening Stations</a>
+          </div>
+        </li>
+        <li><a href="pages/blog.html" class="navbar__link">Blog</a></li>
+        <li><a href="pages/pricing.html" class="navbar__link">Pricing</a></li>
+        <li><a href="pages/contact.html" class="navbar__link">Contact</a></li>
+        <li class="navbar__dropdown">
+          <a href="pages/dashboard-admin.html" class="navbar__link">Dashboard ▾</a>
+          <div class="navbar__dropdown-menu">
+            <a href="pages/dashboard-admin.html" class="navbar__dropdown-item">Admin View</a>
+            <a href="pages/dashboard-customer.html" class="navbar__dropdown-item">Customer View</a>
+          </div>
+        </li>
+      </ul>
+
+      <div class="navbar__actions">
+        <button class="navbar__icon-btn theme-toggle" aria-label="Toggle theme" title="Toggle theme">🌙</button>
+        <button class="navbar__icon-btn dir-toggle" aria-label="Toggle text direction" title="Toggle RTL/LTR">🌐</button>
+        <a href="pages/login.html" class="btn btn--primary btn--sm">Sign In</a>
+        <button class="navbar__hamburger" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu__overlay" id="mobile-overlay"></div>
+  <div class="mobile-menu" id="mobile-menu">
+    <button class="mobile-menu__close" aria-label="Close menu">✕</button>
+    <a href="index.html" class="navbar__logo" style="margin-bottom:1rem;">
+      <div class="navbar__logo-icon">V</div>
+      <span class="navbar__logo-text">Vintage Vinyl</span>
+    </a>
+    <div class="mobile-menu__links">
+      <a href="index.html" class="mobile-menu__link active">Home 1 (General)</a>
+      <a href="pages/home-2.html" class="mobile-menu__link">Home 2 (Audiophile)</a>
+      <a href="pages/about.html" class="mobile-menu__link">About</a>
+      <a href="pages/services.html" class="mobile-menu__link">Services</a>
+      <a href="pages/blog.html" class="mobile-menu__link">Blog</a>
+      <a href="pages/pricing.html" class="mobile-menu__link">Pricing</a>
+      <a href="pages/contact.html" class="mobile-menu__link">Contact</a>
+      <a href="pages/dashboard-admin.html" class="mobile-menu__link">Admin Dashboard</a>
+      <a href="pages/dashboard-customer.html" class="mobile-menu__link">Customer Dashboard</a>
+      <a href="pages/login.html" class="btn btn--primary btn--full" style="margin-top:1rem;">Sign In</a>
+    </div>
+  </div>
+
+  <!-- ==================== MAIN CONTENT ==================== -->
+  <main id="main-content" class="page-content">
+
+    <!-- ==================== HERO SECTION ==================== -->
+    <section class="hero" id="hero">
+      <div class="hero__bg">
+        <img src="assets/images/hero/hero-store.png" alt="Warm interior of Vintage Vinyl record store" width="1920" height="1080" loading="eager">
+      </div>
+      <div class="hero__overlay"></div>
+      <div class="vinyl-float vinyl-float--1" aria-hidden="true"></div>
+      <div class="vinyl-float vinyl-float--2" aria-hidden="true"></div>
+      <div class="hero__content">
+        <span class="hero__label">🎵 Brooklyn's Premier Record Destination</span>
+        <h1 class="hero__title">Discover the <span>Soul</span> of Music on Vinyl</h1>
+        <p class="hero__subtitle">Curated collections of rare pressings, classic albums, and modern releases. Experience music the way it was meant to be heard.</p>
+        <div class="hero__actions">
+          <a href="pages/services.html" class="btn btn--primary btn--lg">Explore Collection</a>
+          <a href="pages/about.html" class="btn btn--secondary btn--lg" style="border-color:#fff;color:#fff;">Our Story</a>
+        </div>
+        <div class="hero__trust">
+          <div class="hero__trust-item">
+            <span class="hero__trust-number">15k+</span>
+            <span class="hero__trust-label">Records in Stock</span>
+          </div>
+          <div class="hero__trust-item">
+            <span class="hero__trust-number">25+</span>
+            <span class="hero__trust-label">Years Experience</span>
+          </div>
+          <div class="hero__trust-item">
+            <span class="hero__trust-number">4.9★</span>
+            <span class="hero__trust-label">Customer Rating</span>
+          </div>
+          <div class="hero__trust-item">
+            <span class="hero__trust-number">8k+</span>
+            <span class="hero__trust-label">Happy Collectors</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== FEATURED RECORDS ==================== -->
+    <section class="section" id="featured">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="label section-header__label">Curated Selection</span>
+          <h2 class="section-header__title">Featured Vinyl Records</h2>
+          <p class="section-header__desc">Hand-picked gems from our collection — from rare first pressings to remastered classics.</p>
+        </div>
+        <div class="grid grid-4" id="products-grid">
+          <!-- Product Card 1 -->
+          <div class="card reveal reveal-delay-1">
+            <div class="card__image-wrap">
+              <img src="https://images.unsplash.com/photo-1603048588665-791ca8aea617?w=400&h=400&fit=crop" alt="Dark Side of the Moon vinyl" class="card__image" width="400" height="400" loading="lazy">
+              <span class="card__badge">Rare</span>
+              <button class="card__wishlist" aria-label="Add to wishlist">♡</button>
+            </div>
+            <div class="card__body">
+              <h3 class="card__title">Dark Side of the Moon</h3>
+              <p class="card__subtitle">Pink Floyd · 1973 · First Press</p>
+              <div class="flex-between">
+                <span class="card__price">$249.99</span>
+                <button class="btn btn--primary btn--sm">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+          <!-- Product Card 2 -->
+          <div class="card reveal reveal-delay-2">
+            <div class="card__image-wrap">
+              <img src="https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?w=400&h=400&fit=crop" alt="Kind of Blue vinyl" class="card__image" width="400" height="400" loading="lazy">
+              <span class="card__badge">Classic</span>
+              <button class="card__wishlist" aria-label="Add to wishlist">♡</button>
+            </div>
+            <div class="card__body">
+              <h3 class="card__title">Kind of Blue</h3>
+              <p class="card__subtitle">Miles Davis · 1959 · Remaster</p>
+              <div class="flex-between">
+                <span class="card__price">$34.99</span>
+                <button class="btn btn--primary btn--sm">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+          <!-- Product Card 3 -->
+          <div class="card reveal reveal-delay-3">
+            <div class="card__image-wrap">
+              <img src="https://images.unsplash.com/photo-1619983081563-430f63602796?w=400&h=400&fit=crop" alt="Abbey Road vinyl" class="card__image" width="400" height="400" loading="lazy">
+              <button class="card__wishlist" aria-label="Add to wishlist">♡</button>
+            </div>
+            <div class="card__body">
+              <h3 class="card__title">Abbey Road</h3>
+              <p class="card__subtitle">The Beatles · 1969 · 50th Anniv.</p>
+              <div class="flex-between">
+                <span class="card__price">$42.99</span>
+                <button class="btn btn--primary btn--sm">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+          <!-- Product Card 4 -->
+          <div class="card reveal reveal-delay-4">
+            <div class="card__image-wrap">
+              <img src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=400&h=400&fit=crop" alt="Rumours vinyl" class="card__image" width="400" height="400" loading="lazy">
+              <span class="card__badge">New</span>
+              <button class="card__wishlist" aria-label="Add to wishlist">♡</button>
+            </div>
+            <div class="card__body">
+              <h3 class="card__title">Rumours</h3>
+              <p class="card__subtitle">Fleetwood Mac · 1977 · 180g</p>
+              <div class="flex-between">
+                <span class="card__price">$29.99</span>
+                <button class="btn btn--primary btn--sm">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-center mt-8 reveal">
+          <a href="pages/services.html" class="btn btn--secondary">Browse Full Collection →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SERVICES OVERVIEW ==================== -->
+    <section class="section" id="services" style="background:var(--bg-secondary);">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="label section-header__label">What We Offer</span>
+          <h2 class="section-header__title">Our Services</h2>
+          <p class="section-header__desc">From expert vinyl care to immersive listening experiences — everything an audiophile needs.</p>
+        </div>
+        <div class="grid grid-4">
+          <div class="card reveal reveal-delay-1" style="text-align:center;">
+            <div class="card__body">
+              <div style="font-size:2.5rem;margin-bottom:var(--space-4);">🎵</div>
+              <h3 class="card__title">Record Browsing</h3>
+              <p class="card__subtitle mb-0">Explore 15,000+ records across every genre — rock, jazz, soul, electronic, classical, and more.</p>
+            </div>
+          </div>
+          <div class="card reveal reveal-delay-2" style="text-align:center;">
+            <div class="card__body">
+              <div style="font-size:2.5rem;margin-bottom:var(--space-4);">🧹</div>
+              <h3 class="card__title">Record Cleaning</h3>
+              <p class="card__subtitle mb-0">Professional ultrasonic cleaning to restore your vinyl to its original brilliance and clarity.</p>
+            </div>
+          </div>
+          <div class="card reveal reveal-delay-3" style="text-align:center;">
+            <div class="card__body">
+              <div style="font-size:2.5rem;margin-bottom:var(--space-4);">💎</div>
+              <h3 class="card__title">Vinyl Appraisal</h3>
+              <p class="card__subtitle mb-0">Expert grading & appraisal for your collection. Know the true value of your rare pressings.</p>
+            </div>
+          </div>
+          <div class="card reveal reveal-delay-4" style="text-align:center;">
+            <div class="card__body">
+              <div style="font-size:2.5rem;margin-bottom:var(--space-4);">🎧</div>
+              <h3 class="card__title">Listening Stations</h3>
+              <p class="card__subtitle mb-0">Premium audiophile listening rooms with hi-fi equipment. Try before you buy.</p>
+            </div>
+          </div>
+        </div>
+        <div class="text-center mt-8 reveal">
+          <a href="pages/services.html" class="btn btn--primary">View All Services →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== WHY CHOOSE US ==================== -->
+    <section class="section" id="why-us">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="label section-header__label">Why Vintage Vinyl</span>
+          <h2 class="section-header__title">The Difference Is in the Grooves</h2>
+          <p class="section-header__desc">More than a store — we're a community of music lovers preserving the art of vinyl.</p>
+        </div>
+        <div class="grid grid-2" style="gap:var(--space-16);align-items:center;">
+          <div class="reveal">
+            <img src="assets/images/hero/hero-turntable.png" alt="Premium turntable playing vinyl record" style="border-radius:var(--radius-xl);" width="600" height="400" loading="lazy">
+          </div>
+          <div class="reveal reveal-delay-2">
+            <h3 style="margin-bottom:var(--space-6);">Handpicked by Experts</h3>
+            <p>Every record in our store is carefully sourced, inspected, and graded by our team of vinyl enthusiasts with over 25 years of combined experience.</p>
+            <p>We believe that music deserves to be experienced in its purest form — the warm, rich sound that only vinyl can deliver. That's why we stock only the finest pressings.</p>
+            <div style="display:flex;gap:var(--space-8);margin-top:var(--space-6);">
+              <div>
+                <span style="font-family:var(--font-accent);font-size:var(--text-3xl);font-weight:700;color:var(--color-primary);display:block;">99%</span>
+                <span style="font-size:var(--text-sm);color:var(--text-muted);">Quality Guarantee</span>
+              </div>
+              <div>
+                <span style="font-family:var(--font-accent);font-size:var(--text-3xl);font-weight:700;color:var(--color-primary);display:block;">30-Day</span>
+                <span style="font-size:var(--text-sm);color:var(--text-muted);">Return Policy</span>
+              </div>
+              <div>
+                <span style="font-family:var(--font-accent);font-size:var(--text-3xl);font-weight:700;color:var(--color-primary);display:block;">Free</span>
+                <span style="font-size:var(--text-sm);color:var(--text-muted);">Shipping $50+</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TESTIMONIALS ==================== -->
+    <section class="section" id="testimonials" style="background:var(--bg-secondary);">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="label section-header__label">What People Say</span>
+          <h2 class="section-header__title">Loved by Collectors Worldwide</h2>
+          <p class="section-header__desc">Don't take our word for it — hear from our community of vinyl enthusiasts.</p>
+        </div>
+        <div class="grid grid-3" style="grid-template-columns:repeat(3,1fr);">
+          <div class="testimonial-card reveal reveal-delay-1">
+            <div class="testimonial-card__stars">★★★★★</div>
+            <p class="testimonial-card__text">"Vintage Vinyl is a treasure trove for any serious collector. Their grading is impeccable and the staff really knows their music. Found a mint condition first press I'd been hunting for years!"</p>
+            <div class="testimonial-card__author">
+              <img src="assets/images/team/team-1.png" alt="Marcus Chen" class="testimonial-card__avatar" width="48" height="48" loading="lazy">
+              <div>
+                <div class="testimonial-card__name">Marcus Chen</div>
+                <div class="testimonial-card__role">Collector · 12 years</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card reveal reveal-delay-2">
+            <div class="testimonial-card__stars">★★★★★</div>
+            <p class="testimonial-card__text">"The listening stations are incredible — high-end Rega turntables with tube amps. I spent an entire afternoon trying records before buying. The experience alone is worth the visit."</p>
+            <div class="testimonial-card__author">
+              <img src="assets/images/team/team-2.png" alt="Sophia Rodriguez" class="testimonial-card__avatar" width="48" height="48" loading="lazy">
+              <div>
+                <div class="testimonial-card__name">Sophia Rodriguez</div>
+                <div class="testimonial-card__role">Audiophile · NYC</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card reveal reveal-delay-3">
+            <div class="testimonial-card__stars">★★★★★</div>
+            <p class="testimonial-card__text">"Best record cleaning service in Brooklyn, hands down. They restored my dad's original Beatles collection and it sounds like new. Professional, knowledgeable, and passionate."</p>
+            <div class="testimonial-card__author">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=96&h=96&fit=crop&crop=face" alt="James Wright" class="testimonial-card__avatar" width="48" height="48" loading="lazy">
+              <div>
+                <div class="testimonial-card__name">James Wright</div>
+                <div class="testimonial-card__role">Musician · Brooklyn</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-center mt-8 reveal">
+          <a href="pages/about.html#reviews" class="btn btn--secondary">Read More Reviews →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== BLOG PREVIEW ==================== -->
+    <section class="section" id="blog-preview">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="label section-header__label">From the Blog</span>
+          <h2 class="section-header__title">Stories & Guides</h2>
+          <p class="section-header__desc">Tips, history, and stories from the world of vinyl — written by collectors, for collectors.</p>
+        </div>
+        <div class="grid grid-3">
+          <div class="blog-card reveal reveal-delay-1">
+            <div class="blog-card__image-wrap">
+              <img src="https://images.unsplash.com/photo-1461360228754-6e81c478b882?w=600&h=375&fit=crop" alt="Cleaning vinyl records" class="blog-card__img" width="600" height="375" loading="lazy">
+            </div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">
+                <span class="blog-card__tag">Care Guide</span>
+                <span class="blog-card__date">Mar 28, 2026</span>
+              </div>
+              <h3 class="blog-card__title">The Ultimate Guide to Caring for Your Vinyl Collection</h3>
+              <p class="blog-card__excerpt">Learn the best practices for storing, cleaning, and handling your vinyl records to preserve their sound quality for decades.</p>
+              <a href="pages/blog-detail.html" class="blog-card__read-more">Read Article →</a>
+            </div>
+          </div>
+          <div class="blog-card reveal reveal-delay-2">
+            <div class="blog-card__image-wrap">
+              <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600&h=375&fit=crop" alt="Turntable setup guide" class="blog-card__img" width="600" height="375" loading="lazy">
+            </div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">
+                <span class="blog-card__tag">Setup</span>
+                <span class="blog-card__date">Mar 22, 2026</span>
+              </div>
+              <h3 class="blog-card__title">Setting Up Your First Turntable: A Beginner's Journey</h3>
+              <p class="blog-card__excerpt">Everything you need to know to set up your first turntable system — from choosing the right cartridge to speaker placement.</p>
+              <a href="pages/blog-detail.html" class="blog-card__read-more">Read Article →</a>
+            </div>
+          </div>
+          <div class="blog-card reveal reveal-delay-3">
+            <div class="blog-card__image-wrap">
+              <img src="https://images.unsplash.com/photo-1487180144351-b8472da7d491?w=600&h=375&fit=crop" alt="Rare vinyl records" class="blog-card__img" width="600" height="375" loading="lazy">
+            </div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">
+                <span class="blog-card__tag">Collecting</span>
+                <span class="blog-card__date">Mar 15, 2026</span>
+              </div>
+              <h3 class="blog-card__title">10 Rare Records Worth a Fortune (And How to Find Them)</h3>
+              <p class="blog-card__excerpt">From misprints to limited editions — discover which vinyl records have become the most valuable collectibles in music history.</p>
+              <a href="pages/blog-detail.html" class="blog-card__read-more">Read Article →</a>
+            </div>
+          </div>
+        </div>
+        <div class="text-center mt-8 reveal">
+          <a href="pages/blog.html" class="btn btn--secondary">View All Posts →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== NEWSLETTER ==================== -->
+    <section class="section" style="background:linear-gradient(135deg,var(--color-secondary) 0%,#2a1a3e 100%);color:#fff;">
+      <div class="container container--narrow text-center reveal">
+        <span class="label" style="color:var(--color-accent);">Stay Connected</span>
+        <h2 style="color:#fff;margin:var(--space-4) 0 var(--space-4);">Join Our Vinyl Community</h2>
+        <p style="color:rgba(255,255,255,0.7);max-width:500px;margin-inline:auto;margin-bottom:var(--space-8);">Get weekly picks, exclusive deals, and early access to rare finds. No spam, just pure vinyl love.</p>
+        <form class="flex-center" style="gap:var(--space-3);max-width:480px;margin-inline:auto;flex-wrap:wrap;" onsubmit="event.preventDefault();this.querySelector('button').textContent='Subscribed ✓';">
+          <input type="email" class="form-input" placeholder="your@email.com" required aria-label="Email address" style="flex:1;min-width:220px;background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.2);color:#fff;">
+          <button type="submit" class="btn btn--primary">Subscribe</button>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer" id="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <a href="index.html" class="navbar__logo" style="margin-bottom:var(--space-2);">
+            <div class="navbar__logo-icon">V</div>
+            <span class="navbar__logo-text" style="color:#fff;">Vintage Vinyl</span>
+          </a>
+          <p class="footer__brand-desc">Brooklyn's premier destination for vinyl records, audiophile equipment, and a thriving community of music lovers since 2001.</p>
+          <div class="footer__socials">
+            <a href="#" class="footer__social" aria-label="Facebook">f</a>
+            <a href="#" class="footer__social" aria-label="Instagram">ig</a>
+            <a href="#" class="footer__social" aria-label="Twitter">x</a>
+            <a href="#" class="footer__social" aria-label="YouTube">yt</a>
+            <a href="#" class="footer__social" aria-label="Spotify">♫</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer__heading">Quick Links</h4>
+          <div class="footer__links">
+            <a href="index.html" class="footer__link">Home</a>
+            <a href="pages/about.html" class="footer__link">About Us</a>
+            <a href="pages/services.html" class="footer__link">Services</a>
+            <a href="pages/pricing.html" class="footer__link">Pricing</a>
+            <a href="pages/contact.html" class="footer__link">Contact</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer__heading">Services</h4>
+          <div class="footer__links">
+            <a href="pages/service-detail.html" class="footer__link">Record Cleaning</a>
+            <a href="pages/service-detail.html" class="footer__link">Vinyl Appraisal</a>
+            <a href="pages/service-detail.html" class="footer__link">Listening Stations</a>
+            <a href="pages/services.html" class="footer__link">Equipment Sales</a>
+            <a href="pages/services.html" class="footer__link">Trade-In Program</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer__heading">Contact Info</h4>
+          <div class="footer__links">
+            <span class="footer__link">📍 42 Groove Street, Brooklyn, NY 11201</span>
+            <span class="footer__link">📞 +1 (555) VINYL-01</span>
+            <span class="footer__link">✉️ hello@vintagevinyl.com</span>
+            <span class="footer__link">🕐 Mon-Sat: 10AM-9PM</span>
+            <span class="footer__link">🕐 Sun: 11AM-7PM</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__copyright">© 2026 Vintage Vinyl. All rights reserved.</p>
+        <div class="footer__bottom-links">
+          <a href="#" class="footer__bottom-link">Privacy Policy</a>
+          <a href="#" class="footer__bottom-link">Terms of Service</a>
+          <a href="sitemap.xml" class="footer__bottom-link">Sitemap</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" aria-label="Back to top" style="position:fixed;bottom:2rem;right:2rem;width:48px;height:48px;border-radius:50%;background:var(--color-primary);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.25rem;box-shadow:var(--shadow-lg);opacity:0;visibility:hidden;transition:all .3s ease;z-index:999;">↑</button>
+  <style>.back-to-top.visible{opacity:1;visibility:visible;}</style>
+
+  <script src="assets/js/theme-switcher.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
