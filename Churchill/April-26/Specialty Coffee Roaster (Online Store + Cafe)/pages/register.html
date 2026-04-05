@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Account — Ember & Brew</title>
+  <meta name="description" content="Create your Ember & Brew account to start your specialty coffee journey. Easy signup, no commitment.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-size:16px;height:100%}
+    body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;height:100%;overflow:hidden;color:#1A1A1A;line-height:1.5}
+
+    .register-page{display:grid;grid-template-columns:1fr 1fr;height:100vh;min-height:100vh}
+
+    /* Left — Visual */
+    .register-visual{position:relative;background:linear-gradient(135deg,#1a1008 0%,#3D2817 100%);display:flex;align-items:center;justify-content:center;overflow:hidden;order:-1}
+    .register-visual__bg{position:absolute;inset:0;opacity:.35}
+    .register-visual__bg img{width:100%;height:100%;object-fit:cover}
+    .register-visual__content{position:relative;z-index:2;text-align:center;padding:48px;max-width:480px}
+    .register-visual__content h3{font-family:'Playfair Display',serif;font-size:2rem;color:#fff;margin-bottom:16px;line-height:1.2}
+    .register-visual__content p{color:rgba(255,255,255,.7);font-size:.938rem;margin-bottom:28px;line-height:1.6}
+    .register-visual__steps{text-align:start;display:flex;flex-direction:column;gap:16px;counter-reset:step}
+    .register-visual__step{display:flex;align-items:center;gap:12px;color:rgba(255,255,255,.85);font-size:.875rem;counter-increment:step}
+    .register-visual__step-num{width:36px;height:36px;background:rgba(232,93,4,.25);border:1px solid rgba(232,93,4,.4);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;color:#E85D04;flex-shrink:0;font-size:.875rem}
+
+    /* Right — Form */
+    .register-form-side{display:flex;align-items:center;justify-content:center;padding:40px;background:#FDFBF7;overflow-y:auto}
+    .register-card{width:100%;max-width:420px}
+
+    .register-brand{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:32px}
+    .register-brand__icon{width:44px;height:44px;background:#6F4E37;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.3rem;font-family:'Playfair Display',serif;font-weight:700}
+    .register-brand__text{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:700;color:#3D2817}
+    .register-brand__text span{color:#E85D04}
+
+    .register-card h2{font-family:'Playfair Display',serif;font-size:1.5rem;margin-bottom:6px;text-align:center}
+    .register-card .subtitle{text-align:center;color:#7A7A7A;font-size:.813rem;margin-bottom:24px}
+
+    .form-group{margin-bottom:16px}
+    .form-label{display:block;font-size:.813rem;font-weight:500;margin-bottom:4px;color:#1A1A1A}
+    .form-input{display:block;width:100%;padding:9px 12px;font-size:.813rem;border:1.5px solid #E0D5C1;border-radius:8px;background:#fff;color:#1A1A1A;outline:none;transition:border-color .2s,box-shadow .2s}
+    .form-input:focus{border-color:#6F4E37;box-shadow:0 0 0 3px rgba(111,78,55,.12)}
+    .form-input::placeholder{color:#7A7A7A}
+    .form-row-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+
+    .form-check{display:flex;align-items:flex-start;gap:6px;font-size:.75rem;color:#4A4A4A;cursor:pointer;margin-bottom:20px;line-height:1.4}
+    .form-check input{width:16px;height:16px;accent-color:#6F4E37;cursor:pointer;flex-shrink:0;margin-top:1px}
+    .form-check a{color:#6F4E37;font-weight:600;text-decoration:none}
+    .form-check a:hover{color:#E85D04}
+
+    .btn-register{display:block;width:100%;padding:11px;background:#E85D04;color:#fff;font-size:.875rem;font-weight:600;border:none;border-radius:8px;cursor:pointer;transition:all .2s}
+    .btn-register:hover{background:#C44D03;transform:translateY(-1px);box-shadow:0 4px 16px rgba(232,93,4,.3)}
+
+    .divider{display:flex;align-items:center;gap:14px;margin:20px 0}
+    .divider::before,.divider::after{content:'';flex:1;height:1px;background:#E0D5C1}
+    .divider span{font-size:.7rem;color:#7A7A7A;text-transform:uppercase;letter-spacing:.1em}
+
+    .social-btns{display:flex;gap:8px}
+    .social-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;padding:9px;border-radius:8px;font-size:.75rem;font-weight:500;cursor:pointer;transition:all .2s;text-decoration:none}
+    .social-btn:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.1)}
+    .social-btn--google{background:#fff;color:#333;border:1px solid #E0D5C1}
+    .social-btn--facebook{background:#1877F2;color:#fff;border:1px solid #1877F2}
+
+    .register-footer{text-align:center;margin-top:20px;font-size:.813rem;color:#7A7A7A}
+    .register-footer a{color:#6F4E37;font-weight:600;text-decoration:none}
+    .register-footer a:hover{color:#E85D04}
+
+    @media(max-width:768px){
+      .register-page{grid-template-columns:1fr}
+      .register-visual{display:none}
+      .register-form-side{padding:24px}
+      body{overflow-y:auto}
+    }
+  </style>
+</head>
+<body>
+
+  <div class="register-page">
+    <!-- Left — Visual -->
+    <div class="register-visual">
+      <div class="register-visual__bg">
+        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1200&q=80" alt="Barista crafting a specialty coffee" loading="eager">
+      </div>
+      <div class="register-visual__content">
+        <h3>Start Your Coffee Journey</h3>
+        <p>Join thousands of coffee lovers who enjoy freshly roasted specialty coffee delivered to their door.</p>
+        <div class="register-visual__steps">
+          <div class="register-visual__step">
+            <div class="register-visual__step-num">1</div>
+            <span>Create your free account in seconds</span>
+          </div>
+          <div class="register-visual__step">
+            <div class="register-visual__step-num">2</div>
+            <span>Take our quick taste quiz for recommendations</span>
+          </div>
+          <div class="register-visual__step">
+            <div class="register-visual__step-num">3</div>
+            <span>Choose your plan & customize your delivery</span>
+          </div>
+          <div class="register-visual__step">
+            <div class="register-visual__step-num">4</div>
+            <span>Enjoy freshly roasted coffee at your doorstep</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right — Register Form -->
+    <div class="register-form-side">
+      <div class="register-card">
+        <a href="home-classic.html" class="register-brand" aria-label="Ember & Brew Home">
+          <div class="register-brand__icon">E</div>
+          <div class="register-brand__text">Ember <span>&</span> Brew</div>
+        </a>
+
+        <h2>Create Your Account</h2>
+        <p class="subtitle">Free to join. No credit card required to start.</p>
+
+        <form id="register-form" onsubmit="event.preventDefault();window.location.href='dashboard.html'">
+          <div class="form-row-2">
+            <div class="form-group">
+              <label class="form-label" for="reg-firstname">First Name</label>
+              <input class="form-input" type="text" id="reg-firstname" placeholder="John" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="reg-lastname">Last Name</label>
+              <input class="form-input" type="text" id="reg-lastname" placeholder="Doe" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="reg-email">Email Address</label>
+            <input class="form-input" type="email" id="reg-email" placeholder="you@example.com" required autocomplete="email">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="reg-password">Password</label>
+            <input class="form-input" type="password" id="reg-password" placeholder="At least 8 characters" required minlength="8" autocomplete="new-password">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="reg-confirm">Confirm Password</label>
+            <input class="form-input" type="password" id="reg-confirm" placeholder="Re-enter password" required minlength="8" autocomplete="new-password">
+          </div>
+
+          <label class="form-check">
+            <input type="checkbox" required>
+            I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+          </label>
+
+          <button type="submit" class="btn-register">Create Account</button>
+        </form>
+
+        <div class="divider"><span>or sign up with</span></div>
+
+        <div class="social-btns">
+          <a href="#" class="social-btn social-btn--google" aria-label="Sign up with Google">
+            <svg width="16" height="16" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+            Google
+          </a>
+          <a href="#" class="social-btn social-btn--facebook" aria-label="Sign up with Facebook">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            Facebook
+          </a>
+        </div>
+
+        <div class="register-footer">
+          Already have an account? <a href="login.html">Sign in</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

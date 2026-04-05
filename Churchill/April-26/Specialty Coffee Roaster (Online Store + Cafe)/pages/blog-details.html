@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Art of the Perfect Pour-Over — Ember & Brew Blog</title>
+  <meta name="description" content="Master the pour-over technique with our step-by-step guide. Learn about water temperature, grind size, pour patterns, and timing for the perfect cup.">
+  <meta property="og:title" content="The Art of the Perfect Pour-Over — Ember & Brew">
+  <meta property="og:description" content="Master the pour-over with our barista-approved guide.">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://emberandbrew.com/blog/pour-over-guide">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/dark-mode.css">
+  <link rel="stylesheet" href="../assets/css/animations.css">
+  <link rel="stylesheet" href="../assets/css/rtl.css">
+  <style>
+    .article-content{max-width:760px;margin-inline:auto}
+    .article-content h2{font-size:var(--fs-2xl);margin-top:var(--space-10);margin-bottom:var(--space-4)}
+    .article-content h3{font-size:var(--fs-xl);margin-top:var(--space-8);margin-bottom:var(--space-3)}
+    .article-content p{font-size:var(--fs-md);line-height:var(--lh-relaxed);color:var(--color-text-secondary);margin-bottom:var(--space-5)}
+    .article-content img{border-radius:var(--radius-md);margin:var(--space-8) 0;width:100%}
+    .article-content blockquote{border-inline-start:4px solid var(--color-primary);padding:var(--space-5) var(--space-6);background:var(--color-bg-secondary);border-radius:0 var(--radius-sm) var(--radius-sm) 0;margin:var(--space-8) 0;font-style:italic;color:var(--color-text-secondary)}
+    .article-content ul,.article-content ol{padding-inline-start:var(--space-6);margin-bottom:var(--space-5)}
+    .article-content li{font-size:var(--fs-md);line-height:var(--lh-relaxed);color:var(--color-text-secondary);margin-bottom:var(--space-2);list-style:disc}
+    .article-content ol li{list-style:decimal}
+    .article-header{text-align:center;max-width:760px;margin-inline:auto;padding:var(--space-10) 0}
+    .article-header__meta{display:flex;align-items:center;justify-content:center;gap:var(--space-5);font-size:var(--fs-sm);color:var(--color-text-muted);margin-bottom:var(--space-4);flex-wrap:wrap}
+    .article-header__author{display:flex;align-items:center;gap:var(--space-2)}
+    .article-header__author img{width:40px;height:40px;border-radius:50%;object-fit:cover}
+    .article-share{display:flex;align-items:center;justify-content:center;gap:var(--space-3);padding:var(--space-6) 0;border-top:1px solid var(--color-border-light);border-bottom:1px solid var(--color-border-light);margin:var(--space-8) auto;max-width:760px}
+    .article-share span{font-size:var(--fs-sm);font-weight:var(--fw-semibold);color:var(--color-text-secondary)}
+    .share-btn{width:40px;height:40px;border-radius:var(--radius-full);border:1px solid var(--color-border);display:flex;align-items:center;justify-content:center;font-size:var(--fs-sm);color:var(--color-text-muted);transition:all var(--transition-base)}
+    .share-btn:hover{background:var(--color-primary);color:var(--white);border-color:var(--color-primary)}
+    .related-posts{max-width:760px;margin-inline:auto}
+  </style>
+</head>
+<body>
+
+  <!-- ==================== NAVBAR ==================== -->
+  <nav class="navbar" id="main-navbar" role="navigation" aria-label="Main navigation">
+    <div class="navbar__inner">
+      <a href="home-classic.html" class="navbar__brand" aria-label="Ember & Brew Home">
+        <div class="navbar__brand-icon">E</div>
+        <div class="navbar__brand-text">Ember <span>&</span> Brew</div>
+      </a>
+      <div class="navbar__menu">
+        <ul class="navbar__links">
+          <li class="navbar__dropdown">
+            <a href="#" class="navbar__link navbar__dropdown-toggle">Home
+              <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </a>
+            <div class="navbar__dropdown-menu">
+              <a href="home-classic.html">Classic Experience</a>
+              <a href="home-modern.html">Modern Experience</a>
+            </div>
+          </li>
+          <li><a href="about.html" class="navbar__link">About</a></li>
+          <li><a href="services.html" class="navbar__link">Services</a></li>
+          <li><a href="blog.html" class="navbar__link">Blog</a></li>
+          <li><a href="contact.html" class="navbar__link">Contact</a></li>
+          <li><a href="pricing.html" class="navbar__link">Pricing</a></li>
+          <li><a href="dashboard.html" class="navbar__link">Dashboard</a></li>
+        </ul>
+      </div>
+      <div class="navbar__actions">
+        <button class="btn--icon navbar__cart" id="cart-btn" aria-label="Shopping cart">🛒<span class="navbar__cart-badge">0</span></button>
+        <button class="btn--icon" id="rtl-toggle" aria-label="Switch to RTL">🌐</button>
+        <button class="btn--icon" id="theme-toggle" aria-label="Switch to dark mode">🌙</button>
+        <a href="login.html" class="btn btn--primary btn--sm">Login</a>
+        <div class="navbar__toggle" id="mobile-toggle" aria-label="Toggle menu" role="button" tabindex="0">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="home-classic.html" class="mobile-menu__link">Home Classic</a>
+    <a href="home-modern.html" class="mobile-menu__link">Home Modern</a>
+    <a href="about.html" class="mobile-menu__link">About</a>
+    <a href="services.html" class="mobile-menu__link">Services</a>
+    <a href="blog.html" class="mobile-menu__link active">Blog</a>
+    <a href="contact.html" class="mobile-menu__link">Contact</a>
+    <a href="pricing.html" class="mobile-menu__link">Pricing</a>
+    <a href="dashboard.html" class="mobile-menu__link">Dashboard</a>
+    <div class="mobile-menu__actions">
+      <a href="login.html" class="btn btn--primary btn--full">Login</a>
+    </div>
+  </div>
+
+  <main>
+    <!-- ==================== PAGE BANNER ==================== -->
+    <section class="page-banner">
+      <div class="page-banner__bg">
+        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=1920&q=80" alt="Perfect pour-over coffee" loading="eager">
+      </div>
+      <div class="page-banner__overlay"></div>
+      <div class="page-banner__content">
+        <h1>Blog Article</h1>
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="home-classic.html">Home</a>
+          <span class="separator">/</span>
+          <a href="blog.html">Blog</a>
+          <span class="separator">/</span>
+          <span>Pour-Over Guide</span>
+        </nav>
+      </div>
+    </section>
+
+    <!-- ==================== ARTICLE ==================== -->
+    <section class="section">
+      <div class="container">
+        <div class="article-header reveal">
+          <div class="article-header__meta">
+            <div class="article-header__author">
+              <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=96&q=80" alt="Sophie Chen">
+              <span><strong>Sophie Chen</strong></span>
+            </div>
+            <span>📅 March 28, 2026</span>
+            <span>⏱️ 5 min read</span>
+            <span class="badge badge--primary">Brewing Guides</span>
+          </div>
+          <h2 style="font-size:var(--fs-4xl);margin-bottom:var(--space-4)">The Art of the Perfect Pour-Over</h2>
+          <p class="lead" style="margin-bottom:0">Master the pour-over technique with our step-by-step guide. From water temperature to pour patterns, every detail matters for extracting the best flavors.</p>
+        </div>
+
+        <article class="article-content reveal">
+          <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=1200&q=80" alt="Barista preparing a pour-over coffee with precision" loading="lazy">
+
+          <p>The pour-over is one of the most rewarding brewing methods in specialty coffee. It gives you complete control over every variable — grind size, water temperature, pour rate, and timing — allowing you to extract the full flavor potential of any bean.</p>
+
+          <h2>What You'll Need</h2>
+          <ul>
+            <li>Pour-over dripper (Hario V60, Kalita Wave, or Chemex)</li>
+            <li>Paper or metal filter</li>
+            <li>Gooseneck kettle with temperature control</li>
+            <li>Burr grinder (hand or electric)</li>
+            <li>Digital scale (0.1g precision)</li>
+            <li>Fresh coffee beans (roasted within 2 weeks)</li>
+            <li>Timer</li>
+          </ul>
+
+          <h2>The Golden Ratio</h2>
+          <p>For most pour-over methods, we recommend starting with a <strong>1:16 coffee-to-water ratio</strong>. That's 15g of coffee to 240g (ml) of water. Adjust from there based on your taste preference — use more coffee for a stronger, richer cup, or more water for something lighter.</p>
+
+          <blockquote>
+            "The perfect pour-over isn't about following rules perfectly — it's about understanding the variables so you can adjust them to your personal taste." — Sophie Chen, Head Barista at Ember & Brew
+          </blockquote>
+
+          <h2>Step-by-Step Guide</h2>
+          <ol>
+            <li><strong>Heat your water</strong> to 200-205°F (93-96°C). If you don't have a thermometer, bring water to a boil and let it rest for 30 seconds.</li>
+            <li><strong>Grind your coffee</strong> to a medium-fine consistency, similar to table salt. For a V60, aim for a slightly finer grind; for a Chemex, go slightly coarser.</li>
+            <li><strong>Rinse the filter</strong> with hot water. This removes any paper taste and preheats your dripper and mug. Discard the rinse water.</li>
+            <li><strong>Add coffee</strong> to the filter and give it a gentle shake to level the bed. Place everything on your scale and tare to zero.</li>
+            <li><strong>The bloom:</strong> Start your timer and pour 30-45g of water in concentric circles, wetting all the grounds evenly. Wait 30-45 seconds as the coffee "blooms" and releases CO2.</li>
+            <li><strong>The pour:</strong> Begin your main pour in slow, steady concentric circles from the center outward. Avoid pouring directly on the filter paper. Pour in 3-4 stages, allowing the water to draw down slightly between pours.</li>
+            <li><strong>Target total brew time:</strong> 2:30-3:30 for a V60, 3:30-4:30 for a Chemex. If your brew is too fast, grind finer. Too slow? Go coarser.</li>
+          </ol>
+
+          <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=1200&q=80" alt="Close-up of pour-over brewing showing the spiral pouring pattern" loading="lazy">
+
+          <h2>Common Mistakes to Avoid</h2>
+          <h3>1. Using Stale Coffee</h3>
+          <p>Coffee is best enjoyed 7-21 days after roasting. Beyond that, the volatile aromatics that make pour-over so vibrant begin to fade. That's why all Ember & Brew subscription coffees arrive within days of roasting.</p>
+
+          <h3>2. Inconsistent Grind Size</h3>
+          <p>A blade grinder produces uneven particles, leading to both over- and under-extraction in the same cup. Invest in a burr grinder — even a hand-crank model like the Hario Skerton makes a dramatic difference.</p>
+
+          <h3>3. Pouring Too Fast</h3>
+          <p>Aggressive, fast pouring agitates the coffee bed too much and leads to channeling. Keep your pour gentle and controlled. A gooseneck kettle is essential for this precision.</p>
+
+          <h2>Our Recommended Coffees for Pour-Over</h2>
+          <p>Light to medium roasts really shine with the pour-over method. Here are our favorites from the current roster:</p>
+          <ul>
+            <li><strong>Ethiopian Yirgacheffe</strong> — Bright citrus, floral, and tea-like</li>
+            <li><strong>Colombian Supremo</strong> — Sweet caramel with nutty warmth</li>
+            <li><strong>Kenya Nyeri AA</strong> — Juicy blackcurrant with sparkling acidity</li>
+          </ul>
+
+          <p>Ready to perfect your pour-over? <a href="services.html" style="color:var(--color-primary);font-weight:600">Shop our beans →</a></p>
+        </article>
+
+        <!-- Share -->
+        <div class="article-share">
+          <span>Share this article:</span>
+          <button class="share-btn" aria-label="Share on Twitter">𝕏</button>
+          <button class="share-btn" aria-label="Share on Facebook">f</button>
+          <button class="share-btn" aria-label="Share on LinkedIn">in</button>
+          <button class="share-btn" aria-label="Copy link">🔗</button>
+        </div>
+
+        <!-- Related Posts -->
+        <div class="related-posts">
+          <h3 style="margin-bottom:var(--space-6)">Related Articles</h3>
+          <div class="grid grid--3" data-stagger="0.1">
+            <div class="card blog-card">
+              <div class="card__img">
+                <img src="https://images.unsplash.com/photo-1498804103079-a6351b050096?w=400&q=80" alt="Grind size guide" loading="lazy">
+              </div>
+              <div class="card__body">
+                <span class="card__category">Brewing Guides</span>
+                <h4 class="card__title" style="font-size:var(--fs-base)">Grind Size Matters: A Guide</h4>
+                <a href="blog-details.html" class="btn btn--ghost btn--sm">Read →</a>
+              </div>
+            </div>
+            <div class="card blog-card">
+              <div class="card__img">
+                <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=400&q=80" alt="Cold brew guide" loading="lazy">
+              </div>
+              <div class="card__body">
+                <span class="card__category">Recipes</span>
+                <h4 class="card__title" style="font-size:var(--fs-base)">Ultimate Cold Brew Guide</h4>
+                <a href="blog-details.html" class="btn btn--ghost btn--sm">Read →</a>
+              </div>
+            </div>
+            <div class="card blog-card">
+              <div class="card__img">
+                <img src="https://images.unsplash.com/photo-1504630083234-14187a9df0f5?w=400&q=80" alt="Ethiopia origin" loading="lazy">
+              </div>
+              <div class="card__body">
+                <span class="card__category">Origins</span>
+                <h4 class="card__title" style="font-size:var(--fs-base)">Ethiopia: Birthplace of Coffee</h4>
+                <a href="blog-details.html" class="btn btn--ghost btn--sm">Read →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="home-classic.html" class="navbar__brand">
+            <div class="navbar__brand-icon">E</div>
+            <div class="navbar__brand-text">Ember <span>&</span> Brew</div>
+          </a>
+          <p>Premium specialty coffee, roasted fresh daily. From our roastery to your cup — every sip tells a story.</p>
+          <div class="footer__socials">
+            <a href="#" aria-label="Facebook">f</a>
+            <a href="#" aria-label="Instagram">ig</a>
+            <a href="#" aria-label="Twitter">𝕏</a>
+            <a href="#" aria-label="YouTube">▶</a>
+          </div>
+        </div>
+        <div>
+          <h5 class="footer__heading">Quick Links</h5>
+          <ul class="footer__links">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Our Coffees</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="pricing.html">Subscriptions</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="footer__heading">Support</h5>
+          <ul class="footer__links">
+            <li><a href="contact.html">Help Center</a></li>
+            <li><a href="#">Shipping Info</a></li>
+            <li><a href="#">Returns & Refunds</a></li>
+            <li><a href="#">Track Order</a></li>
+            <li><a href="#">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer__newsletter">
+          <h5 class="footer__heading">Newsletter</h5>
+          <p>Join our community for updates & exclusive deals.</p>
+          <form class="footer__newsletter-form" aria-label="Footer newsletter">
+            <input type="email" placeholder="Your email" required aria-label="Email">
+            <button type="submit">→</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2026 Ember & Brew. All rights reserved.</span>
+        <div class="footer__bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Sitemap</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" aria-label="Back to top">↑</button>
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/animations.js"></script>
+</body>
+</html>

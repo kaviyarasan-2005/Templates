@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer Dashboard — Vintage Vinyl</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/dark-mode.css">
+  <link rel="stylesheet" href="../assets/css/rtl.css">
+  <style>
+    body { overflow: hidden; height: 100vh; }
+    .dashboard { display: flex; height: 100vh; background: var(--bg-primary); }
+
+    /* Sidebar */
+    .dash-sidebar {
+      width: var(--sidebar-width); background: #12122a;
+      border-right: 1px solid var(--border-color);
+      display: flex; flex-direction: column;
+      flex-shrink: 0; overflow-y: auto;
+    }
+    .dash-sidebar__logo {
+      padding: var(--space-6); display: flex; align-items: center; gap: var(--space-3);
+      text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .dash-sidebar__nav { flex: 1; padding: var(--space-4) var(--space-3); }
+    .dash-nav-link {
+      display: flex; align-items: center; gap: var(--space-3);
+      padding: var(--space-3) var(--space-4); border-radius: var(--radius-md);
+      font-size: var(--text-sm); color: rgba(255,255,255,0.5);
+      transition: all var(--transition-fast); text-decoration: none; margin-bottom: 2px;
+    }
+    .dash-nav-link:hover { background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.8); }
+    .dash-nav-link.active { background: rgba(255,215,0,0.1); color: var(--color-accent); }
+    .dash-nav-link .nav-icon { width: 20px; text-align: center; }
+
+    /* Main Content */
+    .dash-main { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+
+    /* Top Bar */
+    .dash-topbar {
+      height: 60px; padding: 0 var(--space-6);
+      display: flex; align-items: center; justify-content: space-between;
+      border-bottom: 1px solid var(--border-color); flex-shrink: 0;
+    }
+    .dash-topbar__left { display: flex; align-items: center; gap: var(--space-4); }
+    .dash-topbar__breadcrumb { font-size: var(--text-sm); color: var(--text-muted); }
+    .dash-topbar__breadcrumb span { color: var(--text-primary); }
+    .dash-topbar__right { display: flex; align-items: center; gap: var(--space-3); }
+    .dash-topbar__avatar {
+      width: 36px; height: 36px; border-radius: var(--radius-full); object-fit: cover;
+      border: 2px solid var(--color-accent);
+    }
+    
+    /* Role Switcher */
+    .role-switcher {
+      display: flex; background: rgba(255,255,255,0.05); border-radius: var(--radius-full);
+      padding: 4px; gap: 4px; border: 1px solid var(--border-color); margin-left: auto; margin-right: var(--space-4);
+    }
+    .role-switcher a {
+      padding: 4px 16px; border-radius: var(--radius-full); font-size: 12px; font-weight: 600;
+      color: var(--text-muted); text-decoration: none; transition: all 0.2s;
+    }
+    .role-switcher a.active { background: var(--color-primary); color: #fff; }
+    .role-switcher a:not(.active):hover { color: #fff; background: rgba(255,255,255,0.1); }
+
+    /* Content Area */
+    .dash-content { flex: 1; overflow-y: auto; padding: var(--space-6); }
+
+    /* Stat Cards */
+    .stat-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); margin-bottom: var(--space-6); }
+    .stat-card {
+      background: var(--bg-card); border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg); padding: var(--space-5);
+    }
+    .stat-card__label { font-size: var(--text-xs); color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: var(--space-2); }
+    .stat-card__value { font-family: var(--font-accent); font-size: var(--text-3xl); font-weight: 700; color: var(--text-primary); }
+
+    /* Wishlist & Order Grid */
+    .layout-grid {
+      display: grid; grid-template-columns: 2fr 1fr; gap: var(--space-4); margin-bottom: var(--space-6);
+    }
+    .panel {
+      background: var(--bg-card); border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg); padding: var(--space-5);
+    }
+    .panel__title { font-family: var(--font-heading); font-size: var(--text-lg); font-weight: 600; margin-bottom: var(--space-4); }
+
+    .order-item { display: flex; justify-content: space-between; align-items: center; padding: var(--space-3) 0; border-bottom: 1px solid rgba(255,255,255,0.03); }
+    .order-item:last-child { border-bottom: none; }
+    .order-item__left { display: flex; flex-direction: column; }
+    .order-item__title { font-size: var(--text-sm); font-weight: 500; }
+    .order-item__meta { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+    
+    .status-badge {
+      display: inline-flex; padding: 2px 10px; border-radius: var(--radius-full);
+      font-size: 11px; font-weight: 600;
+    }
+    .status-badge--success { background: rgba(46,139,87,0.15); color: var(--color-success); }
+    .status-badge--info { background: rgba(70,130,180,0.15); color: var(--color-info); }
+
+    /* Wishlist Items */
+    .wishlist-item { display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3) 0; border-bottom: 1px solid rgba(255,255,255,0.03); }
+    .wishlist-item:last-child { border: none; }
+    .wishlist-item__img { width: 48px; height: 48px; border-radius: var(--radius-md); object-fit: cover; flex-shrink: 0; }
+    .wishlist-item__details { flex: 1; }
+    .wishlist-item__name { font-size: var(--text-sm); font-weight: 500; }
+    .wishlist-item__artist { font-size: 12px; color: var(--text-muted); }
+    .wishlist-item__price { font-size: var(--text-sm); font-weight: 600; margin-left: auto; }
+
+    @media (max-width: 1024px) {
+      .dash-sidebar { display: none; }
+      .stat-cards { grid-template-columns: 1fr; }
+      .layout-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="dashboard">
+    <!-- Sidebar -->
+    <aside class="dash-sidebar">
+      <a href="../index.html" class="dash-sidebar__logo">
+        <div class="navbar__logo-icon" style="width:36px;height:36px;font-size:var(--text-base);">V</div>
+        <span style="font-family:var(--font-heading);font-size:var(--text-base);font-weight:700;color:#fff;">Vintage Vinyl</span>
+      </a>
+      <nav class="dash-sidebar__nav">
+        <a href="#" class="dash-nav-link active"><span class="nav-icon">👤</span> My Profile</a>
+        <a href="#" class="dash-nav-link"><span class="nav-icon">📦</span> My Orders</a>
+        <a href="#" class="dash-nav-link"><span class="nav-icon">❤️</span> Wishlist</a>
+        <a href="#" class="dash-nav-link"><span class="nav-icon">🎧</span> Listening Sessions</a>
+        <a href="#" class="dash-nav-link"><span class="nav-icon">⚙️</span> Account Settings</a>
+        <a href="login.html" class="dash-nav-link" style="margin-top:var(--space-6);"><span class="nav-icon">🚪</span> Logout</a>
+      </nav>
+    </aside>
+
+    <!-- Main -->
+    <div class="dash-main">
+      <header class="dash-topbar">
+        <div class="dash-topbar__left">
+          <span class="dash-topbar__breadcrumb">Dashboard / <span>Customer</span></span>
+        </div>
+        
+        <div class="role-switcher">
+          <a href="dashboard-customer.html" class="active">Customer View</a>
+          <a href="dashboard-admin.html">Admin View</a>
+        </div>
+
+        <div class="dash-topbar__right">
+          <button class="navbar__icon-btn" style="position:relative;" aria-label="Notifications">🔔</button>
+          <button class="navbar__icon-btn theme-toggle" aria-label="Toggle theme">☀️</button>
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" alt="Customer avatar" class="dash-topbar__avatar" width="36" height="36">
+        </div>
+      </header>
+
+      <div class="dash-content">
+        <h1 style="font-size:var(--text-2xl);margin-bottom:var(--space-1);">Welcome, James 🎵</h1>
+        <p style="color:var(--text-muted);margin-bottom:var(--space-6);">Manage your collection, tracking and wishlist from here.</p>
+
+        <!-- Stat Cards -->
+        <div class="stat-cards">
+          <div class="stat-card">
+            <div class="stat-card__label">Total Orders</div>
+            <div class="stat-card__value">14</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card__label">Wishlist Items</div>
+            <div class="stat-card__value">8</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card__label">Vinyl Points</div>
+            <div class="stat-card__value">450</div>
+          </div>
+        </div>
+
+        <!-- Panels -->
+        <div class="layout-grid">
+          <div class="panel">
+            <h2 class="panel__title">Recent Orders</h2>
+            <div class="order-list">
+              <div class="order-item">
+                <div class="order-item__left">
+                  <span class="order-item__title">Order #VV-2845</span>
+                  <span class="order-item__meta">Rumours, What's Going On · Apr 1, 2026</span>
+                </div>
+                <div>
+                  <span class="status-badge status-badge--info">Shipped</span>
+                  <span style="font-weight:600;margin-left:var(--space-3);">$84.98</span>
+                </div>
+              </div>
+              <div class="order-item">
+                <div class="order-item__left">
+                  <span class="order-item__title">Order #VV-2710</span>
+                  <span class="order-item__meta">Listening Station Booking · Mar 15, 2026</span>
+                </div>
+                <div>
+                  <span class="status-badge status-badge--success">Completed</span>
+                  <span style="font-weight:600;margin-left:var(--space-3);">$35.00</span>
+                </div>
+              </div>
+              <div class="order-item">
+                <div class="order-item__left">
+                  <span class="order-item__title">Order #VV-2655</span>
+                  <span class="order-item__meta">Abbey Road · Feb 28, 2026</span>
+                </div>
+                <div>
+                  <span class="status-badge status-badge--success">Completed</span>
+                  <span style="font-weight:600;margin-left:var(--space-3);">$42.99</span>
+                </div>
+              </div>
+            </div>
+            <div style="margin-top:var(--space-4);">
+              <a href="#" class="btn btn--secondary btn--sm">View All History</a>
+            </div>
+          </div>
+          
+          <div class="panel">
+            <h2 class="panel__title">Your Wishlist</h2>
+            <div class="wishlist">
+              <div class="wishlist-item">
+                <img src="https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?w=100&h=100&fit=crop" alt="" class="wishlist-item__img">
+                <div class="wishlist-item__details">
+                  <div class="wishlist-item__name">Kind of Blue</div>
+                  <div class="wishlist-item__artist">Miles Davis</div>
+                </div>
+                <div class="wishlist-item__price">$34.99</div>
+              </div>
+              <div class="wishlist-item">
+                <img src="https://images.unsplash.com/photo-1603048588665-791ca8aea617?w=100&h=100&fit=crop" alt="" class="wishlist-item__img">
+                <div class="wishlist-item__details">
+                  <div class="wishlist-item__name">Dark Side of the Moon</div>
+                  <div class="wishlist-item__artist">Pink Floyd</div>
+                </div>
+                <div class="wishlist-item__price">$249.99</div>
+              </div>
+            </div>
+            <div style="margin-top:var(--space-4);">
+              <a href="#" class="btn btn--secondary btn--sm btn--full" style="text-align:center;">Browse Shop</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <script src="../assets/js/theme-switcher.js"></script>
+</body>
+</html>

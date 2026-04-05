@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Services — Ember & Brew | Coffee Roasting, Cafe & Store</title>
+  <meta name="description" content="Explore Ember & Brew's services: specialty roasting, cafe experiences, online store, wholesale partnerships, and private cupping events.">
+  <meta property="og:title" content="Services — Ember & Brew">
+  <meta property="og:description" content="Specialty roasting, cafe experiences, and online coffee delivery.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://emberandbrew.com/services">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/dark-mode.css">
+  <link rel="stylesheet" href="../assets/css/animations.css">
+  <link rel="stylesheet" href="../assets/css/rtl.css">
+</head>
+<body>
+
+  <!-- ==================== NAVBAR ==================== -->
+  <nav class="navbar" id="main-navbar" role="navigation" aria-label="Main navigation">
+    <div class="navbar__inner">
+      <a href="home-classic.html" class="navbar__brand" aria-label="Ember & Brew Home">
+        <div class="navbar__brand-icon">E</div>
+        <div class="navbar__brand-text">Ember <span>&</span> Brew</div>
+      </a>
+      <div class="navbar__menu">
+        <ul class="navbar__links">
+          <li class="navbar__dropdown">
+            <a href="#" class="navbar__link navbar__dropdown-toggle">Home
+              <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </a>
+            <div class="navbar__dropdown-menu">
+              <a href="home-classic.html">Classic Experience</a>
+              <a href="home-modern.html">Modern Experience</a>
+            </div>
+          </li>
+          <li><a href="about.html" class="navbar__link">About</a></li>
+          <li><a href="services.html" class="navbar__link">Services</a></li>
+          <li><a href="blog.html" class="navbar__link">Blog</a></li>
+          <li><a href="contact.html" class="navbar__link">Contact</a></li>
+          <li><a href="pricing.html" class="navbar__link">Pricing</a></li>
+          <li><a href="dashboard.html" class="navbar__link">Dashboard</a></li>
+        </ul>
+      </div>
+      <div class="navbar__actions">
+        <button class="btn--icon navbar__cart" id="cart-btn" aria-label="Shopping cart">🛒<span class="navbar__cart-badge">0</span></button>
+        <button class="btn--icon" id="rtl-toggle" aria-label="Switch to RTL">🌐</button>
+        <button class="btn--icon" id="theme-toggle" aria-label="Switch to dark mode">🌙</button>
+        <a href="login.html" class="btn btn--primary btn--sm">Login</a>
+        <div class="navbar__toggle" id="mobile-toggle" aria-label="Toggle menu" role="button" tabindex="0">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="home-classic.html" class="mobile-menu__link">Home Classic</a>
+    <a href="home-modern.html" class="mobile-menu__link">Home Modern</a>
+    <a href="about.html" class="mobile-menu__link">About</a>
+    <a href="services.html" class="mobile-menu__link active">Services</a>
+    <a href="blog.html" class="mobile-menu__link">Blog</a>
+    <a href="contact.html" class="mobile-menu__link">Contact</a>
+    <a href="pricing.html" class="mobile-menu__link">Pricing</a>
+    <a href="dashboard.html" class="mobile-menu__link">Dashboard</a>
+    <div class="mobile-menu__actions">
+      <a href="login.html" class="btn btn--primary btn--full">Login</a>
+    </div>
+  </div>
+
+  <main>
+    <!-- ==================== PAGE BANNER ==================== -->
+    <section class="page-banner">
+      <div class="page-banner__bg">
+        <img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=1920&q=80" alt="Coffee beans close-up" loading="eager">
+      </div>
+      <div class="page-banner__overlay"></div>
+      <div class="page-banner__content">
+        <h1>Our Services</h1>
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="home-classic.html">Home</a>
+          <span class="separator">/</span>
+          <span>Services</span>
+        </nav>
+      </div>
+    </section>
+
+    <!-- ==================== ALL SERVICES ==================== -->
+    <section class="section" id="all-services">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-subtitle">What We Offer</span>
+          <h2>Premium Coffee Services</h2>
+          <p>From bean sourcing to your cup, we cover every step of the specialty coffee journey.</p>
+        </div>
+
+        <div class="grid grid--3" data-stagger="0.12">
+          <!-- Service 1 -->
+          <div class="card service-card" id="specialty-roasting">
+            <div class="service-card__icon">☕</div>
+            <h4>Specialty Roasting</h4>
+            <p class="card__text">Small-batch roasting of single-origin and blend coffees using our precision Probat drum roaster. Each profile is calibrated to highlight the bean's unique characteristics.</p>
+            <a href="service-details.html#roasting" class="btn btn--ghost btn--sm">Learn More →</a>
+          </div>
+
+          <!-- Service 2 -->
+          <div class="card service-card" id="cafe-experience">
+            <div class="service-card__icon">🏪</div>
+            <h4>Cafe Experience</h4>
+            <p class="card__text">Visit our cozy cafe for hand-brewed pour-overs, perfectly pulled espressos, creamy lattes, and freshly baked pastries in a warm, inviting atmosphere.</p>
+            <a href="service-details.html#cafe" class="btn btn--ghost btn--sm">Learn More →</a>
+          </div>
+
+          <!-- Service 3 -->
+          <div class="card service-card" id="online-store">
+            <div class="service-card__icon">📦</div>
+            <h4>Online Store & Subscriptions</h4>
+            <p class="card__text">Fresh-roasted coffee delivered to your door. Choose one-time orders or subscribe for weekly & monthly deliveries with free shipping on all plans.</p>
+            <a href="pricing.html" class="btn btn--ghost btn--sm">View Plans →</a>
+          </div>
+
+          <!-- Service 4 -->
+          <div class="card service-card" id="wholesale">
+            <div class="service-card__icon">🤝</div>
+            <h4>Wholesale Partnerships</h4>
+            <p class="card__text">Partner with us for your cafe, restaurant, or office. Custom blends, competitive pricing, equipment support, and barista training included.</p>
+            <a href="service-details.html#wholesale" class="btn btn--ghost btn--sm">Learn More →</a>
+          </div>
+
+          <!-- Service 5 -->
+          <div class="card service-card" id="cupping-events">
+            <div class="service-card__icon">🍷</div>
+            <h4>Cupping Events & Workshops</h4>
+            <p class="card__text">Join our monthly cupping sessions and brewing workshops. Learn to taste like a professional Q-grader and perfect your home brewing technique.</p>
+            <a href="service-details.html#events" class="btn btn--ghost btn--sm">Learn More →</a>
+          </div>
+
+          <!-- Service 6 -->
+          <div class="card service-card" id="private-label">
+            <div class="service-card__icon">🏷️</div>
+            <h4>Private Label Coffee</h4>
+            <p class="card__text">Create your own branded coffee line. We handle sourcing, roasting, packaging design, and fulfillment —you bring the brand vision.</p>
+            <a href="service-details.html#private-label" class="btn btn--ghost btn--sm">Learn More →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== FEATURED PRODUCTS ==================== -->
+    <section class="section" style="background:var(--color-bg-secondary)">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-subtitle">Our Collection</span>
+          <h2>Shop Our Coffees</h2>
+          <p>Fresh-roasted weekly, shipped within 48 hours of roasting.</p>
+        </div>
+
+        <div class="grid grid--4" data-stagger="0.1">
+          <div class="card product-card">
+            <div class="card__img">
+              <img src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=600&q=80" alt="Ethiopian Yirgacheffe coffee beans" loading="lazy">
+              <span class="card__badge">New Harvest</span>
+            </div>
+            <div class="card__body">
+              <span class="card__category">Single Origin</span>
+              <h4 class="card__title">Ethiopian Yirgacheffe</h4>
+              <p class="card__text">Bright citrus notes with a floral aroma and silky body.</p>
+              <div class="card__price">$18.99 <span class="original">$22.00</span></div>
+              <div class="card__actions"><button class="btn btn--primary btn--sm btn--full" onclick="updateCart(1)">Add to Cart</button></div>
+            </div>
+            <div class="card__footer">
+              <div class="card__rating">★★★★★ <span>(42)</span></div>
+              <span class="badge badge--success">In Stock</span>
+            </div>
+          </div>
+
+          <div class="card product-card">
+            <div class="card__img">
+              <img src="https://images.unsplash.com/photo-1587734195503-904fca47e0e9?w=600&q=80" alt="Colombian Supremo coffee" loading="lazy">
+            </div>
+            <div class="card__body">
+              <span class="card__category">Single Origin</span>
+              <h4 class="card__title">Colombian Supremo</h4>
+              <p class="card__text">Rich caramel sweetness with nutty undertones.</p>
+              <div class="card__price">$16.99</div>
+              <div class="card__actions"><button class="btn btn--primary btn--sm btn--full" onclick="updateCart(1)">Add to Cart</button></div>
+            </div>
+            <div class="card__footer">
+              <div class="card__rating">★★★★★ <span>(67)</span></div>
+              <span class="badge badge--success">In Stock</span>
+            </div>
+          </div>
+
+          <div class="card product-card">
+            <div class="card__img">
+              <img src="https://images.unsplash.com/photo-1611854779393-1b2da9d400fe?w=600&q=80" alt="Midnight Ritual dark roast blend" loading="lazy">
+              <span class="card__badge">Bestseller</span>
+            </div>
+            <div class="card__body">
+              <span class="card__category">House Blend</span>
+              <h4 class="card__title">Midnight Ritual</h4>
+              <p class="card__text">Bold dark chocolate and smoky espresso tones.</p>
+              <div class="card__price">$19.99</div>
+              <div class="card__actions"><button class="btn btn--primary btn--sm btn--full" onclick="updateCart(1)">Add to Cart</button></div>
+            </div>
+            <div class="card__footer">
+              <div class="card__rating">★★★★★ <span>(89)</span></div>
+              <span class="badge badge--success">In Stock</span>
+            </div>
+          </div>
+
+          <div class="card product-card">
+            <div class="card__img">
+              <img src="https://images.unsplash.com/photo-1610889556528-9a770e32642f?w=600&q=80" alt="Guatemala Antigua premium" loading="lazy">
+            </div>
+            <div class="card__body">
+              <span class="card__category">Limited Edition</span>
+              <h4 class="card__title">Guatemala Antigua</h4>
+              <p class="card__text">Spicy complexity with cocoa and apricot finish.</p>
+              <div class="card__price">$24.99 <span class="original">$29.00</span></div>
+              <div class="card__actions"><button class="btn btn--primary btn--sm btn--full" onclick="updateCart(1)">Add to Cart</button></div>
+            </div>
+            <div class="card__footer">
+              <div class="card__rating">★★★★☆ <span>(31)</span></div>
+              <span class="badge badge--warning">Low Stock</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== CTA ==================== -->
+    <section class="newsletter" id="cta">
+      <div class="container">
+        <div class="reveal">
+          <h2>Need a Custom Solution?</h2>
+          <p>Whether it's wholesale, private label, or corporate catering — let's craft the perfect coffee program for you.</p>
+          <div style="display:flex;gap:var(--space-4);justify-content:center;flex-wrap:wrap">
+            <a href="contact.html" class="btn btn--accent btn--lg">Get in Touch</a>
+            <a href="pricing.html" class="btn btn--secondary btn--lg" style="color:#fff;border-color:rgba(255,255,255,.4)">View Pricing</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="home-classic.html" class="navbar__brand">
+            <div class="navbar__brand-icon">E</div>
+            <div class="navbar__brand-text">Ember <span>&</span> Brew</div>
+          </a>
+          <p>Premium specialty coffee, roasted fresh daily. From our roastery to your cup — every sip tells a story.</p>
+          <div class="footer__socials">
+            <a href="#" aria-label="Facebook">f</a>
+            <a href="#" aria-label="Instagram">ig</a>
+            <a href="#" aria-label="Twitter">𝕏</a>
+            <a href="#" aria-label="YouTube">▶</a>
+          </div>
+        </div>
+        <div>
+          <h5 class="footer__heading">Quick Links</h5>
+          <ul class="footer__links">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Our Coffees</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="pricing.html">Subscriptions</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="footer__heading">Support</h5>
+          <ul class="footer__links">
+            <li><a href="contact.html">Help Center</a></li>
+            <li><a href="#">Shipping Info</a></li>
+            <li><a href="#">Returns & Refunds</a></li>
+            <li><a href="#">Track Order</a></li>
+            <li><a href="#">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer__newsletter">
+          <h5 class="footer__heading">Newsletter</h5>
+          <p>Join our community for updates & exclusive deals.</p>
+          <form class="footer__newsletter-form" aria-label="Footer newsletter">
+            <input type="email" placeholder="Your email" required aria-label="Email">
+            <button type="submit">→</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2026 Ember & Brew. All rights reserved.</span>
+        <div class="footer__bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Sitemap</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" aria-label="Back to top">↑</button>
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/animations.js"></script>
+</body>
+</html>

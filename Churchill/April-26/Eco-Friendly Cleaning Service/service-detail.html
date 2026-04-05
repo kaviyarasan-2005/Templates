@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Service Details — EcoClean Pro</title>
+  <meta name="description" content="Detailed information about EcoClean Pro's eco-friendly cleaning service offerings.">
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" media="print" href="assets/css/print.css">
+  <style>
+    .detail-grid{display:grid;grid-template-columns:1fr 360px;gap:var(--space-10);align-items:start;}
+    @media(max-width:1024px){.detail-grid{grid-template-columns:1fr;}}
+    .scope-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-4);}
+    @media(max-width:640px){.scope-grid{grid-template-columns:1fr;}}
+    .scope-item{display:flex;align-items:flex-start;gap:var(--space-3);padding:var(--space-4);background:var(--bg-secondary);border-radius:var(--radius-lg);}
+    .scope-icon{width:24px;height:24px;color:var(--success);flex-shrink:0;margin-top:2px;}
+    .sticky-cta{position:sticky;top:calc(var(--nav-height) + var(--space-4));background:var(--bg-card);border:1px solid var(--border-light);border-radius:var(--radius-xl);padding:var(--space-6);text-align:center;}
+    .sticky-cta .pricing-price{margin-bottom:var(--space-2);}
+  </style>
+</head>
+<body class="has-navbar">
+  <a href="#main-content" class="skip-to-content sr-only">Skip to content</a>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="main-nav" aria-label="Main navigation">
+    <div class="container">
+      <a href="index.html" class="nav-brand"><span class="nav-brand-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 8C8 10 5.9 16.17 3.82 21.34L3 23l2-1c4-2 7-4 9-8 2 1 4 1 6-1-2-4-6-8-10-8z" fill="currentColor" stroke="none" opacity="0.9"/><path d="M5.5 21.5L10 15" stroke-linecap="round"/></svg></span><span>EcoClean Pro</span></a>
+      <div class="nav-menu" id="nav-menu">
+        <div class="nav-dropdown" id="home-dropdown"><a href="#" class="nav-link nav-dropdown-toggle" aria-expanded="false">Home<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></a><div class="nav-dropdown-menu" role="menu"><a href="home-general.html" class="nav-dropdown-item" role="menuitem"><span class="dropdown-icon">🏠</span><span class="dropdown-text"><span class="dropdown-label">General Services</span><span class="dropdown-desc">Full-service cleaning</span></span></a><a href="home-niche.html" class="nav-dropdown-item" role="menuitem"><span class="dropdown-icon">🌿</span><span class="dropdown-text"><span class="dropdown-label">Eco Specialist</span><span class="dropdown-desc">Premium eco-focused</span></span></a></div></div>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="services.html" class="nav-link active">Services</a>
+        <a href="blog.html" class="nav-link">Blog</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="pricing.html" class="nav-link">Pricing</a>
+        <a href="dashboard.html" class="nav-link">Dashboard</a>
+      </div>
+      <div class="nav-actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode"><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg></button>
+        <a href="login.html" class="btn btn-primary btn-sm">Login</a>
+        <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main-content">
+    <!-- Hero -->
+    <section class="hero" style="min-height:45vh;">
+      <div class="hero-bg"><img id="svc-hero-img" src="assets/images/services/residential.png" alt="" loading="eager" width="1920" height="1080"></div>
+      <div class="hero-overlay" style="background:linear-gradient(135deg,rgba(15,26,11,0.88) 0%,rgba(30,58,95,0.65) 100%);"></div>
+      <div class="container">
+        <div class="hero-content" style="color:#fff;">
+          <span class="section-label anim-fade-up" style="color:var(--secondary-sage);">🌿 Service Detail</span>
+          <h1 class="hero-title anim-fade-up" style="transition-delay:100ms" id="svc-title">Residential Cleaning</h1>
+          <p class="hero-subtitle anim-fade-up" style="transition-delay:200ms" id="svc-subtitle">Complete home cleaning with plant-based, non-toxic products. Every room, every corner, every visit.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Detail Content -->
+    <section>
+      <div class="container">
+        <div class="detail-grid">
+          <div>
+            <h2 class="anim-fade-up" style="margin-bottom:var(--space-6);">What's Included</h2>
+            <div class="scope-grid stagger-children anim-fade-up">
+              <div class="scope-item"><svg class="scope-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><div><strong>Kitchen Deep Clean</strong><p style="font-size:0.875rem;margin:0;color:var(--text-muted);">Counters, sink, appliance exteriors, floor</p></div></div>
+              <div class="scope-item"><svg class="scope-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><div><strong>Bathroom Sanitization</strong><p style="font-size:0.875rem;margin:0;color:var(--text-muted);">Toilet, shower, tub, mirror, floor</p></div></div>
+              <div class="scope-item"><svg class="scope-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><div><strong>Living Areas</strong><p style="font-size:0.875rem;margin:0;color:var(--text-muted);">Vacuum, dust, organize surfaces</p></div></div>
+              <div class="scope-item"><svg class="scope-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><div><strong>Bedrooms</strong><p style="font-size:0.875rem;margin:0;color:var(--text-muted);">Vacuum, dust, make beds (linens provided by client)</p></div></div>
+              <div class="scope-item"><svg class="scope-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><div><strong>Floor Care</strong><p style="font-size:0.875rem;margin:0;color:var(--text-muted);">Vacuum carpets, mop hardwood/tile</p></div></div>
+              <div class="scope-item"><svg class="scope-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><div><strong>Eco Products Only</strong><p style="font-size:0.875rem;margin:0;color:var(--text-muted);">100% plant-based, non-toxic, biodegradable</p></div></div>
+            </div>
+
+            <!-- FAQ -->
+            <h2 style="margin:var(--space-12) 0 var(--space-6);">Frequently Asked Questions</h2>
+            <div data-single-open>
+              <div class="accordion-item active anim-fade-up">
+                <div class="accordion-header"><span>How long does a cleaning session take?</span><svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+                <div class="accordion-content" style="max-height:200px;"><div class="accordion-body">A standard home clean takes 2-3 hours depending on size. Deep cleans may take 4-5 hours. We'll give you an accurate estimate during booking.</div></div>
+              </div>
+              <div class="accordion-item anim-fade-up">
+                <div class="accordion-header"><span>Do I need to be home during cleaning?</span><svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+                <div class="accordion-content"><div class="accordion-body">No. Many clients provide a key or door code. All our cleaners are background-checked and insured for your peace of mind.</div></div>
+              </div>
+              <div class="accordion-item anim-fade-up">
+                <div class="accordion-header"><span>Are your products safe for pets?</span><svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+                <div class="accordion-content"><div class="accordion-body">Absolutely. All our products are certified pet-safe, child-safe, and hypoallergenic. No harsh chemicals ever.</div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sticky CTA Sidebar -->
+          <div class="sticky-cta">
+            <h3 style="margin-bottom:var(--space-2);">Book This Service</h3>
+            <div class="pricing-price"><span class="currency">$</span>89<span class="period">/visit</span></div>
+            <p class="pricing-desc">Starting price for standard home</p>
+            <a href="contact.html" class="btn btn-accent w-full btn-lg" style="margin-bottom:var(--space-4);">Get Free Quote</a>
+            <a href="pricing.html" class="btn btn-ghost w-full btn-sm">Compare Plans</a>
+            <div class="divider" style="margin:var(--space-5) 0;"></div>
+            <div style="text-align:start;display:flex;flex-direction:column;gap:var(--space-3);font-size:0.875rem;color:var(--text-secondary);">
+              <div style="display:flex;align-items:center;gap:var(--space-2);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>100% Satisfaction Guarantee</div>
+              <div style="display:flex;align-items:center;gap:var(--space-2);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Background-Checked Team</div>
+              <div style="display:flex;align-items:center;gap:var(--space-2);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>No Contracts Required</div>
+              <div style="display:flex;align-items:center;gap:var(--space-2);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Eco-Certified Products</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" id="main-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand"><a href="index.html" class="nav-brand" style="color:#fff"><span class="nav-brand-icon" style="background:rgba(255,255,255,0.15)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 8C8 10 5.9 16.17 3.82 21.34L3 23l2-1c4-2 7-4 9-8 2 1 4 1 6-1-2-4-6-8-10-8z" fill="currentColor" stroke="none" opacity="0.9"/><path d="M5.5 21.5L10 15" stroke-linecap="round"/></svg></span><span>EcoClean Pro</span></a><p>Eco-friendly cleaning since 2011.</p></div>
+        <div><h4 class="footer-heading">Services</h4><div class="footer-links"><a href="service-detail.html?service=residential" class="footer-link">Residential</a><a href="service-detail.html?service=commercial" class="footer-link">Commercial</a><a href="service-detail.html?service=deep-clean" class="footer-link">Deep Cleaning</a></div></div>
+        <div><h4 class="footer-heading">Company</h4><div class="footer-links"><a href="about.html" class="footer-link">About</a><a href="blog.html" class="footer-link">Blog</a><a href="contact.html" class="footer-link">Contact</a></div></div>
+        <div><h4 class="footer-heading">Contact</h4><div class="footer-links"><span class="footer-link">Portland, OR 97201</span><a href="tel:+15551234567" class="footer-link">+1 (555) 123-4567</a></div></div>
+      </div>
+      <div class="footer-bottom"><p>&copy; 2026 EcoClean Pro.</p><div class="footer-bottom-links"><a href="#">Privacy</a><a href="#">Terms</a></div></div>
+    </div>
+  </footer>
+
+  <button class="scroll-top-btn" aria-label="Scroll to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg></button>
+
+  <script src="assets/js/utils.js"></script>
+  <script src="assets/js/animations.js"></script>
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/forms.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    const services = {
+      residential: { title:'Residential Cleaning', subtitle:'Complete home cleaning with plant-based, non-toxic products. Every room, every corner, every visit.', img:'assets/images/services/residential.png', price:'89' },
+      commercial: { title:'Commercial Cleaning', subtitle:'LEED-compliant workspace cleaning with real-time reporting and flexible scheduling.', img:'assets/images/services/commercial.png', price:'299' },
+      'deep-clean': { title:'Deep Cleaning', subtitle:'Intensive floor-to-ceiling cleaning for move-ins, renovations, or seasonal refresh.', img:'assets/images/services/deep-clean.png', price:'199' },
+      'green-sanitize': { title:'Green Sanitization', subtitle:'Hospital-grade disinfection using plant-based antimicrobials for healthcare and high-traffic areas.', img:'assets/images/services/green-sanitize.png', price:'249' },
+      move: { title:'Move-In / Move-Out Cleaning', subtitle:'Get your deposit back or start fresh in your new home with thorough cleaning.', img:'assets/images/services/move-clean.png', price:'179' },
+      construction: { title:'Post-Construction Cleanup', subtitle:'Specialized dust and debris removal for new builds and renovations.', img:'assets/images/services/before-after.png', price:'349' }
+    };
+    const svc = Utils.getParam('service') || 'residential';
+    const data = services[svc] || services.residential;
+    document.getElementById('svc-title').textContent = data.title;
+    document.getElementById('svc-subtitle').textContent = data.subtitle;
+    document.getElementById('svc-hero-img').src = data.img;
+    document.title = data.title + ' — EcoClean Pro';
+  </script>
+</body>
+</html>

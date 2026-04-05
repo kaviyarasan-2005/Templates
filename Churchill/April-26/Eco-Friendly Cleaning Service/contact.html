@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us — EcoClean Pro</title>
+  <meta name="description" content="Get in touch with EcoClean Pro for a free quote. Multi-step booking form, phone, email, and office location.">
+  <link rel="canonical" href="https://ecocleanpro.com/contact.html">
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" media="print" href="assets/css/print.css">
+  <style>
+    .contact-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:var(--space-10);align-items:start;}
+    @media(max-width:1024px){.contact-grid{grid-template-columns:1fr;}}
+    .contact-card{display:flex;align-items:center;gap:var(--space-4);padding:var(--space-5);background:var(--bg-card);border:1px solid var(--border-light);border-radius:var(--radius-lg);transition:all var(--transition-fast);}
+    .contact-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-sm);}
+    .contact-icon{width:48px;height:48px;background:rgba(45,80,22,0.08);border-radius:var(--radius-lg);display:flex;align-items:center;justify-content:center;color:var(--primary-green);flex-shrink:0;}
+    .contact-card h4{font-size:0.9375rem;font-weight:600;margin-bottom:0.125rem;}
+    .contact-card p{font-size:0.875rem;color:var(--text-muted);margin:0;}
+    .status-dot{width:8px;height:8px;border-radius:50%;background:var(--success);display:inline-block;animation:pulse 2s infinite;}
+    .map-placeholder{width:100%;height:300px;background:var(--bg-secondary);border-radius:var(--radius-xl);display:flex;align-items:center;justify-content:center;color:var(--text-muted);border:1px solid var(--border-light);margin-top:var(--space-6);}
+  </style>
+</head>
+<body class="has-navbar">
+  <a href="#main-content" class="skip-to-content sr-only">Skip to content</a>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="main-nav" aria-label="Main navigation">
+    <div class="container">
+      <a href="index.html" class="nav-brand" aria-label="EcoClean Pro Home"><span class="nav-brand-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 8C8 10 5.9 16.17 3.82 21.34L3 23l2-1c4-2 7-4 9-8 2 1 4 1 6-1-2-4-6-8-10-8z" fill="currentColor" stroke="none" opacity="0.9"/><path d="M5.5 21.5L10 15" stroke-linecap="round"/></svg></span><span>EcoClean Pro</span></a>
+      <div class="nav-menu" id="nav-menu">
+        <div class="nav-dropdown" id="home-dropdown"><a href="#" class="nav-link nav-dropdown-toggle" aria-expanded="false">Home<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></a><div class="nav-dropdown-menu" role="menu"><a href="home-general.html" class="nav-dropdown-item" role="menuitem"><span class="dropdown-icon">🏠</span><span class="dropdown-text"><span class="dropdown-label">General Services</span><span class="dropdown-desc">Full-service cleaning</span></span></a><a href="home-niche.html" class="nav-dropdown-item" role="menuitem"><span class="dropdown-icon">🌿</span><span class="dropdown-text"><span class="dropdown-label">Eco Specialist</span><span class="dropdown-desc">Premium eco-focused</span></span></a></div></div>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="blog.html" class="nav-link">Blog</a>
+        <a href="contact.html" class="nav-link active">Contact</a>
+        <a href="pricing.html" class="nav-link">Pricing</a>
+        <a href="dashboard.html" class="nav-link">Dashboard</a>
+      </div>
+      <div class="nav-actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode"><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg></button>
+        <button class="lang-toggle btn btn-ghost btn-icon" id="dir-toggle" aria-label="Toggle RTL/LTR" title="Toggle RTL/LTR" style="padding:4px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></button>
+        <a href="login.html" class="btn btn-primary btn-sm">Login</a>
+        <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main-content">
+    <!-- HERO -->
+    <section class="hero" style="min-height:45vh;">
+      <div class="hero-bg"><img src="assets/images/hero/contact-hero.png" alt="" loading="eager" width="1920" height="1080"></div>
+      <div class="hero-overlay" style="background:linear-gradient(135deg,rgba(15,26,11,0.88) 0%,rgba(30,58,95,0.65) 100%);"></div>
+      <div class="container">
+        <div class="hero-content" style="color:#fff;text-align:center;max-width:720px;margin:0 auto;">
+          <span class="section-label anim-fade-up" style="color:var(--secondary-sage);justify-content:center;">📬 Get In Touch</span>
+          <h1 class="hero-title anim-fade-up" style="transition-delay:100ms">Contact Us</h1>
+          <p class="hero-subtitle anim-fade-up" style="transition-delay:200ms;text-align:center;">Ready for a cleaner, greener space? Reach out for a free quote or any questions.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT FORM + INFO -->
+    <section>
+      <div class="container">
+        <div class="contact-grid">
+          <!-- Left: Info Cards -->
+          <div>
+            <div style="display:flex;flex-direction:column;gap:var(--space-4);margin-bottom:var(--space-8);">
+              <div class="contact-card anim-fade-up">
+                <div class="contact-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+                <div><h4>Phone</h4><p>+1 (555) 123-4567</p></div>
+              </div>
+              <div class="contact-card anim-fade-up">
+                <div class="contact-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg></div>
+                <div><h4>Email</h4><p>hello@ecocleanpro.com</p></div>
+              </div>
+              <div class="contact-card anim-fade-up">
+                <div class="contact-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+                <div><h4>Address</h4><p>123 Green Valley Drive, Portland, OR 97201</p></div>
+              </div>
+              <div class="contact-card anim-fade-up">
+                <div class="contact-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+                <div><h4>Office Hours</h4><p><span class="status-dot"></span> Open Now · Mon-Sat 7am–7pm</p></div>
+              </div>
+            </div>
+            <div class="map-placeholder anim-fade-up">
+              <div style="text-align:center;">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--text-light);margin-bottom:var(--space-2);"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <p style="font-size:0.875rem;">Interactive map loads here<br><span style="font-size:0.75rem;">Google Maps / Mapbox integration</span></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Multi-Step Form -->
+          <div class="card anim-fade-up" style="padding:var(--space-8);" data-multi-step>
+            <h2 style="margin-bottom:var(--space-2);">Get Your Free Quote</h2>
+            <p style="font-size:0.875rem;color:var(--text-muted);margin-bottom:var(--space-6);">Fill out the form below and we'll get back to you within 24 hours.</p>
+
+            <div class="progress-steps" style="margin-bottom:var(--space-8);">
+              <div class="progress-step active"><div class="progress-step-circle">1</div><div class="progress-step-line"></div></div>
+              <div class="progress-step"><div class="progress-step-circle">2</div><div class="progress-step-line"></div></div>
+              <div class="progress-step"><div class="progress-step-circle">3</div></div>
+            </div>
+
+            <form data-validate-form id="contact-form">
+              <!-- Step 1: Service -->
+              <div class="step-panel">
+                <h3 style="font-size:1.125rem;margin-bottom:var(--space-4);">Select Service</h3>
+                <div class="form-group">
+                  <label class="form-label" for="service-select">Service Type</label>
+                  <select class="form-input form-select" id="service-select" data-validate="required">
+                    <option value="">Choose a service...</option>
+                    <option value="residential">Residential Cleaning</option>
+                    <option value="commercial">Commercial Cleaning</option>
+                    <option value="deep-clean">Deep Cleaning</option>
+                    <option value="sanitization">Green Sanitization</option>
+                    <option value="move">Move-In/Out</option>
+                    <option value="construction">Post-Construction</option>
+                  </select>
+                  <div class="form-error">Please select a service</div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="frequency">Frequency</label>
+                  <select class="form-input form-select" id="frequency">
+                    <option value="one-time">One-Time</option>
+                    <option value="weekly">Weekly</option>
+                    <option value="biweekly">Bi-Weekly</option>
+                    <option value="monthly">Monthly</option>
+                  </select>
+                </div>
+                <button type="button" class="btn btn-primary w-full step-next">Next Step</button>
+              </div>
+
+              <!-- Step 2: Contact Info -->
+              <div class="step-panel" style="display:none;">
+                <h3 style="font-size:1.125rem;margin-bottom:var(--space-4);">Your Information</h3>
+                <div class="form-group">
+                  <label class="form-label" for="contact-name">Full Name</label>
+                  <input type="text" class="form-input" id="contact-name" placeholder="John Doe" data-validate="required|min:2">
+                  <div class="form-error"></div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="contact-email">Email</label>
+                  <input type="email" class="form-input" id="contact-email" placeholder="john@example.com" data-validate="required|email">
+                  <div class="form-error"></div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="contact-phone">Phone</label>
+                  <input type="tel" class="form-input" id="contact-phone" placeholder="+1 (555) 000-0000" data-validate="required|phone">
+                  <div class="form-error"></div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="contact-msg">Message (Optional)</label>
+                  <textarea class="form-input" id="contact-msg" placeholder="Tell us about your space..." rows="3"></textarea>
+                </div>
+                <div style="display:flex;gap:var(--space-3);">
+                  <button type="button" class="btn btn-ghost step-prev" style="flex:0 0 auto;">Back</button>
+                  <button type="button" class="btn btn-primary step-next" style="flex:1;">Next Step</button>
+                </div>
+              </div>
+
+              <!-- Step 3: Confirmation -->
+              <div class="step-panel" style="display:none;">
+                <div style="text-align:center;padding:var(--space-6) 0;">
+                  <div style="width:64px;height:64px;margin:0 auto var(--space-4);background:rgba(45,138,78,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+                  </div>
+                  <h3 style="margin-bottom:var(--space-2);">Almost There!</h3>
+                  <p style="color:var(--text-muted);font-size:0.9375rem;margin-bottom:var(--space-6);">Review your information and submit your quote request.</p>
+                  <div style="display:flex;gap:var(--space-3);">
+                    <button type="button" class="btn btn-ghost step-prev" style="flex:0 0 auto;">Back</button>
+                    <button type="submit" class="btn btn-accent" style="flex:1;">Submit Request</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" id="main-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand"><a href="index.html" class="nav-brand" style="color:#fff"><span class="nav-brand-icon" style="background:rgba(255,255,255,0.15)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 8C8 10 5.9 16.17 3.82 21.34L3 23l2-1c4-2 7-4 9-8 2 1 4 1 6-1-2-4-6-8-10-8z" fill="currentColor" stroke="none" opacity="0.9"/><path d="M5.5 21.5L10 15" stroke-linecap="round"/></svg></span><span>EcoClean Pro</span></a><p>Eco-friendly cleaning since 2011.</p></div>
+        <div><h4 class="footer-heading">Services</h4><div class="footer-links"><a href="service-detail.html?service=residential" class="footer-link">Residential</a><a href="service-detail.html?service=commercial" class="footer-link">Commercial</a><a href="service-detail.html?service=deep-clean" class="footer-link">Deep Cleaning</a></div></div>
+        <div><h4 class="footer-heading">Company</h4><div class="footer-links"><a href="about.html" class="footer-link">About</a><a href="blog.html" class="footer-link">Blog</a><a href="pricing.html" class="footer-link">Pricing</a></div></div>
+        <div><h4 class="footer-heading">Contact</h4><div class="footer-links"><span class="footer-link">Portland, OR 97201</span><a href="tel:+15551234567" class="footer-link">+1 (555) 123-4567</a></div></div>
+      </div>
+      <div class="footer-bottom"><p>&copy; 2026 EcoClean Pro. All rights reserved.</p><div class="footer-bottom-links"><a href="#">Privacy</a><a href="#">Terms</a></div></div>
+    </div>
+  </footer>
+
+  <button class="scroll-top-btn" aria-label="Scroll to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg></button>
+
+  <script src="assets/js/utils.js"></script>
+  <script src="assets/js/animations.js"></script>
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/forms.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    Utils.bus.on('formSubmit', (form) => {
+      if (form.id === 'contact-form') {
+        App.showToast('Quote request submitted! We\'ll contact you within 24 hours.', 'success');
+        form.reset();
+      }
+    });
+  </script>
+</body>
+</html>

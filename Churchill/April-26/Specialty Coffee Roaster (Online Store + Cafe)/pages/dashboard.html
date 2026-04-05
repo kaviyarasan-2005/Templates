@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard — Ember & Brew</title>
+  <meta name="description" content="Manage your Ember & Brew account, orders, subscriptions, and preferences from your personal dashboard.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/dark-mode.css">
+  <link rel="stylesheet" href="../assets/css/animations.css">
+  <link rel="stylesheet" href="../assets/css/rtl.css">
+  <style>
+    .dashboard{display:grid;grid-template-columns:260px 1fr;min-height:calc(100vh - var(--nav-height));margin-top:var(--nav-height)}
+
+    /* Sidebar */
+    .sidebar{background:var(--color-primary-dark);color:rgba(255,255,255,.85);padding:var(--space-6) 0;display:flex;flex-direction:column}
+    .sidebar__profile{padding:0 var(--space-5) var(--space-6);border-bottom:1px solid rgba(255,255,255,.1);margin-bottom:var(--space-4);text-align:center}
+    .sidebar__avatar{width:72px;height:72px;border-radius:50%;margin:0 auto var(--space-3);border:3px solid var(--color-secondary);overflow:hidden}
+    .sidebar__avatar img{width:100%;height:100%;object-fit:cover}
+    .sidebar__name{font-weight:var(--fw-semibold);font-size:var(--fs-sm)}
+    .sidebar__email{font-size:var(--fs-xs);color:rgba(255,255,255,.5)}
+    .sidebar__role-switch{margin-top:var(--space-3)}
+    .sidebar__role-switch select{width:100%;padding:var(--space-2);background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:var(--radius-sm);color:var(--white);font-size:var(--fs-xs);cursor:pointer;outline:none}
+
+    .sidebar__nav{flex:1;padding:0 var(--space-3)}
+    .sidebar__section{font-size:var(--fs-xs);text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.35);padding:var(--space-4) var(--space-3) var(--space-2);font-weight:var(--fw-semibold)}
+    .sidebar__link{display:flex;align-items:center;gap:var(--space-3);padding:var(--space-3) var(--space-3);border-radius:var(--radius-sm);font-size:var(--fs-sm);color:rgba(255,255,255,.65);cursor:pointer;transition:all var(--transition-base);text-decoration:none;margin-bottom:2px}
+    .sidebar__link:hover{background:rgba(255,255,255,.08);color:var(--white)}
+    .sidebar__link.active{background:rgba(255,255,255,.12);color:var(--white);font-weight:var(--fw-medium)}
+    .sidebar__link-icon{width:20px;text-align:center;font-size:1rem}
+    .sidebar__link-badge{margin-inline-start:auto;background:var(--color-accent);color:var(--white);font-size:10px;font-weight:700;padding:2px 6px;border-radius:var(--radius-full);min-width:18px;text-align:center}
+
+    .sidebar__logout{padding:var(--space-3) var(--space-5);border-top:1px solid rgba(255,255,255,.1);margin-top:var(--space-4)}
+    .sidebar__logout a{display:flex;align-items:center;gap:var(--space-2);font-size:var(--fs-sm);color:rgba(255,255,255,.5);transition:color var(--transition-base);text-decoration:none}
+    .sidebar__logout a:hover{color:#E63946}
+
+    /* Main content */
+    .dashboard__main{padding:var(--space-6) var(--space-8);background:var(--color-bg-secondary);overflow-y:auto}
+    .dashboard__header{display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--space-6);flex-wrap:wrap;gap:var(--space-3)}
+    .dashboard__header h2{font-size:var(--fs-xl);margin-bottom:0}
+    .dashboard__panel{display:none}
+    .dashboard__panel.active{display:block}
+
+    /* Stat cards */
+    .stat-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-4);margin-bottom:var(--space-8)}
+    .stat-card{background:var(--white);border-radius:var(--radius-md);padding:var(--space-5);border:1px solid var(--color-border-light);transition:all var(--transition-base)}
+    .stat-card:hover{box-shadow:var(--shadow-sm);transform:translateY(-2px)}
+    .stat-card__header{display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--space-3)}
+    .stat-card__icon{width:40px;height:40px;border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;font-size:1.2rem}
+    .stat-card__change{font-size:var(--fs-xs);font-weight:var(--fw-semibold);padding:2px 8px;border-radius:var(--radius-full)}
+    .stat-card__change.up{background:rgba(45,106,79,.1);color:var(--color-success)}
+    .stat-card__change.down{background:rgba(230,57,70,.1);color:var(--color-danger)}
+    .stat-card__value{font-family:var(--font-heading);font-size:var(--fs-2xl);font-weight:var(--fw-bold);color:var(--color-text-primary);margin-bottom:var(--space-1)}
+    .stat-card__label{font-size:var(--fs-xs);color:var(--color-text-muted);text-transform:uppercase;letter-spacing:.05em}
+
+    /* Chart containers */
+    .chart-row{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-6);margin-bottom:var(--space-8)}
+    .chart-box{background:var(--white);border-radius:var(--radius-md);padding:var(--space-5);border:1px solid var(--color-border-light)}
+    .chart-box h4{font-size:var(--fs-base);margin-bottom:var(--space-4)}
+
+    /* Order table */
+    .order-filters{display:flex;gap:var(--space-2);margin-bottom:var(--space-4);flex-wrap:wrap}
+    .order-filter__btn{padding:var(--space-2) var(--space-4);border:1px solid var(--color-border);border-radius:var(--radius-full);font-size:var(--fs-xs);font-weight:var(--fw-medium);color:var(--color-text-secondary);cursor:pointer;transition:all var(--transition-base);background:none}
+    .order-filter__btn:hover,.order-filter__btn.active{background:var(--color-primary);color:var(--white);border-color:var(--color-primary)}
+
+    /* Profile */
+    .profile__avatar{position:relative;width:100px;height:100px;margin-bottom:var(--space-5)}
+    .profile__avatar img{width:100%;height:100%;border-radius:50%;object-fit:cover;border:3px solid var(--color-primary)}
+    .profile__avatar-upload{position:absolute;bottom:0;right:0;width:32px;height:32px;background:var(--color-primary);color:var(--white);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:.8rem}
+
+    /* Messages */
+    .messages-layout{display:grid;grid-template-columns:300px 1fr;gap:var(--space-4);min-height:400px}
+    .message-list{border:1px solid var(--color-border-light);border-radius:var(--radius-md);overflow-y:auto;max-height:500px;background:var(--white)}
+    .message-item{display:flex;align-items:center;gap:var(--space-3);padding:var(--space-3) var(--space-4);cursor:pointer;border-bottom:1px solid var(--color-border-light);transition:background var(--transition-base)}
+    .message-item:hover,.message-item.active{background:var(--color-bg-secondary)}
+    .message-item.unread{font-weight:var(--fw-semibold)}
+    .message-item.unread::before{content:'';width:8px;height:8px;background:var(--color-accent);border-radius:50%;flex-shrink:0}
+    .message-item__avatar{width:36px;height:36px;border-radius:50%;object-fit:cover;flex-shrink:0}
+    .message-item__info{flex:1;min-width:0}
+    .message-item__name{font-size:var(--fs-sm);margin-bottom:1px}
+    .message-item__preview{font-size:var(--fs-xs);color:var(--color-text-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .message-content{background:var(--white);border:1px solid var(--color-border-light);border-radius:var(--radius-md);padding:var(--space-6)}
+    .message-content__header{display:flex;align-items:center;justify-content:space-between;padding-bottom:var(--space-4);border-bottom:1px solid var(--color-border-light);margin-bottom:var(--space-4)}
+    .message-content__body{font-size:var(--fs-sm);line-height:var(--lh-relaxed);color:var(--color-text-secondary)}
+
+    /* Wishlist */
+    .wishlist-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-4)}
+
+    /* Sidebar toggle */
+    .dashboard__sidebar-toggle{display:none;position:fixed;bottom:var(--space-4);left:var(--space-4);z-index:1001;width:48px;height:48px;background:var(--color-primary);color:var(--white);border-radius:50%;align-items:center;justify-content:center;box-shadow:var(--shadow-lg);font-size:1.2rem}
+
+    @media(max-width:1024px){
+      .dashboard{grid-template-columns:1fr}
+      .sidebar{position:fixed;left:-280px;top:var(--nav-height);bottom:0;width:260px;z-index:1000;transition:left var(--transition-smooth)}
+      .sidebar.open{left:0}
+      .dashboard__sidebar-toggle{display:flex}
+      .stat-cards{grid-template-columns:repeat(2,1fr)}
+      .chart-row{grid-template-columns:1fr}
+      .messages-layout{grid-template-columns:1fr}
+      .message-list{max-height:200px}
+      .wishlist-grid{grid-template-columns:repeat(2,1fr)}
+    }
+    @media(max-width:640px){
+      .stat-cards{grid-template-columns:1fr}
+      .dashboard__main{padding:var(--space-4)}
+      .wishlist-grid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== NAVBAR ==================== -->
+  <nav class="navbar" id="main-navbar" role="navigation" aria-label="Main navigation">
+    <div class="navbar__inner">
+      <a href="home-classic.html" class="navbar__brand" aria-label="Ember & Brew Home">
+        <div class="navbar__brand-icon">E</div>
+        <div class="navbar__brand-text">Ember <span>&</span> Brew</div>
+      </a>
+      <div class="navbar__menu">
+        <ul class="navbar__links">
+          <li class="navbar__dropdown">
+            <a href="#" class="navbar__link navbar__dropdown-toggle">Home
+              <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </a>
+            <div class="navbar__dropdown-menu">
+              <a href="home-classic.html">Classic Experience</a>
+              <a href="home-modern.html">Modern Experience</a>
+            </div>
+          </li>
+          <li><a href="about.html" class="navbar__link">About</a></li>
+          <li><a href="services.html" class="navbar__link">Services</a></li>
+          <li><a href="blog.html" class="navbar__link">Blog</a></li>
+          <li><a href="contact.html" class="navbar__link">Contact</a></li>
+          <li><a href="pricing.html" class="navbar__link">Pricing</a></li>
+          <li><a href="dashboard.html" class="navbar__link">Dashboard</a></li>
+        </ul>
+      </div>
+      <div class="navbar__actions">
+        <button class="btn--icon navbar__cart" id="cart-btn" aria-label="Shopping cart">🛒<span class="navbar__cart-badge">0</span></button>
+        <button class="btn--icon" id="rtl-toggle" aria-label="Switch to RTL">🌐</button>
+        <button class="btn--icon" id="theme-toggle" aria-label="Switch to dark mode">🌙</button>
+        <a href="login.html" class="btn btn--primary btn--sm">Login</a>
+        <div class="navbar__toggle" id="mobile-toggle" aria-label="Toggle menu" role="button" tabindex="0">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="home-classic.html" class="mobile-menu__link">Home</a>
+    <a href="about.html" class="mobile-menu__link">About</a>
+    <a href="services.html" class="mobile-menu__link">Services</a>
+    <a href="blog.html" class="mobile-menu__link">Blog</a>
+    <a href="contact.html" class="mobile-menu__link">Contact</a>
+    <a href="pricing.html" class="mobile-menu__link">Pricing</a>
+    <a href="dashboard.html" class="mobile-menu__link">Dashboard</a>
+    <div class="mobile-menu__actions">
+      <a href="login.html" class="btn btn--primary btn--full">Login</a>
+    </div>
+  </div>
+
+  <!-- ==================== DASHBOARD ==================== -->
+  <div class="dashboard">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="dashboard-sidebar">
+      <div class="sidebar__profile">
+        <div class="sidebar__avatar">
+          <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&q=80" alt="User avatar">
+        </div>
+        <div class="sidebar__name">John Doe</div>
+        <div class="sidebar__email">john@example.com</div>
+        <div class="sidebar__role-switch">
+          <select id="role-switcher" aria-label="Switch role">
+            <option value="admin">Admin View</option>
+            <option value="user">User View</option>
+          </select>
+        </div>
+      </div>
+
+      <nav class="sidebar__nav">
+        <div class="sidebar__section">Main</div>
+        <a class="sidebar__link active" data-panel="panel-overview" data-role="both">
+          <span class="sidebar__link-icon">📊</span> Overview
+        </a>
+        <a class="sidebar__link" data-panel="panel-orders" data-role="both">
+          <span class="sidebar__link-icon">📦</span> Orders
+          <span class="sidebar__link-badge">3</span>
+        </a>
+
+        <div class="sidebar__section" data-role="admin">Management</div>
+        <a class="sidebar__link" data-panel="panel-users" data-role="admin">
+          <span class="sidebar__link-icon">👥</span> Users
+        </a>
+        <a class="sidebar__link" data-panel="panel-products" data-role="admin">
+          <span class="sidebar__link-icon">☕</span> Products
+        </a>
+
+        <div class="sidebar__section">Account</div>
+        <a class="sidebar__link" data-panel="panel-messages" data-role="both">
+          <span class="sidebar__link-icon">💬</span> Messages
+          <span class="sidebar__link-badge">2</span>
+        </a>
+        <a class="sidebar__link" data-panel="panel-wishlist" data-role="user">
+          <span class="sidebar__link-icon">❤️</span> Wishlist
+        </a>
+        <a class="sidebar__link" data-panel="panel-subscription" data-role="user">
+          <span class="sidebar__link-icon">🔄</span> Subscription
+        </a>
+        <a class="sidebar__link" data-panel="panel-profile" data-role="both">
+          <span class="sidebar__link-icon">⚙️</span> Settings
+        </a>
+      </nav>
+
+      <div class="sidebar__logout">
+        <a href="login.html">
+          <span>🚪</span> Log Out
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="dashboard__main">
+      <!-- ===== OVERVIEW PANEL ===== -->
+      <div class="dashboard__panel active" id="panel-overview">
+        <div class="dashboard__header">
+          <h2>Dashboard Overview</h2>
+          <span class="text-muted" style="font-size:var(--fs-sm)">Welcome back, John!</span>
+        </div>
+
+        <div class="stat-cards" data-role="admin">
+          <div class="stat-card">
+            <div class="stat-card__header">
+              <div class="stat-card__icon" style="background:rgba(111,78,55,.1)">💰</div>
+              <span class="stat-card__change up">+12.5%</span>
+            </div>
+            <div class="stat-card__value">$34,280</div>
+            <div class="stat-card__label">Total Revenue</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card__header">
+              <div class="stat-card__icon" style="background:rgba(45,106,79,.1)">📦</div>
+              <span class="stat-card__change up">+8.3%</span>
+            </div>
+            <div class="stat-card__value">1,247</div>
+            <div class="stat-card__label">Total Orders</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card__header">
+              <div class="stat-card__icon" style="background:rgba(69,123,157,.1)">👥</div>
+              <span class="stat-card__change up">+15.2%</span>
+            </div>
+            <div class="stat-card__value">8,532</div>
+            <div class="stat-card__label">Customers</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card__header">
+              <div class="stat-card__icon" style="background:rgba(244,162,97,.1)">⭐</div>
+              <span class="stat-card__change up">+0.2</span>
+            </div>
+            <div class="stat-card__value">4.9</div>
+            <div class="stat-card__label">Avg Rating</div>
+          </div>
+        </div>
+
+        <div class="stat-cards" data-role="user" style="display:none">
+          <div class="stat-card">
+            <div class="stat-card__header">
+              <div class="stat-card__icon" style="background:rgba(111,78,55,.1)">📦</div>
+            </div>
+            <div class="stat-card__value">12</div>
+            <div class="stat-card__label">My Orders</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card__header">
+              <div class="stat-card__icon" style="background:rgba(45,106,79,.1)">🔄</div>
+            </div>
+            <div class="stat-card__value">Enthusiast</div>
+            <div class="stat-card__label">Current Plan</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card__header">
+              <div class="stat-card__icon" style="background:rgba(69,123,157,.1)">❤️</div>
+            </div>
+            <div class="stat-card__value">5</div>
+            <div class="stat-card__label">Wishlist Items</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card__header">
+              <div class="stat-card__icon" style="background:rgba(244,162,97,.1)">🎁</div>
+            </div>
+            <div class="stat-card__value">340</div>
+            <div class="stat-card__label">Reward Points</div>
+          </div>
+        </div>
+
+        <div class="chart-row" data-role="admin">
+          <div class="chart-box">
+            <h4>Revenue Overview</h4>
+            <canvas id="revenue-chart"></canvas>
+          </div>
+          <div class="chart-box">
+            <h4>Monthly Orders</h4>
+            <canvas id="orders-chart"></canvas>
+          </div>
+        </div>
+
+        <!-- Recent orders snippet -->
+        <div class="chart-box" data-role="both">
+          <h4>Recent Orders</h4>
+          <div class="table-wrap" style="border:none">
+            <table class="table">
+              <thead>
+                <tr><th>Order ID</th><th>Customer</th><th>Product</th><th>Amount</th><th>Status</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>#EB-1247</td><td>Sarah M.</td><td>Ethiopian Yirgacheffe × 2</td><td>$37.98</td><td><span class="badge badge--success">Delivered</span></td></tr>
+                <tr><td>#EB-1246</td><td>James R.</td><td>Midnight Ritual × 1</td><td>$19.99</td><td><span class="badge badge--info">Shipped</span></td></tr>
+                <tr><td>#EB-1245</td><td>Lisa C.</td><td>Connoisseur Sub (Monthly)</td><td>$49.99</td><td><span class="badge badge--warning">Processing</span></td></tr>
+                <tr><td>#EB-1244</td><td>Tom R.</td><td>Colombian Supremo × 3</td><td>$50.97</td><td><span class="badge badge--success">Delivered</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== ORDERS PANEL ===== -->
+      <div class="dashboard__panel" id="panel-orders">
+        <div class="dashboard__header">
+          <h2>Orders</h2>
+        </div>
+        <div class="order-filters">
+          <button class="order-filter__btn active" data-filter="all">All Orders</button>
+          <button class="order-filter__btn" data-filter="delivered">Delivered</button>
+          <button class="order-filter__btn" data-filter="shipped">Shipped</button>
+          <button class="order-filter__btn" data-filter="processing">Processing</button>
+          <button class="order-filter__btn" data-filter="cancelled">Cancelled</button>
+        </div>
+        <div class="chart-box">
+          <div class="table-wrap" style="border:none">
+            <table class="table">
+              <thead><tr><th>Order ID</th><th>Date</th><th>Product</th><th>Qty</th><th>Amount</th><th>Status</th></tr></thead>
+              <tbody>
+                <tr class="order-row" data-status="delivered"><td>#EB-1247</td><td>Mar 28, 2026</td><td>Ethiopian Yirgacheffe</td><td>2</td><td>$37.98</td><td><span class="badge badge--success">Delivered</span></td></tr>
+                <tr class="order-row" data-status="shipped"><td>#EB-1246</td><td>Mar 26, 2026</td><td>Midnight Ritual</td><td>1</td><td>$19.99</td><td><span class="badge badge--info">Shipped</span></td></tr>
+                <tr class="order-row" data-status="processing"><td>#EB-1245</td><td>Mar 24, 2026</td><td>Connoisseur Subscription</td><td>1</td><td>$49.99</td><td><span class="badge badge--warning">Processing</span></td></tr>
+                <tr class="order-row" data-status="delivered"><td>#EB-1244</td><td>Mar 20, 2026</td><td>Colombian Supremo</td><td>3</td><td>$50.97</td><td><span class="badge badge--success">Delivered</span></td></tr>
+                <tr class="order-row" data-status="cancelled"><td>#EB-1240</td><td>Mar 15, 2026</td><td>Guatemala Antigua</td><td>1</td><td>$24.99</td><td><span class="badge badge--danger">Cancelled</span></td></tr>
+                <tr class="order-row" data-status="delivered"><td>#EB-1238</td><td>Mar 10, 2026</td><td>Starter Subscription</td><td>1</td><td>$14.99</td><td><span class="badge badge--success">Delivered</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== USERS PANEL (Admin) ===== -->
+      <div class="dashboard__panel" id="panel-users">
+        <div class="dashboard__header">
+          <h2>User Management</h2>
+          <button class="btn btn--primary btn--sm">+ Add User</button>
+        </div>
+        <div class="chart-box">
+          <div class="table-wrap" style="border:none">
+            <table class="table">
+              <thead><tr><th>User</th><th>Email</th><th>Plan</th><th>Joined</th><th>Status</th></tr></thead>
+              <tbody>
+                <tr><td>Sarah Mitchell</td><td>sarah@example.com</td><td>Connoisseur</td><td>Jan 2024</td><td><span class="badge badge--success">Active</span></td></tr>
+                <tr><td>James Rodriguez</td><td>james@example.com</td><td>Enthusiast</td><td>Mar 2024</td><td><span class="badge badge--success">Active</span></td></tr>
+                <tr><td>Lisa Chen</td><td>lisa@example.com</td><td>Starter</td><td>Jun 2025</td><td><span class="badge badge--success">Active</span></td></tr>
+                <tr><td>Tom Richards</td><td>tom@example.com</td><td>Enthusiast</td><td>Aug 2025</td><td><span class="badge badge--warning">Paused</span></td></tr>
+                <tr><td>Elena Rodriguez</td><td>elena@example.com</td><td>None</td><td>Dec 2025</td><td><span class="badge badge--danger">Inactive</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== PRODUCTS PANEL (Admin) ===== -->
+      <div class="dashboard__panel" id="panel-products">
+        <div class="dashboard__header">
+          <h2>Product Management</h2>
+          <button class="btn btn--primary btn--sm">+ Add Product</button>
+        </div>
+        <div class="chart-box">
+          <div class="table-wrap" style="border:none">
+            <table class="table">
+              <thead><tr><th>Product</th><th>Category</th><th>Price</th><th>Stock</th><th>Status</th></tr></thead>
+              <tbody>
+                <tr><td>Ethiopian Yirgacheffe</td><td>Single Origin</td><td>$18.99</td><td>142</td><td><span class="badge badge--success">Active</span></td></tr>
+                <tr><td>Colombian Supremo</td><td>Single Origin</td><td>$16.99</td><td>89</td><td><span class="badge badge--success">Active</span></td></tr>
+                <tr><td>Midnight Ritual</td><td>House Blend</td><td>$19.99</td><td>203</td><td><span class="badge badge--success">Active</span></td></tr>
+                <tr><td>Guatemala Antigua</td><td>Limited Edition</td><td>$24.99</td><td>18</td><td><span class="badge badge--warning">Low Stock</span></td></tr>
+                <tr><td>Kenya Nyeri AA</td><td>Single Origin</td><td>$22.99</td><td>0</td><td><span class="badge badge--danger">Out of Stock</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== MESSAGES PANEL ===== -->
+      <div class="dashboard__panel" id="panel-messages">
+        <div class="dashboard__header">
+          <h2>Messages</h2>
+        </div>
+        <div class="messages-layout">
+          <div class="message-list">
+            <div class="message-item active unread" data-from="Ember & Brew Support" data-date="Mar 28, 2026" data-message="Hi John! Your latest order #EB-1247 has been delivered successfully. We hope you enjoy the Ethiopian Yirgacheffe! Let us know if you have any questions.">
+              <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=80&q=80" class="message-item__avatar" alt="Support">
+              <div class="message-item__info">
+                <div class="message-item__name">Support Team</div>
+                <div class="message-item__preview">Your order has been delivered!</div>
+              </div>
+            </div>
+            <div class="message-item unread" data-from="New Roast Alert" data-date="Mar 25, 2026" data-message="We've just released a new limited edition: Rwanda Nyungwe. With notes of passion fruit, brown sugar, and jasmine, this is one of our most exciting arrivals yet. Available now while supplies last!">
+              <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=80&q=80" class="message-item__avatar" alt="Ember & Brew">
+              <div class="message-item__info">
+                <div class="message-item__name">New Arrival</div>
+                <div class="message-item__preview">New limited edition: Rwanda Nyungwe</div>
+              </div>
+            </div>
+            <div class="message-item" data-from="Billing" data-date="Mar 20, 2026" data-message="Your Enthusiast subscription has been renewed for another month. Your next delivery is scheduled for April 5th. Amount charged: $29.99.">
+              <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=80&q=80" class="message-item__avatar" alt="Billing">
+              <div class="message-item__info">
+                <div class="message-item__name">Billing</div>
+                <div class="message-item__preview">Subscription renewed — April delivery</div>
+              </div>
+            </div>
+          </div>
+          <div class="message-content">
+            <div class="message-content__header">
+              <h4>Support Team</h4>
+              <span class="text-muted" style="font-size:var(--fs-xs)">Mar 28, 2026</span>
+            </div>
+            <div class="message-content__body">
+              <p>Hi John! Your latest order #EB-1247 has been delivered successfully. We hope you enjoy the Ethiopian Yirgacheffe! Let us know if you have any questions.</p>
+            </div>
+            <div style="margin-top:var(--space-6)">
+              <textarea class="form-input" placeholder="Type your reply..." rows="3"></textarea>
+              <button class="btn btn--primary" style="margin-top:var(--space-3)" onclick="showToast('Reply sent! ✉️','success')">Send Reply</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== WISHLIST PANEL (User) ===== -->
+      <div class="dashboard__panel" id="panel-wishlist">
+        <div class="dashboard__header">
+          <h2>My Wishlist</h2>
+        </div>
+        <div class="wishlist-grid">
+          <div class="card product-card">
+            <div class="card__img" style="aspect-ratio:16/10">
+              <img src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=400&q=80" alt="Ethiopian Yirgacheffe" loading="lazy">
+            </div>
+            <div class="card__body">
+              <h4 class="card__title" style="font-size:var(--fs-base)">Ethiopian Yirgacheffe</h4>
+              <div class="card__price" style="font-size:var(--fs-lg)">$18.99</div>
+              <div class="card__actions" style="margin-top:var(--space-3)">
+                <button class="btn btn--primary btn--sm btn--full" onclick="updateCart(1)">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+          <div class="card product-card">
+            <div class="card__img" style="aspect-ratio:16/10">
+              <img src="https://images.unsplash.com/photo-1611854779393-1b2da9d400fe?w=400&q=80" alt="Midnight Ritual" loading="lazy">
+            </div>
+            <div class="card__body">
+              <h4 class="card__title" style="font-size:var(--fs-base)">Midnight Ritual</h4>
+              <div class="card__price" style="font-size:var(--fs-lg)">$19.99</div>
+              <div class="card__actions" style="margin-top:var(--space-3)">
+                <button class="btn btn--primary btn--sm btn--full" onclick="updateCart(1)">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+          <div class="card product-card">
+            <div class="card__img" style="aspect-ratio:16/10">
+              <img src="https://images.unsplash.com/photo-1610889556528-9a770e32642f?w=400&q=80" alt="Guatemala Antigua" loading="lazy">
+            </div>
+            <div class="card__body">
+              <h4 class="card__title" style="font-size:var(--fs-base)">Guatemala Antigua</h4>
+              <div class="card__price" style="font-size:var(--fs-lg)">$24.99</div>
+              <div class="card__actions" style="margin-top:var(--space-3)">
+                <button class="btn btn--primary btn--sm btn--full" onclick="updateCart(1)">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== SUBSCRIPTION PANEL (User) ===== -->
+      <div class="dashboard__panel" id="panel-subscription">
+        <div class="dashboard__header">
+          <h2>My Subscription</h2>
+        </div>
+        <div class="chart-box" style="max-width:680px">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--space-6)">
+            <div>
+              <h3 style="margin-bottom:var(--space-1)">Enthusiast Plan</h3>
+              <p style="font-size:var(--fs-sm);color:var(--color-text-muted);margin-bottom:0">Bi-weekly delivery • 2 bags (500g)</p>
+            </div>
+            <div class="badge badge--success" style="font-size:var(--fs-sm);padding:var(--space-2) var(--space-4)">Active</div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4);margin-bottom:var(--space-6)">
+            <div style="padding:var(--space-4);background:var(--color-bg-secondary);border-radius:var(--radius-sm)">
+              <div style="font-size:var(--fs-xs);color:var(--color-text-muted);margin-bottom:var(--space-1)">Next Delivery</div>
+              <div style="font-weight:var(--fw-semibold)">April 5, 2026</div>
+            </div>
+            <div style="padding:var(--space-4);background:var(--color-bg-secondary);border-radius:var(--radius-sm)">
+              <div style="font-size:var(--fs-xs);color:var(--color-text-muted);margin-bottom:var(--space-1)">Monthly Cost</div>
+              <div style="font-weight:var(--fw-semibold);color:var(--color-primary)">$29.99/mo</div>
+            </div>
+            <div style="padding:var(--space-4);background:var(--color-bg-secondary);border-radius:var(--radius-sm)">
+              <div style="font-size:var(--fs-xs);color:var(--color-text-muted);margin-bottom:var(--space-1)">Current Roast</div>
+              <div style="font-weight:var(--fw-semibold)">Ethiopian Yirgacheffe</div>
+            </div>
+            <div style="padding:var(--space-4);background:var(--color-bg-secondary);border-radius:var(--radius-sm)">
+              <div style="font-size:var(--fs-xs);color:var(--color-text-muted);margin-bottom:var(--space-1)">Grind</div>
+              <div style="font-weight:var(--fw-semibold)">Whole Bean</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:var(--space-3)">
+            <button class="btn btn--secondary btn--sm">Change Plan</button>
+            <button class="btn btn--ghost btn--sm">Skip Next Delivery</button>
+            <button class="btn btn--ghost btn--sm" style="color:var(--color-danger)">Pause Subscription</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== PROFILE/SETTINGS PANEL ===== -->
+      <div class="dashboard__panel" id="panel-profile">
+        <div class="dashboard__header">
+          <h2>Account Settings</h2>
+        </div>
+        <div class="chart-box" style="max-width:680px">
+          <form id="profile-form">
+            <div class="profile__avatar">
+              <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&q=80" alt="Profile photo">
+              <label for="avatar-upload" class="profile__avatar-upload" aria-label="Change photo">📷</label>
+              <input type="file" id="avatar-upload" accept="image/*" hidden>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4)">
+              <div class="form-group">
+                <label class="form-label" for="prof-first">First Name</label>
+                <input class="form-input" type="text" id="prof-first" value="John">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="prof-last">Last Name</label>
+                <input class="form-input" type="text" id="prof-last" value="Doe">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="prof-email">Email</label>
+              <input class="form-input" type="email" id="prof-email" value="john@example.com">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="prof-phone">Phone</label>
+              <input class="form-input" type="tel" id="prof-phone" value="+1 (503) 555-0123">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="prof-address">Shipping Address</label>
+              <textarea class="form-input" id="prof-address" rows="2">742 Roaster Lane, Portland, OR 97209</textarea>
+            </div>
+            <button type="submit" class="btn btn--accent">Save Changes</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile sidebar toggle -->
+  <button class="dashboard__sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/animations.js"></script>
+  <script src="../assets/js/dashboard.js"></script>
+</body>
+</html>

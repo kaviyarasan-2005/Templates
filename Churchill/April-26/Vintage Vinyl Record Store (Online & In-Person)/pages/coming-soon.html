@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coming Soon — Vintage Vinyl</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/dark-mode.css">
+  <style>
+    html, body { height: 100%; overflow: hidden; }
+    .coming-soon {
+      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      text-align: center; padding: var(--space-8);
+      background: linear-gradient(135deg, #0F0F1A 0%, #1A1A2E 50%, #2a1a3e 100%);
+      position: relative; overflow: hidden;
+    }
+    .coming-soon::before {
+      content: ''; position: absolute; width: 400px; height: 400px;
+      border-radius: 50%; background: radial-gradient(circle, rgba(255,215,0,0.08), transparent);
+      top: -100px; right: -100px;
+    }
+    .coming-soon::after {
+      content: ''; position: absolute; width: 300px; height: 300px;
+      border-radius: 50%; background: radial-gradient(circle, rgba(139,69,19,0.1), transparent);
+      bottom: -80px; left: -80px;
+    }
+    .countdown { display: flex; gap: var(--space-6); justify-content: center; margin: var(--space-10) 0; flex-wrap: wrap; }
+    .countdown-item { text-align: center; }
+    .countdown-number {
+      display: block; font-family: var(--font-accent); font-size: var(--text-5xl); font-weight: 800;
+      color: var(--color-accent); line-height: 1;
+    }
+    .countdown-label { font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.15em; color: rgba(255,255,255,0.4); margin-top: var(--space-2); }
+    .vinyl-bg { position: absolute; width: 300px; height: 300px; border-radius: 50%; opacity: 0.05;
+      background: conic-gradient(from 0deg, #fff, #555, #fff, #555, #fff);
+      animation: spin 30s linear infinite; bottom: 10%; right: 5%;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+</head>
+<body>
+  <div class="coming-soon">
+    <div class="vinyl-bg" aria-hidden="true"></div>
+    <div style="position:relative;z-index:2;max-width:560px;">
+      <a href="../index.html" style="display:flex;align-items:center;justify-content:center;gap:var(--space-3);margin-bottom:var(--space-10);text-decoration:none;">
+        <div class="navbar__logo-icon" style="width:50px;height:50px;font-size:var(--text-xl);">V</div>
+        <span style="font-family:var(--font-heading);font-size:var(--text-2xl);font-weight:700;color:#fff;">Vintage Vinyl</span>
+      </a>
+      <h1 style="font-size:var(--text-5xl);color:#fff;margin-bottom:var(--space-4);">Something <span style="color:var(--color-accent);">Amazing</span> Is Coming</h1>
+      <p style="color:rgba(255,255,255,0.6);font-size:var(--text-lg);margin-bottom:0;">We're crafting a brand new experience for vinyl lovers. Stay tuned for the big reveal.</p>
+
+      <div class="countdown" id="countdown">
+        <div class="countdown-item"><span class="countdown-number" id="cd-days">14</span><span class="countdown-label">Days</span></div>
+        <div class="countdown-item"><span class="countdown-number" id="cd-hours">08</span><span class="countdown-label">Hours</span></div>
+        <div class="countdown-item"><span class="countdown-number" id="cd-minutes">32</span><span class="countdown-label">Minutes</span></div>
+        <div class="countdown-item"><span class="countdown-number" id="cd-seconds">45</span><span class="countdown-label">Seconds</span></div>
+      </div>
+
+      <form style="display:flex;gap:var(--space-3);max-width:420px;margin:0 auto;flex-wrap:wrap;" onsubmit="event.preventDefault();this.querySelector('button').textContent='Notified ✓';">
+        <input type="email" class="form-input" placeholder="your@email.com" required style="flex:1;min-width:200px;background:rgba(255,255,255,0.06);border-color:rgba(255,255,255,0.15);color:#fff;">
+        <button type="submit" class="btn btn--primary">Notify Me</button>
+      </form>
+      <p style="margin-top:var(--space-6);font-size:var(--text-sm);color:rgba(255,255,255,0.3);">Follow us on social media for updates</p>
+      <div style="display:flex;gap:var(--space-3);justify-content:center;margin-top:var(--space-3);">
+        <a href="#" style="width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.5);transition:all .2s;">f</a>
+        <a href="#" style="width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.5);transition:all .2s;">ig</a>
+        <a href="#" style="width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.5);transition:all .2s;">x</a>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Countdown Timer
+    const target = new Date();
+    target.setDate(target.getDate() + 14);
+    function updateCountdown() {
+      const now = new Date();
+      const diff = target - now;
+      if (diff <= 0) return;
+      const d = Math.floor(diff / (1000*60*60*24));
+      const h = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+      const m = Math.floor((diff % (1000*60*60)) / (1000*60));
+      const s = Math.floor((diff % (1000*60)) / 1000);
+      document.getElementById('cd-days').textContent = String(d).padStart(2,'0');
+      document.getElementById('cd-hours').textContent = String(h).padStart(2,'0');
+      document.getElementById('cd-minutes').textContent = String(m).padStart(2,'0');
+      document.getElementById('cd-seconds').textContent = String(s).padStart(2,'0');
+    }
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+  </script>
+</body>
+</html>

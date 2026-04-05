@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pricing — EcoClean Pro</title>
+  <meta name="description" content="Transparent pricing for EcoClean Pro's eco-friendly cleaning services. Choose from Basic, Professional, or Enterprise plans.">
+  <link rel="canonical" href="https://ecocleanpro.com/pricing.html">
+  <meta property="og:title" content="Pricing — EcoClean Pro">
+  <meta property="og:description" content="Affordable, transparent eco-friendly cleaning plans.">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" media="print" href="assets/css/print.css">
+  <style>
+    .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-8);align-items:start;}
+    @media(max-width:1024px){.pricing-grid{grid-template-columns:1fr;max-width:480px;margin:0 auto;}}
+    .guarantee-bar{display:flex;align-items:center;gap:var(--space-4);justify-content:center;flex-wrap:wrap;padding:var(--space-6);background:var(--bg-secondary);border-radius:var(--radius-xl);margin-top:var(--space-12);}
+    .guarantee-icon{width:48px;height:48px;background:rgba(45,80,22,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--primary-green);flex-shrink:0;}
+  </style>
+</head>
+<body class="has-navbar">
+  <a href="#main-content" class="skip-to-content sr-only">Skip to content</a>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="main-nav" aria-label="Main navigation">
+    <div class="container">
+      <a href="index.html" class="nav-brand" aria-label="EcoClean Pro Home"><span class="nav-brand-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 8C8 10 5.9 16.17 3.82 21.34L3 23l2-1c4-2 7-4 9-8 2 1 4 1 6-1-2-4-6-8-10-8z" fill="currentColor" stroke="none" opacity="0.9"/><path d="M5.5 21.5L10 15" stroke-linecap="round"/></svg></span><span>EcoClean Pro</span></a>
+      <div class="nav-menu" id="nav-menu">
+        <div class="nav-dropdown" id="home-dropdown"><a href="#" class="nav-link nav-dropdown-toggle" aria-expanded="false">Home<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></a><div class="nav-dropdown-menu" role="menu"><a href="home-general.html" class="nav-dropdown-item" role="menuitem"><span class="dropdown-icon">🏠</span><span class="dropdown-text"><span class="dropdown-label">General Services</span><span class="dropdown-desc">Full-service cleaning</span></span></a><a href="home-niche.html" class="nav-dropdown-item" role="menuitem"><span class="dropdown-icon">🌿</span><span class="dropdown-text"><span class="dropdown-label">Eco Specialist</span><span class="dropdown-desc">Premium eco-focused</span></span></a></div></div>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="blog.html" class="nav-link">Blog</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="pricing.html" class="nav-link active">Pricing</a>
+        <a href="dashboard.html" class="nav-link">Dashboard</a>
+      </div>
+      <div class="nav-actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode"><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg></button>
+        <button class="lang-toggle btn btn-ghost btn-icon" id="dir-toggle" aria-label="Toggle RTL/LTR" title="Toggle RTL/LTR" style="padding:4px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></button>
+        <a href="login.html" class="btn btn-primary btn-sm">Login</a>
+        <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main-content">
+    <section style="text-align:center;padding-top:var(--space-20);">
+      <div class="container">
+        <span class="section-label anim-fade-up" style="justify-content:center;">💰 Simple Pricing</span>
+        <h1 class="hero-title anim-fade-up" style="transition-delay:100ms;font-size:2.75rem;">Choose Your Plan</h1>
+        <p class="section-subtitle anim-fade-up" style="margin:0 auto var(--space-10);transition-delay:200ms;">Transparent pricing with no hidden fees. All plans include 100% eco-friendly products.</p>
+
+        <!-- Toggle -->
+        <div class="pricing-toggle anim-fade-up">
+          <span class="pricing-toggle-label active" id="toggle-recurring">Recurring</span>
+          <label class="toggle-switch">
+            <input type="checkbox" id="pricing-toggle-input">
+            <span class="toggle-slider"></span>
+          </label>
+          <span class="pricing-toggle-label" id="toggle-onetime">One-Time</span>
+        </div>
+
+        <!-- Pricing Cards -->
+        <div class="pricing-grid stagger-children">
+          <!-- Basic -->
+          <div class="pricing-card anim-fade-up">
+            <div class="pricing-name">Basic Clean</div>
+            <div class="pricing-price"><span class="currency">$</span><span class="price-value">89</span><span class="period price-period">/visit</span></div>
+            <p class="pricing-desc">Perfect for regular home upkeep</p>
+            <div class="pricing-features">
+              <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Kitchen & bathroom clean</div>
+              <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Vacuum & mop floors</div>
+              <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Dust surfaces</div>
+              <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>100% green products</div>
+              <div class="pricing-feature disabled"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>Deep appliance cleaning</div>
+              <div class="pricing-feature disabled"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>Window washing</div>
+            </div>
+            <a href="contact.html" class="btn btn-secondary w-full">Get Started</a>
+          </div>
+
+          <!-- Professional (Featured) -->
+          <div class="pricing-card featured anim-fade-up">
+            <div class="pricing-name">Professional</div>
+            <div class="pricing-price"><span class="currency">$</span><span class="price-value">149</span><span class="period price-period">/visit</span></div>
+            <p class="pricing-desc">Most popular for families</p>
+            <div class="pricing-features">
+              <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Everything in Basic</div>
+              <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Deep appliance cleaning</div>
+              <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Interior window cleaning</div>
+              <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Cabinet wipe-down</div>
+              <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Baseboard cleaning</div>
+              <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Priority scheduling</div>
+            </div>
+            <a href="contact.html" class="btn btn-accent w-full">Get Started</a>
+          </div>
+
+          <!-- Enterprise -->
+          <div class="pricing-card anim-fade-up">
+            <div class="pricing-name">Enterprise</div>
+            <div class="pricing-price"><span class="currency">$</span><span class="price-value">299</span><span class="period price-period">/visit</span></div>
+            <p class="pricing-desc">For commercial & large spaces</p>
+            <div class="pricing-features">
+              <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Everything in Professional</div>
+              <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>LEED compliance audit</div>
+              <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Real-time dashboard</div>
+              <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Dedicated account manager</div>
+              <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Carbon impact reports</div>
+              <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>24/7 support</div>
+            </div>
+            <a href="contact.html" class="btn btn-secondary w-full">Contact Sales</a>
+          </div>
+        </div>
+
+        <!-- Guarantee -->
+        <div class="guarantee-bar anim-fade-up">
+          <div class="guarantee-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <div style="text-align:start;">
+            <div style="font-weight:600;font-family:var(--font-heading);">100% Satisfaction Guarantee</div>
+            <div style="font-size:0.875rem;color:var(--text-muted);">Not happy with our service? We'll re-clean for free or refund your money. No questions asked.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section-alt" id="pricing-faq">
+      <div class="container" style="max-width:800px;">
+        <div class="section-header center">
+          <span class="section-label anim-fade-up">FAQ</span>
+          <h2 class="section-title anim-fade-up">Frequently Asked Questions</h2>
+        </div>
+        <div data-single-open>
+          <div class="accordion-item active anim-fade-up">
+            <div class="accordion-header"><span>What's included in each cleaning visit?</span><svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+            <div class="accordion-content" style="max-height:200px;"><div class="accordion-body">Every visit includes our core eco-friendly cleaning: kitchen, bathrooms, living areas, vacuuming, mopping, and dusting. Higher tiers add deep appliance cleaning, window washing, cabinet interiors, and more.</div></div>
+          </div>
+          <div class="accordion-item anim-fade-up">
+            <div class="accordion-header"><span>Can I switch plans anytime?</span><svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+            <div class="accordion-content"><div class="accordion-body">Absolutely. You can upgrade, downgrade, or cancel anytime with no penalties. We believe in earning your business with every visit.</div></div>
+          </div>
+          <div class="accordion-item anim-fade-up">
+            <div class="accordion-header"><span>Are there any long-term contracts?</span><svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+            <div class="accordion-content"><div class="accordion-body">No contracts, ever. Our recurring plans offer the best value, but you're free to cancel at any time. We offer a 20% discount for recurring bookings.</div></div>
+          </div>
+          <div class="accordion-item anim-fade-up">
+            <div class="accordion-header"><span>Do you bring your own supplies?</span><svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+            <div class="accordion-content"><div class="accordion-body">Yes! We bring all cleaning products and equipment. Our proprietary plant-based formulas are non-toxic, biodegradable, and certified safe for children and pets.</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" id="main-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand"><a href="index.html" class="nav-brand" style="color:#fff" aria-label="EcoClean Pro Home"><span class="nav-brand-icon" style="background:rgba(255,255,255,0.15)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 8C8 10 5.9 16.17 3.82 21.34L3 23l2-1c4-2 7-4 9-8 2 1 4 1 6-1-2-4-6-8-10-8z" fill="currentColor" stroke="none" opacity="0.9"/><path d="M5.5 21.5L10 15" stroke-linecap="round"/></svg></span><span>EcoClean Pro</span></a><p>Making homes and workplaces cleaner since 2011.</p></div>
+        <div><h4 class="footer-heading">Services</h4><div class="footer-links"><a href="service-detail.html?service=residential" class="footer-link">Residential</a><a href="service-detail.html?service=commercial" class="footer-link">Commercial</a><a href="service-detail.html?service=deep-clean" class="footer-link">Deep Cleaning</a></div></div>
+        <div><h4 class="footer-heading">Company</h4><div class="footer-links"><a href="about.html" class="footer-link">About Us</a><a href="blog.html" class="footer-link">Blog</a><a href="contact.html" class="footer-link">Contact</a></div></div>
+        <div><h4 class="footer-heading">Contact</h4><div class="footer-links"><span class="footer-link">Portland, OR 97201</span><a href="tel:+15551234567" class="footer-link">+1 (555) 123-4567</a><a href="mailto:hello@ecocleanpro.com" class="footer-link">hello@ecocleanpro.com</a></div></div>
+      </div>
+      <div class="footer-bottom"><p>&copy; 2026 EcoClean Pro. All rights reserved.</p><div class="footer-bottom-links"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div></div>
+    </div>
+  </footer>
+
+  <button class="scroll-top-btn" aria-label="Scroll to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg></button>
+
+  <script src="assets/js/utils.js"></script>
+  <script src="assets/js/animations.js"></script>
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/forms.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    const prices = { recurring: [89, 149, 299], onetime: [129, 199, 449] };
+    const periods = { recurring: '/visit', onetime: ' one-time' };
+    const toggle = document.getElementById('pricing-toggle-input');
+    const labels = [document.getElementById('toggle-recurring'), document.getElementById('toggle-onetime')];
+
+    toggle.addEventListener('change', () => {
+      const mode = toggle.checked ? 'onetime' : 'recurring';
+      labels[0].classList.toggle('active', mode === 'recurring');
+      labels[1].classList.toggle('active', mode === 'onetime');
+      document.querySelectorAll('.price-value').forEach((el, i) => {
+        el.textContent = prices[mode][i];
+      });
+      document.querySelectorAll('.price-period').forEach(el => {
+        el.textContent = periods[mode];
+      });
+    });
+  </script>
+</body>
+</html>

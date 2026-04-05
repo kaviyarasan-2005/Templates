@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us — Ember & Brew | Our Story & Team</title>
+  <meta name="description" content="Learn about Ember & Brew's journey from a small roastery to a beloved specialty coffee brand. Meet our passionate team of coffee experts.">
+  <meta property="og:title" content="About Us — Ember & Brew">
+  <meta property="og:description" content="Our story, mission, and the passionate team behind every cup.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://emberandbrew.com/about">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/dark-mode.css">
+  <link rel="stylesheet" href="../assets/css/animations.css">
+  <link rel="stylesheet" href="../assets/css/rtl.css">
+</head>
+<body>
+
+  <!-- ==================== NAVBAR ==================== -->
+  <nav class="navbar" id="main-navbar" role="navigation" aria-label="Main navigation">
+    <div class="navbar__inner">
+      <a href="home-classic.html" class="navbar__brand" aria-label="Ember & Brew Home">
+        <div class="navbar__brand-icon">E</div>
+        <div class="navbar__brand-text">Ember <span>&</span> Brew</div>
+      </a>
+      <div class="navbar__menu">
+        <ul class="navbar__links">
+          <li class="navbar__dropdown">
+            <a href="#" class="navbar__link navbar__dropdown-toggle">
+              Home
+              <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </a>
+            <div class="navbar__dropdown-menu">
+              <a href="home-classic.html">Classic Experience</a>
+              <a href="home-modern.html">Modern Experience</a>
+            </div>
+          </li>
+          <li><a href="about.html" class="navbar__link">About</a></li>
+          <li><a href="services.html" class="navbar__link">Services</a></li>
+          <li><a href="blog.html" class="navbar__link">Blog</a></li>
+          <li><a href="contact.html" class="navbar__link">Contact</a></li>
+          <li><a href="pricing.html" class="navbar__link">Pricing</a></li>
+          <li><a href="dashboard.html" class="navbar__link">Dashboard</a></li>
+        </ul>
+      </div>
+      <div class="navbar__actions">
+        <button class="btn--icon navbar__cart" id="cart-btn" aria-label="Shopping cart">🛒<span class="navbar__cart-badge">0</span></button>
+        <button class="btn--icon" id="rtl-toggle" aria-label="Switch to RTL">🌐</button>
+        <button class="btn--icon" id="theme-toggle" aria-label="Switch to dark mode">🌙</button>
+        <a href="login.html" class="btn btn--primary btn--sm">Login</a>
+        <div class="navbar__toggle" id="mobile-toggle" aria-label="Toggle menu" role="button" tabindex="0">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="home-classic.html" class="mobile-menu__link">Home Classic</a>
+    <a href="home-modern.html" class="mobile-menu__link">Home Modern</a>
+    <a href="about.html" class="mobile-menu__link active">About</a>
+    <a href="services.html" class="mobile-menu__link">Services</a>
+    <a href="blog.html" class="mobile-menu__link">Blog</a>
+    <a href="contact.html" class="mobile-menu__link">Contact</a>
+    <a href="pricing.html" class="mobile-menu__link">Pricing</a>
+    <a href="dashboard.html" class="mobile-menu__link">Dashboard</a>
+    <div class="mobile-menu__actions">
+      <a href="login.html" class="btn btn--primary btn--full">Login</a>
+    </div>
+  </div>
+
+  <main>
+    <!-- ==================== PAGE BANNER ==================== -->
+    <section class="page-banner" id="about-banner">
+      <div class="page-banner__bg">
+        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1920&q=80" alt="Barista preparing specialty coffee" loading="eager">
+      </div>
+      <div class="page-banner__overlay"></div>
+      <div class="page-banner__content">
+        <h1>About Us</h1>
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="home-classic.html">Home</a>
+          <span class="separator">/</span>
+          <span>About</span>
+        </nav>
+      </div>
+    </section>
+
+    <!-- ==================== MISSION ==================== -->
+    <section class="section" id="mission">
+      <div class="container">
+        <div class="split reveal">
+          <div class="split__content">
+            <span class="section-subtitle text-uppercase" style="color:var(--color-primary);font-size:var(--fs-sm);font-weight:600;letter-spacing:.15em;display:block;margin-bottom:var(--space-3)">Our Mission</span>
+            <h2>Bringing Extraordinary Coffee to Every Cup</h2>
+            <p class="lead">At Ember & Brew, we believe that exceptional coffee is more than a beverage — it's an experience that connects farmers, roasters, and coffee lovers in a shared passion for quality.</p>
+            <p>Our mission is to source the finest single-origin beans from sustainable farms, roast them in small batches to unlock their full potential, and deliver unforgettable flavors to your cup — whether you visit our cafe or order online.</p>
+            <div style="display:flex;gap:var(--space-6);margin-top:var(--space-6)">
+              <div>
+                <div style="font-family:var(--font-heading);font-size:var(--fs-2xl);font-weight:700;color:var(--color-primary)">2015</div>
+                <div style="font-size:var(--fs-sm);color:var(--color-text-muted)">Founded</div>
+              </div>
+              <div>
+                <div style="font-family:var(--font-heading);font-size:var(--fs-2xl);font-weight:700;color:var(--color-primary)">12+</div>
+                <div style="font-size:var(--fs-sm);color:var(--color-text-muted)">Origin Countries</div>
+              </div>
+              <div>
+                <div style="font-family:var(--font-heading);font-size:var(--fs-2xl);font-weight:700;color:var(--color-primary)">Top 3%</div>
+                <div style="font-size:var(--fs-sm);color:var(--color-text-muted)">Arabica Beans</div>
+              </div>
+            </div>
+          </div>
+          <div class="split__img reveal-right delay-2">
+            <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=800&q=80" alt="Coffee roasting process in our roastery" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== OUR VALUES ==================== -->
+    <section class="section" style="background:var(--color-bg-secondary)">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-subtitle">What Drives Us</span>
+          <h2>Our Core Values</h2>
+          <p>The principles that guide every bean we source and every cup we brew.</p>
+        </div>
+        <div class="grid grid--3" data-stagger="0.12">
+          <div class="card service-card">
+            <div class="service-card__icon">🌍</div>
+            <h4>Sustainability First</h4>
+            <p class="card__text">Direct trade relationships ensure fair wages. We invest in farm infrastructure and eco-friendly processing methods.</p>
+          </div>
+          <div class="card service-card">
+            <div class="service-card__icon">🔬</div>
+            <h4>Quality Obsessed</h4>
+            <p class="card__text">Q-grader certified team. Every lot cupped and scored. We only roast beans scoring 84+ on the SCA scale.</p>
+          </div>
+          <div class="card service-card">
+            <div class="service-card__icon">❤️</div>
+            <h4>Community Driven</h4>
+            <p class="card__text">Our cafe is a gathering place. We host cupping events, brewing workshops, and support local artisans.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== HISTORY TIMELINE ==================== -->
+    <section class="section" id="history">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-subtitle">Our Journey</span>
+          <h2>A Brief History</h2>
+          <p>From a humble garage roastery to a beloved community coffee brand.</p>
+        </div>
+        <div class="grid grid--2" style="align-items:start">
+          <div class="process reveal-left">
+            <div class="process__step">
+              <h4>2015 — The Spark</h4>
+              <p>Founded by two coffee-obsessed friends with a second-hand Probat roaster in a converted garage. Our first customers were neighbors who followed the aroma.</p>
+            </div>
+            <div class="process__step">
+              <h4>2017 — First Cafe</h4>
+              <p>Opened our flagship cafe in the arts district. The 800 sq ft space quickly became the neighborhood's favorite meeting spot.</p>
+            </div>
+            <div class="process__step">
+              <h4>2019 — Going Direct</h4>
+              <p>Established direct trade partnerships with farms in Ethiopia, Colombia, Guatemala, and Kenya. Started our online store and subscription service.</p>
+            </div>
+            <div class="process__step">
+              <h4>2021 — Roastery Expansion</h4>
+              <p>Moved to a 5,000 sq ft dedicated roasting facility with state-of-the-art equipment, a cupping lab, and a training center.</p>
+            </div>
+            <div class="process__step">
+              <h4>2024 — National Recognition</h4>
+              <p>Named "Best Specialty Roaster" by Coffee Review. Launched nationwide shipping and wholesale partnerships with 50+ cafes.</p>
+            </div>
+          </div>
+          <div class="reveal-right delay-2" style="border-radius:var(--radius-lg);overflow:hidden;position:sticky;top:100px">
+            <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=800&q=80" alt="Inside our coffee roastery" loading="lazy" style="width:100%;height:auto;border-radius:var(--radius-lg);object-fit:cover">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TEAM ==================== -->
+    <section class="section" id="team" style="background:var(--color-bg-secondary)">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-subtitle">The People</span>
+          <h2>Meet Our Team</h2>
+          <p>Passionate individuals united by a love for exceptional coffee.</p>
+        </div>
+        <div class="grid grid--4" data-stagger="0.1">
+          <div class="card team-card">
+            <div class="card__img">
+              <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80" alt="Daniel Foster - Founder & Head Roaster" loading="lazy">
+            </div>
+            <div class="card__body">
+              <h4 class="card__title" style="font-size:var(--fs-md);margin-bottom:var(--space-1)">Daniel Foster</h4>
+              <span class="team-card__role">Founder & Head Roaster</span>
+              <div class="team-card__socials">
+                <a href="#" aria-label="Twitter">𝕏</a>
+                <a href="#" aria-label="LinkedIn">in</a>
+              </div>
+            </div>
+          </div>
+          <div class="card team-card">
+            <div class="card__img">
+              <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&q=80" alt="Maria Santos - Co-Founder & Cafe Director" loading="lazy">
+            </div>
+            <div class="card__body">
+              <h4 class="card__title" style="font-size:var(--fs-md);margin-bottom:var(--space-1)">Maria Santos</h4>
+              <span class="team-card__role">Co-Founder & Cafe Director</span>
+              <div class="team-card__socials">
+                <a href="#" aria-label="Instagram">ig</a>
+                <a href="#" aria-label="LinkedIn">in</a>
+              </div>
+            </div>
+          </div>
+          <div class="card team-card">
+            <div class="card__img">
+              <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&q=80" alt="James Okafor - Q-Grader & Green Buyer" loading="lazy">
+            </div>
+            <div class="card__body">
+              <h4 class="card__title" style="font-size:var(--fs-md);margin-bottom:var(--space-1)">James Okafor</h4>
+              <span class="team-card__role">Q-Grader & Green Buyer</span>
+              <div class="team-card__socials">
+                <a href="#" aria-label="Twitter">𝕏</a>
+                <a href="#" aria-label="LinkedIn">in</a>
+              </div>
+            </div>
+          </div>
+          <div class="card team-card">
+            <div class="card__img">
+              <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&q=80" alt="Sophie Chen - Head Barista & Trainer" loading="lazy">
+            </div>
+            <div class="card__body">
+              <h4 class="card__title" style="font-size:var(--fs-md);margin-bottom:var(--space-1)">Sophie Chen</h4>
+              <span class="team-card__role">Head Barista & Trainer</span>
+              <div class="team-card__socials">
+                <a href="#" aria-label="Instagram">ig</a>
+                <a href="#" aria-label="Twitter">𝕏</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TESTIMONIALS ==================== -->
+    <section class="section" id="testimonials">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-subtitle">What People Say</span>
+          <h2>Voices of Our Community</h2>
+        </div>
+        <div class="grid grid--3" data-stagger="0.12">
+          <div class="testimonial-card">
+            <div class="testimonial-card__quote">Ember & Brew transformed my understanding of coffee. The team's passion is evident in every interaction and every cup.</div>
+            <div class="testimonial-card__author">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=96&q=80" alt="Carlos Mendez" class="testimonial-card__avatar">
+              <div>
+                <div class="testimonial-card__name">Carlos Mendez</div>
+                <div class="testimonial-card__role">Coffee Educator</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-card__quote">The sustainability focus is what drew me in. Knowing my coffee supports fair trade and eco-friendly practices makes every sip better.</div>
+            <div class="testimonial-card__author">
+              <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=96&q=80" alt="Priya Sharma" class="testimonial-card__avatar">
+              <div>
+                <div class="testimonial-card__name">Priya Sharma</div>
+                <div class="testimonial-card__role">Environmental Blogger</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-card__quote">As a wholesale partner, the consistency and quality of Ember & Brew's beans is unmatched. Our cafe guests love every cup.</div>
+            <div class="testimonial-card__author">
+              <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=96&q=80" alt="Tom Richards" class="testimonial-card__avatar">
+              <div>
+                <div class="testimonial-card__name">Tom Richards</div>
+                <div class="testimonial-card__role">Cafe Owner</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-center" style="margin-top:var(--space-10)">
+          <a href="#" class="btn btn--secondary">Read More Reviews →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== NEWSLETTER ==================== -->
+    <section class="newsletter" id="newsletter">
+      <div class="container">
+        <div class="reveal">
+          <h2>Stay in the Loop</h2>
+          <p>Get brewing tips, exclusive offers, and first access to new roasts delivered to your inbox.</p>
+          <form class="newsletter__form" aria-label="Newsletter signup">
+            <input type="email" placeholder="Enter your email address" required aria-label="Email address">
+            <button type="submit" class="btn">Subscribe</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="home-classic.html" class="navbar__brand">
+            <div class="navbar__brand-icon">E</div>
+            <div class="navbar__brand-text">Ember <span>&</span> Brew</div>
+          </a>
+          <p>Premium specialty coffee, roasted fresh daily. From our roastery to your cup — every sip tells a story.</p>
+          <div class="footer__socials">
+            <a href="#" aria-label="Facebook">f</a>
+            <a href="#" aria-label="Instagram">ig</a>
+            <a href="#" aria-label="Twitter">𝕏</a>
+            <a href="#" aria-label="YouTube">▶</a>
+          </div>
+        </div>
+        <div>
+          <h5 class="footer__heading">Quick Links</h5>
+          <ul class="footer__links">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Our Coffees</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="pricing.html">Subscriptions</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="footer__heading">Support</h5>
+          <ul class="footer__links">
+            <li><a href="contact.html">Help Center</a></li>
+            <li><a href="#">Shipping Info</a></li>
+            <li><a href="#">Returns & Refunds</a></li>
+            <li><a href="#">Track Order</a></li>
+            <li><a href="#">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer__newsletter">
+          <h5 class="footer__heading">Newsletter</h5>
+          <p>Join our community for updates & exclusive deals.</p>
+          <form class="footer__newsletter-form" aria-label="Footer newsletter">
+            <input type="email" placeholder="Your email" required aria-label="Email">
+            <button type="submit">→</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2026 Ember & Brew. All rights reserved.</span>
+        <div class="footer__bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Sitemap</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" aria-label="Back to top">↑</button>
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/animations.js"></script>
+</body>
+</html>

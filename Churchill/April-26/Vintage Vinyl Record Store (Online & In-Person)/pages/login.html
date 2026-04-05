@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In — Vintage Vinyl</title>
+  <meta name="description" content="Sign in to your Vintage Vinyl account to manage orders, wishlists, and more.">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/dark-mode.css">
+  <link rel="stylesheet" href="../assets/css/rtl.css">
+  <style>
+    html, body { height: 100%; overflow: hidden; }
+    .auth-page {
+      min-height: 100vh; display: flex;
+      background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+    }
+    .auth-left {
+      flex: 1; display: flex; align-items: center; justify-content: center; padding: var(--space-8);
+    }
+    .auth-right {
+      flex: 1; position: relative; display: none;
+    }
+    @media (min-width: 1024px) { .auth-right { display: block; } }
+    .auth-right img { width: 100%; height: 100%; object-fit: cover; }
+    .auth-right::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(139,69,19,0.7), rgba(26,26,46,0.8));
+    }
+    .auth-right__content {
+      position: absolute; bottom: var(--space-12); left: var(--space-12); right: var(--space-12);
+      z-index: 2; color: #fff;
+    }
+    .auth-card {
+      width: 100%; max-width: 440px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-2xl);
+      padding: var(--space-10);
+      box-shadow: var(--shadow-xl);
+    }
+    .auth-logo {
+      display: flex; align-items: center; justify-content: center; gap: var(--space-3);
+      margin-bottom: var(--space-8); text-decoration: none; color: var(--text-primary);
+    }
+    .auth-divider {
+      display: flex; align-items: center; gap: var(--space-4);
+      margin: var(--space-6) 0; color: var(--text-muted); font-size: var(--text-sm);
+    }
+    .auth-divider::before, .auth-divider::after {
+      content: ''; flex: 1; height: 1px; background: var(--border-color);
+    }
+    .social-btn {
+      width: 100%; padding: 10px 16px;
+      display: flex; align-items: center; justify-content: center; gap: var(--space-3);
+      border: 1px solid var(--border-color); border-radius: var(--radius-md);
+      font-size: var(--text-sm); font-weight: 500; color: var(--text-primary);
+      background: var(--bg-card); transition: all var(--transition-fast); cursor: pointer;
+    }
+    .social-btn:hover { border-color: var(--color-primary); background: var(--bg-secondary); }
+    .social-btn--google { }
+    .social-btn--google .social-icon { color: #DB4437; }
+    .social-btn--facebook { }
+    .social-btn--facebook .social-icon { color: #4267B2; }
+    .form-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-5); }
+    .form-row label { font-size: var(--text-sm); color: var(--text-secondary); display: flex; align-items: center; gap: var(--space-2); cursor: pointer; }
+    .form-row a { font-size: var(--text-sm); color: var(--color-primary); font-weight: 500; }
+    .auth-footer { text-align: center; margin-top: var(--space-6); font-size: var(--text-sm); color: var(--text-muted); }
+    .auth-footer a { color: var(--color-primary); font-weight: 600; }
+    .theme-float { position: absolute; top: var(--space-4); right: var(--space-4); z-index: 10; }
+  </style>
+</head>
+<body>
+  <div class="auth-page">
+    <button class="navbar__icon-btn theme-toggle theme-float" aria-label="Toggle theme">🌙</button>
+    <div class="auth-left">
+      <div class="auth-card">
+        <a href="../index.html" class="auth-logo">
+          <div class="navbar__logo-icon">V</div>
+          <span class="navbar__logo-text">Vintage Vinyl</span>
+        </a>
+        <h1 style="font-size:var(--text-2xl);text-align:center;margin-bottom:var(--space-2);">Welcome Back</h1>
+        <p style="text-align:center;color:var(--text-muted);font-size:var(--text-sm);margin-bottom:var(--space-6);">Sign in to access your collection and orders</p>
+
+        <div style="display:flex;gap:var(--space-3);margin-bottom:var(--space-2);">
+          <button class="social-btn social-btn--google"><span class="social-icon" style="font-size:1.1rem;">G</span> Google</button>
+          <button class="social-btn social-btn--facebook"><span class="social-icon" style="font-size:1.1rem;">f</span> Facebook</button>
+        </div>
+
+        <div class="auth-divider">or continue with email</div>
+
+        <form id="login-form" onsubmit="event.preventDefault();">
+          <div class="form-group">
+            <label class="form-label" for="login-email">Email Address</label>
+            <input type="email" id="login-email" class="form-input" placeholder="you@example.com" required autocomplete="email">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="login-password">Password</label>
+            <div class="form-input-wrap">
+              <input type="password" id="login-password" class="form-input" placeholder="••••••••" required autocomplete="current-password" style="padding-right:44px;">
+              <span class="form-input-icon" onclick="const i=document.getElementById('login-password');i.type=i.type==='password'?'text':'password';this.textContent=i.type==='password'?'👁':'🙈';" role="button" tabindex="0" aria-label="Toggle password visibility">👁</span>
+            </div>
+          </div>
+          <div class="form-row">
+            <label><input type="checkbox" style="accent-color:var(--color-primary);"> Remember me</label>
+            <a href="#">Forgot password?</a>
+          </div>
+          <button type="submit" class="btn btn--primary btn--full btn--lg">Sign In</button>
+        </form>
+
+        <div class="auth-footer">Don't have an account? <a href="register.html">Create one</a></div>
+      </div>
+    </div>
+    <div class="auth-right">
+      <img src="../assets/images/hero/hero-store.png" alt="Vintage Vinyl store interior" width="960" height="1080">
+      <div class="auth-right__content">
+        <h2 style="font-size:var(--text-3xl);margin-bottom:var(--space-3);">Discover Your Next Favorite Record</h2>
+        <p style="color:rgba(255,255,255,0.8);font-size:var(--text-base);">Join 8,000+ collectors who trust Vintage Vinyl for rare pressings and expert curation.</p>
+      </div>
+    </div>
+  </div>
+  <script src="../assets/js/theme-switcher.js"></script>
+</body>
+</html>

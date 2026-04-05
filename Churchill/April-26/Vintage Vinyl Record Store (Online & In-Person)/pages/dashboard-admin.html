@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard — Vintage Vinyl</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/dark-mode.css">
+  <link rel="stylesheet" href="../assets/css/rtl.css">
+  <style>
+    body { overflow: hidden; height: 100vh; }
+    .dashboard { display: flex; height: 100vh; background: var(--bg-primary); }
+
+    /* Sidebar */
+    .dash-sidebar {
+      width: var(--sidebar-width); background: #12122a;
+      border-right: 1px solid var(--border-color);
+      display: flex; flex-direction: column;
+      flex-shrink: 0; overflow-y: auto;
+    }
+    .dash-sidebar__logo {
+      padding: var(--space-6); display: flex; align-items: center; gap: var(--space-3);
+      text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .dash-sidebar__nav { flex: 1; padding: var(--space-4) var(--space-3); }
+    .dash-sidebar__section { margin-bottom: var(--space-6); }
+    .dash-sidebar__section-title {
+      font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.3); padding: var(--space-2) var(--space-3); margin-bottom: var(--space-1);
+    }
+    .dash-nav-link {
+      display: flex; align-items: center; gap: var(--space-3);
+      padding: var(--space-3) var(--space-4); border-radius: var(--radius-md);
+      font-size: var(--text-sm); color: rgba(255,255,255,0.5);
+      transition: all var(--transition-fast); text-decoration: none; margin-bottom: 2px;
+    }
+    .dash-nav-link:hover { background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.8); }
+    .dash-nav-link.active { background: rgba(255,215,0,0.1); color: var(--color-accent); }
+    .dash-nav-link .nav-icon { width: 20px; text-align: center; }
+    .dash-nav-link .nav-badge {
+      margin-inline-start: auto; padding: 2px 8px; border-radius: var(--radius-full);
+      font-size: 10px; font-weight: 700; background: var(--color-error); color: #fff;
+    }
+
+    /* Main Content */
+    .dash-main { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+
+    /* Top Bar */
+    .dash-topbar {
+      height: 60px; padding: 0 var(--space-6);
+      display: flex; align-items: center; justify-content: space-between;
+      border-bottom: 1px solid var(--border-color); flex-shrink: 0;
+    }
+    .dash-topbar__left { display: flex; align-items: center; gap: var(--space-4); }
+    .dash-topbar__breadcrumb { font-size: var(--text-sm); color: var(--text-muted); }
+    .dash-topbar__breadcrumb span { color: var(--text-primary); }
+    .dash-topbar__search {
+      padding: 8px 16px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-color);
+      border-radius: var(--radius-full); color: var(--text-primary); font-size: var(--text-sm);
+      width: 280px;
+    }
+    .dash-topbar__right { display: flex; align-items: center; gap: var(--space-3); }
+    .dash-topbar__avatar {
+      width: 36px; height: 36px; border-radius: var(--radius-full); object-fit: cover;
+      border: 2px solid var(--color-accent);
+    }
+
+    /* Content Area */
+    .dash-content { flex: 1; overflow-y: auto; padding: var(--space-6); }
+
+    /* Stat Cards */
+    .stat-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-4); margin-bottom: var(--space-6); }
+    .stat-card {
+      background: var(--bg-card); border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg); padding: var(--space-5);
+    }
+    .stat-card__label { font-size: var(--text-xs); color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: var(--space-2); }
+    .stat-card__value { font-family: var(--font-accent); font-size: var(--text-3xl); font-weight: 700; color: var(--text-primary); }
+    .stat-card__change { font-size: var(--text-xs); margin-top: var(--space-1); }
+    .stat-card__change--up { color: var(--color-success); }
+    .stat-card__change--down { color: var(--color-error); }
+
+    /* Chart Container */
+    .chart-section {
+      display: grid; grid-template-columns: 2fr 1fr; gap: var(--space-4); margin-bottom: var(--space-6);
+    }
+    .chart-card {
+      background: var(--bg-card); border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg); padding: var(--space-5);
+    }
+    .chart-card__header {
+      display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-4);
+    }
+    .chart-card__title { font-family: var(--font-heading); font-size: var(--text-lg); font-weight: 600; }
+    .chart-placeholder {
+      height: 200px; background: linear-gradient(to top, rgba(255,215,0,0.1), transparent);
+      border-radius: var(--radius-md); position: relative; overflow: hidden;
+      display: flex; align-items: flex-end; gap: 2px; padding: 0 var(--space-3);
+    }
+    .chart-bar {
+      flex: 1; background: linear-gradient(to top, var(--color-accent), rgba(255,215,0,0.4));
+      border-radius: 4px 4px 0 0; transition: all var(--transition-fast);
+      min-height: 10px;
+    }
+    .chart-bar:hover { opacity: 0.8; }
+
+    /* Table */
+    .dash-table {
+      width: 100%; border-collapse: collapse;
+      background: var(--bg-card); border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg); overflow: hidden;
+    }
+    .dash-table th {
+      padding: var(--space-3) var(--space-4); text-align: start;
+      font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.05em;
+      color: var(--text-muted); background: rgba(255,255,255,0.02);
+      border-bottom: 1px solid var(--border-color);
+    }
+    .dash-table td {
+      padding: var(--space-3) var(--space-4); font-size: var(--text-sm);
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+    }
+    .dash-table tr:hover td { background: rgba(255,255,255,0.02); }
+    .status-badge {
+      display: inline-flex; padding: 2px 10px; border-radius: var(--radius-full);
+      font-size: 11px; font-weight: 600;
+    }
+    .status-badge--success { background: rgba(46,139,87,0.15); color: var(--color-success); }
+    .status-badge--warning { background: rgba(255,140,0,0.15); color: var(--color-warning); }
+    .status-badge--info { background: rgba(70,130,180,0.15); color: var(--color-info); }
+    .status-badge--error { background: rgba(220,20,60,0.15); color: var(--color-error); }
+
+    /* Top Products */
+    .top-product { display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3) 0; border-bottom: 1px solid rgba(255,255,255,0.03); }
+    .top-product:last-child { border: none; }
+    .top-product__rank { width: 24px; height: 24px; border-radius: var(--radius-full); background: rgba(255,215,0,0.1); color: var(--color-accent); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; flex-shrink: 0; }
+    .top-product__img { width: 40px; height: 40px; border-radius: var(--radius-md); object-fit: cover; flex-shrink: 0; }
+    .top-product__name { font-size: var(--text-sm); font-weight: 500; }
+    .top-product__sales { margin-inline-start: auto; font-size: var(--text-sm); color: var(--text-muted); }
+
+    @media (max-width: 1024px) {
+      .dash-sidebar { display: none; }
+      .stat-cards { grid-template-columns: repeat(2, 1fr); }
+      .chart-section { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="dashboard">
+    <!-- Sidebar -->
+    <aside class="dash-sidebar">
+      <a href="../index.html" class="dash-sidebar__logo">
+        <div class="navbar__logo-icon" style="width:36px;height:36px;font-size:var(--text-base);">V</div>
+        <span style="font-family:var(--font-heading);font-size:var(--text-base);font-weight:700;color:#fff;">Vintage Vinyl</span>
+      </a>
+      <nav class="dash-sidebar__nav">
+        <div class="dash-sidebar__section">
+          <div class="dash-sidebar__section-title">Main</div>
+          <a href="#" class="dash-nav-link active"><span class="nav-icon">📊</span> Dashboard</a>
+          <a href="#" class="dash-nav-link"><span class="nav-icon">🛒</span> Orders <span class="nav-badge">12</span></a>
+          <a href="#" class="dash-nav-link"><span class="nav-icon">📦</span> Inventory</a>
+          <a href="#" class="dash-nav-link"><span class="nav-icon">👥</span> Customers</a>
+        </div>
+        <div class="dash-sidebar__section">
+          <div class="dash-sidebar__section-title">Content</div>
+          <a href="#" class="dash-nav-link"><span class="nav-icon">📝</span> Blog Posts</a>
+          <a href="#" class="dash-nav-link"><span class="nav-icon">📅</span> Events</a>
+          <a href="#" class="dash-nav-link"><span class="nav-icon">✉️</span> Messages <span class="nav-badge">3</span></a>
+        </div>
+        <div class="dash-sidebar__section">
+          <div class="dash-sidebar__section-title">Settings</div>
+          <a href="#" class="dash-nav-link"><span class="nav-icon">⚙️</span> Settings</a>
+          <a href="#" class="dash-nav-link"><span class="nav-icon">🎨</span> Appearance</a>
+          <a href="login.html" class="dash-nav-link"><span class="nav-icon">🚪</span> Logout</a>
+        </div>
+      </nav>
+    </aside>
+
+    <!-- Main -->
+    <div class="dash-main">
+      <header class="dash-topbar">
+        <div class="dash-topbar__left">
+          <span class="dash-topbar__breadcrumb">Admin / <span>Dashboard</span></span>
+        </div>
+        
+        <div class="role-switcher" style="display:flex;background:rgba(255,255,255,0.05);border-radius:var(--radius-full);padding:4px;gap:4px;border:1px solid var(--border-color);margin-left:auto;margin-right:var(--space-4);">
+          <a href="dashboard-customer.html" style="padding:4px 16px;border-radius:var(--radius-full);font-size:12px;font-weight:600;color:var(--text-muted);text-decoration:none;transition:all 0.2s;">Customer View</a>
+          <a href="dashboard-admin.html" style="padding:4px 16px;border-radius:var(--radius-full);font-size:12px;font-weight:600;color:#fff;background:var(--color-primary);text-decoration:none;">Admin View</a>
+        </div>
+
+        <div class="dash-topbar__right">
+          <input type="search" class="dash-topbar__search" placeholder="Search records, orders, customers…" aria-label="Search">
+          <button class="navbar__icon-btn" style="position:relative;" aria-label="Notifications">🔔<span style="position:absolute;top:4px;right:4px;width:8px;height:8px;background:var(--color-error);border-radius:50%;"></span></button>
+          <button class="navbar__icon-btn theme-toggle" aria-label="Toggle theme">☀️</button>
+          <img src="../assets/images/team/team-1.png" alt="Admin avatar" class="dash-topbar__avatar" width="36" height="36">
+        </div>
+      </header>
+
+      <div class="dash-content">
+        <h1 style="font-size:var(--text-2xl);margin-bottom:var(--space-1);">Welcome back, Robert 👋</h1>
+        <p style="color:var(--text-muted);margin-bottom:var(--space-6);">Here's what's happening at Vintage Vinyl today.</p>
+
+        <!-- Stat Cards -->
+        <div class="stat-cards">
+          <div class="stat-card">
+            <div class="stat-card__label">Total Revenue</div>
+            <div class="stat-card__value">$12,480</div>
+            <div class="stat-card__change stat-card__change--up">↑ 12.5% from last month</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card__label">Orders Today</div>
+            <div class="stat-card__value">24</div>
+            <div class="stat-card__change stat-card__change--up">↑ 8 more than yesterday</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card__label">New Customers</div>
+            <div class="stat-card__value">156</div>
+            <div class="stat-card__change stat-card__change--up">↑ 23% this week</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card__label">Low Stock Items</div>
+            <div class="stat-card__value">7</div>
+            <div class="stat-card__change stat-card__change--down">↓ Needs attention</div>
+          </div>
+        </div>
+
+        <!-- Charts -->
+        <div class="chart-section">
+          <div class="chart-card">
+            <div class="chart-card__header">
+              <h2 class="chart-card__title">Sales Overview (30 Days)</h2>
+              <select class="form-input" style="width:auto;padding:6px 12px;font-size:var(--text-xs);">
+                <option>Last 30 Days</option>
+                <option>Last 7 Days</option>
+                <option>This Year</option>
+              </select>
+            </div>
+            <div class="chart-placeholder">
+              <div class="chart-bar" style="height:35%;"></div>
+              <div class="chart-bar" style="height:45%;"></div>
+              <div class="chart-bar" style="height:30%;"></div>
+              <div class="chart-bar" style="height:60%;"></div>
+              <div class="chart-bar" style="height:55%;"></div>
+              <div class="chart-bar" style="height:40%;"></div>
+              <div class="chart-bar" style="height:70%;"></div>
+              <div class="chart-bar" style="height:65%;"></div>
+              <div class="chart-bar" style="height:50%;"></div>
+              <div class="chart-bar" style="height:80%;"></div>
+              <div class="chart-bar" style="height:75%;"></div>
+              <div class="chart-bar" style="height:60%;"></div>
+              <div class="chart-bar" style="height:85%;"></div>
+              <div class="chart-bar" style="height:70%;"></div>
+              <div class="chart-bar" style="height:90%;"></div>
+            </div>
+          </div>
+          <div class="chart-card">
+            <h2 class="chart-card__title">Top Selling Records</h2>
+            <div style="margin-top:var(--space-4);">
+              <div class="top-product"><span class="top-product__rank">1</span><img src="https://images.unsplash.com/photo-1603048588665-791ca8aea617?w=80&h=80&fit=crop" alt="" class="top-product__img" width="40" height="40"><div><div class="top-product__name">Dark Side of the Moon</div><div style="font-size:11px;color:var(--text-muted);">Pink Floyd</div></div><span class="top-product__sales">42 sold</span></div>
+              <div class="top-product"><span class="top-product__rank">2</span><img src="https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?w=80&h=80&fit=crop" alt="" class="top-product__img" width="40" height="40"><div><div class="top-product__name">Kind of Blue</div><div style="font-size:11px;color:var(--text-muted);">Miles Davis</div></div><span class="top-product__sales">38 sold</span></div>
+              <div class="top-product"><span class="top-product__rank">3</span><img src="https://images.unsplash.com/photo-1619983081563-430f63602796?w=80&h=80&fit=crop" alt="" class="top-product__img" width="40" height="40"><div><div class="top-product__name">Abbey Road</div><div style="font-size:11px;color:var(--text-muted);">The Beatles</div></div><span class="top-product__sales">31 sold</span></div>
+              <div class="top-product"><span class="top-product__rank">4</span><img src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=80&h=80&fit=crop" alt="" class="top-product__img" width="40" height="40"><div><div class="top-product__name">Rumours</div><div style="font-size:11px;color:var(--text-muted);">Fleetwood Mac</div></div><span class="top-product__sales">28 sold</span></div>
+              <div class="top-product"><span class="top-product__rank">5</span><img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=80&h=80&fit=crop" alt="" class="top-product__img" width="40" height="40"><div><div class="top-product__name">Thriller</div><div style="font-size:11px;color:var(--text-muted);">Michael Jackson</div></div><span class="top-product__sales">25 sold</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Orders -->
+        <div class="chart-card">
+          <div class="chart-card__header">
+            <h2 class="chart-card__title">Recent Orders</h2>
+            <a href="#" class="btn btn--ghost btn--sm">View All →</a>
+          </div>
+          <div style="overflow-x:auto;">
+            <table class="dash-table">
+              <thead>
+                <tr><th>Order ID</th><th>Customer</th><th>Items</th><th>Total</th><th>Status</th><th>Date</th></tr>
+              </thead>
+              <tbody>
+                <tr><td style="font-weight:600;">#VV-2847</td><td>Marcus Chen</td><td>Dark Side of the Moon, Abbey Road</td><td>$292.98</td><td><span class="status-badge status-badge--success">Delivered</span></td><td>Apr 2, 2026</td></tr>
+                <tr><td style="font-weight:600;">#VV-2846</td><td>Sophia Rodriguez</td><td>Kind of Blue</td><td>$34.99</td><td><span class="status-badge status-badge--info">Shipped</span></td><td>Apr 2, 2026</td></tr>
+                <tr><td style="font-weight:600;">#VV-2845</td><td>James Wright</td><td>Rumours, What's Going On</td><td>$304.99</td><td><span class="status-badge status-badge--warning">Processing</span></td><td>Apr 1, 2026</td></tr>
+                <tr><td style="font-weight:600;">#VV-2844</td><td>Emily Cooper</td><td>Blue Train (1st Press)</td><td>$890.00</td><td><span class="status-badge status-badge--success">Delivered</span></td><td>Apr 1, 2026</td></tr>
+                <tr><td style="font-weight:600;">#VV-2843</td><td>David Park</td><td>Listening Station Booking</td><td>$35.00</td><td><span class="status-badge status-badge--error">Cancelled</span></td><td>Mar 31, 2026</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="../assets/js/theme-switcher.js"></script>
+</body>
+</html>

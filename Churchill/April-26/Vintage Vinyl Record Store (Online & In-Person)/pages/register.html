@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Account — Vintage Vinyl</title>
+  <meta name="description" content="Create your Vintage Vinyl account to start building your collection online.">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/dark-mode.css">
+  <link rel="stylesheet" href="../assets/css/rtl.css">
+  <style>
+    html, body { height: 100%; overflow: hidden; }
+    .auth-page { min-height:100vh;display:flex;background:linear-gradient(135deg,var(--bg-primary),var(--bg-secondary)); }
+    .auth-left { flex:1;display:flex;align-items:center;justify-content:center;padding:var(--space-6); }
+    .auth-right { flex:1;position:relative;display:none; }
+    @media(min-width:1024px){.auth-right{display:block;}}
+    .auth-right img{width:100%;height:100%;object-fit:cover;}
+    .auth-right::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(139,69,19,.7),rgba(26,26,46,.8));}
+    .auth-right__content{position:absolute;bottom:var(--space-12);left:var(--space-12);right:var(--space-12);z-index:2;color:#fff;}
+    .auth-card{width:100%;max-width:440px;background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--radius-2xl);padding:var(--space-8);box-shadow:var(--shadow-xl);}
+    .auth-logo{display:flex;align-items:center;justify-content:center;gap:var(--space-3);margin-bottom:var(--space-6);text-decoration:none;color:var(--text-primary);}
+    .auth-divider{display:flex;align-items:center;gap:var(--space-4);margin:var(--space-4) 0;color:var(--text-muted);font-size:var(--text-sm);}
+    .auth-divider::before,.auth-divider::after{content:'';flex:1;height:1px;background:var(--border-color);}
+    .social-btn{width:100%;padding:10px 16px;display:flex;align-items:center;justify-content:center;gap:var(--space-3);border:1px solid var(--border-color);border-radius:var(--radius-md);font-size:var(--text-sm);font-weight:500;color:var(--text-primary);background:var(--bg-card);transition:all var(--transition-fast);cursor:pointer;}
+    .social-btn:hover{border-color:var(--color-primary);background:var(--bg-secondary);}
+    .auth-footer{text-align:center;margin-top:var(--space-4);font-size:var(--text-sm);color:var(--text-muted);}
+    .auth-footer a{color:var(--color-primary);font-weight:600;}
+    .theme-float{position:absolute;top:var(--space-4);right:var(--space-4);z-index:10;}
+    .name-row{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4);}
+  </style>
+</head>
+<body>
+  <div class="auth-page">
+    <button class="navbar__icon-btn theme-toggle theme-float" aria-label="Toggle theme">🌙</button>
+    <div class="auth-left">
+      <div class="auth-card">
+        <a href="../index.html" class="auth-logo">
+          <div class="navbar__logo-icon">V</div>
+          <span class="navbar__logo-text">Vintage Vinyl</span>
+        </a>
+        <h1 style="font-size:var(--text-2xl);text-align:center;margin-bottom:var(--space-1);">Create Your Account</h1>
+        <p style="text-align:center;color:var(--text-muted);font-size:var(--text-sm);margin-bottom:var(--space-5);">Join the vinyl community today</p>
+
+        <div style="display:flex;gap:var(--space-3);">
+          <button class="social-btn"><span style="color:#DB4437;">G</span> Google</button>
+          <button class="social-btn"><span style="color:#4267B2;">f</span> Facebook</button>
+        </div>
+        <div class="auth-divider">or register with email</div>
+
+        <form onsubmit="event.preventDefault();">
+          <div class="name-row">
+            <div class="form-group"><label class="form-label" for="reg-first">First Name</label><input type="text" id="reg-first" class="form-input" placeholder="John" required></div>
+            <div class="form-group"><label class="form-label" for="reg-last">Last Name</label><input type="text" id="reg-last" class="form-input" placeholder="Doe" required></div>
+          </div>
+          <div class="form-group"><label class="form-label" for="reg-email">Email</label><input type="email" id="reg-email" class="form-input" placeholder="you@example.com" required></div>
+          <div class="form-group">
+            <label class="form-label" for="reg-password">Password</label>
+            <div class="form-input-wrap">
+              <input type="password" id="reg-password" class="form-input" placeholder="Min 8 characters" required minlength="8" style="padding-right:44px;">
+              <span class="form-input-icon" onclick="const i=document.getElementById('reg-password');i.type=i.type==='password'?'text':'password';" role="button" tabindex="0" aria-label="Toggle password visibility">👁</span>
+            </div>
+          </div>
+          <div style="margin-bottom:var(--space-5);">
+            <label style="font-size:var(--text-xs);color:var(--text-muted);display:flex;align-items:flex-start;gap:var(--space-2);cursor:pointer;">
+              <input type="checkbox" required style="accent-color:var(--color-primary);margin-top:2px;">
+              I agree to the <a href="#" style="color:var(--color-primary);">Terms of Service</a> and <a href="#" style="color:var(--color-primary);">Privacy Policy</a>
+            </label>
+          </div>
+          <button type="submit" class="btn btn--primary btn--full">Create Account</button>
+        </form>
+        <div class="auth-footer">Already have an account? <a href="login.html">Sign in</a></div>
+      </div>
+    </div>
+    <div class="auth-right">
+      <img src="../assets/images/hero/hero-albums.png" alt="Vinyl albums" width="960" height="1080">
+      <div class="auth-right__content">
+        <h2 style="font-size:var(--text-3xl);margin-bottom:var(--space-3);">Start Your Vinyl Journey</h2>
+        <p style="color:rgba(255,255,255,.8);">Access exclusive collections, early releases, and community events.</p>
+      </div>
+    </div>
+  </div>
+  <script src="../assets/js/theme-switcher.js"></script>
+</body>
+</html>

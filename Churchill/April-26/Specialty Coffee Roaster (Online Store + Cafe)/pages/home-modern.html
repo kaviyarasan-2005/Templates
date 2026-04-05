@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ember & Brew — Modern Coffee Experience</title>
+  <meta name="description" content="Ember & Brew — A modern, tech-forward specialty coffee experience. Subscriptions, quizzes, and curated roasts delivered fresh.">
+  <meta property="og:title" content="Ember & Brew — Modern Experience">
+  <meta property="og:description" content="Tech-forward specialty coffee. Subscriptions and curated roasts.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://emberandbrew.com/modern">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/dark-mode.css">
+  <link rel="stylesheet" href="../assets/css/animations.css">
+  <link rel="stylesheet" href="../assets/css/rtl.css">
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"CafeOrCoffeeShop",
+    "name":"Ember & Brew",
+    "description":"Modern specialty coffee roaster with online subscriptions.",
+    "url":"https://emberandbrew.com"
+  }
+  </script>
+  <style>
+    /* ===== Modern Home — Page-Specific Styles ===== */
+    .modern-hero{position:relative;min-height:100vh;margin-top:var(--nav-height);display:grid;grid-template-columns:1fr 1fr;overflow:hidden;background:linear-gradient(135deg,#1a1008 0%,#2a1a0c 40%,#3D2817 100%)}
+    .modern-hero__content{display:flex;flex-direction:column;justify-content:center;padding:var(--space-16) var(--space-12);z-index:2}
+    .modern-hero__tag{display:inline-flex;align-items:center;gap:var(--space-2);background:rgba(212,165,116,.15);border:1px solid rgba(212,165,116,.3);border-radius:var(--radius-full);padding:var(--space-2) var(--space-4);font-size:var(--fs-xs);color:var(--color-secondary);font-weight:var(--fw-semibold);text-transform:uppercase;letter-spacing:.12em;margin-bottom:var(--space-6);width:fit-content}
+    .modern-hero__tag::before{content:'';width:8px;height:8px;background:var(--color-accent);border-radius:50%;animation:pulse 2s infinite}
+    .modern-hero__title{font-size:clamp(2.5rem,5vw,4rem);color:var(--white);line-height:1.08;margin-bottom:var(--space-6)}
+    .modern-hero__title .gradient-text{background:linear-gradient(135deg,var(--color-secondary) 0%,var(--color-accent) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .modern-hero__desc{font-size:var(--fs-lg);color:rgba(255,255,255,.7);margin-bottom:var(--space-8);max-width:480px;line-height:var(--lh-relaxed)}
+    .modern-hero__actions{display:flex;gap:var(--space-4);flex-wrap:wrap}
+    .modern-hero__stats{display:flex;gap:var(--space-10);margin-top:var(--space-12)}
+    .modern-hero__stat-num{font-family:var(--font-heading);font-size:var(--fs-2xl);font-weight:var(--fw-bold);color:var(--color-secondary)}
+    .modern-hero__stat-label{font-size:var(--fs-xs);color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.08em}
+    .modern-hero__visual{position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
+    .modern-hero__visual img{width:100%;height:100%;object-fit:cover;animation:kenBurns 25s ease alternate infinite}
+    .modern-hero__visual::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,#1a1008 0%,transparent 40%);z-index:1}
+
+    /* Features grid */
+    .feature-icon-card{background:var(--white);border-radius:var(--radius-lg);padding:var(--space-8);text-align:center;border:1px solid var(--color-border-light);transition:all var(--transition-slow)}
+    .feature-icon-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-card-hover);border-color:var(--color-secondary-light)}
+    .feature-icon-card__icon{width:64px;height:64px;margin:0 auto var(--space-5);background:linear-gradient(135deg,rgba(111,78,55,.1),rgba(212,165,116,.15));border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;font-size:1.75rem}
+    .feature-icon-card h4{margin-bottom:var(--space-2)}
+    .feature-icon-card p{font-size:var(--fs-sm);color:var(--color-text-muted);margin-bottom:0}
+
+    /* Subscription calculator */
+    .calc{background:var(--white);border-radius:var(--radius-xl);padding:var(--space-10);box-shadow:var(--shadow-lg);border:1px solid var(--color-border-light)}
+    .calc__slider{width:100%;accent-color:var(--color-primary);margin:var(--space-4) 0}
+    .calc__result{font-family:var(--font-heading);font-size:var(--fs-4xl);color:var(--color-primary);font-weight:var(--fw-bold);text-align:center;margin:var(--space-6) 0}
+    .calc__detail{display:flex;justify-content:space-between;padding:var(--space-3) 0;border-bottom:1px solid var(--color-border-light);font-size:var(--fs-sm)}
+    .calc__detail:last-child{border-bottom:none}
+
+    /* Coffee quiz */
+    .quiz{background:var(--white);border-radius:var(--radius-xl);padding:var(--space-10);border:1px solid var(--color-border-light)}
+    .quiz__options{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-3)}
+    .quiz__option{padding:var(--space-4);border:2px solid var(--color-border-light);border-radius:var(--radius-md);cursor:pointer;text-align:center;transition:all var(--transition-base);font-size:var(--fs-sm);font-weight:var(--fw-medium)}
+    .quiz__option:hover,.quiz__option.selected{border-color:var(--color-primary);background:rgba(111,78,55,.05);color:var(--color-primary)}
+    .quiz__progress{height:4px;background:var(--color-bg-secondary);border-radius:var(--radius-full);margin-bottom:var(--space-6);overflow:hidden}
+    .quiz__progress-bar{height:100%;background:var(--color-primary);border-radius:var(--radius-full);transition:width .4s ease;width:25%}
+
+    /* Partners */
+    .partner-logos{display:flex;align-items:center;justify-content:center;gap:var(--space-12);flex-wrap:wrap;opacity:.6}
+    .partner-logos span{font-family:var(--font-heading);font-size:var(--fs-xl);color:var(--color-text-muted);font-weight:var(--fw-bold)}
+
+    /* Testimonial carousel */
+    .carousel{position:relative;overflow:hidden}
+    .carousel__track{display:flex;transition:transform .5s ease}
+    .carousel__slide{min-width:100%;padding:0 var(--space-4)}
+    .carousel__nav{display:flex;justify-content:center;gap:var(--space-2);margin-top:var(--space-6)}
+    .carousel__dot{width:10px;height:10px;border-radius:50%;background:var(--color-border);cursor:pointer;transition:all var(--transition-base)}
+    .carousel__dot.active{background:var(--color-primary);width:28px;border-radius:var(--radius-full)}
+    .carousel__arrows{display:flex;gap:var(--space-3);justify-content:center;margin-top:var(--space-4)}
+    .carousel__arrow{width:44px;height:44px;border-radius:var(--radius-full);border:1px solid var(--color-border);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all var(--transition-base);font-size:1.2rem}
+    .carousel__arrow:hover{background:var(--color-primary);color:var(--white);border-color:var(--color-primary)}
+
+    /* CTA band */
+    .cta-band{background:linear-gradient(135deg,var(--color-primary-dark) 0%,var(--color-primary) 50%,#8B6914 100%);padding:var(--space-20) 0;text-align:center;position:relative;overflow:hidden}
+    .cta-band::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
+    .cta-band h2{color:var(--white);font-size:var(--fs-4xl);margin-bottom:var(--space-4)}
+    .cta-band p{color:rgba(255,255,255,.75);font-size:var(--fs-lg);margin-bottom:var(--space-8);max-width:560px;margin-inline:auto}
+
+    @media(max-width:1024px){
+      .modern-hero{grid-template-columns:1fr;min-height:auto}
+      .modern-hero__visual{height:400px}
+      .modern-hero__visual::before{background:linear-gradient(180deg,#1a1008 0%,transparent 40%)}
+      .modern-hero__content{padding:var(--space-10) var(--gutter)}
+      .modern-hero__stats{gap:var(--space-6)}
+      .quiz__options{grid-template-columns:1fr 1fr}
+    }
+    @media(max-width:640px){
+      .modern-hero__stats{flex-direction:column;gap:var(--space-4)}
+      .modern-hero__actions{flex-direction:column}
+      .modern-hero__actions .btn{width:100%}
+      .quiz__options{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== NAVBAR ==================== -->
+  <nav class="navbar" id="main-navbar" role="navigation" aria-label="Main navigation">
+    <div class="navbar__inner">
+      <a href="home-classic.html" class="navbar__brand" aria-label="Ember & Brew Home">
+        <div class="navbar__brand-icon">E</div>
+        <div class="navbar__brand-text">Ember <span>&</span> Brew</div>
+      </a>
+
+      <div class="navbar__menu">
+        <ul class="navbar__links">
+          <li class="navbar__dropdown">
+            <a href="#" class="navbar__link navbar__dropdown-toggle">
+              Home
+              <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </a>
+            <div class="navbar__dropdown-menu">
+              <a href="home-classic.html">Classic Experience</a>
+              <a href="home-modern.html">Modern Experience</a>
+            </div>
+          </li>
+          <li><a href="about.html" class="navbar__link">About</a></li>
+          <li><a href="services.html" class="navbar__link">Services</a></li>
+          <li><a href="blog.html" class="navbar__link">Blog</a></li>
+          <li><a href="contact.html" class="navbar__link">Contact</a></li>
+          <li><a href="pricing.html" class="navbar__link">Pricing</a></li>
+          <li><a href="dashboard.html" class="navbar__link">Dashboard</a></li>
+        </ul>
+      </div>
+
+      <div class="navbar__actions">
+        <button class="btn--icon navbar__cart" id="cart-btn" aria-label="Shopping cart">
+          🛒
+          <span class="navbar__cart-badge">0</span>
+        </button>
+        <button class="btn--icon" id="rtl-toggle" aria-label="Switch to RTL">🌐</button>
+        <button class="btn--icon" id="theme-toggle" aria-label="Switch to dark mode">🌙</button>
+        <a href="login.html" class="btn btn--primary btn--sm">Login</a>
+        <div class="navbar__toggle" id="mobile-toggle" aria-label="Toggle menu" role="button" tabindex="0">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="home-classic.html" class="mobile-menu__link">Home Classic</a>
+    <a href="home-modern.html" class="mobile-menu__link active">Home Modern</a>
+    <a href="about.html" class="mobile-menu__link">About</a>
+    <a href="services.html" class="mobile-menu__link">Services</a>
+    <a href="blog.html" class="mobile-menu__link">Blog</a>
+    <a href="contact.html" class="mobile-menu__link">Contact</a>
+    <a href="pricing.html" class="mobile-menu__link">Pricing</a>
+    <a href="dashboard.html" class="mobile-menu__link">Dashboard</a>
+    <div class="mobile-menu__actions">
+      <a href="login.html" class="btn btn--primary btn--full">Login</a>
+    </div>
+  </div>
+
+  <main>
+    <!-- ==================== MODERN HERO ==================== -->
+    <section class="modern-hero" id="hero">
+      <div class="modern-hero__content">
+        <div class="modern-hero__tag">
+          Now Shipping Worldwide
+        </div>
+        <h1 class="modern-hero__title animate-fade-up">
+          Coffee, <br><span class="gradient-text">Reimagined</span> for the Modern Palate
+        </h1>
+        <p class="modern-hero__desc animate-fade-up" style="animation-delay:.2s">
+          AI-curated roast profiles, flexible subscriptions, and single-origin beans delivered fresh from farm to your doorstep.
+        </p>
+        <div class="modern-hero__actions animate-fade-up" style="animation-delay:.4s">
+          <a href="pricing.html" class="btn btn--accent btn--lg animate-pulse-glow">Start Your Subscription</a>
+          <a href="#quiz" class="btn btn--secondary btn--lg" style="color:#fff;border-color:rgba(255,255,255,.4)">Take the Coffee Quiz</a>
+        </div>
+        <div class="modern-hero__stats animate-fade-up" style="animation-delay:.6s">
+          <div>
+            <div class="modern-hero__stat-num" data-count="50" data-suffix="+">0</div>
+            <div class="modern-hero__stat-label">Origins</div>
+          </div>
+          <div>
+            <div class="modern-hero__stat-num" data-count="12" data-suffix="K+">0</div>
+            <div class="modern-hero__stat-label">Subscribers</div>
+          </div>
+          <div>
+            <div class="modern-hero__stat-num" data-count="98" data-suffix="%">0</div>
+            <div class="modern-hero__stat-label">Satisfaction</div>
+          </div>
+        </div>
+      </div>
+      <div class="modern-hero__visual">
+        <img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=1200&q=80" alt="Artisan coffee beans in warm golden light" loading="eager">
+      </div>
+    </section>
+
+    <!-- ==================== FEATURES GRID ==================== -->
+    <section class="section" id="features" style="background:var(--color-bg-secondary)">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-subtitle">Why Ember & Brew</span>
+          <h2>The Modern Coffee Advantage</h2>
+          <p>Everything you need for the perfect cup, powered by passion and precision.</p>
+        </div>
+
+        <div class="grid grid--4" data-stagger="0.1">
+          <div class="feature-icon-card">
+            <div class="feature-icon-card__icon">🌱</div>
+            <h4>Direct Trade</h4>
+            <p>Sourced directly from farmers at premium prices ensuring quality and fair livelihood.</p>
+          </div>
+          <div class="feature-icon-card">
+            <div class="feature-icon-card__icon">🔬</div>
+            <h4>Precision Roasting</h4>
+            <p>AI-monitored roast profiles calibrated to each bean's unique chemical composition.</p>
+          </div>
+          <div class="feature-icon-card">
+            <div class="feature-icon-card__icon">📦</div>
+            <h4>Flex Subscriptions</h4>
+            <p>Pause, skip, or change your plan anytime. Cancel with zero fees, zero hassle.</p>
+          </div>
+          <div class="feature-icon-card">
+            <div class="feature-icon-card__icon">⚡</div>
+            <h4>48hr Fresh</h4>
+            <p>Roasted and shipped within 48 hours. Nitrogen-flushed bags lock in peak freshness.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SUBSCRIPTION CALCULATOR ==================== -->
+    <section class="section" id="calculator">
+      <div class="container">
+        <div class="grid grid--2" style="align-items:center;gap:var(--space-16)">
+          <div class="reveal-left">
+            <span class="section-subtitle" style="color:var(--color-primary);font-size:var(--fs-sm);font-weight:600;letter-spacing:.15em;display:block;margin-bottom:var(--space-3)">Subscription Calculator</span>
+            <h2>Build Your Perfect Plan</h2>
+            <p>Choose how many cups you brew daily and we'll recommend the right amount of coffee for your household. Save up to 25% with annual plans.</p>
+            <div style="margin-top:var(--space-6)">
+              <img src="https://images.unsplash.com/photo-1504630083234-14187a9df0f5?w=700&q=80" alt="Coffee subscription box with fresh beans" loading="lazy" style="border-radius:var(--radius-lg);width:100%;aspect-ratio:16/10;object-fit:cover">
+            </div>
+          </div>
+          <div class="calc reveal-right delay-2">
+            <label class="form-label" style="font-size:var(--fs-md);font-weight:var(--fw-semibold)">How many cups per day?</label>
+            <input type="range" class="calc__slider" id="cups-slider" min="1" max="10" value="3" step="1">
+            <div class="flex-between" style="margin-bottom:var(--space-6)">
+              <span class="text-muted" style="font-size:var(--fs-sm)">1 cup</span>
+              <span style="font-size:var(--fs-lg);font-weight:var(--fw-bold);color:var(--color-primary)" id="cups-display">3 cups</span>
+              <span class="text-muted" style="font-size:var(--fs-sm)">10 cups</span>
+            </div>
+
+            <div class="calc__result" id="calc-price">$24.99<span style="font-size:var(--fs-sm);color:var(--color-text-muted);font-family:var(--font-body);font-weight:400">/month</span></div>
+
+            <div class="calc__detail"><span>Beans per month</span><strong id="calc-beans">360g (1 bag)</strong></div>
+            <div class="calc__detail"><span>Roast freshness</span><strong>Roasted to order</strong></div>
+            <div class="calc__detail"><span>Shipping</span><strong style="color:var(--color-success)">Free</strong></div>
+            <div class="calc__detail"><span>Annual savings</span><strong style="color:var(--color-accent)" id="calc-savings">Save $74.88/yr</strong></div>
+
+            <a href="pricing.html" class="btn btn--accent btn--lg btn--full" style="margin-top:var(--space-6)">
+              Start This Plan →
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== COFFEE QUIZ ==================== -->
+    <section class="section" id="quiz" style="background:var(--color-bg-secondary)">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-subtitle">Discover Your Flavor</span>
+          <h2>Take the Coffee Quiz</h2>
+          <p>Answer 4 quick questions and we'll match you with your perfect roast.</p>
+        </div>
+
+        <div class="quiz reveal" style="max-width:640px;margin-inline:auto">
+          <div class="quiz__progress">
+            <div class="quiz__progress-bar" id="quiz-progress" style="width:25%"></div>
+          </div>
+
+          <div id="quiz-container">
+            <h4 style="margin-bottom:var(--space-4)" id="quiz-question">What's your ideal morning ritual?</h4>
+            <div class="quiz__options" id="quiz-options">
+              <div class="quiz__option" data-value="light" onclick="selectQuizOption(this)">☀️ Light & fruity pour-over</div>
+              <div class="quiz__option" data-value="medium" onclick="selectQuizOption(this)">☕ Balanced drip coffee</div>
+              <div class="quiz__option" data-value="dark" onclick="selectQuizOption(this)">🌑 Strong espresso shot</div>
+              <div class="quiz__option" data-value="milk" onclick="selectQuizOption(this)">🥛 Creamy latte or cappuccino</div>
+            </div>
+          </div>
+
+          <div style="display:flex;justify-content:space-between;margin-top:var(--space-6)">
+            <span class="text-muted" style="font-size:var(--fs-sm)" id="quiz-step">Question 1 of 4</span>
+            <button class="btn btn--primary btn--sm" id="quiz-next" onclick="nextQuizStep()" disabled>Next →</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== STATS ==================== -->
+    <section class="section section--sm" style="background:var(--color-primary-dark)">
+      <div class="container">
+        <div class="stats">
+          <div class="reveal">
+            <div class="stat__number" data-count="52" data-suffix="">0</div>
+            <div class="stat__label" style="color:rgba(255,255,255,.7)">Origins Sourced</div>
+          </div>
+          <div class="reveal delay-1">
+            <div class="stat__number" data-count="12450" data-suffix="+">0</div>
+            <div class="stat__label" style="color:rgba(255,255,255,.7)">Active Subscribers</div>
+          </div>
+          <div class="reveal delay-2">
+            <div class="stat__number" data-count="680" data-suffix="K">0</div>
+            <div class="stat__label" style="color:rgba(255,255,255,.7)">Bags Shipped</div>
+          </div>
+          <div class="reveal delay-3">
+            <div class="stat__number" data-count="4" data-suffix=".9★">0</div>
+            <div class="stat__label" style="color:rgba(255,255,255,.7)">Average Rating</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== PARTNER BRANDS ==================== -->
+    <section class="section section--sm">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-subtitle">Trusted By</span>
+          <h2>Our Equipment Partners</h2>
+        </div>
+        <div class="partner-logos reveal">
+          <span>Hario</span>
+          <span>Chemex</span>
+          <span>Fellow</span>
+          <span>Baratza</span>
+          <span>Breville</span>
+          <span>Acaia</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TESTIMONIALS CAROUSEL ==================== -->
+    <section class="section" id="testimonials" style="background:var(--color-bg-secondary)">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-subtitle">Community</span>
+          <h2>What Subscribers Say</h2>
+        </div>
+
+        <div class="carousel reveal" id="testimonial-carousel" style="max-width:800px;margin-inline:auto">
+          <div class="carousel__track" id="carousel-track">
+            <div class="carousel__slide">
+              <div class="testimonial-card" style="max-width:100%">
+                <div class="testimonial-card__quote">Switching to Ember & Brew's subscription was the best decision. The coffee arrives perfectly fresh, and the AI-curated selections have introduced me to origins I never would have tried otherwise.</div>
+                <div class="testimonial-card__author">
+                  <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=96&q=80" alt="Sarah Mitchell" class="testimonial-card__avatar">
+                  <div>
+                    <div class="testimonial-card__name">Sarah Mitchell</div>
+                    <div class="testimonial-card__role">Annual Subscriber, 2 years</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel__slide">
+              <div class="testimonial-card" style="max-width:100%">
+                <div class="testimonial-card__quote">As a café owner, I needed consistency and quality. Ember & Brew's wholesale program delivers both. My customers constantly compliment the coffee and keep coming back for more.</div>
+                <div class="testimonial-card__author">
+                  <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=96&q=80" alt="Marcus Johnson" class="testimonial-card__avatar">
+                  <div>
+                    <div class="testimonial-card__name">Marcus Johnson</div>
+                    <div class="testimonial-card__role">Café Owner, Portland</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel__slide">
+              <div class="testimonial-card" style="max-width:100%">
+                <div class="testimonial-card__quote">The coffee quiz matched me perfectly — I discovered the Ethiopian Yirgacheffe and it's now a staple in my morning routine. The flexible subscription means I never run out.</div>
+                <div class="testimonial-card__author">
+                  <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=96&q=80" alt="Elena Rodriguez" class="testimonial-card__avatar">
+                  <div>
+                    <div class="testimonial-card__name">Elena Rodriguez</div>
+                    <div class="testimonial-card__role">Coffee Enthusiast</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel__nav">
+            <div class="carousel__dot active" onclick="goToSlide(0)"></div>
+            <div class="carousel__dot" onclick="goToSlide(1)"></div>
+            <div class="carousel__dot" onclick="goToSlide(2)"></div>
+          </div>
+          <div class="carousel__arrows">
+            <button class="carousel__arrow" onclick="prevSlide()" aria-label="Previous testimonial">←</button>
+            <button class="carousel__arrow" onclick="nextSlide()" aria-label="Next testimonial">→</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== CTA BAND ==================== -->
+    <section class="cta-band">
+      <div class="container reveal">
+        <h2>Ready to Elevate Your Coffee Game?</h2>
+        <p>Join 12,000+ coffee lovers who receive freshly roasted, single-origin beans at their doorstep every month.</p>
+        <div style="display:flex;gap:var(--space-4);justify-content:center;flex-wrap:wrap">
+          <a href="pricing.html" class="btn btn--accent btn--lg animate-pulse-glow">Get Started — It's Free to Try</a>
+          <a href="contact.html" class="btn btn--secondary btn--lg" style="color:#fff;border-color:rgba(255,255,255,.4)">Talk to Us</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== NEWSLETTER ==================== -->
+    <section class="newsletter" id="newsletter">
+      <div class="container">
+        <div class="reveal">
+          <h2>Stay in the Loop</h2>
+          <p>Get brewing tips, exclusive offers, and first access to new roasts delivered to your inbox.</p>
+          <form class="newsletter__form" aria-label="Newsletter signup">
+            <input type="email" placeholder="Enter your email address" required aria-label="Email address">
+            <button type="submit" class="btn">Subscribe</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="home-classic.html" class="navbar__brand">
+            <div class="navbar__brand-icon">E</div>
+            <div class="navbar__brand-text">Ember <span>&</span> Brew</div>
+          </a>
+          <p>Premium specialty coffee, roasted fresh daily. From our roastery to your cup — every sip tells a story.</p>
+          <div class="footer__socials">
+            <a href="#" aria-label="Facebook">f</a>
+            <a href="#" aria-label="Instagram">ig</a>
+            <a href="#" aria-label="Twitter">𝕏</a>
+            <a href="#" aria-label="YouTube">▶</a>
+          </div>
+        </div>
+
+        <div>
+          <h5 class="footer__heading">Quick Links</h5>
+          <ul class="footer__links">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Our Coffees</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="pricing.html">Subscriptions</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h5 class="footer__heading">Support</h5>
+          <ul class="footer__links">
+            <li><a href="contact.html">Help Center</a></li>
+            <li><a href="#">Shipping Info</a></li>
+            <li><a href="#">Returns & Refunds</a></li>
+            <li><a href="#">Track Order</a></li>
+            <li><a href="#">FAQ</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__newsletter">
+          <h5 class="footer__heading">Newsletter</h5>
+          <p>Join our community for updates & exclusive deals.</p>
+          <form class="footer__newsletter-form" aria-label="Footer newsletter">
+            <input type="email" placeholder="Your email" required aria-label="Email">
+            <button type="submit">→</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <span>© 2026 Ember & Brew. All rights reserved.</span>
+        <div class="footer__bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Sitemap</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" aria-label="Back to top">↑</button>
+
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/animations.js"></script>
+  <script>
+    /* Subscription Calculator */
+    (function(){
+      const slider=document.getElementById('cups-slider');
+      const display=document.getElementById('cups-display');
+      const price=document.getElementById('calc-price');
+      const beans=document.getElementById('calc-beans');
+      const savings=document.getElementById('calc-savings');
+      if(!slider)return;
+      const prices=[14.99,19.99,24.99,29.99,34.99,39.99,44.99,49.99,54.99,59.99];
+      const bags=['180g (½ bag)','360g (1 bag)','360g (1 bag)','540g (1.5 bags)','720g (2 bags)','720g (2 bags)','900g (2.5 bags)','1080g (3 bags)','1080g (3 bags)','1260g (3.5 bags)'];
+      slider.addEventListener('input',()=>{
+        const v=parseInt(slider.value);
+        display.textContent=v+' cup'+(v>1?'s':'');
+        const p=prices[v-1];
+        price.innerHTML='$'+p.toFixed(2)+'<span style="font-size:var(--fs-sm);color:var(--color-text-muted);font-family:var(--font-body);font-weight:400">/month</span>';
+        beans.textContent=bags[v-1];
+        savings.textContent='Save $'+(p*12*.2).toFixed(2)+'/yr';
+      });
+    })();
+
+    /* Coffee Quiz */
+    let quizStep=0;
+    const quizData=[
+      {q:'What\'s your ideal morning ritual?',opts:['☀️ Light & fruity pour-over','☕ Balanced drip coffee','🌑 Strong espresso shot','🥛 Creamy latte or cappuccino']},
+      {q:'How do you take your coffee?',opts:['Black, always','A splash of milk','With cream & sugar','Iced or cold brew']},
+      {q:'What flavors excite you?',opts:['🍋 Citrus & floral','🍫 Chocolate & nutty','🫐 Berry & wine-like','🍯 Caramel & sweet']},
+      {q:'How adventurous are you?',opts:['🗺️ Love trying new origins','🏠 Stick to favorites','🔄 Mix it up monthly','🎁 Surprise me!']}
+    ];
+    function selectQuizOption(el){
+      document.querySelectorAll('.quiz__option').forEach(o=>o.classList.remove('selected'));
+      el.classList.add('selected');
+      document.getElementById('quiz-next').disabled=false;
+    }
+    function nextQuizStep(){
+      quizStep++;
+      if(quizStep>=quizData.length){
+        document.getElementById('quiz-container').innerHTML='<div style="text-align:center;padding:var(--space-8) 0"><div style="font-size:3rem;margin-bottom:var(--space-4)">☕</div><h3>Your Match: Ethiopian Yirgacheffe</h3><p style="color:var(--color-text-muted);margin-bottom:var(--space-6)">Bright citrus notes with a floral aroma and silky body — a light roast that perfectly matches your palate.</p><a href="services.html" class="btn btn--accent btn--lg">Shop This Coffee →</a></div>';
+        document.getElementById('quiz-next').style.display='none';
+        document.getElementById('quiz-step').textContent='Complete!';
+        document.getElementById('quiz-progress').style.width='100%';
+        return;
+      }
+      const d=quizData[quizStep];
+      document.getElementById('quiz-question').textContent=d.q;
+      document.getElementById('quiz-options').innerHTML=d.opts.map(o=>'<div class="quiz__option" onclick="selectQuizOption(this)">'+o+'</div>').join('');
+      document.getElementById('quiz-step').textContent='Question '+(quizStep+1)+' of 4';
+      document.getElementById('quiz-progress').style.width=((quizStep+1)/4*100)+'%';
+      document.getElementById('quiz-next').disabled=true;
+    }
+
+    /* Testimonial Carousel */
+    let currentSlide=0;
+    const totalSlides=3;
+    function goToSlide(n){
+      currentSlide=n;
+      document.getElementById('carousel-track').style.transform='translateX(-'+n*100+'%)';
+      document.querySelectorAll('.carousel__dot').forEach((d,i)=>d.classList.toggle('active',i===n));
+    }
+    function nextSlide(){goToSlide((currentSlide+1)%totalSlides)}
+    function prevSlide(){goToSlide((currentSlide-1+totalSlides)%totalSlides)}
+    setInterval(()=>nextSlide(),6000);
+  </script>
+</body>
+</html>

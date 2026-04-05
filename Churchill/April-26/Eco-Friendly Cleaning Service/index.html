@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EcoClean Pro — Eco-Friendly Cleaning Services</title>
+  <meta name="description" content="Professional eco-friendly cleaning services for homes and businesses. 100% green products, certified team, guaranteed results.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://ecocleanpro.com/">
+  <!-- Open Graph -->
+  <meta property="og:title" content="EcoClean Pro — Eco-Friendly Cleaning Services">
+  <meta property="og:description" content="Professional eco-friendly cleaning services for homes and businesses.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ecocleanpro.com/">
+  <meta property="og:image" content="assets/images/hero/hero-general.png">
+  <!-- Favicons -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo/logo.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicons/apple-touch-icon.png">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Styles -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" media="print" href="assets/css/print.css">
+  <style>
+    .router-loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .router-loading .spinner {
+      width: 48px;
+      height: 48px;
+      border-width: 4px;
+    }
+    .router-loading p {
+      font-family: var(--font-heading);
+      color: var(--text-muted);
+    }
+  </style>
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "EcoClean Pro",
+    "description": "Professional eco-friendly cleaning services",
+    "url": "https://ecocleanpro.com",
+    "telephone": "+1-555-ECO-CLEAN",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "123 Green Valley Drive",
+      "addressLocality": "Portland",
+      "addressRegion": "OR",
+      "postalCode": "97201",
+      "addressCountry": "US"
+    },
+    "priceRange": "$$",
+    "openingHours": "Mo-Sa 07:00-19:00"
+  }
+  </script>
+</head>
+<body>
+  <div class="router-loading">
+    <div class="spinner"></div>
+    <p>Loading EcoClean Pro...</p>
+  </div>
+
+  <script src="assets/js/utils.js"></script>
+  <script>
+    // Smart router — redirect to the user's preferred homepage
+    (() => {
+      const HOME_KEY = 'eco-clean-homepage';
+      const urlParam = Utils.getParam('home');
+      const saved = Utils.storage.get(HOME_KEY, 'general');
+      const choice = urlParam || saved;
+      Utils.storage.set(HOME_KEY, choice);
+      const target = choice === 'niche' ? 'home-niche.html' : 'home-general.html';
+      window.location.replace(target);
+    })();
+  </script>
+</body>
+</html>

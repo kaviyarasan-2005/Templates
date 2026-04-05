@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EcoClean Pro — Premium Eco Cleaning Solutions</title>
+  <meta name="description" content="Premium eco-focused cleaning for discerning businesses. Advanced green technology, LEED-certified, sustainable solutions at scale.">
+  <link rel="canonical" href="https://ecocleanpro.com/home-niche.html">
+  <meta property="og:title" content="EcoClean Pro — Premium Eco Cleaning Solutions">
+  <meta property="og:description" content="Advanced green cleaning technology for modern businesses.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/images/hero/hero-niche.png">
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" media="print" href="assets/css/print.css">
+  <style>
+    /* Niche-specific overrides */
+    .niche-hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      background: #0a1a08;
+    }
+    .niche-hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .niche-hero-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.5;
+    }
+    .niche-hero-gradient {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(45,80,22,0.3) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 30%, rgba(30,58,95,0.25) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 100%, rgba(135,168,120,0.15) 0%, transparent 40%);
+      z-index: 1;
+    }
+    .niche-hero .container {
+      position: relative;
+      z-index: 2;
+    }
+    .niche-hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-12);
+      align-items: center;
+    }
+    @media (max-width: 1024px) {
+      .niche-hero-grid { grid-template-columns: 1fr; text-align: center; }
+      .niche-hero-grid .hero-actions { justify-content: center; }
+    }
+    .niche-floating-cards {
+      position: relative;
+      height: 400px;
+    }
+    @media (max-width: 1024px) {
+      .niche-floating-cards { display: none; }
+    }
+    .niche-float-card {
+      position: absolute;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(12px);
+      border-radius: var(--radius-xl);
+      padding: var(--space-5);
+      color: #fff;
+      min-width: 220px;
+    }
+    .niche-float-card:nth-child(1) {
+      top: 10%;
+      right: 10%;
+      animation: float 6s ease-in-out infinite;
+    }
+    .niche-float-card:nth-child(2) {
+      top: 45%;
+      right: 5%;
+      animation: float 8s ease-in-out infinite;
+      animation-delay: -2s;
+    }
+    .niche-float-card:nth-child(3) {
+      bottom: 5%;
+      right: 25%;
+      animation: float 7s ease-in-out infinite;
+      animation-delay: -4s;
+    }
+    .niche-float-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-md);
+      background: rgba(135,168,120,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: var(--space-3);
+      color: var(--secondary-sage);
+    }
+    .niche-float-title {
+      font-weight: 600;
+      font-size: 0.9375rem;
+      margin-bottom: var(--space-1);
+    }
+    .niche-float-stat {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--secondary-sage);
+    }
+    .niche-float-desc {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.5);
+    }
+
+    /* Feature tabs section */
+    .feature-tab-panels { min-height: 300px; }
+    .feature-tab-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-8);
+      align-items: center;
+    }
+    @media (max-width: 768px) {
+      .feature-tab-content { grid-template-columns: 1fr; }
+    }
+    .feature-list { display: flex; flex-direction: column; gap: var(--space-4); }
+    .feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-3);
+    }
+    .feature-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: var(--radius-md);
+      background: rgba(45,80,22,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--secondary-sage);
+    }
+    .feature-item h4 {
+      font-size: 1rem;
+      margin-bottom: 0.25rem;
+    }
+    .feature-item p {
+      font-size: 0.875rem;
+      margin: 0;
+    }
+
+    /* Comparison table */
+    .comparison-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+    }
+    .comparison-table th,
+    .comparison-table td {
+      padding: var(--space-4) var(--space-5);
+      text-align: left;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .comparison-table thead th {
+      background: var(--bg-secondary);
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .comparison-table tbody tr:hover {
+      background: rgba(135,168,120,0.05);
+    }
+    .comparison-table tbody tr:last-child td { border-bottom: none; }
+    .check-icon { color: var(--success); }
+    .x-icon { color: var(--text-muted); opacity: 0.4; }
+  </style>
+</head>
+<body class="has-navbar">
+
+  <a href="#main-content" class="skip-to-content sr-only" style="position:fixed;top:8px;left:8px;z-index:9999;padding:8px 16px;background:var(--primary-green);color:#fff;border-radius:4px;">Skip to content</a>
+
+  <!-- NAVBAR (same as general) -->
+  <nav class="navbar" id="main-nav" aria-label="Main navigation">
+    <div class="container">
+      <a href="index.html" class="nav-brand" aria-label="EcoClean Pro Home">
+        <span class="nav-brand-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 8C8 10 5.9 16.17 3.82 21.34L3 23l2-1c4-2 7-4 9-8 2 1 4 1 6-1-2-4-6-8-10-8z" fill="currentColor" stroke="none" opacity="0.9"/><path d="M5.5 21.5L10 15" stroke-linecap="round"/></svg>
+        </span>
+        <span>EcoClean Pro</span>
+      </a>
+      <div class="nav-menu" id="nav-menu">
+        <div class="nav-dropdown" id="home-dropdown">
+          <a href="#" class="nav-link nav-dropdown-toggle active" aria-expanded="false" aria-haspopup="true">
+            Home
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </a>
+          <div class="nav-dropdown-menu" role="menu">
+            <a href="home-general.html" class="nav-dropdown-item" role="menuitem">
+              <span class="dropdown-icon">🏠</span>
+              <span class="dropdown-text"><span class="dropdown-label">General Services</span><span class="dropdown-desc">Full-service cleaning solutions</span></span>
+            </a>
+            <a href="home-niche.html" class="nav-dropdown-item" role="menuitem">
+              <span class="dropdown-icon">🌿</span>
+              <span class="dropdown-text"><span class="dropdown-label">Eco Specialist</span><span class="dropdown-desc">Premium eco-focused services</span></span>
+            </a>
+          </div>
+        </div>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="blog.html" class="nav-link">Blog</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="pricing.html" class="nav-link">Pricing</a>
+        <a href="dashboard.html" class="nav-link">Dashboard</a>
+      </div>
+      <div class="nav-actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        </button>
+        <button class="lang-toggle btn btn-ghost btn-icon" id="dir-toggle" aria-label="Toggle RTL/LTR" title="Toggle RTL/LTR" style="background:none;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:4px;color:var(--text-primary);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+          </button>
+        <a href="login.html" class="btn btn-primary btn-sm">Login</a>
+        <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main-content">
+
+    <!-- ========== NICHE HERO ========== -->
+    <section class="niche-hero">
+      <div class="niche-hero-bg">
+        <img src="assets/images/hero/hero-niche.png" alt="" loading="eager" width="1920" height="1080">
+      </div>
+      <div class="niche-hero-gradient"></div>
+
+      <div class="container">
+        <div class="niche-hero-grid">
+          <div style="color:#fff">
+            <span class="section-label anim-fade-up" style="color:var(--secondary-sage)">🌿 Next-Gen Green Cleaning</span>
+            <h1 class="hero-title anim-fade-up" style="font-size:3.5rem;transition-delay:100ms;color:#fff;">
+              Sustainable Cleaning<br><span style="color:var(--secondary-sage)">Powered by Nature</span>
+            </h1>
+            <p class="hero-subtitle anim-fade-up" style="transition-delay:200ms;color:rgba(255,255,255,0.75);max-width:520px;">
+              Enterprise-grade eco-cleaning solutions with real-time reporting, carbon tracking, and LEED compliance — all powered by 100% plant-based chemistry.
+            </p>
+            <div class="hero-actions anim-fade-up" style="transition-delay:300ms;">
+              <a href="contact.html" class="btn btn-accent btn-lg">Start Free Trial</a>
+              <a href="services.html" class="btn btn-lg" style="background:rgba(255,255,255,0.08);color:#fff;border:1.5px solid rgba(255,255,255,0.15);">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                Watch Demo
+              </a>
+            </div>
+          </div>
+
+          <!-- Floating stat cards -->
+          <div class="niche-floating-cards" aria-hidden="true">
+            <div class="niche-float-card anim-fade-up" style="transition-delay:200ms">
+              <div class="niche-float-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 8C8 10 5.9 16.17 3.82 21.34L3 23l2-1c4-2 7-4 9-8 2 1 4 1 6-1-2-4-6-8-10-8z"/></svg>
+              </div>
+              <div class="niche-float-title">Carbon Offset</div>
+              <div class="niche-float-stat" data-count="12500" data-suffix=" kg">0</div>
+              <div class="niche-float-desc">CO₂ saved this year</div>
+            </div>
+            <div class="niche-float-card anim-fade-up" style="transition-delay:350ms">
+              <div class="niche-float-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+              </div>
+              <div class="niche-float-title">Client Satisfaction</div>
+              <div class="niche-float-stat" data-count="98" data-suffix="%">0</div>
+              <div class="niche-float-desc">5-star reviews</div>
+            </div>
+            <div class="niche-float-card anim-fade-up" style="transition-delay:500ms">
+              <div class="niche-float-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a4 4 0 00-8 0v2"/></svg>
+              </div>
+              <div class="niche-float-title">Enterprise Clients</div>
+              <div class="niche-float-stat" data-count="340" data-suffix="+">0</div>
+              <div class="niche-float-desc">Active contracts</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== LOGO MARQUEE ========== -->
+    <section style="padding-block:var(--space-10);">
+      <div class="container">
+        <p class="text-center text-muted text-small mb-4">Trusted by Industry Leaders</p>
+        <div class="logo-marquee">
+          <div class="logo-marquee-track">
+            <svg class="logo-marquee-item" viewBox="0 0 120 40" width="120"><rect width="120" height="40" rx="4" fill="var(--border-color)"/><text x="60" y="24" text-anchor="middle" fill="var(--text-muted)" font-size="11" font-family="Inter">GreenCorp</text></svg>
+            <svg class="logo-marquee-item" viewBox="0 0 120 40" width="120"><rect width="120" height="40" rx="4" fill="var(--border-color)"/><text x="60" y="24" text-anchor="middle" fill="var(--text-muted)" font-size="11" font-family="Inter">EcoTrust</text></svg>
+            <svg class="logo-marquee-item" viewBox="0 0 120 40" width="120"><rect width="120" height="40" rx="4" fill="var(--border-color)"/><text x="60" y="24" text-anchor="middle" fill="var(--text-muted)" font-size="11" font-family="Inter">PureHome</text></svg>
+            <svg class="logo-marquee-item" viewBox="0 0 120 40" width="120"><rect width="120" height="40" rx="4" fill="var(--border-color)"/><text x="60" y="24" text-anchor="middle" fill="var(--text-muted)" font-size="11" font-family="Inter">BioSpace</text></svg>
+            <svg class="logo-marquee-item" viewBox="0 0 120 40" width="120"><rect width="120" height="40" rx="4" fill="var(--border-color)"/><text x="60" y="24" text-anchor="middle" fill="var(--text-muted)" font-size="11" font-family="Inter">NaturaTech</text></svg>
+            <svg class="logo-marquee-item" viewBox="0 0 120 40" width="120"><rect width="120" height="40" rx="4" fill="var(--border-color)"/><text x="60" y="24" text-anchor="middle" fill="var(--text-muted)" font-size="11" font-family="Inter">LeafWorks</text></svg>
+            <svg class="logo-marquee-item" viewBox="0 0 120 40" width="120"><rect width="120" height="40" rx="4" fill="var(--border-color)"/><text x="60" y="24" text-anchor="middle" fill="var(--text-muted)" font-size="11" font-family="Inter">GreenCorp</text></svg>
+            <svg class="logo-marquee-item" viewBox="0 0 120 40" width="120"><rect width="120" height="40" rx="4" fill="var(--border-color)"/><text x="60" y="24" text-anchor="middle" fill="var(--text-muted)" font-size="11" font-family="Inter">EcoTrust</text></svg>
+            <svg class="logo-marquee-item" viewBox="0 0 120 40" width="120"><rect width="120" height="40" rx="4" fill="var(--border-color)"/><text x="60" y="24" text-anchor="middle" fill="var(--text-muted)" font-size="11" font-family="Inter">PureHome</text></svg>
+            <svg class="logo-marquee-item" viewBox="0 0 120 40" width="120"><rect width="120" height="40" rx="4" fill="var(--border-color)"/><text x="60" y="24" text-anchor="middle" fill="var(--text-muted)" font-size="11" font-family="Inter">BioSpace</text></svg>
+            <svg class="logo-marquee-item" viewBox="0 0 120 40" width="120"><rect width="120" height="40" rx="4" fill="var(--border-color)"/><text x="60" y="24" text-anchor="middle" fill="var(--text-muted)" font-size="11" font-family="Inter">NaturaTech</text></svg>
+            <svg class="logo-marquee-item" viewBox="0 0 120 40" width="120"><rect width="120" height="40" rx="4" fill="var(--border-color)"/><text x="60" y="24" text-anchor="middle" fill="var(--text-muted)" font-size="11" font-family="Inter">LeafWorks</text></svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== INTERACTIVE SERVICE TABS ========== -->
+    <section id="feature-explorer">
+      <div class="container">
+        <div class="section-header center">
+          <span class="section-label anim-fade-up">Solutions</span>
+          <h2 class="section-title anim-fade-up">Explore Our Green Solutions</h2>
+          <p class="section-subtitle anim-fade-up">Discover how our plant-powered cleaning technology delivers superior results with zero environmental impact.</p>
+        </div>
+
+        <div class="tab-container anim-fade-up">
+          <div class="tab-list" role="tablist" style="justify-content:center;border-bottom:none;gap:var(--space-2);margin-bottom:var(--space-8);">
+            <button class="tab-btn active" data-tab="tab-commercial" role="tab" style="border:1px solid var(--border-color);border-radius:var(--radius-full);border-bottom-width:1px;">Commercial</button>
+            <button class="tab-btn" data-tab="tab-residential" role="tab" style="border:1px solid var(--border-color);border-radius:var(--radius-full);border-bottom-width:1px;">Residential</button>
+            <button class="tab-btn" data-tab="tab-specialized" role="tab" style="border:1px solid var(--border-color);border-radius:var(--radius-full);border-bottom-width:1px;">Specialized</button>
+          </div>
+
+          <div class="feature-tab-panels">
+            <div class="tab-panel active" id="tab-commercial" role="tabpanel">
+              <div class="feature-tab-content">
+                <div class="feature-list">
+                  <div class="feature-item">
+                    <div class="feature-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg></div>
+                    <div><h4>LEED Compliance</h4><p>All products and processes meet USGBC Green Cleaning standards for LEED certification.</p></div>
+                  </div>
+                  <div class="feature-item">
+                    <div class="feature-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20V10M18 20V4M6 20v-4"/></svg></div>
+                    <div><h4>Real-Time Reporting</h4><p>Dashboard with live cleaning status, quality scores, and compliance reports.</p></div>
+                  </div>
+                  <div class="feature-item">
+                    <div class="feature-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+                    <div><h4>24/7 Availability</h4><p>Round-the-clock service with dedicated account managers for enterprise clients.</p></div>
+                  </div>
+                </div>
+                <div class="card" style="overflow:hidden;">
+                  <img src="assets/images/services/commercial.png" alt="Commercial cleaning dashboard" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-panel" id="tab-residential" role="tabpanel">
+              <div class="feature-tab-content">
+                <div class="feature-list">
+                  <div class="feature-item">
+                    <div class="feature-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+                    <div><h4>Child & Pet Safe</h4><p>Every product is tested and certified safe for families with children and pets.</p></div>
+                  </div>
+                  <div class="feature-item">
+                    <div class="feature-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+                    <div><h4>Neighborhood Coverage</h4><p>Expanding to 50+ cities. Local teams that know your community.</p></div>
+                  </div>
+                  <div class="feature-item">
+                    <div class="feature-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><path d="M1 10h22"/></svg></div>
+                    <div><h4>Transparent Pricing</h4><p>No hidden fees. See exact costs before booking with our instant calculator.</p></div>
+                  </div>
+                </div>
+                <div class="card" style="overflow:hidden;">
+                  <img src="assets/images/services/residential.png" alt="Residential eco cleaning" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-panel" id="tab-specialized" role="tabpanel">
+              <div class="feature-tab-content">
+                <div class="feature-list">
+                  <div class="feature-item">
+                    <div class="feature-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg></div>
+                    <div><h4>Post-Construction</h4><p>Specialized teams for construction cleanup using industrial-strength green products.</p></div>
+                  </div>
+                  <div class="feature-item">
+                    <div class="feature-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg></div>
+                    <div><h4>Event Cleanup</h4><p>Pre and post-event cleaning for conferences, weddings, and corporate events.</p></div>
+                  </div>
+                  <div class="feature-item">
+                    <div class="feature-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09a1.65 1.65 0 00-1.08-1.51 1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.68 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.32 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1.08z"/></svg></div>
+                    <div><h4>Custom Solutions</h4><p>Tailored cleaning protocols for healthcare, hospitality, and industrial facilities.</p></div>
+                  </div>
+                </div>
+                <div class="card" style="overflow:hidden;">
+                  <img src="assets/images/services/deep-clean.png" alt="Specialized deep cleaning" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== COMPARISON TABLE ========== -->
+    <section class="section-alt" id="comparison">
+      <div class="container">
+        <div class="section-header center">
+          <span class="section-label anim-fade-up">Comparison</span>
+          <h2 class="section-title anim-fade-up">EcoClean Pro vs. Traditional</h2>
+          <p class="section-subtitle anim-fade-up">See why businesses are switching to green cleaning solutions.</p>
+        </div>
+
+        <div class="anim-fade-up" style="max-width:800px;margin:0 auto;overflow-x:auto;">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Feature</th>
+                <th>EcoClean Pro</th>
+                <th>Traditional</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>100% Non-Toxic Products</td>
+                <td class="check-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></td>
+                <td class="x-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg></td>
+              </tr>
+              <tr>
+                <td>Carbon Neutral Operations</td>
+                <td class="check-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></td>
+                <td class="x-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg></td>
+              </tr>
+              <tr>
+                <td>LEED Compliance Ready</td>
+                <td class="check-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></td>
+                <td class="x-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg></td>
+              </tr>
+              <tr>
+                <td>Real-Time Dashboard</td>
+                <td class="check-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></td>
+                <td class="x-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg></td>
+              </tr>
+              <tr>
+                <td>Safe for Children & Pets</td>
+                <td class="check-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></td>
+                <td class="x-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg></td>
+              </tr>
+              <tr>
+                <td>Satisfaction Guarantee</td>
+                <td class="check-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></td>
+                <td>Varies</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== CTA ========== -->
+    <section style="padding-block:var(--space-20);text-align:center;">
+      <div class="container">
+        <h2 class="section-title anim-fade-up" style="max-width:640px;margin:0 auto var(--space-4);">Start Your Green Cleaning Journey</h2>
+        <p class="section-subtitle anim-fade-up" style="margin:0 auto var(--space-8);">Get a custom quote for your business. Free consultation, no obligations.</p>
+        <div class="anim-fade-up" style="display:flex;gap:var(--space-4);justify-content:center;flex-wrap:wrap;">
+          <a href="contact.html" class="btn btn-accent btn-lg">Get Custom Quote</a>
+          <a href="pricing.html" class="btn btn-secondary btn-lg">View Plans</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" id="main-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-brand" style="color:#fff" aria-label="EcoClean Pro Home">
+            <span class="nav-brand-icon" style="background:rgba(255,255,255,0.15)">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 8C8 10 5.9 16.17 3.82 21.34L3 23l2-1c4-2 7-4 9-8 2 1 4 1 6-1-2-4-6-8-10-8z" fill="currentColor" stroke="none" opacity="0.9"/><path d="M5.5 21.5L10 15" stroke-linecap="round"/></svg>
+            </span>
+            <span>EcoClean Pro</span>
+          </a>
+          <p>Enterprise-grade eco-cleaning solutions trusted by 340+ businesses worldwide.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+            <a href="#" aria-label="Twitter"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg></a>
+            <a href="#" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 6a2 2 0 100-4 2 2 0 000 4z"/></svg></a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer-heading">Solutions</h4>
+          <div class="footer-links">
+            <a href="service-detail.html?service=commercial" class="footer-link">Commercial Cleaning</a>
+            <a href="service-detail.html?service=residential" class="footer-link">Residential Cleaning</a>
+            <a href="service-detail.html?service=deep-clean" class="footer-link">Deep Cleaning</a>
+            <a href="service-detail.html?service=green-sanitize" class="footer-link">Green Sanitization</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer-heading">Company</h4>
+          <div class="footer-links">
+            <a href="about.html" class="footer-link">About Us</a>
+            <a href="blog.html" class="footer-link">Blog</a>
+            <a href="pricing.html" class="footer-link">Pricing</a>
+            <a href="contact.html" class="footer-link">Contact</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer-heading">Contact</h4>
+          <div class="footer-links">
+            <span class="footer-link">123 Green Valley Drive</span>
+            <span class="footer-link">Portland, OR 97201</span>
+            <a href="tel:+15551234567" class="footer-link">+1 (555) 123-4567</a>
+            <a href="mailto:hello@ecocleanpro.com" class="footer-link">hello@ecocleanpro.com</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 EcoClean Pro. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Cookie Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="scroll-top-btn" aria-label="Scroll to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg>
+  </button>
+
+  <script src="assets/js/utils.js"></script>
+  <script src="assets/js/animations.js"></script>
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/forms.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      Animations.initTiltEffect('.tilt-card');
+    });
+  </script>
+</body>
+</html>
