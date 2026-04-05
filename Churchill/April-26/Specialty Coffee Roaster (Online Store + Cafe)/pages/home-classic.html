@@ -54,7 +54,16 @@
           <li><a href="blog.html" class="navbar__link">Blog</a></li>
           <li><a href="contact.html" class="navbar__link">Contact</a></li>
           <li><a href="pricing.html" class="navbar__link">Pricing</a></li>
-          <li><a href="dashboard.html" class="navbar__link">Dashboard</a></li>
+          <li class="navbar__dropdown">
+            <a href="#" class="navbar__link navbar__dropdown-toggle">
+              Dashboard
+              <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </a>
+            <div class="navbar__dropdown-menu">
+              <a href="dashboard.html?role=user">User Dashboard</a>
+              <a href="dashboard.html?role=admin">Admin Dashboard</a>
+            </div>
+          </li>
         </ul>
       </div>
 
@@ -82,7 +91,8 @@
     <a href="blog.html" class="mobile-menu__link">Blog</a>
     <a href="contact.html" class="mobile-menu__link">Contact</a>
     <a href="pricing.html" class="mobile-menu__link">Pricing</a>
-    <a href="dashboard.html" class="mobile-menu__link">Dashboard</a>
+    <a href="dashboard.html?role=user" class="mobile-menu__link">User Dashboard</a>
+    <a href="dashboard.html?role=admin" class="mobile-menu__link">Admin Dashboard</a>
     <div class="mobile-menu__actions">
       <a href="login.html" class="btn btn--primary btn--full">Login</a>
     </div>

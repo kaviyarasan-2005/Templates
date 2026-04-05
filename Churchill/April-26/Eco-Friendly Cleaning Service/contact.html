@@ -15,14 +15,13 @@
   <link rel="stylesheet" media="print" href="assets/css/print.css">
   <style>
     .contact-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:var(--space-10);align-items:start;}
-    @media(max-width:1024px){.contact-grid{grid-template-columns:1fr;}}
+    @media(max-width:1023px){.contact-grid{grid-template-columns:1fr;}}
     .contact-card{display:flex;align-items:center;gap:var(--space-4);padding:var(--space-5);background:var(--bg-card);border:1px solid var(--border-light);border-radius:var(--radius-lg);transition:all var(--transition-fast);}
     .contact-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-sm);}
     .contact-icon{width:48px;height:48px;background:rgba(45,80,22,0.08);border-radius:var(--radius-lg);display:flex;align-items:center;justify-content:center;color:var(--primary-green);flex-shrink:0;}
     .contact-card h4{font-size:0.9375rem;font-weight:600;margin-bottom:0.125rem;}
     .contact-card p{font-size:0.875rem;color:var(--text-muted);margin:0;}
     .status-dot{width:8px;height:8px;border-radius:50%;background:var(--success);display:inline-block;animation:pulse 2s infinite;}
-    .map-placeholder{width:100%;height:300px;background:var(--bg-secondary);border-radius:var(--radius-xl);display:flex;align-items:center;justify-content:center;color:var(--text-muted);border:1px solid var(--border-light);margin-top:var(--space-6);}
   </style>
 </head>
 <body class="has-navbar">
@@ -39,12 +38,35 @@
         <a href="blog.html" class="nav-link">Blog</a>
         <a href="contact.html" class="nav-link active">Contact</a>
         <a href="pricing.html" class="nav-link">Pricing</a>
-        <a href="dashboard.html" class="nav-link">Dashboard</a>
+        <div class="nav-dropdown" id="dashboard-dropdown">
+          <a href="#" class="nav-link nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+            Dashboard
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </a>
+          <div class="nav-dropdown-menu" role="menu">
+            <a href="dashboard.html?role=user" class="nav-dropdown-item" role="menuitem">
+              <span class="dropdown-icon">👤</span>
+              <span class="dropdown-text">
+                <span class="dropdown-label">User Dashboard</span>
+                <span class="dropdown-desc">Manage your bookings</span>
+              </span>
+            </a>
+            <a href="dashboard.html?role=admin" class="nav-dropdown-item" role="menuitem">
+              <span class="dropdown-icon">🛡️</span>
+              <span class="dropdown-text">
+                <span class="dropdown-label">Admin Dashboard</span>
+                <span class="dropdown-desc">System administration</span>
+              </span>
+            </a>
+           </div>
+        </div>
+        <!-- Mobile Login Link -->
+        <a href="login.html" class="nav-link nav-link-login-mobile" data-i18n="nav.login">Login</a>
       </div>
       <div class="nav-actions">
         <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode"><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg></button>
         <button class="lang-toggle btn btn-ghost btn-icon" id="dir-toggle" aria-label="Toggle RTL/LTR" title="Toggle RTL/LTR" style="padding:4px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></button>
-        <a href="login.html" class="btn btn-primary btn-sm">Login</a>
+        <a href="login.html" class="btn btn-primary btn-sm nav-login-desktop" data-i18n="nav.login">Login</a>
         <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
       </div>
     </div>
@@ -88,11 +110,16 @@
                 <div><h4>Office Hours</h4><p><span class="status-dot"></span> Open Now · Mon-Sat 7am–7pm</p></div>
               </div>
             </div>
-            <div class="map-placeholder anim-fade-up">
-              <div style="text-align:center;">
-                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--text-light);margin-bottom:var(--space-2);"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                <p style="font-size:0.875rem;">Interactive map loads here<br><span style="font-size:0.75rem;">Google Maps / Mapbox integration</span></p>
-              </div>
+            <div class="map-view anim-fade-up" style="width:100%;height:300px;border-radius:var(--radius-xl);overflow:hidden;margin-top:var(--space-6);border:1px solid var(--border-light);">
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2796.0!2d-122.67!3d45.52!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54950a047058d407%3A0x1d3f9b9f976a2d!2zUG9ydGxhbmQsIE9SLCBVU0E!5e0!3m2!1sen!2sus!4v1625066000000!5m2!1sen!2sus" 
+                width="100%" 
+                height="100%" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
             </div>
           </div>
 

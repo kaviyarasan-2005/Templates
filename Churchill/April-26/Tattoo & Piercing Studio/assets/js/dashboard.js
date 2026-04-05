@@ -61,21 +61,43 @@ const Dashboard = (() => {
     const adminContent = document.querySelectorAll('.admin-content');
     const userContent = document.querySelectorAll('.user-content');
 
+    const setRole = (role) => {
+      if (role === 'admin') {
+        adminContent.forEach(el => el.style.display = '');
+        userContent.forEach(el => el.style.display = 'none');
+      } else {
+        adminContent.forEach(el => el.style.display = 'none');
+        userContent.forEach(el => el.style.display = '');
+      }
+
+      // Update UI for any existing toggle buttons
+      toggleBtns.forEach(btn => {
+        if (btn.getAttribute('data-role') === role) btn.classList.add('active');
+        else btn.classList.remove('active');
+      });
+    };
+
+    // Check URL for role parameter
+    const urlParams = new URLSearchParams(window.location.search);
+    const initialRole = urlParams.get('role') || 'admin';
+    setRole(initialRole);
+
     toggleBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         const role = btn.getAttribute('data-role');
-
-        toggleBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-
-        if (role === 'admin') {
-          adminContent.forEach(el => el.style.display = '');
-          userContent.forEach(el => el.style.display = 'none');
-        } else {
-          adminContent.forEach(el => el.style.display = 'none');
-          userContent.forEach(el => el.style.display = '');
-        }
+        setRole(role);
+        
+        // Update URL without reloading
+        const newUrl = new URL(window.location);
+        newUrl.searchParams.set('role', role);
+        window.history.pushState({ role }, '', newUrl);
       });
+    });
+
+    // Handle back/forward navigation
+    window.addEventListener('popstate', (e) => {
+      const urlParams = new URLSearchParams(window.location.search);
+      setRole(urlParams.get('role') || 'admin');
     });
   }
 

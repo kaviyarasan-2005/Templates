@@ -137,7 +137,7 @@ html {
 body {
   margin: 0;
   font-family: var(--font-body);
-  font-size: 1rem;
+  font-size: 0.9375rem; /* Slightly smaller base for mobile */
   line-height: 1.6;
   color: var(--text-primary);
   background: var(--bg-primary);
@@ -145,6 +145,51 @@ body {
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
   transition: background-color var(--transition-base), color var(--transition-base);
+}
+
+/* --- Global Responsive Foundation --- */
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 var(--space-4); /* Default Mobile Padding */
+}
+
+/* Tablet & Up (>= 640px) */
+@media (min-width: 640px) {
+  body { font-size: 1rem; }
+  .container { padding: 0 var(--space-6); }
+}
+
+/* Desktop & Up (>= 1024px) */
+@media (min-width: 1024px) {
+  .container { max-width: 1024px; }
+}
+
+/* Large & Up (>= 1280px) */
+@media (min-width: 1280px) {
+  .container { max-width: 1280px; }
+}
+
+/* Grid & Layout Utilities */
+.grid { display: grid; gap: var(--space-6); }
+.grid-1, .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+
+/* Tablet Specific (640px - 1023px) */
+@media (min-width: 640px) {
+  .grid-2 { grid-template-columns: repeat(2, 1fr); }
+  .grid-3 { grid-template-columns: repeat(2, 1fr); }
+  .grid-4 { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Desktop Specific (1024px - 1279px) */
+@media (min-width: 1024px) {
+  .grid-3 { grid-template-columns: repeat(3, 1fr); }
+  .grid-4 { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* Large Specific (>= 1280px) */
+@media (min-width: 1280px) {
+  .grid-4 { grid-template-columns: repeat(4, 1fr); }
 }
 
 img, picture, video, canvas, svg {
@@ -357,12 +402,12 @@ section {
 .grid-3 { grid-template-columns: repeat(3, 1fr); }
 .grid-4 { grid-template-columns: repeat(4, 1fr); }
 
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
   .grid-4 { grid-template-columns: repeat(2, 1fr); }
   .grid-3 { grid-template-columns: repeat(2, 1fr); }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 639px) {
   .grid-4, .grid-3, .grid-2 { grid-template-columns: 1fr; }
   section { padding-block: var(--space-12); }
   h1, .h1 { font-size: 2rem; }
@@ -788,7 +833,7 @@ section {
 }
 
 /* Mobile Nav */
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
   .nav-hamburger {
     display: flex;
   }
@@ -848,6 +893,27 @@ section {
   .has-navbar {
     padding-top: var(--nav-height-mobile);
   }
+
+  /* Login Button Fix */
+  .nav-login-desktop {
+    display: none !important;
+  }
+
+  .nav-menu .nav-link-login-mobile {
+    display: flex !important;
+    margin-top: var(--space-6);
+    background: var(--primary-green) !important;
+    color: #fff !important;
+    justify-content: center;
+    border-radius: var(--radius-md);
+    padding: 0.75rem !important;
+    font-weight: 600;
+  }
+}
+
+/* Default state: hide mobile login, show desktop */
+.nav-link-login-mobile {
+  display: none !important;
 }
 
 

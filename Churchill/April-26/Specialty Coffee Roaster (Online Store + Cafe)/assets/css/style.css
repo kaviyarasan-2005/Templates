@@ -1122,49 +1122,60 @@ select.form-input{cursor:pointer;appearance:none;
 }
 
 /* ============================================
-   RESPONSIVE BREAKPOINTS
+   RESPONSIVE BREAKPOINTS (Standardized)
    ============================================ */
+
+/* ---------- Desktop (<=1280px) ---------- */
+@media(max-width:1280px){
+  .container{max-width:var(--container-lg)}
+  :root{
+    --fs-5xl:3.25rem;
+    --fs-4xl:2.75rem;
+  }
+}
+
+/* ---------- Tablet (<=1024px) ---------- */
 @media(max-width:1024px){
   :root{
-    --fs-4xl:2.5rem;
-    --fs-5xl:3rem;
+    --fs-5xl:2.75rem;
+    --fs-4xl:2.25rem;
+    --fs-3xl:1.75rem;
+    --gutter:20px;
   }
   .navbar__links{display:none}
   .navbar__toggle{display:flex}
   .grid--4{grid-template-columns:repeat(2,1fr)}
-  .footer__grid{grid-template-columns:1fr 1fr}
+  .footer__grid{grid-template-columns:repeat(2,1fr)}
   .stats{grid-template-columns:repeat(2,1fr)}
   .split{grid-template-columns:1fr;gap:var(--space-8)}
   .split--reverse{direction:ltr}
   .pricing-card.featured{transform:none}
   .pricing-card.featured:hover{transform:translateY(-4px)}
+  .hero__content{padding-inline:var(--gutter)}
 }
 
-@media(max-width:768px){
+/* ---------- Mobile (<=640px) ---------- */
+@media(max-width:640px){
   :root{
-    --fs-3xl:2rem;
-    --fs-4xl:2.25rem;
-    --fs-5xl:2.5rem;
+    --fs-5xl:2.25rem;
+    --fs-4xl:2rem;
+    --fs-3xl:1.5rem;
     --gutter:16px;
     --nav-height:var(--nav-height-mobile);
   }
   .section{padding-block:var(--space-12)}
   .grid--2,.grid--3,.grid--4{grid-template-columns:1fr}
-  .hero__title{font-size:var(--fs-3xl)}
-  .hero__content{padding:var(--space-10) var(--gutter)}
   .footer__grid{grid-template-columns:1fr}
   .footer__bottom{flex-direction:column;gap:var(--space-3);text-align:center}
-  .page-banner{height:240px}
+  .page-banner{height:200px}
+  .hero__ctas{flex-direction:column;align-items:stretch}
+  .hero__ctas .btn{width:100%}
   .newsletter__form{flex-direction:column}
   .stats{grid-template-columns:1fr 1fr}
+  .testimonial-card{padding:var(--space-6)}
 }
 
 @media(max-width:480px){
-  :root{
-    --fs-2xl:1.5rem;
-    --fs-3xl:1.75rem;
-    --fs-4xl:2rem;
-  }
-  .hero__ctas{flex-direction:column;align-items:center}
-  .hero__ctas .btn{width:100%;max-width:280px}
+  .stats{grid-template-columns:1fr}
+  .testimonial-card__author{flex-direction:column;text-align:center}
 }

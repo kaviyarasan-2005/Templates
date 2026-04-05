@@ -50,7 +50,16 @@
         <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
         <li class="nav-item"><a href="pricing.html" class="nav-link">Pricing</a></li>
         <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-        <li class="nav-item"><a href="dashboard/index.html" class="nav-link">Dashboard</a></li>
+        <li class="nav-item has-dropdown">
+          <a href="dashboard/index.html" class="nav-link" aria-haspopup="true" aria-expanded="false">
+            Dashboard
+            <svg class="dropdown-arrow" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5l3 3 3-3"/></svg>
+          </a>
+          <div class="nav-dropdown" role="menu">
+            <a href="dashboard/index.html?role=admin" role="menuitem">Admin Dashboard</a>
+            <a href="dashboard/index.html?role=user" role="menuitem">User Dashboard</a>
+          </div>
+        </li>
         <li class="nav-item"><a href="login.html" class="nav-link">Login</a></li>
       </ul>
 

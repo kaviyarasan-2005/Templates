@@ -63,7 +63,30 @@
         <a href="blog.html" class="nav-link" data-i18n="nav.blog">Blog</a>
         <a href="contact.html" class="nav-link" data-i18n="nav.contact">Contact</a>
         <a href="pricing.html" class="nav-link" data-i18n="nav.pricing">Pricing</a>
-        <a href="dashboard.html" class="nav-link" data-i18n="nav.dashboard">Dashboard</a>
+        <div class="nav-dropdown" id="dashboard-dropdown">
+          <a href="#" class="nav-link nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true" data-i18n="nav.dashboard">
+            Dashboard
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </a>
+          <div class="nav-dropdown-menu" role="menu">
+            <a href="dashboard.html?role=user" class="nav-dropdown-item" role="menuitem">
+              <span class="dropdown-icon">👤</span>
+              <span class="dropdown-text">
+                <span class="dropdown-label">User Dashboard</span>
+                <span class="dropdown-desc">Manage your bookings</span>
+              </span>
+            </a>
+            <a href="dashboard.html?role=admin" class="nav-dropdown-item" role="menuitem">
+              <span class="dropdown-icon">🛡️</span>
+              <span class="dropdown-text">
+                <span class="dropdown-label">Admin Dashboard</span>
+                <span class="dropdown-desc">System administration</span>
+              </span>
+            </a>
+          </div>
+        </div>
+        <!-- Mobile Login Link -->
+        <a href="login.html" class="nav-link nav-link-login-mobile" data-i18n="nav.login">Login</a>
       </div>
 
       <div class="nav-actions">
@@ -79,7 +102,7 @@
           </button>
 
         <!-- Login -->
-        <a href="login.html" class="btn btn-primary btn-sm" data-i18n="nav.login">Login</a>
+        <a href="login.html" class="btn btn-primary btn-sm nav-login-desktop" data-i18n="nav.login">Login</a>
 
         <!-- Mobile Hamburger -->
         <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle menu" aria-expanded="false">
@@ -206,8 +229,8 @@
         </div>
 
         <div class="grid grid-4 gap-6 stagger-children">
-          <div class="card anim-fade-up" style="text-align:center;padding:var(--space-6);">
-            <div style="width:56px;height:56px;margin:0 auto var(--space-4);background:rgba(45,80,22,0.1);border-radius:var(--radius-lg);display:flex;align-items:center;justify-content:center;">
+          <div class="card anim-fade-up">
+            <div class="card-icon-wrapper">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--primary-green)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
             </div>
             <h4 class="card-title">100% Non-Toxic</h4>
@@ -260,7 +283,7 @@
             </div>
             <p class="testimonial-quote">"EcoClean Pro transformed our home. The team is professional, thorough, and I love knowing the products they use are safe for my kids and dogs."</p>
             <div class="testimonial-author">
-              <div style="width:48px;height:48px;border-radius:50%;background:var(--secondary-sage);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:600;font-size:1.125rem;">SR</div>
+              <img src="assets/images/testimonials/sarah.png" alt="Sarah R." style="width:48px;height:48px;border-radius:50%;object-fit:cover;">
               <div>
                 <div class="testimonial-name">Sarah R.</div>
                 <div class="testimonial-role">Homeowner, Portland</div>
@@ -278,7 +301,7 @@
             </div>
             <p class="testimonial-quote">"As a property manager, reliability is key. EcoClean Pro has never missed a beat in 3 years. Their green certification is a bonus for LEED compliance."</p>
             <div class="testimonial-author">
-              <div style="width:48px;height:48px;border-radius:50%;background:var(--primary-blue);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:600;font-size:1.125rem;">MT</div>
+              <img src="assets/images/testimonials/michael.png" alt="Michael T." style="width:48px;height:48px;border-radius:50%;object-fit:cover;">
               <div>
                 <div class="testimonial-name">Michael T.</div>
                 <div class="testimonial-role">Property Manager</div>
@@ -296,7 +319,7 @@
             </div>
             <p class="testimonial-quote">"After having my first baby, switching to EcoClean Pro was the best decision. Zero harsh chemicals and the whole house smells like fresh eucalyptus!"</p>
             <div class="testimonial-author">
-              <div style="width:48px;height:48px;border-radius:50%;background:var(--accent-orange);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:600;font-size:1.125rem;">JL</div>
+              <img src="assets/images/testimonials/jennifer.png" alt="Jennifer L." style="width:48px;height:48px;border-radius:50%;object-fit:cover;">
               <div>
                 <div class="testimonial-name">Jennifer L.</div>
                 <div class="testimonial-role">New Parent, Seattle</div>
@@ -384,6 +407,7 @@
             <a href="pricing.html" class="footer-link">Pricing</a>
             <a href="contact.html" class="footer-link">Contact</a>
             <a href="dashboard.html" class="footer-link">Dashboard</a>
+            <a href="coming-soon.html" class="footer-link">Eco Shop <small>(Coming Soon)</small></a>
           </div>
         </div>
 

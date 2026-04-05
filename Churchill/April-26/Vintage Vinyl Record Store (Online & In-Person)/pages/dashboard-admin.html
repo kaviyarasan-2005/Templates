@@ -4,6 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin Dashboard — Vintage Vinyl</title>
+  
+  
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicons/favicon-32x32.png?v=2">
+  <link rel="shortcut icon" href="../assets/images/favicons/favicon-32x32.png?v=2">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/favicons/apple-touch-icon.png">
   <link rel="stylesheet" href="../assets/css/style.css">
   <link rel="stylesheet" href="../assets/css/dark-mode.css">
   <link rel="stylesheet" href="../assets/css/rtl.css">
@@ -143,6 +148,22 @@
       .stat-cards { grid-template-columns: repeat(2, 1fr); }
       .chart-section { grid-template-columns: 1fr; }
     }
+
+    @media (max-width: 640px) {
+      .dash-main { width: 100vw; max-width: 100%; overflow-x: hidden; }
+      .dash-topbar { 
+        height: auto; min-height: 70px; padding: 12px var(--space-4); 
+        flex-wrap: wrap; gap: var(--space-2); 
+      }
+      .dash-topbar__left { order: 1; width: 100%; display: flex; align-items: center; justify-content: space-between; margin-bottom: 2px; }
+      .dash-topbar__right { order: 2; width: 100%; justify-content: space-between; }
+      .dash-topbar__search { width: 100% !important; margin: 0; }
+      
+      .stat-cards { grid-template-columns: 1fr; }
+      .dash-content { padding: var(--space-4); }
+      .dash-table-wrap { display: block; overflow-x: auto; width: 100%; }
+      .dash-table { min-width: 600px; }
+    }
   </style>
 </head>
 <body>
@@ -150,7 +171,7 @@
     <!-- Sidebar -->
     <aside class="dash-sidebar">
       <a href="../index.html" class="dash-sidebar__logo">
-        <div class="navbar__logo-icon" style="width:36px;height:36px;font-size:var(--text-base);">V</div>
+        <img src="../assets/images/logo/logo.png" alt="Vintage Vinyl Logo" class="navbar__logo-img" style="width:32px;height:32px;object-fit:contain;">
         <span style="font-family:var(--font-heading);font-size:var(--text-base);font-weight:700;color:#fff;">Vintage Vinyl</span>
       </a>
       <nav class="dash-sidebar__nav">
@@ -180,19 +201,17 @@
     <div class="dash-main">
       <header class="dash-topbar">
         <div class="dash-topbar__left">
+          <a href="../index.html" style="text-decoration:none;display:flex;align-items:center;padding:8px;margin-right:8px;background:rgba(255,255,255,0.05);border-radius:var(--radius-full);color:var(--text-primary);" title="Back to Store">🏠</a>
           <span class="dash-topbar__breadcrumb">Admin / <span>Dashboard</span></span>
         </div>
         
-        <div class="role-switcher" style="display:flex;background:rgba(255,255,255,0.05);border-radius:var(--radius-full);padding:4px;gap:4px;border:1px solid var(--border-color);margin-left:auto;margin-right:var(--space-4);">
-          <a href="dashboard-customer.html" style="padding:4px 16px;border-radius:var(--radius-full);font-size:12px;font-weight:600;color:var(--text-muted);text-decoration:none;transition:all 0.2s;">Customer View</a>
-          <a href="dashboard-admin.html" style="padding:4px 16px;border-radius:var(--radius-full);font-size:12px;font-weight:600;color:#fff;background:var(--color-primary);text-decoration:none;">Admin View</a>
-        </div>
-
         <div class="dash-topbar__right">
-          <input type="search" class="dash-topbar__search" placeholder="Search records, orders, customers…" aria-label="Search">
-          <button class="navbar__icon-btn" style="position:relative;" aria-label="Notifications">🔔<span style="position:absolute;top:4px;right:4px;width:8px;height:8px;background:var(--color-error);border-radius:50%;"></span></button>
-          <button class="navbar__icon-btn theme-toggle" aria-label="Toggle theme">☀️</button>
-          <img src="../assets/images/team/team-1.png" alt="Admin avatar" class="dash-topbar__avatar" width="36" height="36">
+          <input type="search" class="dash-topbar__search" placeholder="Search orders…" aria-label="Search">
+          <div style="display:flex;align-items:center;gap:var(--space-2);">
+            <button class="navbar__icon-btn" style="position:relative;" aria-label="Notifications">🔔<span style="position:absolute;top:4px;right:4px;width:8px;height:8px;background:var(--color-error);border-radius:50%;"></span></button>
+            <button class="navbar__icon-btn theme-toggle" aria-label="Toggle theme">☀️</button>
+            <img src="../assets/images/team/team-1.png" alt="Admin avatar" class="dash-topbar__avatar" width="36" height="36">
+          </div>
         </div>
       </header>
 
@@ -271,7 +290,7 @@
             <h2 class="chart-card__title">Recent Orders</h2>
             <a href="#" class="btn btn--ghost btn--sm">View All →</a>
           </div>
-          <div style="overflow-x:auto;">
+          <div class="dash-table-wrap">
             <table class="dash-table">
               <thead>
                 <tr><th>Order ID</th><th>Customer</th><th>Items</th><th>Total</th><th>Status</th><th>Date</th></tr>
@@ -289,6 +308,12 @@
       </div>
     </div>
   </div>
+
   <script src="../assets/js/theme-switcher.js"></script>
 </body>
 </html>
+
+
+
+
+

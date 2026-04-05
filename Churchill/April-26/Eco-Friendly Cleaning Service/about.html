@@ -88,7 +88,30 @@
         <a href="blog.html" class="nav-link" data-i18n="nav.blog">Blog</a>
         <a href="contact.html" class="nav-link" data-i18n="nav.contact">Contact</a>
         <a href="pricing.html" class="nav-link" data-i18n="nav.pricing">Pricing</a>
-        <a href="dashboard.html" class="nav-link" data-i18n="nav.dashboard">Dashboard</a>
+        <div class="nav-dropdown" id="dashboard-dropdown">
+          <a href="#" class="nav-link nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true" data-i18n="nav.dashboard">
+            Dashboard
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </a>
+          <div class="nav-dropdown-menu" role="menu">
+            <a href="dashboard.html?role=user" class="nav-dropdown-item" role="menuitem">
+              <span class="dropdown-icon">👤</span>
+              <span class="dropdown-text">
+                <span class="dropdown-label">User Dashboard</span>
+                <span class="dropdown-desc">Manage your bookings</span>
+              </span>
+            </a>
+            <a href="dashboard.html?role=admin" class="nav-dropdown-item" role="menuitem">
+              <span class="dropdown-icon">🛡️</span>
+              <span class="dropdown-text">
+                <span class="dropdown-label">Admin Dashboard</span>
+                <span class="dropdown-desc">System administration</span>
+              </span>
+            </a>
+          </div>
+        </div>
+        <!-- Mobile Login Link -->
+        <a href="login.html" class="nav-link nav-link-login-mobile" data-i18n="nav.login">Login</a>
       </div>
       <div class="nav-actions">
         <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme">
@@ -98,7 +121,7 @@
         <button class="lang-toggle btn btn-ghost btn-icon" id="dir-toggle" aria-label="Toggle RTL/LTR" title="Toggle RTL/LTR" style="background:none;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:4px;color:var(--text-primary);">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
           </button>
-        <a href="login.html" class="btn btn-primary btn-sm" data-i18n="nav.login">Login</a>
+        <a href="login.html" class="btn btn-primary btn-sm nav-login-desktop" data-i18n="nav.login">Login</a>
         <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
       </div>
     </div>
@@ -224,7 +247,7 @@
 
         <div class="grid grid-4 gap-6 stagger-children">
           <div class="team-card anim-fade-up">
-            <div style="width:100%;aspect-ratio:1;background:linear-gradient(135deg,var(--primary-green),var(--secondary-sage));display:flex;align-items:center;justify-content:center;color:#fff;font-size:3rem;font-weight:700;font-family:var(--font-heading);">SJ</div>
+            <img src="assets/images/team/ceo.png" alt="Sarah Johnson" class="team-avatar" loading="lazy">
             <div class="team-info">
               <div class="team-name">Sarah Johnson</div>
               <div class="team-role">Founder & CEO</div>
@@ -236,7 +259,7 @@
           </div>
 
           <div class="team-card anim-fade-up">
-            <div style="width:100%;aspect-ratio:1;background:linear-gradient(135deg,var(--primary-blue),#5a8cc0);display:flex;align-items:center;justify-content:center;color:#fff;font-size:3rem;font-weight:700;font-family:var(--font-heading);">MR</div>
+            <img src="assets/images/team/ops.png" alt="Marcus Rivera" class="team-avatar" loading="lazy">
             <div class="team-info">
               <div class="team-name">Marcus Rivera</div>
               <div class="team-role">Head of Operations</div>
@@ -247,7 +270,7 @@
           </div>
 
           <div class="team-card anim-fade-up">
-            <div style="width:100%;aspect-ratio:1;background:linear-gradient(135deg,var(--secondary-sage),#b8d4a8);display:flex;align-items:center;justify-content:center;color:#fff;font-size:3rem;font-weight:700;font-family:var(--font-heading);">AK</div>
+            <img src="assets/images/team/science.png" alt="Aisha Khan" class="team-avatar" loading="lazy">
             <div class="team-info">
               <div class="team-name">Aisha Khan</div>
               <div class="team-role">Green Chemistry Lead</div>
@@ -258,7 +281,7 @@
           </div>
 
           <div class="team-card anim-fade-up">
-            <div style="width:100%;aspect-ratio:1;background:linear-gradient(135deg,var(--accent-orange),#ffaa80);display:flex;align-items:center;justify-content:center;color:#fff;font-size:3rem;font-weight:700;font-family:var(--font-heading);">DL</div>
+            <img src="assets/images/team/relations.png" alt="David Lee" class="team-avatar" loading="lazy">
             <div class="team-info">
               <div class="team-name">David Lee</div>
               <div class="team-role">Client Relations Manager</div>

@@ -7,7 +7,7 @@
   <link rel="icon" type="image/svg+xml" href="assets/images/favicons/favicon.svg">
   <link rel="stylesheet" href="assets/css/main.css"><link rel="stylesheet" href="assets/css/animations.css">
   <style>
-    html,body{height:100%;overflow:hidden;}
+    html,body{min-height:100%;overflow-y:auto;}
     main{padding-top:0!important;}
     .login-layout{display:grid;grid-template-columns:1fr 1fr;min-height:100vh;}
     .login-visual{background:linear-gradient(135deg,#0a0a0a 0%,#1a1a1a 60%);position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;}
@@ -25,7 +25,16 @@
     .divider::before,.divider::after{content:'';flex:1;height:1px;background:var(--bg-tertiary);}
     .input-wrapper{position:relative;}
     .password-toggle{position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--text-muted);padding:4px;display:flex;}
-    @media(max-width:768px){.login-layout{grid-template-columns:1fr;}.login-visual{display:none;}}
+    
+    @media(max-width:1024px){
+      .login-layout{grid-template-columns:1fr;}
+      .login-visual{display:none;}
+      .login-form-side{padding:var(--space-10) var(--space-6);}
+    }
+    @media(max-width:640px){
+      .login-form-side{padding:var(--space-8) var(--space-4);}
+      .login-card{max-width:100%;}
+    }
   </style>
 </head>
 <body>
@@ -95,7 +104,7 @@
               </div>
               <span class="form-error"></span>
             </div>
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--space-6);">
+            <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:var(--space-2);margin-bottom:var(--space-6);">
               <label class="form-check"><input type="checkbox" name="remember"><span style="font-size:0.875rem;">Remember me</span></label>
               <a href="#" style="font-size:0.875rem;font-weight:500;">Forgot Password?</a>
             </div>

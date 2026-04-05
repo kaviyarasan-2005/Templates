@@ -15,13 +15,13 @@
   <link rel="stylesheet" media="print" href="assets/css/print.css">
   <style>
     .blog-featured{display:grid;grid-template-columns:1.3fr 1fr;gap:var(--space-8);align-items:center;margin-bottom:var(--space-12);}
-    @media(max-width:768px){.blog-featured{grid-template-columns:1fr;}}
+    @media(max-width:1023px){.blog-featured{grid-template-columns:1fr;}}
     .blog-featured-img{border-radius:var(--radius-xl);overflow:hidden;}
     .blog-featured-img img{width:100%;aspect-ratio:16/10;object-fit:cover;transition:transform var(--transition-slow);}
     .blog-featured-img:hover img{transform:scale(1.03);}
     .blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-8);}
-    @media(max-width:1024px){.blog-grid{grid-template-columns:repeat(2,1fr);}}
-    @media(max-width:640px){.blog-grid{grid-template-columns:1fr;}}
+    @media(max-width:1023px){.blog-grid{grid-template-columns:repeat(2,1fr);}}
+    @media(max-width:639px){.blog-grid{grid-template-columns:1fr;}}
     .blog-card-date{font-size:0.75rem;color:var(--text-muted);margin-bottom:var(--space-2);}
     .category-pills{display:flex;gap:var(--space-2);flex-wrap:wrap;margin-bottom:var(--space-8);justify-content:center;}
     .cat-pill{padding:0.375rem 1rem;border-radius:var(--radius-full);font-size:0.8125rem;font-weight:500;border:1.5px solid var(--border-color);color:var(--text-secondary);background:var(--bg-card);cursor:pointer;transition:all var(--transition-fast);}
@@ -42,12 +42,35 @@
         <a href="blog.html" class="nav-link active">Blog</a>
         <a href="contact.html" class="nav-link">Contact</a>
         <a href="pricing.html" class="nav-link">Pricing</a>
-        <a href="dashboard.html" class="nav-link">Dashboard</a>
+        <div class="nav-dropdown" id="dashboard-dropdown">
+          <a href="#" class="nav-link nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true" data-i18n="nav.dashboard">
+            Dashboard
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </a>
+          <div class="nav-dropdown-menu" role="menu">
+            <a href="dashboard.html?role=user" class="nav-dropdown-item" role="menuitem">
+              <span class="dropdown-icon">👤</span>
+              <span class="dropdown-text">
+                <span class="dropdown-label">User Dashboard</span>
+                <span class="dropdown-desc">Manage your bookings</span>
+              </span>
+            </a>
+            <a href="dashboard.html?role=admin" class="nav-dropdown-item" role="menuitem">
+              <span class="dropdown-icon">🛡️</span>
+              <span class="dropdown-text">
+                <span class="dropdown-label">Admin Dashboard</span>
+                <span class="dropdown-desc">System administration</span>
+              </span>
+            </a>
+          </div>
+        </div>
+        <!-- Mobile Login Link -->
+        <a href="login.html" class="nav-link nav-link-login-mobile" data-i18n="nav.login">Login</a>
       </div>
       <div class="nav-actions">
         <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode"><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg></button>
         <button class="lang-toggle btn btn-ghost btn-icon" id="dir-toggle" aria-label="Toggle RTL/LTR" title="Toggle RTL/LTR" style="padding:4px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></button>
-        <a href="login.html" class="btn btn-primary btn-sm">Login</a>
+        <a href="login.html" class="btn btn-primary btn-sm nav-login-desktop" data-i18n="nav.login">Login</a>
         <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
       </div>
     </div>

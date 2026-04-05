@@ -51,17 +51,28 @@
      ================================================ */
   function initRoleSwitcher() {
     const switcher = document.getElementById('role-switcher');
-    if (!switcher) return;
 
-    const saved = localStorage.getItem('dashboardRole') || 'admin';
+    // Check query param first
+    const urlParams = new URLSearchParams(window.location.search);
+    const roleParam = urlParams.get('role');
+    
+    const saved = roleParam || localStorage.getItem('dashboardRole') || 'admin';
     applyRole(saved);
-    switcher.value = saved;
+    if (switcher) switcher.value = saved;
+    
+    // Save it if it came from param
+    if (roleParam) localStorage.setItem('dashboardRole', roleParam);
 
-    switcher.addEventListener('change', () => {
-      const role = switcher.value;
-      applyRole(role);
-      localStorage.setItem('dashboardRole', role);
-    });
+    if (switcher) {
+      switcher.addEventListener('change', () => {
+        const role = switcher.value;
+        applyRole(role);
+        localStorage.setItem('dashboardRole', role);
+        // Clean up URL if we manually switch
+        const newUrl = window.location.pathname;
+        window.history.replaceState({}, '', newUrl);
+      });
+    }
   }
 
   function applyRole(role) {

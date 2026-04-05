@@ -57,6 +57,23 @@ const InkStudio = (() => {
           toggle.click();
         });
       }
+
+      // Handle Book Now button move to mobile menu
+      const actions = document.querySelector('.navbar-actions');
+      if (actions && nav && !nav.querySelector('.mobile-cta')) {
+        const bookNow = actions.querySelector('.btn-primary');
+        if (bookNow) {
+          const mobileCTA = document.createElement('li');
+          mobileCTA.className = 'nav-item mobile-cta';
+          mobileCTA.style.display = 'none'; // Only show in mobile CSS
+          
+          const bookNowClone = bookNow.cloneNode(true);
+          // Ensure it's large in the menu
+          bookNowClone.classList.remove('btn-sm');
+          mobileCTA.appendChild(bookNowClone);
+          nav.appendChild(mobileCTA);
+        }
+      }
     }
 
     // Navbar scroll shadow
