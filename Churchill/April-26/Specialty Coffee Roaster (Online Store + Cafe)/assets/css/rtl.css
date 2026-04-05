@@ -1,0 +1,159 @@
+/* ============================================
+   RTL (Right-to-Left) OVERRIDES
+   ============================================ */
+
+[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+}
+
+/* Google Fonts for Arabic */
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap');
+
+[dir="rtl"] body {
+  font-family: 'Cairo', 'Inter', -apple-system, sans-serif;
+}
+[dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3,
+[dir="rtl"] h4, [dir="rtl"] h5, [dir="rtl"] h6 {
+  font-family: 'Cairo', 'Playfair Display', serif;
+}
+
+/* Navbar RTL */
+[dir="rtl"] .navbar__brand {
+  flex-direction: row-reverse;
+}
+[dir="rtl"] .navbar__links {
+  flex-direction: row-reverse;
+}
+[dir="rtl"] .navbar__link::after {
+  left: auto;
+  right: 0;
+}
+
+/* Dropdown */
+[dir="rtl"] .navbar__dropdown-toggle {
+  flex-direction: row-reverse;
+}
+
+/* Mobile menu */
+[dir="rtl"] .mobile-menu {
+  transform: translateX(-100%);
+}
+[dir="rtl"] .mobile-menu.open {
+  transform: translateX(0);
+}
+
+/* Hero */
+[dir="rtl"] .hero__content {
+  text-align: center;
+}
+
+/* Split layout */
+[dir="rtl"] .split {
+  direction: rtl;
+}
+[dir="rtl"] .split > * {
+  direction: rtl;
+}
+[dir="rtl"] .split--reverse {
+  direction: ltr;
+}
+[dir="rtl"] .split--reverse > * {
+  direction: rtl;
+}
+
+/* Process timeline */
+[dir="rtl"] .process__step {
+  padding-inline-start: var(--space-16);
+  padding-inline-end: 0;
+}
+[dir="rtl"] .process__step::before {
+  left: auto;
+  right: 0;
+}
+[dir="rtl"] .process__step::after {
+  left: auto;
+  right: 23px;
+}
+
+/* Testimonial quote */
+[dir="rtl"] .testimonial-card__quote {
+  padding-inline-start: var(--space-6);
+  padding-inline-end: 0;
+}
+[dir="rtl"] .testimonial-card__quote::before {
+  left: auto;
+  right: 0;
+}
+
+/* Pricing features */
+[dir="rtl"] .pricing-card__features {
+  text-align: right;
+}
+[dir="rtl"] .pricing-card__features li {
+  flex-direction: row-reverse;
+}
+
+/* Footer */
+[dir="rtl"] .footer__grid {
+  direction: rtl;
+}
+
+/* Breadcrumb */
+[dir="rtl"] .breadcrumb {
+  flex-direction: row-reverse;
+}
+
+/* Form */
+[dir="rtl"] select.form-input {
+  background-position: left 12px center;
+}
+
+/* Back to top */
+[dir="rtl"] .back-to-top {
+  right: auto;
+  left: var(--space-6);
+}
+
+/* Card badge */
+[dir="rtl"] .card__badge {
+  left: auto;
+  right: var(--space-3);
+}
+
+/* General text alignment */
+[dir="rtl"] .text-center {
+  text-align: center;
+}
+[dir="rtl"] .section-header {
+  text-align: center;
+}
+
+/* Tables */
+[dir="rtl"] .table th,
+[dir="rtl"] .table td {
+  text-align: right;
+}
+
+/* Accordion */
+[dir="rtl"] .accordion__header {
+  flex-direction: row-reverse;
+}
+
+/* Checkbox */
+[dir="rtl"] .form-checkbox {
+  flex-direction: row-reverse;
+}
+
+/* Social icons */
+[dir="rtl"] .footer__socials {
+  flex-direction: row-reverse;
+}
+
+/* Footer bottom */
+[dir="rtl"] .footer__bottom {
+  flex-direction: row-reverse;
+}
+[dir="rtl"] .footer__bottom-links {
+  flex-direction: row-reverse;
+}

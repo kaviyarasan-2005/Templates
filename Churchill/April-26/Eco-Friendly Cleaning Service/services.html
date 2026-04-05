@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Services — EcoClean Pro</title>
+  <meta name="description" content="Explore EcoClean Pro's full range of eco-friendly cleaning services for homes and businesses.">
+  <link rel="canonical" href="https://ecocleanpro.com/services.html">
+  <meta property="og:title" content="Our Services — EcoClean Pro">
+  <meta property="og:description" content="Comprehensive eco-friendly cleaning services for every need.">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" media="print" href="assets/css/print.css">
+  <style>
+    .filter-bar { display: flex; gap: var(--space-2); flex-wrap: wrap; justify-content: center; margin-bottom: var(--space-10); }
+    .filter-btn { padding: 0.5rem 1.25rem; font-size: 0.875rem; font-weight: 500; border: 1.5px solid var(--border-color); border-radius: var(--radius-full); color: var(--text-secondary); background: var(--bg-card); transition: all var(--transition-fast); cursor: pointer; }
+    .filter-btn:hover, .filter-btn.active { border-color: var(--primary-green); background: var(--primary-green); color: #fff; }
+    .service-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-8); }
+    @media (max-width: 1024px) { .service-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 640px) { .service-grid { grid-template-columns: 1fr; } }
+    .service-card { transition: all var(--transition-base); }
+    .service-card.hidden { opacity: 0; transform: scale(0.9); position: absolute; pointer-events: none; }
+    .qv-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); z-index: var(--z-modal); display: flex; align-items: center; justify-content: center; padding: var(--space-6); opacity: 0; visibility: hidden; transition: all var(--transition-base); }
+    .qv-overlay.active { opacity: 1; visibility: visible; }
+    .qv-card { background: var(--bg-card); border-radius: var(--radius-xl); max-width: 600px; width: 100%; max-height: 85vh; overflow-y: auto; transform: translateY(20px); transition: transform var(--transition-base); position: relative; }
+    .qv-overlay.active .qv-card { transform: translateY(0); }
+    .qv-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: var(--radius-xl) var(--radius-xl) 0 0; }
+    .qv-body { padding: var(--space-8); }
+    .qv-close { position: absolute; top: var(--space-4); inset-inline-end: var(--space-4); width: 40px; height: 40px; background: rgba(0,0,0,0.5); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; border: none; z-index: 1; }
+    .service-card-icon { width: 56px; height: 56px; background: rgba(45,80,22,0.08); border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; margin-bottom: var(--space-4); color: var(--primary-green); flex-shrink: 0; }
+  </style>
+</head>
+<body class="has-navbar">
+
+  <a href="#main-content" class="skip-to-content sr-only" style="position:fixed;top:8px;inset-inline-start:8px;z-index:9999;padding:8px 16px;background:var(--primary-green);color:#fff;border-radius:4px;">Skip to content</a>
+
+  <!-- ========== NAVBAR ========== -->
+  <nav class="navbar" id="main-nav" aria-label="Main navigation">
+    <div class="container">
+      <a href="index.html" class="nav-brand" aria-label="EcoClean Pro Home">
+        <span class="nav-brand-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 8C8 10 5.9 16.17 3.82 21.34L3 23l2-1c4-2 7-4 9-8 2 1 4 1 6-1-2-4-6-8-10-8z" fill="currentColor" stroke="none" opacity="0.9"/><path d="M5.5 21.5L10 15" stroke-linecap="round"/></svg>
+        </span>
+        <span>EcoClean Pro</span>
+      </a>
+
+      <div class="nav-menu" id="nav-menu">
+        <div class="nav-dropdown" id="home-dropdown">
+          <a href="#" class="nav-link nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true" data-i18n="nav.home">
+            Home
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </a>
+          <div class="nav-dropdown-menu" role="menu">
+            <a href="home-general.html" class="nav-dropdown-item" role="menuitem">
+              <span class="dropdown-icon">🏠</span>
+              <span class="dropdown-text">
+                <span class="dropdown-label">General Services</span>
+                <span class="dropdown-desc">Full-service cleaning solutions</span>
+              </span>
+            </a>
+            <a href="home-niche.html" class="nav-dropdown-item" role="menuitem">
+              <span class="dropdown-icon">🌿</span>
+              <span class="dropdown-text">
+                <span class="dropdown-label">Eco Specialist</span>
+                <span class="dropdown-desc">Premium eco-focused services</span>
+              </span>
+            </a>
+          </div>
+        </div>
+        <a href="about.html" class="nav-link" data-i18n="nav.about">About</a>
+        <a href="services.html" class="nav-link active" data-i18n="nav.services">Services</a>
+        <a href="blog.html" class="nav-link" data-i18n="nav.blog">Blog</a>
+        <a href="contact.html" class="nav-link" data-i18n="nav.contact">Contact</a>
+        <a href="pricing.html" class="nav-link" data-i18n="nav.pricing">Pricing</a>
+        <a href="dashboard.html" class="nav-link" data-i18n="nav.dashboard">Dashboard</a>
+      </div>
+
+      <div class="nav-actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        </button>
+        <button class="lang-toggle btn btn-ghost btn-icon" id="dir-toggle" aria-label="Toggle RTL/LTR" title="Toggle RTL/LTR" style="background:none;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:4px;color:var(--text-primary);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+        </button>
+        <a href="login.html" class="btn btn-primary btn-sm" data-i18n="nav.login">Login</a>
+        <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main-content">
+
+    <!-- ========== HERO ========== -->
+    <section class="hero" style="min-height:45vh;">
+      <div class="hero-bg"><img src="assets/images/hero/services-hero.png" alt="" loading="eager" width="1920" height="1080"></div>
+      <div class="hero-overlay" style="background:linear-gradient(135deg,rgba(15,26,11,0.88) 0%,rgba(30,58,95,0.65) 100%);"></div>
+      <div class="container">
+        <div class="hero-content" style="color:#fff;text-align:center;max-width:720px;margin:0 auto;">
+          <span class="section-label anim-fade-up" style="color:var(--secondary-sage);justify-content:center;">🧹 Our Services</span>
+          <h1 class="hero-title anim-fade-up" style="transition-delay:100ms">Professional Eco-Friendly Cleaning</h1>
+          <p class="hero-subtitle anim-fade-up" style="transition-delay:200ms;text-align:center;">From homes to offices, we deliver spotless results using only planet-friendly products. Explore our full range of services.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SERVICES GRID ========== -->
+    <section id="all-services">
+      <div class="container">
+        <div class="section-header center">
+          <span class="section-label anim-fade-up">Browse Services</span>
+          <h2 class="section-title anim-fade-up">What We Offer</h2>
+          <p class="section-subtitle anim-fade-up">Click on any service to learn more about what's included and how we can help.</p>
+        </div>
+
+        <!-- Filter Bar -->
+        <div class="filter-bar anim-fade-up" id="service-filters">
+          <button class="filter-btn active" data-filter="all">All Services</button>
+          <button class="filter-btn" data-filter="residential">Residential</button>
+          <button class="filter-btn" data-filter="commercial">Commercial</button>
+          <button class="filter-btn" data-filter="specialty">Specialty</button>
+        </div>
+
+        <!-- Service Cards Grid -->
+        <div class="service-grid stagger-children">
+          <!-- Residential Cleaning -->
+          <div class="card service-card tilt-card anim-fade-up" data-category="residential" data-qv="residential">
+            <div class="card-img-wrapper img-zoom">
+              <img class="card-img" src="assets/images/services/residential.png" alt="Residential eco-friendly cleaning" loading="lazy" width="640" height="360">
+              <span class="card-tag" style="position:absolute;top:16px;inset-inline-start:16px;">Popular</span>
+            </div>
+            <div class="card-body">
+              <div class="service-card-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M9 22V12h6v10"/></svg>
+              </div>
+              <h3 class="card-title">Residential Cleaning</h3>
+              <p class="card-text">Complete home cleaning with plant-based products. Kitchen, bathroom, living areas — every corner sparkles naturally.</p>
+              <div style="display:flex;gap:var(--space-3);flex-wrap:wrap;">
+                <a href="service-detail.html?service=residential" class="btn btn-secondary btn-sm" style="flex:1;">Learn More</a>
+                <button class="btn btn-ghost btn-sm qv-trigger" data-service="residential" style="flex:0 0 auto;">Quick View</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Commercial Cleaning -->
+          <div class="card service-card tilt-card anim-fade-up" data-category="commercial" data-qv="commercial">
+            <div class="card-img-wrapper img-zoom">
+              <img class="card-img" src="assets/images/services/commercial.png" alt="Commercial office cleaning services" loading="lazy" width="640" height="360">
+            </div>
+            <div class="card-body">
+              <div class="service-card-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a4 4 0 00-8 0v2"/></svg>
+              </div>
+              <h3 class="card-title">Commercial Cleaning</h3>
+              <p class="card-text">Keep your workspace healthy and productive. Flexible scheduling, green-certified for LEED buildings.</p>
+              <div style="display:flex;gap:var(--space-3);flex-wrap:wrap;">
+                <a href="service-detail.html?service=commercial" class="btn btn-secondary btn-sm" style="flex:1;">Learn More</a>
+                <button class="btn btn-ghost btn-sm qv-trigger" data-service="commercial" style="flex:0 0 auto;">Quick View</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Deep Cleaning -->
+          <div class="card service-card tilt-card anim-fade-up" data-category="specialty" data-qv="deep-clean">
+            <div class="card-img-wrapper img-zoom">
+              <img class="card-img" src="assets/images/services/deep-clean.png" alt="Deep cleaning service" loading="lazy" width="640" height="360">
+              <span class="card-tag" style="position:absolute;top:16px;inset-inline-start:16px;">Premium</span>
+            </div>
+            <div class="card-body">
+              <div class="service-card-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </div>
+              <h3 class="card-title">Deep Cleaning</h3>
+              <p class="card-text">Intensive, thorough cleaning for move-ins, renovations, or seasonal refresh. We reach every hidden corner.</p>
+              <div style="display:flex;gap:var(--space-3);flex-wrap:wrap;">
+                <a href="service-detail.html?service=deep-clean" class="btn btn-secondary btn-sm" style="flex:1;">Learn More</a>
+                <button class="btn btn-ghost btn-sm qv-trigger" data-service="deep-clean" style="flex:0 0 auto;">Quick View</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Green Sanitization -->
+          <div class="card service-card tilt-card anim-fade-up" data-category="specialty" data-qv="green-sanitize">
+            <div class="card-img-wrapper img-zoom">
+              <img class="card-img" src="assets/images/services/green-sanitize.png" alt="Green sanitization service" loading="lazy" width="640" height="360">
+            </div>
+            <div class="card-body">
+              <div class="service-card-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+              </div>
+              <h3 class="card-title">Green Sanitization</h3>
+              <p class="card-text">Hospital-grade sanitization using eco-certified disinfectants. Safe for families, pets, and the planet.</p>
+              <div style="display:flex;gap:var(--space-3);flex-wrap:wrap;">
+                <a href="service-detail.html?service=green-sanitize" class="btn btn-secondary btn-sm" style="flex:1;">Learn More</a>
+                <button class="btn btn-ghost btn-sm qv-trigger" data-service="green-sanitize" style="flex:0 0 auto;">Quick View</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Move-In/Out Cleaning -->
+          <div class="card service-card tilt-card anim-fade-up" data-category="residential" data-qv="move">
+            <div class="card-img-wrapper img-zoom">
+              <img class="card-img" src="assets/images/services/move-clean.png" alt="Move-in and move-out cleaning" loading="lazy" width="640" height="360">
+            </div>
+            <div class="card-body">
+              <div class="service-card-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="6" width="22" height="12" rx="2"/><path d="M1 10h22"/></svg>
+              </div>
+              <h3 class="card-title">Move-In/Out Cleaning</h3>
+              <p class="card-text">Get your deposit back or welcome a fresh start. Complete top-to-bottom cleaning for moving day.</p>
+              <div style="display:flex;gap:var(--space-3);flex-wrap:wrap;">
+                <a href="service-detail.html?service=move" class="btn btn-secondary btn-sm" style="flex:1;">Learn More</a>
+                <button class="btn btn-ghost btn-sm qv-trigger" data-service="move" style="flex:0 0 auto;">Quick View</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Post-Construction -->
+          <div class="card service-card tilt-card anim-fade-up" data-category="commercial" data-qv="construction">
+            <div class="card-img-wrapper img-zoom">
+              <img class="card-img" src="assets/images/services/deep-clean.png" alt="Post-construction cleanup" loading="lazy" width="640" height="360">
+            </div>
+            <div class="card-body">
+              <div class="service-card-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 20h20"/><path d="M5 20V8l7-5 7 5v12"/><path d="M9 20v-5h6v5"/></svg>
+              </div>
+              <h3 class="card-title">Post-Construction Cleanup</h3>
+              <p class="card-text">Professional debris removal and deep clean after renovations. Dust, paint residue, and construction waste — gone.</p>
+              <div style="display:flex;gap:var(--space-3);flex-wrap:wrap;">
+                <a href="service-detail.html?service=construction" class="btn btn-secondary btn-sm" style="flex:1;">Learn More</a>
+                <button class="btn btn-ghost btn-sm qv-trigger" data-service="construction" style="flex:0 0 auto;">Quick View</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== CTA ========== -->
+    <section style="background:var(--primary-green);color:#fff;text-align:center;">
+      <div class="container">
+        <h2 class="section-title anim-fade-up" style="color:#fff;max-width:640px;margin:0 auto var(--space-4);">Need a Custom Cleaning Plan?</h2>
+        <p class="section-subtitle anim-fade-up" style="color:rgba(255,255,255,0.8);margin:0 auto var(--space-8);">We create tailored packages for unique spaces. Get your free consultation today.</p>
+        <div class="anim-fade-up" style="display:flex;gap:var(--space-4);justify-content:center;flex-wrap:wrap;">
+          <a href="contact.html" class="btn btn-accent btn-lg">Get Free Quote</a>
+          <a href="pricing.html" class="btn btn-lg" style="background:rgba(255,255,255,0.15);color:#fff;border:1.5px solid rgba(255,255,255,0.3);">View Pricing</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========== QUICK VIEW MODAL ========== -->
+  <div class="qv-overlay" id="qv-overlay" role="dialog" aria-modal="true" aria-label="Service quick view">
+    <div class="qv-card">
+      <button class="qv-close" id="qv-close" aria-label="Close quick view">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+      <img class="qv-img" id="qv-img" src="" alt="">
+      <div class="qv-body">
+        <h3 id="qv-title" style="margin-bottom:var(--space-3);"></h3>
+        <p id="qv-desc" style="color:var(--text-secondary);line-height:1.7;margin-bottom:var(--space-6);"></p>
+        <a id="qv-link" href="#" class="btn btn-primary w-full">View Full Details</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer" id="main-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-brand" style="color:#fff" aria-label="EcoClean Pro Home">
+            <span class="nav-brand-icon" style="background:rgba(255,255,255,0.15)">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 8C8 10 5.9 16.17 3.82 21.34L3 23l2-1c4-2 7-4 9-8 2 1 4 1 6-1-2-4-6-8-10-8z" fill="currentColor" stroke="none" opacity="0.9"/><path d="M5.5 21.5L10 15" stroke-linecap="round"/></svg>
+            </span>
+            <span>EcoClean Pro</span>
+          </a>
+          <p>Making homes and workplaces cleaner, healthier, and greener since 2011.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+            <a href="#" aria-label="Twitter"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg></a>
+            <a href="#" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg></a>
+            <a href="#" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 6a2 2 0 100-4 2 2 0 000 4z"/></svg></a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer-heading">Services</h4>
+          <div class="footer-links">
+            <a href="service-detail.html?service=residential" class="footer-link">Residential Cleaning</a>
+            <a href="service-detail.html?service=commercial" class="footer-link">Commercial Cleaning</a>
+            <a href="service-detail.html?service=deep-clean" class="footer-link">Deep Cleaning</a>
+            <a href="service-detail.html?service=green-sanitize" class="footer-link">Green Sanitization</a>
+            <a href="service-detail.html?service=move" class="footer-link">Move-In/Out</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer-heading">Company</h4>
+          <div class="footer-links">
+            <a href="about.html" class="footer-link">About Us</a>
+            <a href="blog.html" class="footer-link">Blog</a>
+            <a href="pricing.html" class="footer-link">Pricing</a>
+            <a href="contact.html" class="footer-link">Contact</a>
+            <a href="dashboard.html" class="footer-link">Dashboard</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer-heading">Contact</h4>
+          <div class="footer-links">
+            <span class="footer-link">123 Green Valley Drive</span>
+            <span class="footer-link">Portland, OR 97201</span>
+            <a href="tel:+15551234567" class="footer-link">+1 (555) 123-4567</a>
+            <a href="mailto:hello@ecocleanpro.com" class="footer-link">hello@ecocleanpro.com</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p data-i18n="footer.rights">&copy; 2026 EcoClean Pro. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="#" data-i18n="footer.privacy">Privacy Policy</a>
+          <a href="#" data-i18n="footer.terms">Terms of Service</a>
+          <a href="#" data-i18n="footer.cookies">Cookie Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="scroll-top-btn" aria-label="Scroll to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg>
+  </button>
+
+  <script src="assets/js/utils.js"></script>
+  <script src="assets/js/animations.js"></script>
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/forms.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    // Service filter
+    document.getElementById('service-filters').addEventListener('click', (e) => {
+      const btn = e.target.closest('.filter-btn');
+      if (!btn) return;
+      const filter = btn.dataset.filter;
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.service-card').forEach(card => {
+        const cat = card.dataset.category;
+        if (filter === 'all' || cat === filter) {
+          card.classList.remove('hidden');
+          card.style.position = '';
+        } else {
+          card.classList.add('hidden');
+          card.style.position = 'absolute';
+        }
+      });
+    });
+
+    // Quick view data
+    const serviceData = {
+      residential: {
+        title: 'Residential Cleaning',
+        img: 'assets/images/services/residential.png',
+        desc: 'Our residential cleaning service covers every room in your home with eco-friendly, plant-based products. We clean kitchens, bathrooms, bedrooms, and living areas — dusting, vacuuming, mopping, and sanitizing all surfaces. Safe for kids, pets, and the planet.',
+        link: 'service-detail.html?service=residential'
+      },
+      commercial: {
+        title: 'Commercial Cleaning',
+        img: 'assets/images/services/commercial.png',
+        desc: 'Keep your workspace healthy and productive with our commercial cleaning service. We offer flexible day/night scheduling, LEED-compliant products, and comprehensive reporting. Ideal for offices, retail spaces, and healthcare facilities.',
+        link: 'service-detail.html?service=commercial'
+      },
+      'deep-clean': {
+        title: 'Deep Cleaning',
+        img: 'assets/images/services/deep-clean.png',
+        desc: 'Our deep cleaning goes beyond the surface — inside appliances, behind furniture, grout scrubbing, ventilation cleaning, and more. Perfect for move-ins, seasonal refreshes, or post-renovation cleanup.',
+        link: 'service-detail.html?service=deep-clean'
+      },
+      'green-sanitize': {
+        title: 'Green Sanitization',
+        img: 'assets/images/services/green-sanitize.png',
+        desc: 'Hospital-grade sanitization using only EPA Safer Choice certified disinfectants. Eliminates 99.9% of pathogens while being completely safe for children, elderly, and pets. Ideal for homes, schools, and medical offices.',
+        link: 'service-detail.html?service=green-sanitize'
+      },
+      move: {
+        title: 'Move-In/Out Cleaning',
+        img: 'assets/images/services/move-clean.png',
+        desc: 'Moving is stressful enough. Let us handle the cleaning. Our move-in/move-out service includes a full top-to-bottom clean: walls, baseboards, windows, appliance interiors, cabinets, and deep floor cleaning.',
+        link: 'service-detail.html?service=move'
+      },
+      construction: {
+        title: 'Post-Construction Cleanup',
+        img: 'assets/images/services/deep-clean.png',
+        desc: 'After renovation or construction, fine dust and debris get everywhere. Our specialized post-construction cleanup removes paint splatters, drywall dust, adhesive residue, and construction waste using eco-friendly methods.',
+        link: 'service-detail.html?service=construction'
+      }
+    };
+
+    // Quick view modal
+    const overlay = document.getElementById('qv-overlay');
+    const qvClose = document.getElementById('qv-close');
+    document.querySelectorAll('.qv-trigger').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const key = btn.dataset.service;
+        const data = serviceData[key];
+        if (!data) return;
+        document.getElementById('qv-img').src = data.img;
+        document.getElementById('qv-img').alt = data.title;
+        document.getElementById('qv-title').textContent = data.title;
+        document.getElementById('qv-desc').textContent = data.desc;
+        document.getElementById('qv-link').href = data.link;
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+    function closeQv() {
+      overlay.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+    qvClose.addEventListener('click', closeQv);
+    overlay.addEventListener('click', (e) => { if (e.target === overlay) closeQv(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeQv(); });
+
+    // Tilt effect
+    document.addEventListener('DOMContentLoaded', () => Animations.initTiltEffect('.tilt-card'));
+  </script>
+</body>
+</html>

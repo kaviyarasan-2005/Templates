@@ -1,0 +1,467 @@
+/* ============================================================
+   RTL (Right-to-Left) STYLESHEET
+   Applied when html[dir="rtl"]
+   Uses CSS logical properties where possible for natural RTL.
+   ============================================================ */
+
+[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+}
+
+/* ============================================================
+   TYPOGRAPHY & FONTS
+   ============================================================ */
+[dir="rtl"] body {
+  font-family: 'Cairo', 'Inter', sans-serif;
+}
+
+[dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3, [dir="rtl"] h4,
+[dir="rtl"] .h1, [dir="rtl"] .h2, [dir="rtl"] .h3, [dir="rtl"] .h4 {
+  font-family: 'Cairo', 'Poppins', sans-serif;
+}
+
+/* ============================================================
+   SECTION HEADINGS
+   ============================================================ */
+/* Section label decorative line */
+[dir="rtl"] .section-label::before {
+  order: 1;
+}
+
+/* Centered section headers keep center alignment */
+[dir="rtl"] .section-header.center {
+  text-align: center;
+}
+
+[dir="rtl"] .section-header.center .section-label {
+  justify-content: center;
+}
+
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+/* Keep nav items in the same visual order—CSS logical properties handle the rest */
+[dir="rtl"] .navbar .container {
+  flex-direction: row-reverse;
+}
+
+/* Active underline */
+[dir="rtl"] .nav-link.active::after {
+  left: auto;
+  right: 50%;
+  transform: translateX(50%);
+}
+
+/* Dropdown chevron */
+[dir="rtl"] .nav-dropdown-toggle svg {
+  margin-inline-start: var(--space-1);
+  margin-inline-end: 0;
+}
+
+/* Dropdown menu alignment */
+[dir="rtl"] .nav-dropdown-menu {
+  left: 50%;
+  right: auto;
+}
+
+/* Lang dropdown */
+[dir="rtl"] .lang-dropdown-menu {
+  right: auto;
+  left: 0;
+}
+
+/* Mobile navigation */
+@media (max-width: 1024px) {
+  [dir="rtl"] .nav-menu {
+    right: auto;
+    left: 0;
+    transform: translateX(-100%);
+  }
+
+  [dir="rtl"] .nav-menu.open {
+    transform: translateX(0);
+  }
+
+  [dir="rtl"] .nav-dropdown-menu {
+    padding-left: 0;
+    padding-inline-start: var(--space-4);
+  }
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+[dir="rtl"] .footer-grid {
+  direction: rtl;
+}
+
+[dir="rtl"] .footer-bottom {
+  flex-direction: row-reverse;
+}
+
+@media (max-width: 640px) {
+  [dir="rtl"] .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* ============================================================
+   CARDS & SERVICE CARDS
+   ============================================================ */
+/* Card tag position — use logical inset */
+[dir="rtl"] .card-tag {
+  left: auto;
+  right: 16px;
+}
+
+/* Card meta */
+[dir="rtl"] .card-meta {
+  flex-direction: row-reverse;
+}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+/* Button icon gap reversal isn't needed—flex gap handles it */
+
+/* ============================================================
+   HERO SECTIONS
+   ============================================================ */
+[dir="rtl"] .hero-content {
+  text-align: right;
+}
+
+/* Centered heroes stay centered */
+[dir="rtl"] .hero-content[style*="text-align:center"],
+[dir="rtl"] .hero-content[style*="text-align: center"] {
+  text-align: center !important;
+}
+
+/* Hero actions */
+[dir="rtl"] .hero-actions {
+  justify-content: flex-start;
+}
+
+/* ============================================================
+   FORMS
+   ============================================================ */
+/* Select arrow */
+[dir="rtl"] .form-select {
+  background-position: left 1rem center;
+  padding-right: 1rem;
+  padding-left: 2.5rem;
+}
+
+/* Floating label */
+[dir="rtl"] .form-floating .form-label {
+  left: auto;
+  right: 1rem;
+}
+
+/* Checkbox checkmark */
+[dir="rtl"] .form-check input[type="checkbox"]:checked::after {
+  left: auto;
+  right: 6px;
+}
+
+/* Toggle slider knob moves opposite */
+[dir="rtl"] .toggle-slider::before {
+  left: auto;
+  right: 3px;
+}
+
+[dir="rtl"] .toggle-switch input:checked + .toggle-slider::before {
+  transform: translateX(-24px);
+}
+
+/* ============================================================
+   FILTER BAR
+   ============================================================ */
+[dir="rtl"] .filter-bar {
+  justify-content: center;
+}
+
+/* ============================================================
+   SERVICE GRID
+   ============================================================ */
+[dir="rtl"] .service-grid {
+  direction: rtl;
+}
+
+/* ============================================================
+   CONTACT PAGE
+   ============================================================ */
+[dir="rtl"] .contact-grid {
+  direction: rtl;
+}
+
+[dir="rtl"] .contact-card {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+[dir="rtl"] .map-placeholder {
+  text-align: center;
+}
+
+/* ============================================================
+   PROGRESS STEPS (Multi-step form)
+   ============================================================ */
+[dir="rtl"] .progress-steps {
+  flex-direction: row-reverse;
+}
+
+/* ============================================================
+   PRICING
+   ============================================================ */
+[dir="rtl"] .pricing-grid {
+  direction: rtl;
+}
+
+[dir="rtl"] .pricing-feature {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+[dir="rtl"] .pricing-features {
+  text-align: right;
+}
+
+[dir="rtl"] .pricing-toggle {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .guarantee-bar {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+/* ============================================================
+   BLOG
+   ============================================================ */
+[dir="rtl"] .blog-featured {
+  direction: rtl;
+}
+
+[dir="rtl"] .blog-grid {
+  direction: rtl;
+}
+
+[dir="rtl"] .category-pills {
+  justify-content: center;
+}
+
+/* ============================================================
+   ABOUT PAGE — TIMELINE
+   ============================================================ */
+[dir="rtl"] .timeline {
+  padding-left: 0;
+  padding-right: 2rem;
+}
+
+[dir="rtl"] .timeline::before {
+  left: auto;
+  right: 15px;
+}
+
+[dir="rtl"] .timeline-dot {
+  left: auto;
+  right: -2rem;
+}
+
+[dir="rtl"] .timeline-item {
+  padding-left: 0;
+  padding-inline-start: var(--space-8);
+}
+
+@media (min-width: 768px) {
+  [dir="rtl"] .timeline {
+    padding-left: 0;
+    padding-right: 3rem;
+  }
+
+  [dir="rtl"] .timeline::before {
+    left: auto;
+    right: 23px;
+  }
+
+  [dir="rtl"] .timeline-item {
+    padding-left: 0;
+    padding-inline-start: var(--space-12);
+  }
+}
+
+/* ============================================================
+   ABOUT PAGE — TEAM & CERTS
+   ============================================================ */
+[dir="rtl"] .team-social {
+  justify-content: center;
+}
+
+[dir="rtl"] .cert-badge {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+[dir="rtl"] .cert-info {
+  text-align: right;
+}
+
+/* ============================================================
+   TESTIMONIALS
+   ============================================================ */
+[dir="rtl"] .testimonial-author {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+[dir="rtl"] .testimonial-stars {
+  justify-content: flex-end;
+}
+
+[dir="rtl"] .testimonial-card {
+  text-align: right;
+}
+
+/* ============================================================
+   ACCORDION
+   ============================================================ */
+[dir="rtl"] .accordion-header {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .accordion-header span {
+  text-align: right;
+}
+
+[dir="rtl"] .accordion-body {
+  text-align: right;
+}
+
+/* ============================================================
+   STATS
+   ============================================================ */
+[dir="rtl"] .stat-item {
+  text-align: center;
+}
+
+/* ============================================================
+   QUICK VIEW MODAL
+   ============================================================ */
+[dir="rtl"] .qv-close {
+  right: auto;
+  left: var(--space-4);
+}
+
+[dir="rtl"] .qv-body {
+  text-align: right;
+}
+
+/* ============================================================
+   SCROLL & MISC
+   ============================================================ */
+/* Scroll progress */
+[dir="rtl"] .scroll-progress {
+  left: auto;
+  right: 0;
+}
+
+/* Scroll to top */
+[dir="rtl"] .scroll-top-btn {
+  right: auto;
+  left: var(--space-8);
+}
+
+/* Toast from left */
+[dir="rtl"] .toast-container {
+  right: auto;
+  left: var(--space-6);
+}
+
+[dir="rtl"] .toast {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+/* Skip to content */
+[dir="rtl"] .skip-to-content {
+  left: auto;
+  right: 8px;
+}
+
+/* Underline draw from right */
+[dir="rtl"] .link-underline::after {
+  left: auto;
+  right: 0;
+}
+
+/* ============================================================
+   ANIMATIONS — OPPOSITE DIRECTION
+   ============================================================ */
+[dir="rtl"] .anim-fade-left {
+  transform: translateX(30px);
+}
+
+[dir="rtl"] .anim-fade-right {
+  transform: translateX(-30px);
+}
+
+[dir="rtl"] .anim-fade-left.in-view,
+[dir="rtl"] .anim-fade-right.in-view {
+  transform: translateX(0);
+}
+
+/* Marquee reverse */
+[dir="rtl"] .logo-marquee-track {
+  animation-direction: reverse;
+}
+
+/* ============================================================
+   DASHBOARD
+   ============================================================ */
+[dir="rtl"] .dash-sidebar {
+  border-right: none;
+  border-left: 1px solid var(--border-light);
+}
+
+[dir="rtl"] .dash-content {
+  text-align: right;
+}
+
+/* ============================================================
+   MODAL
+   ============================================================ */
+[dir="rtl"] .modal-header {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .modal-footer {
+  justify-content: flex-start;
+}
+
+/* ============================================================
+   TAB LIST
+   ============================================================ */
+[dir="rtl"] .tab-list {
+  flex-direction: row-reverse;
+}
+
+/* ============================================================
+   BADGES — keep inline display
+   ============================================================ */
+[dir="rtl"] .badge {
+  direction: rtl;
+}
+
+/* ============================================================
+   WHY-US CARDS (centered text stays centered)
+   ============================================================ */
+[dir="rtl"] .card[style*="text-align:center"] {
+  text-align: center !important;
+}
+
+[dir="rtl"] .value-card {
+  text-align: center;
+}

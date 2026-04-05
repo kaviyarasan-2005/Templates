@@ -1,0 +1,86 @@
+/* ============================================================
+   PRINT STYLESHEET
+   ============================================================ */
+@media print {
+  /* Hide non-essential elements */
+  .navbar,
+  .footer,
+  .scroll-top-btn,
+  .toast-container,
+  .modal-overlay,
+  .scroll-progress,
+  .hero-particles,
+  .nav-hamburger,
+  .theme-toggle,
+  .lang-toggle,
+  .btn,
+  video,
+  .logo-marquee {
+    display: none !important;
+  }
+  
+  /* Reset backgrounds and colors */
+  body {
+    background: #fff !important;
+    color: #000 !important;
+    font-size: 12pt;
+    line-height: 1.5;
+  }
+  
+  .has-navbar {
+    padding-top: 0 !important;
+  }
+  
+  /* Ensure text is readable */
+  h1, h2, h3, h4, p, li, td, th {
+    color: #000 !important;
+  }
+  
+  a {
+    color: #000 !important;
+    text-decoration: underline;
+  }
+  
+  a[href]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    color: #666;
+  }
+  
+  /* Cards & sections */
+  .card, .pricing-card, .testimonial-card {
+    border: 1px solid #ccc !important;
+    box-shadow: none !important;
+    break-inside: avoid;
+  }
+  
+  section {
+    padding: 1rem 0 !important;
+  }
+  
+  .container {
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+  
+  /* Images */
+  img {
+    max-width: 100% !important;
+    page-break-inside: avoid;
+  }
+  
+  /* Page breaks */
+  h1, h2, h3 {
+    page-break-after: avoid;
+  }
+  
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  th, td {
+    border: 1px solid #ccc;
+    padding: 0.5rem;
+  }
+}

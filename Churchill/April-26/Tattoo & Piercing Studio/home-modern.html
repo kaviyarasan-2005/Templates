@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>INK STUDIO - Premium Tattoo & Piercing Studio</title>
+  <meta name="description" content="Award-winning tattoo and piercing studio specializing in custom designs, traditional tattoos, and professional piercing services. Book your consultation today.">
+  <meta property="og:title" content="INK STUDIO - Premium Tattoo & Piercing Studio">
+  <meta property="og:description" content="Award-winning artists specializing in custom designs, traditional tattoos, and professional piercing services.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#0a0a0a">
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicons/favicon.svg">
+  <link rel="manifest" href="assets/images/favicons/site.webmanifest">
+  <link rel="mask-icon" href="assets/images/favicons/safari-pinned-tab.svg" color="#dc2626">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+</head>
+<body>
+  <!-- Skip to Content -->
+  <a href="#main-content" class="skip-to-content">Skip to main content</a>
+
+  <!-- ========== NAVBAR ========== -->
+  <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="navbar-inner">
+      <!-- Brand -->
+      <a href="index.html" class="navbar-brand" aria-label="INK STUDIO Home">
+        <svg class="brand-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="40" height="40" rx="8" fill="#0a0a0a"/>
+          <path d="M12,8 L16,8 L28,32 L24,34 L18,34 Z" fill="#dc2626" opacity="0.9"/>
+          <path d="M14,8 L18,8 L30,32 L26,34 L20,34 Z" fill="#f59e0b" opacity="0.7"/>
+        </svg>
+        <span class="brand-name">INK <span>STUDIO</span></span>
+      </a>
+
+      <!-- Navigation Links -->
+      <ul class="navbar-nav" id="navMenu">
+        <li class="nav-item has-dropdown">
+          <a href="#" class="nav-link active" aria-haspopup="true" aria-expanded="false">
+            Home
+            <svg class="dropdown-arrow" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5l3 3 3-3"/></svg>
+          </a>
+          <div class="nav-dropdown" role="menu">
+            <a href="home-modern.html" role="menuitem">Modern Studio</a>
+            <a href="home-artist.html" role="menuitem">Artist Portfolio</a>
+          </div>
+        </li>
+        <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+        <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
+        <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+        <li class="nav-item"><a href="pricing.html" class="nav-link">Pricing</a></li>
+        <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+        <li class="nav-item"><a href="dashboard/index.html" class="nav-link">Dashboard</a></li>
+        <li class="nav-item"><a href="login.html" class="nav-link">Login</a></li>
+      </ul>
+
+      <!-- Right Actions -->
+      <div class="navbar-actions">
+        <!-- Globe RTL/LTR Toggle -->
+        <button class="btn-icon globe-toggle-btn" aria-label="Toggle RTL/LTR" title="Click to toggle direction" >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10A15.3 15.3 0 0 1 12 2z"/></svg>
+          
+        </button>
+
+        <!-- Theme Toggle -->
+        <button class="btn-icon theme-toggle-btn" aria-label="Toggle dark mode">
+          <svg class="theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
+
+        <!-- Book Now CTA -->
+        <a href="contact.html" class="btn btn-primary btn-sm" id="navBookBtn">Book Now</a>
+      </div>
+
+      <!-- Mobile Toggle -->
+      <button class="navbar-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu-overlay" id="mobileOverlay"></div>
+  </nav>
+
+  <!-- ========== MAIN CONTENT ========== -->
+  <main id="main-content">
+
+    <!-- ===== HERO SECTION ===== -->
+    <section class="hero parallax-container" id="hero" style="position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;">
+      <div class="parallax-bg hero-bg-zoom" data-speed="0.5" style="background-image:url('assets/images/hero/hero-studio.png');filter:brightness(0.35);"></div>
+      <div class="container" style="position:relative;z-index:2;">
+        <div style="max-width:720px;">
+          <span class="eyebrow hero-animate hero-animate-delay-1" style="color:#f59e0b;">PREMIUM TATTOO & PIERCING STUDIO</span>
+          <h1 class="hero-animate hero-animate-delay-2" style="color:#fff;margin-bottom:var(--space-6);">Art That Lives on Your Skin</h1>
+          <p class="hero-animate hero-animate-delay-3" style="color:rgba(255,255,255,0.8);font-size:1.125rem;max-width:540px;margin-bottom:var(--space-8);">Award-winning artists specializing in custom designs, traditional tattoos, and professional piercing services.</p>
+          <div class="hero-animate hero-animate-delay-4" style="display:flex;gap:var(--space-4);flex-wrap:wrap;align-items:center;">
+            <a href="contact.html" class="btn btn-primary btn-lg pulse-animation">Book Consultation</a>
+            <a href="#portfolio" class="btn btn-outline-white">View Portfolio</a>
+          </div>
+          <div class="hero-animate hero-animate-delay-4" style="margin-top:var(--space-8);display:flex;align-items:center;gap:var(--space-4);">
+            <div style="display:flex;">
+              <div style="width:36px;height:36px;border-radius:50%;background:var(--color-blood-red);border:2px solid #fff;display:flex;align-items:center;justify-content:center;font-size:0.7rem;color:#fff;font-weight:700;">M</div>
+              <div style="width:36px;height:36px;border-radius:50%;background:var(--color-gold);border:2px solid #fff;margin-left:-10px;display:flex;align-items:center;justify-content:center;font-size:0.7rem;color:#000;font-weight:700;">L</div>
+              <div style="width:36px;height:36px;border-radius:50%;background:var(--color-electric-blue);border:2px solid #fff;margin-left:-10px;display:flex;align-items:center;justify-content:center;font-size:0.7rem;color:#fff;font-weight:700;">J</div>
+            </div>
+            <div>
+              <div style="color:#f59e0b;font-size:0.875rem;">★★★★★</div>
+              <span style="color:rgba(255,255,255,0.7);font-size:0.875rem;"><strong style="color:#fff;">500+</strong> Happy Clients</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Floating decorative element -->
+      <div class="float-animation" style="position:absolute;bottom:15%;right:10%;z-index:2;opacity:0.15;">
+        <svg width="120" height="120" viewBox="0 0 120 120" fill="none"><circle cx="60" cy="60" r="55" stroke="#dc2626" stroke-width="1"/><circle cx="60" cy="60" r="35" stroke="#f59e0b" stroke-width="1"/><circle cx="60" cy="60" r="15" fill="#dc2626" opacity="0.3"/></svg>
+      </div>
+    </section>
+
+    <!-- ===== SERVICES PREVIEW ===== -->
+    <section class="section" id="services-preview">
+      <div class="container">
+        <div class="section-title">
+          <span class="eyebrow">What We Offer</span>
+          <h2>Our Services</h2>
+          <p>From custom tattoo designs to professional piercings, we provide premium services with the highest safety standards.</p>
+        </div>
+        <div class="grid grid-4">
+          <div class="card animate-on-scroll animate-delay-1">
+            <div class="card-img">
+              <img src="assets/images/services/service-tattoo.png" alt="Custom Tattoo Design" width="400" height="300" loading="lazy">
+              <div style="position:absolute;top:var(--space-4);left:var(--space-4);">
+                <span class="card-tag">Popular</span>
+              </div>
+            </div>
+            <div class="card-body">
+              <h3 style="font-size:1.25rem;margin-bottom:var(--space-2);">Custom Tattoos</h3>
+              <p style="font-size:0.9375rem;">Unique designs tailored to your vision, crafted by our award-winning artists with meticulous attention to detail.</p>
+              <a href="service-details.html" class="card-link" style="color:var(--color-blood-red);font-weight:600;font-size:0.875rem;">Explore →</a>
+            </div>
+          </div>
+          <div class="card animate-on-scroll animate-delay-2">
+            <div class="card-img">
+              <img src="assets/images/services/service-piercing.png" alt="Professional Piercing" width="400" height="300" loading="lazy">
+            </div>
+            <div class="card-body">
+              <h3 style="font-size:1.25rem;margin-bottom:var(--space-2);">Piercing</h3>
+              <p style="font-size:0.9375rem;">Professional body piercing with medical-grade equipment. Wide selection of premium jewelry from top brands.</p>
+              <a href="service-details.html" class="card-link" style="color:var(--color-blood-red);font-weight:600;font-size:0.875rem;">Explore →</a>
+            </div>
+          </div>
+          <div class="card animate-on-scroll animate-delay-3">
+            <div class="card-img">
+              <img src="assets/images/services/service-removal.png" alt="Tattoo Removal" width="400" height="300" loading="lazy">
+            </div>
+            <div class="card-body">
+              <h3 style="font-size:1.25rem;margin-bottom:var(--space-2);">Tattoo Removal</h3>
+              <p style="font-size:0.9375rem;">Advanced laser removal technology for safe and effective tattoo fading and complete removal treatments.</p>
+              <a href="service-details.html" class="card-link" style="color:var(--color-blood-red);font-weight:600;font-size:0.875rem;">Explore →</a>
+            </div>
+          </div>
+          <div class="card animate-on-scroll animate-delay-4">
+            <div class="card-img">
+              <img src="assets/images/services/service-aftercare.png" alt="Aftercare Products" width="400" height="300" loading="lazy">
+            </div>
+            <div class="card-body">
+              <h3 style="font-size:1.25rem;margin-bottom:var(--space-2);">Aftercare</h3>
+              <p style="font-size:0.9375rem;">Premium aftercare products and comprehensive healing guidance to ensure your tattoo stays vibrant for life.</p>
+              <a href="service-details.html" class="card-link" style="color:var(--color-blood-red);font-weight:600;font-size:0.875rem;">Explore →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FEATURED ARTISTS ===== -->
+    <section class="section section--gray" id="artists">
+      <div class="container">
+        <div class="section-title">
+          <span class="eyebrow">Meet the Team</span>
+          <h2>Featured Artists</h2>
+          <p>Our team of internationally recognized artists brings decades of combined experience to every piece.</p>
+        </div>
+        <div class="grid grid-4" style="text-align:center;">
+          <div class="animate-on-scroll animate-delay-1" style="display:flex;flex-direction:column;align-items:center;">
+            <div style="width:150px;height:150px;border-radius:50%;overflow:hidden;border:3px solid var(--color-blood-red);transition:all var(--transition-base);margin-bottom:var(--space-4);">
+              <img src="assets/images/team/team-1.png" alt="Marcus Steel" width="150" height="150" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <h4 style="font-size:1.125rem;margin-bottom:var(--space-1);">Marcus Steel</h4>
+            <p style="font-size:0.875rem;color:var(--color-blood-red);margin-bottom:var(--space-2);">Master Artist</p>
+            <p style="font-size:0.8125rem;">Neo-traditional & Realism</p>
+          </div>
+          <div class="animate-on-scroll animate-delay-2" style="display:flex;flex-direction:column;align-items:center;">
+            <div style="width:150px;height:150px;border-radius:50%;overflow:hidden;border:3px solid var(--color-gold);transition:all var(--transition-base);margin-bottom:var(--space-4);">
+              <img src="assets/images/team/team-2.png" alt="Luna Rivera" width="150" height="150" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <h4 style="font-size:1.125rem;margin-bottom:var(--space-1);">Luna Rivera</h4>
+            <p style="font-size:0.875rem;color:var(--color-gold);margin-bottom:var(--space-2);">Piercing Specialist</p>
+            <p style="font-size:0.8125rem;">Body Art & Jewelry</p>
+          </div>
+          <div class="animate-on-scroll animate-delay-3" style="display:flex;flex-direction:column;align-items:center;">
+            <div style="width:150px;height:150px;border-radius:50%;overflow:hidden;border:3px solid var(--color-electric-blue);transition:all var(--transition-base);margin-bottom:var(--space-4);">
+              <img src="assets/images/team/team-3.png" alt="Jake Chen" width="150" height="150" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <h4 style="font-size:1.125rem;margin-bottom:var(--space-1);">Jake Chen</h4>
+            <p style="font-size:0.875rem;color:var(--color-electric-blue);margin-bottom:var(--space-2);">Traditional Expert</p>
+            <p style="font-size:0.8125rem;">Japanese & American Trad.</p>
+          </div>
+          <div class="animate-on-scroll animate-delay-4" style="display:flex;flex-direction:column;align-items:center;">
+            <div style="width:150px;height:150px;border-radius:50%;overflow:hidden;border:3px solid var(--color-success);transition:all var(--transition-base);margin-bottom:var(--space-4);">
+              <img src="assets/images/team/team-4.png" alt="Sasha Volkov" width="150" height="150" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <h4 style="font-size:1.125rem;margin-bottom:var(--space-1);">Sasha Volkov</h4>
+            <p style="font-size:0.875rem;color:var(--color-success);margin-bottom:var(--space-2);">Realism Pro</p>
+            <p style="font-size:0.8125rem;">Portraits & Hyperrealism</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PORTFOLIO GALLERY ===== -->
+    <section class="section" id="portfolio">
+      <div class="container">
+        <div class="section-title">
+          <span class="eyebrow">Our Work</span>
+          <h2>Portfolio Gallery</h2>
+          <p>Browse our collection of custom tattoo work across various styles and techniques.</p>
+        </div>
+        <div style="columns:3;column-gap:var(--space-6);">
+          <div class="animate-on-scroll" style="break-inside:avoid;margin-bottom:var(--space-6);position:relative;overflow:hidden;border-radius:var(--radius-lg);cursor:pointer;" data-lightbox="assets/images/portfolio/portfolio-1.png" data-alt="Traditional tattoo">
+            <img src="assets/images/portfolio/portfolio-1.png" alt="Traditional American tattoo design" width="600" height="600" loading="lazy" style="width:100%;display:block;transition:transform var(--transition-slow);">
+            <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.7),transparent);opacity:0;transition:opacity var(--transition-base);display:flex;align-items:flex-end;padding:var(--space-6);" class="portfolio-overlay">
+              <div><span class="card-tag" style="margin-bottom:var(--space-2);">Traditional</span><p style="color:#fff;margin:0;font-size:0.875rem;">Eagle & Roses</p></div>
+            </div>
+          </div>
+          <div class="animate-on-scroll" style="break-inside:avoid;margin-bottom:var(--space-6);position:relative;overflow:hidden;border-radius:var(--radius-lg);cursor:pointer;" data-lightbox="assets/images/portfolio/portfolio-2.png" data-alt="Realism tattoo">
+            <img src="assets/images/portfolio/portfolio-2.png" alt="Realism lion tattoo" width="600" height="600" loading="lazy" style="width:100%;display:block;transition:transform var(--transition-slow);">
+            <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.7),transparent);opacity:0;transition:opacity var(--transition-base);display:flex;align-items:flex-end;padding:var(--space-6);" class="portfolio-overlay">
+              <div><span class="card-tag" style="background:var(--color-gold);margin-bottom:var(--space-2);">Realism</span><p style="color:#fff;margin:0;font-size:0.875rem;">Lion Portrait</p></div>
+            </div>
+          </div>
+          <div class="animate-on-scroll" style="break-inside:avoid;margin-bottom:var(--space-6);position:relative;overflow:hidden;border-radius:var(--radius-lg);cursor:pointer;" data-lightbox="assets/images/portfolio/portfolio-3.png" data-alt="Japanese tattoo">
+            <img src="assets/images/portfolio/portfolio-3.png" alt="Japanese koi fish tattoo" width="600" height="700" loading="lazy" style="width:100%;display:block;transition:transform var(--transition-slow);">
+            <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.7),transparent);opacity:0;transition:opacity var(--transition-base);display:flex;align-items:flex-end;padding:var(--space-6);" class="portfolio-overlay">
+              <div><span class="card-tag" style="background:var(--color-electric-blue);margin-bottom:var(--space-2);">Japanese</span><p style="color:#fff;margin:0;font-size:0.875rem;">Koi Fish Sleeve</p></div>
+            </div>
+          </div>
+          <div class="animate-on-scroll" style="break-inside:avoid;margin-bottom:var(--space-6);position:relative;overflow:hidden;border-radius:var(--radius-lg);cursor:pointer;" data-lightbox="assets/images/portfolio/portfolio-4.png" data-alt="Watercolor tattoo">
+            <img src="assets/images/portfolio/portfolio-4.png" alt="Watercolor tattoo style" width="600" height="600" loading="lazy" style="width:100%;display:block;transition:transform var(--transition-slow);">
+            <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.7),transparent);opacity:0;transition:opacity var(--transition-base);display:flex;align-items:flex-end;padding:var(--space-6);" class="portfolio-overlay">
+              <div><span class="card-tag" style="background:var(--color-neon-pink);margin-bottom:var(--space-2);">Watercolor</span><p style="color:#fff;margin:0;font-size:0.875rem;">Abstract Floral</p></div>
+            </div>
+          </div>
+          <div class="animate-on-scroll" style="break-inside:avoid;margin-bottom:var(--space-6);position:relative;overflow:hidden;border-radius:var(--radius-lg);cursor:pointer;" data-lightbox="assets/images/portfolio/portfolio-5.png" data-alt="Geometric tattoo">
+            <img src="assets/images/portfolio/portfolio-5.png" alt="Geometric tattoo design" width="600" height="500" loading="lazy" style="width:100%;display:block;transition:transform var(--transition-slow);">
+            <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.7),transparent);opacity:0;transition:opacity var(--transition-base);display:flex;align-items:flex-end;padding:var(--space-6);" class="portfolio-overlay">
+              <div><span class="card-tag" style="background:var(--color-success);margin-bottom:var(--space-2);">Geometric</span><p style="color:#fff;margin:0;font-size:0.875rem;">Sacred Geometry</p></div>
+            </div>
+          </div>
+          <div class="animate-on-scroll" style="break-inside:avoid;margin-bottom:var(--space-6);position:relative;overflow:hidden;border-radius:var(--radius-lg);cursor:pointer;" data-lightbox="assets/images/portfolio/portfolio-6.png" data-alt="Lettering tattoo">
+            <img src="assets/images/portfolio/portfolio-6.png" alt="Script lettering tattoo" width="600" height="500" loading="lazy" style="width:100%;display:block;transition:transform var(--transition-slow);">
+            <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.7),transparent);opacity:0;transition:opacity var(--transition-base);display:flex;align-items:flex-end;padding:var(--space-6);" class="portfolio-overlay">
+              <div><span class="card-tag" style="background:var(--color-electric-blue);margin-bottom:var(--space-2);">Lettering</span><p style="color:#fff;margin:0;font-size:0.875rem;">Script Design</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== TESTIMONIALS ===== -->
+    <section class="section section--dark" id="testimonials">
+      <div class="container">
+        <div class="section-title">
+          <span class="eyebrow" style="color:var(--color-gold);">Client Stories</span>
+          <h2 style="color:#fff;">What Our Clients Say</h2>
+        </div>
+        <div class="testimonial-slider" style="position:relative;overflow:hidden;">
+          <div class="testimonial-track" style="display:flex;transition:transform 0.5s ease;">
+            <!-- Slide 1 -->
+            <div class="testimonial-card" style="min-width:100%;padding:0 var(--space-6);">
+              <div style="max-width:700px;margin:0 auto;text-align:center;">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="var(--color-blood-red)" opacity="0.3"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+                <p style="font-size:1.25rem;color:rgba(255,255,255,0.9);line-height:1.8;margin:var(--space-6) 0;">"Marcus absolutely nailed my sleeve design. The attention to detail in the realism work is incredible. Everyone asks me where I got it done. Couldn't recommend INK STUDIO more highly!"</p>
+                <div style="display:flex;align-items:center;justify-content:center;gap:var(--space-4);">
+                  <div style="width:48px;height:48px;border-radius:50%;background:var(--color-blood-red);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;">AJ</div>
+                  <div style="text-align:left;">
+                    <p style="color:#fff;font-weight:600;margin:0;">Alex Johnson</p>
+                    <p style="color:rgba(255,255,255,0.5);font-size:0.8125rem;margin:0;">Full Sleeve • Realism</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Slide 2 -->
+            <div class="testimonial-card" style="min-width:100%;padding:0 var(--space-6);">
+              <div style="max-width:700px;margin:0 auto;text-align:center;">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="var(--color-gold)" opacity="0.3"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+                <p style="font-size:1.25rem;color:rgba(255,255,255,0.9);line-height:1.8;margin:var(--space-6) 0;">"Luna made my first piercing experience completely stress-free. The studio is immaculate, the jewelry selection is gorgeous, and the healing process was quick. I keep coming back!"</p>
+                <div style="display:flex;align-items:center;justify-content:center;gap:var(--space-4);">
+                  <div style="width:48px;height:48px;border-radius:50%;background:var(--color-gold);display:flex;align-items:center;justify-content:center;color:#000;font-weight:700;">SK</div>
+                  <div style="text-align:left;">
+                    <p style="color:#fff;font-weight:600;margin:0;">Sarah Kim</p>
+                    <p style="color:rgba(255,255,255,0.5);font-size:0.8125rem;margin:0;">Multiple Piercings</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Slide 3 -->
+            <div class="testimonial-card" style="min-width:100%;padding:0 var(--space-6);">
+              <div style="max-width:700px;margin:0 auto;text-align:center;">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="var(--color-electric-blue)" opacity="0.3"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+                <p style="font-size:1.25rem;color:rgba(255,255,255,0.9);line-height:1.8;margin:var(--space-6) 0;">"Jake's Japanese-style work is next level. He spent hours perfecting the design before we even started. The result is a true masterpiece that tells my story. Worth every penny."</p>
+                <div style="display:flex;align-items:center;justify-content:center;gap:var(--space-4);">
+                  <div style="width:48px;height:48px;border-radius:50%;background:var(--color-electric-blue);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;">DM</div>
+                  <div style="text-align:left;">
+                    <p style="color:#fff;font-weight:600;margin:0;">David Martinez</p>
+                    <p style="color:rgba(255,255,255,0.5);font-size:0.8125rem;margin:0;">Japanese Sleeve</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Slider Controls -->
+          <button class="slider-prev lightbox-nav" style="left:var(--space-4);top:50%;position:absolute;transform:translateY(-50%);" aria-label="Previous testimonial">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+          </button>
+          <button class="slider-next lightbox-nav" style="right:var(--space-4);top:50%;position:absolute;transform:translateY(-50%);" aria-label="Next testimonial">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
+          <!-- Dots -->
+          <div style="display:flex;justify-content:center;gap:var(--space-3);margin-top:var(--space-8);">
+            <button class="slider-dot active" style="width:12px;height:12px;border-radius:50%;border:2px solid rgba(255,255,255,0.3);background:var(--color-blood-red);cursor:pointer;transition:all var(--transition-fast);" aria-label="Go to slide 1"></button>
+            <button class="slider-dot" style="width:12px;height:12px;border-radius:50%;border:2px solid rgba(255,255,255,0.3);background:transparent;cursor:pointer;transition:all var(--transition-fast);" aria-label="Go to slide 2"></button>
+            <button class="slider-dot" style="width:12px;height:12px;border-radius:50%;border:2px solid rgba(255,255,255,0.3);background:transparent;cursor:pointer;transition:all var(--transition-fast);" aria-label="Go to slide 3"></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== BOOKING CTA ===== -->
+    <section style="padding:var(--space-20) 0;background:linear-gradient(135deg,#0a0a0a 0%,#1a1a1a 50%,var(--color-blood-red) 150%);text-align:center;position:relative;overflow:hidden;">
+      <div style="position:absolute;inset:0;background:radial-gradient(circle at 80% 50%,rgba(220,38,38,0.15),transparent 60%);"></div>
+      <div class="container" style="position:relative;z-index:2;">
+        <h2 class="animate-on-scroll" style="color:#fff;margin-bottom:var(--space-4);">Ready for Your Next Piece?</h2>
+        <p class="animate-on-scroll" style="color:rgba(255,255,255,0.7);max-width:500px;margin:0 auto var(--space-8);">Book a free consultation with one of our artists and let's bring your vision to life.</p>
+        <a href="contact.html" class="btn btn-primary btn-lg pulse-animation animate-on-scroll">Schedule Now</a>
+      </div>
+    </section>
+
+    <!-- ===== LATEST BLOG POSTS ===== -->
+    <section class="section" id="blog-preview">
+      <div class="container">
+        <div class="section-title">
+          <span class="eyebrow">From Our Journal</span>
+          <h2>Latest Articles</h2>
+          <p>Tips, inspiration, and insights from our artists and the world of tattoo artistry.</p>
+        </div>
+        <div class="grid grid-3">
+          <div class="card animate-on-scroll animate-delay-1">
+            <div class="card-img">
+              <img src="assets/images/blog/blog-1.png" alt="Tattoo aftercare tips article" width="400" height="250" loading="lazy">
+              <div style="position:absolute;top:var(--space-4);left:var(--space-4);"><span class="card-tag">Aftercare</span></div>
+            </div>
+            <div class="card-body">
+              <p style="font-size:0.75rem;color:var(--text-muted);margin-bottom:var(--space-2);">Mar 28, 2026 • 5 min read</p>
+              <h3 style="font-size:1.125rem;margin-bottom:var(--space-3);">Essential Tattoo Aftercare: The Complete Guide</h3>
+              <p style="font-size:0.875rem;">Everything you need to know about caring for your new tattoo to ensure proper healing and vibrant color retention.</p>
+              <a href="blog-details.html" class="card-link" style="color:var(--color-blood-red);font-weight:600;font-size:0.875rem;">Read More →</a>
+            </div>
+          </div>
+          <div class="card animate-on-scroll animate-delay-2">
+            <div class="card-img">
+              <img src="assets/images/blog/blog-2.png" alt="Finding your tattoo style" width="400" height="250" loading="lazy">
+              <div style="position:absolute;top:var(--space-4);left:var(--space-4);"><span class="card-tag" style="background:var(--color-gold);">Inspiration</span></div>
+            </div>
+            <div class="card-body">
+              <p style="font-size:0.75rem;color:var(--text-muted);margin-bottom:var(--space-2);">Mar 22, 2026 • 8 min read</p>
+              <h3 style="font-size:1.125rem;margin-bottom:var(--space-3);">Finding Your Tattoo Style: A Visual Guide</h3>
+              <p style="font-size:0.875rem;">From traditional to geometric, discover the tattoo style that best represents your personality and aesthetic.</p>
+              <a href="blog-details.html" class="card-link" style="color:var(--color-blood-red);font-weight:600;font-size:0.875rem;">Read More →</a>
+            </div>
+          </div>
+          <div class="card animate-on-scroll animate-delay-3">
+            <div class="card-img">
+              <img src="assets/images/blog/blog-3.png" alt="Pain management during tattooing" width="400" height="250" loading="lazy">
+              <div style="position:absolute;top:var(--space-4);left:var(--space-4);"><span class="card-tag" style="background:var(--color-electric-blue);">Tips</span></div>
+            </div>
+            <div class="card-body">
+              <p style="font-size:0.75rem;color:var(--text-muted);margin-bottom:var(--space-2);">Mar 15, 2026 • 6 min read</p>
+              <h3 style="font-size:1.125rem;margin-bottom:var(--space-3);">Pain Management: What to Expect</h3>
+              <p style="font-size:0.875rem;">An honest conversation about tattoo pain, placement sensitivity, and proven techniques to manage discomfort.</p>
+              <a href="blog-details.html" class="card-link" style="color:var(--color-blood-red);font-weight:600;font-size:0.875rem;">Read More →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== INSTAGRAM FEED ===== -->
+    <section class="section section--gray" id="instagram">
+      <div class="container">
+        <div class="section-title">
+          <span class="eyebrow">Follow Us</span>
+          <h2>@inkstudio</h2>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:var(--space-4);">
+          <a href="#" class="animate-on-scroll" style="position:relative;overflow:hidden;border-radius:var(--radius-md);aspect-ratio:1;display:block;">
+            <img src="assets/images/portfolio/portfolio-1.png" alt="Instagram post" width="200" height="200" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform var(--transition-slow);">
+            <div style="position:absolute;inset:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity var(--transition-base);">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="#fff" stroke="none"/></svg>
+            </div>
+          </a>
+          <a href="#" class="animate-on-scroll" style="position:relative;overflow:hidden;border-radius:var(--radius-md);aspect-ratio:1;display:block;">
+            <img src="assets/images/portfolio/portfolio-2.png" alt="Instagram post" width="200" height="200" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform var(--transition-slow);">
+            <div style="position:absolute;inset:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity var(--transition-base);">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="#fff" stroke="none"/></svg>
+            </div>
+          </a>
+          <a href="#" class="animate-on-scroll" style="position:relative;overflow:hidden;border-radius:var(--radius-md);aspect-ratio:1;display:block;">
+            <img src="assets/images/portfolio/portfolio-3.png" alt="Instagram post" width="200" height="200" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform var(--transition-slow);">
+            <div style="position:absolute;inset:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity var(--transition-base);">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="#fff" stroke="none"/></svg>
+            </div>
+          </a>
+          <a href="#" class="animate-on-scroll" style="position:relative;overflow:hidden;border-radius:var(--radius-md);aspect-ratio:1;display:block;">
+            <img src="assets/images/portfolio/portfolio-1.png" alt="Instagram post" width="200" height="200" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform var(--transition-slow);">
+            <div style="position:absolute;inset:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity var(--transition-base);">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="#fff" stroke="none"/></svg>
+            </div>
+          </a>
+          <a href="#" class="animate-on-scroll" style="position:relative;overflow:hidden;border-radius:var(--radius-md);aspect-ratio:1;display:block;">
+            <img src="assets/images/portfolio/portfolio-2.png" alt="Instagram post" width="200" height="200" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform var(--transition-slow);">
+            <div style="position:absolute;inset:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity var(--transition-base);">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="#fff" stroke="none"/></svg>
+            </div>
+          </a>
+          <a href="#" class="animate-on-scroll" style="position:relative;overflow:hidden;border-radius:var(--radius-md);aspect-ratio:1;display:block;">
+            <img src="assets/images/portfolio/portfolio-3.png" alt="Instagram post" width="200" height="200" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform var(--transition-slow);">
+            <div style="position:absolute;inset:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity var(--transition-base);">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="#fff" stroke="none"/></svg>
+            </div>
+          </a>
+        </div>
+        <div style="text-align:center;margin-top:var(--space-8);">
+          <a href="https://instagram.com" target="_blank" rel="noopener" class="btn btn-secondary">Follow @inkstudio</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer" id="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Brand Column -->
+        <div class="footer-brand">
+          <div class="brand-name">INK <span>STUDIO</span></div>
+          <p>Where artistry meets skin. Premium tattoo and piercing services by award-winning artists since 2010.</p>
+          <div class="footer-social">
+            <a href="#" class="instagram" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg></a>
+            <a href="#" class="facebook" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+            <a href="#" class="pinterest" aria-label="Pinterest"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/></svg></a>
+            <a href="#" class="tiktok" aria-label="TikTok"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1 0-5.78 2.92 2.92 0 0 1 .88.13v-3.5a6.37 6.37 0 0 0-.88-.07 6.34 6.34 0 0 0 0 12.68 6.34 6.34 0 0 0 6.34-6.34V8.37a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.19z"/></svg></a>
+          </div>
+        </div>
+        <!-- Quick Links -->
+        <div>
+          <h4 class="footer-heading">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="home-modern.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <!-- Services -->
+        <div>
+          <h4 class="footer-heading">Services</h4>
+          <ul class="footer-links">
+            <li><a href="service-details.html">Tattoo Design</a></li>
+            <li><a href="service-details.html">Piercing</a></li>
+            <li><a href="service-details.html">Cover-ups</a></li>
+            <li><a href="service-details.html">Consultation</a></li>
+            <li><a href="service-details.html">Aftercare</a></li>
+          </ul>
+        </div>
+        <!-- Contact Info -->
+        <div>
+          <h4 class="footer-heading">Contact Us</h4>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>742 Ink Avenue, Art District<br>Los Angeles, CA 90012</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span>+1 (555) 123-4567</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <span>hello@inkstudio.com</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span>Mon-Sat: 11AM - 9PM<br>Sunday: By Appointment</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 INK STUDIO. All Rights Reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========== LIGHTBOX ========== -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image gallery">
+    <button class="lightbox-close" aria-label="Close lightbox">✕</button>
+    <button class="lightbox-nav lightbox-prev" aria-label="Previous image">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+    <img src="" alt="Gallery image">
+    <button class="lightbox-nav lightbox-next" aria-label="Next image">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+    </button>
+  </div>
+
+  <!-- ========== BACK TO TOP ========== -->
+  <button id="backToTop" aria-label="Back to top" style="position:fixed;bottom:var(--space-8);right:var(--space-8);width:48px;height:48px;border-radius:50%;background:var(--color-blood-red);color:#fff;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-lg);opacity:0;visibility:hidden;transform:translateY(20px);transition:all var(--transition-base);z-index:40;">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg>
+  </button>
+  <style>#backToTop.visible{opacity:1;visibility:visible;transform:translateY(0);}#backToTop:hover{background:var(--color-blood-red-dark);transform:translateY(-3px);}
+  .portfolio-overlay:hover{opacity:1!important;}
+  .portfolio-overlay:hover + img, div:hover > img{transform:scale(1.05);}
+  [style*="aspect-ratio"]:hover > div{opacity:1!important;}
+  [style*="aspect-ratio"]:hover > img{transform:scale(1.1)!important;}
+  </style>
+
+  <!-- Scripts -->
+  <script src="assets/js/theme-toggle.js"></script>
+  <script src="assets/js/rtl-ltr.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/forms.js"></script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Disallow: /dashboard.html
+Disallow: /login.html
+Disallow: /register.html
+
+Sitemap: https://ecocleanpro.com/sitemap.xml
+
+# EcoClean Pro - Eco-Friendly Cleaning Service
+# Contact: hello@ecocleanpro.com

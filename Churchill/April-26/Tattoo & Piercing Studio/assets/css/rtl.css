@@ -1,0 +1,333 @@
+/* ============================================
+   INK STUDIO - RTL Support (Comprehensive)
+   ============================================ */
+
+/* ---- RTL Font Override ---- */
+[dir="rtl"] body,
+[dir="rtl"] .form-input,
+[dir="rtl"] .form-select,
+[dir="rtl"] .form-textarea {
+  font-family: 'Cairo', 'Tajawal', var(--font-body);
+}
+
+[dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3,
+[dir="rtl"] h4, [dir="rtl"] h5, [dir="rtl"] h6 {
+  font-family: 'Cairo', var(--font-display);
+}
+
+[dir="rtl"] .eyebrow,
+[dir="rtl"] .btn,
+[dir="rtl"] .footer-heading,
+[dir="rtl"] .navbar-brand .brand-name {
+  font-family: 'Cairo', var(--font-accent);
+}
+
+/* ---- Globe toggle RTL styling ---- */
+.globe-toggle-btn.rtl-active {
+  color: var(--color-gold) !important;
+}
+
+/* ---- Navbar RTL ---- */
+[dir="rtl"] .navbar-inner {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .navbar-nav {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .navbar-actions {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .navbar-brand {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .nav-dropdown {
+  left: auto;
+  right: 0;
+}
+
+/* ---- Mobile nav RTL ---- */
+@media (max-width: 768px) {
+  [dir="rtl"] .navbar-nav {
+    right: auto;
+    left: -100%;
+    flex-direction: column;
+  }
+  [dir="rtl"] .navbar-nav.active {
+    left: 0;
+    right: auto;
+  }
+
+  [dir="rtl"] .navbar-inner {
+    flex-direction: row-reverse;
+  }
+}
+
+/* ---- Text alignment ---- */
+[dir="rtl"] .text-start {
+  text-align: right;
+}
+[dir="rtl"] .text-end {
+  text-align: left;
+}
+
+/* ---- Section titles stay centered ---- */
+[dir="rtl"] .section-title {
+  text-align: center;
+}
+
+/* ---- Footer RTL ---- */
+[dir="rtl"] .footer-links a:hover {
+  padding-inline-start: var(--space-2);
+  padding-inline-end: 0;
+}
+
+[dir="rtl"] .footer-contact-item {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+[dir="rtl"] .footer-social {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .footer-grid {
+  direction: rtl;
+}
+
+[dir="rtl"] .footer-brand {
+  text-align: right;
+}
+
+[dir="rtl"] .footer-bottom {
+  text-align: center;
+}
+
+/* ---- Card RTL ---- */
+[dir="rtl"] .card-body {
+  text-align: right;
+}
+
+[dir="rtl"] .card-link {
+  direction: rtl;
+}
+
+/* ---- Animate from correct direction ---- */
+[dir="rtl"] .animate-fade-left {
+  transform: translateX(30px);
+}
+[dir="rtl"] .animate-fade-left.animated {
+  transform: translateX(0);
+}
+
+[dir="rtl"] .animate-fade-right {
+  transform: translateX(-30px);
+}
+[dir="rtl"] .animate-fade-right.animated {
+  transform: translateX(0);
+}
+
+/* ---- Arrow flip ---- */
+[dir="rtl"] .dropdown-arrow {
+  transform: scaleX(-1);
+}
+[dir="rtl"] .nav-item:hover .dropdown-arrow,
+[dir="rtl"] .nav-item.open .dropdown-arrow {
+  transform: scaleX(-1) rotate(180deg);
+}
+
+/* ---- Lightbox RTL ---- */
+[dir="rtl"] .lightbox-prev {
+  left: auto;
+  right: var(--space-6);
+}
+[dir="rtl"] .lightbox-next {
+  right: auto;
+  left: var(--space-6);
+}
+
+/* ---- Toast RTL ---- */
+[dir="rtl"] .toast-container {
+  right: auto;
+  left: var(--space-6);
+}
+[dir="rtl"] .toast {
+  flex-direction: row-reverse;
+  border-left: none;
+  border-right: 4px solid var(--color-info);
+}
+[dir="rtl"] .toast-success { border-right-color: var(--color-success); }
+[dir="rtl"] .toast-error { border-right-color: var(--color-error); }
+[dir="rtl"] .toast-warning { border-right-color: var(--color-warning); }
+
+/* ---- Underline animation RTL ---- */
+[dir="rtl"] .navbar-nav .nav-link::after {
+  transform-origin: right;
+}
+
+/* ---- Stats / counters ---- */
+[dir="rtl"] .stat-item {
+  direction: rtl;
+}
+
+/* ---- Forms RTL ---- */
+[dir="rtl"] .form-group {
+  text-align: right;
+}
+[dir="rtl"] .form-check {
+  flex-direction: row-reverse;
+}
+
+/* ---- Hero RTL ---- */
+[dir="rtl"] .hero-content {
+  text-align: right;
+}
+
+/* ---- Generic flex/grid RTL fixes ---- */
+[dir="rtl"] .flex,
+[dir="rtl"] .flex-between {
+  flex-direction: row-reverse;
+}
+
+/* ---- Back to top RTL ---- */
+[dir="rtl"] #backToTop {
+  right: auto !important;
+  left: var(--space-8) !important;
+}
+
+/* ---- Breadcrumb RTL ---- */
+[dir="rtl"] .breadcrumb {
+  flex-direction: row-reverse;
+}
+
+/* ---- Container logical properties ---- */
+[dir="rtl"] .container {
+  direction: rtl;
+}
+
+/* ---- Grid alignment for RTL ---- */
+[dir="rtl"] .grid {
+  direction: rtl;
+}
+
+/* ---- Process timeline RTL ---- */
+[dir="rtl"] .accordion-header {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+[dir="rtl"] .accordion-content {
+  text-align: right;
+}
+
+/* ---- Dashboard RTL Support ---- */
+[dir="rtl"] .sidebar {
+  left: auto;
+  right: 0;
+  border-left: 1px solid rgba(255,255,255,0.1);
+  border-right: none;
+}
+
+[dir="rtl"] .sidebar-link {
+  border-left: none;
+  border-right: 3px solid transparent;
+}
+[dir="rtl"] .sidebar-link.active {
+  border-right-color: var(--color-blood-red);
+  border-left-color: transparent;
+}
+
+[dir="rtl"] .dashboard-main {
+  margin-left: 0;
+  margin-right: 280px;
+}
+
+[dir="rtl"] .sidebar-collapsed ~ .dashboard-main {
+  margin-left: 0;
+  margin-right: 80px;
+}
+
+[dir="rtl"] .sidebar-toggle-btn {
+  right: auto;
+  left: -12px;
+}
+
+[dir="rtl"] .dashboard-header {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .dashboard-header-right {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .data-table th {
+  text-align: right;
+}
+
+[dir="rtl"] .data-table .user-info {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .data-table .actions {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .stat-card {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+[dir="rtl"] .dashboard-card-header {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .notification-dot {
+  right: auto;
+  left: 6px;
+}
+
+[dir="rtl"] .sidebar-header {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .sidebar-user {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+[dir="rtl"] .sidebar-footer {
+  text-align: right;
+}
+
+[dir="rtl"] .role-toggle {
+  flex-direction: row-reverse;
+}
+
+@media (max-width: 768px) {
+  [dir="rtl"] .sidebar {
+    transform: translateX(100%);
+  }
+  [dir="rtl"] .sidebar.mobile-open {
+    transform: translateX(0);
+  }
+  [dir="rtl"] .dashboard-main {
+    margin-right: 0;
+  }
+}
+
+/* ---- Pricing page RTL ---- */
+[dir="rtl"] .pricing-card {
+  text-align: right;
+}
+
+/* ---- Blog page RTL ---- */
+[dir="rtl"] .blog-sidebar {
+  text-align: right;
+}
+
+/* ---- Contact page RTL ---- */
+[dir="rtl"] .contact-info {
+  text-align: right;
+}

@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pricing & Subscriptions — Ember & Brew</title>
+  <meta name="description" content="Choose the perfect Ember & Brew coffee subscription. Flexible plans from $14.99/month with free shipping. Cancel anytime.">
+  <meta property="og:title" content="Pricing — Ember & Brew">
+  <meta property="og:description" content="Flexible coffee subscriptions starting at $14.99/month.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://emberandbrew.com/pricing">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/dark-mode.css">
+  <link rel="stylesheet" href="../assets/css/animations.css">
+  <link rel="stylesheet" href="../assets/css/rtl.css">
+  <style>
+    .pricing-toggle{display:flex;align-items:center;justify-content:center;gap:var(--space-4);margin-bottom:var(--space-10)}
+    .pricing-toggle__label{font-size:var(--fs-sm);font-weight:var(--fw-medium);color:var(--color-text-secondary)}
+    .pricing-toggle__label.active{color:var(--color-primary);font-weight:var(--fw-semibold)}
+    .pricing-toggle__switch{position:relative;width:52px;height:28px;background:var(--color-border);border-radius:var(--radius-full);cursor:pointer;transition:background var(--transition-base)}
+    .pricing-toggle__switch.active{background:var(--color-primary)}
+    .pricing-toggle__switch::after{content:'';position:absolute;top:3px;left:3px;width:22px;height:22px;background:var(--white);border-radius:50%;transition:transform var(--transition-base)}
+    .pricing-toggle__switch.active::after{transform:translateX(24px)}
+    .pricing-toggle__save{background:var(--color-accent);color:var(--white);font-size:var(--fs-xs);font-weight:var(--fw-semibold);padding:var(--space-1) var(--space-3);border-radius:var(--radius-full)}
+    .comparison-section{overflow-x:auto}
+    .comparison-table{width:100%;border-collapse:collapse;min-width:700px}
+    .comparison-table th,.comparison-table td{padding:var(--space-3) var(--space-4);text-align:center;font-size:var(--fs-sm);border-bottom:1px solid var(--color-border-light)}
+    .comparison-table th{background:var(--color-bg-secondary);font-weight:var(--fw-semibold);position:sticky;top:0}
+    .comparison-table td:first-child{text-align:start;font-weight:var(--fw-medium)}
+    .comparison-table .check{color:var(--color-success);font-weight:700}
+    .comparison-table .cross{color:var(--color-text-muted)}
+  </style>
+</head>
+<body>
+
+  <!-- ==================== NAVBAR ==================== -->
+  <nav class="navbar" id="main-navbar" role="navigation" aria-label="Main navigation">
+    <div class="navbar__inner">
+      <a href="home-classic.html" class="navbar__brand" aria-label="Ember & Brew Home">
+        <div class="navbar__brand-icon">E</div>
+        <div class="navbar__brand-text">Ember <span>&</span> Brew</div>
+      </a>
+      <div class="navbar__menu">
+        <ul class="navbar__links">
+          <li class="navbar__dropdown">
+            <a href="#" class="navbar__link navbar__dropdown-toggle">Home
+              <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </a>
+            <div class="navbar__dropdown-menu">
+              <a href="home-classic.html">Classic Experience</a>
+              <a href="home-modern.html">Modern Experience</a>
+            </div>
+          </li>
+          <li><a href="about.html" class="navbar__link">About</a></li>
+          <li><a href="services.html" class="navbar__link">Services</a></li>
+          <li><a href="blog.html" class="navbar__link">Blog</a></li>
+          <li><a href="contact.html" class="navbar__link">Contact</a></li>
+          <li><a href="pricing.html" class="navbar__link">Pricing</a></li>
+          <li><a href="dashboard.html" class="navbar__link">Dashboard</a></li>
+        </ul>
+      </div>
+      <div class="navbar__actions">
+        <button class="btn--icon navbar__cart" id="cart-btn" aria-label="Shopping cart">🛒<span class="navbar__cart-badge">0</span></button>
+        <button class="btn--icon" id="rtl-toggle" aria-label="Switch to RTL">🌐</button>
+        <button class="btn--icon" id="theme-toggle" aria-label="Switch to dark mode">🌙</button>
+        <a href="login.html" class="btn btn--primary btn--sm">Login</a>
+        <div class="navbar__toggle" id="mobile-toggle" aria-label="Toggle menu" role="button" tabindex="0">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="home-classic.html" class="mobile-menu__link">Home Classic</a>
+    <a href="home-modern.html" class="mobile-menu__link">Home Modern</a>
+    <a href="about.html" class="mobile-menu__link">About</a>
+    <a href="services.html" class="mobile-menu__link">Services</a>
+    <a href="blog.html" class="mobile-menu__link">Blog</a>
+    <a href="contact.html" class="mobile-menu__link">Contact</a>
+    <a href="pricing.html" class="mobile-menu__link active">Pricing</a>
+    <a href="dashboard.html" class="mobile-menu__link">Dashboard</a>
+    <div class="mobile-menu__actions">
+      <a href="login.html" class="btn btn--primary btn--full">Login</a>
+    </div>
+  </div>
+
+  <main>
+    <!-- ==================== PAGE BANNER ==================== -->
+    <section class="page-banner">
+      <div class="page-banner__bg">
+        <img src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=1920&q=80" alt="Coffee subscription packages" loading="eager">
+      </div>
+      <div class="page-banner__overlay"></div>
+      <div class="page-banner__content">
+        <h1>Pricing & Plans</h1>
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="home-classic.html">Home</a>
+          <span class="separator">/</span>
+          <span>Pricing</span>
+        </nav>
+      </div>
+    </section>
+
+    <!-- ==================== PRICING CARDS ==================== -->
+    <section class="section" id="plans">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-subtitle">Choose Your Plan</span>
+          <h2>Coffee Subscriptions</h2>
+          <p>Select the plan that fits your coffee lifestyle. Free shipping on all plans. Cancel anytime.</p>
+        </div>
+
+        <!-- Toggle -->
+        <div class="pricing-toggle reveal">
+          <span class="pricing-toggle__label active" id="label-monthly">Monthly</span>
+          <div class="pricing-toggle__switch" id="pricing-switch" role="switch" aria-checked="false" tabindex="0"></div>
+          <span class="pricing-toggle__label" id="label-yearly">Yearly</span>
+          <span class="pricing-toggle__save">Save 20%</span>
+        </div>
+
+        <div class="grid grid--3" data-stagger="0.12">
+          <!-- Starter -->
+          <div class="pricing-card reveal">
+            <div class="pricing-card__name">Starter</div>
+            <p style="font-size:var(--fs-sm);color:var(--color-text-muted);margin-bottom:var(--space-4)">Perfect for the casual drinker</p>
+            <div class="pricing-card__price" data-monthly="$14.99" data-yearly="$143.90"><sup>$</sup>14.99</div>
+            <div class="pricing-card__period" data-period>/month</div>
+            <ul class="pricing-card__features">
+              <li>1 bag per delivery (250g)</li>
+              <li>Choose your roast level</li>
+              <li>Monthly delivery</li>
+              <li>Free standard shipping</li>
+              <li class="disabled">Custom grind size</li>
+              <li class="disabled">Priority support</li>
+              <li class="disabled">Exclusive blends access</li>
+            </ul>
+            <a href="register.html" class="btn btn--secondary btn--full">Get Started</a>
+          </div>
+
+          <!-- Enthusiast — Featured -->
+          <div class="pricing-card featured reveal">
+            <div class="pricing-card__badge">Most Popular</div>
+            <div class="pricing-card__name">Enthusiast</div>
+            <p style="font-size:var(--fs-sm);color:var(--color-text-muted);margin-bottom:var(--space-4)">For the daily coffee lover</p>
+            <div class="pricing-card__price" data-monthly="$29.99" data-yearly="$287.90"><sup>$</sup>29.99</div>
+            <div class="pricing-card__period" data-period>/month</div>
+            <ul class="pricing-card__features">
+              <li>2 bags per delivery (500g)</li>
+              <li>Choose roast & origin</li>
+              <li>Bi-weekly or monthly</li>
+              <li>Free express shipping</li>
+              <li>Custom grind size</li>
+              <li>Priority support</li>
+              <li class="disabled">Exclusive blends access</li>
+            </ul>
+            <a href="register.html" class="btn btn--accent btn--full">Get Started</a>
+          </div>
+
+          <!-- Connoisseur -->
+          <div class="pricing-card reveal">
+            <div class="pricing-card__name">Connoisseur</div>
+            <p style="font-size:var(--fs-sm);color:var(--color-text-muted);margin-bottom:var(--space-4)">The ultimate coffee experience</p>
+            <div class="pricing-card__price" data-monthly="$49.99" data-yearly="$479.90"><sup>$</sup>49.99</div>
+            <div class="pricing-card__period" data-period>/month</div>
+            <ul class="pricing-card__features">
+              <li>3 bags per delivery (750g)</li>
+              <li>Curated selection + choice</li>
+              <li>Weekly, bi-weekly, or monthly</li>
+              <li>Free priority shipping</li>
+              <li>Custom grind size</li>
+              <li>Dedicated support line</li>
+              <li>Exclusive blends & pre-releases</li>
+            </ul>
+            <a href="register.html" class="btn btn--secondary btn--full">Get Started</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== FEATURE COMPARISON ==================== -->
+    <section class="section" style="background:var(--color-bg-secondary)">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-subtitle">Compare</span>
+          <h2>Feature Comparison</h2>
+        </div>
+        <div class="comparison-section reveal">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th style="text-align:start">Feature</th>
+                <th>Starter</th>
+                <th style="background:rgba(111,78,55,.08)">Enthusiast</th>
+                <th>Connoisseur</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Monthly coffee bags</td><td>1 × 250g</td><td style="background:rgba(111,78,55,.03)">2 × 250g</td><td>3 × 250g</td></tr>
+              <tr><td>Choose roast level</td><td class="check">✓</td><td class="check" style="background:rgba(111,78,55,.03)">✓</td><td class="check">✓</td></tr>
+              <tr><td>Choose origin</td><td class="cross">✗</td><td class="check" style="background:rgba(111,78,55,.03)">✓</td><td class="check">✓</td></tr>
+              <tr><td>Custom grind size</td><td class="cross">✗</td><td class="check" style="background:rgba(111,78,55,.03)">✓</td><td class="check">✓</td></tr>
+              <tr><td>Delivery frequency</td><td>Monthly</td><td style="background:rgba(111,78,55,.03)">Bi-weekly / Monthly</td><td>Weekly / Bi-weekly / Monthly</td></tr>
+              <tr><td>Free shipping</td><td>Standard</td><td style="background:rgba(111,78,55,.03)">Express</td><td>Priority</td></tr>
+              <tr><td>Exclusive blends</td><td class="cross">✗</td><td class="cross" style="background:rgba(111,78,55,.03)">✗</td><td class="check">✓</td></tr>
+              <tr><td>Cupping invitations</td><td class="cross">✗</td><td class="check" style="background:rgba(111,78,55,.03)">✓</td><td class="check">✓</td></tr>
+              <tr><td>Brewing guide cards</td><td class="check">✓</td><td class="check" style="background:rgba(111,78,55,.03)">✓</td><td class="check">✓</td></tr>
+              <tr><td>Cancel anytime</td><td class="check">✓</td><td class="check" style="background:rgba(111,78,55,.03)">✓</td><td class="check">✓</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== FAQ ==================== -->
+    <section class="section">
+      <div class="container container--lg">
+        <div class="section-header reveal">
+          <span class="section-subtitle">Questions?</span>
+          <h2>Subscription FAQ</h2>
+        </div>
+        <div class="accordion reveal" style="max-width:800px;margin-inline:auto">
+          <div class="accordion__item active">
+            <div class="accordion__header">
+              Can I change my plan later?
+              <svg class="accordion__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+            <div class="accordion__body" style="max-height:200px">
+              <div class="accordion__body-inner">Yes! You can upgrade, downgrade, or switch between monthly and yearly billing at any time from your dashboard. Changes take effect on your next billing cycle.</div>
+            </div>
+          </div>
+          <div class="accordion__item">
+            <div class="accordion__header">
+              Is there a commitment or contract?
+              <svg class="accordion__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+            <div class="accordion__body">
+              <div class="accordion__body-inner">No contracts, no commitments. You can pause, skip a delivery, or cancel your subscription at any time with zero fees.</div>
+            </div>
+          </div>
+          <div class="accordion__item">
+            <div class="accordion__header">
+              Do you ship internationally?
+              <svg class="accordion__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+            <div class="accordion__body">
+              <div class="accordion__body-inner">Yes! We ship to 30+ countries. International shipping rates vary by location and are calculated at checkout. Free shipping applies to US domestic orders.</div>
+            </div>
+          </div>
+          <div class="accordion__item">
+            <div class="accordion__header">
+              What if I don't like the coffee I receive?
+              <svg class="accordion__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+            <div class="accordion__body">
+              <div class="accordion__body-inner">We have a satisfaction guarantee. If you're not happy with your order, contact us within 7 days and we'll send a replacement or issue a full refund — no questions asked.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== CTA ==================== -->
+    <section class="newsletter">
+      <div class="container">
+        <div class="reveal">
+          <h2>Not Sure Which Plan?</h2>
+          <p>Take our quick coffee quiz and we'll recommend the perfect subscription for your taste and lifestyle.</p>
+          <div style="display:flex;gap:var(--space-4);justify-content:center;flex-wrap:wrap">
+            <a href="home-modern.html#quiz" class="btn btn--accent btn--lg">Take the Quiz</a>
+            <a href="contact.html" class="btn btn--secondary btn--lg" style="color:#fff;border-color:rgba(255,255,255,.4)">Talk to Us</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="home-classic.html" class="navbar__brand">
+            <div class="navbar__brand-icon">E</div>
+            <div class="navbar__brand-text">Ember <span>&</span> Brew</div>
+          </a>
+          <p>Premium specialty coffee, roasted fresh daily. From our roastery to your cup — every sip tells a story.</p>
+          <div class="footer__socials">
+            <a href="#" aria-label="Facebook">f</a>
+            <a href="#" aria-label="Instagram">ig</a>
+            <a href="#" aria-label="Twitter">𝕏</a>
+            <a href="#" aria-label="YouTube">▶</a>
+          </div>
+        </div>
+        <div>
+          <h5 class="footer__heading">Quick Links</h5>
+          <ul class="footer__links">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Our Coffees</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="pricing.html">Subscriptions</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="footer__heading">Support</h5>
+          <ul class="footer__links">
+            <li><a href="contact.html">Help Center</a></li>
+            <li><a href="#">Shipping Info</a></li>
+            <li><a href="#">Returns & Refunds</a></li>
+            <li><a href="#">Track Order</a></li>
+            <li><a href="#">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer__newsletter">
+          <h5 class="footer__heading">Newsletter</h5>
+          <p>Join our community for updates & exclusive deals.</p>
+          <form class="footer__newsletter-form" aria-label="Footer newsletter">
+            <input type="email" placeholder="Your email" required aria-label="Email">
+            <button type="submit">→</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2026 Ember & Brew. All rights reserved.</span>
+        <div class="footer__bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Sitemap</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" aria-label="Back to top">↑</button>
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/animations.js"></script>
+  <script>
+    /* Pricing toggle */
+    (function(){
+      const sw=document.getElementById('pricing-switch');
+      const lblM=document.getElementById('label-monthly');
+      const lblY=document.getElementById('label-yearly');
+      if(!sw) return;
+      let isYearly=false;
+      sw.addEventListener('click',()=>{
+        isYearly=!isYearly;
+        sw.classList.toggle('active',isYearly);
+        sw.setAttribute('aria-checked',isYearly);
+        lblM.classList.toggle('active',!isYearly);
+        lblY.classList.toggle('active',isYearly);
+        document.querySelectorAll('[data-monthly]').forEach(el=>{
+          el.innerHTML=(isYearly?'<sup>$</sup>'+el.dataset.yearly.replace('$',''):'<sup>$</sup>'+el.dataset.monthly.replace('$',''));
+        });
+        document.querySelectorAll('[data-period]').forEach(el=>{
+          el.textContent=isYearly?'/year':'/month';
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

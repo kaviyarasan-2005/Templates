@@ -1,0 +1,16 @@
+/* ============================================
+   RTL (Right-to-Left) Layout Overrides
+   ============================================ */
+[dir="rtl"] {
+  direction: rtl;
+}
+[dir="rtl"] .navbar__menu { flex-direction: row-reverse; }
+[dir="rtl"] .navbar__link.active::after { left: auto; right: 50%; transform: translateX(50%); }
+[dir="rtl"] .mobile-menu { right: auto; left: -100%; }
+[dir="rtl"] .mobile-menu.open { left: 0; }
+[dir="rtl"] .footer__link:hover { padding-inline-start: var(--space-2); padding-inline-end: 0; }
+[dir="rtl"] .blog-card__read-more { flex-direction: row-reverse; }
+[dir="rtl"] .card__badge { left: auto; right: var(--space-3); }
+[dir="rtl"] .card__wishlist { right: auto; left: var(--space-3); }
+[dir="rtl"] .form-input-icon { right: auto; left: 16px; }
+[dir="rtl"] .testimonial-card__author { flex-direction: row-reverse; }

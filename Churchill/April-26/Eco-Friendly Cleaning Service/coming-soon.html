@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coming Soon — EcoClean Pro</title>
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <style>
+    body{display:flex;align-items:center;justify-content:center;min-height:100vh;text-align:center;padding:var(--space-6);overflow:hidden;position:relative;}
+    .cs-bg{position:absolute;inset:0;z-index:-1;background:linear-gradient(135deg,rgba(45,80,22,0.03) 0%,rgba(30,58,95,0.05) 100%);}
+    .cs-content{max-width:560px;position:relative;}
+    .cs-logo{display:flex;align-items:center;gap:var(--space-3);justify-content:center;font-family:var(--font-heading);font-weight:700;font-size:1.375rem;margin-bottom:var(--space-10);color:var(--primary-green);}
+    .cs-logo .nav-brand-icon{width:48px;height:48px;background:var(--primary-green);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;color:#fff;}
+    .cs-title{font-size:2.5rem;font-weight:700;margin-bottom:var(--space-4);}
+    .cs-desc{color:var(--text-muted);margin-bottom:var(--space-8);}
+    .countdown{display:flex;gap:var(--space-6);justify-content:center;margin-bottom:var(--space-10);}
+    .count-box{text-align:center;}
+    .count-value{font-family:var(--font-heading);font-size:2.5rem;font-weight:700;color:var(--primary-green);line-height:1;}
+    .count-label{font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.05em;margin-top:var(--space-1);}
+    .cs-form{display:flex;gap:var(--space-3);max-width:420px;margin:0 auto;}
+    @media(max-width:480px){.cs-form{flex-direction:column;}.countdown{gap:var(--space-4);}.count-value{font-size:1.75rem;}}
+    .cs-social{display:flex;gap:var(--space-3);justify-content:center;margin-top:var(--space-8);}
+    .cs-social a{width:40px;height:40px;border-radius:50%;background:var(--bg-secondary);display:flex;align-items:center;justify-content:center;color:var(--text-muted);transition:all var(--transition-fast);}
+    .cs-social a:hover{background:var(--primary-green);color:#fff;}
+  </style>
+</head>
+<body>
+  <div class="cs-bg"></div>
+  <div class="hero-particles" id="particles"></div>
+
+  <div class="cs-content">
+    <div class="cs-logo">
+      <span class="nav-brand-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 8C8 10 5.9 16.17 3.82 21.34L3 23l2-1c4-2 7-4 9-8 2 1 4 1 6-1-2-4-6-8-10-8z" fill="currentColor" stroke="none" opacity="0.9"/><path d="M5.5 21.5L10 15" stroke-linecap="round"/></svg></span>
+      <span>EcoClean Pro</span>
+    </div>
+
+    <h1 class="cs-title">Something Green is Growing</h1>
+    <p class="cs-desc">We're preparing a fresh new experience for you. Sign up to be the first to know when we launch!</p>
+
+    <!-- Countdown -->
+    <div class="countdown">
+      <div class="count-box"><div class="count-value" id="cd-days">00</div><div class="count-label">Days</div></div>
+      <div class="count-box"><div class="count-value" id="cd-hours">00</div><div class="count-label">Hours</div></div>
+      <div class="count-box"><div class="count-value" id="cd-mins">00</div><div class="count-label">Minutes</div></div>
+      <div class="count-box"><div class="count-value" id="cd-secs">00</div><div class="count-label">Seconds</div></div>
+    </div>
+
+    <!-- Email Signup -->
+    <form class="cs-form" onsubmit="event.preventDefault();document.querySelector('.cs-form button').textContent='Subscribed ✓';document.querySelector('.cs-form button').disabled=true;">
+      <input type="email" class="form-input" placeholder="Enter your email" required style="flex:1;">
+      <button type="submit" class="btn btn-primary">Notify Me</button>
+    </form>
+
+    <div class="cs-social">
+      <a href="#" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+      <a href="#" aria-label="Twitter"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg></a>
+      <a href="#" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg></a>
+    </div>
+  </div>
+
+  <script src="assets/js/utils.js"></script>
+  <script src="assets/js/animations.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    // Launch date: 30 days from now
+    const launch = new Date(Date.now() + 30 * 86400000);
+    const update = () => {
+      const diff = launch - Date.now();
+      if (diff <= 0) return;
+      document.getElementById('cd-days').textContent = String(Math.floor(diff/86400000)).padStart(2,'0');
+      document.getElementById('cd-hours').textContent = String(Math.floor((diff%86400000)/3600000)).padStart(2,'0');
+      document.getElementById('cd-mins').textContent = String(Math.floor((diff%3600000)/60000)).padStart(2,'0');
+      document.getElementById('cd-secs').textContent = String(Math.floor((diff%60000)/1000)).padStart(2,'0');
+    };
+    update();
+    setInterval(update, 1000);
+    // Particles
+    Animations.createParticles(document.getElementById('particles'), 8, 'leaf');
+  </script>
+</body>
+</html>

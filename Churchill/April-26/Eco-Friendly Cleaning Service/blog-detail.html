@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog Post — EcoClean Pro</title>
+  <meta name="description" content="Read expert insights on eco-friendly cleaning and sustainable living from EcoClean Pro.">
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" media="print" href="assets/css/print.css">
+  <style>
+    .blog-hero{position:relative;min-height:50vh;display:flex;align-items:flex-end;overflow:hidden;}
+    .blog-hero-bg{position:absolute;inset:0;z-index:-2;}
+    .blog-hero-bg img{width:100%;height:100%;object-fit:cover;}
+    .blog-hero-overlay{position:absolute;inset:0;z-index:-1;background:linear-gradient(to top,rgba(0,0,0,0.85) 0%,transparent 60%);}
+    .blog-content-grid{display:grid;grid-template-columns:1fr 320px;gap:var(--space-10);align-items:start;}
+    @media(max-width:1024px){.blog-content-grid{grid-template-columns:1fr;}}
+    .blog-body{font-size:1.0625rem;line-height:1.85;color:var(--text-secondary);}
+    .blog-body h2{font-size:1.5rem;color:var(--text-primary);margin:var(--space-8) 0 var(--space-4);}
+    .blog-body h3{font-size:1.25rem;color:var(--text-primary);margin:var(--space-6) 0 var(--space-3);}
+    .blog-body p{margin-bottom:var(--space-4);}
+    .blog-body ul{list-style:disc;padding-inline-start:var(--space-6);margin-bottom:var(--space-4);}
+    .blog-body li{margin-bottom:var(--space-2);}
+    .blog-body blockquote{border-inline-start:3px solid var(--primary-green);padding:var(--space-4) var(--space-6);background:var(--bg-secondary);border-radius:0 var(--radius-md) var(--radius-md) 0;margin:var(--space-6) 0;font-style:italic;}
+    .sidebar-widget{background:var(--bg-card);border:1px solid var(--border-light);border-radius:var(--radius-xl);padding:var(--space-6);margin-bottom:var(--space-6);}
+    .sidebar-widget h4{font-family:var(--font-heading);font-size:1rem;font-weight:600;margin-bottom:var(--space-4);}
+    .author-card{display:flex;align-items:center;gap:var(--space-3);margin-bottom:var(--space-3);}
+    .author-avatar{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--primary-green),var(--secondary-sage));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:1.25rem;flex-shrink:0;}
+    .share-btns{display:flex;gap:var(--space-2);}
+    .share-btn{width:40px;height:40px;border-radius:var(--radius-md);background:var(--bg-secondary);display:flex;align-items:center;justify-content:center;color:var(--text-muted);transition:all var(--transition-fast);}
+    .share-btn:hover{background:var(--primary-green);color:#fff;}
+  </style>
+</head>
+<body class="has-navbar">
+  <a href="#main-content" class="skip-to-content sr-only">Skip to content</a>
+
+  <!-- Scroll Progress -->
+  <div class="scroll-progress" style="width:0;"></div>
+
+  <!-- NAVBAR (compact) -->
+  <nav class="navbar" id="main-nav" aria-label="Main navigation">
+    <div class="container">
+      <a href="index.html" class="nav-brand" aria-label="EcoClean Pro Home"><span class="nav-brand-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 8C8 10 5.9 16.17 3.82 21.34L3 23l2-1c4-2 7-4 9-8 2 1 4 1 6-1-2-4-6-8-10-8z" fill="currentColor" stroke="none" opacity="0.9"/><path d="M5.5 21.5L10 15" stroke-linecap="round"/></svg></span><span>EcoClean Pro</span></a>
+      <div class="nav-menu" id="nav-menu">
+        <div class="nav-dropdown" id="home-dropdown"><a href="#" class="nav-link nav-dropdown-toggle" aria-expanded="false">Home<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></a><div class="nav-dropdown-menu" role="menu"><a href="home-general.html" class="nav-dropdown-item" role="menuitem"><span class="dropdown-icon">🏠</span><span class="dropdown-text"><span class="dropdown-label">General Services</span><span class="dropdown-desc">Full-service cleaning</span></span></a><a href="home-niche.html" class="nav-dropdown-item" role="menuitem"><span class="dropdown-icon">🌿</span><span class="dropdown-text"><span class="dropdown-label">Eco Specialist</span><span class="dropdown-desc">Premium eco-focused</span></span></a></div></div>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="blog.html" class="nav-link active">Blog</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="pricing.html" class="nav-link">Pricing</a>
+        <a href="dashboard.html" class="nav-link">Dashboard</a>
+      </div>
+      <div class="nav-actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode"><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg></button>
+        <a href="login.html" class="btn btn-primary btn-sm">Login</a>
+        <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main-content">
+    <!-- Blog Hero -->
+    <section class="blog-hero">
+      <div class="blog-hero-bg"><img id="blog-hero-img" src="assets/images/blog/green-products.png" alt="" loading="eager"></div>
+      <div class="blog-hero-overlay"></div>
+      <div class="container" style="position:relative;z-index:1;padding-bottom:var(--space-10);">
+        <div style="max-width:720px;color:#fff;">
+          <span class="badge badge-primary" style="margin-bottom:var(--space-3);">Green Living</span>
+          <h1 id="blog-title" style="font-size:2.5rem;line-height:1.2;margin-bottom:var(--space-4);">The Complete Guide to Green Cleaning Products in 2026</h1>
+          <div class="card-meta" style="color:rgba(255,255,255,0.7);"><span>March 28, 2026</span><span>·</span><span>8 min read</span><span>·</span><span>By Sarah Johnson</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Content -->
+    <section style="padding-top:var(--space-12);">
+      <div class="container">
+        <div class="blog-content-grid">
+          <article class="blog-body">
+            <p class="lead">The shift toward eco-friendly cleaning products isn't just a trend — it's a necessity. With growing awareness of the harmful chemicals in traditional cleaners, more families and businesses are making the switch to plant-based alternatives.</p>
+
+            <h2>Why Green Cleaning Matters</h2>
+            <p>Traditional cleaning products contain a cocktail of chemicals that can harm your health and the environment. From volatile organic compounds (VOCs) to phosphates and synthetic fragrances, these substances linger in your home long after cleaning.</p>
+
+            <blockquote>
+              "The average household contains 62 toxic chemicals, many found in common cleaning products. Switching to green alternatives reduces indoor air pollution by up to 60%." — Environmental Working Group
+            </blockquote>
+
+            <h2>What to Look for in Green Products</h2>
+            <ul>
+              <li><strong>Plant-based surfactants</strong> — Derived from coconut, corn, or soy instead of petroleum</li>
+              <li><strong>Essential oil fragrances</strong> — Natural scents from lavender, eucalyptus, or citrus</li>
+              <li><strong>Biodegradable formulas</strong> — Break down naturally without harming waterways</li>
+              <li><strong>Third-party certifications</strong> — Look for Green Seal, EPA Safer Choice, or EcoLogo</li>
+              <li><strong>Transparent ingredients</strong> — Companies that list all ingredients on the label</li>
+            </ul>
+
+            <h2>Top Eco-Friendly Cleaning Products for 2026</h2>
+            <p>After extensive testing, our green chemistry team has identified the best performing eco-friendly products across every cleaning category. From all-purpose sprays to specialized bathroom cleaners, these products deliver professional results without toxic chemicals.</p>
+
+            <h3>All-Purpose Cleaners</h3>
+            <p>The workhorses of any cleaning routine. Modern plant-based all-purpose cleaners now rival their chemical counterparts in effectiveness, especially on grease, grime, and everyday messes.</p>
+
+            <h3>Bathroom Specialists</h3>
+            <p>Tackling soap scum and mineral deposits without harsh acids is now possible with enzymatic cleaners that use naturally-derived citric acid and probiotics.</p>
+
+            <h2>Making the Switch</h2>
+            <p>Transitioning to green cleaning doesn't have to happen overnight. Start by replacing products as they run out, beginning with the items you use most frequently — all-purpose spray, dish soap, and laundry detergent.</p>
+
+            <p>Whether you're cleaning at home or managing a commercial facility, going green is an investment in health, sustainability, and peace of mind. And if you'd rather leave the green cleaning to the experts, that's exactly what we do at EcoClean Pro.</p>
+
+            <div style="margin-top:var(--space-8);padding:var(--space-6);background:var(--bg-secondary);border-radius:var(--radius-xl);text-align:center;">
+              <h3 style="margin-bottom:var(--space-2);">Ready for Professional Green Cleaning?</h3>
+              <p style="margin-bottom:var(--space-4);">Let our certified team handle the cleaning while you enjoy the benefits.</p>
+              <a href="contact.html" class="btn btn-primary">Get Free Quote</a>
+            </div>
+          </article>
+
+          <!-- Sidebar -->
+          <aside>
+            <div class="sidebar-widget" style="position:sticky;top:calc(var(--nav-height) + var(--space-4));">
+              <div class="author-card">
+                <div class="author-avatar">SJ</div>
+                <div>
+                  <div style="font-weight:600;font-size:0.9375rem;">Sarah Johnson</div>
+                  <div style="font-size:0.8125rem;color:var(--text-muted);">Founder & CEO</div>
+                </div>
+              </div>
+              <p style="font-size:0.875rem;color:var(--text-secondary);margin-bottom:var(--space-4);">Environmental science graduate turned cleaning entrepreneur. Passionate about making green cleaning accessible to everyone.</p>
+
+              <h4 style="margin-top:var(--space-6);">Share This Post</h4>
+              <div class="share-btns">
+                <button class="share-btn" aria-label="Share on Twitter"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg></button>
+                <button class="share-btn" aria-label="Share on Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></button>
+                <button class="share-btn" aria-label="Share on LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 6a2 2 0 100-4 2 2 0 000 4z"/></svg></button>
+                <button class="share-btn" aria-label="Copy link" onclick="navigator.clipboard.writeText(window.location.href);App.showToast('Link copied!','success');"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg></button>
+              </div>
+
+              <h4 style="margin-top:var(--space-6);">Related Posts</h4>
+              <div style="display:flex;flex-direction:column;gap:var(--space-3);">
+                <a href="blog-detail.html?post=sustainable-home" style="display:flex;gap:var(--space-3);align-items:center;font-size:0.875rem;color:var(--text-secondary);">
+                  <img src="assets/images/blog/sustainable-home.png" alt="" style="width:56px;height:56px;object-fit:cover;border-radius:var(--radius-md);flex-shrink:0;" loading="lazy">
+                  <span>10 Ways to Make Your Home More Sustainable</span>
+                </a>
+                <a href="blog-detail.html?post=diy-cleaners" style="display:flex;gap:var(--space-3);align-items:center;font-size:0.875rem;color:var(--text-secondary);">
+                  <img src="assets/images/services/residential.png" alt="" style="width:56px;height:56px;object-fit:cover;border-radius:var(--radius-md);flex-shrink:0;" loading="lazy">
+                  <span>5 DIY Natural Cleaners You Can Make at Home</span>
+                </a>
+              </div>
+
+              <h4 style="margin-top:var(--space-6);">Newsletter</h4>
+              <form onsubmit="event.preventDefault();App.showToast('Subscribed!','success');this.reset();">
+                <input type="email" class="form-input" placeholder="your@email.com" required style="margin-bottom:var(--space-3);">
+                <button type="submit" class="btn btn-primary btn-sm w-full">Subscribe</button>
+              </form>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" id="main-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand"><a href="index.html" class="nav-brand" style="color:#fff"><span class="nav-brand-icon" style="background:rgba(255,255,255,0.15)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 8C8 10 5.9 16.17 3.82 21.34L3 23l2-1c4-2 7-4 9-8 2 1 4 1 6-1-2-4-6-8-10-8z" fill="currentColor" stroke="none" opacity="0.9"/><path d="M5.5 21.5L10 15" stroke-linecap="round"/></svg></span><span>EcoClean Pro</span></a><p>Eco-friendly cleaning since 2011.</p></div>
+        <div><h4 class="footer-heading">Company</h4><div class="footer-links"><a href="about.html" class="footer-link">About</a><a href="blog.html" class="footer-link">Blog</a><a href="contact.html" class="footer-link">Contact</a></div></div>
+        <div><h4 class="footer-heading">Contact</h4><div class="footer-links"><span class="footer-link">Portland, OR 97201</span><a href="tel:+15551234567" class="footer-link">+1 (555) 123-4567</a></div></div>
+      </div>
+      <div class="footer-bottom"><p>&copy; 2026 EcoClean Pro.</p><div class="footer-bottom-links"><a href="#">Privacy</a><a href="#">Terms</a></div></div>
+    </div>
+  </footer>
+
+  <button class="scroll-top-btn" aria-label="Scroll to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg></button>
+
+  <script src="assets/js/utils.js"></script>
+  <script src="assets/js/animations.js"></script>
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/forms.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

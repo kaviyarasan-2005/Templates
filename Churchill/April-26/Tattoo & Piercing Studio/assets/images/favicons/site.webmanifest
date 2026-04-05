@@ -1,0 +1,14 @@
+{
+  "name": "INK STUDIO - Tattoo & Piercing",
+  "short_name": "INK STUDIO",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "theme_color": "#0a0a0a",
+  "background_color": "#0a0a0a",
+  "display": "standalone"
+}

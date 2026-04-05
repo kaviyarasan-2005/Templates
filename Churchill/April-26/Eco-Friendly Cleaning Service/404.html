@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Not Found — EcoClean Pro</title>
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <style>
+    body{display:flex;align-items:center;justify-content:center;min-height:100vh;text-align:center;padding:var(--space-6);}
+    .error-page{max-width:560px;}
+    .error-code{font-family:var(--font-heading);font-size:8rem;font-weight:700;color:var(--primary-green);line-height:1;margin-bottom:var(--space-2);opacity:0.2;}
+    .error-leaf{width:120px;height:120px;margin:0 auto var(--space-6);position:relative;}
+    .error-leaf svg{width:100%;height:100%;color:var(--primary-green);animation:floatSlow 4s ease-in-out infinite;}
+    .error-title{font-size:1.75rem;margin-bottom:var(--space-3);}
+    .error-desc{color:var(--text-muted);margin-bottom:var(--space-8);}
+    .quick-links{display:flex;flex-wrap:wrap;gap:var(--space-3);justify-content:center;margin-top:var(--space-6);}
+    .quick-link{padding:var(--space-3) var(--space-5);border:1px solid var(--border-color);border-radius:var(--radius-full);font-size:0.875rem;color:var(--text-secondary);transition:all var(--transition-fast);}
+    .quick-link:hover{border-color:var(--primary-green);color:var(--primary-green);background:rgba(45,80,22,0.05);}
+  </style>
+</head>
+<body>
+  <div class="error-page">
+    <div class="error-leaf">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 8C8 10 5.9 16.17 3.82 21.34L3 23l2-1c4-2 7-4 9-8 2 1 4 1 6-1-2-4-6-8-10-8z" fill="currentColor" stroke="none" opacity="0.15"/><path d="M17 8C8 10 5.9 16.17 3.82 21.34L3 23l2-1c4-2 7-4 9-8 2 1 4 1 6-1-2-4-6-8-10-8z"/><path d="M5.5 21.5L10 15" stroke-linecap="round"/></svg>
+    </div>
+    <div class="error-code">404</div>
+    <h1 class="error-title">Page Not Found</h1>
+    <p class="error-desc">Looks like this page has been cleaned away! The page you're looking for doesn't exist or has been moved.</p>
+    <a href="index.html" class="btn btn-primary btn-lg">Return Home</a>
+    <div class="quick-links">
+      <a href="services.html" class="quick-link">Our Services</a>
+      <a href="about.html" class="quick-link">About Us</a>
+      <a href="contact.html" class="quick-link">Contact</a>
+      <a href="blog.html" class="quick-link">Blog</a>
+      <a href="pricing.html" class="quick-link">Pricing</a>
+    </div>
+  </div>
+  <script src="assets/js/utils.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+{
+  "name": "Ember & Brew — Specialty Coffee Roaster",
+  "short_name": "Ember & Brew",
+  "description": "Premium specialty coffee roasted fresh daily. Online store and cozy cafe.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FDFBF7",
+  "theme_color": "#6F4E37",
+  "icons": [
+    {
+      "src": "android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

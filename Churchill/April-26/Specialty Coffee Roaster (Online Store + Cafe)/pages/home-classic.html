@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ember & Brew — Specialty Coffee Roaster | Home</title>
+  <meta name="description" content="Ember & Brew — Premium specialty coffee roasted fresh daily. Discover our handcrafted blends, visit our cozy cafe, and explore unique coffee experiences.">
+  <meta property="og:title" content="Ember & Brew — Specialty Coffee Roaster">
+  <meta property="og:description" content="Premium specialty coffee roasted fresh daily. Online store and cozy cafe.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://emberandbrew.com/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/dark-mode.css">
+  <link rel="stylesheet" href="../assets/css/animations.css">
+  <link rel="stylesheet" href="../assets/css/rtl.css">
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"CafeOrCoffeeShop",
+    "name":"Ember & Brew",
+    "description":"Specialty coffee roaster with online store and cafe.",
+    "url":"https://emberandbrew.com"
+  }
+  </script>
+</head>
+<body>
+
+  <!-- ==================== NAVBAR ==================== -->
+  <nav class="navbar" id="main-navbar" role="navigation" aria-label="Main navigation">
+    <div class="navbar__inner">
+      <a href="home-classic.html" class="navbar__brand" aria-label="Ember & Brew Home">
+        <div class="navbar__brand-icon">E</div>
+        <div class="navbar__brand-text">Ember <span>&</span> Brew</div>
+      </a>
+
+      <div class="navbar__menu">
+        <ul class="navbar__links">
+          <li class="navbar__dropdown">
+            <a href="#" class="navbar__link navbar__dropdown-toggle">
+              Home
+              <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </a>
+            <div class="navbar__dropdown-menu">
+              <a href="home-classic.html">Classic Experience</a>
+              <a href="home-modern.html">Modern Experience</a>
+            </div>
+          </li>
+          <li><a href="about.html" class="navbar__link">About</a></li>
+          <li><a href="services.html" class="navbar__link">Services</a></li>
+          <li><a href="blog.html" class="navbar__link">Blog</a></li>
+          <li><a href="contact.html" class="navbar__link">Contact</a></li>
+          <li><a href="pricing.html" class="navbar__link">Pricing</a></li>
+          <li><a href="dashboard.html" class="navbar__link">Dashboard</a></li>
+        </ul>
+      </div>
+
+      <div class="navbar__actions">
+        <button class="btn--icon navbar__cart" id="cart-btn" aria-label="Shopping cart">
+          🛒
+          <span class="navbar__cart-badge">0</span>
+        </button>
+        <button class="btn--icon" id="rtl-toggle" aria-label="Switch to RTL">🌐</button>
+        <button class="btn--icon" id="theme-toggle" aria-label="Switch to dark mode">🌙</button>
+        <a href="login.html" class="btn btn--primary btn--sm">Login</a>
+        <div class="navbar__toggle" id="mobile-toggle" aria-label="Toggle menu" role="button" tabindex="0">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="home-classic.html" class="mobile-menu__link active">Home Classic</a>
+    <a href="home-modern.html" class="mobile-menu__link">Home Modern</a>
+    <a href="about.html" class="mobile-menu__link">About</a>
+    <a href="services.html" class="mobile-menu__link">Services</a>
+    <a href="blog.html" class="mobile-menu__link">Blog</a>
+    <a href="contact.html" class="mobile-menu__link">Contact</a>
+    <a href="pricing.html" class="mobile-menu__link">Pricing</a>
+    <a href="dashboard.html" class="mobile-menu__link">Dashboard</a>
+    <div class="mobile-menu__actions">
+      <a href="login.html" class="btn btn--primary btn--full">Login</a>
+    </div>
+  </div>
+
+  <main>
+    <!-- ==================== HERO ==================== -->
+    <section class="hero" id="hero">
+      <div class="hero__bg">
+        <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=1920&q=80" alt="Specialty coffee cafe interior with warm ambient lighting" loading="eager">
+      </div>
+      <div class="hero__overlay"></div>
+      <div class="hero__content">
+        <span class="hero__subtitle">Specialty Coffee Roaster & Cafe</span>
+        <h1 class="hero__title">Crafted with Passion,<br>Roasted to <span>Perfection</span></h1>
+        <p class="hero__desc">From farm to cup, we source the finest single-origin beans and roast them to bring out extraordinary flavors in every sip.</p>
+        <div class="hero__ctas">
+          <a href="services.html" class="btn btn--accent btn--lg animate-pulse-glow">Explore Our Coffees</a>
+          <a href="about.html" class="btn btn--secondary btn--lg">Our Story</a>
+        </div>
+      </div>
+      <div class="hero__scroll" aria-hidden="true">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+      </div>
+    </section>
+
+    <!-- ==================== OUR STORY ==================== -->
+    <section class="section" id="our-story">
+      <div class="container">
+        <div class="split reveal">
+          <div class="split__content">
+            <span class="section-subtitle text-uppercase" style="color:var(--color-primary);font-size:var(--fs-sm);font-weight:600;letter-spacing:.15em;display:block;margin-bottom:var(--space-3)">Our Story</span>
+            <h2>From a Small Roastery to Your Favorite Cup</h2>
+            <p class="lead">Since 2015, Ember & Brew has been on a mission to bring exceptional specialty coffee to every cup. Our journey began in a modest roastery with a second-hand drum roaster and an unwavering passion for quality.</p>
+            <p>Today, we partner with sustainable farms across Ethiopia, Colombia, Guatemala, and beyond — sourcing only the top 3% of arabica beans. Every batch is meticulously roasted in small batches to unlock each origin's unique personality.</p>
+            <a href="about.html" class="btn btn--secondary" style="margin-top:var(--space-4)">Read Our Full Story →</a>
+          </div>
+          <div class="split__img reveal-right delay-2">
+            <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&q=80" alt="Barista carefully preparing a pour-over coffee" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== FEATURED PRODUCTS ==================== -->
+    <section class="section" id="featured-products" style="background:var(--color-bg-secondary)">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-subtitle">Our Collection</span>
+          <h2>Featured Coffees</h2>
+          <p>Handpicked selections from our current roster, roasted fresh every week.</p>
+        </div>
+
+        <div class="grid grid--4" data-stagger="0.1">
+          <!-- Product 1 -->
+          <div class="card product-card">
+            <div class="card__img">
+              <img src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=600&q=80" alt="Ethiopian Yirgacheffe single origin coffee beans" loading="lazy">
+              <span class="card__badge">New Harvest</span>
+            </div>
+            <div class="card__body">
+              <span class="card__category">Single Origin</span>
+              <h4 class="card__title">Ethiopian Yirgacheffe</h4>
+              <p class="card__text">Bright citrus notes with a floral aroma and silky body. Light roast perfection.</p>
+              <div class="card__price">$18.99 <span class="original">$22.00</span></div>
+              <div class="card__actions">
+                <button class="btn btn--primary btn--sm btn--full" onclick="updateCart(1)">Add to Cart</button>
+              </div>
+            </div>
+            <div class="card__footer">
+              <div class="card__rating">★★★★★ <span>(42)</span></div>
+              <span class="badge badge--success">In Stock</span>
+            </div>
+          </div>
+
+          <!-- Product 2 -->
+          <div class="card product-card">
+            <div class="card__img">
+              <img src="https://images.unsplash.com/photo-1587734195503-904fca47e0e9?w=600&q=80" alt="Colombian Supremo coffee beans" loading="lazy">
+            </div>
+            <div class="card__body">
+              <span class="card__category">Single Origin</span>
+              <h4 class="card__title">Colombian Supremo</h4>
+              <p class="card__text">Rich caramel sweetness with nutty undertones. A perfectly balanced medium roast.</p>
+              <div class="card__price">$16.99</div>
+              <div class="card__actions">
+                <button class="btn btn--primary btn--sm btn--full" onclick="updateCart(1)">Add to Cart</button>
+              </div>
+            </div>
+            <div class="card__footer">
+              <div class="card__rating">★★★★★ <span>(67)</span></div>
+              <span class="badge badge--success">In Stock</span>
+            </div>
+          </div>
+
+          <!-- Product 3 -->
+          <div class="card product-card">
+            <div class="card__img">
+              <img src="https://images.unsplash.com/photo-1611854779393-1b2da9d400fe?w=600&q=80" alt="Midnight Ritual dark roast coffee blend" loading="lazy">
+              <span class="card__badge">Bestseller</span>
+            </div>
+            <div class="card__body">
+              <span class="card__category">House Blend</span>
+              <h4 class="card__title">Midnight Ritual</h4>
+              <p class="card__text">Bold dark chocolate and smoky espresso tones. Our signature dark roast blend.</p>
+              <div class="card__price">$19.99</div>
+              <div class="card__actions">
+                <button class="btn btn--primary btn--sm btn--full" onclick="updateCart(1)">Add to Cart</button>
+              </div>
+            </div>
+            <div class="card__footer">
+              <div class="card__rating">★★★★★ <span>(89)</span></div>
+              <span class="badge badge--success">In Stock</span>
+            </div>
+          </div>
+
+          <!-- Product 4 -->
+          <div class="card product-card">
+            <div class="card__img">
+              <img src="https://images.unsplash.com/photo-1610889556528-9a770e32642f?w=600&q=80" alt="Guatemalan Antigua premium coffee" loading="lazy">
+            </div>
+            <div class="card__body">
+              <span class="card__category">Limited Edition</span>
+              <h4 class="card__title">Guatemala Antigua</h4>
+              <p class="card__text">Spicy complexity with cocoa and apricot finish. Limited single-estate selection.</p>
+              <div class="card__price">$24.99 <span class="original">$29.00</span></div>
+              <div class="card__actions">
+                <button class="btn btn--primary btn--sm btn--full" onclick="updateCart(1)">Add to Cart</button>
+              </div>
+            </div>
+            <div class="card__footer">
+              <div class="card__rating">★★★★☆ <span>(31)</span></div>
+              <span class="badge badge--warning">Low Stock</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center" style="margin-top:var(--space-10)">
+          <a href="services.html" class="btn btn--secondary btn--lg">View All Coffees →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SERVICES ==================== -->
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-subtitle">What We Offer</span>
+          <h2>Our Services</h2>
+          <p>From freshly roasted beans to immersive cafe experiences.</p>
+        </div>
+
+        <div class="grid grid--3" data-stagger="0.15">
+          <div class="card service-card">
+            <div class="service-card__icon">☕</div>
+            <h4>Specialty Roasting</h4>
+            <p class="card__text">Small-batch roasting of single-origin and blend coffees, crafted to bring out each bean's unique flavor profile.</p>
+            <a href="service-details.html" class="btn btn--ghost btn--sm">Learn More →</a>
+          </div>
+          <div class="card service-card">
+            <div class="service-card__icon">🏪</div>
+            <h4>Cafe Experience</h4>
+            <p class="card__text">Visit our cozy cafe for hand-brewed pour-overs, creamy lattes, and freshly baked pastries in a warm atmosphere.</p>
+            <a href="service-details.html" class="btn btn--ghost btn--sm">Learn More →</a>
+          </div>
+          <div class="card service-card">
+            <div class="service-card__icon">📦</div>
+            <h4>Online Store & Subscriptions</h4>
+            <p class="card__text">Fresh-roasted coffee delivered to your door. Choose one-time orders or subscribe for weekly & monthly deliveries.</p>
+            <a href="pricing.html" class="btn btn--ghost btn--sm">View Plans →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== ROASTING PROCESS ==================== -->
+    <section class="section" id="process" style="background:var(--color-bg-secondary)">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-subtitle">Farm To Cup</span>
+          <h2>Our Roasting Process</h2>
+          <p>Every cup tells a story — from the farms we partner with to the roasting profiles we develop.</p>
+        </div>
+
+        <div class="grid grid--2" style="align-items:start">
+          <div class="process reveal-left">
+            <div class="process__step">
+              <h4>Sourcing & Selection</h4>
+              <p>We travel to origin farms across Africa, Central & South America to hand-select green beans at peak harvest. Only the top 3% make the cut.</p>
+            </div>
+            <div class="process__step">
+              <h4>Quality Control & Cupping</h4>
+              <p>Every lot undergoes rigorous cupping sessions. Our Q-graders evaluate aroma, acidity, body, and aftertaste before approving any batch.</p>
+            </div>
+            <div class="process__step">
+              <h4>Small-Batch Roasting</h4>
+              <p>Using our Probat drum roaster, each batch is carefully roasted to a custom profile designed to highlight the bean's unique characteristics.</p>
+            </div>
+            <div class="process__step">
+              <h4>Freshly Packed & Delivered</h4>
+              <p>Beans are packed within 24 hours of roasting in nitrogen-flushed bags to lock in freshness. Shipped directly to your door.</p>
+            </div>
+          </div>
+          <div class="reveal-right delay-2" style="border-radius:var(--radius-lg);overflow:hidden;aspect-ratio:3/4">
+            <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=800&q=80" alt="Coffee beans being roasted in a professional drum roaster" loading="lazy" style="width:100%;height:100%;object-fit:cover">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== STATS ==================== -->
+    <section class="section section--sm" style="background:var(--color-primary-dark)">
+      <div class="container">
+        <div class="stats">
+          <div class="reveal">
+            <div class="stat__number" data-count="12" data-suffix="+">0</div>
+            <div class="stat__label" style="color:rgba(255,255,255,.7)">Origin Countries</div>
+          </div>
+          <div class="reveal delay-1">
+            <div class="stat__number" data-count="8500" data-suffix="+">0</div>
+            <div class="stat__label" style="color:rgba(255,255,255,.7)">Happy Customers</div>
+          </div>
+          <div class="reveal delay-2">
+            <div class="stat__number" data-count="340" data-suffix="K">0</div>
+            <div class="stat__label" style="color:rgba(255,255,255,.7)">Cups Brewed</div>
+          </div>
+          <div class="reveal delay-3">
+            <div class="stat__number" data-count="98" data-suffix="%">0</div>
+            <div class="stat__label" style="color:rgba(255,255,255,.7)">Customer Satisfaction</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TESTIMONIALS ==================== -->
+    <section class="section" id="testimonials">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-subtitle">What People Say</span>
+          <h2>Customer Reviews</h2>
+          <p>Real stories from our coffee-loving community.</p>
+        </div>
+
+        <div class="grid grid--3" data-stagger="0.12">
+          <div class="testimonial-card">
+            <div class="testimonial-card__quote">The Ethiopian Yirgacheffe is absolutely divine. I've been a subscriber for over a year now, and every bag arrives fresh with incredible flavor depth.</div>
+            <div class="testimonial-card__author">
+              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=96&q=80" alt="Sarah Mitchell" class="testimonial-card__avatar">
+              <div>
+                <div class="testimonial-card__name">Sarah Mitchell</div>
+                <div class="testimonial-card__role">Monthly Subscriber</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-card__quote">Ember & Brew's cafe is my second home. The atmosphere, the quality of every cup, and the warmth of the baristas make it truly special.</div>
+            <div class="testimonial-card__author">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=96&q=80" alt="James Rodriguez" class="testimonial-card__avatar">
+              <div>
+                <div class="testimonial-card__name">James Rodriguez</div>
+                <div class="testimonial-card__role">Regular Visitor</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-card__quote">I run a restaurant and switched all our coffee to Ember & Brew wholesale. Our guests constantly compliment the coffee now. Game-changer.</div>
+            <div class="testimonial-card__author">
+              <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=96&q=80" alt="Lisa Chen" class="testimonial-card__avatar">
+              <div>
+                <div class="testimonial-card__name">Lisa Chen</div>
+                <div class="testimonial-card__role">Restaurant Owner</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center" style="margin-top:var(--space-10)">
+          <a href="#" class="btn btn--secondary">Read More Reviews →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== INSTAGRAM FEED ==================== -->
+    <section class="section section--sm" style="background:var(--color-bg-secondary)">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-subtitle">@EmberAndBrew</span>
+          <h2>Follow Our Journey</h2>
+        </div>
+        <div class="grid" style="grid-template-columns:repeat(6,1fr);gap:var(--space-3)" data-stagger="0.08">
+          <div style="aspect-ratio:1/1;border-radius:var(--radius-sm);overflow:hidden;cursor:pointer" class="reveal-scale">
+            <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=400&q=80" alt="Instagram: Latte art" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform .3s ease" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'">
+          </div>
+          <div style="aspect-ratio:1/1;border-radius:var(--radius-sm);overflow:hidden;cursor:pointer" class="reveal-scale">
+            <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=400&q=80" alt="Instagram: Pour over brewing" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform .3s ease" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'">
+          </div>
+          <div style="aspect-ratio:1/1;border-radius:var(--radius-sm);overflow:hidden;cursor:pointer" class="reveal-scale">
+            <img src="https://images.unsplash.com/photo-1498804103079-a6351b050096?w=400&q=80" alt="Instagram: Coffee beans close-up" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform .3s ease" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'">
+          </div>
+          <div style="aspect-ratio:1/1;border-radius:var(--radius-sm);overflow:hidden;cursor:pointer" class="reveal-scale">
+            <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?w=400&q=80" alt="Instagram: Cafe interior" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform .3s ease" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'">
+          </div>
+          <div style="aspect-ratio:1/1;border-radius:var(--radius-sm);overflow:hidden;cursor:pointer" class="reveal-scale">
+            <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefda?w=400&q=80" alt="Instagram: Espresso shot" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform .3s ease" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'">
+          </div>
+          <div style="aspect-ratio:1/1;border-radius:var(--radius-sm);overflow:hidden;cursor:pointer" class="reveal-scale">
+            <img src="https://images.unsplash.com/photo-1504630083234-14187a9df0f5?w=400&q=80" alt="Instagram: Coffee farm" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform .3s ease" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== NEWSLETTER ==================== -->
+    <section class="newsletter" id="newsletter">
+      <div class="container">
+        <div class="reveal">
+          <h2>Stay in the Loop</h2>
+          <p>Get brewing tips, exclusive offers, and first access to new roasts delivered to your inbox.</p>
+          <form class="newsletter__form" aria-label="Newsletter signup">
+            <input type="email" placeholder="Enter your email address" required aria-label="Email address">
+            <button type="submit" class="btn">Subscribe</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="home-classic.html" class="navbar__brand">
+            <div class="navbar__brand-icon">E</div>
+            <div class="navbar__brand-text">Ember <span>&</span> Brew</div>
+          </a>
+          <p>Premium specialty coffee, roasted fresh daily. From our roastery to your cup — every sip tells a story.</p>
+          <div class="footer__socials">
+            <a href="#" aria-label="Facebook">f</a>
+            <a href="#" aria-label="Instagram">ig</a>
+            <a href="#" aria-label="Twitter">𝕏</a>
+            <a href="#" aria-label="YouTube">▶</a>
+          </div>
+        </div>
+
+        <div>
+          <h5 class="footer__heading">Quick Links</h5>
+          <ul class="footer__links">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Our Coffees</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="pricing.html">Subscriptions</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h5 class="footer__heading">Support</h5>
+          <ul class="footer__links">
+            <li><a href="contact.html">Help Center</a></li>
+            <li><a href="#">Shipping Info</a></li>
+            <li><a href="#">Returns & Refunds</a></li>
+            <li><a href="#">Track Order</a></li>
+            <li><a href="#">FAQ</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__newsletter">
+          <h5 class="footer__heading">Newsletter</h5>
+          <p>Join our community for updates & exclusive deals.</p>
+          <form class="footer__newsletter-form" aria-label="Footer newsletter">
+            <input type="email" placeholder="Your email" required aria-label="Email">
+            <button type="submit">→</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <span>© 2026 Ember & Brew. All rights reserved.</span>
+        <div class="footer__bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Sitemap</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" aria-label="Back to top">↑</button>
+
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/animations.js"></script>
+</body>
+</html>

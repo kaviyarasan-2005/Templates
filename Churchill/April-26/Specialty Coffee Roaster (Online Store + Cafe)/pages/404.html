@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Not Found — Ember & Brew</title>
+  <meta name="description" content="Oops! The page you're looking for doesn't exist. Let us help you find what you need.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/dark-mode.css">
+  <link rel="stylesheet" href="../assets/css/animations.css">
+  <link rel="stylesheet" href="../assets/css/rtl.css">
+  <style>
+    .error-page{min-height:calc(100vh - var(--nav-height));margin-top:var(--nav-height);display:flex;align-items:center;justify-content:center;text-align:center;padding:var(--space-10) var(--gutter)}
+    .error-page__content{max-width:560px}
+    .error-page__code{font-family:var(--font-heading);font-size:clamp(6rem,15vw,12rem);font-weight:700;line-height:1;background:linear-gradient(135deg,var(--color-primary),var(--color-accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:var(--space-4)}
+    .error-page__title{font-size:var(--fs-2xl);margin-bottom:var(--space-3)}
+    .error-page__desc{color:var(--color-text-muted);font-size:var(--fs-md);margin-bottom:var(--space-8);line-height:var(--lh-relaxed)}
+    .error-page__search{display:flex;max-width:400px;margin:0 auto var(--space-6);gap:var(--space-2)}
+    .error-page__search input{flex:1;padding:var(--space-3) var(--space-4);border:1.5px solid var(--color-border);border-radius:var(--radius-sm);font-size:var(--fs-sm);outline:none}
+    .error-page__search input:focus{border-color:var(--color-primary)}
+    .error-page__search button{padding:var(--space-3) var(--space-5);background:var(--color-primary);color:var(--white);border-radius:var(--radius-sm);font-size:var(--fs-sm);font-weight:600}
+    .error-page__links{display:flex;flex-wrap:wrap;justify-content:center;gap:var(--space-3);margin-top:var(--space-6)}
+    .error-page__link{padding:var(--space-2) var(--space-4);border:1px solid var(--color-border);border-radius:var(--radius-full);font-size:var(--fs-sm);font-weight:500;color:var(--color-text-secondary);transition:all var(--transition-base)}
+    .error-page__link:hover{background:var(--color-primary);color:var(--white);border-color:var(--color-primary)}
+    .error-page__img{width:100%;max-width:360px;margin:0 auto var(--space-8);border-radius:var(--radius-lg);overflow:hidden}
+    .error-page__img img{width:100%;height:auto;object-fit:cover}
+  </style>
+</head>
+<body>
+
+  <!-- ==================== NAVBAR ==================== -->
+  <nav class="navbar" id="main-navbar" role="navigation" aria-label="Main navigation">
+    <div class="navbar__inner">
+      <a href="home-classic.html" class="navbar__brand" aria-label="Ember & Brew Home">
+        <div class="navbar__brand-icon">E</div>
+        <div class="navbar__brand-text">Ember <span>&</span> Brew</div>
+      </a>
+      <div class="navbar__menu">
+        <ul class="navbar__links">
+          <li class="navbar__dropdown">
+            <a href="#" class="navbar__link navbar__dropdown-toggle">Home
+              <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </a>
+            <div class="navbar__dropdown-menu">
+              <a href="home-classic.html">Classic Experience</a>
+              <a href="home-modern.html">Modern Experience</a>
+            </div>
+          </li>
+          <li><a href="about.html" class="navbar__link">About</a></li>
+          <li><a href="services.html" class="navbar__link">Services</a></li>
+          <li><a href="blog.html" class="navbar__link">Blog</a></li>
+          <li><a href="contact.html" class="navbar__link">Contact</a></li>
+          <li><a href="pricing.html" class="navbar__link">Pricing</a></li>
+          <li><a href="dashboard.html" class="navbar__link">Dashboard</a></li>
+        </ul>
+      </div>
+      <div class="navbar__actions">
+        <button class="btn--icon navbar__cart" id="cart-btn" aria-label="Shopping cart">🛒<span class="navbar__cart-badge">0</span></button>
+        <button class="btn--icon" id="rtl-toggle" aria-label="Switch to RTL">🌐</button>
+        <button class="btn--icon" id="theme-toggle" aria-label="Switch to dark mode">🌙</button>
+        <a href="login.html" class="btn btn--primary btn--sm">Login</a>
+        <div class="navbar__toggle" id="mobile-toggle" aria-label="Toggle menu" role="button" tabindex="0">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="home-classic.html" class="mobile-menu__link">Home Classic</a>
+    <a href="home-modern.html" class="mobile-menu__link">Home Modern</a>
+    <a href="about.html" class="mobile-menu__link">About</a>
+    <a href="services.html" class="mobile-menu__link">Services</a>
+    <a href="blog.html" class="mobile-menu__link">Blog</a>
+    <a href="contact.html" class="mobile-menu__link">Contact</a>
+    <a href="pricing.html" class="mobile-menu__link">Pricing</a>
+    <a href="dashboard.html" class="mobile-menu__link">Dashboard</a>
+    <div class="mobile-menu__actions">
+      <a href="login.html" class="btn btn--primary btn--full">Login</a>
+    </div>
+  </div>
+
+  <main>
+    <div class="error-page">
+      <div class="error-page__content animate-fade-up">
+        <div class="error-page__img">
+          <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefda?w=600&q=80" alt="Spilled coffee cup - page not found" loading="eager">
+        </div>
+        <div class="error-page__code">404</div>
+        <h1 class="error-page__title">Oops! This Page Got Lost</h1>
+        <p class="error-page__desc">Looks like someone spilled the coffee on this page. The page you're looking for might have been moved, renamed, or doesn't exist.</p>
+
+        <div class="error-page__search">
+          <input type="text" placeholder="Search our site..." aria-label="Search">
+          <button type="button">Search</button>
+        </div>
+
+        <a href="home-classic.html" class="btn btn--accent btn--lg">Return Home</a>
+
+        <div class="error-page__links">
+          <a href="services.html" class="error-page__link">Shop Coffee</a>
+          <a href="blog.html" class="error-page__link">Read Blog</a>
+          <a href="pricing.html" class="error-page__link">Subscriptions</a>
+          <a href="contact.html" class="error-page__link">Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/animations.js"></script>
+</body>
+</html>
