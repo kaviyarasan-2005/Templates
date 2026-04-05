@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Niche Specialist Styling — Élise Laurent</title>
+  <meta name="description" content="Luxury corporate and bridal styling specialists. Expert image consulting for executive professionals and brides-to-be."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../assets/css/main.css"/><link rel="stylesheet" href="../assets/css/components.css"/>
+  <link rel="stylesheet" href="../assets/css/animations.css"/><link rel="stylesheet" href="../assets/css/dark-mode.css"/>
+  <link rel="stylesheet" href="../assets/css/rtl.css"/><link rel="stylesheet" href="../assets/css/style.css"/>
+  <style>
+    .hero-niche { min-height: 100vh; position: relative; display: flex; align-items: center; overflow: hidden; padding-top: var(--nav-height); }
+    .niche-bg { position: absolute; inset: 0; background: linear-gradient(120deg,#1a0a07 0%,#3b2117 50%,#6d4c41 100%); }
+    .niche-bg-img { position: absolute; inset: 0; object-fit: cover; opacity: 0.25; width: 100%; height: 100%; }
+    .niche-tabs { display: flex; gap: var(--space-1); background: rgba(255,255,255,0.08); padding: 6px; border-radius: var(--radius-full); backdrop-filter: blur(8px); margin-bottom: var(--space-4); width: fit-content; }
+    .niche-tab { padding: 0.5em 1.5em; border-radius: var(--radius-full); font-size: var(--text-sm); font-weight: 600; cursor: pointer; color: rgba(255,255,255,0.6); border: none; background: none; transition: all var(--transition-base); }
+    .niche-tab.active { background: var(--color-white); color: var(--color-brown-dark); }
+    .niche-panel { display: none; } .niche-panel.active { display: block; }
+    .process-v { position: relative; max-width: 700px; margin: 0 auto; }
+    .process-v-item { display: flex; gap: var(--space-3); padding-bottom: var(--space-4); position: relative; }
+    .process-v-item::before { content: ''; position: absolute; inset-inline-start: 20px; top: 48px; bottom: 0; width: 2px; background: linear-gradient(180deg, var(--color-brown), transparent); }
+    .process-v-item:last-child::before { display: none; }
+    .process-v-icon { width: 40px; height: 40px; border-radius: 50%; background: var(--color-brown); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: white; font-weight: 700; font-family: var(--font-heading); }
+    .before-after-section { background: var(--bg-secondary); }
+    .niche-trust { display: flex; gap: var(--space-3); flex-wrap: wrap; margin-top: var(--space-3); }
+    .trust-badge { display: flex; align-items: center; gap: 8px; padding: var(--space-1) var(--space-2); background: rgba(255,255,255,0.08); border-radius: var(--radius-full); font-size: var(--text-xs); color: rgba(255,255,255,0.8); border: 1px solid rgba(255,255,255,0.15); }
+    .trust-badge svg { width: 14px; height: 14px; }
+  </style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+<!-- NAV (shared pattern) -->
+<header class="site-nav" id="site-nav">
+  <nav class="nav-container" aria-label="Main navigation">
+    <a href="index.html" class="nav-logo"><div class="nav-logo-mark">É</div><div class="nav-logo-text"><span class="nav-logo-name">Élise Laurent</span><span class="nav-logo-tagline">Image Consultant</span></div></a>
+    <ul class="nav-menu">
+      <li class="nav-item"><button class="nav-link active">Home <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="nav-dropdown"><a href="index.html">General Services</a><a href="home-2.html">Niche Specialist</a></div></li>
+      <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+      <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
+      <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+      <li class="nav-item"><a href="pricing.html" class="nav-link">Pricing</a></li>
+      <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+      <li class="nav-item"><button class="nav-link">Dashboard <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="nav-dropdown"><a href="dashboard-admin.html">Admin Dashboard</a><a href="dashboard-user.html">User Dashboard</a></div></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="nav-action-btn" data-dir-toggle aria-label="Toggle direction"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></button>
+      <button class="nav-action-btn" data-theme-toggle aria-label="Toggle theme"><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/></svg><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg></button>
+      <a href="contact.html" class="btn btn-primary btn-sm">Book Now</a>
+      <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-drawer"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+</header>
+<div class="nav-overlay" id="nav-overlay"></div>
+<aside class="nav-drawer" id="nav-drawer" role="dialog" aria-label="Mobile navigation">
+  <button class="drawer-close" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+  <a href="index.html" class="nav-logo" style="margin-bottom:var(--space-3)"><div class="nav-logo-mark">É</div><div class="nav-logo-text"><span class="nav-logo-name">Élise Laurent</span><span class="nav-logo-tagline">Image Consultant</span></div></a>
+  <nav class="drawer-nav">
+    <div class="drawer-nav-item"><div class="drawer-nav-link" tabindex="0">Home <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div><div class="drawer-sub"><a href="index.html">General Services</a><a href="home-2.html">Niche Specialist</a></div></div>
+    <div class="drawer-nav-item"><a href="about.html" class="drawer-nav-link">About</a></div>
+    <div class="drawer-nav-item"><a href="services.html" class="drawer-nav-link">Services</a></div>
+    <div class="drawer-nav-item"><a href="blog.html" class="drawer-nav-link">Blog</a></div>
+    <div class="drawer-nav-item"><a href="pricing.html" class="drawer-nav-link">Pricing</a></div>
+    <div class="drawer-nav-item"><a href="contact.html" class="drawer-nav-link">Contact</a></div>
+    <div class="drawer-nav-item"><div class="drawer-nav-link" tabindex="0">Dashboard <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div><div class="drawer-sub"><a href="dashboard-admin.html">Admin Dashboard</a><a href="dashboard-user.html">User Dashboard</a></div></div>
+  </nav>
+  <div style="display:flex;gap:8px;margin-top:auto;padding-top:var(--space-3)">
+    <button class="nav-action-btn" data-dir-toggle style="flex:1;border-radius:8px;width:auto;height:40px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/></svg></button>
+    <button class="nav-action-btn" data-theme-toggle style="flex:1;border-radius:8px;width:auto;height:40px"><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/></svg><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg></button>
+    <a href="contact.html" class="btn btn-primary" style="flex:2">Book Now</a>
+  </div>
+</aside>
+
+<main id="main-content">
+  <!-- HERO -->
+  <section class="hero-niche" aria-label="Hero">
+    <div class="niche-bg"></div>
+    <div class="container hero-content" style="position:relative;z-index:1">
+      <div class="niche-tabs" id="niche-tabs" role="tablist">
+        <button class="niche-tab active" role="tab" data-niche="corporate" aria-selected="true">Corporate Styling</button>
+        <button class="niche-tab" role="tab" data-niche="bridal" aria-selected="false">Bridal Styling</button>
+      </div>
+      <div class="niche-panel active" id="panel-corporate">
+        <span class="hero-tag hero-animate-1" style="color:var(--color-blush)">✦ Executive Image</span>
+        <h1 class="hero-title hero-animate-2" style="color:white;max-width:700px">Dress for the Position <em>You're Aiming For</em></h1>
+        <p class="hero-subtitle hero-animate-3" style="color:rgba(255,255,255,0.75);max-width:560px">Executive presence starts with deliberate style. We craft power wardrobes for C-suite leaders, board members, and ambitious professionals.</p>
+        <div class="hero-cta hero-animate-4">
+          <a href="contact.html" class="btn btn-primary btn-lg">Schedule Consultation</a>
+          <a href="services.html" class="btn btn-light btn-lg">Corporate Packages</a>
+        </div>
+        <div class="niche-trust hero-animate-4">
+          <span class="trust-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Fortune 500 clients</span>
+          <span class="trust-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Board-ready looks</span>
+          <span class="trust-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Media-ready styling</span>
+        </div>
+      </div>
+      <div class="niche-panel" id="panel-bridal">
+        <span class="hero-tag hero-animate-1" style="color:var(--color-blush)">✦ Bridal Couture</span>
+        <h1 class="hero-title hero-animate-2" style="color:white;max-width:700px">Look Breathtaking on <em>Your Most Important Day</em></h1>
+        <p class="hero-subtitle hero-animate-3" style="color:rgba(255,255,255,0.75);max-width:560px">From engagement shoots to the aisle, we curate a flawless bridal look that honours your vision and enchants every guest.</p>
+        <div class="hero-cta hero-animate-4">
+          <a href="contact.html" class="btn btn-primary btn-lg">Book Bridal Session</a>
+          <a href="services.html" class="btn btn-light btn-lg">Bridal Packages</a>
+        </div>
+        <div class="niche-trust hero-animate-4">
+          <span class="trust-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>250+ brides styled</span>
+          <span class="trust-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Vogue featured</span>
+          <span class="trust-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Full-day support</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BEFORE / AFTER -->
+  <section class="section before-after-section" aria-labelledby="transformation-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag reveal">See the Difference</span>
+        <h2 class="section-title reveal delay-100" id="transformation-heading">Real Transformations</h2>
+        <p class="section-subtitle reveal delay-200">Drag the slider to compare before and after styling sessions.</p>
+      </div>
+      <div class="before-after reveal" style="max-width:800px;margin:0 auto" aria-label="Before and after styling comparison">
+        <img src="../assets/images/services/before.png" alt="Client before styling consultation" width="800" height="450" loading="lazy"/>
+        <div class="before-after-after" style="clip-path:inset(0 50% 0 0)">
+          <img src="../assets/images/services/after.png" alt="Client after styling consultation — elegant transformation" width="800" height="450" loading="lazy"/>
+        </div>
+        <div class="before-after-handle" style="left:50%"></div>
+        <span class="before-label">Before</span>
+        <span class="after-label">After</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS VERTICAL -->
+  <section class="section" aria-labelledby="process-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag reveal">Our Process</span>
+        <h2 class="section-title reveal delay-100" id="process-heading">The Journey to Your Best Self</h2>
+      </div>
+      <div class="process-v">
+        <div class="process-v-item reveal">
+          <div class="process-v-icon">1</div>
+          <div><h3 style="font-size:var(--text-xl);margin-bottom:4px">Discovery Call</h3><p style="color:var(--text-muted);font-size:var(--text-sm)">30-minute complimentary session to understand your goals, context, and vision.</p></div>
+        </div>
+        <div class="process-v-item reveal delay-200">
+          <div class="process-v-icon">2</div>
+          <div><h3 style="font-size:var(--text-xl);margin-bottom:4px">Deep Analysis</h3><p style="color:var(--text-muted);font-size:var(--text-sm)">Body shape, colour season, lifestyle audit, and style personality mapping.</p></div>
+        </div>
+        <div class="process-v-item reveal delay-300">
+          <div class="process-v-icon">3</div>
+          <div><h3 style="font-size:var(--text-xl);margin-bottom:4px">Style Implementation</h3><p style="color:var(--text-muted);font-size:var(--text-sm)">Hands-on shopping, wardrobe building, and outfit formula creation.</p></div>
+        </div>
+        <div class="process-v-item reveal delay-400">
+          <div class="process-v-icon">4</div>
+          <div><h3 style="font-size:var(--text-xl);margin-bottom:4px">Ongoing Support</h3><p style="color:var(--text-muted);font-size:var(--text-sm)">Style guide, follow-up sessions, and access to our exclusive style portal.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST SIGNALS -->
+  <section class="section" style="background:var(--bg-secondary)" aria-label="Publications and certifications">
+    <div class="container">
+      <p class="text-center text-muted text-sm reveal" style="letter-spacing:0.15em;text-transform:uppercase;font-weight:600;margin-bottom:var(--space-4)">As Seen In & Certified By</p>
+      <div class="publications reveal">
+        <span class="pub-logo">Vogue</span><span class="pub-logo">Harper's Bazaar</span><span class="pub-logo">Elle</span><span class="pub-logo">Forbes</span><span class="pub-logo">WGSN</span>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer" role="contentinfo">
+  <div class="container"><div class="footer-grid">
+    <div><div class="footer-brand-logo"><div class="footer-brand-logo-mark">É</div><div><div class="footer-brand-name">Élise Laurent</div><div class="footer-tagline">Image Consultant</div></div></div><p class="footer-description">Specialist styling for executives, professionals, and brides who demand impeccable results.</p><div class="footer-social"><a href="#" rel="noopener noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a><a href="#" rel="noopener noreferrer" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a></div></div>
+    <div><h3 class="footer-heading">Quick Links</h3><ul class="footer-links"><li><a href="about.html">About Us</a></li><li><a href="services.html">Services</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="blog.html">Blog</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div><h3 class="footer-heading">Specialisms</h3><ul class="footer-links"><li><a href="service-detail.html">Corporate Styling</a></li><li><a href="service-detail.html">Bridal Styling</a></li><li><a href="service-detail.html">Personal Shopping</a></li><li><a href="service-detail.html">Color Analysis</a></li></ul></div>
+    <div><h3 class="footer-heading">Newsletter</h3><p class="footer-newsletter-text">Exclusive style insights, trend reports and VIP offers.</p><form class="footer-newsletter-form"><input type="email" placeholder="Your email" aria-label="Email address" required/><button type="submit">Subscribe</button></form></div>
+  </div></div>
+  <div style="border-top:1px solid rgba(255,255,255,0.1)"><div class="container"><div class="footer-bottom"><p class="footer-bottom-text">© 2026 Élise Laurent. All rights reserved.</p><div class="footer-bottom-links"><a href="#">Privacy Policy</a><a href="#">Terms</a></div></div></div></div>
+</footer>
+
+<script src="../assets/js/theme.js"></script><script src="../assets/js/rtl.js"></script><script src="../assets/js/navigation.js"></script><script src="../assets/js/main.js"></script>
+<script>
+  // Niche tab switching
+  document.querySelectorAll('.niche-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.niche-tab').forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
+      document.querySelectorAll('.niche-panel').forEach(p => p.classList.remove('active'));
+      tab.classList.add('active'); tab.setAttribute('aria-selected','true');
+      document.getElementById('panel-' + tab.dataset.niche)?.classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>

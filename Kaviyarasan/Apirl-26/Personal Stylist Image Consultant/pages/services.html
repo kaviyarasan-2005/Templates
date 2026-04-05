@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Services — Élise Laurent Image Consulting</title>
+  <meta name="description" content="Explore our full range of personal styling and image consulting services. From wardrobe audits to complete image overhauls."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../assets/css/main.css"/><link rel="stylesheet" href="../assets/css/components.css"/>
+  <link rel="stylesheet" href="../assets/css/animations.css"/><link rel="stylesheet" href="../assets/css/dark-mode.css"/>
+  <link rel="stylesheet" href="../assets/css/rtl.css"/><link rel="stylesheet" href="../assets/css/style.css"/>
+  <style>
+    .services-filter-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: var(--space-3); }
+    @media(max-width:1024px){ .services-filter-grid{grid-template-columns:repeat(2,1fr);} }
+    @media(max-width:640px){ .services-filter-grid{grid-template-columns:1fr;} }
+    .service-card-stagger { transition: all var(--transition-base); }
+    .service-card-stagger.hide { opacity:0; transform:scale(0.95); pointer-events:none; display:none; }
+  </style>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","provider":{"@type":"LocalBusiness","name":"Élise Laurent Image Consulting"},"serviceType":"Personal Styling","areaServed":"Worldwide"}</script>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+<header class="site-nav" id="site-nav">
+  <nav class="nav-container" aria-label="Main navigation">
+    <a href="index.html" class="nav-logo"><div class="nav-logo-mark">É</div><div class="nav-logo-text"><span class="nav-logo-name">Élise Laurent</span><span class="nav-logo-tagline">Image Consultant</span></div></a>
+    <ul class="nav-menu">
+      <li class="nav-item"><button class="nav-link">Home <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="nav-dropdown"><a href="index.html">General Services</a><a href="home-2.html">Niche Specialist</a></div></li>
+      <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+      <li class="nav-item"><a href="services.html" class="nav-link active">Services</a></li>
+      <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+      <li class="nav-item"><a href="pricing.html" class="nav-link">Pricing</a></li>
+      <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+      <li class="nav-item"><button class="nav-link">Dashboard <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="nav-dropdown"><a href="dashboard-admin.html">Admin Dashboard</a><a href="dashboard-user.html">User Dashboard</a></div></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="nav-action-btn" data-dir-toggle aria-label="Toggle direction"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></button>
+      <button class="nav-action-btn" data-theme-toggle aria-label="Toggle theme"><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/></svg><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg></button>
+      <a href="contact.html" class="btn btn-primary btn-sm">Book Now</a>
+      <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-drawer"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+</header>
+<div class="nav-overlay" id="nav-overlay"></div>
+<aside class="nav-drawer" id="nav-drawer" role="dialog" aria-label="Mobile navigation">
+  <button class="drawer-close" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+  <a href="index.html" class="nav-logo" style="margin-bottom:var(--space-3)"><div class="nav-logo-mark">É</div><div class="nav-logo-text"><span class="nav-logo-name">Élise Laurent</span></div></a>
+  <nav class="drawer-nav">
+    <div class="drawer-nav-item"><div class="drawer-nav-link" tabindex="0">Home <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div><div class="drawer-sub"><a href="index.html">General Services</a><a href="home-2.html">Niche Specialist</a></div></div>
+    <div class="drawer-nav-item"><a href="about.html" class="drawer-nav-link">About</a></div>
+    <div class="drawer-nav-item"><a href="services.html" class="drawer-nav-link">Services</a></div>
+    <div class="drawer-nav-item"><a href="blog.html" class="drawer-nav-link">Blog</a></div>
+    <div class="drawer-nav-item"><a href="pricing.html" class="drawer-nav-link">Pricing</a></div>
+    <div class="drawer-nav-item"><a href="contact.html" class="drawer-nav-link">Contact</a></div>
+    <div class="drawer-nav-item"><div class="drawer-nav-link" tabindex="0">Dashboard <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div><div class="drawer-sub"><a href="dashboard-admin.html">Admin Dashboard</a><a href="dashboard-user.html">User Dashboard</a></div></div>
+  </nav>
+  <div style="display:flex;gap:8px;margin-top:auto;padding-top:var(--space-3)"><button class="nav-action-btn" data-dir-toggle style="flex:1;border-radius:8px;width:auto;height:40px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg></button><button class="nav-action-btn" data-theme-toggle style="flex:1;border-radius:8px;width:auto;height:40px"><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/></svg><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg></button><a href="contact.html" class="btn btn-primary" style="flex:2">Book Now</a></div>
+</aside>
+
+<main id="main-content">
+  <section class="page-hero" aria-label="Services hero">
+    <div class="container page-hero-content">
+      <span class="page-hero-tag">What We Offer</span>
+      <h1 class="page-hero-title">Our Services</h1>
+      <p class="page-hero-text">Bespoke styling solutions designed to transform your image and elevate your presence across every facet of life.</p>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="services-list-heading">
+    <div class="container">
+      <!-- Filter -->
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:var(--space-2);margin-bottom:var(--space-4)" class="reveal">
+        <h2 class="sr-only" id="services-list-heading">All Services</h2>
+        <div class="filter-pills" id="service-filters" aria-label="Filter services">
+          <button class="filter-pill active" data-filter="all">All Services</button>
+          <button class="filter-pill" data-filter="shopping">Personal Shopping</button>
+          <button class="filter-pill" data-filter="wardrobe">Wardrobe</button>
+          <button class="filter-pill" data-filter="color">Color & Style</button>
+          <button class="filter-pill" data-filter="corporate">Corporate</button>
+          <button class="filter-pill" data-filter="bridal">Bridal</button>
+        </div>
+      </div>
+
+      <div class="services-filter-grid" id="services-grid">
+
+        <div class="service-card service-card-stagger reveal" data-category="shopping">
+          <div class="service-card-img"><img src="../assets/images/services/personal-shopping.png" alt="Personal shopping service" loading="lazy" width="600" height="400"/><div class="service-card-overlay"><a href="service-detail.html" class="btn btn-light btn-sm">View Details →</a></div></div>
+          <div class="service-card-body"><div class="service-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg></div><h3 class="service-card-title">Personal Shopping</h3><p class="service-card-text">Curated selections handpicked for your style profile, body type, and lifestyle.</p><div style="display:flex;align-items:center;justify-content:space-between;margin-top:var(--space-2)"><span class="service-card-price">From <strong>$299</strong></span><span class="service-card-badge">3–4 hrs</span></div></div>
+        </div>
+
+        <div class="service-card service-card-stagger reveal delay-100" data-category="wardrobe">
+          <div class="service-card-img"><img src="../assets/images/services/wardrobe-audit.png" alt="Wardrobe audit" loading="lazy" width="600" height="400"/><div class="service-card-overlay"><a href="service-detail.html" class="btn btn-light btn-sm">View Details →</a></div></div>
+          <div class="service-card-body"><div class="service-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div><h3 class="service-card-title">Wardrobe Audit</h3><p class="service-card-text">A thorough review to identify gaps and maximise your existing wardrobe's potential.</p><div style="display:flex;align-items:center;justify-content:space-between;margin-top:var(--space-2)"><span class="service-card-price">From <strong>$199</strong></span><span class="service-card-badge">2–3 hrs</span></div></div>
+        </div>
+
+        <div class="service-card service-card-stagger reveal delay-200" data-category="color">
+          <div class="service-card-img"><img src="../assets/images/services/color-analysis.png" alt="Color analysis" loading="lazy" width="600" height="400"/><div class="service-card-overlay"><a href="service-detail.html" class="btn btn-light btn-sm">View Details →</a></div></div>
+          <div class="service-card-body"><div class="service-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="19" cy="15" r="2.5"/><circle cx="6.5" cy="15" r="2.5"/></svg></div><h3 class="service-card-title">Color Analysis</h3><p class="service-card-text">Discover your seasonal palette and which shades enhance your natural radiance.</p><div style="display:flex;align-items:center;justify-content:space-between;margin-top:var(--space-2)"><span class="service-card-price">From <strong>$149</strong></span><span class="service-card-badge">90 mins</span></div></div>
+        </div>
+
+        <div class="service-card service-card-stagger reveal delay-100" data-category="corporate">
+          <div class="service-card-img"><img src="../assets/images/services/corporate-styling.png" alt="Corporate styling" loading="lazy" width="600" height="400"/><div class="service-card-overlay"><a href="service-detail.html" class="btn btn-light btn-sm">View Details →</a></div></div>
+          <div class="service-card-body"><div class="service-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg></div><h3 class="service-card-title">Corporate Styling</h3><p class="service-card-text">Executive wardrobes that communicate authority, competence, and leadership.</p><div style="display:flex;align-items:center;justify-content:space-between;margin-top:var(--space-2)"><span class="service-card-price">From <strong>$499</strong></span><span class="service-card-badge">Full Day</span></div></div>
+        </div>
+
+        <div class="service-card service-card-stagger reveal delay-200" data-category="bridal">
+          <div class="service-card-img"><img src="../assets/images/services/bridal-styling.png" alt="Bridal styling" loading="lazy" width="600" height="400"/><div class="service-card-overlay"><a href="service-detail.html" class="btn btn-light btn-sm">View Details →</a></div></div>
+          <div class="service-card-body"><div class="service-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 8.2c0 7.3-8 11.8-8 11.8z"/></svg></div><h3 class="service-card-title">Bridal Styling</h3><p class="service-card-text">Complete bridal image — from engagement sessions to the aisle and beyond.</p><div style="display:flex;align-items:center;justify-content:space-between;margin-top:var(--space-2)"><span class="service-card-price">From <strong>$799</strong></span><span class="service-card-badge">Package</span></div></div>
+        </div>
+
+        <div class="service-card service-card-stagger reveal delay-300" data-category="color">
+          <div class="service-card-img"><img src="../assets/images/services/style-consultation.png" alt="Style consultation session" loading="lazy" width="600" height="400"/><div class="service-card-overlay"><a href="service-detail.html" class="btn btn-light btn-sm">View Details →</a></div></div>
+          <div class="service-card-body"><div class="service-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div><h3 class="service-card-title">Style Consultation</h3><p class="service-card-text">A deep-dive 1:1 session covering your style identity, goals, and action plan.</p><div style="display:flex;align-items:center;justify-content:space-between;margin-top:var(--space-2)"><span class="service-card-price">From <strong>$99</strong></span><span class="service-card-badge">60 mins</span></div></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section" style="background:var(--bg-secondary)" aria-label="Book a consultation">
+    <div class="container" style="text-align:center;max-width:700px">
+      <span class="section-tag reveal">Ready to Begin?</span>
+      <h2 class="section-title reveal delay-100">Not Sure Which Service You Need?</h2>
+      <p class="section-subtitle reveal delay-200">Book a complimentary 30-minute discovery call and we'll recommend the perfect starting point for your transformation.</p>
+      <a href="contact.html" class="btn btn-primary btn-lg reveal delay-300" style="margin-top:var(--space-4)">Book Free Discovery Call</a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="container"><div class="footer-grid">
+    <div><div class="footer-brand-logo"><div class="footer-brand-logo-mark">É</div><div><div class="footer-brand-name">Élise Laurent</div><div class="footer-tagline">Image Consultant</div></div></div><p class="footer-description">Transforming wardrobes and elevating presence worldwide.</p><div class="footer-social"><a href="#" rel="noopener noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/></svg></a></div></div>
+    <div><h3 class="footer-heading">Quick Links</h3><ul class="footer-links"><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="blog.html">Blog</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div><h3 class="footer-heading">Services</h3><ul class="footer-links"><li><a href="service-detail.html">Personal Shopping</a></li><li><a href="service-detail.html">Wardrobe Audit</a></li><li><a href="service-detail.html">Color Analysis</a></li><li><a href="service-detail.html">Corporate Styling</a></li></ul></div>
+    <div><h3 class="footer-heading">Newsletter</h3><p class="footer-newsletter-text">Style tips and exclusive offers.</p><form class="footer-newsletter-form"><input type="email" placeholder="Your email" aria-label="Email" required/><button type="submit">Subscribe</button></form></div>
+  </div></div>
+  <div style="border-top:1px solid rgba(255,255,255,0.1)"><div class="container"><div class="footer-bottom"><p class="footer-bottom-text">© 2026 Élise Laurent. All rights reserved.</p><div class="footer-bottom-links"><a href="#">Privacy</a><a href="#">Terms</a><a href="404.html">404</a></div></div></div></div>
+</footer>
+
+<script src="../assets/js/theme.js"></script><script src="../assets/js/rtl.js"></script><script src="../assets/js/navigation.js"></script><script src="../assets/js/main.js"></script>
+<script>
+  // Filter pills for services
+  const pills = document.querySelectorAll('#service-filters .filter-pill');
+  const cards = document.querySelectorAll('#services-grid .service-card-stagger');
+  pills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      pills.forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+      const filter = pill.dataset.filter;
+      cards.forEach(card => {
+        const match = filter === 'all' || card.dataset.category === filter;
+        card.style.display = match ? '' : 'none';
+      });
+    });
+  });
+</script>
+</body>
+</html>

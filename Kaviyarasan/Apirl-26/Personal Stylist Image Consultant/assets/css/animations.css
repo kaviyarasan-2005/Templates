@@ -1,0 +1,367 @@
+/* ============================================================
+   ANIMATIONS.CSS — Keyframes, Scroll Reveal, Transitions
+   ============================================================ */
+
+/* ============================================================
+   KEYFRAME ANIMATIONS
+   ============================================================ */
+
+/* Fade In */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Fade In Up */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Fade In Down */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Fade In Left */
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Fade In Right */
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Scale In */
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Slide In from Bottom (for Toast) */
+@keyframes slideInToast {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Ken Burns Effect */
+@keyframes kenBurns {
+  0% { transform: scale(1) translate(0, 0); }
+  50% { transform: scale(1.12) translate(-2%, -1%); }
+  100% { transform: scale(1.06) translate(2%, 1%); }
+}
+
+/* Scroll Bounce */
+@keyframes scrollBounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(8px); }
+}
+
+/* Float */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+/* Pulse Glow */
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(109, 76, 65, 0.4); }
+  50% { box-shadow: 0 0 0 12px rgba(109, 76, 65, 0); }
+}
+
+/* Shimmer Skeleton */
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Spin */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Counter Count Up */
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Ripple */
+@keyframes ripple {
+  from {
+    transform: scale(0);
+    opacity: 0.6;
+  }
+  to {
+    transform: scale(3);
+    opacity: 0;
+  }
+}
+
+/* Gradient shift */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Glitch */
+@keyframes glitch1 {
+  0%, 100% { clip-path: inset(30% 0 60% 0); transform: translate(-4px, 0); }
+  25% { clip-path: inset(10% 0 80% 0); transform: translate(4px, 0); }
+  50% { clip-path: inset(70% 0 10% 0); transform: translate(-4px, 0); }
+  75% { clip-path: inset(50% 0 40% 0); transform: translate(4px, 0); }
+}
+
+@keyframes glitch2 {
+  0%, 100% { clip-path: inset(60% 0 20% 0); transform: translate(4px, 0); }
+  25% { clip-path: inset(80% 0 5% 0); transform: translate(-4px, 0); }
+  50% { clip-path: inset(10% 0 70% 0); transform: translate(4px, 0); }
+  75% { clip-path: inset(40% 0 50% 0); transform: translate(-4px, 0); }
+}
+
+/* Draw line */
+@keyframes drawLine {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+/* ============================================================
+   SCROLL REVEAL SYSTEM
+   All reveal animations powered by IntersectionObserver in main.js
+   ============================================================ */
+
+/* Base reveal state (hidden) */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition:
+    opacity 600ms cubic-bezier(0.4, 0, 0.2, 1),
+    transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition:
+    opacity 600ms cubic-bezier(0.4, 0, 0.2, 1),
+    transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition:
+    opacity 600ms cubic-bezier(0.4, 0, 0.2, 1),
+    transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.9);
+  transition:
+    opacity 600ms cubic-bezier(0.4, 0, 0.2, 1),
+    transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Revealed state */
+.reveal.revealed,
+.reveal-left.revealed,
+.reveal-right.revealed,
+.reveal-scale.revealed {
+  opacity: 1;
+  transform: none;
+}
+
+/* Stagger delays */
+.delay-100 { transition-delay: 100ms; }
+.delay-200 { transition-delay: 200ms; }
+.delay-300 { transition-delay: 300ms; }
+.delay-400 { transition-delay: 400ms; }
+.delay-500 { transition-delay: 500ms; }
+.delay-600 { transition-delay: 600ms; }
+.delay-700 { transition-delay: 700ms; }
+.delay-800 { transition-delay: 800ms; }
+
+/* ============================================================
+   PAGE ENTRY ANIMATION
+   ============================================================ */
+.page-enter {
+  animation: fadeInUp 600ms cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+/* Hero Content animations */
+.hero-animate-1 { animation: fadeInUp 800ms cubic-bezier(0.4, 0, 0.2, 1) 200ms both; }
+.hero-animate-2 { animation: fadeInUp 800ms cubic-bezier(0.4, 0, 0.2, 1) 400ms both; }
+.hero-animate-3 { animation: fadeInUp 800ms cubic-bezier(0.4, 0, 0.2, 1) 600ms both; }
+.hero-animate-4 { animation: fadeInUp 800ms cubic-bezier(0.4, 0, 0.2, 1) 800ms both; }
+
+/* ============================================================
+   KEN BURNS (Hero Image)
+   ============================================================ */
+.ken-burns {
+  animation: kenBurns 20s ease-in-out infinite alternate;
+}
+
+/* ============================================================
+   FLOATING DECORATIVE ELEMENTS
+   ============================================================ */
+.float-1 { animation: float 6s ease-in-out infinite; }
+.float-2 { animation: float 8s ease-in-out 1s infinite; }
+.float-3 { animation: float 7s ease-in-out 2s infinite; }
+
+/* ============================================================
+   UNDERLINE ANIMATION (Link hover)
+   ============================================================ */
+.underline-anim {
+  position: relative;
+  display: inline-block;
+}
+.underline-anim::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  right: 50%;
+  height: 1.5px;
+  background: currentColor;
+  transition: left var(--transition-base), right var(--transition-base);
+}
+.underline-anim:hover::after { left: 0; right: 0; }
+
+/* ============================================================
+   CARD 3D TILT (applied via JS mousemove)
+   ============================================================ */
+.tilt-card {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  transition: transform var(--transition-base);
+}
+
+/* ============================================================
+   GRADIENT ANIMATED BACKGROUND
+   ============================================================ */
+.gradient-animated {
+  background: linear-gradient(
+    -45deg,
+    var(--color-blush),
+    var(--color-nude),
+    var(--color-beige),
+    var(--color-brown)
+  );
+  background-size: 400% 400%;
+  animation: gradientShift 12s ease infinite;
+}
+
+/* ============================================================
+   GLITCH TEXT (404 Page)
+   ============================================================ */
+.glitch {
+  position: relative;
+  display: inline-block;
+}
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+}
+.glitch:hover::before {
+  opacity: 0.8;
+  color: var(--color-blush);
+  animation: glitch1 0.5s steps(2) infinite;
+}
+.glitch:hover::after {
+  opacity: 0.6;
+  color: var(--color-brown);
+  animation: glitch2 0.5s steps(2) infinite;
+}
+
+/* ============================================================
+   PROGRESS BAR ANIMATION
+   ============================================================ */
+.progress-animate {
+  transition: width 0.15s linear;
+}
+
+/* ============================================================
+   RIPPLE EFFECT ON BUTTONS
+   ============================================================ */
+.ripple-effect {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.35);
+  transform: scale(0);
+  animation: ripple 600ms linear;
+  pointer-events: none;
+}
+
+/* ============================================================
+   TIMELINE ANIMATIONS
+   ============================================================ */
+.timeline-line {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  background: linear-gradient(180deg, var(--color-brown), transparent);
+  top: 0;
+  height: 0;
+  transition: height 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.timeline-line.drawn { height: 100%; }
+
+/* ============================================================
+   LOADING SPINNER
+   ============================================================ */
+.spinner {
+  width: 24px;
+  height: 24px;
+  border: 3px solid var(--border-color);
+  border-top-color: var(--color-brown);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  display: inline-block;
+  flex-shrink: 0;
+}

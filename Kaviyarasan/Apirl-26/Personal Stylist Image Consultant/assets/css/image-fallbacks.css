@@ -1,0 +1,45 @@
+/* ============================================================
+   IMAGE FALLBACKS — Ensures pages look great even without images
+   ============================================================ */
+
+/* Default image placeholder colours matching the brand palette */
+
+/* Hero images */
+img[src*="hero-main"] { background: linear-gradient(135deg, #4E342E, #6D4C41); }
+img[src*="cta-image"] { background: linear-gradient(135deg, #6D4C41, #8D6E63); }
+img[src*="login-bg"] { background: linear-gradient(135deg, #1a0a07, #4E342E); }
+img[src*="register-bg"] { background: linear-gradient(135deg, #2C1A16, #6D4C41); }
+
+/* Service images */
+img[src*="personal-shopping"] { background: linear-gradient(135deg, #DEB887, #C4956A); }
+img[src*="wardrobe-audit"] { background: linear-gradient(135deg, #E8D5C4, #C4A882); }
+img[src*="color-analysis"] { background: linear-gradient(135deg, #E8CFC5, #D4A5A0); }
+img[src*="corporate-styling"] { background: linear-gradient(135deg, #B8C4D4, #8FA5BE); }
+img[src*="bridal-styling"] { background: linear-gradient(135deg, #F5EBE0, #E8D4C2); }
+img[src*="style-consultation"] { background: linear-gradient(135deg, #C4B5D4, #9A88B8); }
+
+/* Team / avatar images */
+img[src*="avatar-1"] { background: linear-gradient(135deg, #C4956A, #A0784E); }
+img[src*="avatar-2"] { background: linear-gradient(135deg, #8FA5BE, #6B8CAE); }
+img[src*="avatar-3"] { background: linear-gradient(135deg, #8DC4A8, #5B9A7A); }
+img[src*="avatar-author"] { background: linear-gradient(135deg, #6D4C41, #4E342E); }
+img[src*="stylist-1"] { background: linear-gradient(135deg, #4E342E, #6D4C41); }
+img[src*="stylist-2"] { background: linear-gradient(135deg, #3B4E6D, #5B6E8D); }
+img[src*="stylist-3"] { background: linear-gradient(135deg, #3B6D4E, #5B8D6E); }
+img[src*="about-main"] { background: linear-gradient(135deg, #4E342E, #8D6E63); }
+
+/* Blog images */
+img[src*="blog-featured"] { background: linear-gradient(135deg, #2C1A16, #6D4C41); }
+img[src*="blog-1"] { background: linear-gradient(135deg, #DEB887, #A0784E); }
+img[src*="blog-2"] { background: linear-gradient(135deg, #E8CFC5, #C4956A); }
+img[src*="blog-3"] { background: linear-gradient(135deg, #D4C4B8, #B8A898); }
+img[src*="blog-4"] { background: linear-gradient(135deg, #C8D4E8, #8FA5BE); }
+img[src*="blog-5"] { background: linear-gradient(135deg, #D4E8D4, #8DC4A8); }
+
+/* Before/after */
+img[src*="before"] { background: linear-gradient(135deg, #8D8D8D, #5A5A5A); }
+img[src*="after"] { background: linear-gradient(135deg, #6D4C41, #E8CFC5); }
+
+/* Generic img styling - ensure images fill their containers gracefully */
+img { display: block; }
+img[alt]:not([src*="data:"]) { color: transparent; }

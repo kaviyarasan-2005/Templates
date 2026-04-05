@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us — Élise Laurent Image Consulting</title>
+  <meta name="description" content="Meet the team behind Élise Laurent. A collective of passionate image consultants dedicated to transforming how you present yourself to the world."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../assets/css/main.css"/><link rel="stylesheet" href="../assets/css/components.css"/>
+  <link rel="stylesheet" href="../assets/css/animations.css"/><link rel="stylesheet" href="../assets/css/dark-mode.css"/>
+  <link rel="stylesheet" href="../assets/css/rtl.css"/><link rel="stylesheet" href="../assets/css/style.css"/>
+  <style>
+    .mission-split { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-6); align-items: center; }
+    .mission-img-wrap { position: relative; }
+    .mission-img-main { width: 100%; aspect-ratio: 3/4; object-fit: cover; border-radius: 40% 60% 60% 40% / 40% 40% 60% 60%; }
+    .mission-img-accent { position: absolute; bottom: -var(--space-3); inset-inline-end: -var(--space-3); width: 50%; aspect-ratio: 1; object-fit: cover; border-radius: var(--radius-xl); border: 6px solid var(--bg-primary); box-shadow: var(--shadow-xl); }
+    .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-3); }
+    .values-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: var(--space-3); }
+    .value-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-xl); padding: var(--space-4); text-align: center; transition: all var(--transition-base); }
+    .value-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--color-brown); }
+    .value-icon { width: 64px; height: 64px; background: rgba(109,76,65,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-2); }
+    .value-icon svg { width: 28px; height: 28px; stroke: var(--color-brown); }
+    @media(max-width:1024px){ .mission-split{grid-template-columns:1fr;} .team-grid{grid-template-columns:repeat(2,1fr);} .values-grid{grid-template-columns:repeat(2,1fr);} }
+    @media(max-width:640px){ .team-grid{grid-template-columns:1fr;} .values-grid{grid-template-columns:1fr;} }
+  </style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+<header class="site-nav" id="site-nav">
+  <nav class="nav-container" aria-label="Main navigation">
+    <a href="index.html" class="nav-logo"><div class="nav-logo-mark">É</div><div class="nav-logo-text"><span class="nav-logo-name">Élise Laurent</span><span class="nav-logo-tagline">Image Consultant</span></div></a>
+    <ul class="nav-menu">
+      <li class="nav-item"><button class="nav-link">Home <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="nav-dropdown"><a href="index.html">General Services</a><a href="home-2.html">Niche Specialist</a></div></li>
+      <li class="nav-item"><a href="about.html" class="nav-link active">About</a></li>
+      <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
+      <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+      <li class="nav-item"><a href="pricing.html" class="nav-link">Pricing</a></li>
+      <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+      <li class="nav-item"><button class="nav-link">Dashboard <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="nav-dropdown"><a href="dashboard-admin.html">Admin Dashboard</a><a href="dashboard-user.html">User Dashboard</a></div></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="nav-action-btn" data-dir-toggle aria-label="Toggle direction"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></button>
+      <button class="nav-action-btn" data-theme-toggle aria-label="Toggle theme"><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/></svg><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg></button>
+      <a href="contact.html" class="btn btn-primary btn-sm">Book Now</a>
+      <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-drawer"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+</header>
+<div class="nav-overlay" id="nav-overlay"></div>
+<aside class="nav-drawer" id="nav-drawer" role="dialog" aria-label="Mobile navigation">
+  <button class="drawer-close" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+  <a href="index.html" class="nav-logo" style="margin-bottom:var(--space-3)"><div class="nav-logo-mark">É</div><div class="nav-logo-text"><span class="nav-logo-name">Élise Laurent</span><span class="nav-logo-tagline">Image Consultant</span></div></a>
+  <nav class="drawer-nav">
+    <div class="drawer-nav-item"><div class="drawer-nav-link" tabindex="0">Home <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div><div class="drawer-sub"><a href="index.html">General Services</a><a href="home-2.html">Niche Specialist</a></div></div>
+    <div class="drawer-nav-item"><a href="about.html" class="drawer-nav-link">About</a></div>
+    <div class="drawer-nav-item"><a href="services.html" class="drawer-nav-link">Services</a></div>
+    <div class="drawer-nav-item"><a href="blog.html" class="drawer-nav-link">Blog</a></div>
+    <div class="drawer-nav-item"><a href="pricing.html" class="drawer-nav-link">Pricing</a></div>
+    <div class="drawer-nav-item"><a href="contact.html" class="drawer-nav-link">Contact</a></div>
+    <div class="drawer-nav-item"><div class="drawer-nav-link" tabindex="0">Dashboard <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div><div class="drawer-sub"><a href="dashboard-admin.html">Admin Dashboard</a><a href="dashboard-user.html">User Dashboard</a></div></div>
+  </nav>
+  <div style="display:flex;gap:8px;margin-top:auto;padding-top:var(--space-3)"><button class="nav-action-btn" data-dir-toggle style="flex:1;border-radius:8px;width:auto;height:40px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg></button><button class="nav-action-btn" data-theme-toggle style="flex:1;border-radius:8px;width:auto;height:40px"><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/></svg><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg></button><a href="contact.html" class="btn btn-primary" style="flex:2">Book Now</a></div>
+</aside>
+
+<main id="main-content">
+  <!-- PAGE HERO -->
+  <section class="page-hero" aria-label="About us hero">
+    <div class="container page-hero-content">
+      <span class="page-hero-tag reveal">Our Story</span>
+      <h1 class="page-hero-title reveal delay-100">The Art of Authentic Style</h1>
+      <p class="page-hero-text reveal delay-200">We believe style is a language. We help you speak it fluently — with confidence, clarity, and conviction.</p>
+    </div>
+  </section>
+
+  <!-- MISSION / VISION SPLIT -->
+  <section class="section" aria-labelledby="mission-heading">
+    <div class="container">
+      <div class="mission-split">
+        <div class="mission-img-wrap reveal-left">
+          <img class="mission-img-main" src="../assets/images/team/about-main.png" alt="Élise Laurent in her Paris studio surrounded by curated fashion pieces" loading="lazy" width="600" height="800"/>
+        </div>
+        <div class="reveal-right">
+          <span class="section-tag">Our Mission</span>
+          <h2 class="section-title" id="mission-heading" style="text-align:left;margin-top:var(--space-2)">Elevating Individuals Through the Power of Image</h2>
+          <div class="divider divider-left"></div>
+          <p style="margin-top:var(--space-3)">Founded in 2012, Élise Laurent Image Consulting was born from a simple belief: that when you look extraordinary, you feel extraordinary — and when you feel extraordinary, you achieve extraordinary things.</p>
+          <p style="margin-top:var(--space-2)">We work with ambitious professionals, entrepreneurs, and individuals at life's pivotal moments to craft a visual identity that is authentic, compelling, and utterly unforgettable.</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-2);margin-top:var(--space-4)">
+            <div style="padding:var(--space-2);background:var(--bg-secondary);border-radius:var(--radius-lg)">
+              <span class="stat-number" data-counter data-target="500" data-suffix="+" style="font-size:var(--text-3xl)">0+</span>
+              <p class="stat-label">Clients Served</p>
+            </div>
+            <div style="padding:var(--space-2);background:var(--bg-secondary);border-radius:var(--radius-lg)">
+              <span class="stat-number" data-counter data-target="12" style="font-size:var(--text-3xl)">0</span>
+              <p class="stat-label">Years of Excellence</p>
+            </div>
+          </div>
+          <a href="contact.html" class="btn btn-primary btn-lg" style="margin-top:var(--space-4)">Work With Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALUES -->
+  <section class="section" style="background:var(--bg-secondary)" aria-labelledby="values-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag reveal">What Drives Us</span>
+        <h2 class="section-title reveal delay-100" id="values-heading">Our Core Values</h2>
+      </div>
+      <div class="values-grid">
+        <div class="value-card reveal"><div class="value-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h3 style="font-size:var(--text-lg);margin-bottom:8px">Authenticity</h3><p style="font-size:var(--text-sm);color:var(--text-muted)">We uncover your true style — never impose trends that don't serve your story.</p></div>
+        <div class="value-card reveal delay-200"><div class="value-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12l2 2 4-4"/></svg></div><h3 style="font-size:var(--text-lg);margin-bottom:8px">Excellence</h3><p style="font-size:var(--text-sm);color:var(--text-muted)">Every detail is considered. Every outfit is intentional. Every client leaves transformed.</p></div>
+        <div class="value-card reveal delay-400"><div class="value-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div><h3 style="font-size:var(--text-lg);margin-bottom:8px">Inclusivity</h3><p style="font-size:var(--text-sm);color:var(--text-muted)">Style is for everyone. We celebrate all body types, backgrounds, and budgets.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section class="section" aria-labelledby="team-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag reveal">Our People</span>
+        <h2 class="section-title reveal delay-100" id="team-heading">Meet the Stylists</h2>
+        <p class="section-subtitle reveal delay-200">A talented collective of image experts, each bringing a unique perspective to your style journey.</p>
+      </div>
+      <div class="team-grid">
+        <div class="team-card tilt-card reveal">
+          <div class="team-card-img"><img src="../assets/images/team/stylist-1.png" alt="Élise Laurent — Founder & Lead Image Consultant" loading="lazy" width="400" height="533"/></div>
+          <div class="team-card-info">
+            <div class="team-card-name">Élise Laurent</div>
+            <div class="team-card-role">Founder & Lead Consultant</div>
+            <div class="team-card-bio">12 years of luxury fashion experience, trained at the London College of Fashion. Specialises in executive and corporate image.</div>
+            <div class="team-social"><a href="#" aria-label="Instagram" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/></svg></a><a href="#" aria-label="LinkedIn" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a></div>
+          </div>
+        </div>
+        <div class="team-card tilt-card reveal delay-200">
+          <div class="team-card-img"><img src="../assets/images/team/stylist-2.png" alt="Sophia Chen — Senior Stylist specialising in bridal and personal shopping" loading="lazy" width="400" height="533"/></div>
+          <div class="team-card-info">
+            <div class="team-card-name">Sophia Chen</div>
+            <div class="team-card-role">Senior Stylist — Bridal</div>
+            <div class="team-card-bio">250+ brides styled. Former fashion editor for Harper's Bazaar Asia. Expert in colour theory and bridal couture.</div>
+            <div class="team-social"><a href="#" aria-label="Instagram" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/></svg></a></div>
+          </div>
+        </div>
+        <div class="team-card tilt-card reveal delay-400">
+          <div class="team-card-img"><img src="../assets/images/team/stylist-3.png" alt="Marcus Webb — Personal Shopping and Wardrobe Architect" loading="lazy" width="400" height="533"/></div>
+          <div class="team-card-info">
+            <div class="team-card-name">Marcus Webb</div>
+            <div class="team-card-role">Personal Shopping Director</div>
+            <div class="team-card-bio">Menswear specialist with a decade of experience at Harrods and Selfridges. Known for crafting impeccable capsule wardrobes.</div>
+            <div class="team-social"><a href="#" aria-label="LinkedIn" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIMELINE -->
+  <section class="section" style="background:var(--bg-secondary)" aria-labelledby="history-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag reveal">Our Journey</span>
+        <h2 class="section-title reveal delay-100" id="history-heading">Milestones That Shaped Us</h2>
+      </div>
+      <div class="timeline" role="list">
+        <div class="timeline-item reveal" role="listitem" style="position:relative">
+          <div class="timeline-dot" style="position:absolute"></div>
+          <div class="timeline-content"><div class="timeline-year">2012</div><h3 class="timeline-title">Founded in Paris</h3><p class="timeline-text">Élise opens her first boutique studio on Rue du Faubourg Saint-Honoré with three clients.</p></div>
+        </div>
+        <div class="timeline-item reveal delay-200" role="listitem" style="position:relative">
+          <div class="timeline-dot" style="position:absolute"></div>
+          <div class="timeline-content"><div class="timeline-year">2015</div><h3 class="timeline-title">Vogue Feature</h3><p class="timeline-text">Named "One of Europe's Most Influential Stylists" by Vogue Paris. Client roster triples.</p></div>
+        </div>
+        <div class="timeline-item reveal delay-300" role="listitem" style="position:relative">
+          <div class="timeline-dot" style="position:absolute"></div>
+          <div class="timeline-content"><div class="timeline-year">2018</div><h3 class="timeline-title">London Expansion</h3><p class="timeline-text">Opens flagship London studio in Mayfair, bringing the team to 8 expert stylists.</p></div>
+        </div>
+        <div class="timeline-item reveal delay-400" role="listitem" style="position:relative">
+          <div class="timeline-dot" style="position:absolute"></div>
+          <div class="timeline-content"><div class="timeline-year">2024</div><h3 class="timeline-title">Global Digital Platform</h3><p class="timeline-text">Launches virtual styling sessions, making expert image consulting accessible worldwide.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="container"><div class="footer-grid">
+    <div><div class="footer-brand-logo"><div class="footer-brand-logo-mark">É</div><div><div class="footer-brand-name">Élise Laurent</div><div class="footer-tagline">Image Consultant</div></div></div><p class="footer-description">Transforming wardrobes and elevating presence for discerning clients worldwide.</p><div class="footer-social"><a href="#" rel="noopener noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a><a href="#" rel="noopener noreferrer" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a></div></div>
+    <div><h3 class="footer-heading">Quick Links</h3><ul class="footer-links"><li><a href="index.html">Home</a></li><li><a href="services.html">Services</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="blog.html">Blog</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div><h3 class="footer-heading">Legal</h3><ul class="footer-links"><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms of Service</a></li><li><a href="404.html">404 Page</a></li><li><a href="coming-soon.html">Coming Soon</a></li></ul></div>
+    <div><h3 class="footer-heading">Newsletter</h3><p class="footer-newsletter-text">Weekly style tips and exclusive offers.</p><form class="footer-newsletter-form"><input type="email" placeholder="Your email" aria-label="Email" required/><button type="submit">Subscribe</button></form></div>
+  </div></div>
+  <div style="border-top:1px solid rgba(255,255,255,0.1)"><div class="container"><div class="footer-bottom"><p class="footer-bottom-text">© 2026 Élise Laurent. All rights reserved.</p><div class="footer-bottom-links"><a href="#">Privacy</a><a href="#">Terms</a></div></div></div></div>
+</footer>
+
+<script src="../assets/js/theme.js"></script><script src="../assets/js/rtl.js"></script><script src="../assets/js/navigation.js"></script><script src="../assets/js/counters.js"></script><script src="../assets/js/main.js"></script>
+</body>
+</html>

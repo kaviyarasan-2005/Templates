@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Page Not Found — Élise Laurent</title>
+  <meta name="description" content="Sorry, the page you're looking for doesn't exist. Return to Élise Laurent's homepage."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../assets/css/main.css"/><link rel="stylesheet" href="../assets/css/components.css"/>
+  <link rel="stylesheet" href="../assets/css/animations.css"/><link rel="stylesheet" href="../assets/css/dark-mode.css"/>
+  <link rel="stylesheet" href="../assets/css/rtl.css"/>
+  <style>
+    .error-page { min-height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; background: var(--bg-primary); text-align: center; padding: var(--space-4); }
+    .error-bg-num { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; pointer-events: none; font-family: var(--font-heading); font-size: clamp(12rem, 35vw, 28rem); font-weight: 900; color: transparent; -webkit-text-stroke: 1px var(--border-color); opacity: 0.4; user-select: none; line-height: 1; }
+    .error-content { position: relative; z-index: 1; max-width: 600px; }
+    .error-emoji { font-size: 4rem; margin-bottom: var(--space-3); display: block; animation: float 3s ease-in-out infinite; }
+    .error-title { font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: var(--space-2); }
+    .error-text { color: var(--text-muted); margin-bottom: var(--space-5); font-size: var(--text-lg); }
+    .error-links { display: flex; gap: var(--space-2); justify-content: center; flex-wrap: wrap; }
+    .error-suggestions { margin-top: var(--space-5); padding-top: var(--space-5); border-top: 1px solid var(--border-color); }
+    .error-suggestions-title { font-size: var(--text-sm); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: var(--space-3); }
+    .error-suggestion-links { display: flex; gap: var(--space-2); justify-content: center; flex-wrap: wrap; }
+    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
+  </style>
+</head>
+<body>
+<div class="nav-overlay" id="nav-overlay"></div>
+<header class="site-nav" id="site-nav">
+  <nav class="nav-container" aria-label="Main navigation">
+    <a href="index.html" class="nav-logo"><div class="nav-logo-mark">É</div><div class="nav-logo-text"><span class="nav-logo-name">Élise Laurent</span><span class="nav-logo-tagline">Image Consultant</span></div></a>
+    <ul class="nav-menu">
+      <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+      <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+      <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
+      <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="nav-action-btn" data-dir-toggle aria-label="Toggle direction"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></button>
+      <button class="nav-action-btn" data-theme-toggle aria-label="Toggle theme"><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/></svg><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg></button>
+      <a href="contact.html" class="btn btn-primary btn-sm">Book Now</a>
+      <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-drawer"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+</header>
+<aside class="nav-drawer" id="nav-drawer" role="dialog" aria-label="Mobile navigation">
+  <button class="drawer-close" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+  <a href="index.html" class="nav-logo" style="margin-bottom:var(--space-3)"><div class="nav-logo-mark">É</div><div class="nav-logo-text"><span class="nav-logo-name">Élise Laurent</span></div></a>
+  <nav class="drawer-nav">
+    <div class="drawer-nav-item"><a href="index.html" class="drawer-nav-link">Home</a></div>
+    <div class="drawer-nav-item"><a href="about.html" class="drawer-nav-link">About</a></div>
+    <div class="drawer-nav-item"><a href="services.html" class="drawer-nav-link">Services</a></div>
+    <div class="drawer-nav-item"><a href="contact.html" class="drawer-nav-link">Contact</a></div>
+  </nav>
+  <div style="display:flex;gap:8px;margin-top:auto;padding-top:var(--space-3)"><button class="nav-action-btn" data-dir-toggle style="flex:1;border-radius:8px;width:auto;height:40px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg></button><button class="nav-action-btn" data-theme-toggle style="flex:1;border-radius:8px;width:auto;height:40px"><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/></svg><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg></button><a href="contact.html" class="btn btn-primary" style="flex:2">Book Now</a></div>
+</aside>
+
+<main id="main-content">
+  <div class="error-page" aria-label="404 error page">
+    <div class="error-bg-num" aria-hidden="true">404</div>
+    <div class="error-content">
+      <span class="error-emoji" aria-hidden="true">👗</span>
+      <h1 class="error-title">This Page Got Lost in the Wardrobe</h1>
+      <p class="error-text">Even the most stylish wardrobes have missing pieces. The page you're looking for seems to have wandered off — but we'll help you find your way back.</p>
+      <div class="error-links">
+        <a href="index.html" class="btn btn-primary btn-lg" id="back-home-btn">Return to Homepage</a>
+        <a href="contact.html" class="btn btn-secondary btn-lg" id="get-help-btn">Get Help</a>
+      </div>
+      <div class="error-suggestions">
+        <p class="error-suggestions-title">Or explore these pages</p>
+        <div class="error-suggestion-links">
+          <a href="services.html" class="btn btn-ghost btn-sm">Services</a>
+          <a href="pricing.html" class="btn btn-ghost btn-sm">Pricing</a>
+          <a href="blog.html" class="btn btn-ghost btn-sm">Blog</a>
+          <a href="about.html" class="btn btn-ghost btn-sm">About Us</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+<script src="../assets/js/theme.js"></script><script src="../assets/js/rtl.js"></script><script src="../assets/js/navigation.js"></script>
+</body>
+</html>

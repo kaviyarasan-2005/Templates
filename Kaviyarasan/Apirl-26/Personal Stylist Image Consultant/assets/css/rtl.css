@@ -1,0 +1,220 @@
+/* ============================================================
+   RTL.CSS — Right-to-Left Layout Overrides
+   Applied when: [dir="rtl"] on <html>
+   ============================================================ */
+
+/* ============================================================
+   BASE DIRECTION
+   ============================================================ */
+[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+}
+
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+
+/* Logo stays same order — mark then text */
+[dir="rtl"] .nav-logo { flex-direction: row-reverse; }
+
+/* Hamburger strips */
+[dir="rtl"] .nav-hamburger span:nth-child(2) { margin-inline-start: auto; margin-inline-end: 0; }
+
+/* Desktop menu */
+[dir="rtl"] .nav-menu { flex-direction: row-reverse; }
+[dir="rtl"] .nav-actions { flex-direction: row-reverse; }
+
+/* Dropdown opens to the right of the item in RTL */
+[dir="rtl"] .nav-dropdown {
+  inset-inline-start: auto;
+  inset-inline-end: 50%;
+  transform: translateX(50%) translateY(-8px);
+}
+[dir="rtl"] .nav-item.open .nav-dropdown,
+[dir="rtl"] .nav-item:hover .nav-dropdown {
+  transform: translateX(50%) translateY(0);
+}
+
+/* Drawer comes from left in RTL */
+[dir="rtl"] .nav-drawer {
+  inset-inline-end: auto;
+  inset-inline-start: -100%;
+}
+[dir="rtl"] .nav-drawer.open { inset-inline-start: 0; }
+
+/* ============================================================
+   FOOTER LINKS — reverse hover direction
+   ============================================================ */
+[dir="rtl"] .footer-links a:hover { transform: translateX(-4px); }
+
+/* ============================================================
+   HERO
+   ============================================================ */
+[dir="rtl"] .hero-content { text-align: right; }
+[dir="rtl"] .hero-cta { flex-direction: row-reverse; justify-content: flex-end; }
+[dir="rtl"] .hero-subtitle { margin-inline-start: auto; margin-inline-end: 0; }
+
+/* ============================================================
+   SECTION HEADER
+   ============================================================ */
+[dir="rtl"] .section-header { text-align: right; }
+[dir="rtl"] .section-header.text-center { text-align: center; }
+[dir="rtl"] .divider-left { margin-inline-start: auto; margin-inline-end: 0; }
+
+/* ============================================================
+   CARDS
+   ============================================================ */
+[dir="rtl"] .blog-card-meta { flex-direction: row-reverse; justify-content: flex-end; }
+[dir="rtl"] .blog-card-author { flex-direction: row-reverse; }
+[dir="rtl"] .testimonial-author { flex-direction: row-reverse; }
+
+/* ============================================================
+   FORMS
+   ============================================================ */
+[dir="rtl"] .form-floating label { inset-inline-start: auto; inset-inline-end: 1.25em; }
+[dir="rtl"] .search-bar svg { inset-inline-start: auto; inset-inline-end: 1em; }
+[dir="rtl"] .search-bar input { padding-inline: 2.75em 1em; }
+[dir="rtl"] .password-toggle { inset-inline-end: auto; inset-inline-start: 1em; }
+[dir="rtl"] .form-password .form-control { padding-inline-end: 1.25em; padding-inline-start: 3em; }
+[dir="rtl"] .form-check { flex-direction: row-reverse; }
+
+/* ============================================================
+   BREADCRUMBS
+   ============================================================ */
+[dir="rtl"] .breadcrumb { flex-direction: row-reverse; }
+[dir="rtl"] .breadcrumb-separator svg { transform: rotate(180deg); }
+
+/* ============================================================
+   ACCORDION
+   ============================================================ */
+[dir="rtl"] .accordion-header { flex-direction: row-reverse; }
+
+/* ============================================================
+   TABS
+   ============================================================ */
+[dir="rtl"] .tabs-nav { flex-direction: row-reverse; }
+
+/* ============================================================
+   FILTER PILLS
+   ============================================================ */
+[dir="rtl"] .filter-pills { flex-direction: row-reverse; justify-content: flex-end; }
+
+/* ============================================================
+   DASHBOARD — Sidebar moves to RIGHT in RTL
+   ============================================================ */
+[dir="rtl"] .dashboard-layout { flex-direction: row-reverse; }
+[dir="rtl"] .dashboard-sidebar {
+  border-inline-end: none;
+  border-inline-start: 1px solid var(--border-color);
+}
+
+/* Sidebar nav links — icon before text */
+[dir="rtl"] .sidebar-nav-link { flex-direction: row-reverse; }
+[dir="rtl"] .sidebar-nav-link .nav-badge { margin-inline-start: 0; margin-inline-end: auto; }
+
+/* ============================================================
+   DIRECTIONAL ICONS — flip arrows/chevrons in RTL
+   ============================================================ */
+[dir="rtl"] .icon-arrow-right,
+[dir="rtl"] .icon-chevron-right,
+[dir="rtl"] .icon-arrow-left,
+[dir="rtl"] .icon-chevron-left {
+  transform: scaleX(-1);
+}
+
+/* Footer links arrow */
+[dir="rtl"] .footer-links a svg { transform: scaleX(-1); }
+
+/* Progress bar: same direction (reading progress is visual only) */
+[dir="rtl"] .progress-bar { left: auto; right: 0; }
+
+/* ============================================================
+   TIMELINE
+   ============================================================ */
+[dir="rtl"] .timeline-item:nth-child(odd) .timeline-content {
+  margin-inline-start: auto;
+  margin-inline-end: 0;
+  text-align: right;
+}
+[dir="rtl"] .timeline-item:nth-child(even) .timeline-content {
+  margin-inline-end: auto;
+  margin-inline-start: 0;
+  text-align: left;
+}
+
+/* ============================================================
+   BLOG SIDEBAR
+   ============================================================ */
+[dir="rtl"] .blog-layout { flex-direction: row-reverse; }
+[dir="rtl"] .blog-sidebar { border-inline-start: none; border-inline-end: 1px solid var(--border-color); }
+
+/* ============================================================
+   TOAST — appears from left side in RTL
+   ============================================================ */
+[dir="rtl"] .toast-container {
+  inset-inline-end: auto;
+  inset-inline-start: var(--space-3);
+}
+[dir="rtl"] .toast { flex-direction: row-reverse; }
+
+/* ============================================================
+   STAT ITEMS
+   ============================================================ */
+[dir="rtl"] .stats-grid { direction: rtl; }
+
+/* ============================================================
+   AUTH PAGES — mirror split layout
+   ============================================================ */
+[dir="rtl"] .auth-layout { flex-direction: row-reverse; }
+
+/* ============================================================
+   SERVICE DETAIL LAYOUT
+   ============================================================ */
+[dir="rtl"] .service-detail-layout { flex-direction: row-reverse; }
+[dir="rtl"] .service-sidebar { border-inline-end: none; border-inline-start: 1px solid var(--border-color); }
+
+/* ============================================================
+   PRICING FEATURES
+   ============================================================ */
+[dir="rtl"] .pricing-feature { flex-direction: row-reverse; }
+[dir="rtl"] .pricing-features { text-align: right; }
+
+/* ============================================================
+   HERO SCROLL INDICATOR
+   ============================================================ */
+[dir="rtl"] .hero-scroll-indicator { left: auto; right: 50%; transform: translateX(50%); }
+
+/* ============================================================
+   TEAM SOCIAL
+   ============================================================ */
+[dir="rtl"] .team-social { flex-direction: row-reverse; }
+
+/* ============================================================
+   BEFORE/AFTER SLIDER
+   ============================================================ */
+[dir="rtl"] .before-label { inset-inline-start: auto; inset-inline-end: var(--space-2); }
+[dir="rtl"] .after-label { inset-inline-end: auto; inset-inline-start: var(--space-2); }
+
+/* ============================================================
+   NAV DROPDOWN LINK ICONS
+   ============================================================ */
+[dir="rtl"] .nav-dropdown a { flex-direction: row-reverse; }
+
+/* ============================================================
+   MESSAGE / CHAT LAYOUT
+   ============================================================ */
+[dir="rtl"] .chat-message.sent { flex-direction: row-reverse; }
+[dir="rtl"] .chat-message.sent .chat-bubble { border-radius: var(--radius-xl) var(--radius-sm) var(--radius-xl) var(--radius-xl); }
+
+/* ============================================================
+   ARABIC / HEBREW FONT FALLBACKS
+   ============================================================ */
+[dir="rtl"] body {
+  font-family: 'Cairo', 'Tajawal', 'Inter', -apple-system, sans-serif;
+}
+[dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3,
+[dir="rtl"] h4, [dir="rtl"] h5, [dir="rtl"] h6 {
+  font-family: 'Amiri', 'Playfair Display', Georgia, serif;
+  font-weight: 700;
+}

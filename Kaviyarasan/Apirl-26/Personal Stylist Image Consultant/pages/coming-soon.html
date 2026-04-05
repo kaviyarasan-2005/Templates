@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Something Exciting Is Coming — Élise Laurent</title>
+  <meta name="description" content="A new service from Élise Laurent Image Consulting is launching soon. Sign up to be the first to know."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../assets/css/main.css"/>
+  <link rel="stylesheet" href="../assets/css/dark-mode.css"/>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body { font-family: var(--font-body); overflow-x: hidden; }
+    .coming-page {
+      min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center;
+      position: relative; overflow: hidden; text-align: center; padding: var(--space-5) var(--space-4);
+      background: linear-gradient(135deg, #0f0705 0%, #2a1209 40%, #4e2d19 70%, #6d4c41 100%);
+    }
+    /* Particle dots */
+    .particle { position: absolute; border-radius: 50%; animation: floatPart linear infinite; pointer-events: none; }
+    @keyframes floatPart { 0%{transform:translateY(100vh) scale(0);opacity:0} 10%{opacity:1} 90%{opacity:0.3} 100%{transform:translateY(-20px) scale(1);opacity:0} }
+
+    /* Grid overlay */
+    .grid-overlay {
+      position: absolute; inset: 0; pointer-events: none; z-index: 0;
+      background-image: linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),
+                        linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    /* Content */
+    .coming-content { position: relative; z-index: 1; max-width: 800px; }
+
+    /* Logo */
+    .coming-logo { display: flex; align-items: center; justify-content: center; gap: var(--space-2); margin-bottom: var(--space-5); }
+    .coming-logo-mark { width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, var(--color-brown), var(--color-nude)); display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-style: italic; font-size: 1.75rem; color: white; }
+    .coming-logo-text { font-family: var(--font-heading); font-size: var(--text-2xl); color: white; letter-spacing: -0.02em; }
+
+    /* Tag */
+    .coming-tag { display: inline-block; font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: 0.2em; color: var(--color-blush); padding: 6px 16px; border: 1px solid rgba(232,207,197,0.3); border-radius: var(--radius-full); margin-bottom: var(--space-4); }
+
+    /* Heading */
+    .coming-heading { font-family: var(--font-heading); font-size: clamp(2.5rem, 7vw, 6rem); font-weight: 400; color: white; line-height: 1.1; margin-bottom: var(--space-3); }
+    .coming-heading em { color: var(--color-blush); font-style: italic; }
+
+    .coming-subtext { font-size: var(--text-xl); color: rgba(255,255,255,0.6); max-width: 540px; margin: 0 auto var(--space-6); }
+
+    /* Countdown */
+    .countdown-row { display: flex; align-items: flex-start; justify-content: center; gap: var(--space-4); flex-wrap: wrap; margin-bottom: var(--space-7); }
+    .count-item { min-width: 80px; }
+    .count-num { display: block; font-family: var(--font-heading); font-size: clamp(3rem, 8vw, 5.5rem); font-weight: 700; color: white; line-height: 1; }
+    .count-label { font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.15em; color: rgba(255,255,255,0.4); margin-top: 8px; }
+    .count-sep { font-family: var(--font-heading); font-size: clamp(2rem, 5vw, 4rem); color: rgba(255,255,255,0.2); padding-top: 4px; }
+
+    /* Email Form */
+    .coming-form { display: flex; gap: 0; max-width: 480px; margin: 0 auto var(--space-5); background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: var(--radius-full); padding: 4px; backdrop-filter: blur(12px); }
+    .coming-form input { flex: 1; background: none; border: none; padding: 0.9em 1.2em; font-size: var(--text-sm); color: white; outline: none; }
+    .coming-form input::placeholder { color: rgba(255,255,255,0.4); }
+    .coming-form button { background: linear-gradient(135deg, var(--color-brown), var(--color-nude)); color: white; border: none; border-radius: var(--radius-full); padding: 0.9em 1.8em; font-size: var(--text-sm); font-weight: 600; cursor: pointer; white-space: nowrap; transition: all var(--transition-fast); }
+    .coming-form button:hover { opacity: 0.9; transform: scale(1.02); }
+    .coming-success { display: none; align-items: center; gap: 8px; color: rgba(255,255,255,0.75); font-size: var(--text-sm); justify-content: center; }
+    .coming-success svg { width: 18px; height: 18px; stroke: var(--color-success); }
+
+    /* Social */
+    .coming-social { display: flex; gap: var(--space-2); justify-content: center; }
+    .coming-social a { width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.5); transition: all var(--transition-fast); }
+    .coming-social a:hover { border-color: var(--color-blush); color: var(--color-blush); transform: translateY(-2px); }
+    .coming-social a svg { width: 18px; height: 18px; }
+
+    /* Back link */
+    .coming-back { position: absolute; top: var(--space-3); left: var(--space-4); color: rgba(255,255,255,0.4); font-size: var(--text-sm); text-decoration: none; display: flex; align-items: center; gap: 6px; transition: color var(--transition-fast); }
+    .coming-back:hover { color: var(--color-blush); }
+
+    /* Theme toggle */
+    .coming-theme { position: absolute; top: var(--space-3); right: var(--space-4); display: flex; gap: 8px; }
+  </style>
+</head>
+<body>
+<div class="coming-page" id="coming-page" role="main">
+  <div class="grid-overlay" aria-hidden="true"></div>
+
+  <!-- Particles generated by JS -->
+  <div id="particles" aria-hidden="true"></div>
+
+  <!-- Back link -->
+  <a href="index.html" class="coming-back" aria-label="Return to homepage">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px"><polyline points="15 18 9 12 15 6"/></svg>
+    Back to Site
+  </a>
+
+  <!-- Theme toggle -->
+  <div class="coming-theme">
+    <button class="nav-action-btn" data-dir-toggle aria-label="Toggle direction" style="background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.2);color:rgba(255,255,255,0.7)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></button>
+    <button class="nav-action-btn" data-theme-toggle aria-label="Toggle theme" style="background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.2);color:rgba(255,255,255,0.7)"><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/></svg><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg></button>
+  </div>
+
+  <!-- Content -->
+  <div class="coming-content">
+    <!-- Logo -->
+    <div class="coming-logo">
+      <div class="coming-logo-mark">É</div>
+      <span class="coming-logo-text">Élise Laurent</span>
+    </div>
+
+    <span class="coming-tag">✦ Something Exciting Is Coming</span>
+
+    <h1 class="coming-heading">Virtual Styling<br><em>Reimagined</em></h1>
+    <p class="coming-subtext">Our brand-new virtual styling platform is launching soon. Access world-class image consulting from anywhere in the world.</p>
+
+    <!-- Countdown -->
+    <div class="countdown-row" role="timer" aria-label="Time until launch" aria-live="polite">
+      <div class="count-item"><span class="count-num" id="count-days">28</span><span class="count-label">Days</span></div>
+      <span class="count-sep">:</span>
+      <div class="count-item"><span class="count-num" id="count-hours">14</span><span class="count-label">Hours</span></div>
+      <span class="count-sep">:</span>
+      <div class="count-item"><span class="count-num" id="count-mins">32</span><span class="count-label">Minutes</span></div>
+      <span class="count-sep">:</span>
+      <div class="count-item"><span class="count-num" id="count-secs">00</span><span class="count-label">Seconds</span></div>
+    </div>
+
+    <!-- Email Form -->
+    <form class="coming-form" id="coming-form" aria-label="Notify me form" novalidate>
+      <input type="email" placeholder="Enter your email to be notified" aria-label="Email address" required/>
+      <button type="submit">Notify Me</button>
+    </form>
+    <div class="coming-success" id="coming-success">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+      You're on the list! We'll be in touch.
+    </div>
+
+    <!-- Social -->
+    <div class="coming-social" aria-label="Follow us on social media">
+      <a href="#" rel="noopener noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+      <a href="#" rel="noopener noreferrer" aria-label="Pinterest"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.24 2.65 7.86 6.39 9.29-.09-.78-.17-1.98.03-2.83l1.27-5.38s-.32-.65-.32-1.61c0-1.51.88-2.64 1.97-2.64.93 0 1.38.7 1.38 1.54 0 .94-.6 2.34-.91 3.64-.26 1.09.54 1.97 1.61 1.97 1.93 0 3.22-2.47 3.22-5.39 0-2.24-1.52-3.8-3.69-3.8-2.51 0-3.99 1.88-3.99 3.83 0 .76.29 1.57.66 2.01.07.09.08.17.06.26l-.25 1c-.08.31-.27.38-.62.23-1.73-.81-2.81-3.35-2.81-5.4 0-3.13 2.28-6.01 6.58-6.01 3.45 0 6.14 2.46 6.14 5.75 0 3.43-2.16 6.19-5.17 6.19-1.01 0-1.96-.52-2.28-1.15l-.62 2.31c-.22.86-.83 1.94-1.24 2.59.93.29 1.92.45 2.95.45 5.52 0 10-4.48 10-10S17.52 2 12 2z"/></svg></a>
+      <a href="#" rel="noopener noreferrer" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+    </div>
+  </div>
+</div>
+
+<script src="../assets/js/theme.js"></script><script src="../assets/js/rtl.js"></script>
+<script>
+  // Countdown timer
+  const launchDate = new Date();
+  launchDate.setDate(launchDate.getDate() + 28);
+  launchDate.setHours(launchDate.getHours() + 14);
+  function updateCountdown() {
+    const diff = launchDate - new Date();
+    if (diff <= 0) return;
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    document.getElementById('count-days').textContent = String(d).padStart(2,'0');
+    document.getElementById('count-hours').textContent = String(h).padStart(2,'0');
+    document.getElementById('count-mins').textContent = String(m).padStart(2,'0');
+    document.getElementById('count-secs').textContent = String(s).padStart(2,'0');
+  }
+  updateCountdown(); setInterval(updateCountdown, 1000);
+
+  // Form submit
+  document.getElementById('coming-form')?.addEventListener('submit', function(e) {
+    e.preventDefault();
+    this.style.display = 'none';
+    document.getElementById('coming-success').style.display = 'flex';
+  });
+
+  // Generate particles
+  const container = document.getElementById('particles');
+  for (let i = 0; i < 25; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    const size = Math.random() * 6 + 3;
+    p.style.cssText = `width:${size}px;height:${size}px;left:${Math.random()*100}%;background:rgba(232,207,197,${Math.random()*0.4+0.1});animation-duration:${Math.random()*15+8}s;animation-delay:${Math.random()*10}s`;
+    container.appendChild(p);
+  }
+</script>
+</body>
+</html>

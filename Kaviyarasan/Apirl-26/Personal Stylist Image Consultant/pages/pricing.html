@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pricing — Élise Laurent Image Consulting</title>
+  <meta name="description" content="Transparent, flexible pricing for all our personal styling and image consulting services. Choose the package that fits your needs."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../assets/css/main.css"/><link rel="stylesheet" href="../assets/css/components.css"/>
+  <link rel="stylesheet" href="../assets/css/animations.css"/><link rel="stylesheet" href="../assets/css/dark-mode.css"/>
+  <link rel="stylesheet" href="../assets/css/rtl.css"/><link rel="stylesheet" href="../assets/css/style.css"/>
+  <style>
+    .pricing-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: var(--space-3); align-items: start; }
+    .guarantee-badge { display: flex; align-items: center; gap: var(--space-2); background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: var(--radius-xl); padding: var(--space-3) var(--space-4); max-width: 600px; margin: var(--space-5) auto 0; }
+    .guarantee-icon { width: 56px; height: 56px; background: rgba(76,175,80,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; animation: pulseGlow 2s ease-in-out infinite; }
+    .guarantee-icon svg { width: 28px; height: 28px; stroke: var(--color-success); }
+    @media(max-width:968px){ .pricing-grid{grid-template-columns:1fr;max-width:480px;margin:0 auto;} }
+  </style>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"PriceSpecification","price":"299","priceCurrency":"USD","description":"Personal Styling Services"}</script>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+<header class="site-nav" id="site-nav">
+  <nav class="nav-container" aria-label="Main navigation">
+    <a href="index.html" class="nav-logo"><div class="nav-logo-mark">É</div><div class="nav-logo-text"><span class="nav-logo-name">Élise Laurent</span><span class="nav-logo-tagline">Image Consultant</span></div></a>
+    <ul class="nav-menu">
+      <li class="nav-item"><button class="nav-link">Home <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="nav-dropdown"><a href="index.html">General Services</a><a href="home-2.html">Niche Specialist</a></div></li>
+      <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+      <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
+      <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+      <li class="nav-item"><a href="pricing.html" class="nav-link active">Pricing</a></li>
+      <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+      <li class="nav-item"><button class="nav-link">Dashboard <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="nav-dropdown"><a href="dashboard-admin.html">Admin Dashboard</a><a href="dashboard-user.html">User Dashboard</a></div></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="nav-action-btn" data-dir-toggle aria-label="Toggle direction"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></button>
+      <button class="nav-action-btn" data-theme-toggle aria-label="Toggle theme"><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/></svg><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg></button>
+      <a href="contact.html" class="btn btn-primary btn-sm">Book Now</a>
+      <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-drawer"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+</header>
+<div class="nav-overlay" id="nav-overlay"></div>
+<aside class="nav-drawer" id="nav-drawer" role="dialog" aria-label="Mobile navigation">
+  <button class="drawer-close" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+  <a href="index.html" class="nav-logo" style="margin-bottom:var(--space-3)"><div class="nav-logo-mark">É</div><div class="nav-logo-text"><span class="nav-logo-name">Élise Laurent</span></div></a>
+  <nav class="drawer-nav">
+    <div class="drawer-nav-item"><div class="drawer-nav-link" tabindex="0">Home <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div><div class="drawer-sub"><a href="index.html">General Services</a><a href="home-2.html">Niche Specialist</a></div></div>
+    <div class="drawer-nav-item"><a href="about.html" class="drawer-nav-link">About</a></div>
+    <div class="drawer-nav-item"><a href="services.html" class="drawer-nav-link">Services</a></div>
+    <div class="drawer-nav-item"><a href="pricing.html" class="drawer-nav-link">Pricing</a></div>
+    <div class="drawer-nav-item"><a href="contact.html" class="drawer-nav-link">Contact</a></div>
+  </nav>
+  <div style="display:flex;gap:8px;margin-top:auto;padding-top:var(--space-3)"><button class="nav-action-btn" data-dir-toggle style="flex:1;border-radius:8px;width:auto;height:40px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg></button><button class="nav-action-btn" data-theme-toggle style="flex:1;border-radius:8px;width:auto;height:40px"><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/></svg><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg></button><a href="contact.html" class="btn btn-primary" style="flex:2">Book Now</a></div>
+</aside>
+
+<main id="main-content">
+  <section class="page-hero" aria-label="Pricing hero">
+    <div class="container page-hero-content">
+      <span class="page-hero-tag">Investment in You</span>
+      <h1 class="page-hero-title">Transparent Pricing</h1>
+      <p class="page-hero-text">No hidden fees. No surprises. Just clear, fair pricing for world-class image consulting.</p>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="pricing-plans-heading">
+    <div class="container">
+      <!-- Toggle -->
+      <div class="pricing-toggle-wrap reveal" role="group" aria-label="Billing frequency">
+        <span class="pricing-toggle-label" id="label-sessions">Per Session</span>
+        <button class="toggle-switch" id="pricing-toggle" aria-label="Toggle between per-session and package pricing" aria-pressed="false"></button>
+        <span class="pricing-toggle-label" id="label-package">Package <span class="pricing-save-badge">Save 20%</span></span>
+      </div>
+
+      <h2 class="sr-only" id="pricing-plans-heading">Pricing Plans</h2>
+
+      <!-- Session Pricing -->
+      <div id="pricing-sessions" class="pricing-grid reveal">
+        <div class="pricing-card">
+          <p class="pricing-plan">Essential</p>
+          <div class="pricing-price"><sup>$</sup>149</div>
+          <p class="pricing-period">per session</p>
+          <ul class="pricing-features">
+            <li class="pricing-feature included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>60-min style consultation</li>
+            <li class="pricing-feature included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Style profile document</li>
+            <li class="pricing-feature included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Colour palette guide</li>
+            <li class="pricing-feature excluded"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Shopping session</li>
+            <li class="pricing-feature excluded"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Follow-up call</li>
+          </ul>
+          <a href="contact.html" class="btn btn-secondary btn-block">Get Started</a>
+        </div>
+        <div class="pricing-card featured">
+          <span class="pricing-badge">Most Popular</span>
+          <p class="pricing-plan">Premium</p>
+          <div class="pricing-price"><sup>$</sup>499</div>
+          <p class="pricing-period">per session</p>
+          <ul class="pricing-features">
+            <li class="pricing-feature included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>4-hour full-service session</li>
+            <li class="pricing-feature included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Wardrobe audit</li>
+            <li class="pricing-feature included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Shopping accompaniment</li>
+            <li class="pricing-feature included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>PDF style guide</li>
+            <li class="pricing-feature excluded"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Ongoing support</li>
+          </ul>
+          <a href="contact.html" class="btn btn-primary btn-block">Book Now</a>
+        </div>
+        <div class="pricing-card">
+          <p class="pricing-plan">VIP Deluxe</p>
+          <div class="pricing-price"><sup>$</sup>899</div>
+          <p class="pricing-period">per session</p>
+          <ul class="pricing-features">
+            <li class="pricing-feature included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Full day (6+ hours)</li>
+            <li class="pricing-feature included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Complete wardrobe overhaul</li>
+            <li class="pricing-feature included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Unlimited store visits</li>
+            <li class="pricing-feature included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>30-day email support</li>
+            <li class="pricing-feature included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Monthly style check-in</li>
+          </ul>
+          <a href="contact.html" class="btn btn-secondary btn-block">Book VIP</a>
+        </div>
+      </div>
+
+      <!-- Package Pricing (hidden initially) -->
+      <div id="pricing-packages" class="pricing-grid" style="display:none">
+        <div class="pricing-card">
+          <p class="pricing-plan">Starter Pack</p>
+          <div class="pricing-price"><sup>$</sup>449</div>
+          <p class="pricing-period">3-session bundle</p>
+          <ul class="pricing-features">
+            <li class="pricing-feature included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>3 × Essential sessions</li>
+            <li class="pricing-feature included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Style evolution tracking</li>
+            <li class="pricing-feature included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Save $48 vs per session</li>
+          </ul>
+          <a href="contact.html" class="btn btn-secondary btn-block">Get Bundle</a>
+        </div>
+        <div class="pricing-card featured">
+          <span class="pricing-badge">Best Value</span>
+          <p class="pricing-plan">Transformation</p>
+          <div class="pricing-price"><sup>$</sup>1,199</div>
+          <p class="pricing-period">complete package</p>
+          <ul class="pricing-features">
+            <li class="pricing-feature included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>3 × Premium sessions</li>
+            <li class="pricing-feature included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Priority booking</li>
+            <li class="pricing-feature included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Save $298</li>
+          </ul>
+          <a href="contact.html" class="btn btn-primary btn-block">Book Package</a>
+        </div>
+        <div class="pricing-card">
+          <p class="pricing-plan">Annual VIP</p>
+          <div class="pricing-price"><sup>$</sup>7,999</div>
+          <p class="pricing-period">annual retainer</p>
+          <ul class="pricing-features">
+            <li class="pricing-feature included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Unlimited consultations</li>
+            <li class="pricing-feature included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Event & travel styling</li>
+            <li class="pricing-feature included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>24/7 WhatsApp access</li>
+          </ul>
+          <a href="contact.html" class="btn btn-secondary btn-block">Apply Now</a>
+        </div>
+      </div>
+
+      <!-- Guarantee Badge -->
+      <div class="guarantee-badge reveal">
+        <div class="guarantee-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div><strong style="display:block;font-size:var(--text-base);margin-bottom:4px">Satisfaction Guaranteed</strong><p style="font-size:var(--text-sm);color:var(--text-muted);margin:0">If after your first session you don't feel the value, we'll issue a full refund — no questions asked.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" style="background:var(--bg-secondary)" aria-labelledby="pricing-faq-heading">
+    <div class="container" style="max-width:800px">
+      <div class="section-header">
+        <span class="section-tag reveal">Common Questions</span>
+        <h2 class="section-title reveal delay-100" id="pricing-faq-heading">Pricing FAQs</h2>
+      </div>
+      <div class="accordion reveal">
+        <div class="accordion-item active"><button class="accordion-header">Are sessions available virtually?<span class="accordion-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="accordion-body"><p class="accordion-content">Yes. We offer full virtual consultations via video call. Virtual sessions are available at the same price points and include digital style guides and curated online shopping edits.</p></div></div>
+        <div class="accordion-item"><button class="accordion-header">Is there a deposit required to book?<span class="accordion-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="accordion-body"><p class="accordion-content">We require a 50% deposit to secure your booking. The remaining balance is due on the day of your session. We accept all major cards and bank transfers.</p></div></div>
+        <div class="accordion-item"><button class="accordion-header">Can I cancel or reschedule?<span class="accordion-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="accordion-body"><p class="accordion-content">Absolutely. We ask for 48 hours' notice for rescheduling. Cancellations within 24 hours of the session forfeit the deposit. We understand life happens and are always happy to work with you.</p></div></div>
+        <div class="accordion-item"><button class="accordion-header">Are shopping costs included in the price?<span class="accordion-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="accordion-body"><p class="accordion-content">No. Our service fee covers the stylist's time and expertise only. Any items purchased during a shopping session are paid for directly by the client. We help you stay within your stated budget.</p></div></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="container"><div class="footer-grid">
+    <div><div class="footer-brand-logo"><div class="footer-brand-logo-mark">É</div><div><div class="footer-brand-name">Élise Laurent</div></div></div><p class="footer-description">Transforming wardrobes and elevating presence worldwide.</p></div>
+    <div><h3 class="footer-heading">Quick Links</h3><ul class="footer-links"><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="services.html">Services</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div><h3 class="footer-heading">Legal</h3><ul class="footer-links"><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms of Service</a></li><li><a href="404.html">404</a></li><li><a href="coming-soon.html">Coming Soon</a></li></ul></div>
+    <div><h3 class="footer-heading">Newsletter</h3><p class="footer-newsletter-text">Weekly style tips.</p><form class="footer-newsletter-form"><input type="email" placeholder="Your email" aria-label="Email" required/><button type="submit">Subscribe</button></form></div>
+  </div></div>
+  <div style="border-top:1px solid rgba(255,255,255,0.1)"><div class="container"><div class="footer-bottom"><p class="footer-bottom-text">© 2026 Élise Laurent. All rights reserved.</p></div></div></div>
+</footer>
+<script src="../assets/js/theme.js"></script><script src="../assets/js/rtl.js"></script><script src="../assets/js/navigation.js"></script><script src="../assets/js/main.js"></script>
+<script>
+  const toggle = document.getElementById('pricing-toggle');
+  const sessions = document.getElementById('pricing-sessions');
+  const packages = document.getElementById('pricing-packages');
+  let isPackage = false;
+  toggle?.addEventListener('click', () => {
+    isPackage = !isPackage;
+    toggle.classList.toggle('active', isPackage);
+    toggle.setAttribute('aria-pressed', isPackage);
+    sessions.style.display = isPackage ? 'none' : 'grid';
+    packages.style.display = isPackage ? 'grid' : 'none';
+  });
+</script>
+</body>
+</html>

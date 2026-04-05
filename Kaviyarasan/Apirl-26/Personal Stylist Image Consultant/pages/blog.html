@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Style Blog — Élise Laurent Image Consulting</title>
+  <meta name="description" content="Style tips, trend reports, and expert image consulting advice from the Élise Laurent team."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../assets/css/main.css"/><link rel="stylesheet" href="../assets/css/components.css"/>
+  <link rel="stylesheet" href="../assets/css/animations.css"/><link rel="stylesheet" href="../assets/css/dark-mode.css"/>
+  <link rel="stylesheet" href="../assets/css/rtl.css"/><link rel="stylesheet" href="../assets/css/style.css"/>
+  <style>
+    .blog-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: var(--space-3); }
+    .blog-featured { grid-column: 1 / -1; }
+    .blog-featured .blog-card { display: grid; grid-template-columns: 1fr 1fr; }
+    .blog-featured .blog-card-img { aspect-ratio: unset; min-height: 300px; }
+    #no-results { text-align:center; padding:var(--space-6) 0; display:none; }
+    @media(max-width:1024px){ .blog-grid{grid-template-columns:repeat(2,1fr);} .blog-featured .blog-card{grid-template-columns:1fr;} .blog-featured{grid-column:auto;} }
+    @media(max-width:640px){ .blog-grid{grid-template-columns:1fr;} }
+  </style>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Blog","name":"Élise Laurent Style Blog","description":"Style tips, trend reports, and expert image consulting advice"}</script>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+<header class="site-nav" id="site-nav">
+  <nav class="nav-container" aria-label="Main navigation">
+    <a href="index.html" class="nav-logo"><div class="nav-logo-mark">É</div><div class="nav-logo-text"><span class="nav-logo-name">Élise Laurent</span><span class="nav-logo-tagline">Image Consultant</span></div></a>
+    <ul class="nav-menu">
+      <li class="nav-item"><button class="nav-link">Home <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="nav-dropdown"><a href="index.html">General Services</a><a href="home-2.html">Niche Specialist</a></div></li>
+      <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+      <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
+      <li class="nav-item"><a href="blog.html" class="nav-link active">Blog</a></li>
+      <li class="nav-item"><a href="pricing.html" class="nav-link">Pricing</a></li>
+      <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+      <li class="nav-item"><button class="nav-link">Dashboard <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="nav-dropdown"><a href="dashboard-admin.html">Admin Dashboard</a><a href="dashboard-user.html">User Dashboard</a></div></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="nav-action-btn" data-dir-toggle aria-label="Toggle direction"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></button>
+      <button class="nav-action-btn" data-theme-toggle aria-label="Toggle theme"><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/></svg><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg></button>
+      <a href="contact.html" class="btn btn-primary btn-sm">Book Now</a>
+      <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-drawer"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+</header>
+<div class="nav-overlay" id="nav-overlay"></div>
+<aside class="nav-drawer" id="nav-drawer" role="dialog" aria-label="Mobile navigation">
+  <button class="drawer-close" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+  <a href="index.html" class="nav-logo" style="margin-bottom:var(--space-3)"><div class="nav-logo-mark">É</div><div class="nav-logo-text"><span class="nav-logo-name">Élise Laurent</span></div></a>
+  <nav class="drawer-nav">
+    <div class="drawer-nav-item"><div class="drawer-nav-link" tabindex="0">Home <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div><div class="drawer-sub"><a href="index.html">General Services</a><a href="home-2.html">Niche Specialist</a></div></div>
+    <div class="drawer-nav-item"><a href="about.html" class="drawer-nav-link">About</a></div>
+    <div class="drawer-nav-item"><a href="services.html" class="drawer-nav-link">Services</a></div>
+    <div class="drawer-nav-item"><a href="blog.html" class="drawer-nav-link">Blog</a></div>
+    <div class="drawer-nav-item"><a href="pricing.html" class="drawer-nav-link">Pricing</a></div>
+    <div class="drawer-nav-item"><a href="contact.html" class="drawer-nav-link">Contact</a></div>
+    <div class="drawer-nav-item"><div class="drawer-nav-link" tabindex="0">Dashboard <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div><div class="drawer-sub"><a href="dashboard-admin.html">Admin Dashboard</a><a href="dashboard-user.html">User Dashboard</a></div></div>
+  </nav>
+  <div style="display:flex;gap:8px;margin-top:auto;padding-top:var(--space-3)"><button class="nav-action-btn" data-dir-toggle style="flex:1;border-radius:8px;width:auto;height:40px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg></button><button class="nav-action-btn" data-theme-toggle style="flex:1;border-radius:8px;width:auto;height:40px"><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/></svg><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg></button><a href="contact.html" class="btn btn-primary" style="flex:2">Book Now</a></div>
+</aside>
+
+<main id="main-content">
+  <section class="page-hero" aria-label="Blog hero">
+    <div class="container page-hero-content">
+      <span class="page-hero-tag">Our Journal</span>
+      <h1 class="page-hero-title">The Style Edit</h1>
+      <p class="page-hero-text">Expert insights on fashion, personal style, colour theory, and image consulting — curated by our team of specialists.</p>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="blog-list-heading">
+    <div class="container">
+      <!-- Search + Filter -->
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:var(--space-3);margin-bottom:var(--space-4)" class="reveal">
+        <h2 class="sr-only" id="blog-list-heading">Blog Articles</h2>
+        <div class="filter-pills" aria-label="Filter by category">
+          <button class="filter-pill active" data-filter="all">All Posts</button>
+          <button class="filter-pill" data-filter="style-tips">Style Tips</button>
+          <button class="filter-pill" data-filter="trends">Trends</button>
+          <button class="filter-pill" data-filter="case-studies">Case Studies</button>
+          <button class="filter-pill" data-filter="color">Color Theory</button>
+        </div>
+        <div class="search-bar" style="max-width:280px;width:100%">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="search" id="blog-search" placeholder="Search articles…" aria-label="Search articles"/>
+        </div>
+      </div>
+
+      <div class="blog-grid" id="blog-grid">
+        <!-- Featured Article -->
+        <div class="blog-featured" data-filter-target data-category="trends">
+          <a href="blog-detail.html" class="blog-card" style="text-decoration:none">
+            <div class="blog-card-img" style="aspect-ratio:unset;min-height:340px"><img src="../assets/images/blog/blog-featured.png" alt="2026 fashion trends for image-conscious professionals" loading="eager" width="800" height="450" style="width:100%;height:100%;object-fit:cover"/></div>
+            <div class="blog-card-body">
+              <div class="blog-card-meta"><span class="blog-card-category">Trends</span><span class="blog-card-date"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>April 1, 2026</span><span class="blog-card-readtime"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>8 min read</span></div>
+              <h2 class="blog-card-title" style="font-size:var(--text-2xl)">The 2026 Power Dressing Revolution: How Executive Style Is Evolving</h2>
+              <p class="blog-card-excerpt">The power suit has been reimagined. We unpack the pivotal shift from rigid corporate dressing to a new era of authoritative elegance that empowers without constraining.</p>
+              <div class="blog-card-author"><img src="../assets/images/team/avatar-author.png" alt="Élise Laurent" width="36" height="36" loading="lazy"/><div class="blog-card-author-info"><span class="blog-card-author-name">Élise Laurent</span><span class="blog-card-author-role">Founder</span></div></div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Article 2 -->
+        <div data-filter-target data-category="style-tips" class="reveal">
+          <a href="blog-detail.html" class="blog-card" style="text-decoration:none">
+            <div class="blog-card-img"><img src="../assets/images/blog/blog-1.png" alt="10 wardrobe essentials every woman needs" loading="lazy" width="400" height="300"/></div>
+            <div class="blog-card-body">
+              <div class="blog-card-meta"><span class="blog-card-category">Style Tips</span><span class="blog-card-readtime"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>5 min</span></div>
+              <h3 class="blog-card-title">10 Wardrobe Essentials That Will Never Go Out of Style</h3>
+              <p class="blog-card-excerpt">Build a wardrobe that transcends seasons with these timeless investment pieces.</p>
+              <div class="blog-card-author"><img src="../assets/images/team/avatar-2.png" alt="Sophia Chen" width="36" height="36" loading="lazy"/><div class="blog-card-author-info"><span class="blog-card-author-name">Sophia Chen</span><span class="blog-card-author-role">Senior Stylist</span></div></div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Article 3 -->
+        <div data-filter-target data-category="color" class="reveal delay-200">
+          <a href="blog-detail.html" class="blog-card" style="text-decoration:none">
+            <div class="blog-card-img"><img src="../assets/images/blog/blog-2.png" alt="Understanding your colour season" loading="lazy" width="400" height="300"/></div>
+            <div class="blog-card-body">
+              <div class="blog-card-meta"><span class="blog-card-category">Color Theory</span><span class="blog-card-readtime"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>6 min</span></div>
+              <h3 class="blog-card-title">How to Discover Your Colour Season in 5 Steps</h3>
+              <p class="blog-card-excerpt">Knowing your season changes everything — from your skin's radiance to your bank balance.</p>
+              <div class="blog-card-author"><img src="../assets/images/team/avatar-author.png" alt="Élise Laurent" width="36" height="36" loading="lazy"/><div class="blog-card-author-info"><span class="blog-card-author-name">Élise Laurent</span><span class="blog-card-author-role">Founder</span></div></div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Article 4 -->
+        <div data-filter-target data-category="case-studies" class="reveal delay-300">
+          <a href="blog-detail.html" class="blog-card" style="text-decoration:none">
+            <div class="blog-card-img"><img src="../assets/images/blog/blog-3.png" alt="Case study: CEO image transformation" loading="lazy" width="400" height="300"/></div>
+            <div class="blog-card-body">
+              <div class="blog-card-meta"><span class="blog-card-category">Case Studies</span><span class="blog-card-readtime"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>10 min</span></div>
+              <h3 class="blog-card-title">From Invisible to Unforgettable: A CEO's Image Transformation</h3>
+              <p class="blog-card-excerpt">How a complete image overhaul helped one executive land a $2M board position.</p>
+              <div class="blog-card-author"><img src="../assets/images/team/avatar-2.png" alt="Sophia Chen" width="36" height="36" loading="lazy"/><div class="blog-card-author-info"><span class="blog-card-author-name">Sophia Chen</span></div></div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Article 5 -->
+        <div data-filter-target data-category="trends" class="reveal">
+          <a href="blog-detail.html" class="blog-card" style="text-decoration:none">
+            <div class="blog-card-img"><img src="../assets/images/blog/blog-4.png" alt="Spring 2026 colour trends" loading="lazy" width="400" height="300"/></div>
+            <div class="blog-card-body">
+              <div class="blog-card-meta"><span class="blog-card-category">Trends</span><span class="blog-card-readtime"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>4 min</span></div>
+              <h3 class="blog-card-title">Spring 2026: The Colours That Will Define the Season</h3>
+              <p class="blog-card-excerpt">From quiet luxury to bold expressionism — what the runways tell us about the months ahead.</p>
+              <div class="blog-card-author"><img src="../assets/images/team/avatar-author.png" alt="Élise Laurent" width="36" height="36" loading="lazy"/><div class="blog-card-author-info"><span class="blog-card-author-name">Élise Laurent</span></div></div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Article 6 -->
+        <div data-filter-target data-category="style-tips" class="reveal delay-200">
+          <a href="blog-detail.html" class="blog-card" style="text-decoration:none">
+            <div class="blog-card-img"><img src="../assets/images/blog/blog-5.png" alt="Packing light for business travel" loading="lazy" width="400" height="300"/></div>
+            <div class="blog-card-body">
+              <div class="blog-card-meta"><span class="blog-card-category">Style Tips</span><span class="blog-card-readtime"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>7 min</span></div>
+              <h3 class="blog-card-title">The Ultimate Travel Capsule: Looking Polished With Only a Carry-On</h3>
+              <p class="blog-card-excerpt">A seasoned jet-setter's guide to packing smart without sacrificing style.</p>
+              <div class="blog-card-author"><img src="../assets/images/team/avatar-3.png" alt="Marcus Webb" width="36" height="36" loading="lazy"/><div class="blog-card-author-info"><span class="blog-card-author-name">Marcus Webb</span></div></div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- No results -->
+      <div id="no-results" class="hidden" role="status" aria-live="polite">
+        <p style="font-size:var(--text-xl);color:var(--text-muted);margin-bottom:var(--space-2)">No articles found</p>
+        <p style="color:var(--text-muted)">Try a different search term or browse all categories above.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="container"><div class="footer-grid">
+    <div><div class="footer-brand-logo"><div class="footer-brand-logo-mark">É</div><div><div class="footer-brand-name">Élise Laurent</div><div class="footer-tagline">Image Consultant</div></div></div><p class="footer-description">Transforming wardrobes and elevating presence worldwide.</p><div class="footer-social"><a href="#" rel="noopener noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/></svg></a></div></div>
+    <div><h3 class="footer-heading">Quick Links</h3><ul class="footer-links"><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="services.html">Services</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div><h3 class="footer-heading">Categories</h3><ul class="footer-links"><li><a href="blog.html">Style Tips</a></li><li><a href="blog.html">Trend Reports</a></li><li><a href="blog.html">Case Studies</a></li><li><a href="blog.html">Color Theory</a></li></ul></div>
+    <div><h3 class="footer-heading">Newsletter</h3><p class="footer-newsletter-text">Weekly style tips and trend reports.</p><form class="footer-newsletter-form"><input type="email" placeholder="Your email" aria-label="Email" required/><button type="submit">Subscribe</button></form></div>
+  </div></div>
+  <div style="border-top:1px solid rgba(255,255,255,0.1)"><div class="container"><div class="footer-bottom"><p class="footer-bottom-text">© 2026 Élise Laurent. All rights reserved.</p><div class="footer-bottom-links"><a href="#">Privacy</a><a href="#">Terms</a></div></div></div></div>
+</footer>
+<script src="../assets/js/theme.js"></script><script src="../assets/js/rtl.js"></script><script src="../assets/js/navigation.js"></script><script src="../assets/js/main.js"></script>
+<script>
+  // Category filter + search
+  const pills2 = document.querySelectorAll('.filter-pills .filter-pill');
+  const items2 = document.querySelectorAll('[data-filter-target]');
+  pills2.forEach(pill => {
+    pill.addEventListener('click', () => {
+      pills2.forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+      const filter = pill.dataset.filter;
+      items2.forEach(item => { item.style.display = (filter === 'all' || item.dataset.category === filter) ? '' : 'none'; });
+    });
+  });
+</script>
+</body>
+</html>
