@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intérieur — Virtual Interior Design Service</title>
+    <meta name="description" content="Transform your space with virtual interior design consultations, 3D room visualization, and curated furniture procurement. Connect with professional designers from anywhere.">
+    <meta property="og:title" content="Intérieur — Virtual Interior Design Service">
+    <meta property="og:description" content="Premium virtual interior design consultations and 3D room visualization.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232C3E2D'/%3E%3Ctext x='50%25' y='55%25' text-anchor='middle' dominant-baseline='middle' fill='%23F5F1E8' font-family='serif' font-size='20' font-weight='bold'%3EI%3C/text%3E%3C/svg%3E">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="assets/css/rtl.css">
+    <style>
+        .landing{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden}
+        .landing__bg{position:absolute;inset:0;background:linear-gradient(135deg,#FAF9F6 0%,#F5F1E8 40%,#e8e0d0 100%);z-index:0}
+        [data-theme="dark"] .landing__bg{background:linear-gradient(135deg,#121212 0%,#1E1E1E 40%,#242424 100%)}
+        .landing__bg::after{content:'';position:absolute;inset:0;opacity:.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+        .landing__content{position:relative;z-index:1;text-align:center;padding:var(--space-8);max-width:800px}
+        .landing__logo{font-family:var(--font-editorial);font-size:clamp(3rem,8vw,6rem);color:var(--deep-forest);margin-bottom:var(--space-2);letter-spacing:-.02em;opacity:0;animation:fadeInUp .8s ease .3s forwards}
+        .landing__tagline{font-size:var(--text-md);color:var(--text-secondary);margin-bottom:var(--space-12);opacity:0;animation:fadeInUp .8s ease .5s forwards}
+        .landing__choices{display:flex;gap:var(--space-8);flex-wrap:wrap;justify-content:center;opacity:0;animation:fadeInUp .8s ease .7s forwards}
+        .landing__card{background:var(--bg-elevated);border:1px solid var(--border-color);border-radius:var(--radius-xl);padding:var(--space-8) var(--space-6);width:320px;text-align:center;cursor:pointer;transition:all .4s ease;position:relative;overflow:hidden}
+        .landing__card:hover{transform:translateY(-8px);box-shadow:var(--shadow-xl);border-color:var(--terracotta)}
+        .landing__card-icon{width:64px;height:64px;margin:0 auto var(--space-6);background:var(--bg-surface);border-radius:var(--radius-lg);display:flex;align-items:center;justify-content:center;transition:all .3s ease}
+        .landing__card:hover .landing__card-icon{background:var(--terracotta);color:#fff}
+        .landing__card-icon svg{width:28px;height:28px;color:var(--terracotta);transition:color .3s ease}
+        .landing__card:hover .landing__card-icon svg{color:#fff}
+        .landing__card h3{font-family:var(--font-editorial);font-size:var(--text-xl);margin-bottom:var(--space-3)}
+        .landing__card p{font-size:var(--text-sm);color:var(--text-tertiary);line-height:1.6;margin-bottom:var(--space-6)}
+        .landing__card .btn{width:100%}
+        .landing__actions{margin-top:var(--space-12);display:flex;gap:var(--space-6);align-items:center;justify-content:center;opacity:0;animation:fadeInUp .8s ease .9s forwards}
+        .landing__decor{position:absolute;border-radius:50%;opacity:.08;background:var(--terracotta)}
+        .landing__decor--1{width:300px;height:300px;top:-80px;right:-60px;animation:floatSlow 8s ease-in-out infinite}
+        .landing__decor--2{width:200px;height:200px;bottom:-40px;left:-40px;animation:floatSlow 10s ease-in-out infinite 1s;background:var(--deep-forest)}
+        .landing__decor--3{width:150px;height:150px;top:30%;left:5%;animation:floatSlow 12s ease-in-out infinite 2s;background:var(--burnished-gold)}
+    </style>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"LocalBusiness","name":"Intérieur","description":"Virtual Interior Design Service","url":"#","image":"","address":{"@type":"PostalAddress","addressLocality":"New York","addressCountry":"US"},"priceRange":"$$","openingHours":"Mo-Fr 09:00-18:00","sameAs":[],"hasOfferCatalog":{"@type":"OfferCatalog","name":"Design Services","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Virtual Consultation"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"3D Room Visualization"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Furniture Procurement"}}]}}
+    </script>
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader" role="status" aria-label="Loading">
+        <div class="preloader__logo">Intérieur</div>
+        <div class="preloader__bar"><div class="preloader__progress"></div></div>
+    </div>
+
+    <div class="custom-cursor"></div>
+    <a href="#main-content" class="skip-link">Skip to content</a>
+
+    <!-- Minimal Top Bar -->
+    <header style="position:fixed;top:0;inset-inline:0;z-index:200;padding:var(--space-4) var(--space-6);display:flex;justify-content:flex-end;gap:var(--space-3)">
+        <!-- Language Switcher -->
+        <div class="lang-dropdown">
+            <button class="lang-dropdown__trigger navbar__icon-btn" aria-label="Change language">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10A15.3 15.3 0 0 1 12 2z"/></svg>
+            </button>
+            <div class="lang-dropdown__menu">
+                <div class="lang-dropdown__item active" data-lang="en">🇺🇸 English</div>
+                <div class="lang-dropdown__item" data-lang="ar">🇸🇦 العربية</div>
+                <div class="lang-dropdown__item" data-lang="he">🇮🇱 עברית</div>
+                <div class="lang-dropdown__item" data-lang="es">🇪🇸 Español</div>
+            </div>
+        </div>
+        <!-- Theme Toggle -->
+        <button class="theme-toggle navbar__icon-btn" aria-label="Toggle dark mode">
+            <svg class="theme-icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+            <svg class="theme-icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        </button>
+    </header>
+
+    <main id="main-content" class="landing">
+        <div class="landing__bg"></div>
+        <div class="landing__decor landing__decor--1"></div>
+        <div class="landing__decor landing__decor--2"></div>
+        <div class="landing__decor landing__decor--3"></div>
+
+        <div class="landing__content">
+            <h1 class="landing__logo">Intérieur</h1>
+            <p class="landing__tagline">Premium Virtual Interior Design — Choose Your Experience</p>
+
+            <div class="landing__choices">
+                <!-- Residential Card -->
+                <a href="pages/home-residential.html" class="landing__card" id="card-residential">
+                    <div class="landing__card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    </div>
+                    <h3>Design Studio</h3>
+                    <p>Residential interior design for homeowners and renters. Transform your living spaces with personalized virtual consultations.</p>
+                    <span class="btn btn--primary">Explore Residential</span>
+                </a>
+
+                <!-- Commercial Card -->
+                <a href="pages/home-commercial.html" class="landing__card" id="card-commercial">
+                    <div class="landing__card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="12.01"/></svg>
+                    </div>
+                    <h3>Commercial Solutions</h3>
+                    <p>Enterprise-grade virtual design infrastructure for real estate developers, hospitality, and corporate spaces.</p>
+                    <span class="btn btn--terracotta">Explore Commercial</span>
+                </a>
+            </div>
+
+            <div class="landing__actions">
+                <a href="pages/login.html" class="btn btn--ghost" style="font-size:var(--text-sm)">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    Sign In
+                </a>
+                <span style="color:var(--text-tertiary)">•</span>
+                <a href="pages/dashboard.html" class="btn btn--ghost" style="font-size:var(--text-sm)">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                    Dashboard
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <script src="assets/js/modules/theme.js"></script>
+    <script src="assets/js/modules/rtl.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

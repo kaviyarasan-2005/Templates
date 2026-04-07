@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Journal — Intérieur</title>
+    <meta name="description" content="Insights, trends, and inspiration from the world of interior design by the team at Intérieur.">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232C3E2D'/%3E%3Ctext x='50%25' y='55%25' text-anchor='middle' dominant-baseline='middle' fill='%23F5F1E8' font-family='serif' font-size='20' font-weight='bold'%3EI%3C/text%3E%3C/svg%3E">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/animations.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <link rel="stylesheet" href="../assets/css/rtl.css">
+    <style>
+        .blog-hero { padding: calc(var(--navbar-height) + var(--space-12)) var(--space-6) var(--space-12); text-align: center; border-bottom: 1px solid var(--border-color); }
+        .blog-hero h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); margin-bottom: var(--space-4); letter-spacing: -0.02em; }
+        
+        /* Featured Post */
+        .featured-post { max-width: var(--container-xl); margin: var(--space-16) auto; padding: 0 var(--space-6); }
+        .featured-post__inner { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-12); align-items: center; }
+        .featured-post__image { border-radius: var(--radius-xl); overflow: hidden; position: relative; height: 500px; display: block; }
+        .featured-post__image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s ease; }
+        .featured-post__image:hover img { transform: scale(1.05); }
+        .featured-post__content { display: flex; flex-direction: column; justify-content: center; }
+        .post-meta { display: flex; align-items: center; gap: var(--space-3); font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; margin-bottom: var(--space-4); }
+        .post-meta .cat { color: var(--terracotta); }
+        .post-meta .date { color: var(--text-tertiary); }
+        .featured-post__title { font-family: var(--font-editorial); font-size: clamp(2rem, 4vw, 3rem); line-height: 1.1; margin-bottom: var(--space-4); color: var(--text-primary); transition: color 0.3s; }
+        .featured-post__title:hover { color: var(--terracotta); }
+        .featured-post__desc { font-size: var(--text-lg); color: var(--text-secondary); margin-bottom: var(--space-8); line-height: 1.7; }
+        .read-more { display: inline-flex; align-items: center; gap: var(--space-2); font-weight: 600; color: var(--text-primary); transition: gap 0.3s; }
+        .featured-post:hover .read-more { gap: var(--space-3); color: var(--terracotta); }
+
+        /* Blog Grid */
+        .blog-grid-section { padding: var(--space-12) 0 var(--space-24); background: var(--bg-surface); }
+        .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-8); max-width: var(--container-xl); margin-inline: auto; padding: 0 var(--space-6); }
+        
+        .blog-card { display: flex; flex-direction: column; }
+        .blog-card__image { border-radius: var(--radius-lg); overflow: hidden; height: 300px; margin-bottom: var(--space-6); position: relative; display: block; }
+        .blog-card__image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s ease; }
+        .blog-card:hover .blog-card__image img { transform: scale(1.05); }
+        
+        .blog-card__title { font-family: var(--font-editorial); font-size: var(--text-2xl); margin-bottom: var(--space-3); display: block; color: var(--text-primary); transition: color 0.3s; }
+        .blog-card__title:hover { color: var(--terracotta); }
+        .blog-card__desc { color: var(--text-secondary); font-size: var(--text-sm); line-height: 1.6; margin-bottom: var(--space-4); flex-grow: 1; }
+
+        /* Categories Sidebar (simplified for responsive) */
+        .blog-nav { display: flex; justify-content: center; gap: var(--space-4); max-width: var(--container-xl); margin: var(--space-8) auto; padding: 0 var(--space-6); overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+        .blog-nav::-webkit-scrollbar { display: none; }
+        .blog-nav .btn { white-space: nowrap; }
+
+        /* Newsletter Inline */
+        .newsletter-inline { background: var(--deep-forest); color: #fff; border-radius: var(--radius-xl); padding: var(--space-12); max-width: var(--container-lg); margin: var(--space-24) auto; text-align: center; }
+        [data-theme="dark"] .newsletter-inline { background: var(--bg-elevated); border: 1px solid var(--border-color); }
+        .newsletter-inline h3 { font-family: var(--font-editorial); font-size: var(--text-3xl); margin-bottom: var(--space-2); }
+        .newsletter-form { display: flex; max-width: 500px; margin: var(--space-8) auto 0; position: relative; }
+        .newsletter-form input { flex-grow: 1; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: var(--radius-md) 0 0 var(--radius-md); padding: var(--space-3) var(--space-4); color: #fff; outline: none; }
+        .newsletter-form input:focus { border-color: var(--burnished-gold); }
+        .newsletter-form button { background: var(--burnished-gold); color: #000; border: none; font-weight: 600; padding: 0 var(--space-6); border-radius: 0 var(--radius-md) var(--radius-md) 0; cursor: pointer; transition: background 0.3s; }
+        .newsletter-form button:hover { background: #d09b4d; }
+
+        @media (max-width: 1024px) {
+            .featured-post__inner { grid-template-columns: 1fr; gap: var(--space-8); }
+            .featured-post__image { height: 400px; }
+            .blog-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            .blog-grid { grid-template-columns: 1fr; }
+            .blog-nav { justify-content: flex-start; padding-bottom: var(--space-4); }
+            .newsletter-form { flex-direction: column; gap: var(--space-2); }
+            .newsletter-form input, .newsletter-form button { border-radius: var(--radius-md); }
+            .newsletter-form button { padding: var(--space-3); }
+        }
+    </style>
+</head>
+<body>
+    <div class="preloader" role="status" aria-label="Loading"><div class="preloader__logo">Intérieur</div><div class="preloader__bar"><div class="preloader__progress"></div></div></div>
+    <div class="custom-cursor"></div>
+    <a href="#main-content" class="skip-link">Skip to content</a>
+
+    <!-- NAVBAR -->
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="navbar__inner">
+            <a href="../index.html" class="navbar__logo" aria-label="Intérieur Home">
+                <svg width="32" height="32" viewBox="0 0 32 32"><rect width="32" height="32" rx="8" fill="#2C3E2D"/><text x="50%" y="55%" text-anchor="middle" dominant-baseline="middle" fill="#F5F1E8" font-family="serif" font-size="20" font-weight="bold">I</text></svg>
+                Intérieur
+            </a>
+            <ul class="navbar__links">
+                <li><a href="home-residential.html" class="navbar__link">Home</a></li>
+                <li><a href="about.html" class="navbar__link">About</a></li>
+                <li><a href="services.html" class="navbar__link">Services</a></li>
+                <li><a href="portfolio.html" class="navbar__link">Portfolio</a></li>
+                <li><a href="blog.html" class="navbar__link active">Journal</a></li>
+                <li><a href="contact.html" class="navbar__link">Contact</a></li>
+            </ul>
+            <div class="navbar__actions">
+                <button class="theme-toggle navbar__icon-btn" aria-label="Toggle dark mode">
+                    <svg class="theme-icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                    <svg class="theme-icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+                </button>
+            </div>
+            <button class="mobile-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+    
+    <!-- Mobile Nav -->
+    <div class="mobile-nav" role="dialog" aria-label="Mobile navigation">
+        <a href="home-residential.html" class="mobile-nav__link">Home</a>
+        <a href="about.html" class="mobile-nav__link">About</a>
+        <a href="services.html" class="mobile-nav__link">Services</a>
+        <a href="portfolio.html" class="mobile-nav__link">Portfolio</a>
+        <a href="blog.html" class="mobile-nav__link">Journal</a>
+        <a href="contact.html" class="mobile-nav__link">Contact</a>
+    </div>
+
+    <main id="main-content">
+        <header class="blog-hero reveal">
+            <span class="overline">The Journal</span>
+            <h1 class="heading-xl mt-2">Design Musings</h1>
+        </header>
+
+        <!-- Categories -->
+        <div class="blog-nav reveal delay-1">
+            <a href="#" class="btn btn--secondary btn--sm">All Articles</a>
+            <a href="#" class="btn btn--ghost btn--sm">Trends</a>
+            <a href="#" class="btn btn--ghost btn--sm">Tips & Guides</a>
+            <a href="#" class="btn btn--ghost btn--sm">Interviews</a>
+            <a href="#" class="btn btn--ghost btn--sm">Case Studies</a>
+        </div>
+
+        <!-- Featured Post -->
+        <article class="featured-post reveal delay-2">
+            <div class="featured-post__inner">
+                <a href="blog-detail.html" class="featured-post__image">
+                    <img src="https://images.unsplash.com/photo-1618219908412-a29a1bb7b86e?w=1200&q=80" alt="Japandi Style Integration">
+                </a>
+                <div class="featured-post__content">
+                    <div class="post-meta">
+                        <span class="cat">Trends</span>
+                        <span class="date">October 12, 2026</span>
+                    </div>
+                    <a href="blog-detail.html" style="text-decoration:none"><h2 class="featured-post__title">The Evolution of Japandi: Why the Trend is Here to Stay</h2></a>
+                    <p class="featured-post__desc">Combining the rustic minimalism of Japanese design with the functional warmth of Scandinavian aesthetics, Japandi has matured beyond a fleeting trend into a fundamental design philosophy.</p>
+                    <a href="blog-detail.html" class="read-more">Read Article <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                </div>
+            </div>
+        </article>
+
+        <!-- Blog Grid -->
+        <section class="blog-grid-section">
+            <div class="blog-grid" data-stagger="0.1">
+                <article class="blog-card reveal">
+                    <a href="blog-detail.html" class="blog-card__image"><img src="https://images.unsplash.com/photo-1542401886-65d6c61db217?w=600&q=80" alt="Home Office Design" loading="lazy"></a>
+                    <div class="post-meta"><span class="cat">Tips & Guides</span><span class="date">Oct 5, 2026</span></div>
+                    <a href="blog-detail.html" style="text-decoration:none"><h3 class="blog-card__title">Maximizing Productivity in Small Home Offices</h3></a>
+                    <p class="blog-card__desc">Five crucial spatial planning strategies for carving out a productive workspace in less than 50 square feet.</p>
+                </article>
+
+                <article class="blog-card reveal delay-1">
+                    <a href="blog-detail.html" class="blog-card__image"><img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=600&q=80" alt="Color Theory" loading="lazy"></a>
+                    <div class="post-meta"><span class="cat">Interviews</span><span class="date">Sep 28, 2026</span></div>
+                    <a href="blog-detail.html" style="text-decoration:none"><h3 class="blog-card__title">Color Theory Masterclass with Elena Rodriguez</h3></a>
+                    <p class="blog-card__desc">Our founder discusses establishing emotional resonance in a room through unconventional color pairings.</p>
+                </article>
+
+                <article class="blog-card reveal delay-2">
+                    <a href="blog-detail.html" class="blog-card__image"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80" alt="Lighting Guide" loading="lazy"></a>
+                    <div class="post-meta"><span class="cat">Tips & Guides</span><span class="date">Sep 15, 2026</span></div>
+                    <a href="blog-detail.html" style="text-decoration:none"><h3 class="blog-card__title">Layering Light: A Beginner's Guide</h3></a>
+                    <p class="blog-card__desc">How to combine ambient, task, and accent lighting to transform the atmosphere of any room after dark.</p>
+                </article>
+
+                <article class="blog-card reveal">
+                    <a href="blog-detail.html" class="blog-card__image"><img src="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=600&q=80" alt="Sustainable Furniture" loading="lazy"></a>
+                    <div class="post-meta"><span class="cat">Trends</span><span class="date">Sep 02, 2026</span></div>
+                    <a href="blog-detail.html" style="text-decoration:none"><h3 class="blog-card__title">The Rise of Circular Design</h3></a>
+                    <p class="blog-card__desc">Why the most sought-after luxury furniture brands are investing heavily in biodegradable and reusable materials.</p>
+                </article>
+
+                <article class="blog-card reveal delay-1">
+                    <a href="blog-detail.html" class="blog-card__image"><img src="https://images.unsplash.com/photo-1503694978374-8a2fa686963a?w=600&q=80" alt="3D Rendering" loading="lazy"></a>
+                    <div class="post-meta"><span class="cat">Case Studies</span><span class="date">Aug 20, 2026</span></div>
+                    <a href="blog-detail.html" style="text-decoration:none"><h3 class="blog-card__title">Behind the Render: The Brooklyn Penthouse</h3></a>
+                    <p class="blog-card__desc">A step-by-step look at how we visually transformed a raw industrial space into a warm luxury residence.</p>
+                </article>
+
+                <article class="blog-card reveal delay-2">
+                    <a href="blog-detail.html" class="blog-card__image"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80" alt="Kitchen Trends" loading="lazy"></a>
+                    <div class="post-meta"><span class="cat">Trends</span><span class="date">Aug 10, 2026</span></div>
+                    <a href="blog-detail.html" style="text-decoration:none"><h3 class="blog-card__title">Farewell to the All-White Kitchen</h3></a>
+                    <p class="blog-card__desc">As homeowners crave more character, muddy earth tones and dramatic stone veining take center stage in the heart of the home.</p>
+                </article>
+            </div>
+
+            <!-- Pagination -->
+            <div class="flex justify-center mt-12 align-center gap-2">
+                <button class="btn btn--icon" disabled><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
+                <button class="btn btn--icon" style="background:var(--bg-elevated);color:var(--terracotta);border:1px solid var(--border-color)">1</button>
+                <button class="btn btn--icon" style="background:transparent;border:none">2</button>
+                <button class="btn btn--icon" style="background:transparent;border:none">3</button>
+                <button class="btn btn--icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
+            </div>
+
+            <!-- Newsletter -->
+            <div class="newsletter-inline reveal">
+                <h3>Subscribe to the Journal</h3>
+                <p style="opacity:0.8">Get our latest design tips and industry insights delivered to your inbox monthly.</p>
+                <form class="newsletter-form" onsubmit="event.preventDefault()">
+                    <input type="email" placeholder="Your email address" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER (Condensed) -->
+    <footer class="footer">
+        <div class="container text-center pt-8">
+            <p class="text-sm text-tertiary">&copy; 2026 Intérieur. Crafted for beautiful spaces.</p>
+        </div>
+    </footer>
+
+    <script src="../assets/js/modules/navigation.js"></script>
+    <script src="../assets/js/modules/theme.js"></script>
+    <script src="../assets/js/modules/rtl.js"></script>
+    <script src="../assets/js/modules/animations.js"></script>
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>

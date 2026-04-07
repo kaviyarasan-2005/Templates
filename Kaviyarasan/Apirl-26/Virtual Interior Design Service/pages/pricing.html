@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing — Intérieur | Virtual Interior Design</title>
+    <meta name="description" content="Transparent pricing for our virtual interior design services. Choose the plan that fits your space and budget.">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232C3E2D'/%3E%3Ctext x='50%25' y='55%25' text-anchor='middle' dominant-baseline='middle' fill='%23F5F1E8' font-family='serif' font-size='20' font-weight='bold'%3EI%3C/text%3E%3C/svg%3E">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/animations.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <link rel="stylesheet" href="../assets/css/rtl.css">
+    <style>
+        .pricing-header { padding: calc(var(--navbar-height) + var(--space-12)) var(--space-6) var(--space-12); text-align: center; }
+        .pricing-header h1 { font-family: var(--font-editorial); font-size: clamp(2.5rem, 6vw, 4.5rem); margin-bottom: var(--space-4); letter-spacing: -0.02em; }
+        .pricing-header p { font-size: var(--text-lg); color: var(--text-secondary); max-width: 600px; margin-inline: auto; }
+
+        /* Pricing Toggle */
+        .pricing-toggle { display: flex; align-items: center; justify-content: center; gap: var(--space-4); margin: var(--space-8) 0 var(--space-12); }
+        .pricing-toggle span { font-weight: 600; color: var(--text-secondary); transition: color 0.3s; }
+        .pricing-toggle span.active { color: var(--text-primary); }
+        
+        .toggle-switch { position: relative; width: 64px; height: 32px; background: var(--bg-elevated); border: 2px solid var(--border-color); border-radius: 16px; cursor: pointer; transition: background 0.3s; }
+        .toggle-switch::after { content: ''; position: absolute; top: 2px; left: 2px; width: 24px; height: 24px; background: var(--terracotta); border-radius: 50%; transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55); }
+        [dir="rtl"] .toggle-switch::after { left: auto; right: 2px; transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55); }
+        
+        .toggle-switch.commercial::after { transform: translateX(32px); }
+        [dir="rtl"] .toggle-switch.commercial::after { transform: translateX(-32px); }
+
+        /* Pricing Grid */
+        .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-6); max-width: var(--container-xl); margin-inline: auto; padding: 0 var(--space-6) var(--space-24); align-items: center; }
+        
+        .pricing-card { background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-xl); padding: var(--space-8); transition: transform 0.4s ease, box-shadow 0.4s ease; display: flex; flex-direction: column; height: 100%; position: relative; }
+        .pricing-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-xl); z-index: 2; }
+        
+        /* Emphasized Center Card */
+        .pricing-card--pro { background: var(--bg-elevated); border-color: var(--terracotta); box-shadow: var(--shadow-lg); transform: scale(1.05); z-index: 1; }
+        .pricing-card--pro:hover { transform: scale(1.05) translateY(-8px); }
+        .card-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--terracotta); color: #fff; padding: var(--space-1) var(--space-4); border-radius: var(--radius-full); font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; white-space: nowrap; }
+        [dir="rtl"] .card-badge { transform: translateX(50%); }
+
+        .plan-name { font-family: var(--font-editorial); font-size: var(--text-2xl); margin-bottom: var(--space-2); }
+        .plan-desc { color: var(--text-secondary); font-size: var(--text-sm); line-height: 1.5; margin-bottom: var(--space-6); min-height: 42px; }
+        
+        .plan-price { font-size: clamp(3rem, 4vw, 4rem); font-family: var(--font-ui); font-weight: 800; color: var(--text-primary); margin-bottom: var(--space-1); display: flex; align-items: flex-start; }
+        .plan-price__currency { font-size: var(--text-xl); margin-top: 8px; margin-inline-end: 4px; color: var(--text-tertiary); }
+        .plan-price__period { font-size: var(--text-sm); font-weight: 500; color: var(--text-secondary); align-self: flex-end; margin-bottom: 12px; margin-inline-start: 4px; }
+        
+        .plan-action { margin: var(--space-6) 0 var(--space-8); }
+        
+        .feature-list { flex-grow: 1; }
+        .feature-list li { display: flex; align-items: flex-start; gap: var(--space-3); margin-bottom: var(--space-4); font-size: var(--text-sm); color: var(--text-secondary); }
+        .feature-list svg { color: var(--terracotta); flex-shrink: 0; margin-top: 2px; }
+        .feature-list .disabled { opacity: 0.5; }
+        .feature-list .disabled svg { color: var(--text-tertiary); }
+
+        /* Add-ons Section */
+        .addons-section { padding: var(--space-24) 0; background: var(--bg-surface); border-top: 1px solid var(--border-color); }
+        .addons-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-6); max-width: var(--container-lg); margin-inline: auto; padding: 0 var(--space-6); }
+        .addon-card { background: var(--bg-elevated); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: var(--space-6); display: flex; justify-content: space-between; align-items: center; }
+        .addon-info h4 { font-family: var(--font-editorial); font-size: var(--text-lg); margin-bottom: var(--space-1); }
+        .addon-info p { font-size: var(--text-sm); color: var(--text-secondary); margin: 0; }
+        .addon-price { font-weight: 700; color: var(--terracotta); font-size: var(--text-lg); white-space: nowrap; }
+
+        /* Enterprise Banner */
+        .enterprise-banner { max-width: var(--container-lg); margin: var(--space-24) auto; background: var(--deep-forest); color: #fff; border-radius: var(--radius-xl); padding: var(--space-12); display: flex; align-items: center; justify-content: space-between; gap: var(--space-8); position: relative; overflow: hidden; }
+        [data-theme="dark"] .enterprise-banner { background: var(--bg-elevated); border: 1px solid var(--border-color); }
+        .enterprise-banner__content { position: relative; z-index: 1; max-width: 600px; }
+        .enterprise-banner h2 { font-family: var(--font-editorial); font-size: var(--text-3xl); margin-bottom: var(--space-2); }
+        .enterprise-banner p { color: rgba(255,255,255,0.8); font-size: var(--text-lg); margin-bottom: 0; }
+        .enterprise-banner__action { position: relative; z-index: 1; flex-shrink: 0; }
+
+        @media (max-width: 1024px) {
+            .pricing-grid { grid-template-columns: 1fr; gap: var(--space-8); }
+            .pricing-card--pro { transform: none; margin-top: var(--space-4); }
+            .pricing-card--pro:hover { transform: translateY(-8px); }
+            .enterprise-banner { flex-direction: column; text-align: center; }
+        }
+        @media (max-width: 768px) {
+            .addons-grid { grid-template-columns: 1fr; }
+            .addon-card { flex-direction: column; align-items: flex-start; gap: var(--space-4); }
+            .addon-price { align-self: flex-start; }
+            [dir="rtl"] .addon-price { align-self: flex-start; }
+        }
+    </style>
+</head>
+<body>
+    <div class="preloader" role="status" aria-label="Loading"><div class="preloader__logo">Intérieur</div><div class="preloader__bar"><div class="preloader__progress"></div></div></div>
+    <div class="custom-cursor"></div>
+    <a href="#main-content" class="skip-link">Skip to content</a>
+
+    <!-- NAVBAR -->
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="navbar__inner">
+            <a href="../index.html" class="navbar__logo" aria-label="Intérieur Home">
+                <svg width="32" height="32" viewBox="0 0 32 32"><rect width="32" height="32" rx="8" fill="#2C3E2D"/><text x="50%" y="55%" text-anchor="middle" dominant-baseline="middle" fill="#F5F1E8" font-family="serif" font-size="20" font-weight="bold">I</text></svg>
+                Intérieur
+            </a>
+            <ul class="navbar__links">
+                <li><a href="home-residential.html" class="navbar__link">Home</a></li>
+                <li><a href="about.html" class="navbar__link">About</a></li>
+                <li><a href="services.html" class="navbar__link">Services</a></li>
+                <li><a href="portfolio.html" class="navbar__link">Portfolio</a></li>
+                <li><a href="blog.html" class="navbar__link">Journal</a></li>
+                <li><a href="pricing.html" class="navbar__link active">Pricing</a></li>
+            </ul>
+            <div class="navbar__actions">
+                <button class="theme-toggle navbar__icon-btn" aria-label="Toggle dark mode">
+                    <svg class="theme-icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                    <svg class="theme-icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+                </button>
+            </div>
+            <button class="mobile-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+    
+    <!-- Mobile Nav -->
+    <div class="mobile-nav" role="dialog" aria-label="Mobile navigation">
+        <a href="home-residential.html" class="mobile-nav__link">Home</a>
+        <a href="about.html" class="mobile-nav__link">About</a>
+        <a href="services.html" class="mobile-nav__link">Services</a>
+        <a href="portfolio.html" class="mobile-nav__link">Portfolio</a>
+        <a href="pricing.html" class="mobile-nav__link">Pricing</a>
+    </div>
+
+    <main id="main-content">
+        <header class="pricing-header reveal">
+            <h1>Simple, Transparent Pricing</h1>
+            <p>Exceptional virtual design tailored to your exact needs. Start transforming your space today.</p>
+            
+            <div class="pricing-toggle">
+                <span class="active" id="label-res">Residential</span>
+                <div class="toggle-switch" id="type-toggle" role="switch" aria-checked="false" tabindex="0"></div>
+                <span id="label-com">Commercial</span>
+            </div>
+        </header>
+
+        <!-- Pricing Grid -->
+        <!-- Residential Pricing (Default) -->
+        <div class="pricing-grid" id="pricing-residential">
+            <!-- Tier 1 -->
+            <div class="pricing-card reveal delay-1">
+                <h2 class="plan-name">Concept Plan</h2>
+                <p class="plan-desc">Perfect for DIYers who need expert inspiration and a clear direction to execute on their own.</p>
+                <div class="plan-price"><span class="plan-price__currency">$</span>199<span class="plan-price__period">/ room</span></div>
+                <div class="plan-action">
+                    <a href="contact.html" class="btn btn--secondary w-full" style="justify-content:center">Choose Concept</a>
+                </div>
+                <ul class="feature-list">
+                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>45-min Video Consultation</span></li>
+                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>2 Initial Mood Boards</span></li>
+                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>Color Palette & Material Guide</span></li>
+                    <li class="disabled"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span>2D Floor Plan Layout</span></li>
+                    <li class="disabled"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span>Photorealistic 3D Renders</span></li>
+                    <li class="disabled"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span>Curated Shopping List</span></li>
+                </ul>
+            </div>
+
+            <!-- Tier 2 (Highlighted) -->
+            <div class="pricing-card pricing-card--pro reveal">
+                <div class="card-badge">Most Popular</div>
+                <h2 class="plan-name">Full Room Refresh</h2>
+                <p class="plan-desc">Our comprehensive virtual design package. Everything you need to completely transform a single space.</p>
+                <div class="plan-price"><span class="plan-price__currency">$</span>399<span class="plan-price__period">/ room</span></div>
+                <div class="plan-action">
+                    <a href="contact.html" class="btn btn--primary w-full" style="justify-content:center">Choose Refresh</a>
+                </div>
+                <ul class="feature-list">
+                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>45-min Video Consultation</span></li>
+                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>2 Initial Mood Boards</span></li>
+                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>Color Palette & Material Guide</span></li>
+                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>2D Floor Plan Layout</strong></span></li>
+                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Curated Shopping List</strong></span></li>
+                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>1 Final Design Revision</strong></span></li>
+                    <li class="disabled"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span>Photorealistic 3D Renders</span></li>
+                </ul>
+            </div>
+
+            <!-- Tier 3 -->
+            <div class="pricing-card reveal delay-2">
+                <h2 class="plan-name">Premium 3D</h2>
+                <p class="plan-desc">The ultimate visualization experience. See your future space in highly realistic 3D before making any purchases.</p>
+                <div class="plan-price"><span class="plan-price__currency">$</span>899<span class="plan-price__period">/ room</span></div>
+                <div class="plan-action">
+                    <a href="contact.html" class="btn btn--secondary w-full" style="justify-content:center">Choose Premium</a>
+                </div>
+                <ul class="feature-list">
+                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>Everything in Room Refresh</span></li>
+                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>2 Photorealistic 3D Renders</strong></span></li>
+                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>360° Virtual Room Tour</strong></span></li>
+                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Concierge Ordering Service</strong></span></li>
+                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>2 Final Design Revisions</span></li>
+                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>60 Days Post-Design Support</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Commercial Pricing (Hidden by Default) -->
+        <div class="pricing-grid" id="pricing-commercial" style="display:none;opacity:0;">
+            <!-- Commercial Tier 1 -->
+            <div class="pricing-card">
+                <h2 class="plan-name">Virtual Staging</h2>
+                <p class="plan-desc">High-quality virtual staging for real estate agents and property developers to accelerate sales.</p>
+                <div class="plan-price"><span class="plan-price__currency">$</span>149<span class="plan-price__period">/ image</span></div>
+                <div class="plan-action">
+                    <a href="contact.html" class="btn btn--secondary w-full" style="justify-content:center">Contact Sales</a>
+                </div>
+                <ul class="feature-list">
+                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>Photorealistic Furniture Integration</span></li>
+                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>Lighting & Shadow Correction</span></li>
+                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>48-Hour Turnaround</span></li>
+                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>1 Revision per Image</span></li>
+                </ul>
+            </div>
+
+            <!-- Commercial Tier 2 -->
+            <div class="pricing-card pricing-card--pro">
+                <div class="card-badge">Enterprise</div>
+                <h2 class="plan-name">Multi-Family Procure</h2>
+                <p class="plan-desc">End-to-end design and procurement infrastructure for multi-family residential developments.</p>
+                <div class="plan-price"><span style="font-size:2rem;margin-top:16px;">Custom Quote</span></div>
+                <div class="plan-action">
+                    <a href="contact.html" class="btn btn--primary w-full" style="justify-content:center">Contact Sales</a>
+                </div>
+                <ul class="feature-list">
+                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>Unit-level 3D Floorplanning</span></li>
+                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>Bulk Purchasing Discounts</span></li>
+                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>Logistics & Installation Management</span></li>
+                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>Dedicated Account Manager</span></li>
+                </ul>
+            </div>
+
+            <!-- Commercial Tier 3 -->
+            <div class="pricing-card">
+                <h2 class="plan-name">API Integration</h2>
+                <p class="plan-desc">Embed our 3D visualization and design engine directly into your own property tech platform.</p>
+                <div class="plan-price"><span class="plan-price__currency">$</span>999<span class="plan-price__period">/ month</span></div>
+                <div class="plan-action">
+                    <a href="contact.html" class="btn btn--secondary w-full" style="justify-content:center">Request API Access</a>
+                </div>
+                <ul class="feature-list">
+                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>REST API Access</span></li>
+                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>White-label 3D Viewer</span></li>
+                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>10,000 Render Credits/mo</span></li>
+                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>99.9% Uptime SLA</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Add-ons -->
+        <section class="addons-section">
+            <div class="section-header text-center reveal">
+                <h2 class="heading-lg mb-8">A La Carte Add-ons</h2>
+            </div>
+            <div class="addons-grid" data-stagger="0.1">
+                <div class="addon-card reveal">
+                    <div class="addon-info">
+                        <h4>Additional Revision</h4>
+                        <p>Need more tweaks? Add an extra round of design revisions.</p>
+                    </div>
+                    <div class="addon-price">$99</div>
+                </div>
+                <div class="addon-card reveal delay-1">
+                    <div class="addon-info">
+                        <h4>Open Concept Surcharge</h4>
+                        <p>For open-plan spaces combining living/dining/kitchen areas.</p>
+                    </div>
+                    <div class="addon-price">+$149</div>
+                </div>
+                <div class="addon-card reveal">
+                    <div class="addon-info">
+                        <h4>Expedited Delivery</h4>
+                        <p>Get your initial design concepts in 48 hours instead of 5 days.</p>
+                    </div>
+                    <div class="addon-price">$199</div>
+                </div>
+                <div class="addon-card reveal delay-1">
+                    <div class="addon-info">
+                        <h4>Concierge Ordering</h4>
+                        <p>We handle all purchasing, tracking, and claims for your items.</p>
+                    </div>
+                    <div class="addon-price">10% Fee</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Enterprise Banner -->
+        <div class="enterprise-banner reveal">
+            <div class="enterprise-banner__content">
+                <h2>Have a large-scale project?</h2>
+                <p>We offer specialized pricing and dedicated support for real estate developers, property managers, and hospitality brands.</p>
+            </div>
+            <div class="enterprise-banner__action">
+                <a href="contact.html" class="btn btn--primary" style="background:#fff;color:var(--deep-forest)">Contact Enterprise Sales</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER (Condensed) -->
+    <footer class="footer">
+        <div class="container text-center pt-8">
+            <p class="text-sm text-tertiary">&copy; 2026 Intérieur. Crafted for beautiful spaces.</p>
+        </div>
+    </footer>
+
+    <script src="../assets/js/modules/navigation.js"></script>
+    <script src="../assets/js/modules/theme.js"></script>
+    <script src="../assets/js/modules/rtl.js"></script>
+    <script src="../assets/js/modules/animations.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script>
+        // Pricing Toggle Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggle = document.getElementById('type-toggle');
+            const labelRes = document.getElementById('label-res');
+            const labelCom = document.getElementById('label-com');
+            const gridRes = document.getElementById('pricing-residential');
+            const gridCom = document.getElementById('pricing-commercial');
+
+            const switchPricing = () => {
+                const isCom = toggle.classList.toggle('commercial');
+                toggle.setAttribute('aria-checked', isCom);
+                
+                if(isCom) {
+                    labelRes.classList.remove('active');
+                    labelCom.classList.add('active');
+                    
+                    gridRes.style.opacity = '0';
+                    setTimeout(() => {
+                        gridRes.style.display = 'none';
+                        gridCom.style.display = 'grid';
+                        // Trigger reflow
+                        void gridCom.offsetWidth;
+                        gridCom.style.opacity = '1';
+                    }, 300);
+                } else {
+                    labelCom.classList.remove('active');
+                    labelRes.classList.add('active');
+                    
+                    gridCom.style.opacity = '0';
+                    setTimeout(() => {
+                        gridCom.style.display = 'none';
+                        gridRes.style.display = 'grid';
+                        // Trigger reflow
+                        void gridRes.offsetWidth;
+                        gridRes.style.opacity = '1';
+                    }, 300);
+                }
+            };
+
+            toggle.addEventListener('click', switchPricing);
+            toggle.addEventListener('keydown', (e) => {
+                if(e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    switchPricing();
+                }
+            });
+            
+            labelRes.addEventListener('click', () => { if(toggle.classList.contains('commercial')) switchPricing(); });
+            labelCom.addEventListener('click', () => { if(!toggle.classList.contains('commercial')) switchPricing(); });
+        });
+    </script>
+</body>
+</html>

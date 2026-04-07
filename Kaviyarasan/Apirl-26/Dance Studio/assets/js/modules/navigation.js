@@ -1,0 +1,146 @@
+/* ========================================
+   DANCE STUDIO — Navigation Controller
+   Mobile menu, dropdowns, scroll behavior
+   ======================================== */
+
+const Navigation = (() => {
+  let navbar, mobileToggle, mobileMenu, scrollProgress, backToTop;
+  let lastScroll = 0;
+
+  function init() {
+    navbar = document.querySelector('.navbar');
+    mobileToggle = document.querySelector('.navbar__mobile-toggle');
+    mobileMenu = document.querySelector('.navbar__menu');
+    scrollProgress = document.querySelector('.scroll-progress');
+    backToTop = document.querySelector('.back-to-top');
+
+    if (mobileToggle && mobileMenu) {
+      mobileToggle.addEventListener('click', toggleMobileMenu);
+    }
+
+    // Dropdown toggles
+    document.querySelectorAll('.navbar__dropdown-toggle').forEach(toggle => {
+      toggle.addEventListener('click', (e) => {
+        if (window.innerWidth <= 768) {
+          e.preventDefault();
+          const dropdown = toggle.closest('.navbar__dropdown');
+          dropdown.classList.toggle('open');
+        }
+      });
+    });
+
+    // Close dropdowns on outside click (desktop)
+    document.addEventListener('click', (e) => {
+      if (window.innerWidth > 768) return;
+      document.querySelectorAll('.navbar__dropdown.open').forEach(dd => {
+        if (!dd.contains(e.target)) {
+          dd.classList.remove('open');
+        }
+      });
+    });
+
+    // Scroll handler
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    // Back to top
+    if (backToTop) {
+      backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+
+    // Active nav link
+    setActiveLink();
+
+    // Page transition links
+    initPageTransitions();
+  }
+
+  function toggleMobileMenu() {
+    mobileToggle.classList.toggle('active');
+    mobileMenu.classList.toggle('open');
+    document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+  }
+
+  function closeMobileMenu() {
+    if (mobileToggle && mobileMenu) {
+      mobileToggle.classList.remove('active');
+      mobileMenu.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  }
+
+  function onScroll() {
+    const scrollY = window.scrollY;
+    
+    // Navbar background on scroll
+    if (navbar) {
+      navbar.classList.toggle('scrolled', scrollY > 50);
+    }
+
+    // Scroll progress bar
+    if (scrollProgress) {
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = docHeight > 0 ? scrollY / docHeight : 0;
+      scrollProgress.style.transform = `scaleX(${progress})`;
+    }
+
+    // Back to top visibility
+    if (backToTop) {
+      backToTop.classList.toggle('visible', scrollY > 500);
+    }
+
+    lastScroll = scrollY;
+  }
+
+  function setActiveLink() {
+    const currentPath = window.location.pathname;
+    const filename = currentPath.split('/').pop() || 'index.html';
+    
+    document.querySelectorAll('.navbar__link, .navbar__dropdown-item').forEach(link => {
+      const href = link.getAttribute('href');
+      if (!href) return;
+      const linkFile = href.split('/').pop();
+      
+      if (linkFile === filename || 
+          (filename === '' && linkFile === 'index.html') ||
+          (filename === 'index.html' && linkFile === 'index.html')) {
+        link.classList.add('active');
+      }
+    });
+  }
+
+  function initPageTransitions() {
+    const transitionOverlay = document.querySelector('.page-transition');
+    if (!transitionOverlay) return;
+
+    document.querySelectorAll('a[href]').forEach(link => {
+      const href = link.getAttribute('href');
+      if (!href || href.startsWith('#') || href.startsWith('mailto:') || 
+          href.startsWith('tel:') || href.startsWith('http') || link.getAttribute('target') === '_blank') return;
+
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        transitionOverlay.style.transformOrigin = 'bottom';
+        transitionOverlay.style.transform = 'scaleY(1)';
+        transitionOverlay.style.transition = 'transform 0.4s ease';
+        
+        setTimeout(() => {
+          window.location.href = href;
+        }, 400);
+      });
+    });
+
+    // On page load, reverse the transition
+    window.addEventListener('pageshow', () => {
+      if (transitionOverlay.style.transform === 'scaleY(1)') {
+        transitionOverlay.style.transformOrigin = 'top';
+        requestAnimationFrame(() => {
+          transitionOverlay.style.transform = 'scaleY(0)';
+        });
+      }
+    });
+  }
+
+  return { init, closeMobileMenu };
+})();

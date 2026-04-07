@@ -1,0 +1,115 @@
+/* VIRTUAL INTERIOR DESIGN — RTL OVERRIDES */
+
+[dir="rtl"] {
+    --font-ui: 'Tajawal', 'Plus Jakarta Sans', sans-serif;
+}
+
+[dir="rtl"][lang="he"] {
+    --font-ui: 'Heebo', 'Plus Jakarta Sans', sans-serif;
+}
+
+/* Navigation */
+[dir="rtl"] .navbar__links { flex-direction: row-reverse; }
+[dir="rtl"] .navbar__actions { flex-direction: row-reverse; }
+[dir="rtl"] .mobile-toggle { order: -1; }
+
+/* Buttons */
+[dir="rtl"] .btn .btn-arrow { transform: scaleX(-1); }
+[dir="rtl"] .btn:hover .btn-arrow { transform: scaleX(-1) translateX(-4px); }
+
+/* Cards */
+[dir="rtl"] .card__footer { flex-direction: row-reverse; }
+
+/* Footer */
+[dir="rtl"] .footer__grid { direction: rtl; }
+
+/* Form */
+[dir="rtl"] .form-select {
+    background-position: 16px center;
+    padding-inline-end: var(--space-4);
+    padding-inline-start: var(--space-12);
+}
+
+/* Lists */
+[dir="rtl"] ul, [dir="rtl"] ol { padding-inline-start: var(--space-6); }
+
+/* Slider handle */
+[dir="rtl"] .ba-slider__handle { cursor: ew-resize; }
+
+/* Animations - reverse direction */
+[dir="rtl"] .reveal-left {
+    transform: translateX(40px);
+}
+[dir="rtl"] .reveal-right {
+    transform: translateX(-40px);
+}
+[dir="rtl"] .reveal-left.revealed,
+[dir="rtl"] .reveal-right.revealed {
+    transform: translateX(0);
+}
+
+/* Grid asymmetric flip */
+[dir="rtl"] .grid-asymmetric {
+    direction: rtl;
+}
+
+/* Timeline */
+[dir="rtl"] .timeline__line {
+    inset-inline-start: auto;
+    inset-inline-end: 50%;
+}
+
+/* Hero split reversal */
+[dir="rtl"] .hero--split {
+    flex-direction: row-reverse;
+}
+
+/* Process steps direction */
+[dir="rtl"] .process__connector {
+    transform: scaleX(-1);
+}
+
+/* Carousel arrows */
+[dir="rtl"] .carousel__prev { inset-inline-start: auto; inset-inline-end: var(--space-4); }
+[dir="rtl"] .carousel__next { inset-inline-end: auto; inset-inline-start: var(--space-4); }
+
+/* Dashboard sidebar */
+[dir="rtl"] .dashboard__sidebar {
+    inset-inline-start: auto;
+    inset-inline-end: 0;
+    border-inline-end: none;
+    border-inline-start: 1px solid var(--border-color);
+}
+
+/* Breadcrumbs separator */
+[dir="rtl"] .breadcrumb__sep {
+    transform: scaleX(-1);
+}
+
+/* Search expanding */
+[dir="rtl"] .search-expand {
+    transform-origin: right center;
+}
+
+/* Icon rotations for RTL */
+[dir="rtl"] .icon-chevron-right {
+    transform: scaleX(-1);
+}
+
+/* Pricing ribbon */
+[dir="rtl"] .card--pricing .ribbon {
+    inset-inline-end: auto;
+    inset-inline-start: calc(var(--space-4) * -1);
+}
+
+/* Contact split */
+[dir="rtl"] .contact-split {
+    flex-direction: row-reverse;
+}
+
+@media (max-width: 768px) {
+    [dir="rtl"] .hero--split,
+    [dir="rtl"] .contact-split {
+        flex-direction: column;
+    }
+}

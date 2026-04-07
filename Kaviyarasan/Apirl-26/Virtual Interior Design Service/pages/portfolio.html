@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio — Intérieur | Virtual Interior Design</title>
+    <meta name="description" content="Browse our portfolio of virtual interior design transformations across residential and commercial spaces.">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232C3E2D'/%3E%3Ctext x='50%25' y='55%25' text-anchor='middle' dominant-baseline='middle' fill='%23F5F1E8' font-family='serif' font-size='20' font-weight='bold'%3EI%3C/text%3E%3C/svg%3E">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/animations.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <link rel="stylesheet" href="../assets/css/rtl.css">
+    <style>
+        .portfolio-header { text-align: center; padding: calc(var(--navbar-height) + var(--space-16)) var(--space-6) var(--space-12); background: var(--bg-surface); border-bottom: 1px solid var(--border-color); }
+        .portfolio-header h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); margin-bottom: var(--space-4); letter-spacing: -0.02em; }
+        
+        /* Filter Bar */
+        .portfolio-filters { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-4); margin: var(--space-12) auto; padding-inline: var(--space-6); max-width: var(--container-lg); }
+        .portfolio-filters .btn { min-width: 100px; }
+
+        /* Masonry Grid Setup */
+        .portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-6); max-width: var(--container-xl); margin-inline: auto; padding: 0 var(--space-6) var(--space-24); align-items: start; }
+        .portfolio-item { position: relative; border-radius: var(--radius-lg); overflow: hidden; cursor: pointer; transform-origin: center; transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1); opacity: 1; transform: scale(1); }
+        .portfolio-item.hidden { opacity: 0; transform: scale(0.8); position: absolute; visibility: hidden; }
+        
+        .portfolio-item img { width: 100%; display: block; object-fit: cover; transition: transform 0.8s ease; }
+        .portfolio-item:hover img { transform: scale(1.05); }
+        
+        .portfolio-item__overlay {
+            position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 60%, transparent 100%);
+            display: flex; flex-direction: column; justify-content: flex-end; padding: var(--space-6);
+            opacity: 0; transform: translateY(10px); transition: all 0.4s ease;
+        }
+        .portfolio-item:hover .portfolio-item__overlay { opacity: 1; transform: translateY(0); }
+        
+        .portfolio-item__title { font-family: var(--font-editorial); font-size: var(--text-xl); color: #fff; margin-bottom: var(--space-1); }
+        .portfolio-item__cat { font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.1em; color: var(--terracotta); font-weight: 700; }
+        
+        /* Custom modal styles for project detail */
+        #project-modal .modal { max-width: 900px; padding: 0; overflow: hidden; border-radius: var(--radius-xl); display: flex; flex-direction: column; max-height: 95vh; }
+        .project-modal__header { padding: var(--space-6); border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 10; background: var(--bg-elevated); }
+        .project-modal__body { display: flex; flex-direction: column; overflow-y: auto; }
+        .project-modal__image-wrapper { position: relative; width: 100%; height: 500px; background: #000; overflow: hidden; cursor: zoom-in; }
+        .project-modal__image { width: 100%; height: 100%; object-fit: contain; transition: transform 0.3s ease; }
+        .project-modal__info { padding: var(--space-8); background: var(--bg-surface); }
+        .project-modal__grid { display: grid; grid-template-columns: 2fr 1fr; gap: var(--space-8); }
+        
+        /* Zoom state */
+        .project-modal__image-wrapper.is-zoomed { cursor: zoom-out; }
+        .project-modal__image-wrapper.is-zoomed .project-modal__image { object-fit: cover; }
+
+        @media (max-width: 1024px) {
+            .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+            .project-modal__grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 768px) {
+            .portfolio-grid { grid-template-columns: 1fr; }
+            .project-modal__image-wrapper { height: 300px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="preloader" role="status" aria-label="Loading"><div class="preloader__logo">Intérieur</div><div class="preloader__bar"><div class="preloader__progress"></div></div></div>
+    <div class="custom-cursor"></div>
+    <a href="#main-content" class="skip-link">Skip to content</a>
+
+    <!-- NAVBAR -->
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="navbar__inner">
+            <a href="../index.html" class="navbar__logo" aria-label="Intérieur Home">
+                <svg width="32" height="32" viewBox="0 0 32 32"><rect width="32" height="32" rx="8" fill="#2C3E2D"/><text x="50%" y="55%" text-anchor="middle" dominant-baseline="middle" fill="#F5F1E8" font-family="serif" font-size="20" font-weight="bold">I</text></svg>
+                Intérieur
+            </a>
+            <ul class="navbar__links">
+                <li><a href="home-residential.html" class="navbar__link">Home</a></li>
+                <li><a href="about.html" class="navbar__link">About</a></li>
+                <li><a href="services.html" class="navbar__link" data-mega-menu>Services</a></li>
+                <li><a href="portfolio.html" class="navbar__link active">Portfolio</a></li>
+                <li><a href="pricing.html" class="navbar__link">Pricing</a></li>
+                <li><a href="contact.html" class="navbar__link">Contact</a></li>
+            </ul>
+            <div class="navbar__actions">
+                <button class="theme-toggle navbar__icon-btn" aria-label="Toggle dark mode">
+                    <svg class="theme-icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                    <svg class="theme-icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+                </button>
+            </div>
+            <button class="mobile-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+    
+    <!-- Mobile Nav -->
+    <div class="mobile-nav" role="dialog" aria-label="Mobile navigation">
+        <a href="home-residential.html" class="mobile-nav__link">Home</a>
+        <a href="about.html" class="mobile-nav__link">About</a>
+        <a href="services.html" class="mobile-nav__link">Services</a>
+        <a href="portfolio.html" class="mobile-nav__link">Portfolio</a>
+        <a href="contact.html" class="mobile-nav__link">Contact</a>
+    </div>
+
+    <main id="main-content">
+        <header class="portfolio-header reveal">
+            <span class="overline">Our Work</span>
+            <h1 class="heading-xl mt-2">Spaces That Inspire</h1>
+        </header>
+
+        <div class="portfolio-filters reveal delay-1">
+            <button class="btn btn--secondary active" data-filter="all">All Projects</button>
+            <button class="btn btn--ghost" data-filter="living">Living Rooms</button>
+            <button class="btn btn--ghost" data-filter="bedroom">Bedrooms</button>
+            <button class="btn btn--ghost" data-filter="kitchen">Kitchens</button>
+            <button class="btn btn--ghost" data-filter="commercial">Commercial</button>
+        </div>
+
+        <!-- Grid Layout rather than pure masonry for simpler Isotope logic without absolute positioning -->
+        <div class="portfolio-grid" id="portfolio-grid">
+            <div class="portfolio-item living reveal" data-category="living" data-title="Scandinavian Retreat" data-desc="A bright, airy living space combining minimalist Scandinavian principles with warm textures to create an inviting urban oasis." data-img="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=1200&q=80">
+                <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=600&q=80" alt="Living Room" loading="lazy" style="aspect-ratio: 4/5;">
+                <div class="portfolio-item__overlay">
+                    <div class="portfolio-item__cat">Living Room</div>
+                    <div class="portfolio-item__title">Scandinavian Retreat</div>
+                </div>
+            </div>
+
+            <div class="portfolio-item bedroom reveal delay-1" data-category="bedroom" data-title="Bohemian Master Suite" data-desc="Earthy tones and natural materials transform this master bedroom into a relaxing bohemian sanctuary." data-img="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1200&q=80">
+                <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600&q=80" alt="Bedroom" loading="lazy" style="aspect-ratio: 1/1;">
+                <div class="portfolio-item__overlay">
+                    <div class="portfolio-item__cat">Bedroom</div>
+                    <div class="portfolio-item__title">Bohemian Master Suite</div>
+                </div>
+            </div>
+
+            <div class="portfolio-item kitchen reveal delay-2" data-category="kitchen" data-title="Industrial Kitchen" data-desc="A modern kitchen renovation blending industrial elements like exposed brick with sleek, high-end appliances." data-img="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=80">
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80" alt="Kitchen" loading="lazy" style="aspect-ratio: 3/4;">
+                <div class="portfolio-item__overlay">
+                    <div class="portfolio-item__cat">Kitchen</div>
+                    <div class="portfolio-item__title">Industrial Loft Kitchen</div>
+                </div>
+            </div>
+
+            <div class="portfolio-item commercial reveal delay-3" data-category="commercial" data-title="Boutique Hotel Lobby" data-desc="A luxurious, welcoming landing space for a boutique hotel, designed for maximum comfort and striking first impressions." data-img="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=80">
+                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80" alt="Commercial Lobby" loading="lazy" style="aspect-ratio: 4/3;">
+                <div class="portfolio-item__overlay">
+                    <div class="portfolio-item__cat">Commercial</div>
+                    <div class="portfolio-item__title">Boutique Hotel Lobby</div>
+                </div>
+            </div>
+
+            <div class="portfolio-item living reveal delay-4" data-category="living" data-title="Contemporary Living" data-desc="Sleek lines, bold artwork, and a monochromatic palette define this contemporary downtown apartment." data-img="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1200&q=80">
+                <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=600&q=80" alt="Living Area" loading="lazy" style="aspect-ratio: 1/1;">
+                <div class="portfolio-item__overlay">
+                    <div class="portfolio-item__cat">Living Room</div>
+                    <div class="portfolio-item__title">Contemporary Downtown</div>
+                </div>
+            </div>
+
+            <div class="portfolio-item bedroom reveal delay-5" data-category="bedroom" data-title="Minimalist Studio" data-desc="Space-saving solutions and a serene white color palette make this small studio feel expansive and calm." data-img="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=1200&q=80">
+                <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=600&q=80" alt="Studio Bedroom" loading="lazy" style="aspect-ratio: 4/5;">
+                <div class="portfolio-item__overlay">
+                    <div class="portfolio-item__cat">Bedroom</div>
+                    <div class="portfolio-item__title">Minimalist White Studio</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Project Lightbox / Modal -->
+    <div class="modal-overlay" id="project-modal">
+        <div class="modal" role="dialog" aria-modal="true">
+            <div class="project-modal__header">
+                <div>
+                    <div class="text-xs uppercase font-bold text-terracotta tracking-wider mb-1" id="modal-cat">Category</div>
+                    <h3 class="heading-sm mb-0" id="modal-title">Project Title</h3>
+                </div>
+                <button class="modal__close" aria-label="Close modal">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+            </div>
+            <div class="project-modal__body">
+                <div class="project-modal__image-wrapper" id="zoom-container">
+                    <img src="" alt="" id="modal-img" class="project-modal__image">
+                </div>
+                <div class="project-modal__info">
+                    <div class="project-modal__grid">
+                        <div>
+                            <h4 class="font-editorial text-xl mb-3">Project Overview</h4>
+                            <p class="text-secondary line-height-relaxed" id="modal-desc">Description goes here.</p>
+                        </div>
+                        <div>
+                            <div class="mb-4">
+                                <strong class="block text-sm mb-1">Services Used</strong>
+                                <span class="text-secondary text-sm">3D Visualization, Furniture Procurement</span>
+                            </div>
+                            <div class="mb-4">
+                                <strong class="block text-sm mb-1">Duration</strong>
+                                <span class="text-secondary text-sm">3 Weeks</span>
+                            </div>
+                            <a href="contact.html" class="btn btn--primary btn--sm mt-2 w-full justify-center">Start Similar Project</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER (Condensed) -->
+    <footer class="footer">
+        <div class="container text-center pt-8">
+            <p class="text-sm text-tertiary">&copy; 2026 Intérieur. Crafted for beautiful spaces.</p>
+        </div>
+    </footer>
+
+    <script src="../assets/js/modules/navigation.js"></script>
+    <script src="../assets/js/modules/theme.js"></script>
+    <script src="../assets/js/modules/rtl.js"></script>
+    <script src="../assets/js/modules/animations.js"></script>
+    <script src="../assets/js/main.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Isotope-style filtering via CSS Grid
+            const btns = document.querySelectorAll('.portfolio-filters .btn');
+            const items = document.querySelectorAll('.portfolio-item');
+            
+            btns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    btns.forEach(b => {
+                        b.classList.remove('btn--secondary', 'active');
+                        b.classList.add('btn--ghost');
+                    });
+                    btn.classList.remove('btn--ghost');
+                    btn.classList.add('btn--secondary', 'active');
+                    
+                    const filter = btn.getAttribute('data-filter');
+                    
+                    items.forEach(item => {
+                        // First visually shrink
+                        item.style.transform = 'scale(0.8)';
+                        item.style.opacity = '0';
+                        
+                        setTimeout(() => {
+                            if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                                item.classList.remove('hidden');
+                                // Force reflow
+                                void item.offsetWidth;
+                                item.style.transform = 'scale(1)';
+                                item.style.opacity = '1';
+                            } else {
+                                item.classList.add('hidden');
+                            }
+                        }, 400); // Wait for transition
+                    });
+                });
+            });
+
+            // Modal / Lightbox implementation
+            const modalOverlay = document.getElementById('project-modal');
+            const closeBtn = modalOverlay.querySelector('.modal__close');
+            const mTitle = document.getElementById('modal-title');
+            const mCat = document.getElementById('modal-cat');
+            const mDesc = document.getElementById('modal-desc');
+            const mImg = document.getElementById('modal-img');
+            const zoomContainer = document.getElementById('zoom-container');
+
+            items.forEach(item => {
+                item.addEventListener('click', () => {
+                    mTitle.textContent = item.getAttribute('data-title');
+                    mCat.textContent = item.getAttribute('data-category');
+                    mDesc.textContent = item.getAttribute('data-desc');
+                    mImg.src = item.getAttribute('data-img');
+                    
+                    // Reset zoom
+                    zoomContainer.classList.remove('is-zoomed');
+                    mImg.style.transform = 'scale(1)';
+                    mImg.style.transformOrigin = 'center center';
+                    
+                    modalOverlay.classList.add('open');
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+
+            const closeModal = () => {
+                modalOverlay.classList.remove('open');
+                document.body.style.overflow = '';
+            };
+
+            closeBtn.addEventListener('click', closeModal);
+            modalOverlay.addEventListener('click', (e) => {
+                if(e.target === modalOverlay) closeModal();
+            });
+            document.addEventListener('keydown', (e) => {
+                if(e.key === 'Escape' && modalOverlay.classList.contains('open')) closeModal();
+            });
+
+            // Image Zooming feature (Panzoom style natively)
+            zoomContainer.addEventListener('click', (e) => {
+                const isZoomed = zoomContainer.classList.toggle('is-zoomed');
+                if(!isZoomed) {
+                    mImg.style.transform = 'scale(1)';
+                    mImg.style.transformOrigin = 'center center';
+                } else {
+                    handleZoomPan(e);
+                }
+            });
+
+            const handleZoomPan = (e) => {
+                if(!zoomContainer.classList.contains('is-zoomed')) return;
+                const rect = zoomContainer.getBoundingClientRect();
+                const x = (e.clientX - rect.left) / rect.width * 100;
+                const y = (e.clientY - rect.top) / rect.height * 100;
+                
+                mImg.style.transformOrigin = `${x}% ${y}%`;
+                mImg.style.transform = 'scale(2)';
+            };
+
+            zoomContainer.addEventListener('mousemove', (e) => {
+                if(zoomContainer.classList.contains('is-zoomed')) {
+                    handleZoomPan(e);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

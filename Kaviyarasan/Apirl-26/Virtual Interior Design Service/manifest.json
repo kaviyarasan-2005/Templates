@@ -1,0 +1,21 @@
+{
+    "name": "Intérieur — Virtual Interior Design",
+    "short_name": "Intérieur",
+    "description": "Premium virtual interior design service for residential and commercial spaces.",
+    "start_url": "/index.html",
+    "display": "standalone",
+    "background_color": "#F5F1E8",
+    "theme_color": "#2C3E2D",
+    "orientation": "any",
+    "icons": [
+        {
+            "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='96' fill='%232C3E2D'/%3E%3Ctext x='50%25' y='55%25' text-anchor='middle' dominant-baseline='middle' fill='%23F5F1E8' font-family='serif' font-size='320' font-weight='bold'%3EI%3C/text%3E%3C/svg%3E",
+            "sizes": "512x512",
+            "type": "image/svg+xml",
+            "purpose": "any maskable"
+        }
+    ],
+    "categories": ["design", "lifestyle", "business"],
+    "lang": "en",
+    "dir": "ltr"
+}

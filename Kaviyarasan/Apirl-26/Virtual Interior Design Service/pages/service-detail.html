@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room Refresh Service — Intérieur</title>
+    <meta name="description" content="Comprehensive room refresh design plan including mood boards, floor plans, and a curated shopping list.">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232C3E2D'/%3E%3Ctext x='50%25' y='55%25' text-anchor='middle' dominant-baseline='middle' fill='%23F5F1E8' font-family='serif' font-size='20' font-weight='bold'%3EI%3C/text%3E%3C/svg%3E">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/animations.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <link rel="stylesheet" href="../assets/css/rtl.css">
+    <style>
+        .service-hero { height: 70vh; position: relative; display: flex; align-items: flex-end; padding-bottom: var(--space-16); }
+        .service-hero__bg { position: absolute; inset: 0; z-index: 0; }
+        .service-hero__bg img { width: 100%; height: 100%; object-fit: cover; }
+        .service-hero__bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, var(--bg-primary) 0%, rgba(0,0,0,0.4) 100%); }
+        .service-hero__content { position: relative; z-index: 1; max-width: var(--container-xl); margin-inline: auto; padding-inline: var(--space-6); width: 100%; }
+        
+        /* Sticky Nav */
+        .sub-nav {
+            position: sticky; top: var(--navbar-height); z-index: calc(var(--z-sticky) - 1);
+            background: var(--bg-surface); border-bottom: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+        .sub-nav__inner { display: flex; align-items: center; justify-content: space-between; max-width: var(--container-xl); margin-inline: auto; padding-inline: var(--space-6); overflow-x: auto; scrollbar-width: none; }
+        .sub-nav__inner::-webkit-scrollbar { display: none; }
+        .sub-nav__links { display: flex; align-items: center; gap: var(--space-8); }
+        .sub-nav__link {
+            font-size: var(--text-sm); font-weight: 600; color: var(--text-secondary);
+            padding: var(--space-4) 0; position: relative; white-space: nowrap;
+        }
+        .sub-nav__link::after { content: ''; position: absolute; bottom: -1px; left: 0; width: 0; height: 2px; background: var(--terracotta); transition: width 0.3s; }
+        .sub-nav__link.active { color: var(--text-primary); }
+        .sub-nav__link.active::after { width: 100%; }
+
+        /* Layout */
+        .service-layout {
+            display: grid; grid-template-columns: 1fr 340px; gap: var(--space-12);
+            max-width: var(--container-xl); margin-inline: auto; padding: var(--space-16) var(--space-6);
+        }
+        .service-content > section { margin-bottom: var(--space-24); scroll-margin-top: calc(var(--navbar-height) + 80px); }
+
+        /* Sidebar CTA */
+        .sidebar-widget {
+            position: sticky; top: calc(var(--navbar-height) + 100px);
+            background: var(--bg-elevated); border: 1px solid var(--border-color);
+            border-radius: var(--radius-xl); padding: var(--space-8);
+            box-shadow: var(--shadow-xl); text-align: center;
+        }
+        .sidebar-widget h3 { font-family: var(--font-editorial); font-size: var(--text-2xl); margin-bottom: var(--space-2); }
+        .sidebar-widget .price { font-size: var(--text-3xl); font-weight: 700; color: var(--terracotta); margin-bottom: var(--space-6); }
+
+        /* Content Styles */
+        .content-block h2 { font-family: var(--font-editorial); font-size: var(--text-3xl); margin-bottom: var(--space-6); }
+        .content-block p { font-size: var(--text-md); color: var(--text-secondary); line-height: 1.8; margin-bottom: var(--space-6); }
+        
+        .feature-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-4); margin-top: var(--space-8); }
+        .feature-list li { display: flex; align-items: flex-start; gap: var(--space-3); }
+        .feature-list svg { color: var(--terracotta); flex-shrink: 0; margin-top: 4px; }
+
+        @media (max-width: 1024px) {
+            .service-layout { grid-template-columns: 1fr; }
+            .sidebar-widget { display: none; }
+        }
+        @media (max-width: 768px) {
+            .feature-list { grid-template-columns: 1fr; }
+        }
+
+        /* Floating Mobile CTA */
+        .floating-cta {
+            position: fixed; bottom: 0; left: 0; right: 0; background: var(--bg-elevated);
+            padding: var(--space-4); border-top: 1px solid var(--border-color);
+            display: none; justify-content: space-between; align-items: center; z-index: var(--z-sticky);
+        }
+        @media (max-width: 1024px) { .floating-cta { display: flex; } }
+    </style>
+</head>
+<body>
+    <div class="preloader" role="status" aria-label="Loading"><div class="preloader__logo">Intérieur</div><div class="preloader__bar"><div class="preloader__progress"></div></div></div>
+    <div class="custom-cursor"></div>
+    <a href="#main-content" class="skip-link">Skip to content</a>
+
+    <!-- NAVBAR -->
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="navbar__inner">
+            <a href="../index.html" class="navbar__logo" aria-label="Intérieur Home">
+                <svg width="32" height="32" viewBox="0 0 32 32"><rect width="32" height="32" rx="8" fill="#2C3E2D"/><text x="50%" y="55%" text-anchor="middle" dominant-baseline="middle" fill="#F5F1E8" font-family="serif" font-size="20" font-weight="bold">I</text></svg>
+                Intérieur
+            </a>
+            <ul class="navbar__links">
+                <li><a href="home-residential.html" class="navbar__link">Home</a></li>
+                <li><a href="about.html" class="navbar__link">About</a></li>
+                <li><a href="services.html" class="navbar__link active">Services</a></li>
+                <li><a href="portfolio.html" class="navbar__link">Portfolio</a></li>
+                <li><a href="pricing.html" class="navbar__link">Pricing</a></li>
+                <li><a href="contact.html" class="navbar__link">Contact</a></li>
+            </ul>
+            <div class="navbar__actions">
+                <button class="theme-toggle navbar__icon-btn" aria-label="Toggle dark mode">
+                    <svg class="theme-icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                    <svg class="theme-icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+                </button>
+            </div>
+            <button class="mobile-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+    
+    <!-- Mobile Nav -->
+    <div class="mobile-nav" role="dialog" aria-label="Mobile navigation">
+        <a href="home-residential.html" class="mobile-nav__link">Home</a>
+        <a href="about.html" class="mobile-nav__link">About</a>
+        <a href="services.html" class="mobile-nav__link">Services</a>
+        <a href="portfolio.html" class="mobile-nav__link">Portfolio</a>
+        <a href="contact.html" class="mobile-nav__link">Contact</a>
+    </div>
+
+    <main id="main-content">
+        <!-- Hero -->
+        <header class="service-hero">
+            <div class="service-hero__bg">
+                <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1920&q=80" alt="Room Refresh Service">
+            </div>
+            <div class="service-hero__content reveal">
+                <span class="overline" style="color:var(--burnished-gold)">Residential Design</span>
+                <h1 class="heading-xl" style="padding-top:10px;">Room Refresh</h1>
+            </div>
+        </header>
+
+        <!-- Sub Nav -->
+        <nav class="sub-nav">
+            <div class="sub-nav__inner">
+                <div class="sub-nav__links">
+                    <a href="#overview" class="sub-nav__link active">Overview</a>
+                    <a href="#process" class="sub-nav__link">Process</a>
+                    <a href="#gallery" class="sub-nav__link">Gallery</a>
+                    <a href="#faq" class="sub-nav__link">FAQ</a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="service-layout">
+            <div class="service-content">
+                
+                <!-- Overview -->
+                <section id="overview" class="content-block reveal delay-1">
+                    <h2>Transform your space.</h2>
+                    <p>Our Room Refresh service is the perfect solution for spaces that need a complete overhaul without structural changes. Whether you're dealing with an empty room or looking to replace your existing furniture, our expert designers will craft a cohesive, personalized plan just for you.</p>
+                    <p>We combine your personal style, functional needs, and budget to deliver a space that looks professionally curated and feels authentically yours.</p>
+                    
+                    <ul class="feature-list pt-6">
+                        <li><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>1-on-1 Video Consultation</span></li>
+                        <li><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>2 Initial Design Concepts</span></li>
+                        <li><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Interactive 3D Floor Plan</span></li>
+                        <li><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Curated Shopping List</span></li>
+                        <li><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Post-Design Support (30 Days)</span></li>
+                        <li><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Access to Trade Discounts</span></li>
+                    </ul>
+                </section>
+
+                <!-- Gallery / Before After -->
+                <section id="gallery" class="content-block reveal">
+                    <h2>See the Difference</h2>
+                    <p>Drag the slider to see how we transformed this standard living room into a modern Scandinavian retreat.</p>
+                    <div class="ba-slider mt-8" style="height:450px;border-radius:var(--radius-xl);">
+                        <img class="ba-slider__after" src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=1200&q=80" alt="After Design">
+                        <img class="ba-slider__before" src="https://images.unsplash.com/photo-1513694203232-719a280e022f?w=1200&q=80" alt="Before Design">
+                        <div class="ba-slider__handle"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8l4 4-4 4M6 16l-4-4 4-4"/></svg></div>
+                        <span class="ba-slider__label ba-slider__label--before">Before</span>
+                        <span class="ba-slider__label ba-slider__label--after">After</span>
+                    </div>
+                </section>
+
+                <!-- Process -->
+                <section id="process" class="content-block reveal">
+                    <h2>How It Works</h2>
+                    <div class="accordion mt-8">
+                        <div class="accordion__item open">
+                            <div class="accordion__trigger">1. Initial Consultation <svg class="accordion__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></div>
+                            <div class="accordion__content"><div class="accordion__inner"><p class="text-secondary">We begin with a 45-minute video call to discuss your vision, review photos of your current space, and establish your budget and functional needs.</p></div></div>
+                        </div>
+                        <div class="accordion__item">
+                            <div class="accordion__trigger">2. Concept Development <svg class="accordion__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></div>
+                            <div class="accordion__content"><div class="accordion__inner"><p class="text-secondary">Within 5 days, your designer will present two initial mood boards. You'll provide feedback so we can refine the design direction.</p></div></div>
+                        </div>
+                        <div class="accordion__item">
+                            <div class="accordion__trigger">3. 3D Visuals & Floorplan <svg class="accordion__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></div>
+                            <div class="accordion__content"><div class="accordion__inner"><p class="text-secondary">We'll map out the layout using your room measurements and provide 3D renders so you can see exactly how the new pieces fit together.</p></div></div>
+                        </div>
+                        <div class="accordion__item">
+                            <div class="accordion__trigger">4. Final Shopping List <svg class="accordion__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></div>
+                            <div class="accordion__content"><div class="accordion__inner"><p class="text-secondary">You receive a click-to-buy shopping list with access to our exclusive trade discounts. We can also handle the ordering process if desired.</p></div></div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- FAQ -->
+                <section id="faq" class="content-block reveal">
+                    <h2>Frequently Asked Questions</h2>
+                    <div class="accordion mt-8">
+                        <div class="accordion__item">
+                            <div class="accordion__trigger">Are revisions included? <svg class="accordion__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></div>
+                            <div class="accordion__content"><div class="accordion__inner"><p class="text-secondary">Yes, the Room Refresh service includes up to two rounds of revisions after the initial concept presentation.</p></div></div>
+                        </div>
+                        <div class="accordion__item">
+                            <div class="accordion__trigger">Can you use my existing furniture? <svg class="accordion__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></div>
+                            <div class="accordion__content"><div class="accordion__inner"><p class="text-secondary">Absolutely. Just provide photos and dimensions of the pieces you want to keep, and we'll integrate them seamlessly into the new design.</p></div></div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Sticky Sidebar CTA -->
+            <div class="service-sidebar">
+                <div class="sidebar-widget reveal delay-2">
+                    <div class="mb-4"><span class="overline">Starting at</span></div>
+                    <div class="price">$399 <span style="font-size:var(--text-sm);color:var(--text-tertiary);font-weight:400">/ room</span></div>
+                    <h3>Ready to begin?</h3>
+                    <p class="text-sm text-secondary mb-6 line-height-relaxed">Book a consultation or start by taking our style quiz.</p>
+                    <a href="contact.html" class="btn btn--fill w-full mb-3" style="justify-content:center">Book Consultation</a>
+                    <a href="#" class="btn btn--secondary w-full" style="justify-content:center">Take Style Quiz</a>
+                    <div class="mt-4 text-xs text-tertiary"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" style="display:inline;vertical-align:-2px;margin-right:4px"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Secure payment via Stripe</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Mobile Floating CTA -->
+    <div class="floating-cta">
+        <div>
+            <div class="font-bold text-lg">$399 <span class="text-sm font-normal text-tertiary">/ room</span></div>
+        </div>
+        <a href="contact.html" class="btn btn--primary">Book Now</a>
+    </div>
+
+    <!-- FOOTER (Condensed) -->
+    <footer class="footer">
+        <div class="container text-center pt-8">
+            <p class="text-sm text-tertiary">&copy; 2026 Intérieur. Crafted for beautiful spaces.</p>
+        </div>
+    </footer>
+
+    <script src="../assets/js/modules/navigation.js"></script>
+    <script src="../assets/js/modules/theme.js"></script>
+    <script src="../assets/js/modules/rtl.js"></script>
+    <script src="../assets/js/modules/animations.js"></script>
+    <script src="../assets/js/modules/before-after.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Accordion logic
+            document.querySelectorAll('.accordion__trigger').forEach(trigger => {
+                trigger.addEventListener('click', () => {
+                    const item = trigger.closest('.accordion__item');
+                    const isOpen = item.classList.contains('open');
+                    
+                    // Close all
+                    document.querySelectorAll('.accordion__item').forEach(i => i.classList.remove('open'));
+                    
+                    // Open clicked if it was closed
+                    if (!isOpen) { 
+                        item.classList.add('open'); 
+                    }
+                });
+            });
+
+            // Intersection Observer for sub-nav active state
+            const sections = document.querySelectorAll('.content-block');
+            const navLinks = document.querySelectorAll('.sub-nav__link');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if(entry.isIntersecting) {
+                        const id = entry.target.id;
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if(link.getAttribute('href') === `#${id}`) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }, { rootMargin: '-20% 0px -70% 0px' });
+            
+            sections.forEach(section => observer.observe(section));
+        });
+    </script>
+</body>
+</html>

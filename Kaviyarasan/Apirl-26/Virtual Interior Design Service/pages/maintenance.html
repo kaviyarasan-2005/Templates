@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Under Construction — Intérieur</title>
+    <meta name="description" content="Intérieur is currently undergoing maintenance. We'll be back shortly with a freshly designed experience.">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232C3E2D'/%3E%3Ctext x='50%25' y='55%25' text-anchor='middle' dominant-baseline='middle' fill='%23F5F1E8' font-family='serif' font-size='20' font-weight='bold'%3EI%3C/text%3E%3C/svg%3E">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/animations.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <link rel="stylesheet" href="../assets/css/rtl.css">
+    <style>
+        body { overflow: hidden; }
+        
+        .maintenance-page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Animated Gradient Background */
+        .maintenance-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            background: 
+                radial-gradient(ellipse at 20% 50%, rgba(224, 122, 95, 0.06) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 20%, rgba(61, 90, 128, 0.05) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 80%, rgba(238, 184, 104, 0.04) 0%, transparent 50%);
+            animation: bgShift 15s ease-in-out infinite alternate;
+        }
+        @keyframes bgShift {
+            0% { transform: scale(1) translateY(0); }
+            100% { transform: scale(1.1) translateY(-20px); }
+        }
+
+        /* Animated Grid Lines */
+        .grid-lines {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            opacity: 0.04;
+            background-image:
+                linear-gradient(var(--text-primary) 1px, transparent 1px),
+                linear-gradient(90deg, var(--text-primary) 1px, transparent 1px);
+            background-size: 80px 80px;
+            animation: gridSlide 30s linear infinite;
+        }
+        @keyframes gridSlide {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(80px); }
+        }
+
+        .maintenance-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 600px;
+            padding: var(--space-8);
+        }
+
+        /* Logo */
+        .m-logo {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-3);
+            font-family: var(--font-editorial);
+            font-size: var(--text-2xl);
+            font-weight: 600;
+            color: var(--text-primary);
+            text-decoration: none;
+            margin-bottom: var(--space-12);
+        }
+
+        /* Animated Blueprint Icon */
+        .blueprint-icon {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto var(--space-8);
+            position: relative;
+        }
+        .blueprint-icon svg {
+            width: 100%;
+            height: 100%;
+            color: var(--terracotta);
+        }
+        .blueprint-icon svg .draw-path {
+            stroke-dasharray: 300;
+            stroke-dashoffset: 300;
+            animation: drawIn 3s ease forwards, drawPulse 4s ease-in-out 3s infinite;
+        }
+        @keyframes drawIn {
+            to { stroke-dashoffset: 0; }
+        }
+        @keyframes drawPulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .m-title {
+            font-family: var(--font-editorial);
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            color: var(--text-primary);
+            margin-bottom: var(--space-4);
+            letter-spacing: -0.02em;
+        }
+
+        .m-desc {
+            color: var(--text-secondary);
+            font-size: var(--text-lg);
+            line-height: 1.7;
+            margin-bottom: var(--space-10);
+        }
+
+        /* Countdown Strip */
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-6);
+            margin-bottom: var(--space-10);
+        }
+        .countdown-unit {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .countdown-value {
+            font-family: var(--font-ui);
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1;
+            min-width: 60px;
+        }
+        .countdown-label {
+            font-size: var(--text-xs);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-tertiary);
+            font-weight: 700;
+            margin-top: var(--space-2);
+        }
+        .countdown-sep {
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--border-strong);
+            line-height: 1;
+            align-self: flex-start;
+            animation: blink 1.5s step-end infinite;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.2; }
+        }
+
+        /* Notify Form */
+        .notify-form {
+            display: flex;
+            max-width: 420px;
+            margin: 0 auto var(--space-8);
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-full);
+            overflow: hidden;
+            transition: border-color 0.3s;
+        }
+        .notify-form:focus-within { border-color: var(--terracotta); }
+        .notify-form input {
+            flex: 1;
+            border: none;
+            background: transparent;
+            padding: var(--space-3) var(--space-6);
+            color: var(--text-primary);
+            font-size: var(--text-sm);
+            outline: none;
+        }
+        .notify-form button {
+            background: var(--terracotta);
+            color: #fff;
+            border: none;
+            padding: var(--space-3) var(--space-6);
+            font-weight: 600;
+            font-size: var(--text-sm);
+            cursor: pointer;
+            transition: background 0.3s;
+            white-space: nowrap;
+        }
+        .notify-form button:hover { background: #c96a48; }
+
+        /* Social Footer */
+        .m-socials {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-6);
+        }
+        .m-socials a {
+            color: var(--text-tertiary);
+            transition: color 0.3s, transform 0.3s;
+        }
+        .m-socials a:hover { color: var(--text-primary); transform: translateY(-3px); }
+
+        /* Success Toast */
+        .toast {
+            position: fixed;
+            bottom: var(--space-8);
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: var(--space-3) var(--space-6);
+            border-radius: var(--radius-full);
+            font-size: var(--text-sm);
+            font-weight: 500;
+            box-shadow: var(--shadow-lg);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+        }
+        .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+
+        @media (max-width: 480px) {
+            .countdown { gap: var(--space-3); }
+            .notify-form { flex-direction: column; border-radius: var(--radius-lg); }
+            .notify-form input { text-align: center; }
+            .notify-form button { border-radius: 0 0 var(--radius-lg) var(--radius-lg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background -->
+    <div class="maintenance-bg"></div>
+    <div class="grid-lines"></div>
+
+    <div class="maintenance-page">
+        <div class="maintenance-content dissolve-in">
+            <a href="../index.html" class="m-logo">
+                <svg width="28" height="28" viewBox="0 0 32 32"><rect width="32" height="32" rx="6" fill="#2C3E2D"/><text x="50%" y="55%" text-anchor="middle" dominant-baseline="middle" fill="#F5F1E8" font-family="serif" font-size="18" font-weight="bold">I</text></svg>
+                Intérieur
+            </a>
+
+            <div class="blueprint-icon">
+                <svg viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <rect class="draw-path" x="15" y="25" width="90" height="70" rx="4"/>
+                    <line class="draw-path" x1="15" y1="45" x2="105" y2="45" style="animation-delay:0.5s"/>
+                    <line class="draw-path" x1="55" y1="45" x2="55" y2="95" style="animation-delay:0.8s"/>
+                    <rect class="draw-path" x="25" y="55" width="20" height="15" rx="2" style="animation-delay:1.2s"/>
+                    <rect class="draw-path" x="65" y="55" width="30" height="30" rx="2" style="animation-delay:1.5s"/>
+                    <circle class="draw-path" cx="35" cy="35" r="5" style="animation-delay:0.3s"/>
+                </svg>
+            </div>
+
+            <h1 class="m-title">Redesigning the Experience</h1>
+            <p class="m-desc">We're making some exciting improvements behind the scenes. Our team is crafting something beautiful. We'll be back shortly.</p>
+
+            <div class="countdown" id="countdown">
+                <div class="countdown-unit">
+                    <div class="countdown-value" id="cd-days">02</div>
+                    <div class="countdown-label">Days</div>
+                </div>
+                <div class="countdown-sep">:</div>
+                <div class="countdown-unit">
+                    <div class="countdown-value" id="cd-hours">14</div>
+                    <div class="countdown-label">Hours</div>
+                </div>
+                <div class="countdown-sep">:</div>
+                <div class="countdown-unit">
+                    <div class="countdown-value" id="cd-mins">32</div>
+                    <div class="countdown-label">Minutes</div>
+                </div>
+                <div class="countdown-sep">:</div>
+                <div class="countdown-unit">
+                    <div class="countdown-value" id="cd-secs">08</div>
+                    <div class="countdown-label">Seconds</div>
+                </div>
+            </div>
+
+            <form class="notify-form" id="notify-form">
+                <input type="email" placeholder="Enter your email to be notified" required>
+                <button type="submit">Notify Me</button>
+            </form>
+
+            <div class="m-socials">
+                <a href="#" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+                <a href="#" aria-label="Pinterest"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 12a4 4 0 1 1 8 0c0 4-3 6-3 6"/><line x1="12" y1="12" x2="12" y2="21"/></svg></a>
+                <a href="#" aria-label="LinkedIn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+                <a href="#" aria-label="Twitter"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2ecc71" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        You'll be notified when we're live!
+    </div>
+
+    <script>
+        // Countdown Timer (set target to ~2.5 days from now)
+        const targetDate = new Date(Date.now() + 2.5 * 24 * 60 * 60 * 1000);
+
+        function updateCountdown() {
+            const now = new Date();
+            const diff = targetDate - now;
+
+            if (diff <= 0) {
+                document.getElementById('cd-days').textContent = '00';
+                document.getElementById('cd-hours').textContent = '00';
+                document.getElementById('cd-mins').textContent = '00';
+                document.getElementById('cd-secs').textContent = '00';
+                return;
+            }
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById('cd-days').textContent = String(days).padStart(2, '0');
+            document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('cd-mins').textContent = String(mins).padStart(2, '0');
+            document.getElementById('cd-secs').textContent = String(secs).padStart(2, '0');
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        // Notify Form
+        const form = document.getElementById('notify-form');
+        const toast = document.getElementById('toast');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            form.querySelector('input').value = '';
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3500);
+        });
+    </script>
+    <script src="../assets/js/modules/theme.js"></script>
+</body>
+</html>

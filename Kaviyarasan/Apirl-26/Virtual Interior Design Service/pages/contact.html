@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us — Intérieur | Virtual Interior Design</title>
+    <meta name="description" content="Get in touch with the Intérieur design team to start your virtual interior design journey.">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232C3E2D'/%3E%3Ctext x='50%25' y='55%25' text-anchor='middle' dominant-baseline='middle' fill='%23F5F1E8' font-family='serif' font-size='20' font-weight='bold'%3EI%3C/text%3E%3C/svg%3E">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/animations.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <link rel="stylesheet" href="../assets/css/rtl.css">
+    <style>
+        .contact-layout { display: grid; grid-template-columns: 1fr 1fr; min-height: 100vh; padding-top: var(--navbar-height); }
+        
+        /* Contact Form Side */
+        .contact-form-side { padding: var(--space-12) var(--space-8); display: flex; flex-direction: column; justify-content: center; max-width: 700px; margin: 0 auto; width: 100%; }
+        .contact-header { margin-bottom: var(--space-8); }
+        .contact-header h1 { font-family: var(--font-editorial); font-size: clamp(2.5rem, 4vw, 4rem); letter-spacing: -0.02em; margin-bottom: var(--space-2); }
+        .contact-header p { color: var(--text-secondary); font-size: var(--text-lg); }
+        
+        .contact-form { display: flex; flex-direction: column; gap: var(--space-6); }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-6); }
+        
+        /* Inquiry Selection */
+        .inquiry-types { display: flex; gap: var(--space-4); margin-bottom: var(--space-2); }
+        .inquiry-chip { flex: 1; text-align: center; border: 1px solid var(--border-color); padding: var(--space-3); border-radius: var(--radius-md); font-size: var(--text-sm); font-weight: 600; color: var(--text-secondary); cursor: pointer; transition: all 0.3s; }
+        .inquiry-chip:hover { border-color: var(--text-tertiary); color: var(--text-primary); }
+        .inquiry-chip input[type="radio"] { display: none; }
+        .inquiry-chip input[type="radio"]:checked + span { color: var(--terracotta); }
+        .inquiry-chip.active { border-color: var(--terracotta); background: rgba(224, 122, 95, 0.05); }
+
+        /* Follow-up Timeline */
+        .follow-up-timeline { margin-top: var(--space-8); padding-top: var(--space-8); border-top: 1px solid var(--border-color); }
+        .follow-up-timeline h3 { font-size: var(--text-sm); text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-tertiary); margin-bottom: var(--space-4); font-weight: 700; }
+        .timeline-steps { display: flex; align-items: flex-start; justify-content: space-between; position: relative; }
+        .timeline-steps::before { content: ''; position: absolute; top: 12px; left: 16px; right: 16px; height: 1px; background: var(--border-color); z-index: 0; }
+        [dir="rtl"] .timeline-steps::before { left: 16px; right: 16px; }
+        .t-step { display: flex; flex-direction: column; align-items: center; gap: var(--space-2); position: relative; z-index: 1; text-align: center; flex: 1; }
+        .t-step__dot { width: 24px; height: 24px; border-radius: 50%; background: var(--bg-surface); border: 2px solid var(--border-strong); display: flex; align-items: center; justify-content: center; transition: all 0.3s; }
+        .t-step.active .t-step__dot { border-color: var(--terracotta); background: var(--terracotta); color: #fff; }
+        .t-step.active .t-step__dot svg { display: block; width: 14px; height: 14px; }
+        .t-step__dot svg { display: none; }
+        .t-step__label { font-size: var(--text-xs); color: var(--text-secondary); font-weight: 500; }
+
+        /* Contact Info Side */
+        .contact-info-side { background: var(--bg-surface); border-inline-start: 1px solid var(--border-color); position: relative; overflow: hidden; display: flex; flex-direction: column; }
+        
+        /* Map Area */
+        .map-container { flex: 1; position: relative; background: #e5e3df; overflow: hidden; min-height: 400px; }
+        [data-theme="dark"] .map-container { background: #262626; filter: invert(90%) hue-rotate(180deg); }
+        .map-container iframe { width: 100%; height: 100%; border: 0; filter: grayscale(100%) opacity(0.8); transition: filter 0.5s; pointer-events: none; }
+        .map-container:hover iframe { filter: grayscale(50%) opacity(1); pointer-events: auto; }
+        
+        /* Overlay Info Box */
+        .contact-details { position: absolute; bottom: var(--space-8); left: var(--space-8); right: var(--space-8); background: var(--bg-elevated); padding: var(--space-8); border-radius: var(--radius-xl); box-shadow: var(--shadow-xl); border: 1px solid var(--border-color); z-index: 10; display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-6); filter: none !important; }
+        [dir="rtl"] .contact-details { left: var(--space-8); right: var(--space-8); }
+        [data-theme="dark"] .contact-details { filter: invert(100%) hue-rotate(180deg) !important; } /* Correct the map inversion effect */
+        
+        .detail-block h4 { font-family: var(--font-editorial); font-size: var(--text-lg); margin-bottom: var(--space-2); }
+        .detail-block p a { color: var(--text-secondary); text-decoration: none; transition: color 0.3s; display: block; margin-bottom: 4px; }
+        .detail-block p a:hover { color: var(--terracotta); }
+        
+        .social-links { display: flex; gap: var(--space-4); margin-top: var(--space-4); }
+        .social-links a { color: var(--text-secondary); transition: color 0.3s; }
+        .social-links a:hover { color: var(--text-primary); }
+
+        @media (max-width: 1024px) {
+            .contact-layout { grid-template-columns: 1fr; }
+            .form-row { grid-template-columns: 1fr; gap: 0; }
+            .contact-info-side { display: none; /* Alternatively, stack it below */ }
+        }
+        @media (max-width: 480px) {
+            .inquiry-types { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <div class="preloader" role="status" aria-label="Loading"><div class="preloader__logo">Intérieur</div><div class="preloader__bar"><div class="preloader__progress"></div></div></div>
+    <div class="custom-cursor"></div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="navbar__inner">
+            <a href="../index.html" class="navbar__logo" aria-label="Intérieur Home">
+                <svg width="32" height="32" viewBox="0 0 32 32"><rect width="32" height="32" rx="8" fill="#2C3E2D"/><text x="50%" y="55%" text-anchor="middle" dominant-baseline="middle" fill="#F5F1E8" font-family="serif" font-size="20" font-weight="bold">I</text></svg>
+                Intérieur
+            </a>
+            <ul class="navbar__links">
+                <li><a href="home-residential.html" class="navbar__link">Home</a></li>
+                <li><a href="about.html" class="navbar__link">About</a></li>
+                <li><a href="services.html" class="navbar__link">Services</a></li>
+                <li><a href="portfolio.html" class="navbar__link">Portfolio</a></li>
+                <li><a href="pricing.html" class="navbar__link">Pricing</a></li>
+                <li><a href="contact.html" class="navbar__link active">Contact</a></li>
+            </ul>
+            <div class="navbar__actions">
+                <div class="lang-dropdown">
+                    <button class="lang-dropdown__trigger navbar__icon-btn" aria-label="Change language"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10A15.3 15.3 0 0 1 12 2z"/></svg></button>
+                    <div class="lang-dropdown__menu">
+                        <div class="lang-dropdown__item active" data-lang="en">🇺🇸 English</div>
+                        <div class="lang-dropdown__item" data-lang="ar">🇸🇦 العربية</div>
+                        <div class="lang-dropdown__item" data-lang="he">🇮🇱 עברית</div>
+                        <div class="lang-dropdown__item" data-lang="es">🇪🇸 Español</div>
+                    </div>
+                </div>
+                <button class="theme-toggle navbar__icon-btn" aria-label="Toggle dark mode">
+                    <svg class="theme-icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                    <svg class="theme-icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+                </button>
+            </div>
+            <button class="mobile-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+    
+    <!-- Mobile Nav -->
+    <div class="mobile-nav" role="dialog" aria-label="Mobile navigation">
+        <a href="home-residential.html" class="mobile-nav__link">Home</a>
+        <a href="about.html" class="mobile-nav__link">About</a>
+        <a href="services.html" class="mobile-nav__link">Services</a>
+        <a href="portfolio.html" class="mobile-nav__link">Portfolio</a>
+        <a href="pricing.html" class="mobile-nav__link">Pricing</a>
+        <a href="contact.html" class="mobile-nav__link">Contact</a>
+    </div>
+
+    <main id="main-content" class="contact-layout">
+        
+        <!-- Form Side -->
+        <section class="contact-form-side">
+            <div class="contact-header reveal">
+                <h1>Hello.</h1>
+                <p>Tell us a bit about your project or inquiry. We'll get back to you within 24 hours.</p>
+            </div>
+
+            <form class="contact-form reveal delay-1" id="contactForm" novalidate>
+                <div class="inquiry-types" role="radiogroup" aria-label="Inquiry Type">
+                    <label class="inquiry-chip active">
+                        <input type="radio" name="inquiry_type" value="residential" checked>
+                        <span>Residential Project</span>
+                    </label>
+                    <label class="inquiry-chip">
+                        <input type="radio" name="inquiry_type" value="commercial">
+                        <span>Commercial Lead</span>
+                    </label>
+                    <label class="inquiry-chip">
+                        <input type="radio" name="inquiry_type" value="support">
+                        <span>General Support</span>
+                    </label>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="fname" name="fname" placeholder=" " required minlength="2">
+                        <label for="fname" class="form-label">First Name</label>
+                        <div class="form-message">Required</div>
+                        <!-- State Icons injected by JS -->
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="lname" name="lname" placeholder=" " required minlength="2">
+                        <label for="lname" class="form-label">Last Name</label>
+                        <div class="form-message">Required</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <input type="email" class="form-control" id="email" name="email" placeholder=" " required>
+                    <label for="email" class="form-label">Email Address</label>
+                    <div class="form-message">Please enter a valid email</div>
+                </div>
+
+                <div class="form-group" id="budget-group">
+                    <!-- Basic Select Styling, could be improved with custom JS select -->
+                    <select class="form-control" id="budget" name="budget" required style="padding-top: var(--space-4);">
+                        <option value="" disabled selected></option>
+                        <option value="under_5k">Under $5k</option>
+                        <option value="5k_15k">$5k - $15k</option>
+                        <option value="15k_50k">$15k - $50k</option>
+                        <option value="over_50k">$50k+</option>
+                    </select>
+                    <label for="budget" class="form-label">Estimated Budget</label>
+                    <div class="form-message">Please select a budget range</div>
+                </div>
+
+                <div class="form-group">
+                    <textarea class="form-control" id="message" name="message" placeholder=" " required minlength="10" style="min-height: 120px; resize: vertical;"></textarea>
+                    <label for="message" class="form-label">Project Details</label>
+                    <div class="form-message">Please tell us more about your project</div>
+                </div>
+
+                <button type="submit" class="btn btn--primary btn--lg w-full mt-4" style="justify-content:center">
+                    <span class="btn__text">Send Message</span>
+                    <span class="btn__spinner"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="spin"><circle cx="12" cy="12" r="10" stroke-opacity="0.25"/><path d="M12 2a10 10 0 0 1 10 10"/></svg></span>
+                </button>
+            </form>
+
+            <div class="follow-up-timeline reveal delay-2">
+                <h3>What Happens Next?</h3>
+                <div class="timeline-steps">
+                    <div class="t-step active">
+                        <div class="t-step__dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+                        <span class="t-step__label">Submit</span>
+                    </div>
+                    <div class="t-step">
+                        <div class="t-step__dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+                        <span class="t-step__label">Review</span>
+                    </div>
+                    <div class="t-step">
+                        <div class="t-step__dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+                        <span class="t-step__label">Contact</span>
+                    </div>
+                    <div class="t-step">
+                        <div class="t-step__dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+                        <span class="t-step__label">Start</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Graphic/Map Side -->
+        <section class="contact-info-side reveal right">
+            <div class="map-container">
+                <!-- Using a static embed representing our NY studio -->
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1m3!1d193595.15830869428!2d-74.119763973046!3d40.69766374874431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY!5e0!3m2!1sen!2sus!4v1680000000000!5m2!1sen!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            
+            <div class="contact-details">
+                <div class="detail-block">
+                    <h4>New York Studio</h4>
+                    <p class="text-sm text-secondary">
+                        125 SoHo Street<br>
+                        Floor 4<br>
+                        New York, NY 10012
+                    </p>
+                </div>
+                <div class="detail-block">
+                    <h4>Get In Touch</h4>
+                    <p class="text-sm">
+                        <a href="mailto:hello@interieur.com">hello@interieur.com</a>
+                        <a href="tel:+12125550199">+1 (212) 555-0199</a>
+                    </p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+                        <a href="#" aria-label="Pinterest"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 12a4 4 0 1 1 8 0c0 4-3 6-3 6"/><line x1="12" y1="12" x2="12" y2="21"/></svg></a>
+                        <a href="#" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="../assets/js/modules/navigation.js"></script>
+    <script src="../assets/js/modules/theme.js"></script>
+    <script src="../assets/js/modules/rtl.js"></script>
+    <script src="../assets/js/modules/animations.js"></script>
+    <!-- Assuming forms.js handles the validation and submit state we styled in components.css -->
+    <script src="../assets/js/modules/forms.js"></script>
+    <script src="../assets/js/main.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Setup inquiry chip toggles
+            const chips = document.querySelectorAll('.inquiry-chip');
+            const budgetGroup = document.getElementById('budget-group');
+            const budgetSelect = document.getElementById('budget');
+            
+            chips.forEach(chip => {
+                chip.addEventListener('click', () => {
+                    chips.forEach(c => c.classList.remove('active'));
+                    chip.classList.add('active');
+                    
+                    const radio = chip.querySelector('input');
+                    radio.checked = true;
+                    
+                    // Show/hide budget based on choice
+                    if(radio.value === 'support') {
+                        budgetGroup.style.display = 'none';
+                        budgetSelect.removeAttribute('required');
+                    } else {
+                        budgetGroup.style.display = 'block';
+                        budgetSelect.setAttribute('required', 'required');
+                    }
+                });
+            });
+
+            // Simulate form submission timeline update in forms.js (or intercept here)
+            const form = document.getElementById('contactForm');
+            if(form) {
+                form.addEventListener('submit', (e) => {
+                    // Fast forward timeline visually for demonstration
+                    if(form.checkValidity()) {
+                        const steps = document.querySelectorAll('.t-step');
+                        setTimeout(() => steps[1].classList.add('active'), 1500);
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
