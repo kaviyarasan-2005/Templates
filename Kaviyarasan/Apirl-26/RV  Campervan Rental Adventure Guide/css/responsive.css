@@ -1,0 +1,73 @@
+/* 
+ * responsive.css 
+ * Overrides for responsive logic and print
+ */
+
+/* ==========================================================================
+   Mobile Adjustments
+   ========================================================================== */
+@media (max-width: 639px) {
+  :root {
+    --font-size-5xl: 2.5rem;
+    --font-size-4xl: 2rem;
+    --font-size-3xl: 1.75rem;
+    --font-size-2xl: 1.5rem;
+    --font-size-xl: 1.25rem;
+    
+    --spacing-16: 3rem;
+    --spacing-20: 4rem;
+    --spacing-24: 5rem;
+  }
+}
+
+/* Provide a safe touch area for inputs on mobile */
+@media (max-width: 1023px) {
+  button, 
+  .btn, 
+  input, 
+  select {
+    min-height: 44px; /* Apple HCI guidelines touch target size */
+  }
+
+  .form-control {
+    padding-top: var(--spacing-5);
+    padding-bottom: var(--spacing-3);
+  }
+}
+
+
+/* ==========================================================================
+   Print Stylesheet
+   ========================================================================== */
+@media print {
+  body {
+    background-color: transparent;
+    color: #000;
+  }
+  
+  .na-header,
+  .mobile-menu,
+  .btn:not(.print-visible),
+  footer,
+  .scroll-progress,
+  img:not(.print-img) {
+    display: none !important;
+  }
+
+  .container {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .card {
+    box-shadow: none;
+    border: 1px solid #ddd;
+    break-inside: avoid;
+  }
+
+  h1, h2, h3 {
+    page-break-after: avoid;
+  }
+}

@@ -1,0 +1,38 @@
+/* 
+ * rtl.css 
+ * Overrides for Right-To-Left layout
+ */
+
+html[dir="rtl"] body {
+  font-family: var(--font-family-rtl);
+}
+
+html[dir="rtl"] .u-text-left { text-align: right; }
+html[dir="rtl"] .u-text-right { text-align: left; }
+
+/* Margin / Padding inversions using logical properties where possible, 
+   or specific overrides here */
+
+html[dir="rtl"] .btn-icon {
+  /* If icons need flipping */
+  transform: scaleX(-1);
+}
+
+/* Fixes for absolute positioning in forms */
+html[dir="rtl"] .form-label {
+  left: auto;
+  right: var(--spacing-4);
+}
+
+html[dir="rtl"] .mobile-menu {
+  right: auto;
+  left: -100%;
+}
+html[dir="rtl"] .mobile-menu.active {
+  left: 0;
+}
+
+/* Fix Hamburger / Modals close button positions if explicitly set */
+html[dir="rtl"] .modal-close {
+  /* usually OK with flexbox, but space might need adjusting */
+}

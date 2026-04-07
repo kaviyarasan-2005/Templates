@@ -1,0 +1,56 @@
+/* 
+ * dark-mode.css 
+ * Overrides for [data-theme="dark"]
+ */
+
+html[data-theme="dark"] {
+  /* Overwrite semantic colors */
+  --color-warm-sand-light: #121212;
+  --color-warm-sand: #1A1A1A;
+  --color-warm-sand-dark: #2A2A2A;
+
+  --color-white: #1E1E1E;
+  --color-rich-black: #FFFFFF;
+
+  --color-text-main: #E0E0E0;
+  --color-text-muted: #A0A0A0;
+
+  /* Shadows adjustments for dark mode */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.6);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.6);
+  --shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.8);
+}
+
+/* Specific elements */
+html[data-theme="dark"] .form-control {
+  background-color: var(--color-warm-sand);
+  border-color: #333;
+  color: var(--color-text-main);
+}
+
+html[data-theme="dark"] .form-control:focus {
+  border-color: var(--color-terracotta);
+}
+
+html[data-theme="dark"] .badge-olive {
+  background: rgba(122, 142, 116, 0.2);
+  color: var(--color-olive-green-light);
+}
+
+html[data-theme="dark"] .table th {
+  background-color: var(--color-warm-sand);
+  color: var(--color-text-main);
+}
+
+html[data-theme="dark"] .table tbody tr:hover {
+  background-color: var(--color-warm-sand);
+}
+
+html[data-theme="dark"] .btn-ghost {
+  color: var(--color-text-main);
+  border-color: #555;
+}
+html[data-theme="dark"] .btn-ghost:hover {
+  border-color: var(--color-white);
+}

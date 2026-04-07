@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wanderlust | Our Fleet</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/rtl.css">
+    <link rel="stylesheet" href="css/dark-mode.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+    <header class="na-header">
+        <div class="container na-nav">
+            <a href="index.html" class="na-logo"><i class="fa-solid fa-caravan u-color-terracotta"></i> <span>Wanderlust</span></a>
+            <nav class="na-menu">
+                <a href="index.html" class="na-link">Home</a>
+                <a href="services.html" class="na-link active">RVs & Vans</a>
+                <a href="pricing.html" class="na-link">Pricing</a>
+                <a href="blog.html" class="na-link">Journal</a>
+                <a href="contact.html" class="na-link">Contact</a>
+            </nav>
+            <div class="na-tools">
+                <button class="btn-icon dir-toggle"><i class="fa-solid fa-globe"></i></button>
+                <button class="btn-icon theme-toggle"><i class="fa-solid fa-moon"></i></button>
+                <div class="hamburger"><span></span><span></span><span></span></div>
+            </div>
+        </div>
+    </header>
+
+    <div class="mobile-menu">
+        <nav class="mobile-nav-list">
+            <a href="index.html" class="mobile-nav-link">Home</a>
+            <a href="services.html" class="mobile-nav-link u-color-terracotta">RVs & Vans</a>
+            <a href="pricing.html" class="mobile-nav-link">Pricing</a>
+        </nav>
+    </div>
+
+    <!-- Header Section -->
+    <section class="section" style="padding-top: 120px;">
+        <div class="container u-text-center animate-fade-in">
+            <h1 class="section-title">Our Campervan Fleet</h1>
+            <p class="section-subtitle">Find the perfect match for your next roadtrip.</p>
+            
+            <div style="max-width: 600px; margin: var(--spacing-6) auto;">
+                <input type="text" class="form-control search-input" placeholder="Search by name or type... (e.g. Sprinter)">
+            </div>
+        </div>
+    </section>
+
+    <!-- Fleet Grid -->
+    <section class="section u-bg-sand">
+        <div class="container">
+            <!-- Tabs / Category Filters (Mocked functionality through search for now) -->
+            <div class="flex justify-center flex-wrap gap-4 u-mb-8">
+                <button class="btn btn-primary">All Vehicles</button>
+                <button class="btn btn-ghost">Class A</button>
+                <button class="btn btn-ghost">Class B</button>
+                <button class="btn btn-ghost">Trailers</button>
+            </div>
+
+            <div class="grid filter-grid stagger">
+                <!-- Vehicle 1 -->
+                <div class="col-4 sm-col-12 md-col-6 filter-item" data-title="wanderer class a luxury">
+                    <div class="card animate-float delay-100">
+                        <div class="card-img img-placeholder">Image</div>
+                        <div class="card-body">
+                            <span class="badge u-mb-2">Class A</span>
+                            <h3 class="card-title">Wanderer Class A</h3>
+                            <p class="card-text">Luxury motorhome with 2 slide-outs, full kitchen, and master suite.</p>
+                            <div class="flex justify-between items-center">
+                                <span style="font-size: var(--font-size-xl); font-weight: bold;">$350</span>
+                                <span class="u-color-text-muted">/ day</span>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <span><i class="fa-solid fa-users"></i> Sleeps 6</span>
+                            <a href="service-detail.html?id=1" class="btn btn-primary" style="padding: var(--spacing-2) var(--spacing-4);">Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vehicle 2 -->
+                <div class="col-4 sm-col-12 md-col-6 filter-item" data-title="nomad sprinter off-grid b">
+                    <div class="card animate-float delay-200">
+                        <div class="card-img img-placeholder">Image</div>
+                        <div class="card-body">
+                            <span class="badge badge-olive u-mb-2">Class B</span>
+                            <h3 class="card-title">Nomad Sprinter B</h3>
+                            <p class="card-text">Agile, stealthy campervan ideal for couples looking to go off-grid.</p>
+                            <div class="flex justify-between items-center">
+                                <span style="font-size: var(--font-size-xl); font-weight: bold;">$200</span>
+                                <span class="u-color-text-muted">/ day</span>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <span><i class="fa-solid fa-users"></i> Sleeps 2</span>
+                            <a href="service-detail.html?id=2" class="btn btn-primary" style="padding: var(--spacing-2) var(--spacing-4);">Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vehicle 3 -->
+                <div class="col-4 sm-col-12 md-col-6 filter-item" data-title="family explorer class c">
+                    <div class="card animate-float delay-300">
+                        <div class="card-img img-placeholder">Image</div>
+                        <div class="card-body">
+                            <span class="badge u-mb-2">Class C</span>
+                            <h3 class="card-title">Family Explorer C</h3>
+                            <p class="card-text">The perfect compromise between drivability and living space.</p>
+                            <div class="flex justify-between items-center">
+                                <span style="font-size: var(--font-size-xl); font-weight: bold;">$280</span>
+                                <span class="u-color-text-muted">/ day</span>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <span><i class="fa-solid fa-users"></i> Sleeps 5</span>
+                            <a href="service-detail.html?id=3" class="btn btn-primary" style="padding: var(--spacing-2) var(--spacing-4);">Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: var(--color-rich-black); color: var(--color-white); padding: var(--spacing-10) 0; text-align: center;">
+        <div class="container">
+            <p>&copy; 2026 Wanderlust RV Rentals.</p>
+        </div>
+    </footer>
+
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>

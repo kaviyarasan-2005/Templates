@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wanderlust | Login</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/rtl.css">
+    <link rel="stylesheet" href="css/dark-mode.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <style>
+        .auth-layout {
+            min-height: 100vh;
+            display: flex;
+        }
+        .auth-form-side {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: var(--spacing-8);
+            max-width: 600px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        .auth-img-side {
+            flex: 1.2;
+            display: none;
+        }
+        @media (min-width: 1024px) {
+            .auth-img-side { display: block; }
+            .auth-form-side { max-width: 50%; margin: 0; padding: var(--spacing-16); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="auth-layout">
+        
+        <div class="auth-form-side animate-fade-in delay-100">
+            <a href="index.html" class="na-logo u-mb-8">
+                <i class="fa-solid fa-caravan u-color-terracotta"></i> <span>Wanderlust</span>
+            </a>
+            
+            <h1 class="u-mb-2">Welcome Back</h1>
+            <p class="u-color-text-muted u-mb-8">Log in to manage your bookings and view your saved trips.</p>
+
+            <form class="validate-form">
+                <div class="form-group">
+                    <input type="email" class="form-control" id="email" placeholder=" " required>
+                    <label class="form-label" for="email">Email Address</label>
+                    <div class="form-error">Valid email required</div>
+                </div>
+
+                <div class="form-group">
+                    <input type="password" class="form-control" id="password" placeholder=" " required>
+                    <label class="form-label" for="password">Password</label>
+                    <div class="form-error">Password required</div>
+                </div>
+
+                <div class="flex justify-between items-center u-mb-6" style="font-size: var(--font-size-sm);">
+                    <label class="flex items-center gap-2 cursor-pointer">
+                        <input type="checkbox"> Remember me
+                    </label>
+                    <a href="forgot-password.html" class="u-color-terracotta">Forgot Password?</a>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-bottom: var(--spacing-6);">Log In</button>
+            </form>
+
+            <div class="u-text-center u-mb-6">
+                <span class="u-color-text-muted" style="position: relative; display: inline-block; padding: 0 var(--spacing-4);">
+                    Or continue with
+                    <span style="position: absolute; top: 50%; left: -50px; width: 40px; height: 1px; background: var(--color-warm-sand);"></span>
+                    <span style="position: absolute; top: 50%; right: -50px; width: 40px; height: 1px; background: var(--color-warm-sand);"></span>
+                </span>
+            </div>
+
+            <div class="flex gap-4">
+                <button class="btn btn-ghost flex-1"><i class="fa-brands fa-google"></i> Google</button>
+                <button class="btn btn-ghost flex-1"><i class="fa-brands fa-apple"></i> Apple</button>
+            </div>
+
+            <p class="u-text-center u-mt-auto" style="margin-top: var(--spacing-10);">
+                Don't have an account? <a href="register.html" class="u-color-terracotta" style="font-weight: bold;">Sign Up</a>
+            </p>
+        </div>
+
+        <div class="auth-img-side img-placeholder animate-fade-in delay-200">
+            Login Image / Video Placeholder
+        </div>
+
+    </div>
+
+    <!-- Success Modal logic bypass since form submission is handled in JS -->
+    <div class="modal-overlay" id="successModal">
+        <div class="modal">
+            <div class="modal-body u-text-center">
+                <i class="fa-solid fa-circle-check fa-4x u-color-olive u-mb-4"></i>
+                <h3>Login Successful</h3>
+                <p>Redirecting to dashboard...</p>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="js/main.js"></script>
+    <script>
+        // Redirect script on pseudo-success
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            setTimeout(() => {
+                if(document.getElementById('successModal').classList.contains('active')) {
+                    // Force role to user for demo purposes
+                    localStorage.setItem('user-role', 'user');
+                    window.location.href = 'dashboard.html';
+                }
+            }, 1500);
+        });
+    </script>
+</body>
+</html>

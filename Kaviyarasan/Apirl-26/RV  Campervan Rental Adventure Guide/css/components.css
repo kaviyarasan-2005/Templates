@@ -1,0 +1,447 @@
+/* 
+ * components.css 
+ * Buttons, Cards, Forms, Modals, Navigation
+ */
+
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-3) var(--spacing-6);
+  border-radius: var(--radius-full);
+  font-weight: var(--font-weight-semi);
+  font-size: var(--font-size-base);
+  transition: all var(--transition-fast);
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+  gap: var(--spacing-2);
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background: var(--gradient-terracotta);
+  color: var(--color-white);
+  box-shadow: 0 4px 10px rgba(211, 108, 74, 0.3);
+}
+
+.btn-primary:hover {
+  box-shadow: 0 6px 15px rgba(211, 108, 74, 0.4);
+  transform: translateY(-2px);
+  color: var(--color-white);
+}
+
+.btn-secondary {
+  background: var(--color-olive-green);
+  color: var(--color-white);
+}
+
+.btn-secondary:hover {
+  background: var(--color-olive-green-dark);
+  transform: translateY(-2px);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--color-rich-black);
+  border: 1px solid var(--color-text-muted);
+}
+
+.btn-ghost:hover {
+  border-color: var(--color-rich-black);
+  background: var(--color-warm-sand);
+}
+
+.btn-link {
+  background: transparent;
+  color: var(--color-terracotta);
+  padding: 0;
+  border-radius: 0;
+  font-weight: var(--font-weight-medium);
+}
+.btn-link:hover {
+  color: var(--color-terracotta-dark);
+  text-decoration: underline;
+}
+
+.btn-icon {
+  padding: var(--spacing-2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+}
+
+/* ==========================================================================
+   Cards
+   ========================================================================== */
+.card {
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: box-shadow var(--transition-normal), transform var(--transition-normal);
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-lg);
+}
+
+.card-img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: var(--spacing-5);
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.card-title {
+  margin-bottom: var(--spacing-2);
+  font-size: var(--font-size-xl);
+}
+
+.card-text {
+  color: var(--color-text-muted);
+  margin-bottom: var(--spacing-4);
+  flex: 1;
+}
+
+.card-footer {
+  padding: var(--spacing-4) var(--spacing-5);
+  border-top: 1px solid var(--color-warm-sand);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ==========================================================================
+   Forms (Floating Labels)
+   ========================================================================== */
+.form-group {
+  position: relative;
+  margin-bottom: var(--spacing-6);
+}
+
+.form-control {
+  width: 100%;
+  padding: var(--spacing-4) var(--spacing-4) var(--spacing-2) var(--spacing-4);
+  font-size: var(--font-size-base);
+  border: 1px solid #ccc;
+  border-radius: var(--radius-md);
+  background-color: var(--color-white);
+  color: var(--color-text-main);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.form-control:focus {
+  border-color: var(--color-terracotta);
+  box-shadow: 0 0 0 3px rgba(211, 108, 74, 0.1);
+}
+
+.form-label {
+  position: absolute;
+  top: 50%;
+  left: var(--spacing-4);
+  transform: translateY(-50%);
+  color: var(--color-text-muted);
+  transition: all var(--transition-fast);
+  pointer-events: none;
+  font-size: var(--font-size-base);
+}
+
+/* Floating Label Activating */
+.form-control:focus + .form-label,
+.form-control:not(:placeholder-shown) + .form-label {
+  top: var(--spacing-2);
+  font-size: var(--font-size-xs);
+  color: var(--color-terracotta);
+}
+
+textarea.form-control {
+  min-height: 120px;
+  resize: vertical;
+}
+
+textarea.form-control + .form-label {
+  top: var(--spacing-4);
+}
+textarea.form-control:focus + .form-label,
+textarea.form-control:not(:placeholder-shown) + .form-label {
+  top: var(--spacing-2);
+}
+
+.form-error {
+  color: #dc3545;
+  font-size: var(--font-size-sm);
+  margin-top: var(--spacing-1);
+  display: none;
+}
+
+.form-control.is-invalid {
+  border-color: #dc3545;
+}
+.form-control.is-invalid ~ .form-error {
+  display: block;
+}
+
+/* ==========================================================================
+   Badges / Tags
+   ========================================================================== */
+.badge {
+  display: inline-block;
+  padding: var(--spacing-1) var(--spacing-3);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semi);
+  border-radius: var(--radius-full);
+  background: var(--color-warm-sand);
+  color: var(--color-text-main);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.badge-olive {
+  background: rgba(89, 110, 83, 0.1);
+  color: var(--color-olive-green-dark);
+}
+
+/* ==========================================================================
+   Modals
+   ========================================================================== */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(4px);
+  z-index: var(--z-modal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all var(--transition-normal);
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal {
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  width: 100%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+  transform: translateY(20px) scale(0.95);
+  transition: all var(--transition-normal);
+  box-shadow: var(--shadow-lg);
+}
+
+.modal-overlay.active .modal {
+  transform: translateY(0) scale(1);
+}
+
+.modal-header {
+  padding: var(--spacing-5);
+  border-bottom: 1px solid var(--color-warm-sand);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-close {
+  font-size: var(--font-size-xl);
+  color: var(--color-text-muted);
+}
+
+.modal-body {
+  padding: var(--spacing-5);
+}
+
+/* ==========================================================================
+   Navigation
+   ========================================================================== */
+.na-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: var(--z-header);
+  background: var(--color-white);
+  transition: background var(--transition-normal), box-shadow var(--transition-normal), padding var(--transition-normal);
+  padding: var(--spacing-4) 0;
+}
+
+.na-header.scrolled {
+  box-shadow: var(--shadow-sm);
+  padding: var(--spacing-2) 0;
+}
+
+.na-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.na-logo {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-rich-black);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+.na-menu {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .na-menu {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-6);
+  }
+}
+
+.na-link {
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-base);
+  position: relative;
+}
+
+.na-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--color-terracotta);
+  transition: width var(--transition-fast);
+}
+
+.na-link:hover::after,
+.na-link.active::after {
+  width: 100%;
+}
+
+.na-tools {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4);
+}
+
+/* Hamburger */
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 30px;
+  height: 24px;
+  justify-content: center;
+  cursor: pointer;
+  z-index: calc(var(--z-header) + 1);
+}
+
+.hamburger span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-rich-black);
+  transition: transform var(--transition-normal), opacity var(--transition-fast);
+}
+
+@media (min-width: 1024px) {
+  .hamburger { display: none; }
+}
+
+.hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* Mobile Menu */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 80%;
+  max-width: 400px;
+  height: 100vh;
+  background: var(--color-white);
+  z-index: var(--z-header);
+  padding: 80px var(--spacing-6) var(--spacing-6);
+  box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+  transition: right var(--transition-normal);
+  display: flex;
+  flex-direction: column;
+}
+
+.mobile-menu.active {
+  right: 0;
+}
+
+.mobile-nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.mobile-nav-link {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semi);
+}
+
+/* ==========================================================================
+   Tables
+   ========================================================================== */
+.table-responsive {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th, .table td {
+  padding: var(--spacing-4);
+  text-align: left;
+  border-bottom: 1px solid var(--color-warm-sand);
+}
+
+html[dir="rtl"] .table th, html[dir="rtl"] .table td {
+  text-align: right;
+}
+
+.table th {
+  font-weight: var(--font-weight-semi);
+  background-color: var(--color-warm-sand-light);
+  color: var(--color-text-muted);
+}
+
+.table tbody tr:hover {
+  background-color: var(--color-warm-sand-light);
+}

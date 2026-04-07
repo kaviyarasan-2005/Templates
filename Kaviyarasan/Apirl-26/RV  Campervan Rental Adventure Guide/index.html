@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wanderlust RV Rentals | Home</title>
+    <meta name="description" content="Rent premium campervans and RVs for your next adventure.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
+    <!-- CSS Architecture -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/rtl.css">
+    <link rel="stylesheet" href="css/dark-mode.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "AutoRental",
+      "name": "Wanderlust RV Rentals",
+      "image": "https://example.com/logo.png",
+      "@id": "",
+      "url": "https://example.com",
+      "telephone": "+1234567890",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "123 Adventure Way",
+        "addressLocality": "Denver",
+        "addressRegion": "CO",
+        "postalCode": "80202",
+        "addressCountry": "US"
+      }
+    }
+    </script>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header class="na-header animate-fade-in delay-100">
+        <div class="container na-nav">
+            <a href="index.html" class="na-logo">
+                <i class="fa-solid fa-caravan u-color-terracotta"></i>
+                <span>Wanderlust</span>
+            </a>
+
+            <nav class="na-menu">
+                <a href="index.html" class="na-link active">Home</a>
+                <a href="services.html" class="na-link">RVs & Vans</a>
+                <a href="pricing.html" class="na-link">Pricing</a>
+                <a href="blog.html" class="na-link">Journal</a>
+                <a href="contact.html" class="na-link">Contact</a>
+            </nav>
+
+            <div class="na-tools">
+                <button class="btn-icon dir-toggle" title="Toggle RTL/LTR">
+                    <i class="fa-solid fa-globe"></i>
+                </button>
+                <button class="btn-icon theme-toggle" title="Toggle Dark Mode">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+                
+                <a href="login.html" class="btn btn-ghost u-hidden-mobile">Sign In</a>
+                <a href="dashboard.html" class="btn btn-primary u-hidden-mobile">Book Now</a>
+
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <nav class="mobile-nav-list">
+            <a href="index.html" class="mobile-nav-link u-color-terracotta">Home</a>
+            <a href="services.html" class="mobile-nav-link">RVs & Vans</a>
+            <a href="pricing.html" class="mobile-nav-link">Pricing</a>
+            <a href="blog.html" class="mobile-nav-link">Journal</a>
+            <a href="contact.html" class="mobile-nav-link">Contact</a>
+            <a href="login.html" class="mobile-nav-link">Sign In</a>
+            <a href="dashboard.html" class="mobile-nav-link">Dashboard</a>
+            <a href="home-digital.html" class="mobile-nav-link">Digital Theme</a>
+        </nav>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-section" style="position: relative; height: 100vh; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+        <!-- Video Placeholder Background -->
+        <div style="position: absolute; top:0; left:0; width:100%; height:100%; z-index:-1; background: var(--gradient-olive); opacity: 0.8; display: flex; align-items: center; justify-content: center;">
+             <i class="fa-solid fa-play fa-4x" style="color: rgba(255,255,255,0.2);"></i>
+        </div>
+        
+        <div class="container u-text-center animate-fade-in delay-200">
+            <h1 class="u-color-white" style="font-size: var(--font-size-6xl); color: #fff; text-shadow: 0 2px 10px rgba(0,0,0,0.3);">Discover Your Next Adventure</h1>
+            <p class="section-subtitle u-mb-0" style="color: #f0f0f0;">Premium campervan rentals with everything you need for the road.</p>
+            
+            <div class="search-bar animate-fade-in delay-300" style="background: var(--color-white); padding: var(--spacing-4); border-radius: var(--radius-full); display: flex; gap: var(--spacing-4); max-width: 800px; margin: var(--spacing-8) auto; box-shadow: var(--shadow-lg);">
+                <div class="form-group u-mb-0 flex-1" style="flex:1;">
+                    <input type="text" class="form-control" style="border:none; box-shadow:none; padding-left:0;" placeholder="Where to? (e.g. Yosemite)">
+                </div>
+                <div class="form-group u-mb-0 flex-1" style="flex:1;">
+                    <input type="date" class="form-control" style="border:none; box-shadow:none; padding-left:0;">
+                </div>
+                <button class="btn btn-primary" style="padding: var(--spacing-3) var(--spacing-8);">Search</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="section u-bg-sand">
+        <div class="container">
+            <div class="grid stagger">
+                <div class="col-4 u-text-center">
+                    <h2 class="u-color-terracotta" style="font-size: var(--font-size-5xl);"><span class="counter" data-target="150">0</span>+</h2>
+                    <p>Premium Vehicles</p>
+                </div>
+                <div class="col-4 u-text-center">
+                    <h2 class="u-color-terracotta" style="font-size: var(--font-size-5xl);"><span class="counter" data-target="50">0</span>k</h2>
+                    <p>Happy Travelers</p>
+                </div>
+                <div class="col-4 u-text-center">
+                    <h2 class="u-color-terracotta" style="font-size: var(--font-size-5xl);"><span class="counter" data-target="24">0</span>/7</h2>
+                    <p>Roadside Support</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Categories -->
+    <section class="section">
+        <div class="container stagger">
+            <div class="section-header">
+                <h2 class="section-title">Explore Our Fleet</h2>
+                <p class="section-subtitle">Find the perfect vehicle for your journey.</p>
+            </div>
+
+            <div class="grid">
+                <!-- Card 1 -->
+                <div class="col-4 sm-col-12">
+                    <div class="card animate-float delay-100">
+                        <div class="card-img img-placeholder">Class A Placeholder</div>
+                        <div class="card-body">
+                            <span class="badge u-mb-2">Luxury</span>
+                            <h3 class="card-title">Class A Motorhome</h3>
+                            <p class="card-text">Spacious, comfortable, and packed with full home amenities.</p>
+                            <div style="font-weight: bold; font-size: var(--font-size-lg);">From $350/day</div>
+                        </div>
+                        <div class="card-footer">
+                            <i class="fa-solid fa-users"></i> Sleeps 6
+                            <a href="service-detail.html?id=1" class="btn btn-ghost" style="padding: var(--spacing-2) var(--spacing-4);">View</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="col-4 sm-col-12">
+                    <div class="card animate-float delay-200">
+                        <div class="card-img img-placeholder">Class B Placeholder</div>
+                        <div class="card-body">
+                            <span class="badge u-mb-2 badge-olive">Off-Grid</span>
+                            <h3 class="card-title">Class B Sprinter</h3>
+                            <p class="card-text">Agile, stealthy, and solar-equipped for remote camping.</p>
+                            <div style="font-weight: bold; font-size: var(--font-size-lg);">From $200/day</div>
+                        </div>
+                        <div class="card-footer">
+                            <i class="fa-solid fa-users"></i> Sleeps 2
+                            <a href="service-detail.html?id=2" class="btn btn-ghost" style="padding: var(--spacing-2) var(--spacing-4);">View</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="col-4 sm-col-12 md-col-8">
+                    <div class="card animate-float delay-300">
+                        <div class="card-img img-placeholder">Travel Trailer Placeholder</div>
+                        <div class="card-body">
+                            <span class="badge u-mb-2">Family</span>
+                            <h3 class="card-title">Travel Trailer</h3>
+                            <p class="card-text">Lightweight towables perfect for family getaways to the park.</p>
+                            <div style="font-weight: bold; font-size: var(--font-size-lg);">From $120/day</div>
+                        </div>
+                        <div class="card-footer">
+                            <i class="fa-solid fa-users"></i> Sleeps 5
+                            <a href="service-detail.html?id=4" class="btn btn-ghost" style="padding: var(--spacing-2) var(--spacing-4);">View</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="u-text-center" style="margin-top: var(--spacing-10);">
+                <a href="services.html" class="btn btn-primary">View All Vehicles</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Preview -->
+    <section class="section u-bg-sand">
+        <div class="container stagger">
+            <div class="grid items-center">
+                <div class="col-5 md-col-12">
+                    <h2>Pick Up Locations around the Country</h2>
+                    <p>We have hubs near major National Parks to make your trip planning easy.</p>
+                    <ul style="margin-top: var(--spacing-6); line-height: 2;">
+                        <li><i class="fa-solid fa-location-dot u-color-terracotta"></i> Yosemite Basecamp</li>
+                        <li><i class="fa-solid fa-location-dot u-color-terracotta"></i> Grand Canyon Post</li>
+                        <li><i class="fa-solid fa-location-dot u-color-terracotta"></i> Yellowstone Hub</li>
+                    </ul>
+                </div>
+                <div class="col-7 md-col-12">
+                    <div id="map" style="width: 100%; height: 400px; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); z-index: 1;"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="section" style="background: var(--color-olive-green); color: var(--color-white);">
+        <div class="container u-text-center stagger">
+            <h2 style="color: var(--color-white);">Join Our Travel Community</h2>
+            <p style="color: var(--color-warm-sand-dark); max-width: 600px; margin: 0 auto var(--spacing-6);">Subscribe for roadtrip itineraries, tips, and exclusive off-season discounts.</p>
+            
+            <form class="validate-form" style="display: flex; gap: var(--spacing-4); max-width: 500px; margin: 0 auto; justify-content: center; align-items: center;">
+                <div class="form-group u-mb-0" style="flex:1;">
+                    <input type="email" class="form-control" placeholder="Enter your email" required style="border-radius: var(--radius-full); min-height: 48px;">
+                </div>
+                <button type="submit" class="btn btn-primary">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: var(--color-rich-black); color: var(--color-white); padding: var(--spacing-16) 0 var(--spacing-8);">
+        <div class="container">
+            <div class="grid">
+                <div class="col-4 sm-col-12 md-col-6">
+                    <a href="index.html" class="na-logo" style="color: var(--color-white); margin-bottom: var(--spacing-6);">
+                        <i class="fa-solid fa-caravan u-color-terracotta"></i>
+                        <span>Wanderlust</span>
+                    </a>
+                    <p style="color: var(--color-text-muted);">Making outdoor access easier, more comfortable, and memorable.</p>
+                </div>
+                <div class="col-2 sm-col-6 md-col-3">
+                    <h4 style="color: var(--color-white); font-size: var(--font-size-lg);">Company</h4>
+                    <ul style="color: var(--color-text-muted); line-height: 2;">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Fleet</a></li>
+                        <li><a href="blog.html">Journal</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-2 sm-col-6 md-col-3">
+                    <h4 style="color: var(--color-white); font-size: var(--font-size-lg);">Support</h4>
+                    <ul style="color: var(--color-text-muted); line-height: 2;">
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Roadside Assist</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="col-4 sm-col-12 md-col-12">
+                    <h4 style="color: var(--color-white); font-size: var(--font-size-lg);">Follow Us</h4>
+                    <div style="display: flex; gap: var(--spacing-4); margin-top: var(--spacing-4);">
+                        <a href="#" class="btn-icon" style="background: #333; color: #fff;"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="btn-icon" style="background: #333; color: #fff;"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="#" class="btn-icon" style="background: #333; color: #fff;"><i class="fa-brands fa-tiktok"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div style="border-top: 1px solid #333; margin-top: var(--spacing-10); padding-top: var(--spacing-6); text-align: center; color: var(--color-text-muted); font-size: var(--font-size-sm);">
+                &copy; 2026 Wanderlust RV Rentals. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    
+    <!-- App JS -->
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>

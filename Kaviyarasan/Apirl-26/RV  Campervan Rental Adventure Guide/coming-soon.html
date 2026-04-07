@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark" class="default-dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wanderlust | Coming Soon</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/rtl.css">
+    <link rel="stylesheet" href="css/dark-mode.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <style>
+        .soon-layout { min-height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+        .soon-content { z-index: 2; text-align: center; max-width: 600px; padding: var(--spacing-4); }
+        #particles { position: absolute; top:0; left:0; width:100%; height:100%; z-index: 1; background: var(--color-warm-sand-light); }
+        .countdown { display: flex; justify-content: center; gap: var(--spacing-6); margin: var(--spacing-8) 0; }
+        .cd-box { text-align: center; }
+        .cd-num { font-size: var(--font-size-5xl); font-weight: bold; line-height: 1; color: var(--color-terracotta); }
+        .cd-label { font-size: var(--font-size-xs); text-transform: uppercase; letter-spacing: 1px; color: var(--color-text-muted); }
+    </style>
+</head>
+<body>
+
+    <!-- Mock Canvas Background -->
+    <div id="particles">
+        <div style="position: absolute; top: 20%; left: 10%; width: 300px; height: 300px; background: radial-gradient(circle, var(--color-olive-green) 0%, transparent 70%); filter: blur(40px); opacity: 0.1;"></div>
+        <div style="position: absolute; bottom: 10%; right: 10%; width: 400px; height: 400px; background: radial-gradient(circle, var(--color-terracotta) 0%, transparent 70%); filter: blur(60px); opacity: 0.1;"></div>
+    </div>
+
+    <div class="soon-layout">
+        <div class="soon-content animate-fade-in">
+            <h1 class="u-mb-4" style="font-size: var(--font-size-5xl);">Something epic is coming.</h1>
+            <p class="u-color-text-muted">We are currently building our new booking platform. Subscribe to be notified when we launch!</p>
+            
+            <!-- Countdown -->
+            <div class="countdown">
+                <div class="cd-box"><div class="cd-num">14</div><div class="cd-label">Days</div></div>
+                <div class="cd-box"><div class="cd-num">08</div><div class="cd-label">Hours</div></div>
+                <div class="cd-box"><div class="cd-num">45</div><div class="cd-label">Mins</div></div>
+            </div>
+
+            <!-- Notify Form -->
+            <form class="validate-form" style="display: flex; gap: var(--spacing-2); max-width: 500px; margin: 0 auto;">
+                <div class="form-group u-mb-0" style="flex:1;">
+                    <input type="email" class="form-control" placeholder="Enter your email" required style="border-radius: var(--radius-full); min-height: 48px;">
+                </div>
+                <button type="submit" class="btn btn-primary" style="min-width: 120px;">Notify Me</button>
+            </form>
+
+            <div class="u-mt-auto" style="margin-top: var(--spacing-10); display: flex; justify-content: center; gap: var(--spacing-4);">
+                <a href="#" class="btn-icon" style="background: rgba(255,255,255,0.1);"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" class="btn-icon" style="background: rgba(255,255,255,0.1);"><i class="fa-brands fa-twitter"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal bypass -->
+    <div class="modal-overlay" id="successModal">
+        <div class="modal">
+            <div class="modal-body u-text-center">
+                <i class="fa-solid fa-circle-check fa-4x u-color-terracotta u-mb-4"></i>
+                <h3>You're on the list!</h3>
+                <button class="btn btn-primary modal-close" style="margin-top: var(--spacing-4);">Awesome</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="js/main.js"></script>
+    <script>
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            document.getElementById('successModal').classList.add('active');
+        });
+    </script>
+</body>
+</html>

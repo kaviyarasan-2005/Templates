@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wanderlust | 404 Not Found</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/rtl.css">
+    <link rel="stylesheet" href="css/dark-mode.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <style>
+        .error-layout { min-height: 100vh; display: flex; align-items: center; justify-content: center; background: var(--color-warm-sand-light); padding: var(--spacing-4); text-align: center; }
+        .error-content { max-width: 600px; }
+        .offroad-icon { font-size: 8rem; color: var(--color-terracotta); margin-bottom: var(--spacing-6); animation: float 4s ease-in-out infinite; }
+    </style>
+</head>
+<body>
+
+    <div class="error-layout">
+        <div class="error-content animate-fade-in">
+            <i class="fa-solid fa-map-location-dot offroad-icon"></i>
+            
+            <h1 style="font-size: var(--font-size-6xl); margin-bottom: var(--spacing-2);">404</h1>
+            <h2 class="u-mb-4">Looks like you went off-road!</h2>
+            <p class="u-color-text-muted u-mb-8">The page you are looking for doesn't exist or has been moved. Let's get you back on the right path.</p>
+            
+            <div style="max-width: 400px; margin: 0 auto; display: flex; gap: var(--spacing-4);">
+                <a href="index.html" class="btn btn-primary flex-1">Back Home</a>
+                <a href="services.html" class="btn btn-ghost flex-1">View Fleet</a>
+            </div>
+            
+            <!-- Quick Search -->
+            <div class="u-mt-auto" style="margin-top: var(--spacing-10);">
+                <p class="u-color-text-muted" style="font-size: var(--font-size-sm);">Or try searching for what you need:</p>
+                <div class="form-group" style="max-width: 300px; margin: 0 auto;">
+                    <input type="text" class="form-control" style="border-radius: var(--radius-full);" placeholder="Search the site...">
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

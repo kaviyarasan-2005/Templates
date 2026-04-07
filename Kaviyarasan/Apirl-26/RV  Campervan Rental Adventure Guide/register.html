@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wanderlust | Register</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/rtl.css">
+    <link rel="stylesheet" href="css/dark-mode.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <style>
+        .auth-layout { min-height: 100vh; display: flex; }
+        .auth-form-side { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: var(--spacing-8); max-width: 600px; margin: 0 auto; width: 100%; }
+        .auth-img-side { flex: 1.2; display: none; }
+        @media (min-width: 1024px) {
+            .auth-img-side { display: block; }
+            .auth-form-side { max-width: 50%; margin: 0; padding: var(--spacing-16); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="auth-layout">
+        
+        <div class="auth-form-side animate-fade-in delay-100">
+            <a href="index.html" class="na-logo u-mb-8">
+                <i class="fa-solid fa-caravan u-color-terracotta"></i> <span>Wanderlust</span>
+            </a>
+            
+            <h1 class="u-mb-2">Create Account</h1>
+            <p class="u-color-text-muted u-mb-8">Join the Wanderlust community and start planning your next journey.</p>
+
+            <form class="validate-form">
+                <div class="grid" style="gap: var(--spacing-4);">
+                    <div class="col-6 sm-col-12">
+                        <div class="form-group u-mb-4">
+                            <input type="text" class="form-control" id="fname" placeholder=" " required>
+                            <label class="form-label" for="fname">First Name</label>
+                        </div>
+                    </div>
+                    <div class="col-6 sm-col-12">
+                        <div class="form-group u-mb-4">
+                            <input type="text" class="form-control" id="lname" placeholder=" " required>
+                            <label class="form-label" for="lname">Last Name</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group u-mb-4">
+                    <input type="email" class="form-control" id="email" placeholder=" " required>
+                    <label class="form-label" for="email">Email Address</label>
+                </div>
+
+                <div class="form-group u-mb-4">
+                    <input type="password" class="form-control" id="password" placeholder=" " required minlength="8">
+                    <label class="form-label" for="password">Password (8+ chars)</label>
+                </div>
+
+                <div class="flex items-start gap-2 u-mb-6" style="font-size: var(--font-size-sm);">
+                    <input type="checkbox" required id="terms" style="margin-top: 4px;"> 
+                    <label for="terms" class="u-color-text-muted cursor-pointer">I agree to the <a href="#" class="u-color-terracotta">Terms of Service</a> and <a href="#" class="u-color-terracotta">Privacy Policy</a>.</label>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-bottom: var(--spacing-6);">Create Account</button>
+            </form>
+
+            <p class="u-text-center u-mt-auto" style="margin-top: var(--spacing-10);">
+                Already have an account? <a href="login.html" class="u-color-terracotta" style="font-weight: bold;">Log In</a>
+            </p>
+        </div>
+
+        <div class="auth-img-side img-placeholder animate-fade-in delay-200" style="background: var(--gradient-olive); color: white;">
+            Register Image / Video Placeholder
+        </div>
+
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal-overlay" id="successModal">
+        <div class="modal">
+            <div class="modal-body u-text-center">
+                <i class="fa-solid fa-circle-check fa-4x u-color-olive u-mb-4"></i>
+                <h3>Account Created!</h3>
+                <p>Welcome to Wanderlust. Redirecting to login...</p>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="js/main.js"></script>
+    <script>
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            setTimeout(() => {
+                if(document.getElementById('successModal').classList.contains('active')) {
+                    window.location.href = 'login.html';
+                }
+            }, 1500);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wanderlust | Service Detail</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/rtl.css">
+    <link rel="stylesheet" href="css/dark-mode.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+    <header class="na-header">
+        <div class="container na-nav">
+            <a href="index.html" class="na-logo"><i class="fa-solid fa-caravan u-color-terracotta"></i> <span>Wanderlust</span></a>
+            <nav class="na-menu">
+                <a href="index.html" class="na-link">Home</a>
+                <a href="services.html" class="na-link active">RVs & Vans</a>
+                <a href="pricing.html" class="na-link">Pricing</a>
+                <a href="contact.html" class="na-link">Contact</a>
+            </nav>
+            <div class="na-tools">
+                <button class="btn-icon dir-toggle"><i class="fa-solid fa-globe"></i></button>
+                <button class="btn-icon theme-toggle"><i class="fa-solid fa-moon"></i></button>
+                <div class="hamburger"><span></span><span></span><span></span></div>
+            </div>
+        </div>
+    </header>
+
+    <section class="section" style="padding-top: 100px;">
+        <div class="container">
+            <div class="u-mb-6">
+                <!-- Breadcrumb -->
+                <a href="services.html" class="u-color-text-muted"><i class="fa-solid fa-arrow-left"></i> Back to Fleet</a>
+            </div>
+            
+            <div class="grid items-start">
+                <!-- Gallery -->
+                <div class="col-8 md-col-12 animate-fade-in delay-100">
+                    <div class="img-placeholder" style="width: 100%; height: 500px; border-radius: var(--radius-lg); margin-bottom: var(--spacing-4);">Main Video/Image</div>
+                    <div class="grid" style="gap: var(--spacing-4);">
+                        <div class="col-4 glass-panel img-placeholder" style="height: 120px; border-radius: var(--radius-md);">Thumbnail</div>
+                        <div class="col-4 glass-panel img-placeholder" style="height: 120px; border-radius: var(--radius-md);">Thumbnail</div>
+                        <div class="col-4 glass-panel img-placeholder" style="height: 120px; border-radius: var(--radius-md);">Thumbnail</div>
+                    </div>
+                </div>
+
+                <!-- Details sidebar -->
+                <div class="col-4 md-col-12 animate-fade-in delay-200">
+                    <div class="card" style="padding: var(--spacing-6);">
+                        <span class="badge u-mb-2">Class B Sprinter</span>
+                        <h1 style="font-size: var(--font-size-2xl);">Nomad Sprinter B</h1>
+                        
+                        <div class="flex items-center gap-2 u-mb-6" style="color: var(--color-terracotta);">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                            <span class="u-color-text-muted" style="margin-left: 8px;">(42 Reviews)</span>
+                        </div>
+
+                        <div class="flex justify-between items-center u-mb-6" style="padding-bottom: var(--spacing-4); border-bottom: 1px solid var(--color-warm-sand);">
+                            <div>
+                                <div style="font-size: var(--font-size-3xl); font-weight: bold;">$200</div>
+                                <div class="u-color-text-muted">Per day</div>
+                            </div>
+                            <div class="u-text-right">
+                                <div style="font-weight: bold; color: var(--color-olive-green);">Available</div>
+                                <div class="u-color-text-muted">Instantly</div>
+                            </div>
+                        </div>
+
+                        <h3 style="font-size: var(--font-size-lg);">Quick Specs</h3>
+                        <ul style="margin-bottom: var(--spacing-6); line-height: 2;">
+                            <li><i class="fa-solid fa-user-group" style="width: 24px;"></i> Sleeps 2</li>
+                            <li><i class="fa-solid fa-gas-pump" style="width: 24px;"></i> Diesel (18 MPG)</li>
+                            <li><i class="fa-solid fa-bed" style="width: 24px;"></i> Queen Bed</li>
+                            <li><i class="fa-solid fa-kitchen-set" style="width: 24px;"></i> Indoor Kitchenette</li>
+                        </ul>
+
+                        <a href="dashboard.html" class="btn btn-primary" style="width: 100%;">Book Now</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Description & Features Table -->
+            <div class="grid u-mt-auto" style="margin-top: var(--spacing-12);">
+                <div class="col-8 md-col-12 animate-fade-in delay-300">
+                    <h2 class="u-mb-4">About this vehicle</h2>
+                    <p>The Nomad Sprinter is our most popular off-grid campervan. Fully outfitted with solar panels, a lithium battery bank, and a robust inverter, it allows you to boon-dock without giving up modern comforts.</p>
+                    
+                    <h3 class="u-mt-auto" style="margin-top: var(--spacing-8); margin-bottom: var(--spacing-4);">Technical Specifications</h3>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <th>Length</th>
+                                    <td>19 ft</td>
+                                </tr>
+                                <tr>
+                                    <th>Height</th>
+                                    <td>9 ft (External)</td>
+                                </tr>
+                                <tr>
+                                    <th>Fresh Water Capacity</th>
+                                    <td>20 Gallons</td>
+                                </tr>
+                                <tr>
+                                    <th>Power</th>
+                                    <td>400W Solar, 3000W Inverter</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: var(--color-rich-black); color: var(--color-white); padding: var(--spacing-10) 0; text-align: center;">
+        <div class="container">
+            <p>&copy; 2026 Wanderlust RV Rentals.</p>
+        </div>
+    </footer>
+
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>

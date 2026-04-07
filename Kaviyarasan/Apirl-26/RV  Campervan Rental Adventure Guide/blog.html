@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wanderlust | Journal & Blog</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/rtl.css">
+    <link rel="stylesheet" href="css/dark-mode.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <style>
+        /* Simple masonry layout using columns */
+        .masonry {
+            column-count: 1;
+            column-gap: var(--spacing-6);
+        }
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: var(--spacing-6);
+        }
+        @media (min-width: 768px) { .masonry { column-count: 2; } }
+        @media (min-width: 1024px) { .masonry { column-count: 3; } }
+    </style>
+</head>
+<body>
+
+    <header class="na-header">
+        <div class="container na-nav">
+            <a href="index.html" class="na-logo"><i class="fa-solid fa-caravan u-color-terracotta"></i> <span>Wanderlust</span></a>
+            <nav class="na-menu">
+                <a href="index.html" class="na-link">Home</a>
+                <a href="services.html" class="na-link">RVs & Vans</a>
+                <a href="pricing.html" class="na-link">Pricing</a>
+                <a href="blog.html" class="na-link active">Journal</a>
+                <a href="contact.html" class="na-link">Contact</a>
+            </nav>
+            <div class="na-tools">
+                <button class="btn-icon dir-toggle"><i class="fa-solid fa-globe"></i></button>
+                <button class="btn-icon theme-toggle"><i class="fa-solid fa-moon"></i></button>
+                <div class="hamburger"><span></span><span></span><span></span></div>
+            </div>
+        </div>
+    </header>
+
+    <div class="mobile-menu">
+        <nav class="mobile-nav-list">
+            <a href="index.html" class="mobile-nav-link">Home</a>
+            <a href="services.html" class="mobile-nav-link">RVs & Vans</a>
+            <a href="pricing.html" class="mobile-nav-link">Pricing</a>
+            <a href="blog.html" class="mobile-nav-link u-color-terracotta">Journal</a>
+        </nav>
+    </div>
+
+    <!-- Header Section -->
+    <section class="section" style="padding-top: 120px; background: var(--color-warm-sand-light);">
+        <div class="container u-text-center animate-fade-in">
+            <h1 class="section-title">The Wanderlust Journal</h1>
+            <p class="section-subtitle">Roadtrip itineraries, vanlife tips, and travel inspiration.</p>
+            
+            <div class="flex justify-center flex-wrap gap-4 u-mt-auto" style="margin-top: var(--spacing-8);">
+                <button class="btn btn-primary">All Posts</button>
+                <button class="btn btn-ghost">Guides</button>
+                <button class="btn btn-ghost">Tips</button>
+                <button class="btn btn-ghost">Sustainability</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Masonry -->
+    <section class="section">
+        <div class="container stagger">
+            <div class="masonry filter-grid">
+                
+                <!-- Post 1 -->
+                <div class="masonry-item filter-item animate-fade-in delay-100">
+                    <div class="card" style="box-shadow: none; border: 1px solid var(--color-warm-sand);">
+                        <div class="card-img img-placeholder">Image</div>
+                        <div class="card-body">
+                            <div class="flex justify-between items-center u-mb-2">
+                                <span class="badge badge-olive">Guides</span>
+                                <span class="u-color-text-muted" style="font-size: var(--font-size-sm);">May 10, 2026</span>
+                            </div>
+                            <h3 class="card-title">
+                                <a href="blog-post.html">10 Must-Visit National Parks This Summer</a>
+                            </h3>
+                            <p class="card-text">Discover the hidden gems of our National Parks ideal for your next campervan trip.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Post 2 -->
+                <div class="masonry-item filter-item animate-fade-in delay-200">
+                    <div class="card" style="box-shadow: none; border: 1px solid var(--color-warm-sand);">
+                        <div class="card-img img-placeholder" style="height: 350px;">Image</div>
+                        <div class="card-body">
+                            <div class="flex justify-between items-center u-mb-2">
+                                <span class="badge">Tips</span>
+                                <span class="u-color-text-muted" style="font-size: var(--font-size-sm);">May 15, 2026</span>
+                            </div>
+                            <h3 class="card-title">
+                                <a href="blog-post.html">Vanlife Essentials: What to Pack</a>
+                            </h3>
+                            <p class="card-text">A comprehensive packing list to ensure you don't leave anything important behind on your long journey.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Post 3 -->
+                <div class="masonry-item filter-item animate-fade-in delay-300">
+                    <div class="card" style="box-shadow: none; border: 1px solid var(--color-warm-sand);">
+                        <div class="card-body">
+                            <div class="flex justify-between items-center u-mb-2">
+                                <span class="badge" style="background: var(--color-terracotta); color: white;">Sustainability</span>
+                                <span class="u-color-text-muted" style="font-size: var(--font-size-sm);">May 20, 2026</span>
+                            </div>
+                            <h3 class="card-title">
+                                <a href="blog-post.html">Eco-Friendly RVing: Solar & Water</a>
+                            </h3>
+                            <p class="card-text">Learn how to minimize your footprint while enjoying the great outdoors.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Post 4 ... -->
+            </div>
+            
+            <!-- Pagination -->
+            <div class="flex justify-center items-center gap-2 u-mt-auto" style="margin-top: var(--spacing-10);">
+                <button class="btn btn-icon" disabled><i class="fa-solid fa-chevron-left"></i></button>
+                <button class="btn btn-icon" style="background: var(--color-terracotta); color: white;">1</button>
+                <button class="btn btn-icon">2</button>
+                <button class="btn btn-icon">3</button>
+                <button class="btn btn-icon"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: var(--color-rich-black); color: var(--color-white); padding: var(--spacing-10) 0; text-align: center;">
+        <div class="container">
+            <p>&copy; 2026 Wanderlust RV Rentals.</p>
+        </div>
+    </footer>
+
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>

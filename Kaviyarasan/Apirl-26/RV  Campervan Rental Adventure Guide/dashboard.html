@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wanderlust | Dashboard</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/rtl.css">
+    <link rel="stylesheet" href="css/dark-mode.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <style>
+        .dashboard-layout {
+            display: flex;
+            min-height: 100vh;
+            background: var(--color-warm-sand-light);
+        }
+        
+        .dashboard-sidebar {
+            width: 280px;
+            background: var(--color-rich-black);
+            color: var(--color-white);
+            position: fixed;
+            height: 100vh;
+            top: 0; left: 0;
+            display: flex;
+            flex-direction: column;
+            z-index: 10;
+            transition: transform var(--transition-normal);
+        }
+
+        .dashboard-main {
+            flex: 1;
+            margin-left: 280px;
+            padding: var(--spacing-6);
+            padding-top: 80px;
+            transition: margin var(--transition-normal);
+        }
+
+        /* Responsive Sidebar */
+        @media (max-width: 1023px) {
+            .dashboard-sidebar {
+                transform: translateX(-100%);
+            }
+            .dashboard-sidebar.collapsed {
+                transform: translateX(0);
+            }
+            .dashboard-main {
+                margin-left: 0;
+            }
+            .dashboard-main.expanded {
+                /* Dim background */
+                filter: brightness(0.8);
+            }
+        }
+
+        .sidebar-logo {
+            padding: var(--spacing-6);
+            font-size: var(--font-size-2xl);
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-2);
+            border-bottom: 1px solid #333;
+            color: var(--color-white);
+        }
+
+        .sidebar-menu {
+            padding: var(--spacing-4) 0;
+            flex: 1;
+        }
+
+        .sidebar-link {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-4);
+            padding: var(--spacing-3) var(--spacing-6);
+            color: var(--color-text-muted);
+            transition: all var(--transition-fast);
+        }
+        .sidebar-link:hover, .sidebar-link.active {
+            color: var(--color-terracotta);
+            background: rgba(255,255,255,0.05);
+            border-left: 4px solid var(--color-terracotta);
+        }
+        .sidebar-link.active { color: var(--color-white); }
+
+        .sidebar-toggle {
+            position: fixed;
+            top: var(--spacing-4);
+            left: var(--spacing-4);
+            z-index: 11;
+            background: var(--color-white);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-2);
+            box-shadow: var(--shadow-sm);
+        }
+        @media (min-width: 1024px) {
+            .sidebar-toggle { display: none; }
+        }
+
+        .top-nav {
+            position: fixed;
+            top: 0; left: 280px; right: 0;
+            height: 60px;
+            background: var(--color-white);
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding: 0 var(--spacing-6);
+            z-index: 9;
+        }
+        @media (max-width: 1023px) {
+            .top-nav { left: 0; justify-content: flex-end; padding-left: 60px; }
+        }
+
+        /* Developer Tool */
+        .dev-tool {
+            position: fixed;
+            bottom: var(--spacing-4);
+            right: var(--spacing-4);
+            background: #fff;
+            padding: 8px;
+            border-radius: 8px;
+            box-shadow: var(--shadow-lg);
+            z-index: 999;
+            font-size: 12px;
+            border: 1px solid var(--color-terracotta);
+        }
+
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        
+        .stat-card {
+            background: var(--color-white);
+            padding: var(--spacing-6);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-4);
+        }
+        .stat-icon {
+            width: 48px; height: 48px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: var(--font-size-xl);
+            background: var(--color-warm-sand);
+            color: var(--color-terracotta);
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Dev Tool for testing Role Switch -->
+    <div class="dev-tool">
+        <strong>Dev: Role</strong>
+        <select id="devRoleSwitcher" style="margin-left: 4px; border: 1px solid #ccc; border-radius: 4px;">
+            <option value="guest">Guest</option>
+            <option value="user">User</option>
+            <option value="admin">Admin</option>
+        </select>
+    </div>
+
+    <!-- Mobile Sidebar Toggle -->
+    <button class="sidebar-toggle btn-icon"><i class="fa-solid fa-bars"></i></button>
+
+    <div class="dashboard-layout">
+        
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar">
+            <a href="index.html" class="sidebar-logo">
+                <i class="fa-solid fa-caravan u-color-terracotta"></i> <span>Wanderlust</span>
+            </a>
+
+            <div class="sidebar-menu">
+                <a href="#" class="sidebar-link active tab-btn" data-target="tab-overview">
+                    <i class="fa-solid fa-border-all"></i> Overview
+                </a>
+                
+                <!-- Guest specific -->
+                <a href="#" class="sidebar-link tab-btn view-guest u-hidden" data-target="tab-catalog">
+                    <i class="fa-solid fa-list"></i> Browse Fleet
+                </a>
+
+                <!-- User specific -->
+                <a href="#" class="sidebar-link tab-btn view-user u-hidden" data-target="tab-trips">
+                    <i class="fa-solid fa-route"></i> My Trips
+                </a>
+                <a href="#" class="sidebar-link tab-btn view-user u-hidden" data-target="tab-favorites">
+                    <i class="fa-solid fa-heart"></i> Favorites
+                </a>
+
+                <!-- Admin specific -->
+                <a href="#" class="sidebar-link tab-btn view-admin u-hidden" data-target="tab-analytics">
+                    <i class="fa-solid fa-chart-line"></i> Analytics
+                </a>
+                <a href="#" class="sidebar-link tab-btn view-admin u-hidden" data-target="tab-fleet">
+                    <i class="fa-solid fa-truck-ramp-box"></i> Fleet Manager
+                </a>
+
+                <!-- Shared User/Admin -->
+                <a href="#" class="sidebar-link tab-btn view-user view-admin u-hidden" data-target="tab-settings">
+                    <i class="fa-solid fa-gear"></i> Settings
+                </a>
+            </div>
+
+            <div class="sidebar-menu" style="border-top: 1px solid #333; flex: none;">
+                <a href="login.html" class="sidebar-link view-guest u-hidden"><i class="fa-solid fa-right-to-bracket"></i> Login</a>
+                <a href="login.html" class="sidebar-link view-user view-admin u-hidden"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+            </div>
+        </aside>
+
+        <!-- Top Nav -->
+        <nav class="top-nav">
+            <div class="flex items-center gap-4">
+                <button class="btn-icon theme-toggle"><i class="fa-solid fa-moon"></i></button>
+                <div class="view-user view-admin u-hidden" style="position: relative;">
+                    <button class="btn-icon"><i class="fa-regular fa-bell"></i></button>
+                    <!-- notification dot -->
+                    <span style="position: absolute; top: 10px; right: 10px; width: 8px; height: 8px; background: red; border-radius: 50%;"></span>
+                </div>
+                <div class="img-placeholder view-user view-admin u-hidden" style="width: 36px; height: 36px; border-radius: 50%; min-height: 36px;"></div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+
+            <!-- Overview Tab (Shared, content differs) -->
+            <div id="tab-overview" class="tab-content active animate-fade-in">
+                <h1 class="u-mb-6">Dashboard Overview</h1>
+
+                <!-- Guest Overview -->
+                <div class="view-guest u-hidden">
+                    <div class="card u-text-center" style="padding: var(--spacing-10);">
+                        <i class="fa-solid fa-user-lock fa-3x u-color-terracotta u-mb-4"></i>
+                        <h2>Welcome to Wanderlust</h2>
+                        <p class="u-color-text-muted u-mb-6">Sign in to save your favorite vehicles, upload your driver's license, and manage bookings.</p>
+                        <a href="login.html" class="btn btn-primary">Login or Register</a>
+                    </div>
+                </div>
+
+                <!-- User Overview -->
+                <div class="view-user u-hidden">
+                    <div class="grid u-mb-8">
+                        <div class="col-4 sm-col-12">
+                            <div class="stat-card">
+                                <div class="stat-icon"><i class="fa-solid fa-route"></i></div>
+                                <div><div class="u-color-text-muted">Upcoming Trips</div><div style="font-size: var(--font-size-xl); font-weight: bold;">1</div></div>
+                            </div>
+                        </div>
+                        <div class="col-4 sm-col-12">
+                            <div class="stat-card">
+                                <div class="stat-icon"><i class="fa-solid fa-road"></i></div>
+                                <div><div class="u-color-text-muted">Past Trips</div><div style="font-size: var(--font-size-xl); font-weight: bold;">4</div></div>
+                            </div>
+                        </div>
+                        <div class="col-4 sm-col-12">
+                            <div class="stat-card">
+                                <div class="stat-icon"><i class="fa-solid fa-trophy"></i></div>
+                                <div><div class="u-color-text-muted">Loyalty Points</div><div style="font-size: var(--font-size-xl); font-weight: bold;">1,250</div></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card" style="padding: var(--spacing-6);">
+                        <h3 class="u-mb-4">Next Adventure</h3>
+                        <div class="flex items-center gap-6 flex-wrap">
+                            <div class="img-placeholder" style="width: 200px; height: 120px; border-radius: var(--radius-md);">Image</div>
+                            <div>
+                                <h4 class="u-mb-1">Yosemite Basecamp</h4>
+                                <span class="badge badge-olive u-mb-2">Aug 12 - Aug 19</span>
+                                <p class="u-color-text-muted u-mb-4">Nomad Sprinter B</p>
+                                <button class="btn btn-primary btn-sm">Manage Trip</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Admin Overview -->
+                <div class="view-admin u-hidden">
+                    <div class="grid u-mb-8 stagger">
+                        <div class="col-3 sm-col-6">
+                            <div class="stat-card">
+                                <div><div class="u-color-text-muted">Active Rentals</div><div style="font-size: var(--font-size-2xl); font-weight: bold;">24</div></div>
+                            </div>
+                        </div>
+                        <div class="col-3 sm-col-6">
+                            <div class="stat-card">
+                                <div><div class="u-color-text-muted">Pending Repair</div><div style="font-size: var(--font-size-2xl); font-weight: bold; color: #dc3545;">2</div></div>
+                            </div>
+                        </div>
+                        <div class="col-3 sm-col-6">
+                            <div class="stat-card">
+                                <div><div class="u-color-text-muted">Monthly Rev.</div><div style="font-size: var(--font-size-2xl); font-weight: bold; color: var(--color-olive-green);">$42.5k</div></div>
+                            </div>
+                        </div>
+                        <div class="col-3 sm-col-6">
+                            <div class="stat-card">
+                                <div><div class="u-color-text-muted">Total Users</div><div style="font-size: var(--font-size-2xl); font-weight: bold;">1,402</div></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="grid">
+                        <div class="col-8 sm-col-12">
+                            <div class="card" style="padding: var(--spacing-6); height: 100%;">
+                                <h3 class="u-mb-4">Revenue Chart (CSS Only Placeholder)</h3>
+                                <div style="display: flex; align-items: flex-end; gap: var(--spacing-2); height: 250px; background: var(--color-warm-sand-light); padding: var(--spacing-4); border-radius: var(--radius-md);">
+                                    <div style="background: var(--color-terracotta); width: 10%; height: 30%;"></div>
+                                    <div style="background: var(--color-terracotta); width: 10%; height: 50%;"></div>
+                                    <div style="background: var(--color-terracotta); width: 10%; height: 40%;"></div>
+                                    <div style="background: var(--color-terracotta); width: 10%; height: 70%;"></div>
+                                    <div style="background: var(--color-terracotta); width: 10%; height: 60%;"></div>
+                                    <div style="background: var(--color-terracotta); width: 10%; height: 80%;"></div>
+                                    <div style="background: var(--color-terracotta); width: 10%; height: 100%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4 sm-col-12">
+                            <div class="card" style="padding: var(--spacing-6); height: 100%;">
+                                <h3 class="u-mb-4">Recent Bookings</h3>
+                                <ul style="list-style: none; padding: 0;">
+                                    <li class="flex justify-between items-center u-mb-4" style="border-bottom: 1px solid var(--color-warm-sand); padding-bottom: 8px;">
+                                        <div><strong>John Doe</strong><br><span class="u-color-text-muted" style="font-size: var(--font-size-sm);">Wanderer Class A</span></div>
+                                        <span class="badge">Paid</span>
+                                    </li>
+                                    <li class="flex justify-between items-center u-mb-4" style="border-bottom: 1px solid var(--color-warm-sand); padding-bottom: 8px;">
+                                        <div><strong>Emily G.</strong><br><span class="u-color-text-muted" style="font-size: var(--font-size-sm);">Sprinter B</span></div>
+                                        <span class="badge">Paid</span>
+                                    </li>
+                                </ul>
+                                <a href="#" class="btn-link">View All</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fleet Manager Tab (Admin) -->
+            <div id="tab-fleet" class="tab-content">
+                <div class="flex justify-between items-center u-mb-6">
+                    <h1>Fleet Management</h1>
+                    <button class="btn btn-primary"><i class="fa-solid fa-plus"></i> Add Vehicle</button>
+                </div>
+                
+                <div class="card table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Vehicle ID</th>
+                                <th>Name</th>
+                                <th>Type</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>RV-A001</td>
+                                <td>Wanderer Class A</td>
+                                <td>Class A</td>
+                                <td><span class="badge badge-olive">Available</span></td>
+                                <td><button class="btn-icon"><i class="fa-solid fa-pen"></i></button></td>
+                            </tr>
+                            <tr>
+                                <td>RV-B012</td>
+                                <td>Nomad Sprinter B</td>
+                                <td>Class B</td>
+                                <td><span class="badge">Rented</span></td>
+                                <td><button class="btn-icon"><i class="fa-solid fa-pen"></i></button></td>
+                            </tr>
+                            <tr>
+                                <td>RV-C005</td>
+                                <td>Family Explorer C</td>
+                                <td>Class C</td>
+                                <td><span class="badge" style="background:#dc3545; color:#fff;">Maintenance</span></td>
+                                <td><button class="btn-icon"><i class="fa-solid fa-pen"></i></button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Quick Action FAB (User/Admin) -->
+    <button class="btn-primary view-user view-admin u-hidden" style="position: fixed; bottom: var(--spacing-6); right: var(--spacing-6); width: 56px; height: 56px; border-radius: 50%; box-shadow: var(--shadow-hover); font-size: 24px; z-index: 100; border:none; color:white; cursor:pointer;" onclick="alert('Quick action triggered!')">
+        <i class="fa-solid fa-plus"></i>
+    </button>
+
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wanderlust | Pricing</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/rtl.css">
+    <link rel="stylesheet" href="css/dark-mode.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <style>
+        .pricing-toggle {
+            display: inline-flex;
+            background: var(--color-warm-sand);
+            border-radius: var(--radius-full);
+            padding: 4px;
+            position: relative;
+        }
+        .pricing-toggle button {
+            padding: var(--spacing-2) var(--spacing-6);
+            border-radius: var(--radius-full);
+            z-index: 2;
+            position: relative;
+            transition: color var(--transition-fast);
+            font-weight: var(--font-weight-semi);
+        }
+        .pricing-toggle button.active {
+            color: var(--color-white);
+        }
+        .toggle-pill {
+            position: absolute;
+            top: 4px; left: 4px;
+            width: calc(50% - 4px); height: calc(100% - 8px);
+            background: var(--color-terracotta);
+            border-radius: var(--radius-full);
+            transition: left var(--transition-normal);
+            z-index: 1;
+        }
+        /* Toggle state */
+        .pricing-toggle.weekly .toggle-pill {
+            left: calc(50%);
+        }
+    </style>
+</head>
+<body>
+
+    <header class="na-header">
+        <div class="container na-nav">
+            <a href="index.html" class="na-logo"><i class="fa-solid fa-caravan u-color-terracotta"></i> <span>Wanderlust</span></a>
+            <nav class="na-menu">
+                <a href="index.html" class="na-link">Home</a>
+                <a href="services.html" class="na-link">RVs & Vans</a>
+                <a href="pricing.html" class="na-link active">Pricing</a>
+                <a href="blog.html" class="na-link">Journal</a>
+            </nav>
+            <div class="na-tools">
+                <button class="btn-icon theme-toggle"><i class="fa-solid fa-moon"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <section class="section" style="padding-top: 120px;">
+        <div class="container u-text-center animate-fade-in delay-100">
+            <h1 class="section-title">Transparent Pricing</h1>
+            <p class="section-subtitle">No hidden fees. Just pick your adventure level.</p>
+            
+            <div class="u-mt-auto" style="margin-top: var(--spacing-8); margin-bottom: var(--spacing-10);">
+                <div class="pricing-toggle" id="priceToggleContainer">
+                    <div class="toggle-pill"></div>
+                    <button class="active" id="btnDaily">Daily</button>
+                    <button id="btnWeekly">Weekly (-15%)</button>
+                </div>
+            </div>
+
+            <!-- Pricing Cards -->
+            <div class="grid stagger u-text-left">
+                
+                <!-- Tier 1 -->
+                <div class="col-4 sm-col-12 animate-fade-in delay-200">
+                    <div class="card" style="padding: var(--spacing-8);">
+                        <h3 class="u-mb-2">Weekend Warrior</h3>
+                        <p class="u-color-text-muted">Perfect for short trips in towables or small vans.</p>
+                        <div class="u-mt-auto u-mb-6" style="margin-top: var(--spacing-6);">
+                            <span style="font-size: var(--font-size-5xl); font-weight: bold;" class="price-val" data-daily="120" data-weekly="700">$120</span>
+                            <span class="u-color-text-muted price-label">/ day</span>
+                        </div>
+                        <ul class="u-mb-8" style="line-height: 2.5;">
+                            <li><i class="fa-solid fa-check u-color-olive u-mb-4" style="margin-right: 8px;"></i> 100 Miles / Day</li>
+                            <li><i class="fa-solid fa-check u-color-olive u-mb-4" style="margin-right: 8px;"></i> Basic Insurance</li>
+                            <li><i class="fa-solid fa-check u-color-olive u-mb-4" style="margin-right: 8px;"></i> 24/7 Support</li>
+                        </ul>
+                        <a href="services.html" class="btn btn-ghost" style="width: 100%;">Select Plan</a>
+                    </div>
+                </div>
+
+                <!-- Tier 2 (Popular) -->
+                <div class="col-4 sm-col-12 animate-fade-in delay-300">
+                    <div class="card animate-pulse" style="padding: var(--spacing-8); border: 2px solid var(--color-terracotta); transform: scale(1.05); z-index: 2;">
+                        <span class="badge" style="background: var(--color-terracotta); color: white; position: absolute; top: -12px; right: var(--spacing-8);">Most Popular</span>
+                        <h3 class="u-mb-2">Explorer</h3>
+                        <p class="u-color-text-muted">The sweet spot. Class B or C vans with more freedom.</p>
+                        <div class="u-mt-auto u-mb-6" style="margin-top: var(--spacing-6);">
+                            <span style="font-size: var(--font-size-5xl); font-weight: bold;" class="price-val" data-daily="200" data-weekly="1190">$200</span>
+                            <span class="u-color-text-muted price-label">/ day</span>
+                        </div>
+                        <ul class="u-mb-8" style="line-height: 2.5;">
+                            <li><i class="fa-solid fa-check u-color-olive u-mb-4" style="margin-right: 8px;"></i> 200 Miles / Day</li>
+                            <li><i class="fa-solid fa-check u-color-olive u-mb-4" style="margin-right: 8px;"></i> Comprehensive Insurance</li>
+                            <li><i class="fa-solid fa-check u-color-olive u-mb-4" style="margin-right: 8px;"></i> Included Kitchen Kit</li>
+                            <li><i class="fa-solid fa-check u-color-olive u-mb-4" style="margin-right: 8px;"></i> Starlink Internet</li>
+                        </ul>
+                        <a href="services.html" class="btn btn-primary" style="width: 100%;">Select Plan</a>
+                    </div>
+                </div>
+
+                <!-- Tier 3 -->
+                <div class="col-4 sm-col-12 animate-fade-in delay-400">
+                    <div class="card" style="padding: var(--spacing-8);">
+                        <h3 class="u-mb-2">Luxury Voyager</h3>
+                        <p class="u-color-text-muted">Class A Motorhomes for the ultimate road experience.</p>
+                        <div class="u-mt-auto u-mb-6" style="margin-top: var(--spacing-6);">
+                            <span style="font-size: var(--font-size-5xl); font-weight: bold;" class="price-val" data-daily="350" data-weekly="2080">$350</span>
+                            <span class="u-color-text-muted price-label">/ day</span>
+                        </div>
+                        <ul class="u-mb-8" style="line-height: 2.5;">
+                            <li><i class="fa-solid fa-check u-color-olive u-mb-4" style="margin-right: 8px;"></i> Unlimited Miles</li>
+                            <li><i class="fa-solid fa-check u-color-olive u-mb-4" style="margin-right: 8px;"></i> Premium Insurance</li>
+                            <li><i class="fa-solid fa-check u-color-olive u-mb-4" style="margin-right: 8px;"></i> Concierge Service</li>
+                            <li><i class="fa-solid fa-check u-color-olive u-mb-4" style="margin-right: 8px;"></i> Pre-stocked Fridge</li>
+                        </ul>
+                        <a href="services.html" class="btn btn-ghost" style="width: 100%;">Select Plan</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section u-bg-sand">
+        <div class="container animate-fade-in delay-500">
+            <h2 class="u-text-center u-mb-8">Frequently Asked Questions</h2>
+            
+            <div style="max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: var(--spacing-4);">
+                <div class="card" style="padding: var(--spacing-4) var(--spacing-6); cursor: pointer;" onclick="this.classList.toggle('open')">
+                    <div class="flex justify-between items-center">
+                        <h4 style="margin: 0;">What is your cancellation policy?</h4>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-content" style="display: none; padding-top: var(--spacing-4); color: var(--color-text-muted);">
+                        Full refund up to 7 days before pickup. 50% refund within 7 days.
+                    </div>
+                </div>
+                
+                <div class="card" style="padding: var(--spacing-4) var(--spacing-6); cursor: pointer;" onclick="this.classList.toggle('open')">
+                    <div class="flex justify-between items-center">
+                        <h4 style="margin: 0;">Do I need a special license to drive an RV?</h4>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-content" style="display: none; padding-top: var(--spacing-4); color: var(--color-text-muted);">
+                        No special license is required for any vehicle in our fleet. A standard valid driver's license is sufficient.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer style="background: var(--color-rich-black); color: var(--color-white); padding: var(--spacing-10) 0; text-align: center;">
+        <div class="container">
+            <p>&copy; 2026 Wanderlust RV Rentals.</p>
+        </div>
+    </footer>
+
+    <script type="module" src="js/main.js"></script>
+    <script>
+        // Inline pricing toggle logic
+        const toggleContainer = document.getElementById('priceToggleContainer');
+        const btnDaily = document.getElementById('btnDaily');
+        const btnWeekly = document.getElementById('btnWeekly');
+        const priceVals = document.querySelectorAll('.price-val');
+        const priceLabels = document.querySelectorAll('.price-label');
+
+        btnDaily.addEventListener('click', () => {
+            toggleContainer.classList.remove('weekly');
+            btnDaily.classList.add('active');
+            btnWeekly.classList.remove('active');
+            
+            priceVals.forEach(val => val.innerText = '$' + val.getAttribute('data-daily'));
+            priceLabels.forEach(label => label.innerText = '/ day');
+        });
+
+        btnWeekly.addEventListener('click', () => {
+            toggleContainer.classList.add('weekly');
+            btnWeekly.classList.add('active');
+            btnDaily.classList.remove('active');
+            
+            priceVals.forEach(val => val.innerText = '$' + val.getAttribute('data-weekly'));
+            priceLabels.forEach(label => label.innerText = '/ week');
+        });
+
+        // Inline FAQ toggle logic
+        document.querySelectorAll('.card[onclick]').forEach(card => {
+            card.addEventListener('click', function() {
+                const content = this.querySelector('.faq-content');
+                const icon = this.querySelector('i');
+                if (content.style.display === 'none') {
+                    content.style.display = 'block';
+                    icon.style.transform = 'rotate(180deg)';
+                } else {
+                    content.style.display = 'none';
+                    icon.style.transform = 'rotate(0deg)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
