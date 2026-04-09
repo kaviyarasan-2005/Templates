@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" dir="ltr" data-theme="light">
 <head>
   <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -20,13 +20,12 @@
     <a href="index.html" class="nav-logo"><img src="../assets/images/icons/logo.svg" class="nav-logo-mark-img" alt="Logo" width="36" height="36" style="margin-right: 8px; flex-shrink: 0;" /><div class="nav-logo-text"><span class="nav-logo-name">Élise Laurent</span><span class="nav-logo-tagline">Admin</span></div></a>
 
     <div class="nav-actions">
-      <button class="nav-action-btn hide-desktop" data-sidebar-toggle aria-label="Toggle sidebar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg></button>
+      <button class="nav-action-btn hide-desktop" data-sidebar-toggle aria-label="Toggle sidebar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
       <button class="nav-action-btn" data-dir-toggle aria-label="Toggle direction"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></button>
       <button class="nav-action-btn" data-theme-toggle aria-label="Toggle theme">
         <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
         <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
       </button>
-      <a href="index.html" class="btn btn-ghost btn-sm">← <span class="hide-mobile">Back to Site</span></a>
     </div>
   </nav>
 </header>
@@ -87,107 +86,262 @@
     </nav>
   </aside>
 
-  <!-- MAIN CONTENT -->
+  <!-- MAIN CONTENT — ADMIN COMMAND CENTER -->
   <main class="dashboard-main" id="main-content">
-    <div class="dashboard-header">
-      <div style="display:flex;align-items:center">
-        <button class="hide-mobile" data-sidebar-toggle aria-label="Toggle sidebar" style="margin-inline-end:var(--space-2)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
-        <h1 class="dashboard-title">Good morning, Élise ✦</h1>
+    <style>
+      /* ── Admin-specific overrides ── */
+      .admin-banner { background: linear-gradient(135deg,#1a0f0a 0%,#2d1a10 60%,#3d2416 100%); border-radius: var(--radius-lg); padding: var(--space-4) var(--space-5); margin-bottom: var(--space-4); display: flex; flex-direction: column; gap: var(--space-3); }
+      [data-theme="light"] .admin-banner { background: linear-gradient(135deg,#3d2416 0%,#6D4C41 60%,#8D6E63 100%); }
+      .admin-banner-top { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: var(--space-2); }
+      .admin-banner-greeting { font-family: var(--font-heading); font-size: clamp(1.4rem,3vw,2rem); color: white; font-weight: 400; }
+      .admin-banner-sub { color: rgba(255,255,255,0.6); font-size: var(--text-sm); margin-top: 4px; }
+      .admin-kpi-strip { display: grid; grid-template-columns: repeat(4,1fr); gap: var(--space-3); }
+      @media(max-width:700px){ .admin-kpi-strip { grid-template-columns:1fr 1fr; } }
+      .admin-kpi { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: var(--radius-md); padding: var(--space-3); }
+      .admin-kpi-val { font-family: var(--font-heading); font-size: clamp(1.6rem,3vw,2.2rem); font-weight: 700; color: white; line-height: 1; }
+      .admin-kpi-label { font-size: var(--text-xs); color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 4px; }
+      .admin-kpi-delta { font-size: var(--text-xs); margin-top: 6px; font-weight: 600; }
+      .delta-up { color: #4CAF50; } .delta-down { color: #ef5350; }
+
+      /* 3-column layout */
+      .admin-cols { display: grid; grid-template-columns: 1fr 320px; gap: var(--space-3); margin-bottom: var(--space-4); align-items: start; }
+      @media(max-width:900px){ .admin-cols { grid-template-columns: 1fr; } }
+      .admin-right { display: flex; flex-direction: column; gap: var(--space-3); }
+
+      /* Today's schedule */
+      .schedule-item { display: flex; gap: var(--space-2); padding: var(--space-2) 0; border-bottom: 1px solid var(--border-color-soft); }
+      .schedule-item:last-child { border-bottom: none; }
+      .schedule-time { font-size: var(--text-xs); color: var(--text-muted); white-space: nowrap; min-width: 52px; padding-top: 2px; }
+      .schedule-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; margin-top: 4px; }
+      .schedule-info-name { font-size: var(--text-sm); font-weight: 600; color: var(--text-primary); }
+      .schedule-info-svc { font-size: var(--text-xs); color: var(--text-muted); }
+
+      /* Activity feed */
+      .activity-item { display: flex; gap: var(--space-2); align-items: flex-start; padding: 10px 0; border-bottom: 1px solid var(--border-color-soft); }
+      .activity-item:last-child { border-bottom: none; }
+      .activity-icon { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+      .activity-icon svg { width: 14px; height: 14px; }
+      .activity-text { font-size: var(--text-xs); color: var(--text-secondary); line-height: 1.4; }
+      .activity-text strong { color: var(--text-primary); }
+      .activity-time { font-size: 10px; color: var(--text-muted); margin-top: 2px; }
+    </style>
+
+    <!-- ── DARK COMMAND BANNER ── -->
+    <div class="admin-banner">
+      <div class="admin-banner-top">
+        <div>
+          <h1 class="admin-banner-greeting">Good morning, Élise ✦</h1>
+          <p class="admin-banner-sub">Here's your business intelligence for today — April 9, 2026</p>
+        </div>
+        <div style="display:flex;gap:var(--space-1)">
+          <a href="contact.html" class="btn btn-sm" style="background:rgba(255,255,255,0.15);color:white;border:1px solid rgba(255,255,255,0.25)">+ Booking</a>
+          <a href="#" class="btn btn-sm" style="background:linear-gradient(135deg,#D9B8A6,#8D6E63);color:#1a0f0a;border:none;font-weight:700">Export Report</a>
+        </div>
       </div>
-      <p class="dashboard-subtitle" style="margin-top:4px">Here's what's happening across your business today.</p>
-      <div style="display:flex;gap:var(--space-2);align-items:center">
-        <a href="contact.html" class="btn btn-primary btn-sm">+ New Booking</a>
+      <div class="admin-kpi-strip">
+        <div class="admin-kpi">
+          <div class="admin-kpi-val" data-counter data-target="24800" data-prefix="$">$0</div>
+          <div class="admin-kpi-label">Monthly Revenue</div>
+          <div class="admin-kpi-delta delta-up">▲ +18.2% vs last month</div>
+        </div>
+        <div class="admin-kpi">
+          <div class="admin-kpi-val" data-counter data-target="142">0</div>
+          <div class="admin-kpi-label">Active Clients</div>
+          <div class="admin-kpi-delta delta-up">▲ +7 new this month</div>
+        </div>
+        <div class="admin-kpi">
+          <div class="admin-kpi-val" data-counter data-target="38">0</div>
+          <div class="admin-kpi-label">Sessions This Month</div>
+          <div class="admin-kpi-delta delta-up">▲ +4 vs last month</div>
+        </div>
+        <div class="admin-kpi">
+          <div class="admin-kpi-val" data-counter data-target="12">0</div>
+          <div class="admin-kpi-label">Unread Messages</div>
+          <div class="admin-kpi-delta delta-down">▼ Needs attention</div>
+        </div>
       </div>
     </div>
 
-    <!-- STAT CARDS -->
-    <div class="stat-cards-grid">
-      <div class="stat-card revenue">
-        <div class="stat-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
-        <div class="stat-card-body">
-          <div class="stat-card-value" data-counter data-target="24800" data-prefix="$">$0</div>
-          <div class="stat-card-label">Monthly Revenue</div>
-          <div class="stat-card-trend trend-up"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:12px;height:12px"><polyline points="18 15 12 9 6 15"/></svg>+18.2% vs last month</div>
+    <!-- ── 2-COLUMN ANALYTICS + RIGHT PANEL ── -->
+    <div class="admin-cols">
+      <!-- LEFT: Revenue bar chart + Service infographics -->
+      <div style="display:flex;flex-direction:column;gap:var(--space-3)">
+        <!-- Revenue Chart -->
+        <div class="widget">
+          <div class="widget-header">
+            <p class="widget-title">Revenue Overview</p>
+            <div style="display:flex;gap:var(--space-1);align-items:center">
+              <select class="form-control" style="width:auto;padding:0.3em 0.7em;font-size:var(--text-xs)" aria-label="Chart period"><option>Last 6 months</option><option>Last year</option></select>
+              <a href="#" class="btn btn-ghost btn-sm">Export</a>
+            </div>
+          </div>
+          <svg viewBox="0 0 480 210" width="100%" role="img" aria-label="Revenue bar chart showing monthly growth">
+            <defs>
+              <linearGradient id="barGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#6D4C41"/>
+                <stop offset="100%" stop-color="#8D6E63"/>
+              </linearGradient>
+            </defs>
+            <line x1="40" y1="10" x2="40" y2="175" stroke="var(--border-color)" stroke-width="1"/>
+            <line x1="40" y1="175" x2="478" y2="175" stroke="var(--border-color)" stroke-width="1"/>
+            <line x1="40" y1="130" x2="478" y2="130" stroke="var(--border-color-soft)" stroke-width="1" stroke-dasharray="4,4"/>
+            <line x1="40" y1="90" x2="478" y2="90" stroke="var(--border-color-soft)" stroke-width="1" stroke-dasharray="4,4"/>
+            <line x1="40" y1="50" x2="478" y2="50" stroke="var(--border-color-soft)" stroke-width="1" stroke-dasharray="4,4"/>
+            <text x="30" y="179" text-anchor="end" font-size="10" fill="var(--text-muted)">$0</text>
+            <text x="30" y="134" text-anchor="end" font-size="10" fill="var(--text-muted)">$10k</text>
+            <text x="30" y="94" text-anchor="end" font-size="10" fill="var(--text-muted)">$18k</text>
+            <text x="30" y="54" text-anchor="end" font-size="10" fill="var(--text-muted)">$28k</text>
+            <!-- Ghost bars -->
+            <g fill="var(--color-brown)" opacity="0.1">
+              <rect x="55" y="120" width="52" height="55" rx="5"/><rect x="130" y="100" width="52" height="75" rx="5"/>
+              <rect x="205" y="80" width="52" height="95" rx="5"/><rect x="280" y="60" width="52" height="115" rx="5"/>
+              <rect x="355" y="40" width="52" height="135" rx="5"/><rect x="430" y="25" width="42" height="150" rx="5"/>
+            </g>
+            <!-- Actual bars -->
+            <g fill="url(#barGrad)">
+              <rect x="55" y="145" width="52" height="30" rx="5"/><rect x="130" y="120" width="52" height="55" rx="5"/>
+              <rect x="205" y="105" width="52" height="70" rx="5"/><rect x="280" y="85" width="52" height="90" rx="5"/>
+              <rect x="355" y="65" width="52" height="110" rx="5"/><rect x="430" y="50" width="42" height="125" rx="5"/>
+            </g>
+            <!-- Month values -->
+            <g font-size="10" font-weight="700" text-anchor="middle" fill="#8D6E63">
+              <text x="81" y="140">$8.2k</text><text x="156" y="115">$12.1k</text>
+              <text x="231" y="100">$15.4k</text><text x="306" y="80">$18.9k</text>
+              <text x="381" y="60">$22.3k</text><text x="451" y="45">$24.8k</text>
+            </g>
+            <!-- X labels -->
+            <g font-size="11" text-anchor="middle" fill="var(--text-muted)">
+              <text x="81" y="193">Nov</text><text x="156" y="193">Dec</text>
+              <text x="231" y="193">Jan</text><text x="306" y="193">Feb</text>
+              <text x="381" y="193">Mar</text><text x="451" y="193">Apr</text>
+            </g>
+            <!-- Trend line -->
+            <polyline points="81,145 156,120 231,105 306,85 381,65 451,50" fill="none" stroke="#D9B8A6" stroke-width="2" stroke-dasharray="5,3" opacity="0.8"/>
+          </svg>
+        </div>
+
+        <!-- Infographics 2×2 -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-3)">
+          <!-- Donut -->
+          <div class="widget">
+            <div class="widget-header"><p class="widget-title">Service Mix</p><span style="font-size:var(--text-xs);color:var(--text-muted)">This Month</span></div>
+            <div style="display:flex;align-items:center;gap:var(--space-3);flex-wrap:wrap">
+              <svg viewBox="0 0 160 160" width="130" height="130" style="flex-shrink:0" role="img" aria-label="Service breakdown donut">
+                <circle cx="80" cy="80" r="56" fill="none" stroke="var(--border-color-soft)" stroke-width="22"/>
+                <circle cx="80" cy="80" r="56" fill="none" stroke="#6D4C41" stroke-width="22" stroke-dasharray="113 239" stroke-dashoffset="0" transform="rotate(-90 80 80)"/>
+                <circle cx="80" cy="80" r="56" fill="none" stroke="#8D6E63" stroke-width="22" stroke-dasharray="85 267" stroke-dashoffset="-113" transform="rotate(-90 80 80)"/>
+                <circle cx="80" cy="80" r="56" fill="none" stroke="#D9B8A6" stroke-width="22" stroke-dasharray="71 281" stroke-dashoffset="-198" transform="rotate(-90 80 80)"/>
+                <circle cx="80" cy="80" r="56" fill="none" stroke="#E8CFC5" stroke-width="22" stroke-dasharray="83 269" stroke-dashoffset="-269" transform="rotate(-90 80 80)"/>
+                <text x="80" y="76" text-anchor="middle" font-size="20" font-weight="700" fill="var(--text-primary)">38</text>
+                <text x="80" y="92" text-anchor="middle" font-size="9" fill="var(--text-muted)">Sessions</text>
+              </svg>
+              <div style="display:flex;flex-direction:column;gap:6px">
+                <div style="display:flex;align-items:center;gap:6px"><span style="width:10px;height:10px;border-radius:2px;background:#6D4C41;flex-shrink:0"></span><span style="font-size:11px;color:var(--text-secondary)">Shopping <b>32%</b></span></div>
+                <div style="display:flex;align-items:center;gap:6px"><span style="width:10px;height:10px;border-radius:2px;background:#8D6E63;flex-shrink:0"></span><span style="font-size:11px;color:var(--text-secondary)">Color <b>24%</b></span></div>
+                <div style="display:flex;align-items:center;gap:6px"><span style="width:10px;height:10px;border-radius:2px;background:#D9B8A6;flex-shrink:0"></span><span style="font-size:11px;color:var(--text-secondary)">Bridal <b>20%</b></span></div>
+                <div style="display:flex;align-items:center;gap:6px"><span style="width:10px;height:10px;border-radius:2px;background:#E8CFC5;flex-shrink:0"></span><span style="font-size:11px;color:var(--text-secondary)">Wardrobe <b>24%</b></span></div>
+              </div>
+            </div>
+          </div>
+          <!-- Radial Goals -->
+          <div class="widget">
+            <div class="widget-header"><p class="widget-title">Monthly Goals</p><span style="font-size:var(--text-xs);color:var(--text-muted)">April 2026</span></div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-2)">
+              <div style="text-align:center"><svg viewBox="0 0 80 80" width="76" height="76" style="display:block;margin:0 auto"><circle cx="40" cy="40" r="30" fill="none" stroke="var(--border-color-soft)" stroke-width="8"/><circle cx="40" cy="40" r="30" fill="none" stroke="#6D4C41" stroke-width="8" stroke-dasharray="150 188" stroke-dashoffset="47" transform="rotate(-90 40 40)"/><text x="40" y="37" text-anchor="middle" font-size="11" font-weight="700" fill="var(--text-primary)">80%</text><text x="40" y="48" text-anchor="middle" font-size="7" fill="var(--text-muted)">Revenue</text></svg></div>
+              <div style="text-align:center"><svg viewBox="0 0 80 80" width="76" height="76" style="display:block;margin:0 auto"><circle cx="40" cy="40" r="30" fill="none" stroke="var(--border-color-soft)" stroke-width="8"/><circle cx="40" cy="40" r="30" fill="none" stroke="#8D6E63" stroke-width="8" stroke-dasharray="141 188" stroke-dashoffset="47" transform="rotate(-90 40 40)"/><text x="40" y="37" text-anchor="middle" font-size="11" font-weight="700" fill="var(--text-primary)">75%</text><text x="40" y="48" text-anchor="middle" font-size="7" fill="var(--text-muted)">Sessions</text></svg></div>
+              <div style="text-align:center"><svg viewBox="0 0 80 80" width="76" height="76" style="display:block;margin:0 auto"><circle cx="40" cy="40" r="30" fill="none" stroke="var(--border-color-soft)" stroke-width="8"/><circle cx="40" cy="40" r="30" fill="none" stroke="#D9B8A6" stroke-width="8" stroke-dasharray="169 188" stroke-dashoffset="47" transform="rotate(-90 40 40)"/><text x="40" y="37" text-anchor="middle" font-size="11" font-weight="700" fill="var(--text-primary)">90%</text><text x="40" y="48" text-anchor="middle" font-size="7" fill="var(--text-muted)">Clients</text></svg></div>
+              <div style="text-align:center"><svg viewBox="0 0 80 80" width="76" height="76" style="display:block;margin:0 auto"><circle cx="40" cy="40" r="30" fill="none" stroke="var(--border-color-soft)" stroke-width="8"/><circle cx="40" cy="40" r="30" fill="none" stroke="#4CAF50" stroke-width="8" stroke-dasharray="179 188" stroke-dashoffset="47" transform="rotate(-90 40 40)"/><text x="40" y="37" text-anchor="middle" font-size="11" font-weight="700" fill="var(--text-primary)">95%</text><text x="40" y="48" text-anchor="middle" font-size="7" fill="var(--text-muted)">Rating</text></svg></div>
+            </div>
+          </div>
+          <!-- Growth line -->
+          <div class="widget">
+            <div class="widget-header"><p class="widget-title">Client Growth</p><span style="font-size:var(--text-xs);color:var(--text-muted)">8 Weeks</span></div>
+            <svg viewBox="0 0 300 130" width="100%" role="img" aria-label="Client growth line chart">
+              <line x1="20" y1="10" x2="20" y2="110" stroke="var(--border-color)" stroke-width="1"/>
+              <line x1="20" y1="110" x2="298" y2="110" stroke="var(--border-color)" stroke-width="1"/>
+              <defs><linearGradient id="gGrad2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#6D4C41" stop-opacity="0.2"/><stop offset="100%" stop-color="#6D4C41" stop-opacity="0"/></linearGradient></defs>
+              <polygon points="20,95 60,86 100,76 140,64 180,52 220,40 260,28 298,18 298,110 20,110" fill="url(#gGrad2)"/>
+              <polyline points="20,95 60,86 100,76 140,64 180,52 220,40 260,28 298,18" fill="none" stroke="#6D4C41" stroke-width="2" stroke-linejoin="round"/>
+              <g fill="#6D4C41"><circle cx="20" cy="95" r="3"/><circle cx="60" cy="86" r="3"/><circle cx="100" cy="76" r="3"/><circle cx="140" cy="64" r="3"/><circle cx="180" cy="52" r="3"/><circle cx="220" cy="40" r="3"/><circle cx="260" cy="28" r="3"/><circle cx="298" cy="18" r="4"/></g>
+              <g font-size="9" text-anchor="middle" fill="var(--text-muted)"><text x="20" y="124">W1</text><text x="60" y="124">W2</text><text x="100" y="124">W3</text><text x="140" y="124">W4</text><text x="180" y="124">W5</text><text x="220" y="124">W6</text><text x="260" y="124">W7</text><text x="298" y="124">W8</text></g>
+            </svg>
+          </div>
+          <!-- Horizontal bars -->
+          <div class="widget">
+            <div class="widget-header"><p class="widget-title">Top by Revenue</p><span style="font-size:var(--text-xs);color:var(--text-muted)">This Month</span></div>
+            <div style="display:flex;flex-direction:column;gap:10px;padding-top:4px">
+              <div><div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:3px"><span style="color:var(--text-secondary)">Bridal</span><strong>$7,990</strong></div><div style="height:8px;background:var(--border-color-soft);border-radius:99px;overflow:hidden"><div style="height:100%;width:96%;background:linear-gradient(90deg,#6D4C41,#8D6E63);border-radius:99px"></div></div></div>
+              <div><div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:3px"><span style="color:var(--text-secondary)">Corporate</span><strong>$5,980</strong></div><div style="height:8px;background:var(--border-color-soft);border-radius:99px;overflow:hidden"><div style="height:100%;width:72%;background:linear-gradient(90deg,#8D6E63,#D9B8A6);border-radius:99px"></div></div></div>
+              <div><div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:3px"><span style="color:var(--text-secondary)">Shopping</span><strong>$4,990</strong></div><div style="height:8px;background:var(--border-color-soft);border-radius:99px;overflow:hidden"><div style="height:100%;width:60%;background:linear-gradient(90deg,#D9B8A6,#E8CFC5);border-radius:99px"></div></div></div>
+              <div><div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:3px"><span style="color:var(--text-secondary)">Wardrobe</span><strong>$3,180</strong></div><div style="height:8px;background:var(--border-color-soft);border-radius:99px;overflow:hidden"><div style="height:100%;width:38%;background:linear-gradient(90deg,#E8CFC5,#f0ddd6);border-radius:99px"></div></div></div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="stat-card clients">
-        <div class="stat-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
-        <div class="stat-card-body">
-          <div class="stat-card-value" data-counter data-target="142">0</div>
-          <div class="stat-card-label">Active Clients</div>
-          <div class="stat-card-trend trend-up"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:12px;height:12px"><polyline points="18 15 12 9 6 15"/></svg>+7 new this month</div>
+
+      <!-- RIGHT PANEL -->
+      <div class="admin-right">
+        <!-- Today's Schedule -->
+        <div class="widget">
+          <div class="widget-header">
+            <p class="widget-title">Today's Schedule</p>
+            <span class="badge badge-success">4 Sessions</span>
+          </div>
+          <div>
+            <div class="schedule-item"><span class="schedule-time">9:00 AM</span><span class="schedule-dot" style="background:#6D4C41"></span><div><div class="schedule-info-name">Sarah Mitchell</div><div class="schedule-info-svc">Personal Shopping · 3h</div></div></div>
+            <div class="schedule-item"><span class="schedule-time">11:00 AM</span><span class="schedule-dot" style="background:#8D6E63"></span><div><div class="schedule-info-name">Amelia Torres</div><div class="schedule-info-svc">Color Analysis · 90min</div></div></div>
+            <div class="schedule-item"><span class="schedule-time">1:30 PM</span><span class="schedule-dot" style="background:#D9B8A6"></span><div><div class="schedule-info-name">Priya Sharma</div><div class="schedule-info-svc">Bridal Styling · 2h</div></div></div>
+            <div class="schedule-item"><span class="schedule-time">4:00 PM</span><span class="schedule-dot" style="background:#4CAF50"></span><div><div class="schedule-info-name">Laura Kim</div><div class="schedule-info-svc">Wardrobe Audit · 2.5h</div></div></div>
+          </div>
         </div>
-      </div>
-      <div class="stat-card bookings">
-        <div class="stat-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
-        <div class="stat-card-body">
-          <div class="stat-card-value" data-counter data-target="38">0</div>
-          <div class="stat-card-label">Sessions This Month</div>
-          <div class="stat-card-trend trend-up"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:12px;height:12px"><polyline points="18 15 12 9 6 15"/></svg>+4 vs last month</div>
+
+        <!-- Quick Actions -->
+        <div class="widget">
+          <div class="widget-header"><p class="widget-title">Quick Actions</p></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-2)">
+            <a href="contact.html" class="btn btn-primary btn-sm" style="justify-content:center">+ Booking</a>
+            <a href="#" class="btn btn-ghost btn-sm" style="justify-content:center">Add Client</a>
+            <a href="#" class="btn btn-ghost btn-sm" style="justify-content:center">Blog Post</a>
+            <a href="#" class="btn btn-ghost btn-sm" style="justify-content:center">Send Invoice</a>
+          </div>
         </div>
-      </div>
-      <div class="stat-card messages">
-        <div class="stat-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
-        <div class="stat-card-body">
-          <div class="stat-card-value" data-counter data-target="12">0</div>
-          <div class="stat-card-label">Unread Messages</div>
-          <div class="stat-card-trend trend-down"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:12px;height:12px"><polyline points="6 9 12 15 18 9"/></svg>Needs attention</div>
+
+        <!-- Activity Feed -->
+        <div class="widget">
+          <div class="widget-header">
+            <p class="widget-title">Live Activity</p>
+            <span class="nav-badge" style="position:static;margin-inline-start:8px">3</span>
+          </div>
+          <div>
+            <div class="activity-item">
+              <div class="activity-icon" style="background:rgba(109,76,65,0.15)"><svg viewBox="0 0 24 24" fill="none" stroke="#6D4C41" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+              <div><div class="activity-text"><strong>Sarah Mitchell</strong> confirmed her Apr 8 session</div><div class="activity-time">2 hours ago</div></div>
+            </div>
+            <div class="activity-item">
+              <div class="activity-icon" style="background:rgba(141,110,99,0.15)"><svg viewBox="0 0 24 24" fill="none" stroke="#8D6E63" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+              <div><div class="activity-text"><strong>Amelia Torres</strong> sent a reschedule request</div><div class="activity-time">5 hours ago</div></div>
+            </div>
+            <div class="activity-item">
+              <div class="activity-icon" style="background:rgba(76,175,80,0.15)"><svg viewBox="0 0 24 24" fill="none" stroke="#4CAF50" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div><div class="activity-text"><strong>$799</strong> payment received — Priya Sharma</div><div class="activity-time">1 day ago</div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Messages Preview -->
+        <div class="widget">
+          <div class="widget-header"><p class="widget-title">Inbox <span class="nav-badge" style="position:static;margin-inline-start:6px">3</span></p><a href="#" class="btn btn-ghost btn-sm">View All</a></div>
+          <div class="inbox-list">
+            <div class="inbox-item unread"><img src="../assets/images/team/avatar-1.png" alt="Sarah" class="inbox-avatar" width="36" height="36" loading="lazy"/><div class="inbox-body"><div class="inbox-name">Sarah Mitchell</div><div class="inbox-preview">Thanks so much for today's session!</div></div><div class="inbox-time">2h</div><div class="inbox-unread-dot"></div></div>
+            <div class="inbox-item unread"><img src="../assets/images/team/avatar-2.png" alt="Amelia" class="inbox-avatar" width="36" height="36" loading="lazy"/><div class="inbox-body"><div class="inbox-name">Amelia Torres</div><div class="inbox-preview">Could we reschedule Thursday?</div></div><div class="inbox-time">5h</div><div class="inbox-unread-dot"></div></div>
+            <div class="inbox-item"><img src="../assets/images/team/avatar-3.png" alt="Priya" class="inbox-avatar" width="36" height="36" loading="lazy"/><div class="inbox-body"><div class="inbox-name">Priya Sharma</div><div class="inbox-preview">Do you have availability on the 20th?</div></div><div class="inbox-time">1d</div></div>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- WIDGETS ROW -->
-    <div class="dashboard-widgets">
-      <!-- Revenue Chart -->
-      <div class="widget">
-        <div class="widget-header">
-          <p class="widget-title">Revenue Overview</p>
-          <select class="form-control" style="width:auto;padding:0.4em 0.8em;font-size:var(--text-xs)" aria-label="Chart period">
-            <option>Last 6 months</option>
-            <option>Last year</option>
-          </select>
-        </div>
-        <svg viewBox="0 0 400 200" width="100%" role="img" aria-label="Revenue bar chart showing monthly growth">
-          <!-- Chart bars -->
-          <g fill="var(--color-brown)" opacity="0.15">
-            <rect x="20" y="100" width="40" height="80" rx="4"/>
-            <rect x="80" y="80" width="40" height="100" rx="4"/>
-            <rect x="140" y="60" width="40" height="120" rx="4"/>
-            <rect x="200" y="40" width="40" height="140" rx="4"/>
-            <rect x="260" y="30" width="40" height="150" rx="4"/>
-            <rect x="320" y="20" width="40" height="160" rx="4"/>
-          </g>
-          <g fill="var(--color-brown)">
-            <rect x="20" y="140" width="40" height="40" rx="4"/>
-            <rect x="80" y="110" width="40" height="70" rx="4"/>
-            <rect x="140" y="100" width="40" height="80" rx="4"/>
-            <rect x="200" y="80" width="40" height="100" rx="4"/>
-            <rect x="260" y="60" width="40" height="120" rx="4"/>
-            <rect x="320" y="40" width="40" height="140" rx="4"/>
-          </g>
-          <!-- X labels -->
-          <g fill="var(--text-muted)" font-size="11" text-anchor="middle">
-            <text x="40" y="195">Nov</text><text x="100" y="195">Dec</text>
-            <text x="160" y="195">Jan</text><text x="220" y="195">Feb</text>
-            <text x="280" y="195">Mar</text><text x="340" y="195">Apr</text>
-          </g>
-          <!-- Trend line -->
-          <polyline points="40,140 100,110 160,100 220,80 280,60 340,40" fill="none" stroke="var(--color-nude)" stroke-width="2" stroke-dasharray="4,2" opacity="0.7"/>
-        </svg>
-      </div>
-
-      <!-- Calendar -->
-      <div class="widget">
-        <div class="widget-header">
-          <p class="widget-title">Appointments</p>
-          <a href="#" class="btn btn-ghost btn-sm">View All</a>
-        </div>
-        <div id="admin-calendar"></div>
-      </div>
-    </div>
-
-    <!-- BOOKINGS TABLE -->
-    <div class="table-widget">
+    <!-- ── FULL-WIDTH BOOKINGS TABLE ── -->
+    <div class="table-widget" style="margin-bottom:var(--space-4)">
       <div class="table-widget-header">
         <p class="widget-title">Recent Bookings</p>
         <div style="display:flex;gap:var(--space-1);align-items:center">
@@ -195,83 +349,29 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
             <input type="search" id="table-search" placeholder="Search clients…" aria-label="Search bookings"/>
           </div>
+          <select class="form-control" style="width:auto;padding:0.4em 0.8em;font-size:var(--text-xs)" aria-label="Filter status"><option>All Status</option><option>Confirmed</option><option>Pending</option><option>Completed</option></select>
           <a href="#" class="btn btn-primary btn-sm">Export CSV</a>
         </div>
       </div>
       <div class="table-wrapper">
         <table class="data-table" id="bookings-table" aria-label="Recent bookings">
-          <thead>
-            <tr>
-              <th data-sort="name">Client <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:12px;height:12px;vertical-align:middle"><polyline points="6 9 12 15 18 9"/></svg></th>
-              <th data-sort="service">Service</th>
-              <th data-sort="date">Date</th>
-              <th data-sort="amount">Amount</th>
-              <th data-sort="status">Status</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
+          <thead><tr>
+            <th data-sort="name">Client <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:11px;height:11px;vertical-align:middle"><polyline points="6 9 12 15 18 9"/></svg></th>
+            <th>Service</th><th>Date</th><th>Duration</th><th>Amount</th><th>Status</th><th>Actions</th>
+          </tr></thead>
           <tbody>
-            <tr>
-              <td><img src="../assets/images/team/avatar-1.png" alt="" class="table-avatar" width="32" height="32" loading="lazy"/><span class="table-name">Sarah Mitchell</span></td>
-              <td>Personal Shopping</td>
-              <td>Apr 8, 2026</td>
-              <td><strong>$499</strong></td>
-              <td><span class="badge badge-success">Confirmed</span></td>
-              <td><a href="#" class="btn btn-ghost btn-sm">Edit</a></td>
-            </tr>
-            <tr>
-              <td><img src="../assets/images/team/avatar-2.png" alt="" class="table-avatar" width="32" height="32" loading="lazy"/><span class="table-name">Amelia Torres</span></td>
-              <td>Color Analysis</td>
-              <td>Apr 10, 2026</td>
-              <td><strong>$149</strong></td>
-              <td><span class="badge badge-warning">Pending</span></td>
-              <td><a href="#" class="btn btn-ghost btn-sm">Edit</a></td>
-            </tr>
-            <tr>
-              <td><img src="../assets/images/team/avatar-3.png" alt="" class="table-avatar" width="32" height="32" loading="lazy"/><span class="table-name">Priya Sharma</span></td>
-              <td>Bridal Styling</td>
-              <td>Apr 12, 2026</td>
-              <td><strong>$799</strong></td>
-              <td><span class="badge badge-success">Confirmed</span></td>
-              <td><a href="#" class="btn btn-ghost btn-sm">Edit</a></td>
-            </tr>
-            <tr>
-              <td><img src="../assets/images/team/avatar-1.png" alt="" class="table-avatar" width="32" height="32" loading="lazy"/><span class="table-name">Laura Kim</span></td>
-              <td>Wardrobe Audit</td>
-              <td>Apr 6, 2026</td>
-              <td><strong>$199</strong></td>
-              <td><span class="badge badge-info">Completed</span></td>
-              <td><a href="#" class="btn btn-ghost btn-sm">Edit</a></td>
-            </tr>
-            <tr>
-              <td><img src="../assets/images/team/avatar-2.png" alt="" class="table-avatar" width="32" height="32" loading="lazy"/><span class="table-name">Maria Rossi</span></td>
-              <td>Corporate Styling</td>
-              <td>Apr 15, 2026</td>
-              <td><strong>$499</strong></td>
-              <td><span class="badge badge-warning">Pending</span></td>
-              <td><a href="#" class="btn btn-ghost btn-sm">Edit</a></td>
-            </tr>
+            <tr><td><img src="../assets/images/team/avatar-1.png" alt="" class="table-avatar" width="32" height="32" loading="lazy"/><span class="table-name">Sarah Mitchell</span></td><td>Personal Shopping</td><td>Apr 8, 2026</td><td>3h</td><td><strong>$499</strong></td><td><span class="badge badge-success">Confirmed</span></td><td><a href="#" class="btn btn-ghost btn-sm">Edit</a></td></tr>
+            <tr><td><img src="../assets/images/team/avatar-2.png" alt="" class="table-avatar" width="32" height="32" loading="lazy"/><span class="table-name">Amelia Torres</span></td><td>Color Analysis</td><td>Apr 10, 2026</td><td>90min</td><td><strong>$149</strong></td><td><span class="badge badge-warning">Pending</span></td><td><a href="#" class="btn btn-ghost btn-sm">Edit</a></td></tr>
+            <tr><td><img src="../assets/images/team/avatar-3.png" alt="" class="table-avatar" width="32" height="32" loading="lazy"/><span class="table-name">Priya Sharma</span></td><td>Bridal Styling</td><td>Apr 12, 2026</td><td>4h</td><td><strong>$799</strong></td><td><span class="badge badge-success">Confirmed</span></td><td><a href="#" class="btn btn-ghost btn-sm">Edit</a></td></tr>
+            <tr><td><img src="../assets/images/team/avatar-1.png" alt="" class="table-avatar" width="32" height="32" loading="lazy"/><span class="table-name">Laura Kim</span></td><td>Wardrobe Audit</td><td>Apr 6, 2026</td><td>2.5h</td><td><strong>$199</strong></td><td><span class="badge badge-info">Completed</span></td><td><a href="#" class="btn btn-ghost btn-sm">Edit</a></td></tr>
+            <tr><td><img src="../assets/images/team/avatar-2.png" alt="" class="table-avatar" width="32" height="32" loading="lazy"/><span class="table-name">Maria Rossi</span></td><td>Corporate Styling</td><td>Apr 15, 2026</td><td>3h</td><td><strong>$499</strong></td><td><span class="badge badge-warning">Pending</span></td><td><a href="#" class="btn btn-ghost btn-sm">Edit</a></td></tr>
           </tbody>
         </table>
       </div>
     </div>
-
-    <!-- INBOX -->
-    <div class="widget" style="margin-bottom:var(--space-4)">
-      <div class="widget-header">
-        <p class="widget-title">Recent Messages <span class="nav-badge" style="margin-inline-start:8px;position:static">3</span></p>
-        <a href="#" class="btn btn-ghost btn-sm">View All</a>
-      </div>
-      <div class="inbox-list" aria-label="Recent inbox messages">
-        <div class="inbox-item unread"><img src="../assets/images/team/avatar-1.png" alt="Sarah Mitchell" class="inbox-avatar" width="40" height="40" loading="lazy"/><div class="inbox-body"><div class="inbox-name">Sarah Mitchell</div><div class="inbox-preview">Thanks so much for today's session! I already feel…</div></div><div class="inbox-time">2h</div><div class="inbox-unread-dot"></div></div>
-        <div class="inbox-item unread"><img src="../assets/images/team/avatar-2.png" alt="Amelia Torres" class="inbox-avatar" width="40" height="40" loading="lazy"/><div class="inbox-body"><div class="inbox-name">Amelia Torres</div><div class="inbox-preview">Could we reschedule Thursday to Friday morning?</div></div><div class="inbox-time">5h</div><div class="inbox-unread-dot"></div></div>
-        <div class="inbox-item"><img src="../assets/images/team/avatar-3.png" alt="Priya Sharma" class="inbox-avatar" width="40" height="40" loading="lazy"/><div class="inbox-body"><div class="inbox-name">Priya Sharma</div><div class="inbox-preview">Do you have availability on the 20th for a…</div></div><div class="inbox-time">1d</div></div>
-      </div>
-    </div>
   </main>
-</div>
 
+</div>
 <script src="../assets/js/theme.js"></script><script src="../assets/js/rtl.js"></script><script src="../assets/js/counters.js"></script><script src="../assets/js/dashboard.js"></script><script src="../assets/js/main.js"></script>
 </body>
 </html>
-

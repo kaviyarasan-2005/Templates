@@ -21,9 +21,9 @@
 /* Hamburger strips */
 [dir="rtl"] .nav-hamburger span:nth-child(2) { margin-inline-start: auto; margin-inline-end: 0; }
 
-/* Desktop menu */
-[dir="rtl"] .nav-menu { flex-direction: row-reverse; }
-[dir="rtl"] .nav-actions { flex-direction: row-reverse; }
+/* Desktop menu positions naturally mirror with direction: rtl */
+[dir="rtl"] .nav-menu { flex-direction: row; }
+[dir="rtl"] .nav-actions { flex-direction: row; }
 
 /* Dropdown opens to the right of the item in RTL */
 [dir="rtl"] .nav-dropdown {
@@ -103,15 +103,15 @@
 /* ============================================================
    DASHBOARD — Sidebar moves to RIGHT in RTL
    ============================================================ */
-[dir="rtl"] .dashboard-layout { flex-direction: row-reverse; }
+[dir="rtl"] .dashboard-layout { flex-direction: row; }
 [dir="rtl"] .dashboard-sidebar {
   border-inline-end: none;
   border-inline-start: 1px solid var(--border-color);
 }
 
-/* Sidebar nav links — icon before text */
-[dir="rtl"] .sidebar-nav-link { flex-direction: row-reverse; }
-[dir="rtl"] .sidebar-nav-link .nav-badge { margin-inline-start: 0; margin-inline-end: auto; }
+/* Sidebar nav links — natural RTL order puts icon at the start (right) */
+[dir="rtl"] .sidebar-nav-link { flex-direction: row; }
+[dir="rtl"] .sidebar-nav-link .nav-badge { margin-inline-start: auto; margin-inline-end: 0; }
 
 /* ============================================================
    DIRECTIONAL ICONS — flip arrows/chevrons in RTL

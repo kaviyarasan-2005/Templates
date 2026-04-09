@@ -22,12 +22,13 @@
   top: var(--nav-height);
   height: calc(100vh - var(--nav-height));
   overflow-y: auto;
-  transition: width var(--transition-base), opacity var(--transition-base);
+  transition: transform var(--transition-base), opacity var(--transition-base);
   z-index: 10;
 }
 
+/* Remove desktop collapse state styles since sidebar is always open on desktop */
 .dashboard-layout.sidebar-collapsed .dashboard-sidebar {
-  width: 70px;
+  width: 260px;
 }
 /* Overlay for mobile drawer */
 .sidebar-overlay {
@@ -53,10 +54,10 @@
 .dashboard-layout.sidebar-collapsed .sidebar-section-title,
 .dashboard-layout.sidebar-collapsed .sidebar-user-info,
 .dashboard-layout.sidebar-collapsed .nav-badge {
-  opacity: 0;
-  width: 0;
-  overflow: hidden;
-  pointer-events: none;
+  opacity: 1;
+  width: auto;
+  overflow: visible;
+  pointer-events: auto;
 }
 
 .sidebar-user {
@@ -176,6 +177,9 @@
   justify-content: center;
   color: var(--text-secondary);
   transition: all var(--transition-fast);
+}
+@media (min-width: 769px) {
+  [data-sidebar-toggle] { display: none !important; }
 }
 [data-sidebar-toggle]:hover { background: var(--color-brown); color: white; border-color: var(--color-brown); }
 [data-sidebar-toggle] svg { width: 18px; height: 18px; }
@@ -462,6 +466,8 @@
     z-index: var(--z-fixed);
     transition: inset-inline-start var(--transition-slow);
     height: calc(100vh - var(--nav-height));
+    /* Reset desktop overrides */
+    width: 260px !important;
   }
   .dashboard-sidebar.mobile-open { 
     inset-inline-start: 0; 
