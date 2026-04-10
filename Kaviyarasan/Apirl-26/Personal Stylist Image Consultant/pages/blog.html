@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" dir="ltr" data-theme="light">
 <head>
   <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -17,6 +17,33 @@
     #no-results { text-align:center; padding:var(--space-6) 0; display:none; }
     @media(max-width:1024px){ .blog-grid{grid-template-columns:repeat(2,1fr);} .blog-featured .blog-card{grid-template-columns:1fr;} .blog-featured{grid-column:auto;} }
     @media(max-width:640px){ .blog-grid{grid-template-columns:1fr;} }
+    /* Blog extra sections */
+    .blog-nl-form { display: flex; gap: var(--space-2); justify-content: center; flex-wrap: wrap; margin-top: var(--space-4); }
+    .blog-nl-input { flex: 1; min-width: 240px; padding: 12px 20px; border-radius: var(--radius-full); border: 2px solid var(--border-color); background: var(--bg-card); color: var(--text-primary); font-size: var(--text-base); outline: none; transition: border-color var(--transition-fast); }
+    .blog-nl-input:focus { border-color: var(--color-brown); }
+    .blog-cats-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: var(--space-3); }
+    .blog-cat-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-xl); padding: var(--space-4); text-align: center; transition: box-shadow var(--transition-base), transform var(--transition-base); }
+    .blog-cat-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); }
+    .blog-cat-icon { width: 64px; height: 64px; background: rgba(109,76,65,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-2); }
+    .blog-cat-icon svg { width: 28px; height: 28px; stroke: var(--color-brown); }
+    .blog-cat-title { font-family: var(--font-heading); font-size: var(--text-xl); font-weight: 600; color: var(--text-primary); margin-bottom: 4px; }
+    .blog-cat-count { font-size: var(--text-sm); color: var(--text-muted); }
+    .popular-grid { display: flex; flex-direction: column; gap: var(--space-3); max-width: 900px; margin: 0 auto; }
+    .popular-post { display: flex; align-items: center; gap: var(--space-3); background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-xl); padding: var(--space-3); transition: box-shadow var(--transition-base), transform var(--transition-base); }
+    .popular-post:hover { box-shadow: var(--shadow-md); transform: translateX(4px); }
+    .popular-num { font-family: var(--font-heading); font-size: 2rem; font-weight: 700; color: var(--color-brown); opacity: 0.25; min-width: 36px; }
+    .popular-img img { width: 80px; height: 80px; object-fit: cover; border-radius: var(--radius-lg); flex-shrink: 0; }
+    .popular-title { font-weight: 600; color: var(--text-primary); margin-bottom: 4px; line-height: 1.4; }
+    .popular-meta { font-size: var(--text-xs); color: var(--text-muted); }
+    .authors-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: var(--space-4); }
+    .author-card { display: flex; gap: var(--space-3); background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-xl); padding: var(--space-4); }
+    .author-card-img { width: 96px; height: 96px; border-radius: 50%; object-fit: cover; flex-shrink: 0; border: 3px solid var(--color-nude); }
+    .author-name { font-family: var(--font-heading); font-size: var(--text-lg); font-weight: 700; color: var(--text-primary); }
+    .author-role { font-size: var(--text-sm); color: var(--color-brown); font-weight: 600; margin-bottom: var(--space-1); }
+    .author-bio { font-size: var(--text-sm); color: var(--text-muted); line-height: 1.7; margin-bottom: var(--space-2); }
+    .author-stats { display: flex; gap: var(--space-2); font-size: var(--text-xs); color: var(--text-muted); }
+    @media(max-width:1024px) { .blog-cats-grid{grid-template-columns:repeat(2,1fr);} .authors-grid{grid-template-columns:1fr;} .author-card{flex-direction:row;} }
+    @media(max-width:640px) { .blog-cats-grid{grid-template-columns:1fr 1fr;} .author-card{flex-direction:column;align-items:center;text-align:center;} .popular-post{flex-wrap:wrap;} }
   </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Blog","name":"Élise Laurent Style Blog","description":"Style tips, trend reports, and expert image consulting advice"}</script>
 </head>
@@ -181,6 +208,139 @@
       <div id="no-results" class="hidden" role="status" aria-live="polite">
         <p style="font-size:var(--text-xl);color:var(--text-muted);margin-bottom:var(--space-2)">No articles found</p>
         <p style="color:var(--text-muted)">Try a different search term or browse all categories above.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER SIGNUP -->
+  <section class="section" style="background:var(--bg-secondary)" aria-labelledby="blog-newsletter-heading">
+    <div class="container" style="max-width:700px;text-align:center">
+      <span class="section-tag reveal">Stay in the Know</span>
+      <h2 class="section-title reveal delay-100" id="blog-newsletter-heading">Get Style Insights<br>Delivered Weekly</h2>
+      <p class="section-subtitle reveal delay-200">Join 12,000+ subscribers who receive our curated style tips, trend reports, and exclusive styling guides every week.</p>
+      <form class="blog-nl-form reveal delay-300" aria-label="Blog newsletter" onsubmit="return false;" id="blog-newsletter-form">
+        <input type="email" class="blog-nl-input" placeholder="Enter your email address" aria-label="Email address" required id="blog-nl-email"/>
+        <button type="submit" class="btn btn-primary btn-lg">Subscribe Free</button>
+      </form>
+      <p style="margin-top:var(--space-2);font-size:var(--text-xs);color:var(--text-muted)">No spam. Unsubscribe at any time. 12,000+ readers.</p>
+    </div>
+  </section>
+
+  <!-- FEATURED CATEGORIES -->
+  <section class="section" aria-labelledby="blog-cats-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag reveal">Browse by Topic</span>
+        <h2 class="section-title reveal delay-100" id="blog-cats-heading">Explore Our Style Guides</h2>
+        <p class="section-subtitle reveal delay-200">Deep-dive into the topics that matter most to your style journey.</p>
+      </div>
+      <div class="blog-cats-grid">
+        <a href="blog.html" class="blog-cat-card reveal" style="text-decoration:none">
+          <div class="blog-cat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 16.5l-5-3V4l5 3m0 9.5V7m0 9.5l5-3m-5-9.5l5 3m0 0l5-3V10l-5 3m0-6.5v9.5"/></svg></div>
+          <h3 class="blog-cat-title">Style Tips</h3>
+          <p class="blog-cat-count">24 articles</p>
+        </a>
+        <a href="blog.html" class="blog-cat-card reveal delay-100" style="text-decoration:none">
+          <div class="blog-cat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="19" cy="15" r="2.5"/><circle cx="6.5" cy="15" r="2.5"/></svg></div>
+          <h3 class="blog-cat-title">Color Theory</h3>
+          <p class="blog-cat-count">18 articles</p>
+        </a>
+        <a href="blog.html" class="blog-cat-card reveal delay-200" style="text-decoration:none">
+          <div class="blog-cat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+          <h3 class="blog-cat-title">Trend Reports</h3>
+          <p class="blog-cat-count">15 articles</p>
+        </a>
+        <a href="blog.html" class="blog-cat-card reveal delay-300" style="text-decoration:none">
+          <div class="blog-cat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+          <h3 class="blog-cat-title">Case Studies</h3>
+          <p class="blog-cat-count">12 articles</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- POPULAR POSTS SIDEBAR STYLE -->
+  <section class="section" style="background:var(--bg-secondary)" aria-labelledby="popular-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag reveal">Most Read</span>
+        <h2 class="section-title reveal delay-100" id="popular-heading">Reader Favourites</h2>
+        <p class="section-subtitle reveal delay-200">The articles your fellow style-seekers can't stop sharing.</p>
+      </div>
+      <div class="popular-grid">
+        <a href="blog-detail.html" class="popular-post reveal" style="text-decoration:none">
+          <span class="popular-num">01</span>
+          <div class="popular-img"><img src="../assets/images/blog/blog-1.png" alt="Wardrobe essentials" loading="lazy" width="80" height="80"/></div>
+          <div class="popular-info"><h3 class="popular-title">10 Wardrobe Essentials That Will Never Go Out of Style</h3><span class="popular-meta">Style Tips &bull; 5 min read</span></div>
+        </a>
+        <a href="blog-detail.html" class="popular-post reveal delay-100" style="text-decoration:none">
+          <span class="popular-num">02</span>
+          <div class="popular-img"><img src="../assets/images/blog/blog-featured.png" alt="Power dressing" loading="lazy" width="80" height="80"/></div>
+          <div class="popular-info"><h3 class="popular-title">The 2026 Power Dressing Revolution: How Executive Style Is Evolving</h3><span class="popular-meta">Trends &bull; 8 min read</span></div>
+        </a>
+        <a href="blog-detail.html" class="popular-post reveal delay-200" style="text-decoration:none">
+          <span class="popular-num">03</span>
+          <div class="popular-img"><img src="../assets/images/blog/blog-2.png" alt="Colour season" loading="lazy" width="80" height="80"/></div>
+          <div class="popular-info"><h3 class="popular-title">How to Discover Your Colour Season in 5 Steps</h3><span class="popular-meta">Color Theory &bull; 6 min read</span></div>
+        </a>
+        <a href="blog-detail.html" class="popular-post reveal delay-300" style="text-decoration:none">
+          <span class="popular-num">04</span>
+          <div class="popular-img"><img src="../assets/images/blog/blog-3.png" alt="CEO transformation" loading="lazy" width="80" height="80"/></div>
+          <div class="popular-info"><h3 class="popular-title">From Invisible to Unforgettable: A CEO's Image Transformation</h3><span class="popular-meta">Case Study &bull; 10 min read</span></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MEET THE AUTHORS -->
+  <section class="section" aria-labelledby="authors-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag reveal">Behind the Words</span>
+        <h2 class="section-title reveal delay-100" id="authors-heading">Meet Our Style Experts</h2>
+        <p class="section-subtitle reveal delay-200">Every article is crafted by a certified image consultant with real, hands-on experience.</p>
+      </div>
+      <div class="authors-grid">
+        <div class="author-card reveal">
+          <img src="../assets/images/team/avatar-author.png" alt="Elise Laurent" class="author-card-img" loading="lazy" width="96" height="96"/>
+          <div class="author-info">
+            <div class="author-name">Elise Laurent</div>
+            <div class="author-role">Founder &amp; Lead Stylist</div>
+            <p class="author-bio">With 12 years in luxury fashion and image consulting, Elise writes about style psychology, colour theory, and the power of personal presentation.</p>
+            <div class="author-stats"><span>32 articles</span><span>Founded 2014</span></div>
+          </div>
+        </div>
+        <div class="author-card reveal delay-200">
+          <img src="../assets/images/team/avatar-2.png" alt="Sophia Chen" class="author-card-img" loading="lazy" width="96" height="96"/>
+          <div class="author-info">
+            <div class="author-name">Sophia Chen</div>
+            <div class="author-role">Senior Stylist &amp; Colour Expert</div>
+            <p class="author-bio">Sophia specialises in colour analysis and sustainable fashion. She helps readers build capsule wardrobes that are both timeless and environmentally conscious.</p>
+            <div class="author-stats"><span>18 articles</span><span>FIA Certified</span></div>
+          </div>
+        </div>
+        <div class="author-card reveal delay-400">
+          <img src="../assets/images/team/avatar-3.png" alt="Marcus Webb" class="author-card-img" loading="lazy" width="96" height="96"/>
+          <div class="author-info">
+            <div class="author-name">Marcus Webb</div>
+            <div class="author-role">Corporate &amp; Menswear Stylist</div>
+            <p class="author-bio">Marcus brings a menswear perspective to executive dressing, writing about power dressing, suit fitting, and building authority through wardrobe choices.</p>
+            <div class="author-stats"><span>14 articles</span><span>10+ years exp.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA STRIP -->
+  <section class="section" style="background:linear-gradient(135deg,var(--color-brown-dark),var(--color-brown))" aria-label="Blog CTA">
+    <div class="container" style="text-align:center;max-width:700px">
+      <span class="section-tag reveal" style="color:var(--color-blush)">Ready for a Change?</span>
+      <h2 class="reveal delay-100" style="color:white;font-size:clamp(2rem,4vw,3rem);margin-bottom:var(--space-3)">Put the Knowledge<br>Into Action</h2>
+      <p class="reveal delay-200" style="color:rgba(255,255,255,0.8);margin-bottom:var(--space-4);font-size:var(--text-lg)">Reading about style is only the first step. Book a consultation and let us bring these insights to life through your wardrobe.</p>
+      <div class="reveal delay-300" style="display:flex;justify-content:center;gap:var(--space-2);flex-wrap:wrap">
+        <a href="contact.html" class="btn btn-light btn-lg" id="blog-cta-book">Book Free Consultation</a>
+        <a href="services.html" class="btn btn-ghost btn-lg" style="border-color:rgba(255,255,255,0.3);color:white" id="blog-cta-services">Explore Services</a>
       </div>
     </div>
   </section>

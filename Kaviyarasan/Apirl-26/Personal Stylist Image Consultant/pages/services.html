@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" dir="ltr" data-theme="light">
 <head>
   <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -15,6 +15,29 @@
     @media(max-width:640px){ .services-filter-grid{grid-template-columns:1fr;} }
     .service-card-stagger { transition: all var(--transition-base); }
     .service-card-stagger.hide { opacity:0; transform:scale(0.95); pointer-events:none; display:none; }
+    /* Services extra sections */
+    .why-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: var(--space-3); }
+    .why-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-xl); padding: var(--space-4); transition: box-shadow var(--transition-base), transform var(--transition-base); }
+    .why-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); }
+    .why-icon { width: 52px; height: 52px; background: rgba(109,76,65,0.1); border-radius: var(--radius-xl); display: flex; align-items: center; justify-content: center; margin-bottom: var(--space-2); }
+    .why-icon svg { width: 24px; height: 24px; stroke: var(--color-brown); }
+    .why-title { font-weight: 700; font-size: var(--text-lg); margin-bottom: var(--space-1); color: var(--text-primary); }
+    .why-text { font-size: var(--text-sm); color: var(--text-muted); line-height: 1.7; }
+    .svc-process-steps { display: grid; grid-template-columns: repeat(4,1fr); gap: var(--space-3); margin-top: var(--space-4); }
+    .svc-process-step { text-align: center; padding: var(--space-4); }
+    .svc-process-num { font-family: var(--font-heading); font-size: 3rem; font-weight: 700; color: var(--color-brown); opacity: 0.25; line-height: 1; margin-bottom: var(--space-1); }
+    .svc-process-step h3 { font-size: var(--text-lg); font-weight: 700; margin-bottom: var(--space-1); color: var(--text-primary); }
+    .svc-process-step p { font-size: var(--text-sm); color: var(--text-muted); line-height: 1.7; }
+    .svc-testi-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3); }
+    .faq-list { display: flex; flex-direction: column; gap: var(--space-2); }
+    .faq-item { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-xl); overflow: hidden; }
+    .faq-q { padding: var(--space-3) var(--space-4); font-weight: 600; cursor: pointer; color: var(--text-primary); list-style: none; display: flex; justify-content: space-between; align-items: center; }
+    .faq-q::-webkit-details-marker { display: none; }
+    .faq-q::after { content: '+'; font-size: 1.5rem; color: var(--color-brown); transition: transform var(--transition-base); }
+    .faq-item[open] .faq-q::after { transform: rotate(45deg); }
+    .faq-a { padding: 0 var(--space-4) var(--space-3); color: var(--text-secondary); line-height: 1.8; font-size: var(--text-sm); }
+    @media(max-width:1024px) { .why-grid{grid-template-columns:repeat(2,1fr);} .svc-process-steps{grid-template-columns:repeat(2,1fr);} }
+    @media(max-width:640px) { .why-grid{grid-template-columns:1fr;} .svc-process-steps{grid-template-columns:1fr;} .svc-testi-grid{grid-template-columns:1fr;} }
   </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","provider":{"@type":"LocalBusiness","name":"Élise Laurent Image Consulting"},"serviceType":"Personal Styling","areaServed":"Worldwide"}</script>
 </head>
@@ -124,6 +147,95 @@
           <div class="service-card-body"><div class="service-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div><h3 class="service-card-title">Style Consultation</h3><p class="service-card-text">A deep-dive 1:1 session covering your style identity, goals, and action plan.</p><div style="display:flex;align-items:center;justify-content:space-between;margin-top:var(--space-2)"><span class="service-card-price">From <strong>$99</strong></span><span class="service-card-badge">60 mins</span></div></div>
         </div>
 
+      </div>
+    </div>
+  </section>
+
+
+  <!-- WHY CHOOSE US -->
+  <section class="section" aria-labelledby="why-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag reveal">Why Elise Laurent</span>
+        <h2 class="section-title reveal delay-100" id="why-heading">The Difference That<br><em>Sets Us Apart</em></h2>
+        <p class="section-subtitle reveal delay-200">Beyond beautiful outfits, we deliver lasting transformation rooted in science, psychology, and personal connection.</p>
+      </div>
+      <div class="why-grid">
+        <div class="why-card reveal">
+          <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <h3 class="why-title">Bespoke Approach</h3>
+          <p class="why-text">No templates, no shortcuts. Every recommendation is built around your unique body, lifestyle, and goals.</p>
+        </div>
+        <div class="why-card reveal delay-200">
+          <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></div>
+          <h3 class="why-title">Certified Expertise</h3>
+          <p class="why-text">FIA-certified stylists with real-world experience across editorial, corporate, and luxury retail environments.</p>
+        </div>
+        <div class="why-card reveal delay-300">
+          <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+          <h3 class="why-title">Long-Term Partnership</h3>
+          <p class="why-text">We build ongoing relationships with our clients, evolving your style as your life and career evolve.</p>
+        </div>
+        <div class="why-card reveal delay-400">
+          <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+          <h3 class="why-title">Virtual Options</h3>
+          <p class="why-text">All services available online. We serve clients across 15+ countries through our immersive virtual styling platform.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="section" style="background:var(--bg-secondary)" aria-labelledby="service-process-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag reveal">How It Works</span>
+        <h2 class="section-title reveal delay-100" id="service-process-heading">Your Journey Starts Here</h2>
+        <p class="section-subtitle reveal delay-200">A seamless, four-step process designed to deliver spectacular results every time.</p>
+      </div>
+      <div class="svc-process-steps">
+        <div class="svc-process-step reveal"><div class="svc-process-num">01</div><h3>Free Discovery Call</h3><p>30-minute complimentary session to understand your needs and recommend the right services.</p></div>
+        <div class="svc-process-step reveal delay-200"><div class="svc-process-num">02</div><h3>Personal Analysis</h3><p>Deep-dive into your body shape, colour season, lifestyle, and style personality using our proprietary framework.</p></div>
+        <div class="svc-process-step reveal delay-300"><div class="svc-process-num">03</div><h3>Hands-On Styling</h3><p>Shopping trips, wardrobe overhauls, and curated outfit formulas built specifically for you.</p></div>
+        <div class="svc-process-step reveal delay-400"><div class="svc-process-num">04</div><h3>Ongoing Support</h3><p>Access to your personal style guide, seasonal updates, and follow-up check-ins whenever you need them.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section" aria-labelledby="svc-testi-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag reveal">Client Results</span>
+        <h2 class="section-title reveal delay-100" id="svc-testi-heading">Transformations That<br>Speak for Themselves</h2>
+      </div>
+      <div class="svc-testi-grid">
+        <div class="testimonial-card reveal">
+          <div class="testimonial-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+          <p class="testimonial-text">"The personal shopping service saved me hours and thousands of dollars in mistakes. Every piece Elise selected I still wear constantly, three years later."</p>
+          <div class="testimonial-author"><img src="../assets/images/team/avatar-1.png" alt="Rachel Moore" width="48" height="48"/><div><div class="testimonial-author-name">Rachel Moore</div><div class="testimonial-author-role">Marketing Director</div></div></div>
+        </div>
+        <div class="testimonial-card reveal delay-200">
+          <div class="testimonial-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+          <p class="testimonial-text">"The colour analysis was mind-blowing. I finally understand why some colours drain me and others make me look 10 years younger. Total game-changer."</p>
+          <div class="testimonial-author"><img src="../assets/images/team/avatar-2.png" alt="Amelia Torres" width="48" height="48"/><div><div class="testimonial-author-name">Amelia Torres</div><div class="testimonial-author-role">Senior Architect</div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" style="background:var(--bg-secondary)" aria-labelledby="svc-faq-heading">
+    <div class="container" style="max-width:800px">
+      <div class="section-header">
+        <span class="section-tag reveal">FAQs</span>
+        <h2 class="section-title reveal delay-100" id="svc-faq-heading">Common Questions</h2>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item reveal"><summary class="faq-q">Do I need a large budget to work with you?</summary><div class="faq-a">Not at all. We work with a wide range of budgets and always prioritise quality over quantity. Our goal is to build a wardrobe that works within your means.</div></details>
+        <details class="faq-item reveal delay-100"><summary class="faq-q">How do virtual styling sessions work?</summary><div class="faq-a">Via video call, we conduct all the same analysis as an in-person session. You'll receive a full digital style guide, shopping links, and outfit boards delivered within 48 hours.</div></details>
+        <details class="faq-item reveal delay-200"><summary class="faq-q">How many sessions will I need?</summary><div class="faq-a">Most clients see dramatic results in 2-3 sessions. However, we offer flexible packages from a single consultation to comprehensive ongoing support.</div></details>
+        <details class="faq-item reveal delay-300"><summary class="faq-q">What if I don't like the choices made for me?</summary><div class="faq-a">We guarantee your satisfaction. If any purchased item doesn't feel right, we'll work with you until it does. Your comfort and confidence are our priority.</div></details>
       </div>
     </div>
   </section>

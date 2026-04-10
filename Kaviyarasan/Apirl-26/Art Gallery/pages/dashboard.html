@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard — Aurelia Gallery</title>
-  <meta name="description" content="Manage your gallery preferences, exhibitions, and artwork collections.">
+  <meta name="description" content="Manage your gallery preferences, exhibitions, artwork collections and analytics.">
   <link rel="icon" type="image/svg+xml" href="../assets/images/favicons/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,29 +17,278 @@
   <!-- Chart.js CDN -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
-    /* Critical Mobile Fixes */
+    /* ─── Mobile Fixes ─── */
     @media (max-width: 640px) {
       .navbar__logo-suffix { display: none !important; }
-      .navbar__actions .btn--primary, 
-      .navbar__actions #theme-toggle, 
+      .navbar__actions .btn--primary,
+      .navbar__actions #theme-toggle,
       .navbar__actions #rtl-toggle { display: none !important; }
       .navbar__inner { padding-inline: 16px !important; }
       .navbar__logo { font-size: 1.1rem !important; }
       .navbar__actions { gap: 0 !important; }
-      body { overflow-x: hidden !important; width: 100% !important; position: relative !important; }
+      body { overflow-x: hidden !important; width: 100% !important; }
       * { max-width: 100vw !important; }
     }
+    @media (max-width: 768px) { .md-hidden { display: none !important; } }
+
+    /* ─── Dashboard Layout ─── */
+    .db-layout { display: flex; gap: 32px; align-items: flex-start; padding-block: 32px; }
+    .db-sidebar {
+      width: 240px; flex-shrink: 0; position: sticky; top: 24px;
+      background: var(--color-bg); border: 1px solid var(--color-border);
+      border-radius: 16px; padding: 20px; display: flex; flex-direction: column; gap: 4px;
+    }
+    .db-sidebar__section-label {
+      font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--color-text-secondary);
+      padding: 12px 12px 4px; margin-top: 4px;
+    }
+    .db-nav-link {
+      display: flex; align-items: center; gap: 10px; padding: 10px 12px;
+      border-radius: 10px; font-size: 0.875rem; font-weight: 500;
+      color: var(--color-text-secondary); text-decoration: none;
+      transition: all 0.2s; border: none; background: none; cursor: pointer; width: 100%; text-align: left;
+    }
+    .db-nav-link:hover { background: var(--color-muted); color: var(--color-text); }
+    .db-nav-link.active {
+      background: rgba(212,175,55,0.12); color: var(--color-primary); font-weight: 600;
+    }
+    .db-nav-link svg { flex-shrink: 0; }
+    .db-sidebar__divider { height: 1px; background: var(--color-border); margin: 8px 0; }
+
+    /* ─── Stat Cards ─── */
+    .stats-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; margin-bottom: 28px; }
+    @media (max-width: 1024px) { .stats-grid { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width: 540px) { .stats-grid { grid-template-columns: 1fr; } }
+    .kpi-card {
+      background: var(--color-bg); border: 1px solid var(--color-border); border-radius: 14px;
+      padding: 20px; position: relative; overflow: hidden;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .kpi-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+    .kpi-card__accent {
+      position: absolute; top: 0; left: 0; width: 4px; height: 100%; border-radius: 14px 0 0 14px;
+    }
+    .kpi-card__icon {
+      width: 40px; height: 40px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center; margin-bottom: 14px;
+    }
+    .kpi-card__label { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-text-secondary); margin-bottom: 4px; }
+    .kpi-card__value { font-size: 2rem; font-weight: 700; font-family: var(--font-heading); color: var(--color-text); line-height: 1.1; }
+    .kpi-card__change { display: flex; align-items: center; gap: 4px; font-size: 0.75rem; margin-top: 8px; }
+    .kpi-card__change--up { color: #16a34a; }
+    .kpi-card__change--down { color: #dc2626; }
+    .kpi-card__change--neutral { color: var(--color-text-secondary); }
+
+    /* ─── Section / Panel ─── */
+    .db-panel {
+      background: var(--color-bg); border: 1px solid var(--color-border);
+      border-radius: 14px; overflow: hidden; margin-bottom: 24px;
+    }
+    .db-panel__head {
+      padding: 16px 24px; border-bottom: 1px solid var(--color-border);
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
+    }
+    .db-panel__title { font-size: 1rem; font-weight: 700; color: var(--color-text); margin: 0; }
+    .db-panel__body { padding: 24px; }
+
+    /* ─── Infographics ─── */
+    .infographics-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 24px; margin-bottom: 28px; }
+    @media (max-width: 768px) { .infographics-grid { grid-template-columns: 1fr; } }
+
+    /* Radial Progress */
+    .radial-progress-wrap { display: flex; flex-direction: column; align-items: center; gap: 12px; width: 100%; }
+    .radial-items { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+    .radial-item { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+    .radial-svg { transform: rotate(-90deg); }
+    .radial-bg { fill: none; stroke: var(--color-muted); stroke-width: 6; }
+    .radial-fg { fill: none; stroke-width: 6; stroke-linecap: round; transition: stroke-dashoffset 1.4s ease; }
+    .radial-label { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-text-secondary); text-align: center; }
+    .radial-val { font-size: 1.1rem; font-weight: 700; color: var(--color-text); }
+
+    /* Funnel Chart */
+    .funnel { display: flex; flex-direction: column; gap: 6px; width: 100%; }
+    .funnel-step { display: flex; align-items: center; gap: 12px; }
+    .funnel-bar-wrap { flex: 1; height: 36px; background: var(--color-muted); border-radius: 6px; overflow: hidden; }
+    .funnel-bar { height: 100%; border-radius: 6px; transition: width 1.2s ease; display: flex; align-items: center; padding-inline: 12px; }
+    .funnel-bar span { font-size: 0.75rem; font-weight: 600; color: #fff; }
+    .funnel-meta { width: 100px; text-align: right; }
+    .funnel-meta__val { font-size: 0.875rem; font-weight: 700; color: var(--color-text); }
+    .funnel-meta__lbl { font-size: 0.65rem; color: var(--color-text-secondary); }
+
+    /* Heatmap / Calendar */
+    .heatmap-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 4px; }
+    .heatmap-cell {
+      aspect-ratio: 1; border-radius: 3px; background: var(--color-muted);
+      transition: transform .15s; cursor: pointer; position: relative;
+    }
+    .heatmap-cell:hover { transform: scale(1.3); z-index: 2; }
+    .heatmap-cell[data-level="1"] { background: rgba(212,175,55,0.25); }
+    .heatmap-cell[data-level="2"] { background: rgba(212,175,55,0.5); }
+    .heatmap-cell[data-level="3"] { background: rgba(212,175,55,0.75); }
+    .heatmap-cell[data-level="4"] { background: rgba(212,175,55,1); }
+    .heatmap-legend { display: flex; gap: 6px; align-items: center; margin-top: 10px; font-size: 0.7rem; color: var(--color-text-secondary); }
+    .heatmap-legend-swatch { width: 14px; height: 14px; border-radius: 3px; }
+
+    /* Spark Bars */
+    .spark-bars-list { display: flex; flex-direction: column; gap: 14px; }
+    .spark-bar-item { display: flex; flex-direction: column; gap: 5px; }
+    .spark-bar-header { display: flex; justify-content: space-between; font-size: 0.8125rem; }
+    .spark-bar-header__label { font-weight: 500; color: var(--color-text); }
+    .spark-bar-header__val { font-weight: 700; color: var(--color-primary); }
+    .spark-bar-track { height: 8px; background: var(--color-muted); border-radius: 99px; overflow: hidden; }
+    .spark-bar-fill { height: 100%; border-radius: 99px; transition: width 1.4s cubic-bezier(.33,1,.68,1); }
+
+    /* ─── Quick Actions ─── */
+    .quick-actions { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; margin-bottom: 28px; }
+    @media (max-width: 768px) { .quick-actions { grid-template-columns: repeat(2,1fr); } }
+    .qacard {
+      padding: 16px; border-radius: 12px; border: 1.5px dashed var(--color-border);
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      text-align: center; cursor: pointer; transition: all .2s; text-decoration: none; color: var(--color-text);
+    }
+    .qacard:hover { border-color: var(--color-primary); background: rgba(212,175,55,0.06); transform: translateY(-2px); }
+    .qacard__icon { width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; }
+    .qacard__label { font-size: 0.8125rem; font-weight: 600; }
+
+    /* ─── Activity Feed ─── */
+    .activity-feed { display: flex; flex-direction: column; gap: 0; }
+    .activity-item {
+      display: flex; gap: 14px; align-items: flex-start;
+      padding: 14px 0; border-bottom: 1px solid var(--color-border);
+    }
+    .activity-item:last-child { border-bottom: none; }
+    .activity-dot {
+      width: 36px; height: 36px; border-radius: 50%; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center; margin-top: 2px;
+    }
+    .activity-body__title { font-size: 0.875rem; font-weight: 600; color: var(--color-text); }
+    .activity-body__desc { font-size: 0.8125rem; color: var(--color-text-secondary); margin-top: 2px; }
+    .activity-body__time { font-size: 0.7rem; color: var(--color-text-secondary); margin-top: 4px; }
+
+    /* ─── Exhibition Timeline ─── */
+    .timeline { display: flex; flex-direction: column; gap: 0; }
+    .tl-item { display: flex; gap: 16px; position: relative; padding-bottom: 24px; }
+    .tl-item:last-child { padding-bottom: 0; }
+    .tl-line-wrap { display: flex; flex-direction: column; align-items: center; }
+    .tl-dot { width: 14px; height: 14px; border-radius: 50%; border: 3px solid var(--color-primary); background: var(--color-bg); flex-shrink: 0; margin-top: 4px; }
+    .tl-dot.active { background: var(--color-primary); }
+    .tl-connector { flex: 1; width: 2px; background: var(--color-border); margin-top: 4px; }
+    .tl-content { flex: 1; padding-bottom: 4px; }
+    .tl-content__title { font-size: 0.9rem; font-weight: 600; color: var(--color-text); }
+    .tl-content__date { font-size: 0.75rem; color: var(--color-primary); font-weight: 600; margin-top: 2px; }
+    .tl-content__desc { font-size: 0.8125rem; color: var(--color-text-secondary); margin-top: 4px; }
+
+    /* ─── Top Artworks ─── */
+    .top-artworks-list { display: flex; flex-direction: column; gap: 12px; }
+    .artwork-row { display: flex; align-items: center; gap: 12px; padding: 10px; border-radius: 10px; transition: background .2s; cursor: pointer; }
+    .artwork-row:hover { background: var(--color-muted); }
+    .artwork-row__rank { font-size: 1.1rem; font-weight: 800; color: var(--color-primary); width: 24px; text-align: center; flex-shrink: 0; }
+    .artwork-row__thumb { width: 52px; height: 40px; border-radius: 8px; object-fit: cover; flex-shrink: 0; }
+    .artwork-row__info { flex: 1; min-width: 0; }
+    .artwork-row__name { font-size: 0.875rem; font-weight: 600; color: var(--color-text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .artwork-row__artist { font-size: 0.75rem; color: var(--color-text-secondary); }
+    .artwork-row__views { font-size: 0.8125rem; font-weight: 700; color: var(--color-text); }
+
+    /* ─── Visitor Widget ─── */
+    .visitor-map-countries { display: flex; flex-direction: column; gap: 10px; }
+    .country-row { display: flex; align-items: center; gap: 10px; }
+    .country-flag { font-size: 1.25rem; }
+    .country-name { font-size: 0.875rem; font-weight: 500; color: var(--color-text); flex: 1; }
+    .country-bar-track { height: 6px; background: var(--color-muted); border-radius: 99px; overflow: hidden; width: 80px; }
+    .country-bar-fill { height: 100%; border-radius: 99px; background: var(--color-primary); transition: width 1.2s ease; }
+    .country-pct { font-size: 0.75rem; font-weight: 700; color: var(--color-text-secondary); width: 34px; text-align: right; }
+
+    /* ─── Membership / User widgets ─── */
+    .membership-card {
+      background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+      border-radius: 14px; padding: 24px; color: #fff; margin-bottom: 24px; position: relative; overflow: hidden;
+    }
+    .membership-card::after {
+      content: ''; position: absolute; right: -30px; top: -30px;
+      width: 140px; height: 140px; border-radius: 50%; background: rgba(255,255,255,0.08);
+    }
+    .membership-card__badge { display: inline-block; background: rgba(255,255,255,0.2); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 10px; border-radius: 99px; margin-bottom: 10px; }
+    .membership-card__name { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700; margin-bottom: 4px; }
+    .membership-card__desc { font-size: 0.875rem; opacity: 0.9; margin-bottom: 16px; }
+    .membership-card__perks { display: flex; flex-wrap: wrap; gap: 8px; }
+    .perk-pill { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); border-radius: 99px; font-size: 0.75rem; padding: 4px 10px; }
+
+    /* ─── Notification list ─── */
+    .notif-list { display: flex; flex-direction: column; gap: 0; }
+    .notif-item { display: flex; gap: 12px; align-items: flex-start; padding: 12px 0; border-bottom: 1px solid var(--color-border); }
+    .notif-item:last-child { border-bottom: none; }
+    .notif-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; margin-top: 6px; }
+    .notif-text { flex: 1; font-size: 0.8125rem; color: var(--color-text); }
+    .notif-time { font-size: 0.7rem; color: var(--color-text-secondary); flex-shrink: 0; margin-top: 2px; }
+
+    /* ─── Chart grid ─── */
+    .charts-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 24px; margin-bottom: 28px; }
+    @media (max-width: 900px) { .charts-grid { grid-template-columns: 1fr; } }
+
+    /* ─── Role Toggle Tabs ─── */
+    .role-tabs { display: flex; gap: 8px; margin-bottom: 24px; border-bottom: 2px solid var(--color-border); padding-bottom: 0; }
+    .role-tab {
+      padding: 10px 20px; font-size: 0.875rem; font-weight: 600; cursor: pointer;
+      border: none; background: none; color: var(--color-text-secondary);
+      border-bottom: 2px solid transparent; margin-bottom: -2px; transition: all .2s;
+    }
+    .role-tab.active { color: var(--color-primary); border-bottom-color: var(--color-primary); }
+    .role-tab:hover:not(.active) { color: var(--color-text); }
+
+    /* ─── Progress Rings (SVG) ─── */
+    .perf-rings { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; }
+    @media (max-width: 480px) { .perf-rings { grid-template-columns: 1fr; } }
+    .perf-ring-card { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 16px; background: var(--color-muted); border-radius: 12px; }
+    .perf-ring-label { font-size: 0.75rem; font-weight: 600; text-align: center; color: var(--color-text-secondary); }
+
+    /* ─── Table ─── */
+    .db-table-wrap { overflow-x: auto; }
+    table.data-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+    table.data-table th, table.data-table td { padding: 12px 16px; text-align: left; }
+    table.data-table th { background: var(--color-muted); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-text-secondary); white-space: nowrap; }
+    table.data-table td { border-bottom: 1px solid var(--color-border); color: var(--color-text); }
+    table.data-table tbody tr:hover { background: var(--color-muted); }
+    table.data-table tbody tr:last-child td { border-bottom: none; }
+    .badge { display: inline-block; padding: 3px 10px; border-radius: 99px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; }
+    .badge--green { background: rgba(22,163,74,0.12); color: #16a34a; }
+    .badge--gold { background: rgba(212,175,55,0.15); color: #b8941e; }
+    .badge--red { background: rgba(220,38,38,0.12); color: #dc2626; }
+    .badge--blue { background: rgba(59,130,246,0.12); color: #3b82f6; }
+
+    /* ─── Misc ─── */
+    .section-row { display: grid; grid-template-columns: 2fr 1fr; gap: 24px; margin-bottom: 28px; }
+    @media (max-width: 900px) { .section-row { grid-template-columns: 1fr; } }
+    .section-row-reverse { display: grid; grid-template-columns: 1fr 2fr; gap: 24px; margin-bottom: 28px; }
+    @media (max-width: 900px) { .section-row-reverse { grid-template-columns: 1fr; } }
+
+    .btn--sm { padding: 6px 12px; font-size: 0.8125rem; border-radius: 7px; }
+    .chip { display: inline-flex; align-items: center; gap: 5px; padding: 4px 10px; border-radius: 99px; font-size: 0.75rem; font-weight: 500; background: var(--color-muted); color: var(--color-text-secondary); border: 1px solid var(--color-border); }
+    .chip--gold { background: rgba(212,175,55,0.1); color: var(--color-primary); border-color: rgba(212,175,55,0.3); }
   </style>
 </head>
 <body style="background:var(--color-bg-alt);">
 
-  <!-- DASHBOARD NAVBAR (Simplified) -->
+  <!-- NAVBAR -->
   <nav class="navbar" style="position:static;border-bottom:1px solid var(--color-border);" role="navigation" aria-label="Dashboard navigation">
     <div class="navbar__inner">
-      <a href="home-main.html" class="navbar__logo"><svg width="32" height="32" viewBox="0 0 36 36" fill="none"><rect width="36" height="36" rx="8" fill="#D4AF37"/><path d="M18 8L26 28H10L18 8Z" fill="white" opacity="0.9"/><circle cx="18" cy="20" r="4" fill="white" opacity="0.7"/></svg><span style="font-size:1.25rem;">Aurelia</span></a>
-      
+      <a href="home-main.html" class="navbar__logo">
+        <svg width="32" height="32" viewBox="0 0 36 36" fill="none"><rect width="36" height="36" rx="8" fill="#D4AF37"/><path d="M18 8L26 28H10L18 8Z" fill="white" opacity="0.9"/><circle cx="18" cy="20" r="4" fill="white" opacity="0.7"/></svg>
+        <span style="font-size:1.25rem;">Aurelia</span>
+      </a>
+
       <div style="display:flex;align-items:center;gap:16px;">
-          <div style="flex:1;"></div>
+        <!-- Search Bar -->
+        <div class="md-hidden" style="position:relative;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="position:absolute;left:10px;top:50%;transform:translateY(-50%);color:var(--color-text-secondary);pointer-events:none;"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" placeholder="Search dashboard…" style="padding:8px 12px 8px 34px;border:1px solid var(--color-border);border-radius:8px;background:var(--color-muted);font-size:0.8125rem;color:var(--color-text);width:220px;">
+        </div>
+
+        <!-- Notifications Bell -->
+        <button class="navbar__icon-btn" aria-label="Notifications" style="position:relative;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          <span style="position:absolute;top:4px;right:4px;width:8px;height:8px;border-radius:50%;background:#D4AF37;border:2px solid var(--color-bg);"></span>
+        </button>
 
         <button class="navbar__icon-btn" id="rtl-toggle" aria-label="Toggle RTL/LTR">
           <svg style="pointer-events:none" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
@@ -47,8 +296,8 @@
         <button class="navbar__icon-btn" id="theme-toggle" aria-label="Toggle theme">
           <svg style="pointer-events:none" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
         </button>
-        
-        <!-- User Avatar Dropdown -->
+
+        <!-- User Dropdown -->
         <div class="navbar__dropdown">
           <button class="navbar__dropdown-trigger" style="border:none;background:none;padding:0;cursor:pointer;">
             <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop" alt="User Profile" style="width:36px;height:36px;border-radius:50%;object-fit:cover;border:2px solid var(--color-primary);">
@@ -68,110 +317,686 @@
     </div>
   </nav>
 
-  <div class="container" style="padding-block:32px;display:flex;gap:32px;align-items:flex-start;">
-    
-    <!-- SIDEBAR -->
-    <aside style="width:240px;background:var(--color-bg);border:1px solid var(--color-border);border-radius:12px;padding:24px;position:sticky;top:24px;flex-shrink:0;" class="md-hidden">
-      <ul style="display:flex;flex-direction:column;gap:8px;">
-        <li><a href="#" class="btn" style="width:100%;justify-content:flex-start;background:rgba(212,175,55,0.1);color:var(--color-primary);"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg> Dashboard</a></li>
-        <li><a href="#" class="btn" style="width:100%;justify-content:flex-start;color:var(--color-text-secondary);font-weight:500;"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg> Saved Artworks</a></li>
-        <li><a href="#" class="btn" style="width:100%;justify-content:flex-start;color:var(--color-text-secondary);font-weight:500;"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Bookings</a></li>
-        <li><a href="#" class="btn" style="width:100%;justify-content:flex-start;color:var(--color-text-secondary);font-weight:500;"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> Messages</a></li>
-        <li style="margin-top:16px;padding-top:16px;border-top:1px solid var(--color-border);"><a href="#" class="btn" style="width:100%;justify-content:flex-start;color:var(--color-text-secondary);font-weight:500;"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg> Settings</a></li>
-      </ul>
+  <div class="container db-layout">
+
+    <!-- ═══════════════════ SIDEBAR ═══════════════════ -->
+    <aside class="db-sidebar md-hidden">
+      <div class="db-sidebar__section-label">Overview</div>
+      <a href="#" class="db-nav-link active" data-section="visitor-view">
+        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        Dashboard
+      </a>
+      <a href="home-main.html" class="db-nav-link">
+        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        Home
+      </a>
+
+      <div class="db-sidebar__section-label">Collection</div>
+      <a href="#" class="db-nav-link">
+        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        My Artworks
+      </a>
+      <a href="#" class="db-nav-link">
+        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+        Saved Artworks
+      </a>
+      <a href="#" class="db-nav-link">
+        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        Wishlist
+      </a>
+
+      <div class="db-sidebar__section-label">Activity</div>
+      <a href="#" class="db-nav-link">
+        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Bookings
+      </a>
+      <a href="#" class="db-nav-link">
+        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Messages
+        <span style="margin-left:auto;background:var(--color-primary);color:#fff;font-size:0.6rem;font-weight:700;padding:1px 6px;border-radius:99px;">3</span>
+      </a>
+      <a href="#" class="db-nav-link">
+        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        Purchases
+      </a>
+
+      <div class="db-sidebar__section-label">Admin</div>
+      <a href="#admin" class="db-nav-link" onclick="switchToAdmin()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        Admin View
+      </a>
+
+      <div class="db-sidebar__divider"></div>
+      <a href="#" class="db-nav-link">
+        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        Settings
+      </a>
     </aside>
 
-    <style>
-      @media (max-width: 768px) { .md-hidden { display: none !important; } }
-    </style>
-
-    <!-- CONTENT AREA -->
+    <!-- ═══════════════════ MAIN CONTENT ═══════════════════ -->
     <main style="flex:1;min-width:0;">
-      <h1 class="dashboard-title" style="font-size:2rem;margin-bottom:24px;">Dashboard</h1>
 
-      <!-- ================= VISITOR VIEW ================= -->
-      <div id="visitor-view">
-        <div class="grid grid--3" style="margin-bottom:32px;">
-          <!-- Highlight Card -->
-          <div class="card" style="grid-column: span 2; display:flex; align-items:center; padding:24px; background:linear-gradient(135deg,var(--color-primary) 0%,var(--color-accent) 100%); color:#fff; border:none;">
-            <div style="flex:1;">
-              <h2 style="color:#fff;font-size:1.5rem;margin-bottom:8px;">Upcoming Visit</h2>
-              <p style="color:rgba(255,255,255,0.9);margin-bottom:16px;">Tour of "Abstract Horizons" tomorrow at 10:00 AM.</p>
-              <button class="btn btn--secondary" style="background:#fff;border-color:#fff;">View Details</button>
-            </div>
-            <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1" style="flex-shrink:0;"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          </div>
-          <!-- Saved Count -->
-          <div class="card" style="padding:24px; display:flex; flex-direction:column; justify-content:center;">
-            <div style="font-size:0.875rem;color:var(--color-text-secondary);font-weight:600;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:8px;">Saved Artworks</div>
-            <div style="font-size:3rem;font-family:var(--font-heading);font-weight:700;color:var(--color-primary);line-height:1;" data-count="14">0</div>
-          </div>
-        </div>
-
-        <h2 style="font-size:1.5rem;margin-bottom:16px;">Recently Viewed</h2>
-        <div class="grid grid--3">
-          <div class="card"><img src="../assets/images/artworks/painting-1.png" alt="Art" style="aspect-ratio:3/2;object-fit:cover;"><div class="card__body"><h3 style="font-size:1rem;">Chromatic Reverie</h3><p style="font-size:0.8125rem;color:var(--color-text-secondary);">Oil on canvas</p></div></div>
-          <div class="card"><img src="../assets/images/artworks/sculpture-1.png" alt="Art" style="aspect-ratio:3/2;object-fit:cover;"><div class="card__body"><h3 style="font-size:1rem;">The Ascent</h3><p style="font-size:0.8125rem;color:var(--color-text-secondary);">Bronze Sculpture</p></div></div>
-          <div class="card"><img src="../assets/images/artworks/painting-2.png" alt="Art" style="aspect-ratio:3/2;object-fit:cover;"><div class="card__body"><h3 style="font-size:1rem;">Amber Fields</h3><p style="font-size:0.8125rem;color:var(--color-text-secondary);">Oil on linen</p></div></div>
-        </div>
+      <!-- Role Tabs -->
+      <div class="role-tabs" style="margin-bottom:28px;">
+        <button class="role-tab active" id="tab-user" onclick="showView('visitor')">User View</button>
+        <button class="role-tab" id="tab-admin" onclick="showView('admin')">Admin View</button>
       </div>
 
-      <!-- ================= ADMIN VIEW ================= -->
+      <!-- Greeting Banner -->
+      <div style="margin-bottom:28px;">
+        <h1 class="dashboard-title" style="font-size:1.75rem;margin-bottom:4px;">Welcome back, David 👋</h1>
+        <p style="color:var(--color-text-secondary);font-size:0.9rem;">Here's what's happening at Aurelia Gallery today.</p>
+      </div>
+
+      <!-- ══════════ VISITOR VIEW ══════════ -->
+      <div id="visitor-view">
+
+        <!-- Membership Card -->
+        <div class="membership-card">
+          <div class="membership-card__badge">⭐ Gold Member</div>
+          <div class="membership-card__name">Gold Patron Membership</div>
+          <div class="membership-card__desc">Your membership renews on December 31, 2026. Enjoy exclusive access and perks.</div>
+          <div class="membership-card__perks">
+            <span class="perk-pill">Priority Bookings</span>
+            <span class="perk-pill">Private Viewings</span>
+            <span class="perk-pill">Curator Talks</span>
+            <span class="perk-pill">10% on Purchases</span>
+          </div>
+        </div>
+
+        <!-- User KPI Cards -->
+        <div class="stats-grid" style="margin-bottom:28px;">
+          <div class="kpi-card">
+            <div class="kpi-card__accent" style="background:#D4AF37;"></div>
+            <div class="kpi-card__icon" style="background:rgba(212,175,55,0.12);">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <div class="kpi-card__label">Saved Artworks</div>
+            <div class="kpi-card__value" data-count="14">0</div>
+            <div class="kpi-card__change kpi-card__change--up">↑ 3 added this week</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-card__accent" style="background:#722F37;"></div>
+            <div class="kpi-card__icon" style="background:rgba(114,47,55,0.1);">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#722F37" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </div>
+            <div class="kpi-card__label">Upcoming Bookings</div>
+            <div class="kpi-card__value" data-count="3">0</div>
+            <div class="kpi-card__change kpi-card__change--neutral">Next: Oct 24, 2026</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-card__accent" style="background:#B87333;"></div>
+            <div class="kpi-card__icon" style="background:rgba(184,115,51,0.1);">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B87333" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+            <div class="kpi-card__label">Total Spent</div>
+            <div class="kpi-card__value">$<span data-count="4800">0</span></div>
+            <div class="kpi-card__change kpi-card__change--up">↑ $320 this month</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-card__accent" style="background:#3b82f6;"></div>
+            <div class="kpi-card__icon" style="background:rgba(59,130,246,0.1);">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <div class="kpi-card__label">Gallery Points</div>
+            <div class="kpi-card__value" data-count="2340">0</div>
+            <div class="kpi-card__change kpi-card__change--up">↑ 180 this week</div>
+          </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="quick-actions">
+          <a href="services.html" class="qacard">
+            <div class="qacard__icon" style="background:rgba(212,175,55,0.12);">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </div>
+            <span class="qacard__label">Browse Art</span>
+          </a>
+          <a href="#" class="qacard">
+            <div class="qacard__icon" style="background:rgba(114,47,55,0.1);">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#722F37" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </div>
+            <span class="qacard__label">Book a Tour</span>
+          </a>
+          <a href="blog.html" class="qacard">
+            <div class="qacard__icon" style="background:rgba(184,115,51,0.1);">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#B87333" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            </div>
+            <span class="qacard__label">Read Blog</span>
+          </a>
+          <a href="contact.html" class="qacard">
+            <div class="qacard__icon" style="background:rgba(59,130,246,0.1);">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <span class="qacard__label">Contact Us</span>
+          </a>
+        </div>
+
+        <!-- ════ 4 INFOGRAPHICS SECTION ════ -->
+        <div style="margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;">
+          <h2 style="font-size:1.1rem;font-weight:700;margin:0;">Your Activity Insights</h2>
+          <span class="chip chip--gold">This Quarter</span>
+        </div>
+        <div class="infographics-grid">
+
+          <!-- INFOGRAPHIC 1: Radial Progress Rings -->
+          <div class="db-panel">
+            <div class="db-panel__head">
+              <h3 class="db-panel__title">Engagement Score</h3>
+              <span class="badge badge--gold">Live</span>
+            </div>
+            <div class="db-panel__body">
+              <div class="radial-items" id="radial-rings-container">
+                <!-- Rings rendered by JS -->
+              </div>
+              <p style="font-size:0.75rem;color:var(--color-text-secondary);text-align:center;margin-top:16px;">Based on visits, saves, bookings &amp; purchases</p>
+            </div>
+          </div>
+
+          <!-- INFOGRAPHIC 2: Horizontal Spark Bars (Category Interest) -->
+          <div class="db-panel">
+            <div class="db-panel__head">
+              <h3 class="db-panel__title">Art Category Interest</h3>
+              <button class="btn btn--sm" style="border:1px solid var(--color-border);">View All</button>
+            </div>
+            <div class="db-panel__body">
+              <div class="spark-bars-list" id="spark-bars-container">
+                <!-- Rendered by JS -->
+              </div>
+            </div>
+          </div>
+
+          <!-- INFOGRAPHIC 3: Visitor Journey Funnel -->
+          <div class="db-panel">
+            <div class="db-panel__head">
+              <h3 class="db-panel__title">Visit Journey Funnel</h3>
+              <span class="chip">Oct 2026</span>
+            </div>
+            <div class="db-panel__body">
+              <div class="funnel" id="funnel-container">
+                <!-- Rendered by JS -->
+              </div>
+            </div>
+          </div>
+
+          <!-- INFOGRAPHIC 4: Monthly Activity Heatmap -->
+          <div class="db-panel">
+            <div class="db-panel__head">
+              <h3 class="db-panel__title">Gallery Visit Heatmap</h3>
+              <span class="chip">2026</span>
+            </div>
+            <div class="db-panel__body">
+              <p style="font-size:0.75rem;color:var(--color-text-secondary);margin-bottom:12px;">Monthly activity intensity across the year</p>
+              <div class="heatmap-grid" id="heatmap-container">
+                <!-- Rendered by JS -->
+              </div>
+              <div style="display:flex;justify-content:space-between;margin-top:8px;font-size:0.65rem;color:var(--color-text-secondary);">
+                <span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span>
+                <span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Dec</span>
+              </div>
+              <div class="heatmap-legend">
+                <span>Less</span>
+                <div class="heatmap-legend-swatch" style="background:var(--color-muted);"></div>
+                <div class="heatmap-legend-swatch" data-level="1"></div>
+                <div class="heatmap-legend-swatch" data-level="2"></div>
+                <div class="heatmap-legend-swatch" data-level="3"></div>
+                <div class="heatmap-legend-swatch" data-level="4" style="background:rgba(212,175,55,1);"></div>
+                <span>More</span>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /infographics-grid -->
+
+        <!-- Upcoming Bookings + Activity Feed Row -->
+        <div class="section-row">
+          <!-- Upcoming Bookings -->
+          <div class="db-panel" style="margin-bottom:0;">
+            <div class="db-panel__head">
+              <h3 class="db-panel__title">Upcoming Bookings</h3>
+              <button class="btn btn--sm btn--primary">+ New Booking</button>
+            </div>
+            <div style="overflow-x:auto;">
+              <table class="data-table" id="user-bookings-table">
+                <thead>
+                  <tr>
+                    <th>Exhibition</th>
+                    <th>Date</th>
+                    <th>Type</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><div style="font-weight:600;">Abstract Horizons</div><div style="font-size:0.72rem;color:var(--color-text-secondary);">Main Gallery, Hall A</div></td>
+                    <td>Oct 24, 2026</td>
+                    <td><span class="chip">Private Tour</span></td>
+                    <td><span class="badge badge--green">Confirmed</span></td>
+                    <td><button class="btn btn--sm" style="border:1px solid var(--color-border);">Details</button></td>
+                  </tr>
+                  <tr>
+                    <td><div style="font-weight:600;">Golden Hour</div><div style="font-size:0.72rem;color:var(--color-text-secondary);">West Wing</div></td>
+                    <td>Nov 5, 2026</td>
+                    <td><span class="chip">Group Visit</span></td>
+                    <td><span class="badge badge--gold">Pending</span></td>
+                    <td><button class="btn btn--sm" style="border:1px solid var(--color-border);">Details</button></td>
+                  </tr>
+                  <tr>
+                    <td><div style="font-weight:600;">Curator's Gala</div><div style="font-size:0.72rem;color:var(--color-text-secondary);">Grand Hall</div></td>
+                    <td>Dec 1, 2026</td>
+                    <td><span class="chip chip--gold">VIP Event</span></td>
+                    <td><span class="badge badge--blue">Registered</span></td>
+                    <td><button class="btn btn--sm" style="border:1px solid var(--color-border);">Details</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Notifications -->
+          <div class="db-panel" style="margin-bottom:0;">
+            <div class="db-panel__head">
+              <h3 class="db-panel__title">Notifications</h3>
+              <a href="#" style="font-size:0.8rem;color:var(--color-primary);font-weight:600;">Mark all read</a>
+            </div>
+            <div class="db-panel__body" style="padding:0 24px;">
+              <div class="notif-list">
+                <div class="notif-item">
+                  <div class="notif-dot" style="background:#D4AF37;"></div>
+                  <div class="notif-text"><strong>Booking confirmed</strong> — Your tour of Abstract Horizons is approved.</div>
+                  <div class="notif-time">2h ago</div>
+                </div>
+                <div class="notif-item">
+                  <div class="notif-dot" style="background:#3b82f6;"></div>
+                  <div class="notif-text"><strong>New artwork</strong> — "Chromatic Reverie II" added to your saved list.</div>
+                  <div class="notif-time">5h ago</div>
+                </div>
+                <div class="notif-item">
+                  <div class="notif-dot" style="background:#16a34a;"></div>
+                  <div class="notif-text"><strong>Points earned</strong> — +180 Gallery Points from your last visit.</div>
+                  <div class="notif-time">1d ago</div>
+                </div>
+                <div class="notif-item">
+                  <div class="notif-dot" style="background:#722F37;"></div>
+                  <div class="notif-text"><strong>Event reminder</strong> — Curator's Gala is in 52 days. Invite a guest?</div>
+                  <div class="notif-time">2d ago</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Exhibition Timeline + Top Artworks Row -->
+        <div class="section-row-reverse" style="margin-top:24px;">
+
+          <!-- Recommended Artworks -->
+          <div class="db-panel" style="margin-bottom:0;">
+            <div class="db-panel__head">
+              <h3 class="db-panel__title">Recommended For You</h3>
+              <a href="services.html" style="font-size:0.8rem;color:var(--color-primary);font-weight:600;">View All</a>
+            </div>
+            <div class="db-panel__body">
+              <div class="top-artworks-list">
+                <div class="artwork-row">
+                  <div class="artwork-row__rank">1</div>
+                  <img src="../assets/images/artworks/painting-1.png" alt="Chromatic Reverie" class="artwork-row__thumb">
+                  <div class="artwork-row__info">
+                    <div class="artwork-row__name">Chromatic Reverie</div>
+                    <div class="artwork-row__artist">Elena Vasquez</div>
+                  </div>
+                  <div class="artwork-row__views">$4,200</div>
+                </div>
+                <div class="artwork-row">
+                  <div class="artwork-row__rank">2</div>
+                  <img src="../assets/images/artworks/sculpture-1.png" alt="The Ascent" class="artwork-row__thumb">
+                  <div class="artwork-row__info">
+                    <div class="artwork-row__name">The Ascent</div>
+                    <div class="artwork-row__artist">Marcus Webb</div>
+                  </div>
+                  <div class="artwork-row__views">$8,900</div>
+                </div>
+                <div class="artwork-row">
+                  <div class="artwork-row__rank">3</div>
+                  <img src="../assets/images/artworks/painting-2.png" alt="Amber Fields" class="artwork-row__thumb">
+                  <div class="artwork-row__info">
+                    <div class="artwork-row__name">Amber Fields</div>
+                    <div class="artwork-row__artist">Sophia Laurent</div>
+                  </div>
+                  <div class="artwork-row__views">$3,600</div>
+                </div>
+                <div class="artwork-row">
+                  <div class="artwork-row__rank">4</div>
+                  <img src="../assets/images/artworks/painting-1.png" alt="Storm Within" class="artwork-row__thumb">
+                  <div class="artwork-row__info">
+                    <div class="artwork-row__name">Storm Within</div>
+                    <div class="artwork-row__artist">James Chen</div>
+                  </div>
+                  <div class="artwork-row__views">$6,100</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Exhibition Timeline -->
+          <div class="db-panel" style="margin-bottom:0;">
+            <div class="db-panel__head">
+              <h3 class="db-panel__title">Exhibition Timeline</h3>
+              <span class="chip">Q4 2026</span>
+            </div>
+            <div class="db-panel__body">
+              <div class="timeline">
+                <div class="tl-item">
+                  <div class="tl-line-wrap">
+                    <div class="tl-dot active"></div>
+                    <div class="tl-connector"></div>
+                  </div>
+                  <div class="tl-content">
+                    <div class="tl-content__title">Abstract Horizons</div>
+                    <div class="tl-content__date">Oct 20 – Nov 15, 2026</div>
+                    <div class="tl-content__desc">A bold exploration of colour theory and abstract expressionism by 12 international artists.</div>
+                  </div>
+                </div>
+                <div class="tl-item">
+                  <div class="tl-line-wrap">
+                    <div class="tl-dot"></div>
+                    <div class="tl-connector"></div>
+                  </div>
+                  <div class="tl-content">
+                    <div class="tl-content__title">Golden Hour</div>
+                    <div class="tl-content__date">Nov 20 – Dec 10, 2026</div>
+                    <div class="tl-content__desc">Impressionist paintings capturing the fleeting beauty of twilight from across Europe.</div>
+                  </div>
+                </div>
+                <div class="tl-item">
+                  <div class="tl-line-wrap">
+                    <div class="tl-dot"></div>
+                    <div class="tl-connector"></div>
+                  </div>
+                  <div class="tl-content">
+                    <div class="tl-content__title">Form &amp; Shadow</div>
+                    <div class="tl-content__date">Dec 15 – Jan 20, 2027</div>
+                    <div class="tl-content__desc">Sculptural works exploring negative space and tactile materiality.</div>
+                  </div>
+                </div>
+                <div class="tl-item">
+                  <div class="tl-line-wrap">
+                    <div class="tl-dot"></div>
+                  </div>
+                  <div class="tl-content">
+                    <div class="tl-content__title">New Year Gala 2027</div>
+                    <div class="tl-content__date">Jan 1, 2027</div>
+                    <div class="tl-content__desc">Members-only gala with live music, curated tastings, and exclusive artwork previews.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recently Viewed -->
+        <div class="db-panel" style="margin-top:24px;">
+          <div class="db-panel__head">
+            <h3 class="db-panel__title">Recently Viewed</h3>
+            <a href="services.html" style="font-size:0.8rem;color:var(--color-primary);font-weight:600;">Browse Gallery</a>
+          </div>
+          <div class="db-panel__body">
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
+              <div class="card">
+                <img src="../assets/images/artworks/painting-1.png" alt="Chromatic Reverie" style="aspect-ratio:3/2;object-fit:cover;border-radius:8px 8px 0 0;">
+                <div class="card__body">
+                  <h3 style="font-size:0.9rem;margin-bottom:4px;">Chromatic Reverie</h3>
+                  <p style="font-size:0.8rem;color:var(--color-text-secondary);">Oil on canvas · $4,200</p>
+                  <div style="display:flex;gap:8px;margin-top:10px;">
+                    <button class="btn btn--primary btn--sm" style="flex:1;">Save</button>
+                    <button class="btn btn--sm" style="flex:1;border:1px solid var(--color-border);">View</button>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <img src="../assets/images/artworks/sculpture-1.png" alt="The Ascent" style="aspect-ratio:3/2;object-fit:cover;border-radius:8px 8px 0 0;">
+                <div class="card__body">
+                  <h3 style="font-size:0.9rem;margin-bottom:4px;">The Ascent</h3>
+                  <p style="font-size:0.8rem;color:var(--color-text-secondary);">Bronze sculpture · $8,900</p>
+                  <div style="display:flex;gap:8px;margin-top:10px;">
+                    <button class="btn btn--primary btn--sm" style="flex:1;">Save</button>
+                    <button class="btn btn--sm" style="flex:1;border:1px solid var(--color-border);">View</button>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <img src="../assets/images/artworks/painting-2.png" alt="Amber Fields" style="aspect-ratio:3/2;object-fit:cover;border-radius:8px 8px 0 0;">
+                <div class="card__body">
+                  <h3 style="font-size:0.9rem;margin-bottom:4px;">Amber Fields</h3>
+                  <p style="font-size:0.8rem;color:var(--color-text-secondary);">Oil on linen · $3,600</p>
+                  <div style="display:flex;gap:8px;margin-top:10px;">
+                    <button class="btn btn--primary btn--sm" style="flex:1;">Save</button>
+                    <button class="btn btn--sm" style="flex:1;border:1px solid var(--color-border);">View</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /visitor-view -->
+
+      <!-- ══════════ ADMIN VIEW ══════════ -->
       <div id="admin-view" style="display:none;">
-        <!-- KPI Cards -->
-        <div class="grid grid--4" style="margin-bottom:32px;">
-          <div class="stat-card">
-            <div class="stat-card__label">Total Visitors (Mtd)</div>
-            <div class="stat-card__value" data-count="8432">0</div>
-            <div class="stat-card__change stat-card__change--up">↑ 12.5% from last month</div>
+
+        <!-- Admin KPI Cards -->
+        <div class="stats-grid" style="margin-bottom:28px;">
+          <div class="kpi-card">
+            <div class="kpi-card__accent" style="background:#D4AF37;"></div>
+            <div class="kpi-card__icon" style="background:rgba(212,175,55,0.12);">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+            </div>
+            <div class="kpi-card__label">Total Visitors (MTD)</div>
+            <div class="kpi-card__value" data-count="8432">0</div>
+            <div class="kpi-card__change kpi-card__change--up">↑ 12.5% from last month</div>
           </div>
-          <div class="stat-card">
-            <div class="stat-card__label">Artwork Sales</div>
-            <div class="stat-card__value">$<span data-count="145000">0</span></div>
-            <div class="stat-card__change stat-card__change--up">↑ 8.2% from last month</div>
+          <div class="kpi-card">
+            <div class="kpi-card__accent" style="background:#722F37;"></div>
+            <div class="kpi-card__icon" style="background:rgba(114,47,55,0.1);">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#722F37" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+            <div class="kpi-card__label">Artwork Sales</div>
+            <div class="kpi-card__value">$<span data-count="145000">0</span></div>
+            <div class="kpi-card__change kpi-card__change--up">↑ 8.2% from last month</div>
           </div>
-          <div class="stat-card">
-            <div class="stat-card__label">Tour Bookings</div>
-            <div class="stat-card__value" data-count="342">0</div>
-            <div class="stat-card__change stat-card__change--up">↑ 5.1% from last month</div>
+          <div class="kpi-card">
+            <div class="kpi-card__accent" style="background:#B87333;"></div>
+            <div class="kpi-card__icon" style="background:rgba(184,115,51,0.1);">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B87333" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </div>
+            <div class="kpi-card__label">Tour Bookings</div>
+            <div class="kpi-card__value" data-count="342">0</div>
+            <div class="kpi-card__change kpi-card__change--up">↑ 5.1% from last month</div>
           </div>
-          <div class="stat-card">
-            <div class="stat-card__label">Active Exhibitions</div>
-            <div class="stat-card__value" data-count="4">0</div>
-            <div class="stat-card__change" style="color:var(--color-text-secondary);">Same as last month</div>
+          <div class="kpi-card">
+            <div class="kpi-card__accent" style="background:#3b82f6;"></div>
+            <div class="kpi-card__icon" style="background:rgba(59,130,246,0.1);">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            </div>
+            <div class="kpi-card__label">Active Exhibitions</div>
+            <div class="kpi-card__value" data-count="4">0</div>
+            <div class="kpi-card__change kpi-card__change--neutral">Same as last month</div>
+          </div>
+        </div>
+
+        <!-- Secondary KPIs Row -->
+        <div class="stats-grid" style="margin-bottom:28px;">
+          <div class="kpi-card">
+            <div class="kpi-card__accent" style="background:#16a34a;"></div>
+            <div class="kpi-card__icon" style="background:rgba(22,163,74,0.1);">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/></svg>
+            </div>
+            <div class="kpi-card__label">Avg. Visit Duration</div>
+            <div class="kpi-card__value">42<span style="font-size:1rem;font-weight:500;">min</span></div>
+            <div class="kpi-card__change kpi-card__change--up">↑ 6 min improvement</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-card__accent" style="background:#8b5cf6;"></div>
+            <div class="kpi-card__icon" style="background:rgba(139,92,246,0.1);">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <div class="kpi-card__label">NPS Score</div>
+            <div class="kpi-card__value" data-count="87">0</div>
+            <div class="kpi-card__change kpi-card__change--up">↑ 4 pts this quarter</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-card__accent" style="background:#f59e0b;"></div>
+            <div class="kpi-card__icon" style="background:rgba(245,158,11,0.1);">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <div class="kpi-card__label">Patron Members</div>
+            <div class="kpi-card__value" data-count="1284">0</div>
+            <div class="kpi-card__change kpi-card__change--up">↑ 67 new this month</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-card__accent" style="background:#ec4899;"></div>
+            <div class="kpi-card__icon" style="background:rgba(236,72,153,0.1);">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ec4899" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            </div>
+            <div class="kpi-card__label">Artworks Listed</div>
+            <div class="kpi-card__value" data-count="528">0</div>
+            <div class="kpi-card__change kpi-card__change--up">↑ 24 new artworks</div>
           </div>
         </div>
 
         <!-- Charts -->
-        <div class="grid grid--2" style="margin-bottom:32px;">
-          <div style="background:var(--color-bg);border:1px solid var(--color-border);border-radius:12px;padding:24px;">
-            <h3 style="font-size:1.125rem;margin-bottom:16px;">Visitor Traffic</h3>
-            <canvas id="visitorsChart"></canvas>
+        <div class="charts-grid">
+          <div class="db-panel" style="margin-bottom:0;">
+            <div class="db-panel__head"><h3 class="db-panel__title">Visitor Traffic</h3><span class="chip">Monthly</span></div>
+            <div class="db-panel__body"><canvas id="visitorsChart"></canvas></div>
           </div>
-          <div style="background:var(--color-bg);border:1px solid var(--color-border);border-radius:12px;padding:24px;">
-            <h3 style="font-size:1.125rem;margin-bottom:16px;">Sales Revenue</h3>
-            <canvas id="revenueChart"></canvas>
+          <div class="db-panel" style="margin-bottom:0;">
+            <div class="db-panel__head"><h3 class="db-panel__title">Sales Revenue</h3><span class="chip">Monthly</span></div>
+            <div class="db-panel__body"><canvas id="revenueChart"></canvas></div>
           </div>
-          <div style="background:var(--color-bg);border:1px solid var(--color-border);border-radius:12px;padding:24px;">
-            <h3 style="font-size:1.125rem;margin-bottom:16px;">Sales by Category</h3>
-            <div style="max-height:300px;display:flex;justify-content:center;"><canvas id="categoryChart"></canvas></div>
+          <div class="db-panel" style="margin-bottom:0;">
+            <div class="db-panel__head"><h3 class="db-panel__title">Sales by Category</h3><span class="chip">All Time</span></div>
+            <div class="db-panel__body" style="display:flex;justify-content:center;max-height:280px;"><canvas id="categoryChart"></canvas></div>
           </div>
-          <div style="background:var(--color-bg);border:1px solid var(--color-border);border-radius:12px;padding:24px;">
-            <h3 style="font-size:1.125rem;margin-bottom:16px;">Booking Trends</h3>
-            <canvas id="bookingChart"></canvas>
+          <div class="db-panel" style="margin-bottom:0;">
+            <div class="db-panel__head"><h3 class="db-panel__title">Booking Trends</h3><span class="chip">Q1 2026</span></div>
+            <div class="db-panel__body"><canvas id="bookingChart"></canvas></div>
           </div>
         </div>
 
-        <!-- Data Table -->
-        <div style="background:var(--color-bg);border:1px solid var(--color-border);border-radius:12px;overflow:hidden;">
-          <div style="padding:16px 24px;border-bottom:1px solid var(--color-border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;">
-            <h3 style="font-size:1.125rem;margin:0;">Recent Bookings</h3>
+        <!-- Geographic Visitors + Activity Feed -->
+        <div class="section-row" style="margin-top:24px;">
+          <!-- Top Countries -->
+          <div class="db-panel" style="margin-bottom:0;">
+            <div class="db-panel__head">
+              <h3 class="db-panel__title">Visitor Origins</h3>
+              <span class="badge badge--blue">Top Countries</span>
+            </div>
+            <div class="db-panel__body">
+              <div class="visitor-map-countries">
+                <div class="country-row">
+                  <span class="country-flag">🇺🇸</span>
+                  <span class="country-name">United States</span>
+                  <div class="country-bar-track"><div class="country-bar-fill" style="width:0%" data-width="76%"></div></div>
+                  <span class="country-pct">76%</span>
+                </div>
+                <div class="country-row">
+                  <span class="country-flag">🇬🇧</span>
+                  <span class="country-name">United Kingdom</span>
+                  <div class="country-bar-track"><div class="country-bar-fill" style="width:0%" data-width="58%"></div></div>
+                  <span class="country-pct">58%</span>
+                </div>
+                <div class="country-row">
+                  <span class="country-flag">🇩🇪</span>
+                  <span class="country-name">Germany</span>
+                  <div class="country-bar-track"><div class="country-bar-fill" style="width:0%" data-width="42%"></div></div>
+                  <span class="country-pct">42%</span>
+                </div>
+                <div class="country-row">
+                  <span class="country-flag">🇫🇷</span>
+                  <span class="country-name">France</span>
+                  <div class="country-bar-track"><div class="country-bar-fill" style="width:0%" data-width="34%"></div></div>
+                  <span class="country-pct">34%</span>
+                </div>
+                <div class="country-row">
+                  <span class="country-flag">🇯🇵</span>
+                  <span class="country-name">Japan</span>
+                  <div class="country-bar-track"><div class="country-bar-fill" style="width:0%" data-width="28%"></div></div>
+                  <span class="country-pct">28%</span>
+                </div>
+                <div class="country-row">
+                  <span class="country-flag">🇨🇦</span>
+                  <span class="country-name">Canada</span>
+                  <div class="country-bar-track"><div class="country-bar-fill" style="width:0%" data-width="22%"></div></div>
+                  <span class="country-pct">22%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Admin Activity Feed -->
+          <div class="db-panel" style="margin-bottom:0;">
+            <div class="db-panel__head">
+              <h3 class="db-panel__title">Recent Activity</h3>
+              <a href="#" style="font-size:0.8rem;color:var(--color-primary);font-weight:600;">View All</a>
+            </div>
+            <div class="db-panel__body" style="padding:0 24px;">
+              <div class="activity-feed">
+                <div class="activity-item">
+                  <div class="activity-dot" style="background:rgba(212,175,55,0.12);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                  </div>
+                  <div class="activity-body">
+                    <div class="activity-body__title">Artwork Sold — "The Ascent"</div>
+                    <div class="activity-body__desc">Marcus Webb · $8,900 · Private sale</div>
+                    <div class="activity-body__time">2 hours ago</div>
+                  </div>
+                </div>
+                <div class="activity-item">
+                  <div class="activity-dot" style="background:rgba(22,163,74,0.1);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                  </div>
+                  <div class="activity-body">
+                    <div class="activity-body__title">New Patron Member</div>
+                    <div class="activity-body__desc">Amara Singh joined as Gold Patron</div>
+                    <div class="activity-body__time">4 hours ago</div>
+                  </div>
+                </div>
+                <div class="activity-item">
+                  <div class="activity-dot" style="background:rgba(59,130,246,0.1);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  </div>
+                  <div class="activity-body">
+                    <div class="activity-body__title">Group Tour Booked</div>
+                    <div class="activity-body__desc">15 guests · Form &amp; Shadow · Nov 28</div>
+                    <div class="activity-body__time">Yesterday</div>
+                  </div>
+                </div>
+                <div class="activity-item">
+                  <div class="activity-dot" style="background:rgba(114,47,55,0.1);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#722F37" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                  </div>
+                  <div class="activity-body">
+                    <div class="activity-body__title">New Artwork Submitted</div>
+                    <div class="activity-body__desc">"Cobalt Dreams" by Yuki Tanaka — pending review</div>
+                    <div class="activity-body__time">2 days ago</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bookings Table -->
+        <div class="db-panel" style="margin-top:24px;">
+          <div class="db-panel__head">
+            <h3 class="db-panel__title">Recent Bookings</h3>
             <div style="display:flex;gap:12px;">
-              <input type="text" data-table-search="bookings-table" placeholder="Search..." style="padding:6px 12px;border:1px solid var(--color-border);border-radius:6px;background:var(--color-muted);font-size:0.875rem;color:var(--color-text);">
+              <input type="text" data-table-search="bookings-table" placeholder="Search…" style="padding:6px 12px;border:1px solid var(--color-border);border-radius:6px;background:var(--color-muted);font-size:0.875rem;color:var(--color-text);">
               <button class="btn btn--primary btn--sm">+ New Booking</button>
             </div>
           </div>
-          <div style="overflow-x:auto;">
+          <div class="db-table-wrap">
             <table class="data-table" id="bookings-table">
               <thead>
                 <tr>
@@ -186,7 +1011,7 @@
               <tbody>
                 <tr>
                   <td>#BK-1042</td>
-                  <td><div style="font-weight:500;">Sarah Mitchell</div><div style="font-size:0.75rem;color:var(--color-text-secondary);">sarah@example.com</div></td>
+                  <td><div style="font-weight:500;">Sarah Mitchell</div><div style="font-size:0.72rem;color:var(--color-text-secondary);">sarah@example.com</div></td>
                   <td>Abstract Horizons</td>
                   <td>Oct 24, 2026</td>
                   <td><span class="badge badge--green">Confirmed</span></td>
@@ -194,7 +1019,7 @@
                 </tr>
                 <tr>
                   <td>#BK-1043</td>
-                  <td><div style="font-weight:500;">James Chen</div><div style="font-size:0.75rem;color:var(--color-text-secondary);">james@example.com</div></td>
+                  <td><div style="font-weight:500;">James Chen</div><div style="font-size:0.72rem;color:var(--color-text-secondary);">james@example.com</div></td>
                   <td>Golden Hour</td>
                   <td>Oct 25, 2026</td>
                   <td><span class="badge badge--gold">Pending</span></td>
@@ -202,7 +1027,7 @@
                 </tr>
                 <tr>
                   <td>#BK-1044</td>
-                  <td><div style="font-weight:500;">Elena Vasquez</div><div style="font-size:0.75rem;color:var(--color-text-secondary);">elena@example.com</div></td>
+                  <td><div style="font-weight:500;">Elena Vasquez</div><div style="font-size:0.72rem;color:var(--color-text-secondary);">elena@example.com</div></td>
                   <td>Form &amp; Shadow</td>
                   <td>Oct 26, 2026</td>
                   <td><span class="badge badge--green">Confirmed</span></td>
@@ -210,27 +1035,271 @@
                 </tr>
                 <tr>
                   <td>#BK-1045</td>
-                  <td><div style="font-weight:500;">Michael Rossi</div><div style="font-size:0.75rem;color:var(--color-text-secondary);">mike@example.com</div></td>
+                  <td><div style="font-weight:500;">Michael Rossi</div><div style="font-size:0.72rem;color:var(--color-text-secondary);">mike@example.com</div></td>
                   <td>Abstract Horizons</td>
                   <td>Oct 26, 2026</td>
                   <td><span class="badge badge--red">Cancelled</span></td>
                   <td><button class="btn btn--sm" style="border:1px solid var(--color-border);">View</button></td>
                 </tr>
+                <tr>
+                  <td>#BK-1046</td>
+                  <td><div style="font-weight:500;">Amara Singh</div><div style="font-size:0.72rem;color:var(--color-text-secondary);">amara@example.com</div></td>
+                  <td>Golden Hour</td>
+                  <td>Nov 5, 2026</td>
+                  <td><span class="badge badge--blue">Registered</span></td>
+                  <td><button class="btn btn--sm" style="border:1px solid var(--color-border);">View</button></td>
+                </tr>
+                <tr>
+                  <td>#BK-1047</td>
+                  <td><div style="font-weight:500;">Yuki Tanaka</div><div style="font-size:0.72rem;color:var(--color-text-secondary);">yuki@example.com</div></td>
+                  <td>Form &amp; Shadow</td>
+                  <td>Dec 15, 2026</td>
+                  <td><span class="badge badge--gold">Pending</span></td>
+                  <td><button class="btn btn--sm" style="border:1px solid var(--color-border);">View</button></td>
+                </tr>
               </tbody>
             </table>
           </div>
-          <!-- Pagination -->
-          <div style="padding:16px 24px;border-top:1px solid var(--color-border);display:flex;justify-content:space-between;align-items:center;">
-            <span style="font-size:0.875rem;color:var(--color-text-secondary);" data-search-count="bookings-table">Showing 4 results</span>
+          <div style="padding:14px 24px;border-top:1px solid var(--color-border);display:flex;justify-content:space-between;align-items:center;">
+            <span style="font-size:0.875rem;color:var(--color-text-secondary);" data-search-count="bookings-table">Showing 6 results</span>
             <div class="pagination" data-paginate="bookings-table" data-per-page="5" style="margin-top:0;"></div>
           </div>
         </div>
-      </div>
+
+        <!-- Top Artworks Table -->
+        <div class="db-panel" style="margin-top:24px;">
+          <div class="db-panel__head">
+            <h3 class="db-panel__title">Top Performing Artworks</h3>
+            <span class="chip">By Revenue</span>
+          </div>
+          <div class="db-table-wrap">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Artwork</th>
+                  <th>Artist</th>
+                  <th>Category</th>
+                  <th>Views</th>
+                  <th>Revenue</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="color:var(--color-primary);font-weight:800;">1</td>
+                  <td><div style="display:flex;align-items:center;gap:10px;"><img src="../assets/images/artworks/sculpture-1.png" style="width:40px;height:32px;object-fit:cover;border-radius:6px;" alt=""><span style="font-weight:600;">The Ascent</span></div></td>
+                  <td>Marcus Webb</td>
+                  <td><span class="chip">Sculpture</span></td>
+                  <td>3,421</td>
+                  <td style="font-weight:700;color:var(--color-primary);">$8,900</td>
+                  <td><span class="badge badge--green">Sold</span></td>
+                </tr>
+                <tr>
+                  <td style="color:var(--color-primary);font-weight:800;">2</td>
+                  <td><div style="display:flex;align-items:center;gap:10px;"><img src="../assets/images/artworks/painting-1.png" style="width:40px;height:32px;object-fit:cover;border-radius:6px;" alt=""><span style="font-weight:600;">Chromatic Reverie</span></div></td>
+                  <td>Elena Vasquez</td>
+                  <td><span class="chip">Painting</span></td>
+                  <td>2,890</td>
+                  <td style="font-weight:700;color:var(--color-primary);">$4,200</td>
+                  <td><span class="badge badge--gold">Available</span></td>
+                </tr>
+                <tr>
+                  <td style="color:var(--color-primary);font-weight:800;">3</td>
+                  <td><div style="display:flex;align-items:center;gap:10px;"><img src="../assets/images/artworks/painting-2.png" style="width:40px;height:32px;object-fit:cover;border-radius:6px;" alt=""><span style="font-weight:600;">Amber Fields</span></div></td>
+                  <td>Sophia Laurent</td>
+                  <td><span class="chip">Painting</span></td>
+                  <td>2,105</td>
+                  <td style="font-weight:700;color:var(--color-primary);">$3,600</td>
+                  <td><span class="badge badge--gold">Available</span></td>
+                </tr>
+                <tr>
+                  <td style="color:var(--color-primary);font-weight:800;">4</td>
+                  <td><div style="display:flex;align-items:center;gap:10px;"><img src="../assets/images/artworks/painting-1.png" style="width:40px;height:32px;object-fit:cover;border-radius:6px;" alt=""><span style="font-weight:600;">Storm Within</span></div></td>
+                  <td>James Chen</td>
+                  <td><span class="chip">Digital</span></td>
+                  <td>1,776</td>
+                  <td style="font-weight:700;color:var(--color-primary);">$6,100</td>
+                  <td><span class="badge badge--red">Reserved</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div><!-- /admin-view -->
 
     </main>
   </div>
 
   <script type="module" src="../assets/js/main.js"></script>
   <script type="module" src="../assets/js/dashboard.js"></script>
+
+  <script>
+    /* ── View Switcher ── */
+    function showView(v) {
+      const isAdmin = v === 'admin';
+      document.getElementById('visitor-view').style.display = isAdmin ? 'none' : 'block';
+      document.getElementById('admin-view').style.display   = isAdmin ? 'block' : 'none';
+      document.getElementById('tab-user').classList.toggle('active', !isAdmin);
+      document.getElementById('tab-admin').classList.toggle('active', isAdmin);
+      document.querySelector('.dashboard-title') && (document.querySelector('.dashboard-title').textContent = isAdmin ? 'Admin Dashboard' : 'Welcome back, David 👋');
+    }
+    function switchToAdmin() { showView('admin'); }
+    if (window.location.hash === '#admin') showView('admin');
+
+    /* ── Infographic 1: Radial Progress Rings ── */
+    function buildRadialRings() {
+      const container = document.getElementById('radial-rings-container');
+      if (!container) return;
+      const rings = [
+        { label: 'Browse',   pct: 92, color: '#D4AF37' },
+        { label: 'Save',     pct: 67, color: '#722F37' },
+        { label: 'Book',     pct: 45, color: '#B87333' },
+        { label: 'Purchase', pct: 28, color: '#3b82f6' },
+      ];
+      const r = 34, circ = 2 * Math.PI * r;
+      rings.forEach(ring => {
+        const wrap = document.createElement('div');
+        wrap.className = 'radial-item';
+        wrap.innerHTML = `
+          <svg class="radial-svg" width="84" height="84" viewBox="0 0 84 84">
+            <circle class="radial-bg" cx="42" cy="42" r="${r}"/>
+            <circle class="radial-fg" cx="42" cy="42" r="${r}"
+              stroke="${ring.color}"
+              stroke-dasharray="${circ}"
+              stroke-dashoffset="${circ}"
+              data-target-offset="${circ - (ring.pct / 100) * circ}"/>
+            <text x="42" y="46" text-anchor="middle" font-size="13" font-weight="700"
+              fill="var(--color-text)" style="transform:rotate(90deg);transform-origin:center;"
+              transform="rotate(90,42,42)">${ring.pct}%</text>
+          </svg>
+          <div class="radial-label">${ring.label}</div>`;
+        container.appendChild(wrap);
+      });
+
+      // Animate after short delay
+      setTimeout(() => {
+        container.querySelectorAll('.radial-fg').forEach(el => {
+          el.style.strokeDashoffset = el.dataset.targetOffset;
+        });
+      }, 300);
+    }
+
+    /* ── Infographic 2: Spark Bars ── */
+    function buildSparkBars() {
+      const container = document.getElementById('spark-bars-container');
+      if (!container) return;
+      const bars = [
+        { label: 'Abstract / Contemporary', pct: 88, color: '#D4AF37' },
+        { label: 'Oil Paintings',           pct: 74, color: '#722F37' },
+        { label: 'Sculptures',              pct: 61, color: '#B87333' },
+        { label: 'Photography',             pct: 45, color: '#3b82f6' },
+        { label: 'Digital Art',             pct: 37, color: '#8b5cf6' },
+        { label: 'Watercolour',             pct: 29, color: '#16a34a' },
+      ];
+      bars.forEach(b => {
+        const item = document.createElement('div');
+        item.className = 'spark-bar-item';
+        item.innerHTML = `
+          <div class="spark-bar-header">
+            <span class="spark-bar-header__label">${b.label}</span>
+            <span class="spark-bar-header__val">${b.pct}%</span>
+          </div>
+          <div class="spark-bar-track">
+            <div class="spark-bar-fill" style="width:0%;background:${b.color};" data-target="${b.pct}%"></div>
+          </div>`;
+        container.appendChild(item);
+      });
+
+      setTimeout(() => {
+        container.querySelectorAll('.spark-bar-fill').forEach(el => {
+          el.style.width = el.dataset.target;
+        });
+      }, 300);
+    }
+
+    /* ── Infographic 3: Funnel ── */
+    function buildFunnel() {
+      const container = document.getElementById('funnel-container');
+      if (!container) return;
+      const steps = [
+        { label: 'Gallery Views',    val: 8432, pct: 100, color: '#D4AF37' },
+        { label: 'Artwork Clicks',   val: 4218, pct: 50,  color: '#B87333' },
+        { label: 'Saved / Wishlist', val: 1804, pct: 21,  color: '#722F37' },
+        { label: 'Tour Bookings',    val: 342,  pct: 4,   color: '#8b5cf6' },
+        { label: 'Purchases',        val: 87,   pct: 1,   color: '#3b82f6' },
+      ];
+      steps.forEach(s => {
+        const step = document.createElement('div');
+        step.className = 'funnel-step';
+        step.innerHTML = `
+          <div class="funnel-bar-wrap">
+            <div class="funnel-bar" style="width:0%;background:${s.color};transition:width 1.2s ease;" data-target="${s.pct}%">
+              <span>${s.label}</span>
+            </div>
+          </div>
+          <div class="funnel-meta">
+            <div class="funnel-meta__val">${s.val.toLocaleString()}</div>
+            <div class="funnel-meta__lbl">${s.pct}% of total</div>
+          </div>`;
+        container.appendChild(step);
+      });
+
+      setTimeout(() => {
+        container.querySelectorAll('.funnel-bar').forEach(el => {
+          el.style.width = el.dataset.target;
+        });
+      }, 300);
+    }
+
+    /* ── Infographic 4: Heatmap ── */
+    function buildHeatmap() {
+      const container = document.getElementById('heatmap-container');
+      if (!container) return;
+      const levels = [0,1,2,1,3,4,4,3,2,4,1,0];
+      levels.forEach((lvl, i) => {
+        const cell = document.createElement('div');
+        cell.className = 'heatmap-cell';
+        if (lvl > 0) cell.dataset.level = lvl;
+        cell.title = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][i];
+        container.appendChild(cell);
+      });
+
+      // Heatmap legend swatches
+      document.querySelectorAll('.heatmap-legend-swatch[data-level]').forEach(el => {
+        const lvl = el.dataset.level;
+        const alphas = { '1': '0.25', '2': '0.5', '3': '0.75' };
+        el.style.background = `rgba(212,175,55,${alphas[lvl] || '1'})`;
+      });
+    }
+
+    /* ── Country Bars animation ── */
+    function animateCountryBars() {
+      document.querySelectorAll('.country-bar-fill[data-width]').forEach(el => {
+        el.style.width = el.dataset.width;
+      });
+    }
+
+    /* ── Init everything ── */
+    document.addEventListener('DOMContentLoaded', () => {
+      buildRadialRings();
+      buildSparkBars();
+      buildFunnel();
+      buildHeatmap();
+
+      // Animate on intersection
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            animateCountryBars();
+            io.disconnect();
+          }
+        });
+      }, { threshold: 0.3 });
+      const countrySection = document.querySelector('.visitor-map-countries');
+      if (countrySection) io.observe(countrySection);
+    });
+  </script>
 </body>
 </html>
