@@ -11,7 +11,7 @@
 
   /* ── Get saved / default direction ─────── */
   function getSavedDir() {
-    return localStorage.getItem(STORAGE_KEY) || 'ltr';
+    return localStorage.getItem(STORAGE_KEY) || html.getAttribute('dir') || 'ltr';
   }
 
   /* ── Apply direction ────────────────────── */

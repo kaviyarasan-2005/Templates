@@ -553,7 +553,8 @@ p { color: var(--text-secondary); line-height: var(--lh-relaxed); }
   border-top: 1px solid rgba(255,255,255,0.1);
   padding-top: var(--space-3);
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+
   align-items: center;
   font-size: var(--fs-sm);
 }

@@ -268,7 +268,11 @@
   border: 1px solid var(--border-color);
   border-radius: var(--radius-xl);
   padding: var(--space-3);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.02), 0 10px 15px -10px rgba(0,0,0,0.04);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
 }
+.widget:hover { box-shadow: var(--shadow-md); }
+.widget:active { transform: scale(0.985); }
 .widget-header {
   display: flex;
   align-items: center;
@@ -340,7 +344,7 @@
   justify-content: space-between;
   margin-bottom: var(--space-2);
 }
-.cal-title { font-weight: 600; font-size: var(--text-base); color: var(--text-primary); }
+.cal-title { font-weight: 700; font-size: var(--text-sm); color: var(--text-primary); text-transform: uppercase; letter-spacing: 0.05em; }
 .cal-prev, .cal-next {
   width: 28px;
   height: 28px;
@@ -457,6 +461,7 @@
 /* ── Responsive ──────────────────────────────── */
 @media (max-width: 1024px) {
   .dashboard-widgets { grid-template-columns: 1fr; }
+  .dashboard-layout { padding-top: var(--nav-height); }
 }
 @media (max-width: 768px) {
   .dashboard-sidebar {
@@ -466,10 +471,15 @@
     z-index: var(--z-fixed);
     transition: inset-inline-start var(--transition-slow);
     height: calc(100vh - var(--nav-height));
-    /* Reset desktop overrides */
+    /* Reset desktop overrides and ensure it takes zero layout space */
     width: 260px !important;
+    flex-shrink: 0;
+  }
+  .dashboard-layout .dashboard-sidebar {
+    width: 0 !important;
   }
   .dashboard-sidebar.mobile-open { 
+    width: 260px !important;
     inset-inline-start: 0; 
     box-shadow: 0 0 40px rgba(0,0,0,0.3);
   }
@@ -481,20 +491,133 @@
   }
   .dashboard-title { font-size: var(--text-xl); }
   [data-sidebar-toggle] { margin-inline-end: 8px; }
-  .dashboard-main { padding: var(--space-3) var(--space-2); }
-  .stat-cards-grid { grid-template-columns: repeat(2, 1fr); }
+  .dashboard-main { 
+    padding: var(--space-4) var(--space-4); /* Increased horizontal gutter */
+    width: 100%;
+    margin: 0 auto;
+  }
+  .stat-cards-grid { grid-template-columns: 1fr; gap: var(--space-2); }
+  .user-hero { padding: var(--space-3); gap: var(--space-2); }
 }
 @media (max-width: 480px) {
   .stat-cards-grid { grid-template-columns: 1fr; }
+  .widget { padding: var(--space-2); max-width: 100%; overflow: hidden; }
+  .admin-banner { padding: var(--space-3) var(--space-2); }
+  .admin-kpi { padding: var(--space-2); }
 }
 
 @media (max-width: 576px) {
   .site-nav .nav-logo-name, 
-  .site-nav .nav-logo-tagline { display: none; }
-  .site-nav .nav-actions { gap: 6px; }
+  .site-nav .nav-logo-tagline { display: none !important; }
+  .site-nav .nav-container { padding-inline: var(--space-1); }
+  .site-nav .nav-actions { gap: 4px; }
+  /* Allow toggles to show but keep them compact */
   .site-nav .nav-action-btn[data-dir-toggle],
-  .site-nav .nav-action-btn[data-theme-toggle] { display: none; }
-  .site-nav .nav-action-btn { width: 34px; height: 34px; }
+  .site-nav .nav-action-btn[data-theme-toggle] { display: flex; }
+  .site-nav .nav-action-btn { width: 32px; height: 32px; }
   .site-nav .nav-action-btn svg { width: 14px; height: 14px; }
-  .site-nav .btn-sm { padding: 0.5em 0.8em; font-size: 12px; }
+  .site-nav .btn-sm { padding: 0.4em 0.6em; font-size: 11px; }
+
+  /* Improved stacking for widgets */
+  .admin-banner-top { flex-direction: column; align-items: flex-start; gap: var(--space-2); }
+  .admin-kpi-strip { grid-template-columns: 1fr !important; gap: var(--space-1); }
+  .admin-cols { grid-template-columns: 1fr !important; }
+  .guide-cards-grid { grid-template-columns: 1fr !important; }
+  .user-kpi-strip { grid-template-columns: 1fr !important; }
+  .responsive-grid { grid-template-columns: 1fr !important; }
+
+  /* Scaling & Width Reduction */
+  .widget { 
+    min-width: 0; 
+    max-width: 320px; 
+    margin-inline: auto; 
+    overflow: hidden; 
+    width: 100%;
+    margin-bottom: var(--space-3);
+  }
+  .admin-banner { 
+    max-width: 320px; 
+    margin-inline: auto; 
+    width: 100%;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+  }
+  .admin-kpi {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    background: rgba(255,255,255,0.06) !important;
+    border: 1px solid rgba(255,255,255,0.1) !important;
+  }
+
+  /* Timeline enhancement */
+  .schedule-list { position: relative; }
+  .schedule-list::before {
+    content: '';
+    position: absolute;
+    left: 73px; /* Center of dots */
+    top: 15px;
+    bottom: 15px;
+    width: 1px;
+    background: var(--border-color-soft);
+    z-index: 0;
+  }
+  .schedule-item { position: relative; z-index: 1; }
+  .schedule-dot { z-index: 2; border: 2px solid var(--bg-card); }
+
+  /* Premium Typography */
+  .widget-title {
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 11px;
+    color: var(--text-muted);
+    font-weight: 700;
+  }
+  .widget svg { display: block; width: 100% !important; max-width: 100% !important; height: auto !important; flex-shrink: 1 !important; }
+  .flex-stack-mobile { flex-direction: column !important; align-items: center !important; gap: var(--space-2) !important; text-align: center; }
+  .flex-stack-mobile > * { width: 100% !important; min-width: 0; }
+
+  /* ── Activity Horizontal Scroll ── */
+  .activity-scroll-wrap {
+    display: flex;
+    overflow-x: auto;
+    gap: var(--space-2);
+    padding-bottom: var(--space-2);
+    margin-top: var(--space-2);
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Hide scrollbar for clean look */
+  }
+  .activity-scroll-wrap::-webkit-scrollbar { display: none; }
+  .activity-scroll-wrap .activity-item {
+    flex: 0 0 260px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color-soft);
+    border-radius: var(--radius-md);
+    padding: var(--space-2);
+    border-bottom: none;
+  }
+}
+
+/* ── Logout Button Sidebar ── */
+.sidebar-logout-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-md);
+  background: rgba(244, 67, 54, 0.08);
+  color: var(--color-error);
+  border: 1px solid rgba(244, 67, 54, 0.15);
+  transition: all var(--transition-fast);
+  flex-shrink: 0;
+}
+.sidebar-logout-btn:hover {
+  background: var(--color-error);
+  color: white;
+  border-color: var(--color-error);
+  transform: translateY(-1px);
+}
+.sidebar-logout-btn svg {
+  width: 16px;
+  height: 16px;
 }

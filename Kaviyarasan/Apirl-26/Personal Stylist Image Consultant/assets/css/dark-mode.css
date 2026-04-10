@@ -223,12 +223,24 @@
 [data-theme="dark"] .data-table tr:hover td { background: rgba(255,255,255,0.03); }
 
 /* ── Auth pages ──────────────────────────────── */
-[data-theme="dark"] .auth-form-side { background: var(--bg-secondary); }
+[data-theme="dark"] .auth-heading { color: var(--text-primary); }
+[data-theme="dark"] .auth-subheading { color: var(--text-secondary); }
 [data-theme="dark"] .auth-social-btn {
-  background: var(--bg-card);
+  background: rgba(255, 255, 255, 0.03);
   border-color: var(--border-color);
   color: var(--text-primary);
 }
+[data-theme="dark"] .auth-social-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--color-nude);
+}
+[data-theme="dark"] .auth-social-divider { color: var(--text-muted); }
+[data-theme="dark"] .auth-social-divider::before, 
+[data-theme="dark"] .auth-social-divider::after { 
+  background: var(--border-color); 
+}
+[data-theme="dark"] .auth-footer-text { color: var(--text-muted); }
+[data-theme="dark"] .auth-footer-text a { color: var(--color-nude); }
 
 /* ── Skeleton ────────────────────────────────── */
 [data-theme="dark"] .skeleton {

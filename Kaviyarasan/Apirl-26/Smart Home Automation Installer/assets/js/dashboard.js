@@ -40,22 +40,6 @@
     }
   };
 
-  // ---- View Toggle (Admin / User) ----
-  const ViewToggle = {
-    init() {
-      const btns = document.querySelectorAll('[data-view-toggle]');
-      btns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          btns.forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-          const view = btn.dataset.viewToggle;
-          document.querySelectorAll('[data-view]').forEach(section => {
-            section.style.display = section.dataset.view === view ? '' : 'none';
-          });
-        });
-      });
-    }
-  };
 
   // ---- Charts ----
   const Charts = {
@@ -161,7 +145,7 @@
   // ---- Init ----
   document.addEventListener('DOMContentLoaded', () => {
     Sidebar.init();
-    ViewToggle.init();
+
     // Show skeletons, then load charts
     setTimeout(() => {
       document.querySelectorAll('.skeleton-wrapper').forEach(w => {

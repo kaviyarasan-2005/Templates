@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" dir="ltr" data-theme="light">
 <head>
   <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -35,6 +35,7 @@
       <button class="nav-action-btn" data-theme-toggle aria-label="Toggle theme">
         <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
         <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+      </button>
       </button>
     </div>
   </nav>
@@ -84,7 +85,7 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
         <span class="sidebar-label">My Profile</span>
       </a>
-      <a href="login.html" class="sidebar-nav-link">
+      <a href="login.html" class="sidebar-nav-link logout-nav-link" style="margin-top: auto; color: var(--color-error);">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
         <span class="sidebar-label">Sign Out</span>
       </a>
@@ -201,7 +202,7 @@
     </div>
 
     <!-- ── STYLE JOURNEY + INFOGRAPHICS (3 cols) ── -->
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:var(--space-3);margin-bottom:var(--space-4)">
+    <div class="responsive-grid" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:var(--space-3);margin-bottom:var(--space-4)">
       <!-- Progress ring -->
       <div class="widget">
         <div class="widget-header"><p class="widget-title">Style Journey</p><span class="badge badge-success">On Track</span></div>
@@ -284,7 +285,7 @@
     </div>
 
     <!-- ── STYLE SCORE CHART + OCCASIONS BAR (2 cols) ── -->
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-3);margin-bottom:var(--space-4)">
+    <div class="responsive-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-3);margin-bottom:var(--space-4)">
       <!-- Style score trend -->
       <div class="widget">
         <div class="widget-header"><p class="widget-title">Style Score Trend</p><span style="font-size:var(--text-xs);color:var(--text-muted)">Past 6 Sessions</span></div>

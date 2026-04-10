@@ -31,21 +31,59 @@
 <header class="site-nav" id="site-nav">
   <nav class="nav-container" aria-label="Main navigation">
     <a href="index.html" class="nav-logo"><img src="../assets/images/icons/logo.svg" class="nav-logo-mark-img" alt="Logo" width="36" height="36" style="margin-right: 8px; flex-shrink: 0;" /><div class="nav-logo-text"><span class="nav-logo-name">Élise Laurent</span><span class="nav-logo-tagline">Image Consultant</span></div></a>
-    <ul class="nav-menu">
-      <li class="nav-item"><button class="nav-link">Home <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="nav-dropdown"><a href="index.html">Home 1</a><a href="home-2.html">Home 2</a></div></li>
-      <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-      <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
-      <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
-      <li class="nav-item"><a href="pricing.html" class="nav-link">Pricing</a></li>
-      <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-      <li class="nav-item">
-        <button class="nav-link">Dashboard <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
-        <div class="nav-dropdown">
-          <a href="dashboard-admin.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>Admin Dashboard</a>
-          <a href="dashboard-user.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>User Dashboard</a>
-        </div>
-      </li>
-    </ul>
+          <ul class="nav-menu">
+        <li class="nav-item">
+          <button class="nav-link">Home <svg class="chevron" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9" />
+            </svg></button>
+          <div class="nav-dropdown">
+            <a href="index.html">Home 1</a>
+            <a href="home-2.html">Home 2</a>
+          </div>
+        </li>
+        <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+        <li class="nav-item">
+          <button class="nav-link">Services <svg class="chevron" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9" />
+            </svg></button>
+          <div class="nav-dropdown">
+            <a href="services.html">Service Page</a>
+            <a href="service-detail.html">Service Detail</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link">Blog <svg class="chevron" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9" />
+            </svg></button>
+          <div class="nav-dropdown">
+            <a href="blog.html">Blog Page</a>
+            <a href="blog-detail.html">Blog Detail</a>
+          </div>
+        </li>
+        <li class="nav-item"><a href="pricing.html" class="nav-link">Pricing</a></li>
+        <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+        <li class="nav-item">
+          <button class="nav-link">Dashboard <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2">
+              <polyline points="6 9 12 15 18 9" />
+            </svg></button>
+          <div class="nav-dropdown">
+            <a href="dashboard-admin.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="3" width="7" height="7" />
+                <rect x="14" y="3" width="7" height="7" />
+                <rect x="14" y="14" width="7" height="7" />
+                <rect x="3" y="14" width="7" height="7" />
+              </svg>Admin Dashboard</a>
+            <a href="dashboard-user.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" />
+                <circle cx="12" cy="7" r="4" />
+              </svg>User Dashboard</a>
+          </div>
+        </li>
+      </ul>
     <div class="nav-actions">
       <button class="nav-action-btn" data-dir-toggle aria-label="Toggle direction"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></button>
       <button class="nav-action-btn" data-theme-toggle aria-label="Toggle theme">
@@ -61,19 +99,52 @@
 <aside class="nav-drawer" id="nav-drawer" role="dialog" aria-label="Mobile navigation">
   <button class="drawer-close" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
   <a href="index.html" class="nav-logo" style="margin-bottom:var(--space-3)"><img src="../assets/images/icons/logo.svg" class="nav-logo-mark-img" alt="Logo" width="36" height="36" style="margin-right: 8px; flex-shrink: 0;" /><div class="nav-logo-text"><span class="nav-logo-name">Élise Laurent</span><span class="nav-logo-tagline">Image Consultant</span></div></a>
-  <nav class="drawer-nav">
-    <div class="drawer-nav-item"><div class="drawer-nav-link" tabindex="0">Home <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div><div class="drawer-sub"><a href="index.html">Home 1</a><a href="home-2.html">Home 2</a></div></div>
-    <div class="drawer-nav-item"><a href="about.html" class="drawer-nav-link">About</a></div>
-    <div class="drawer-nav-item"><a href="services.html" class="drawer-nav-link">Services</a></div>
-    <div class="drawer-nav-item"><a href="blog.html" class="drawer-nav-link">Blog</a></div>
-    <div class="drawer-nav-item"><a href="pricing.html" class="drawer-nav-link">Pricing</a></div>
-    <div class="drawer-nav-item"><a href="contact.html" class="drawer-nav-link">Contact</a></div>
-    <div class="drawer-nav-item"><div class="drawer-nav-link" tabindex="0">Dashboard <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div><div class="drawer-sub"><a href="dashboard-admin.html">Admin Dashboard</a><a href="dashboard-user.html">User Dashboard</a></div></div>
-  </nav>
-  <div style="display:flex;gap:8px;margin-top:auto;padding-top:var(--space-3)"><button class="nav-action-btn" data-dir-toggle style="flex:1;border-radius:8px;width:auto;height:40px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg></button><button class="nav-action-btn" data-theme-toggle style="flex:1;border-radius:8px;width:auto;height:40px">
-      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-    </button><a href="login.html" class="btn btn-primary" style="flex:2">Login</a></div>
+      <nav class="drawer-nav">
+      <div class="drawer-nav-item">
+        <div class="drawer-nav-link" tabindex="0">Home <svg class="chevron" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9" />
+          </svg></div>
+        <div class="drawer-sub">
+          <a href="index.html">Home 1</a>
+          <a href="home-2.html">Home 2</a>
+        </div>
+      </div>
+      <div class="drawer-nav-item"><a href="about.html" class="drawer-nav-link">About</a></div>
+      <div class="drawer-nav-item">
+        <div class="drawer-nav-link" tabindex="0">Services <svg class="chevron" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9" />
+          </svg></div>
+        <div class="drawer-sub">
+          <a href="services.html">Service Page</a>
+          <a href="service-detail.html">Service Detail</a>
+        </div>
+      </div>
+      <div class="drawer-nav-item">
+        <div class="drawer-nav-link" tabindex="0">Blog <svg class="chevron" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9" />
+          </svg></div>
+        <div class="drawer-sub">
+          <a href="blog.html">Blog Page</a>
+          <a href="blog-detail.html">Blog Detail</a>
+        </div>
+      </div>
+      <div class="drawer-nav-item"><a href="pricing.html" class="drawer-nav-link">Pricing</a></div>
+      <div class="drawer-nav-item"><a href="contact.html" class="drawer-nav-link">Contact</a></div>
+      <div class="drawer-nav-item">
+        <div class="drawer-nav-link" tabindex="0">Dashboard <svg class="chevron" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9" />
+          </svg></div>
+        <div class="drawer-sub">
+          <a href="dashboard-admin.html">Admin Dashboard</a>
+          <a href="dashboard-user.html">User Dashboard</a>
+        </div>
+      </div>
+    </nav>
+  <div style="display:flex;gap:8px;margin-top:auto;padding-top:var(--space-3)"></div>
 </aside>
 
 <main id="main-content">

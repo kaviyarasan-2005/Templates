@@ -163,10 +163,9 @@
    ============================================================ */
 [dir="rtl"] .stats-grid { direction: rtl; }
 
-/* ============================================================
-   AUTH PAGES — mirror split layout
-   ============================================================ */
-[dir="rtl"] .auth-layout { flex-direction: row-reverse; }
+/* Auth layout is centered, no horizontal reverse needed */
+[dir="rtl"] .auth-layout { flex-direction: row; }
+[dir="rtl"] .auth-card { text-align: right; }
 
 /* ============================================================
    SERVICE DETAIL LAYOUT

@@ -1,49 +1,98 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr" data-theme="light">
+<html lang="en" dir="rtl" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dashboard — SmartNest Control Panel</title>
   <meta name="description" content="SmartNest admin dashboard template. Monitor installations, track revenue, and manage client communications." />
-  <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon-32x32.png" />
+  <link rel="icon" type="image/svg+xml" href="../assets/images/logo.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../assets/css/style.css" />
   <link rel="stylesheet" href="../assets/css/dark-mode.css" />
+  <link rel="stylesheet" href="../assets/css/rtl.css" />
   <style>
     .sidebar-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:1000;}
     .sidebar-overlay.open{display:block;}
-    .sidebar-logo{display:flex;align-items:center;gap:8px;font-family:var(--font-heading);font-weight:var(--fw-bold);font-size:var(--fs-lg);color:var(--text-primary);text-decoration:none;margin-bottom:var(--space-3);padding:var(--space-1) 0;}
-    .sidebar-logo span{color:var(--color-primary);}
+    .sidebar-logo{display:none;} /* Hidden as global navbar has logo */
     .sidebar-section{font-size:var(--fs-xs);text-transform:uppercase;letter-spacing:1.5px;color:var(--text-tertiary);margin:var(--space-2) 0 var(--space-1);padding:0 var(--space-2);}
     .view-toggle{display:flex;background:var(--bg-card-hover);border-radius:var(--border-radius);padding:4px;margin-bottom:var(--space-3);}
     .view-toggle button{flex:1;padding:8px;border-radius:6px;font-size:var(--fs-sm);font-weight:var(--fw-medium);color:var(--text-secondary);transition:all var(--transition-base);background:none;border:none;cursor:pointer;}
     .view-toggle button.active{background:var(--color-primary);color:#fff;box-shadow:var(--shadow-sm);}
     .dashboard-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--space-3);flex-wrap:wrap;gap:var(--space-2);}
     .dashboard-header h1{font-size:var(--fs-2xl);}
-    .msg-item{display:flex;gap:var(--space-1);padding:var(--space-1) 0;border-bottom:1px solid var(--border-color);}
-    .msg-item:last-child{border-bottom:none;}
-    .msg-avatar{width:36px;height:36px;border-radius:50%;background:var(--bg-skeleton);flex-shrink:0;object-fit:cover;}
-    .msg-name{font-size:var(--fs-sm);font-weight:var(--fw-medium);color:var(--text-primary);}
-    .msg-text{font-size:var(--fs-xs);color:var(--text-tertiary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:200px;}
-    .msg-time{font-size:11px;color:var(--text-tertiary);white-space:nowrap;}
+    
+    /* Layout adjustments for global navbar */
+    .dashboard__sidebar { top: 72px; height: calc(100vh - 72px); }
+    .dashboard__main { min-height: calc(100vh - 72px); }
+    .footer { margin-left: 260px; }
+
+    @media (max-width: 1024px) {
+      .dashboard__sidebar { top: 0; height: 100vh; z-index: 1100; }
+      .dashboard__main { margin-left: 0; }
+      .footer { margin-left: 0; }
+      #sidebar-toggle { display: block !important; }
+    }
   </style>
 </head>
-<body>
+</head>
+<body class="has-navbar">
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+  <div class="navbar__inner">
+    <a href="index.html" class="navbar__logo" aria-label="SmartNest Home">
+      <img src="../assets/images/logo.svg" alt="SmartNest Logo" width="36" height="36" />
+      Smart<span>Nest</span>
+    </a>
+
+    <ul class="navbar__links" role="menubar">
+      <li><div class="nav-dropdown"><button class="nav-dropdown__trigger">Home <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="nav-dropdown__menu"><a href="index.html">Home 1</a><a href="home-saas.html">Home 2</a></div></div></li>
+      <li><a href="about.html">About</a></li>
+      <li><div class="nav-dropdown"><button class="nav-dropdown__trigger">Services <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="nav-dropdown__menu"><a href="services.html">Services</a><a href="service-details.html">Service Details</a></div></div></li>
+      <li><div class="nav-dropdown"><button class="nav-dropdown__trigger">Blog <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="nav-dropdown__menu"><a href="blog.html">Blog</a><a href="blog-details.html">Blog Details</a></div></div></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><div class="nav-dropdown active"><button class="nav-dropdown__trigger">Dashboard <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="nav-dropdown__menu"><a href="dashboard.html">Admin Dashboard</a><a href="dashboard.html">User Dashboard</a></div></div></li>
+    </ul>
+    
+    <div class="navbar__actions">
+      <button class="navbar__icon-btn mobile-visible" id="theme-toggle-global" aria-label="Toggle dark mode" title="Toggle theme">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" id="theme-icon-global"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </button>
+      <button class="navbar__icon-btn mobile-visible" id="rtl-toggle-global" aria-label="Toggle RTL layout" title="Toggle RTL/LTR">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      </button>
+      <a href="login.html" class="btn btn-primary btn-sm" style="display:none;" id="nav-cta">Login</a>
+      <button class="navbar__hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Nav -->
+<div class="mobile-nav" id="mobile-nav" role="dialog" aria-label="Mobile Navigation">
+  <a href="index.html">Home 1</a>
+  <a href="home-saas.html">Home 2</a>
+  <a href="about.html">About</a>
+  <a href="services.html">Services</a>
+  <a href="service-details.html">Service Details</a>
+  <a href="blog.html">Blog</a>
+  <a href="blog-details.html">Blog Details</a>
+  <a href="pricing.html">Pricing</a>
+  <a href="contact.html">Contact</a>
+  <a href="dashboard.html" class="active">Admin Dashboard</a>
+  <a href="dashboard.html">User Dashboard</a>
+</div>
   <div class="dashboard">
     <!-- SIDEBAR OVERLAY (mobile) -->
     <div class="sidebar-overlay" id="sidebar-overlay"></div>
 
     <!-- SIDEBAR -->
     <aside class="dashboard__sidebar" id="dashboard-sidebar" aria-label="Dashboard sidebar">
-      <a href="index.html" class="sidebar-logo"><img src="../assets/images/logo.svg" alt="" width="28" height="28"/>Smart<span>Nest</span></a>
 
-      <!-- VIEW TOGGLE -->
-      <div class="view-toggle">
-        <button data-view-toggle="admin" class="active">Admin</button>
-        <button data-view-toggle="user">User</button>
-      </div>
 
       <p class="sidebar-section">Main</p>
       <a href="#" class="sidebar-nav__item active"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>Dashboard</a>
@@ -78,32 +127,93 @@
         </div>
       </div>
 
-      <!-- ===== ADMIN VIEW ===== -->
-      <div data-view="admin">
-        <!-- STAT CARDS -->
+      <!-- ===== UNIFIED DASHBOARD VIEW ===== -->
+      <div>
+        <!-- SYSTEM INSIGHTS (NEW INFOGRAPHICS) -->
+        <div class="infograph-grid">
+          <!-- 1: Energy Analytics -->
+          <div class="infograph-card">
+            <h3>Energy Analytics</h3>
+            <div class="infograph-svg">
+              <svg viewBox="0 0 100 100" class="rotating" style="width:120px; height:120px;">
+                <circle cx="50" cy="50" r="45" fill="none" stroke="var(--border-color)" stroke-width="8" />
+                <circle cx="50" cy="50" r="45" fill="none" stroke="var(--color-success)" stroke-width="8" stroke-dasharray="210 283" stroke-linecap="round" />
+                <text x="50" y="55" text-anchor="middle" font-family="var(--font-heading)" font-weight="bold" fill="var(--text-primary)" font-size="14" transform="rotate(-90 50 50)">38%</text>
+              </svg>
+            </div>
+            <p style="font-size:var(--fs-xs); color:var(--text-tertiary); text-align:center; margin-top:8px;">Current Efficiency Peak</p>
+          </div>
+
+          <!-- 2: Security Topology -->
+          <div class="infograph-card">
+            <h3>Security Topology</h3>
+            <div class="infograph-svg" style="background:rgba(239,68,68,0.05); border-radius:12px;">
+              <svg viewBox="0 0 120 80" style="width:100%; height:100%;">
+                <rect x="20" y="20" width="80" height="40" rx="4" fill="none" stroke="var(--border-color)" stroke-width="1" />
+                <circle cx="35" cy="40" r="4" fill="#10B981" class="pulse" />
+                <circle cx="60" cy="40" r="4" fill="#10B981" />
+                <circle cx="85" cy="40" r="4" fill="#10B981" class="pulse" />
+                <path d="M40 40 H80" stroke="var(--border-color)" stroke-width="1" stroke-dasharray="4" />
+                <text x="60" y="75" text-anchor="middle" font-size="8" fill="var(--text-tertiary)">All Systems Secure</text>
+              </svg>
+            </div>
+          </div>
+
+          <!-- 3: Usage Pulse -->
+          <div class="infograph-card">
+            <h3>Usage Pulse</h3>
+            <div class="infograph-svg">
+              <svg viewBox="0 0 200 60" style="width:100%; height:100%;">
+                <path d="M0 45 Q 20 45, 40 10 T 80 40 T 120 15 T 160 50 T 200 30" fill="none" stroke="var(--color-primary)" stroke-width="3" stroke-linecap="round" />
+                <path d="M0 45 Q 20 45, 40 10 T 80 40 T 120 15 T 160 50 T 200 30 V 60 H 0 Z" fill="url(#grad)" opacity="0.2" />
+                <defs><linearGradient id="grad" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:var(--color-primary);stop-opacity:1" /><stop offset="100%" style="stop-color:var(--color-primary);stop-opacity:0" /></linearGradient></defs>
+              </svg>
+            </div>
+            <div style="display:flex; justify-content:space-between; margin-top:8px;">
+              <span style="font-size:10px; color:var(--text-tertiary);">Morning</span>
+              <span style="font-size:10px; color:var(--text-tertiary);">Noon</span>
+              <span style="font-size:10px; color:var(--text-tertiary);">Evening</span>
+            </div>
+          </div>
+
+          <!-- 4: Network Health -->
+          <div class="infograph-card">
+            <h3>Network Health</h3>
+            <div class="infograph-svg">
+              <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:12px; width:100%;">
+                <div style="text-align:center;"><div style="width:8px; height:40px; background:var(--color-primary); margin:0 auto; border-radius:4px;"></div><span style="font-size:10px;">Hub A</span></div>
+                <div style="text-align:center;"><div style="width:8px; height:25px; background:var(--color-accent); margin:0 auto; border-radius:4px;"></div><span style="font-size:10px;">Hub B</span></div>
+                <div style="text-align:center;"><div style="width:8px; height:35px; background:var(--color-success); margin:0 auto; border-radius:4px;"></div><span style="font-size:10px;">Hub C</span></div>
+              </div>
+            </div>
+            <p style="font-size:var(--fs-xs); color:#10B981; text-align:center; font-weight:bold;">99.9% Uptime</p>
+          </div>
+        </div>
+
+        <!-- STAT CARDS (Combined) -->
         <div class="grid-4" style="margin-bottom:var(--space-3);">
           <div class="dashboard__stat-card">
             <div class="dashboard__stat-icon" style="background:rgba(37,99,235,.1);color:var(--color-primary);"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div>
             <div><p style="font-size:var(--fs-xs);color:var(--text-tertiary);">Total Installations</p><p style="font-family:var(--font-heading);font-size:var(--fs-2xl);font-weight:var(--fw-bold);color:var(--text-primary);">1,547</p><p style="font-size:var(--fs-xs);color:var(--color-success);">↑ 12% this month</p></div>
           </div>
           <div class="dashboard__stat-card">
-            <div class="dashboard__stat-icon" style="background:rgba(16,185,129,.1);color:#10B981;"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+            <div class="dashboard__stat-icon" style="background:rgba(16,185,129,.1);color:#10B981;"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+            <div><p style="font-size:var(--fs-xs);color:var(--text-tertiary);">Energy Saved</p><p style="font-family:var(--font-heading);font-size:var(--fs-2xl);font-weight:var(--fw-bold);color:var(--text-primary);">38%</p><p style="font-size:var(--fs-xs);color:var(--color-success);">↑ 5% vs prev.</p></div>
+          </div>
+          <div class="dashboard__stat-card">
+            <div class="dashboard__stat-icon" style="background:rgba(245,158,11,.1);color:#F59E0B;"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2"/></svg></div>
+            <div><p style="font-size:var(--fs-xs);color:var(--text-tertiary);">Active Devices</p><p style="font-family:var(--font-heading);font-size:var(--fs-2xl);font-weight:var(--fw-bold);color:var(--text-primary);">124</p><p style="font-size:var(--fs-xs);color:var(--text-tertiary);">All systems online</p></div>
+          </div>
+          <div class="dashboard__stat-card">
+            <div class="dashboard__stat-icon" style="background:rgba(139,92,246,.1);color:#8B5CF6;"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
             <div><p style="font-size:var(--fs-xs);color:var(--text-tertiary);">Monthly Revenue</p><p style="font-family:var(--font-heading);font-size:var(--fs-2xl);font-weight:var(--fw-bold);color:var(--text-primary);">$42,100</p><p style="font-size:var(--fs-xs);color:var(--color-success);">↑ 8.3% vs last month</p></div>
-          </div>
-          <div class="dashboard__stat-card">
-            <div class="dashboard__stat-icon" style="background:rgba(245,158,11,.1);color:#F59E0B;"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
-            <div><p style="font-size:var(--fs-xs);color:var(--text-tertiary);">Active Clients</p><p style="font-family:var(--font-heading);font-size:var(--fs-2xl);font-weight:var(--fw-bold);color:var(--text-primary);">892</p><p style="font-size:var(--fs-xs);color:var(--color-success);">↑ 24 new this week</p></div>
-          </div>
-          <div class="dashboard__stat-card">
-            <div class="dashboard__stat-icon" style="background:rgba(139,92,246,.1);color:#8B5CF6;"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
-            <div><p style="font-size:var(--fs-xs);color:var(--text-tertiary);">Avg. Satisfaction</p><p style="font-family:var(--font-heading);font-size:var(--fs-2xl);font-weight:var(--fw-bold);color:var(--text-primary);">98.2%</p><p style="font-size:var(--fs-xs);color:var(--text-tertiary);">Based on 1,200 reviews</p></div>
           </div>
         </div>
 
         <!-- CHARTS ROW -->
         <div class="grid-2" style="margin-bottom:var(--space-3);">
           <div class="dashboard__chart-container">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--space-2);"><h3 style="font-family:var(--font-heading);font-size:var(--fs-base);">Installations / Month</h3><span class="badge badge--primary">2024</span></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--space-2);"><h3 style="font-family:var(--font-heading);font-size:var(--fs-base);">Installations / Month</h3><span class="badge badge--primary">2026</span></div>
             <div class="skeleton-wrapper"><div class="skeleton skeleton--chart"></div></div>
             <div class="hidden" style="height:180px;"><canvas id="installationsChart"></canvas></div>
           </div>
@@ -127,9 +237,6 @@
                   <tr><td>#SN-2841</td><td>Michael R.</td><td>Smart Lighting</td><td>$1,299</td><td><span class="badge badge--success">Completed</span></td></tr>
                   <tr><td>#SN-2840</td><td>Sarah L.</td><td>Full Home</td><td>$8,450</td><td><span class="badge badge--primary">In Progress</span></td></tr>
                   <tr><td>#SN-2839</td><td>James K.</td><td>Security</td><td>$2,100</td><td><span class="badge badge--success">Completed</span></td></tr>
-                  <tr><td>#SN-2838</td><td>Priya M.</td><td>Climate</td><td>$1,750</td><td><span class="badge badge--warning">Scheduled</span></td></tr>
-                  <tr><td>#SN-2837</td><td>Alex T.</td><td>Entertainment</td><td>$3,200</td><td><span class="badge badge--success">Completed</span></td></tr>
-                  <tr><td>#SN-2836</td><td>Rachel W.</td><td>Energy Mgmt</td><td>$980</td><td><span class="badge badge--danger">Cancelled</span></td></tr>
                 </tbody>
               </table>
             </div>
@@ -148,71 +255,75 @@
               <h3 style="font-family:var(--font-heading);font-size:var(--fs-base);margin-bottom:var(--space-2);">Recent Messages</h3>
               <div class="msg-item"><img src="../assets/images/testimonial-avatar-1.jpg" class="msg-avatar" alt="Michael"/><div style="flex:1;min-width:0;"><div style="display:flex;justify-content:space-between;"><span class="msg-name">Michael R.</span><span class="msg-time">2m ago</span></div><p class="msg-text">Hi, can we schedule the lighting inspection for Friday?</p></div></div>
               <div class="msg-item"><img src="../assets/images/testimonial-avatar-2.jpg" class="msg-avatar" alt="Sarah"/><div style="flex:1;min-width:0;"><div style="display:flex;justify-content:space-between;"><span class="msg-name">Sarah L.</span><span class="msg-time">1h ago</span></div><p class="msg-text">The thermostat integration is working perfectly now, thank you!</p></div></div>
-              <div class="msg-item"><img src="../assets/images/testimonial-avatar-3.jpg" class="msg-avatar" alt="James"/><div style="flex:1;min-width:0;"><div style="display:flex;justify-content:space-between;"><span class="msg-name">James K.</span><span class="msg-time">3h ago</span></div><p class="msg-text">I'd like to add 3 more cameras to the system. Quote please?</p></div></div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- ===== USER VIEW ===== -->
-      <div data-view="user" style="display:none;">
-        <div class="grid-4" style="margin-bottom:var(--space-3);">
-          <div class="dashboard__stat-card">
-            <div class="dashboard__stat-icon" style="background:rgba(37,99,235,.1);color:var(--color-primary);"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2"/></svg></div>
-            <div><p style="font-size:var(--fs-xs);color:var(--text-tertiary);">Connected Devices</p><p style="font-family:var(--font-heading);font-size:var(--fs-2xl);font-weight:var(--fw-bold);">34</p></div>
-          </div>
-          <div class="dashboard__stat-card">
-            <div class="dashboard__stat-icon" style="background:rgba(16,185,129,.1);color:#10B981;"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
-            <div><p style="font-size:var(--fs-xs);color:var(--text-tertiary);">Energy Saved</p><p style="font-family:var(--font-heading);font-size:var(--fs-2xl);font-weight:var(--fw-bold);">38%</p></div>
-          </div>
-          <div class="dashboard__stat-card">
-            <div class="dashboard__stat-icon" style="background:rgba(245,158,11,.1);color:#F59E0B;"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
-            <div><p style="font-size:var(--fs-xs);color:var(--text-tertiary);">Next Appointment</p><p style="font-family:var(--font-heading);font-size:var(--fs-lg);font-weight:var(--fw-bold);">Apr 12, 10am</p></div>
-          </div>
-          <div class="dashboard__stat-card">
-            <div class="dashboard__stat-icon" style="background:rgba(139,92,246,.1);color:#8B5CF6;"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
-            <div><p style="font-size:var(--fs-xs);color:var(--text-tertiary);">Monthly Bill</p><p style="font-family:var(--font-heading);font-size:var(--fs-2xl);font-weight:var(--fw-bold);">$99</p></div>
-          </div>
-        </div>
-
-        <!-- USER: MY INSTALLATIONS -->
-        <div class="dashboard__chart-container" style="margin-bottom:var(--space-3);">
-          <h3 style="font-family:var(--font-heading);font-size:var(--fs-base);margin-bottom:var(--space-2);">My Installations</h3>
-          <div class="table-responsive">
-            <table class="data-table">
-              <thead><tr><th>System</th><th>Devices</th><th>Installed</th><th>Status</th></tr></thead>
-              <tbody>
-                <tr><td>Smart Lighting</td><td>18 devices</td><td>Jan 15, 2024</td><td><span class="badge badge--success">Active</span></td></tr>
-                <tr><td>Security System</td><td>8 devices</td><td>Feb 3, 2024</td><td><span class="badge badge--success">Active</span></td></tr>
-                <tr><td>Climate Control</td><td>5 devices</td><td>Mar 10, 2024</td><td><span class="badge badge--success">Active</span></td></tr>
-                <tr><td>Entertainment</td><td>3 devices</td><td>Scheduled</td><td><span class="badge badge--warning">Pending</span></td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <!-- USER: BILLING -->
-        <div class="dashboard__chart-container">
-          <h3 style="font-family:var(--font-heading);font-size:var(--fs-base);margin-bottom:var(--space-2);">Billing Summary</h3>
-          <div class="table-responsive">
-            <table class="data-table">
-              <thead><tr><th>Invoice</th><th>Date</th><th>Amount</th><th>Status</th></tr></thead>
-              <tbody>
-                <tr><td>#INV-0042</td><td>Mar 1, 2024</td><td>$99.00</td><td><span class="badge badge--success">Paid</span></td></tr>
-                <tr><td>#INV-0041</td><td>Feb 1, 2024</td><td>$99.00</td><td><span class="badge badge--success">Paid</span></td></tr>
-                <tr><td>#INV-0040</td><td>Jan 1, 2024</td><td>$99.00</td><td><span class="badge badge--success">Paid</span></td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
 
     </main>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-  <script src="../assets/js/main.js"></script>
-  <script src="../assets/js/dashboard.js"></script>
-  <style>@media(max-width:1024px){#sidebar-toggle{display:block!important;}.grid-2[style*="340px"]{grid-template-columns:1fr!important;}}</style>
+<!-- ===== FOOTER ===== -->
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a href="index.html" class="navbar__logo" aria-label="SmartNest Home" style="color: #fff;">
+          <img src="../assets/images/logo-white.svg" alt="SmartNest Logo" width="36" height="36" />
+          Smart<span style="color: var(--color-accent);">Nest</span>
+        </a>
+        <p>Expert smart home automation installation services. Transforming houses into intelligent living spaces.</p>
+        <div class="footer__social">
+          <a href="#" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+
+          <a href="#" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" /></svg></a>
+        </div>
+      </div>
+      <div>
+        <h3 class="footer__heading">Services</h3>
+        <ul class="footer__links">
+          <li><a href="service-details.html">Smart Lighting</a></li>
+          <li><a href="service-details.html">Security Systems</a></li>
+          <li><a href="service-details.html">Climate Control</a></li>
+          <li><a href="service-details.html">Entertainment</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="footer__heading">Company</h3>
+        <ul class="footer__links">
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="services.html">All Services</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="coming-soon.html">Coming Soon</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="footer__heading">Contact</h3>
+        <ul class="footer__links">
+          <li><a href="tel:+15551234567">+1 (555) 123-4567</a></li>
+          <li><a href="mailto:hello@smartnest.io">hello@smartnest.io</a></li>
+          <li><a href="contact.html">123 Innovation Drive<br>Austin, TX 78701</a></li>
+        </ul>
+        <div style="margin-top:var(--space-2);">
+          <a href="contact.html" class="btn btn-primary btn-sm">Get Free Quote</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p style="color:rgba(255,255,255,0.5); font-size:var(--fs-xs);">© 2026 SmartNest. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/dashboard.js"></script>
+<style>
+  @media (max-width:1024px) { #nav-cta { display: none !important; } }
+  @media (min-width:1025px) { #nav-cta { display: inline-flex !important; } }
+</style>
 </body>
 </html>

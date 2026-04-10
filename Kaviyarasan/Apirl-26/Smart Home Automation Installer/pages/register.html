@@ -1,25 +1,82 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr" data-theme="light">
+<html lang="en" dir="rtl" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Create Account — SmartNest</title>
   <meta name="description" content="Create your free SmartNest account. Start controlling your smart home in minutes." />
-  <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon-32x32.png" />
+  <link rel="icon" type="image/svg+xml" href="../assets/images/logo.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../assets/css/style.css" />
   <link rel="stylesheet" href="../assets/css/dark-mode.css" />
+  <link rel="stylesheet" href="../assets/css/rtl.css" />
+  <style>
+    .auth-page{display:flex;min-height:80vh;background:var(--bg-body);overflow:hidden;}
+    .auth-page__form-side{flex:1;display:flex;align-items:center;justify-content:center;padding:var(--space-4);background:var(--bg-body);}
+    .auth-page__visual-side{flex:1;background:linear-gradient(135deg,#0F172A 0%,#1E3A8A 100%);display:flex;align-items:center;justify-content:center;padding:var(--space-4);position:relative;overflow:hidden;}
+    .auth-card{width:100%;max-width:400px;text-align:center;}
+    .social-login{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-1);margin-bottom:var(--space-2);}
+    .social-btn{display:flex;align-items:center;justify-content:center;gap:8px;padding:10px;border-radius:var(--border-radius);border:1px solid var(--border-color);background:var(--bg-card);color:var(--text-primary);font-size:var(--fs-xs);font-weight:var(--fw-medium);transition:all var(--transition-base);cursor:pointer;}
+    .social-btn:hover{background:var(--bg-card-hover);transform:translateY(-1px);}
+    .social-btn svg{flex-shrink:0;}
+    .auth-divider{display:flex;align-items:center;gap:12px;margin:var(--space-2) 0;font-size:var(--fs-xs);color:var(--text-tertiary);}
+    .auth-divider::before,.auth-divider::after{content:'';flex:1;height:1px;background:var(--border-color);}
+    @media(max-width:1024px){.auth-page__visual-side{display:none;}}
+  </style>
 </head>
-<body>
+<body class="has-navbar">
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+  <div class="navbar__inner">
+    <a href="index.html" class="navbar__logo" aria-label="SmartNest Home">
+      <img src="../assets/images/logo.svg" alt="SmartNest Logo" width="36" height="36" />
+      Smart<span>Nest</span>
+    </a>
+
+    <ul class="navbar__links" role="menubar">
+      <li><div class="nav-dropdown"><button class="nav-dropdown__trigger">Home <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="nav-dropdown__menu"><a href="index.html">Home 1</a><a href="home-saas.html">Home 2</a></div></div></li>
+      <li><a href="about.html">About</a></li>
+      <li><div class="nav-dropdown"><button class="nav-dropdown__trigger">Services <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="nav-dropdown__menu"><a href="services.html">Services</a><a href="service-details.html">Service Details</a></div></div></li>
+      <li><div class="nav-dropdown"><button class="nav-dropdown__trigger">Blog <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="nav-dropdown__menu"><a href="blog.html">Blog</a><a href="blog-details.html">Blog Details</a></div></div></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><div class="nav-dropdown"><button class="nav-dropdown__trigger">Dashboard <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="nav-dropdown__menu"><a href="dashboard.html">Admin Dashboard</a><a href="dashboard.html">User Dashboard</a></div></div></li>
+    </ul>
+    
+    <div class="navbar__actions">
+      <button class="navbar__icon-btn mobile-visible" id="theme-toggle-global" aria-label="Toggle dark mode" title="Toggle theme">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" id="theme-icon-global"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </button>
+      <button class="navbar__icon-btn mobile-visible" id="rtl-toggle-global" aria-label="Toggle RTL layout" title="Toggle RTL/LTR">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      </button>
+      <a href="login.html" class="btn btn-primary btn-sm" style="display:none;" id="nav-cta">Login</a>
+      <button class="navbar__hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Nav -->
+<div class="mobile-nav" id="mobile-nav" role="dialog" aria-label="Mobile Navigation">
+  <a href="index.html">Home 1</a>
+  <a href="home-saas.html">Home 2</a>
+  <a href="about.html">About</a>
+  <a href="services.html">Services</a>
+  <a href="service-details.html">Service Details</a>
+  <a href="blog.html">Blog</a>
+  <a href="blog-details.html">Blog Details</a>
+  <a href="pricing.html">Pricing</a>
+  <a href="contact.html">Contact</a>
+  <a href="dashboard.html">Admin Dashboard</a>
+  <a href="dashboard.html">User Dashboard</a>
+</div>
   <div class="auth-page">
     <div class="auth-page__form-side">
-      <div class="auth-card">
-        <a href="index.html" class="auth-card__logo" aria-label="Go to SmartNest Home">
-          <img src="../assets/images/logo.svg" alt="SmartNest" width="40" height="40" />
-          <span>Smart<span style="color:var(--color-primary);">Nest</span></span>
-        </a>
         <h1 style="font-size:var(--fs-2xl);margin-bottom:4px;">Create Your Account</h1>
         <p style="font-size:var(--fs-sm);color:var(--text-secondary);margin-bottom:var(--space-3);">Start your smart home journey today</p>
 
@@ -89,6 +146,65 @@
     </div>
   </div>
 
-  <script src="../assets/js/main.js"></script>
-</body>
-</html>
+    </div>
+  </div>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a href="index.html" class="navbar__logo" aria-label="SmartNest Home" style="color: #fff;">
+          <img src="../assets/images/logo-white.svg" alt="SmartNest Logo" width="36" height="36" />
+          Smart<span style="color: var(--color-accent);">Nest</span>
+        </a>
+        <p>Expert smart home automation installation services. Transforming houses into intelligent living spaces.</p>
+        <div class="footer__social">
+          <a href="#" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+
+          <a href="#" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" /></svg></a>
+        </div>
+      </div>
+      <div>
+        <h3 class="footer__heading">Services</h3>
+        <ul class="footer__links">
+          <li><a href="service-details.html">Smart Lighting</a></li>
+          <li><a href="service-details.html">Security Systems</a></li>
+          <li><a href="service-details.html">Climate Control</a></li>
+          <li><a href="service-details.html">Entertainment</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="footer__heading">Company</h3>
+        <ul class="footer__links">
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="services.html">All Services</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="coming-soon.html">Coming Soon</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="footer__heading">Contact</h3>
+        <ul class="footer__links">
+          <li><a href="tel:+15551234567">+1 (555) 123-4567</a></li>
+          <li><a href="mailto:hello@smartnest.io">hello@smartnest.io</a></li>
+          <li><a href="contact.html">123 Innovation Drive<br>Austin, TX 78701</a></li>
+        </ul>
+        <div style="margin-top:var(--space-2);">
+          <a href="contact.html" class="btn btn-primary btn-sm">Get Free Quote</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p style="color:rgba(255,255,255,0.5); font-size:var(--fs-xs);">© 2026 SmartNest. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/js/main.js"></script>
+<style>
+  @media (max-width:1024px) { #nav-cta { display: none !important; } }
+  @media (min-width:1025px) { #nav-cta { display: inline-flex !important; } }
+</style>

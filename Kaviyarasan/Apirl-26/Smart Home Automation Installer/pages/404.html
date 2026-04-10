@@ -1,52 +1,357 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr" data-theme="light">
+<html lang="en" dir="rtl" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Page Not Found — SmartNest</title>
-  <meta name="description" content="The page you're looking for doesn't exist. Navigate back to SmartNest's homepage or contact us for help." />
-  <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon-32x32.png" />
+  <title>Signal Lost — Page Not Found | SmartNest</title>
+  <meta name="description" content="Oops! The page you're searching for has disconnected from our network. Let us help you find your way back." />
+  <link rel="icon" type="image/svg+xml" href="../assets/images/logo.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
   <link rel="stylesheet" href="../assets/css/style.css" />
   <link rel="stylesheet" href="../assets/css/dark-mode.css" />
+  <link rel="stylesheet" href="../assets/css/rtl.css" />
   <style>
-    .error-page{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:var(--space-4);background:var(--bg-body);}
-    .error-page__code{font-family:var(--font-heading);font-size:8rem;font-weight:var(--fw-bold);background:linear-gradient(135deg,var(--color-primary),var(--color-accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;}
-    .error-illustration{max-width:320px;margin:var(--space-3) auto;}
-    .error-illustration svg{width:100%;height:auto;}
-    @media(max-width:640px){.error-page__code{font-size:5rem;}}
+    :root {
+      --error-glow: rgba(37, 99, 235, 0.1);
+    }
+
+    [data-theme="dark"] {
+      --error-glow: rgba(56, 189, 248, 0.05);
+    }
+
+    /* Error Page Header */
+    .error-header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: var(--space-4) var(--space-6);
+      z-index: 10;
+    }
+
+    .error-header .navbar__logo {
+      font-size: var(--fs-xl);
+      text-decoration: none;
+    }
+
+    .error-actions {
+      display: flex;
+      gap: var(--space-1);
+    }
+
+    .error-actions .navbar__icon-btn {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--border-radius);
+      color: var(--text-primary);
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--transition-base);
+    }
+
+    [data-theme="dark"] .error-actions .navbar__icon-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.05);
+    }
+
+    .error-actions .navbar__icon-btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .error-wrapper {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-10) var(--space-4) var(--space-4);
+      background: radial-gradient(circle at center, var(--error-glow) 0%, transparent 70%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Floating Particles Background */
+    .error-bg-shapes {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .shape {
+      position: absolute;
+      background: var(--color-primary);
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.15;
+      animation: pulse-shape 10s infinite alternate;
+    }
+
+    .shape-1 { width: 400px; height: 400px; top: -100px; right: -100px; }
+    .shape-2 { width: 300px; height: 300px; bottom: -50px; left: -50px; background: var(--color-accent); animation-delay: -5s; }
+
+    @keyframes pulse-shape {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(50px, 50px) scale(1.1); }
+    }
+
+    /* Glassmorphic Card */
+    .error-card {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 680px;
+      padding: var(--space-8) var(--space-6);
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: var(--border-radius-xl);
+      box-shadow: var(--shadow-xl);
+      text-align: center;
+    }
+
+    [data-theme="dark"] .error-card {
+      background: rgba(30, 41, 59, 0.7);
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .error-code {
+      font-family: var(--font-heading);
+      font-size: 8rem;
+      font-weight: var(--fw-bold);
+      line-height: 1;
+      margin-bottom: var(--space-2);
+      background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: glitch 3s infinite;
+    }
+
+    @keyframes glitch {
+      0% { transform: translate(0); }
+      20% { transform: translate(-2px, 2px); }
+      40% { transform: translate(-2px, -2px); }
+      60% { transform: translate(2px, 2px); }
+      80% { transform: translate(2px, -2px); }
+      100% { transform: translate(0); }
+    }
+
+    .error-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      background: rgba(239, 68, 68, 0.1);
+      color: var(--color-danger);
+      border-radius: var(--border-radius-full);
+      font-weight: var(--fw-medium);
+      font-size: var(--fs-sm);
+      margin-bottom: var(--space-4);
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--color-danger);
+      border-radius: 50%;
+      animation: blink 1.5s infinite;
+    }
+
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+    .hub-illustration {
+      width: 180px;
+      height: 180px;
+      margin: 0 auto var(--space-6);
+      filter: drop-shadow(0 0 20px var(--error-glow));
+    }
+
+    .hub-pulse {
+      animation: hub-pulse 2s infinite ease-in-out;
+    }
+
+    @keyframes hub-pulse {
+      0% { transform: scale(0.95); opacity: 0.5; }
+      50% { transform: scale(1.05); opacity: 0.8; }
+      100% { transform: scale(0.95); opacity: 0.5; }
+    }
+
+    .search-box {
+      margin-top: var(--space-6);
+      max-width: 460px;
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 14px 48px 14px 20px;
+      border-radius: var(--border-radius-lg);
+      border: 1px solid var(--border-color);
+      background: var(--bg-body);
+      font-family: var(--font-body);
+      transition: var(--transition-base);
+    }
+
+    .search-box input:focus {
+      outline: none;
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+    }
+
+    .search-box svg {
+      position: absolute;
+      left: 16px; /* Adjust for RTL override */
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-tertiary);
+    }
+
+    [dir="rtl"] .search-box svg { left: auto; right: 16px; }
+    [dir="rtl"] .search-box input { padding: 14px 20px 14px 48px; }
+
+    .help-links {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-3);
+      margin-top: var(--space-8);
+    }
+
+    .help-link {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-1);
+      padding: var(--space-3);
+      border-radius: var(--border-radius-lg);
+      text-decoration: none;
+      color: var(--text-primary);
+      transition: var(--transition-base);
+      background: rgba(255, 255, 255, 0.5);
+    }
+
+    [data-theme="dark"] .help-link { background: rgba(255, 255, 255, 0.03); }
+
+    .help-link:hover {
+      background: var(--bg-card-hover);
+      transform: translateY(-4px);
+    }
+
+    .help-link__icon {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--border-radius);
+      background: var(--bg-body);
+      color: var(--color-primary);
+      margin-bottom: var(--space-1);
+    }
+
+    @media (max-width: 640px) {
+      .error-code { font-size: 5rem; }
+      .help-links { grid-template-columns: 1fr; }
+      .error-card { padding: var(--space-6) var(--space-4); }
+    }
   </style>
 </head>
 <body>
-  <div class="error-page">
-    <div style="max-width:540px;">
-      <div class="error-page__code">404</div>
-      <div class="error-illustration">
-        <svg viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="120" y="40" width="160" height="120" rx="12" stroke="var(--color-primary)" stroke-width="2" fill="none" opacity="0.2"/>
-          <rect x="140" y="60" width="120" height="20" rx="4" fill="var(--color-primary)" opacity="0.15"/>
-          <rect x="140" y="90" width="80" height="12" rx="3" fill="var(--border-color)"/>
-          <rect x="140" y="110" width="100" height="12" rx="3" fill="var(--border-color)"/>
-          <rect x="140" y="130" width="60" height="12" rx="3" fill="var(--border-color)"/>
-          <circle cx="80" cy="100" r="30" stroke="var(--color-accent)" stroke-width="2" fill="none" opacity="0.3"/>
-          <path d="M70 100 L90 100 M80 90 L80 110" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
-          <circle cx="340" cy="70" r="20" stroke="var(--color-primary)" stroke-width="2" fill="none" opacity="0.2"/>
-          <circle cx="320" cy="150" r="15" stroke="var(--color-accent)" stroke-width="1.5" fill="none" opacity="0.2"/>
-          <path d="M50 170 Q200 150 350 170" stroke="var(--border-color)" stroke-width="1" fill="none"/>
-        </svg>
-      </div>
-      <h1 style="font-size:var(--fs-3xl);margin-bottom:var(--space-1);">Page Not Found</h1>
-      <p style="color:var(--text-secondary);margin-bottom:var(--space-4);max-width:400px;margin-left:auto;margin-right:auto;">The page you're looking for seems to have vanished into the smart home void. It might have been moved, renamed, or never existed.</p>
-      <div style="display:flex;gap:var(--space-2);justify-content:center;flex-wrap:wrap;">
-        <a href="index.html" class="btn btn-primary btn-lg">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-          Back to Home
-        </a>
-        <a href="contact.html" class="btn btn-outline btn-lg">Contact Support</a>
-      </div>
+
+<header class="error-header">
+  <a href="index.html" class="navbar__logo" aria-label="SmartNest Home">
+    <img src="../assets/images/logo.svg" alt="SmartNest Logo" width="36" height="36" />
+    Smart<span>Nest</span>
+  </a>
+
+  <div class="error-actions">
+    <button class="navbar__icon-btn" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" id="theme-icon"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+    </button>
+    <button class="navbar__icon-btn" id="rtl-toggle" aria-label="Toggle RTL layout" title="Toggle RTL/LTR">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+    </button>
+  </div>
+</header>
+
+<main class="error-wrapper">
+  <div class="error-bg-shapes">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+  </div>
+
+  <div class="error-card" data-aos="zoom-in">
+    <div class="hub-illustration" data-aos="fade-up" data-aos-delay="100">
+      <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="100" cy="100" r="80" fill="url(#hub-grad)" fill-opacity="0.1"/>
+        <circle cx="100" cy="100" r="60" stroke="var(--color-primary)" stroke-width="2" stroke-dasharray="10 5"/>
+        <rect x="70" y="70" width="60" height="60" rx="12" fill="var(--bg-card)" stroke="var(--color-primary)" stroke-width="2"/>
+        <circle class="hub-pulse" cx="100" cy="100" r="10" fill="var(--color-danger)"/>
+        <path d="M100 40V20 M160 100h20 M100 160v20 M40 100H20" stroke="var(--border-color)" stroke-width="2" stroke-linecap="round"/>
+        <defs>
+          <radialGradient id="hub-grad" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(100 100) rotate(90) scale(80)">
+            <stop stop-color="var(--color-primary)"/>
+            <stop offset="1" stop-color="var(--color-accent)" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+      </svg>
+    </div>
+
+    <div class="error-status">
+      <div class="status-dot"></div>
+      Connection Status: OFFLINE
+    </div>
+
+    <div class="error-code">404</div>
+    <h1 style="font-family:var(--font-heading); font-size:var(--fs-4xl); margin-bottom:var(--space-2);">Signal Interrupted</h1>
+    <p style="color:var(--text-secondary); max-width:480px; margin:0 auto var(--space-6);">It looks like your smart home has disconnected from this page. We couldn't find the resource you requested, but we can help you find your way back.</p>
+
+    <div class="search-box">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" placeholder="Search our smart solutions..." />
+    </div>
+
+    <div class="help-links">
+      <a href="services.html" class="help-link">
+        <div class="help-link__icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
+        </div>
+        <span style="font-size:var(--fs-xs); font-weight:var(--fw-medium);">Our Services</span>
+      </a>
+      <a href="index.html" class="help-link">
+        <div class="help-link__icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <span style="font-size:var(--fs-xs); font-weight:var(--fw-medium);">Homepage</span>
+      </a>
+      <a href="contact.html" class="help-link">
+        <div class="help-link__icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <span style="font-size:var(--fs-xs); font-weight:var(--fw-medium);">Support</span>
+      </a>
+    </div>
+
+    <div style="margin-top:var(--space-8);">
+      <a href="index.html" class="btn btn-primary btn-lg">Back To Dashboard</a>
     </div>
   </div>
+</main>
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script src="../assets/js/main.js"></script>
 </body>
 </html>

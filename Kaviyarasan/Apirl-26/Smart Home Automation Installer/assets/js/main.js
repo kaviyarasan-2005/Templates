@@ -39,32 +39,19 @@
   const RTLManager = {
     init() {
       const saved = localStorage.getItem('dir');
-      if (saved) this.apply(saved);
+      const dir = saved || 'rtl';
+      this.apply(dir);
       this.bindToggle();
     },
     apply(dir) {
       document.documentElement.setAttribute('dir', dir);
       localStorage.setItem('dir', dir);
-      const rtlLink = document.getElementById('rtl-stylesheet');
-      if (dir === 'rtl') {
-        if (!rtlLink) {
-          const link = document.createElement('link');
-          link.id = 'rtl-stylesheet';
-          link.rel = 'stylesheet';
-          // Determine correct path based on page depth
-          const depth = window.location.pathname.split('/pages/').length > 1 ? '../' : '';
-          link.href = depth + 'assets/css/rtl.css';
-          document.head.appendChild(link);
-        }
-      } else {
-        if (rtlLink) rtlLink.remove();
-      }
     },
     bindToggle() {
       const btn = document.getElementById('rtl-toggle');
       if (btn) {
         btn.addEventListener('click', () => {
-          const current = document.documentElement.getAttribute('dir') || 'ltr';
+          const current = document.documentElement.getAttribute('dir') || 'rtl';
           this.apply(current === 'rtl' ? 'ltr' : 'rtl');
         });
       }
