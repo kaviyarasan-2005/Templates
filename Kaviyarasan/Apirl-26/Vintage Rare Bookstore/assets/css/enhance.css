@@ -1,0 +1,996 @@
+/* ============================================
+   ANTIQUARIAN RARE BOOKSTORE — DESIGN ENHANCEMENTS
+   enhance.css · v2.0
+   Premium layer: glassmorphism, micro-animations,
+   grain textures, scroll effects, advanced cards
+   ============================================ */
+
+/* ============================================
+   GOOGLE FONTS EXTRA — Cormorant Garamond
+   ============================================ */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
+
+/* ============================================
+   1. ENHANCED ROOT TOKENS
+   ============================================ */
+:root {
+  --font-display:        'Cormorant Garamond', 'Playfair Display', serif;
+
+  /* Grain texture overlay */
+  --grain-opacity:      0.035;
+
+  /* Enhanced shadows */
+  --shadow-glow:        0 0 30px rgba(212,175,55,0.15);
+  --shadow-gold:        0 8px 32px rgba(212,175,55,0.25);
+  --shadow-card-hover:  0 20px 60px rgba(74,4,4,0.22), 0 8px 20px rgba(0,0,0,0.08);
+
+  /* Gradient presets */
+  --gradient-gold:      linear-gradient(135deg, #D4AF37 0%, #F0CB50 40%, #B8960C 100%);
+  --gradient-burgundy:  linear-gradient(135deg, #722F37 0%, #4A0404 100%);
+  --gradient-card:      linear-gradient(135deg, rgba(255,253,208,1) 0%, rgba(250,235,215,1) 100%);
+
+  /* Border radii */
+  --radius-sm:          4px;
+  --radius-md:          8px;
+  --radius-lg:          16px;
+  --radius-xl:          24px;
+
+  /* Animation durations */
+  --anim-fast:          200ms;
+  --anim-base:          400ms;
+  --anim-slow:          700ms;
+  --anim-extra:         1200ms;
+}
+
+[data-theme="dark"] {
+  --gradient-card:      linear-gradient(135deg, rgba(38,21,8,1) 0%, rgba(26,16,8,1) 100%);
+  --grain-opacity:      0.06;
+  --shadow-glow:        0 0 40px rgba(212,175,55,0.12);
+  --shadow-card-hover:  0 20px 60px rgba(0,0,0,0.45), 0 8px 20px rgba(0,0,0,0.3);
+}
+
+/* ============================================
+   2. GRAIN TEXTURE NOISE OVERLAY
+   ============================================ */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: var(--grain-opacity);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 200px 200px;
+}
+
+/* ============================================
+   3. ENHANCED NAVIGATION
+   ============================================ */
+.fixed-nav {
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid rgba(212,175,55,0.12);
+  transition: all var(--anim-base) ease;
+}
+
+.fixed-nav.scrolled {
+  box-shadow: 0 4px 24px rgba(74,4,4,0.12), 0 1px 0 rgba(212,175,55,0.1);
+}
+
+/* Animated underline on nav links */
+.nav-link {
+  position: relative;
+  overflow: hidden;
+}
+.nav-link::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  right: 50%;
+  height: 2px;
+  background: var(--gradient-gold);
+  transition: left var(--anim-base) ease, right var(--anim-base) ease;
+  border-radius: 2px;
+}
+.nav-link:hover::before,
+.nav-link.active::before {
+  left: 0.75rem;
+  right: 0.75rem;
+}
+.nav-link.active::after { display: none; }  /* remove old underline */
+
+/* ============================================
+   4. HERO ENHANCEMENTS
+   ============================================ */
+
+/* Parallax shimmer overlay */
+.hero-shimmer {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 30%,
+    rgba(212,175,55,0.04) 50%,
+    transparent 70%
+  );
+  background-size: 200% 100%;
+  animation: shimmerSweep 8s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes shimmerSweep {
+  0%   { background-position: 200% center; }
+  100% { background-position: -200% center; }
+}
+
+/* Gold dust particles */
+.hero-dust {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.hero-dust::before,
+.hero-dust::after {
+  content: '';
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #D4AF37;
+  opacity: 0;
+  animation: dustFloat 6s ease-in-out infinite;
+}
+.hero-dust::before {
+  top: 60%;
+  left: 20%;
+  animation-delay: 0s;
+}
+.hero-dust::after {
+  top: 40%;
+  left: 75%;
+  animation-delay: 3s;
+}
+@keyframes dustFloat {
+  0%   { opacity: 0; transform: translateY(0) scale(1); }
+  20%  { opacity: 0.8; }
+  80%  { opacity: 0.4; }
+  100% { opacity: 0; transform: translateY(-80px) scale(0.3); }
+}
+
+/* Hero heading — display font override */
+.hero-heading-display {
+  font-family: var(--font-display);
+  font-style: italic;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+/* Gold glow text */
+.text-gold-glow {
+  text-shadow: 0 0 30px rgba(212,175,55,0.5), 0 2px 4px rgba(0,0,0,0.3);
+}
+
+/* ============================================
+   5. ENHANCED CARDS
+   ============================================ */
+.card,
+.article-card {
+  position: relative;
+  background: var(--gradient-card);
+  border: 1px solid rgba(212,175,55,0.12);
+  transition:
+    transform var(--anim-base) cubic-bezier(0.34,1.56,0.64,1),
+    box-shadow var(--anim-base) ease,
+    border-color var(--anim-base) ease;
+  overflow: hidden;
+}
+
+/* Shimmer overlay on card hover */
+.card::after,
+.article-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    130deg,
+    transparent 20%,
+    rgba(212,175,55,0.06) 50%,
+    transparent 80%
+  );
+  opacity: 0;
+  transition: opacity var(--anim-base) ease;
+  pointer-events: none;
+}
+.card:hover::after,
+.article-card:hover::after {
+  opacity: 1;
+}
+
+.card:hover,
+.article-card:hover {
+  transform: translateY(-6px) scale(1.012);
+  box-shadow: var(--shadow-card-hover);
+  border-color: rgba(212,175,55,0.3);
+}
+
+/* Gold left accent bar on card hover */
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 0;
+  background: var(--gradient-gold);
+  transition: height var(--anim-slow) ease;
+  z-index: 2;
+}
+[dir="rtl"] .card::before { left: auto; right: 0; }
+.card:hover::before { height: 100%; }
+
+/* ============================================
+   6. ENHANCED BUTTONS
+   ============================================ */
+.btn-primary,
+.btn-accent,
+.btn-outline {
+  position: relative;
+  overflow: hidden;
+  letter-spacing: 0.02em;
+}
+
+/* Ripple shimmer on buttons */
+.btn-primary::before,
+.btn-accent::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255,255,255,0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease, opacity 0.6s ease;
+  pointer-events: none;
+}
+.btn-primary:hover::before,
+.btn-accent:hover::before {
+  width: 250px;
+  height: 250px;
+  opacity: 0;
+}
+
+/* Gold gradient on accent button */
+.btn-accent {
+  background: var(--gradient-gold);
+  border-color: transparent;
+  box-shadow: 0 4px 15px rgba(212,175,55,0.3);
+}
+.btn-accent:hover {
+  box-shadow: 0 6px 25px rgba(212,175,55,0.45);
+  transform: translateY(-2px);
+}
+
+/* Primary button inner glow */
+.btn-primary {
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+}
+.btn-primary:hover {
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.1), 0 8px 25px rgba(114,47,55,0.35);
+}
+
+/* ============================================
+   7. SECTION ENHANCEMENTS
+   ============================================ */
+
+/* Ornamental divider lines */
+.section-ornament {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+.section-ornament-line {
+  flex: 1;
+  max-width: 80px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(212,175,55,0.6), transparent);
+}
+.section-ornament-icon {
+  color: var(--color-accent);
+  font-size: 0.875rem;
+  opacity: 0.7;
+}
+
+/* Overline text enhancement */
+.overline {
+  background: var(--gradient-gold);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 1px 2px rgba(212,175,55,0.2));
+}
+
+/* Section heading underline decoration */
+.section-heading h2 {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.75rem;
+}
+.section-heading h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 48px;
+  height: 2px;
+  background: var(--gradient-gold);
+  border-radius: 2px;
+}
+
+/* ============================================
+   8. GLASSMORPHISM CARDS (Testimonials, Highlights)
+   ============================================ */
+.glass-card {
+  background: rgba(255,253,208,0.55);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(212,175,55,0.2);
+  box-shadow: 0 8px 32px rgba(74,4,4,0.08), inset 0 1px 0 rgba(255,255,255,0.5);
+  border-radius: var(--radius-md);
+  transition: box-shadow var(--anim-base) ease, transform var(--anim-base) ease;
+}
+.glass-card:hover {
+  box-shadow: 0 16px 48px rgba(74,4,4,0.14), inset 0 1px 0 rgba(255,255,255,0.5);
+  transform: translateY(-4px);
+}
+[data-theme="dark"] .glass-card {
+  background: rgba(38,21,8,0.65);
+  border-color: rgba(212,175,55,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.05);
+}
+
+/* ============================================
+   9. STAT CARDS ENHANCED
+   ============================================ */
+.stat-card {
+  position: relative;
+  overflow: hidden;
+  background: var(--gradient-card);
+  border: 1px solid rgba(212,175,55,0.1);
+}
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: -30px;
+  right: -30px;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle, rgba(212,175,55,0.08) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.stat-card:hover {
+  border-color: rgba(212,175,55,0.25);
+  box-shadow: 0 8px 30px rgba(74,4,4,0.12), 0 0 0 1px rgba(212,175,55,0.1);
+}
+.stat-value {
+  background: var(--gradient-burgundy);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+[data-theme="dark"] .stat-value {
+  background: var(--gradient-gold);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ============================================
+   10. BADGE ENHANCEMENTS
+   ============================================ */
+.badge {
+  font-variant: small-caps;
+  letter-spacing: 0.08em;
+  backdrop-filter: blur(4px);
+}
+.badge-success {
+  background: rgba(39,174,96,0.12);
+  border: 1px solid rgba(39,174,96,0.25);
+  box-shadow: 0 0 8px rgba(39,174,96,0.1);
+}
+.badge-warning {
+  background: rgba(212,175,55,0.15);
+  border: 1px solid rgba(212,175,55,0.35);
+  color: var(--color-accent);
+  box-shadow: 0 0 8px rgba(212,175,55,0.12);
+}
+.badge-danger {
+  background: rgba(192,57,43,0.12);
+  border: 1px solid rgba(192,57,43,0.25);
+  box-shadow: 0 0 8px rgba(192,57,43,0.1);
+}
+.badge-info {
+  background: rgba(114,47,55,0.1);
+  border: 1px solid rgba(114,47,55,0.2);
+}
+
+/* ============================================
+   11. ARTICLE TAGS ENHANCED
+   ============================================ */
+.article-tag {
+  background: rgba(212,175,55,0.08);
+  border: 1px solid rgba(212,175,55,0.2);
+  backdrop-filter: blur(4px);
+  transition: all var(--anim-fast) ease;
+}
+.article-tag:hover,
+.article-tag.active {
+  background: var(--gradient-gold);
+  border-color: transparent;
+  color: #1A0A00;
+  box-shadow: 0 4px 12px rgba(212,175,55,0.35);
+  transform: translateY(-1px);
+}
+
+/* ============================================
+   12. FORM FIELDS ENHANCED
+   ============================================ */
+.form-field {
+  border-radius: var(--radius-sm);
+  transition:
+    border-color var(--anim-base) ease,
+    box-shadow var(--anim-base) ease,
+    background-color var(--anim-base) ease,
+    transform var(--anim-fast) ease;
+}
+.form-field:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(212,175,55,0.15), 0 2px 8px rgba(212,175,55,0.1);
+  transform: translateY(-1px);
+}
+
+/* ============================================
+   13. ACCORDION ENHANCED
+   ============================================ */
+.accordion-item {
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+  transition: box-shadow var(--anim-base) ease, border-color var(--anim-base) ease;
+}
+.accordion-item:has(.accordion-trigger[aria-expanded="true"]) {
+  border-color: rgba(212,175,55,0.3);
+  box-shadow: 0 4px 16px rgba(74,4,4,0.08);
+}
+.accordion-trigger {
+  position: relative;
+  transition: background-color var(--anim-base) ease, color var(--anim-base) ease, padding-left var(--anim-base) ease;
+}
+.accordion-trigger[aria-expanded="true"] {
+  background: var(--gradient-burgundy);
+  padding-left: 1.5rem;
+}
+
+/* ============================================
+   14. PRICING CARDS ENHANCED
+   ============================================ */
+.pricing-card {
+  position: relative;
+  background: var(--gradient-card);
+  border-radius: var(--radius-md);
+  transition:
+    transform var(--anim-base) cubic-bezier(0.34,1.56,0.64,1),
+    box-shadow var(--anim-base) ease,
+    border-color var(--anim-base) ease;
+  overflow: hidden;
+}
+.pricing-card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(to right, transparent, rgba(212,175,55,0.3), transparent);
+  opacity: 0;
+  transition: opacity var(--anim-base) ease;
+}
+.pricing-card:hover::after { opacity: 1; }
+.pricing-card.featured {
+  background: var(--gradient-burgundy);
+  box-shadow: 0 12px 40px rgba(74,4,4,0.35), 0 0 0 1px rgba(212,175,55,0.25);
+}
+.pricing-card.featured::after {
+  background: var(--gradient-gold);
+  opacity: 1;
+  height: 3px;
+}
+.pricing-card:hover {
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: 0 24px 60px rgba(74,4,4,0.2);
+}
+
+/* ============================================
+   15. DASHBOARD SIDEBAR ENHANCED
+   ============================================ */
+.dashboard-sidebar {
+  background: linear-gradient(180deg, #1C0E06 0%, #2C1A0E 40%, #1A0A04 100%);
+  border-right: 1px solid rgba(212,175,55,0.1);
+  box-shadow: 4px 0 24px rgba(0,0,0,0.25);
+}
+
+[dir="rtl"] .dashboard-sidebar {
+  box-shadow: -4px 0 24px rgba(0,0,0,0.25);
+}
+
+.sidebar-brand {
+  background: linear-gradient(135deg, rgba(212,175,55,0.08) 0%, transparent 100%);
+  border-bottom: 1px solid rgba(212,175,55,0.12);
+}
+
+.sidebar-link {
+  border-radius: var(--radius-sm);
+  margin: 0 0.5rem;
+  padding: 0.625rem 1rem;
+  transition:
+    background-color var(--anim-fast) ease,
+    color var(--anim-fast) ease,
+    transform var(--anim-fast) ease,
+    padding-left var(--anim-base) ease;
+  position: relative;
+}
+.sidebar-link:hover {
+  background: rgba(212,175,55,0.08);
+  color: var(--color-accent);
+  transform: translateX(3px);
+}
+[dir="rtl"] .sidebar-link:hover { transform: translateX(-3px); }
+
+.sidebar-link.active {
+  background: linear-gradient(135deg, rgba(212,175,55,0.15) 0%, rgba(212,175,55,0.08) 100%);
+  color: var(--color-accent);
+  border-right: none;
+  box-shadow: inset 3px 0 0 var(--color-accent);
+}
+[dir="rtl"] .sidebar-link.active {
+  box-shadow: inset -3px 0 0 var(--color-accent);
+}
+
+/* ============================================
+   16. DASHBOARD TOPBAR ENHANCED
+   ============================================ */
+.dashboard-topbar {
+  background: rgba(var(--color-bg-nav), 0.98);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border-bottom: 1px solid rgba(212,175,55,0.1);
+  box-shadow: 0 1px 0 rgba(212,175,55,0.08), 0 4px 16px rgba(0,0,0,0.04);
+}
+
+/* ============================================
+   17. DATA TABLE ENHANCED
+   ============================================ */
+.data-table {
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+.data-table th {
+  background: linear-gradient(135deg, rgba(114,47,55,0.06) 0%, rgba(212,175,55,0.04) 100%);
+  border-bottom: 2px solid rgba(212,175,55,0.15);
+  letter-spacing: 0.1em;
+}
+.data-table tr:hover td {
+  background: linear-gradient(to right, rgba(212,175,55,0.04), rgba(114,47,55,0.03));
+}
+
+/* ============================================
+   18. SCROLL PROGRESS BAR
+   ============================================ */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--gradient-gold);
+  transform-origin: left;
+  transform: scaleX(0);
+  z-index: 9998;
+  transition: transform 0.1s linear;
+  box-shadow: 0 0 8px rgba(212,175,55,0.5);
+}
+[dir="rtl"] .scroll-progress { transform-origin: right; }
+
+/* ============================================
+   19. BACK-TO-TOP BUTTON
+   ============================================ */
+.back-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--gradient-gold);
+  color: #1A0A00;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  box-shadow: 0 4px 16px rgba(212,175,55,0.35);
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity var(--anim-base) ease,
+    transform var(--anim-base) ease,
+    box-shadow var(--anim-fast) ease;
+  z-index: 500;
+}
+[dir="rtl"] .back-to-top { right: auto; left: 2rem; }
+.back-to-top.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.back-to-top:hover {
+  box-shadow: 0 8px 24px rgba(212,175,55,0.5);
+  transform: translateY(-3px);
+}
+
+/* ============================================
+   20. FOOTER ENHANCED
+   ============================================ */
+.site-footer {
+  background: linear-gradient(180deg, #2C1A0E 0%, #1A0A04 100%);
+  border-top: 1px solid rgba(212,175,55,0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Footer top decorative gold line */
+.site-footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: var(--gradient-gold);
+  opacity: 0.4;
+}
+
+/* ============================================
+   21. TOOLTIP COMPONENT
+   ============================================ */
+[data-tooltip] {
+  position: relative;
+}
+[data-tooltip]::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  background: rgba(26,10,0,0.95);
+  color: #F5F5DC;
+  font-size: 0.75rem;
+  font-family: var(--font-body);
+  padding: 0.35rem 0.75rem;
+  border-radius: 4px;
+  white-space: nowrap;
+  border: 1px solid rgba(212,175,55,0.2);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--anim-fast) ease, transform var(--anim-fast) ease;
+  z-index: 100;
+}
+[data-tooltip]:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ============================================
+   22. HERO SCROLL INDICATOR PULSE
+   ============================================ */
+.scroll-cue-dot {
+  width: 20px;
+  height: 32px;
+  border: 2px solid rgba(255,255,255,0.4);
+  border-radius: 12px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 4px;
+}
+.scroll-cue-dot::after {
+  content: '';
+  width: 4px;
+  height: 6px;
+  background: rgba(212,175,55,0.8);
+  border-radius: 2px;
+  animation: scrollPulse 1.8s ease-in-out infinite;
+}
+@keyframes scrollPulse {
+  0%   { transform: translateY(0); opacity: 1; }
+  60%  { transform: translateY(10px); opacity: 0.2; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+/* ============================================
+   23. IMAGE HOVER OVERLAY ON BOOK CARDS
+   ============================================ */
+.book-img-wrap {
+  position: relative;
+  overflow: hidden;
+}
+.book-img-wrap img {
+  transition: transform var(--anim-slow) cubic-bezier(0.4,0,0.2,1);
+}
+.book-img-wrap:hover img {
+  transform: scale(1.07);
+}
+.book-img-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(74,4,4,0.7) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity var(--anim-base) ease;
+}
+.book-img-wrap:hover::after { opacity: 1; }
+
+/* ============================================
+   24. TEAM / PROFILE CARDS
+   ============================================ */
+.team-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  transition: transform var(--anim-base) cubic-bezier(0.34,1.56,0.64,1), box-shadow var(--anim-base) ease;
+  border: 1px solid rgba(212,175,55,0.1);
+}
+.team-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-card-hover);
+  border-color: rgba(212,175,55,0.25);
+}
+.team-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(74,4,4,0.85) 0%, rgba(74,4,4,0.2) 50%, transparent 100%);
+  opacity: 0;
+  transition: opacity var(--anim-base) ease;
+  display: flex;
+  align-items: flex-end;
+  padding: 1.25rem;
+}
+.team-card:hover .team-card-overlay { opacity: 1; }
+
+/* ============================================
+   25. LOADING SKELETON SHIMMER
+   ============================================ */
+.skeleton {
+  background: linear-gradient(90deg, var(--color-border) 25%, rgba(212,175,55,0.08) 50%, var(--color-border) 75%);
+  background-size: 200% 100%;
+  animation: skeletonWave 1.5s ease-in-out infinite;
+  border-radius: var(--radius-sm);
+}
+@keyframes skeletonWave {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ============================================
+   26. ENHANCED TESTIMONIAL CARDS
+   ============================================ */
+.testimonial-card {
+  background: var(--gradient-card);
+  border: 1px solid rgba(212,175,55,0.12);
+  border-radius: var(--radius-md);
+  position: relative;
+  padding: 2.5rem 2rem;
+}
+.testimonial-card::before {
+  content: '"';
+  position: absolute;
+  top: -0.5rem;
+  left: 1.5rem;
+  font-family: var(--font-display);
+  font-size: 5rem;
+  color: var(--color-accent);
+  opacity: 0.15;
+  line-height: 1;
+  pointer-events: none;
+}
+[dir="rtl"] .testimonial-card::before {
+  left: auto;
+  right: 1.5rem;
+  content: '"';
+}
+
+.testimonial-dot {
+  transition: background-color var(--anim-base) ease, width var(--anim-base) ease, border-radius var(--anim-base) ease;
+  border-radius: 4px;
+}
+.testimonial-dot.active {
+  background: var(--gradient-gold);
+  width: 20px;
+  box-shadow: 0 0 8px rgba(212,175,55,0.4);
+}
+
+/* ============================================
+   27. PROCESS STEPS ENHANCED
+   ============================================ */
+.step-number {
+  background: var(--gradient-burgundy);
+  box-shadow: 0 4px 16px rgba(114,47,55,0.3), 0 0 0 4px rgba(114,47,55,0.08);
+  transition: transform var(--anim-base) cubic-bezier(0.34,1.56,0.64,1), box-shadow var(--anim-base) ease;
+}
+.process-step:hover .step-number {
+  background: var(--gradient-gold);
+  color: #1A0A00;
+  transform: scale(1.12);
+  box-shadow: 0 8px 24px rgba(212,175,55,0.4);
+}
+
+/* ============================================
+   28. CHART CONTAINER GLOSS
+   ============================================ */
+.chart-container-gloss {
+  position: relative;
+}
+.chart-container-gloss::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(212,175,55,0.3), transparent);
+  z-index: 1;
+}
+
+/* ============================================
+   29. MOBILE MENU ENHANCED
+   ============================================ */
+.mobile-nav-menu {
+  border-bottom: 2px solid rgba(212,175,55,0.12);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  animation: slideDown 0.25s ease forwards;
+}
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.mobile-nav-link {
+  border-radius: var(--radius-sm);
+  transition: background-color var(--anim-fast) ease, color var(--anim-fast) ease, padding-left var(--anim-base) ease;
+}
+.mobile-nav-link:hover,
+.mobile-nav-link.active {
+  padding-left: 1.5rem;
+}
+
+/* ============================================
+   30. TOAST ENHANCED
+   ============================================ */
+.toast {
+  border-radius: var(--radius-md);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  background: rgba(var(--color-bg-card), 0.95);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.15), 0 0 0 1px rgba(212,175,55,0.15);
+}
+.toast-success {
+  border-left: 3px solid #27AE60;
+}
+
+/* ============================================
+   31. CUSTOM SELECTION COLOUR
+   ============================================ */
+::selection {
+  background: rgba(212,175,55,0.3);
+  color: var(--color-primary);
+}
+::-moz-selection {
+  background: rgba(212,175,55,0.3);
+  color: var(--color-primary);
+}
+
+/* ============================================
+   32. FOCUS STYLES (Accessibility + Premium)
+   ============================================ */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ============================================
+   33. STAT CARD COUNTER ANIMATION ENHANCEMENT
+   ============================================ */
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-counter {
+  display: inline-block;
+  animation: countUp 0.5s ease forwards;
+}
+
+/* ============================================
+   34. AUTH PAGE ENHANCED
+   ============================================ */
+.auth-form-panel {
+  position: relative;
+}
+.auth-form-panel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, rgba(212,175,55,0.2) 40%, rgba(212,175,55,0.2) 60%, transparent);
+  pointer-events: none;
+}
+[dir="rtl"] .auth-form-panel::before { left: auto; right: 0; }
+
+/* ============================================
+   35. MAP PLACEHOLDER ENHANCED
+   ============================================ */
+.map-placeholder {
+  background: linear-gradient(135deg, var(--color-bg-card) 0%, var(--color-bg-main) 100%);
+  border: 1px dashed rgba(212,175,55,0.25);
+  position: relative;
+  overflow: hidden;
+}
+.map-placeholder::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(212,175,55,0.06) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+/* ============================================
+   36. GOLD RULE DIVIDER
+   ============================================ */
+.gold-rule {
+  border: none;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(212,175,55,0.4) 20%, rgba(212,175,55,0.4) 80%, transparent);
+  margin: 0;
+}
+
+/* ============================================
+   37. RESPONSIVE TWEAKS FOR ENHANCED ELEMENTS
+   ============================================ */
+@media (max-width: 767px) {
+  .section-ornament-line { max-width: 40px; }
+  .pricing-card:hover { transform: translateY(-4px); }
+  .card:hover { transform: translateY(-3px) scale(1.005); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  body::before { display: none; }
+  .hero-shimmer { display: none; }
+}
