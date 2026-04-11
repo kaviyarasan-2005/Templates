@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antiquarian Rare Books – Curated Collection</title>
+    <meta name="description" content="Browse our curated collection of rare first editions, leather-bound classics, and illuminated manuscripts. Serving discerning collectors since 1894.">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicons/favicon-32.png">
+    <link rel="manifest" href="../manifest.json">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode:['class','[data-theme="dark"]'],
+        theme:{extend:{colors:{brand:'var(--color-primary)',brandSecondary:'var(--color-secondary)',brandAccent:'var(--color-accent)',brandBg:'var(--color-bg-main)',brandCard:'var(--color-bg-card)',brandFooter:'var(--color-bg-footer)',brandText:'var(--color-text-main)',brandTextMuted:'var(--color-text-muted)',brandTextSub:'var(--color-text-sub)',borderNav:'var(--color-border)'},fontFamily:{heading:'var(--font-heading)',body:'var(--font-body)'}}}
+      }
+    </script>
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/rtl.css">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Curated Collection – Antiquarian Rare Books","description":"General curated collection of rare antiquarian books and manuscripts."}</script>
+</head>
+<body class="bg-brandBg text-brandText">
+
+<!-- ============ NAVIGATION ============ -->
+<nav class="fixed-nav" role="navigation" aria-label="Main navigation">
+  <div class="max-w-[1280px] w-full mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-full">
+
+    <!-- Brand -->
+    <a href="home-1.html" class="nav-brand flex items-center gap-2 text-brand font-heading font-bold text-2xl shrink-0 group" aria-label="Antiquarian Rare Books – Home">
+      <i class="fa-solid fa-book-open group-hover:scale-110 transition-transform"></i>
+      <span class="tracking-tight">Antiquarian</span>
+    </a>
+
+    <!-- Desktop Nav -->
+    <div class="hidden lg:flex items-center h-full nav-links-container" style="gap:0;">
+      <!-- Home Dropdown -->
+      <div class="nav-dropdown-parent relative h-full flex items-center">
+        <button class="nav-link active flex items-center gap-1" aria-haspopup="true" aria-expanded="false">
+          Home <i class="fa-solid fa-chevron-down text-[10px]"></i>
+        </button>
+        <div class="nav-dropdown">
+          <a href="home-1.html" class="font-semibold" style="color:var(--color-accent)"><i class="fa-solid fa-circle-dot mr-2 text-xs"></i>Curated Collection</a>
+          <a href="home-2.html">Academic Niche</a>
+        </div>
+      </div>
+      <a href="about.html"   class="nav-link">About Us</a>
+      <a href="services.html" class="nav-link">Services</a>
+      <a href="blog.html"    class="nav-link">Blog</a>
+      <a href="pricing.html" class="nav-link">Pricing</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </div>
+
+    <!-- Right Controls -->
+    <div class="flex items-center gap-2 lg:gap-3 shrink-0">
+      <button class="theme-toggle-btn w-9 h-9 flex items-center justify-center rounded-full bg-brandCard border border-borderNav text-brandText hover:border-brand transition-colors" aria-label="Toggle theme">
+        <i class="theme-icon fa-solid fa-moon text-sm"></i>
+      </button>
+      <button class="dir-toggle-btn w-9 h-9 flex items-center justify-center rounded-full bg-brandCard border border-borderNav text-brandText hover:border-brand transition-colors" aria-label="Toggle text direction">
+        <i class="fa-solid fa-globe text-sm"></i>
+      </button>
+      <a href="login.html" class="hidden sm:inline-flex btn-accent px-4 py-2 text-sm rounded-sm" aria-label="Sign in">Sign In</a>
+      <button id="mobile-menu-btn" class="lg:hidden w-10 h-10 flex items-center justify-center text-brandText hover:text-brand" aria-label="Open menu" aria-expanded="false">
+        <i class="fa-solid fa-bars text-xl"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="mobile-nav-menu lg:hidden" role="menu">
+    <a href="home-1.html" class="mobile-nav-link active" role="menuitem">Home – Curated</a>
+    <a href="home-2.html" class="mobile-nav-link" role="menuitem">Home – Academic</a>
+    <div class="mobile-nav-divider"></div>
+    <a href="about.html"   class="mobile-nav-link" role="menuitem">About Us</a>
+    <a href="services.html" class="mobile-nav-link" role="menuitem">Services</a>
+    <a href="blog.html"    class="mobile-nav-link" role="menuitem">Blog</a>
+    <a href="pricing.html" class="mobile-nav-link" role="menuitem">Pricing</a>
+    <a href="contact.html" class="mobile-nav-link" role="menuitem">Contact</a>
+    <div class="mobile-nav-divider"></div>
+    <a href="login.html" class="btn-accent w-full text-center py-2.5 rounded-sm text-sm font-semibold" role="menuitem">Sign In</a>
+  </div>
+</nav>
+
+<main class="pt-nav flex-1 w-full" id="main-content">
+
+  <!-- ============ SECTION 1: HERO ============ -->
+  <section class="relative w-full min-h-[88vh] flex items-center justify-center overflow-hidden" aria-labelledby="hero-heading">
+    <div class="absolute inset-0 z-0">
+      <img src="../assets/images/hero/hero_library.jpg" alt="Grand antique library with mahogany bookshelves and leather-bound volumes" class="w-full h-full object-cover hero-ken-burns">
+      <div class="hero-gradient absolute inset-0"></div>
+    </div>
+    <div class="relative z-10 w-full max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 text-center text-white py-32">
+      <span class="overline text-[var(--color-accent)] mb-4 reveal block">Est. 1894 · London, England</span>
+      <h1 id="hero-heading" class="reveal mb-6 font-heading font-bold max-w-4xl mx-auto drop-shadow-md" style="color:#FFFFF0;">
+        Curators of Literary Antiquity
+      </h1>
+      <p class="reveal subtext text-lg lg:text-xl font-body max-w-2xl mx-auto mb-12 delay-100" style="color:rgba(245,245,220,0.88);">
+        Discover our collection of rare first editions, historic manuscripts, and exquisitely bound classic literature spanning across five centuries.
+      </p>
+      <div class="reveal hero-cta-group flex flex-col sm:flex-row justify-center items-center gap-4 delay-200">
+        <a href="services.html" class="btn-primary w-full sm:w-auto px-8 py-3.5">
+          <i class="fa-solid fa-magnifying-glass"></i> Browse Collection
+        </a>
+        <a href="contact.html" class="btn-accent w-full sm:w-auto px-8 py-3.5">
+          <i class="fa-solid fa-coins"></i> Sell Your Books
+        </a>
+      </div>
+      <!-- Stats row -->
+      <div class="reveal mt-16 grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-3xl mx-auto delay-300">
+        <div class="text-center">
+          <div class="font-heading font-bold text-3xl" style="color:var(--color-accent)"><span class="animate-counter" data-target="4200" data-suffix="+">4200+</span></div>
+          <div class="text-xs uppercase tracking-widest mt-1" style="color:rgba(245,245,220,0.65)">Rare Titles</div>
+        </div>
+        <div class="text-center">
+          <div class="font-heading font-bold text-3xl" style="color:var(--color-accent)"><span class="animate-counter" data-target="130" data-suffix="">130</span></div>
+          <div class="text-xs uppercase tracking-widest mt-1" style="color:rgba(245,245,220,0.65)">Years of Heritage</div>
+        </div>
+        <div class="text-center">
+          <div class="font-heading font-bold text-3xl" style="color:var(--color-accent)"><span class="animate-counter" data-target="850" data-suffix="+">850+</span></div>
+          <div class="text-xs uppercase tracking-widest mt-1" style="color:rgba(245,245,220,0.65)">Collectors Served</div>
+        </div>
+        <div class="text-center">
+          <div class="font-heading font-bold text-3xl" style="color:var(--color-accent)"><span class="animate-counter" data-target="62" data-suffix="">62</span></div>
+          <div class="text-xs uppercase tracking-widest mt-1" style="color:rgba(245,245,220,0.65)">Countries Shipped</div>
+        </div>
+      </div>
+    </div>
+    <!-- Scroll cue -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 opacity-60">
+      <div class="text-white text-xs uppercase tracking-widest font-body">Scroll</div>
+      <div class="w-px h-8 bg-white opacity-50 animate-pulse"></div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 2: FEATURED COLLECTIONS ============ -->
+  <section class="py-20 lg:py-28 bg-brandBg" aria-labelledby="collections-heading">
+    <div class="section-container">
+      <div class="section-heading reveal">
+        <span class="overline">Our Collections</span>
+        <h2 id="collections-heading" class="text-brand mt-2">Featured Collections</h2>
+        <p class="subtext mt-3 text-base lg:text-lg">Carefully curated groupings for the discerning bibliophile, available for immediate inquiry.</p>
+      </div>
+
+      <!-- 4-inline / 2x2 grid (never 3+1 orphan) -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+
+        <!-- Card 1: 19th Century Classics -->
+        <div class="card reveal group">
+          <div class="relative aspect-4-3 overflow-hidden">
+            <img src="../assets/images/books/leather_books.jpg" alt="19th century leather-bound classics collection" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            <div class="absolute top-3 start-3">
+              <span class="badge badge-info">130+ Titles</span>
+            </div>
+          </div>
+          <div class="p-5 text-center">
+            <h3 class="font-heading text-brand font-semibold mb-2 text-lg">19th Century Classics</h3>
+            <p class="card-text mb-4">Original leather-bound volumes from the Victorian and Romantic eras.</p>
+            <a href="service-details.html" class="inline-flex items-center gap-2 text-sm font-semibold text-brand hover:text-brandAccent transition-colors">
+              Explore <i class="fa-solid fa-arrow-right text-[10px]"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 2: Illuminated Texts -->
+        <div class="card reveal delay-100 group">
+          <div class="relative aspect-4-3 overflow-hidden">
+            <img src="../assets/images/books/rare_manuscript.jpg" alt="Illuminated medieval manuscript with gold leaf and calligraphy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            <div class="absolute top-3 start-3">
+              <span class="badge badge-warning">Rare</span>
+            </div>
+          </div>
+          <div class="p-5 text-center">
+            <h3 class="font-heading text-brand font-semibold mb-2 text-lg">Illuminated Texts</h3>
+            <p class="card-text mb-4">Handcrafted manuscripts and intricate early religious illuminations.</p>
+            <a href="service-details.html" class="inline-flex items-center gap-2 text-sm font-semibold text-brand hover:text-brandAccent transition-colors">
+              Explore <i class="fa-solid fa-arrow-right text-[10px]"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 3: Scientific Treatises -->
+        <div class="card reveal delay-200 group">
+          <div class="relative aspect-4-3 overflow-hidden">
+            <img src="../assets/images/books/first_edition.jpg" alt="First edition scientific treatise with gold embossed cover" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            <div class="absolute top-3 start-3">
+              <span class="badge badge-success">In Stock</span>
+            </div>
+          </div>
+          <div class="p-5 text-center">
+            <h3 class="font-heading text-brand font-semibold mb-2 text-lg">Scientific Treatises</h3>
+            <p class="card-text mb-4">Early printed volumes documenting the strides of human knowledge.</p>
+            <a href="service-details.html" class="inline-flex items-center gap-2 text-sm font-semibold text-brand hover:text-brandAccent transition-colors">
+              Explore <i class="fa-solid fa-arrow-right text-[10px]"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 4: Poets & Playwrights -->
+        <div class="card reveal delay-300 group">
+          <div class="relative aspect-4-3 overflow-hidden">
+            <img src="../assets/images/books/leather_books.jpg" alt="Poetry and playwright first edition collections" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90" style="filter:sepia(0.3);">
+            <div class="absolute top-3 start-3">
+              <span class="badge badge-info">First Eds.</span>
+            </div>
+          </div>
+          <div class="p-5 text-center">
+            <h3 class="font-heading text-brand font-semibold mb-2 text-lg">Poets &amp; Playwrights</h3>
+            <p class="card-text mb-4">First editions from the giants of the world literary stage.</p>
+            <a href="service-details.html" class="inline-flex items-center gap-2 text-sm font-semibold text-brand hover:text-brandAccent transition-colors">
+              Explore <i class="fa-solid fa-arrow-right text-[10px]"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 3: OUR STORY ============ -->
+  <section class="py-20 lg:py-28 bg-brandCard border-y border-borderNav" aria-labelledby="story-heading">
+    <div class="section-container">
+      <div class="split-section-grid grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-stretch">
+        <!-- Image column — equal vertical start/end with text -->
+        <div class="reveal min-h-[420px] h-full">
+          <img src="../assets/images/team/curator_01.jpg" alt="Head Curator examining a rare leather-bound volume" class="w-full h-full object-cover rounded-sm shadow-lg">
+        </div>
+        <!-- Text column — vertically centered within same height -->
+        <div class="reveal flex flex-col justify-center h-full delay-100">
+          <span class="overline mb-3">Our Heritage</span>
+          <h2 id="story-heading" class="font-heading text-brand font-bold mb-6">Preserving The Physical Architecture of Knowledge</h2>
+          <div class="space-y-4 subtext text-base leading-relaxed mb-8">
+            <p>Founded in 1894, the Antiquarian Rare Bookstore has been a haven for scholars, collectors, and institutions worldwide. We believe a rare book is more than words on paper; it is an artifact of human history, complete with the marginalia, bindings, and provenance of generations past.</p>
+            <p>Our resident curators are foremost authorities in appraisal, bookbinding restoration, and literary forensics, dedicating their lives to the stewardship of these delicate volumes.</p>
+          </div>
+          <!-- Stats row within story -->
+          <div class="grid grid-cols-3 gap-4 mb-8 border-y border-borderNav py-6">
+            <div>
+              <div class="font-heading font-bold text-2xl text-brand animate-counter" data-target="4200" data-suffix="+">4200+</div>
+              <div class="text-xs text-brandTextSub uppercase tracking-wider mt-0.5">Books Curated</div>
+            </div>
+            <div>
+              <div class="font-heading font-bold text-2xl text-brand animate-counter" data-target="48" data-suffix="">48</div>
+              <div class="text-xs text-brandTextSub uppercase tracking-wider mt-0.5">Expert Curators</div>
+            </div>
+            <div>
+              <div class="font-heading font-bold text-2xl text-brand animate-counter" data-target="850" data-suffix="+">850+</div>
+              <div class="text-xs text-brandTextSub uppercase tracking-wider mt-0.5">Clients Served</div>
+            </div>
+          </div>
+          <a href="about.html" class="btn-primary self-start px-7 py-3">
+            <i class="fa-solid fa-book-open"></i> Read Our Story
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 4: SERVICES HIGHLIGHTS ============ -->
+  <section class="py-20 lg:py-28 bg-brandBg" aria-labelledby="services-heading">
+    <div class="section-container">
+      <div class="section-heading reveal">
+        <span class="overline">What We Offer</span>
+        <h2 id="services-heading" class="text-brand mt-2">Our Specialist Services</h2>
+        <p class="subtext mt-3">Museum-grade expertise for every stage of the rare book journey.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+        <!-- Service 1 -->
+        <div class="reveal text-center group">
+          <div class="w-16 h-16 mx-auto bg-brandCard border border-borderNav rounded-full flex items-center justify-center mb-6 text-brandAccent text-2xl group-hover:bg-brand group-hover:text-white transition-colors duration-300 shadow-sm">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </div>
+          <h3 class="font-heading text-brand font-semibold mb-3">Appraisal &amp; Authentication</h3>
+          <p class="subtext text-sm leading-relaxed mb-4">Certified provenance verification and market valuation for individual assets or entire institutional collections.</p>
+          <!-- Compact progress bar -->
+          <div class="text-xs text-brandTextSub text-start mb-1">Client Satisfaction</div>
+          <div class="w-full bg-borderNav rounded-full h-1.5 mb-4">
+            <div class="h-1.5 rounded-full bg-brand" style="width:97%"></div>
+          </div>
+          <a href="services.html" class="text-sm font-semibold text-brand hover:text-brandAccent transition-colors inline-flex items-center gap-1">
+            Learn More <i class="fa-solid fa-arrow-right text-[9px]"></i>
+          </a>
+        </div>
+
+        <!-- Service 2 -->
+        <div class="reveal text-center group delay-100">
+          <div class="w-16 h-16 mx-auto bg-brandCard border border-borderNav rounded-full flex items-center justify-center mb-6 text-brandAccent text-2xl group-hover:bg-brand group-hover:text-white transition-colors duration-300 shadow-sm">
+            <i class="fa-solid fa-scroll"></i>
+          </div>
+          <h3 class="font-heading text-brand font-semibold mb-3">Manuscript Restoration</h3>
+          <p class="subtext text-sm leading-relaxed mb-4">Museum-grade leather reconsolidation, page mending, and custom rebinding utilizing period-accurate materials and techniques.</p>
+          <div class="text-xs text-brandTextSub text-start mb-1">Projects Completed</div>
+          <div class="w-full bg-borderNav rounded-full h-1.5 mb-4">
+            <div class="h-1.5 rounded-full bg-brandAccent" style="width:88%"></div>
+          </div>
+          <a href="services.html" class="text-sm font-semibold text-brand hover:text-brandAccent transition-colors inline-flex items-center gap-1">
+            Learn More <i class="fa-solid fa-arrow-right text-[9px]"></i>
+          </a>
+        </div>
+
+        <!-- Service 3 -->
+        <div class="reveal text-center group delay-200">
+          <div class="w-16 h-16 mx-auto bg-brandCard border border-borderNav rounded-full flex items-center justify-center mb-6 text-brandAccent text-2xl group-hover:bg-brand group-hover:text-white transition-colors duration-300 shadow-sm">
+            <i class="fa-solid fa-gavel"></i>
+          </div>
+          <h3 class="font-heading text-brand font-semibold mb-3">Procurement &amp; Sourcing</h3>
+          <p class="subtext text-sm leading-relaxed mb-4">Bespoke acquisition representation at international auctions and private estates for high-value and elusive pieces.</p>
+          <div class="text-xs text-brandTextSub text-start mb-1">Acquisition Rate</div>
+          <div class="w-full bg-borderNav rounded-full h-1.5 mb-4">
+            <div class="h-1.5 rounded-full bg-brand" style="width:79%"></div>
+          </div>
+          <a href="services.html" class="text-sm font-semibold text-brand hover:text-brandAccent transition-colors inline-flex items-center gap-1">
+            Learn More <i class="fa-solid fa-arrow-right text-[9px]"></i>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 5: RARE FINDS SHOWCASE ============ -->
+  <section class="py-20 lg:py-28 bg-brandCard border-y border-borderNav" aria-labelledby="rarefinds-heading">
+    <div class="section-container">
+      <div class="section-heading reveal">
+        <span class="overline">Recent Acquisitions</span>
+        <h2 id="rarefinds-heading" class="text-brand mt-2">Rare &amp; Notable Acquisitions</h2>
+        <p class="subtext mt-3">Recent additions to our vault, available for immediate scholarly or collector inquiry.</p>
+      </div>
+
+      <!-- Grid — 3 items, all centered with grid layout (single View Full Catalog CTA at bottom) -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+
+        <!-- Item 1 -->
+        <a href="service-details.html" class="article-card group block reveal" aria-label="Moby-Dick First Edition 1851">
+          <div class="relative overflow-hidden aspect-1-1">
+            <img src="../assets/images/books/leather_books.jpg" alt="First edition of Moby-Dick 1851 leather binding" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div class="absolute top-3 end-3">
+              <span class="badge badge-warning">First Edition</span>
+            </div>
+          </div>
+          <div class="p-5 text-center">
+            <span class="text-xs uppercase tracking-widest text-brandAccent block mb-1.5">1851 · Herman Melville</span>
+            <h4 class="font-heading text-brand font-semibold mb-2 line-clamp-1">Moby-Dick; or, The Whale</h4>
+            <p class="text-brandText font-bold">£27,400</p>
+          </div>
+        </a>
+
+        <!-- Item 2 -->
+        <a href="service-details.html" class="article-card group block reveal delay-100" aria-label="Book of Hours Manuscript 1420">
+          <div class="relative overflow-hidden aspect-1-1">
+            <img src="../assets/images/books/rare_manuscript.jpg" alt="Illuminated Book of Hours manuscript circa 1420" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div class="absolute top-3 end-3">
+              <span class="badge badge-danger">POA</span>
+            </div>
+          </div>
+          <div class="p-5 text-center">
+            <span class="text-xs uppercase tracking-widest text-brandAccent block mb-1.5">Manuscript · c.1420</span>
+            <h4 class="font-heading text-brand font-semibold mb-2 line-clamp-1">Illuminated Book of Hours</h4>
+            <p class="text-brandText font-bold">Price on Application</p>
+          </div>
+        </a>
+
+        <!-- Item 3 -->
+        <a href="service-details.html" class="article-card group block reveal delay-200" aria-label="Shakespeare Second Folio 1632">
+          <div class="relative overflow-hidden aspect-1-1">
+            <img src="../assets/images/books/first_edition.jpg" alt="Shakespeare Second Folio 1632 gold embossed binding" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div class="absolute top-3 end-3">
+              <span class="badge badge-info">Second Folio</span>
+            </div>
+          </div>
+          <div class="p-5 text-center">
+            <span class="text-xs uppercase tracking-widest text-brandAccent block mb-1.5">1632 · William Shakespeare</span>
+            <h4 class="font-heading text-brand font-semibold mb-2 line-clamp-1">Mr. William Shakespeares Comedies</h4>
+            <p class="text-brandText font-bold">£85,000</p>
+          </div>
+        </a>
+
+      </div>
+
+      <!-- Single centered CTA -->
+      <div class="text-center reveal">
+        <a href="blog.html" class="btn-accent px-10 py-3.5">
+          <i class="fa-solid fa-book-bookmark"></i> View Full Catalog
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ SECTION 6: NEWSLETTER ============ -->
+  <section class="relative py-24 overflow-hidden text-white" aria-labelledby="newsletter-heading" style="background-color:var(--color-secondary);">
+    <div class="absolute inset-0 z-0">
+      <img src="../assets/images/hero/hero_reading_room.jpg" alt="Victorian reading room background" class="w-full h-full object-cover opacity-20">
+    </div>
+    <div class="absolute inset-0 z-0" style="background:linear-gradient(135deg, rgba(74,4,4,0.92) 0%, rgba(44,10,10,0.95) 100%);"></div>
+    <div class="relative z-10 section-container text-center">
+      <div class="reveal max-w-2xl mx-auto">
+        <i class="fa-solid fa-envelope-open-text text-4xl mb-6" style="color:var(--color-accent);"></i>
+        <h2 id="newsletter-heading" class="font-heading font-bold mb-4" style="color:#FFFFF0;">The Collector's Chronicle</h2>
+        <p class="mb-8 text-[15px] leading-relaxed" style="color:rgba(245,245,220,0.82);">Join our private registry to receive advanced notices of new acquisitions, auction forecasts, and binding restoration articles from our curators.</p>
+        <form class="newsletter-form flex flex-col sm:flex-row gap-3 justify-center max-w-md mx-auto" novalidate>
+          <input type="email" placeholder="Your electronic mail address" required
+            class="form-field flex-1 bg-white/10 border-white/20 text-white placeholder-white/50 focus:border-[var(--color-accent)]"
+            aria-label="Email address for newsletter" style="color:#fff;">
+          <button type="submit" class="btn-accent px-6 py-3 whitespace-nowrap">Subscribe</button>
+        </form>
+        <p class="mt-4 text-xs" style="color:rgba(245,245,220,0.5);">We respect your privacy. Unsubscribe at any time.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ UNIVERSAL FOOTER ============ -->
+<footer class="site-footer pt-16 pb-8" role="contentinfo" aria-label="Site footer">
+  <div class="section-container">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+
+      <!-- Brand -->
+      <div>
+        <a href="home-1.html" class="flex items-center gap-2 mb-5" aria-label="Antiquarian Rare Books">
+          <i class="fa-solid fa-book-open text-2xl" style="color:var(--color-accent);"></i>
+          <span class="footer-brand-name">Antiquarian</span>
+        </a>
+        <p class="footer-tagline mb-6">Dedicated stewards of literary history, offering world-class provenance authentication and museum-quality restoration since 1894.</p>
+        <div class="flex gap-3 footer-social-links">
+          <a href="#" class="w-9 h-9 rounded-full bg-brand flex items-center justify-center footer-link hover:bg-brandAccent transition-colors" aria-label="Facebook" style="color:#fff;">
+            <i class="fa-brands fa-facebook-f text-sm"></i>
+          </a>
+          <a href="#" class="w-9 h-9 rounded-full bg-brand flex items-center justify-center footer-link hover:bg-brandAccent transition-colors" aria-label="Instagram" style="color:#fff;">
+            <i class="fa-brands fa-instagram text-sm"></i>
+          </a>
+          <a href="#" class="w-9 h-9 rounded-full bg-brand flex items-center justify-center footer-link hover:bg-brandAccent transition-colors" aria-label="Twitter" style="color:#fff;">
+            <i class="fa-brands fa-x-twitter text-sm"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Expertise -->
+      <div>
+        <h4 class="footer-heading">Expertise</h4>
+        <ul class="space-y-3">
+          <li><a href="services.html" class="footer-link">First Editions</a></li>
+          <li><a href="services.html" class="footer-link">Manuscripts</a></li>
+          <li><a href="services.html" class="footer-link">Appraisals</a></li>
+          <li><a href="services.html" class="footer-link">Restoration</a></li>
+          <li><a href="services.html" class="footer-link">Library Curation</a></li>
+        </ul>
+      </div>
+
+      <!-- Library Vault -->
+      <div>
+        <h4 class="footer-heading">Library Vault</h4>
+        <ul class="space-y-3">
+          <li><a href="blog.html" class="footer-link">Recent Acquisitions</a></li>
+          <li><a href="blog.html" class="footer-link">Curator's Journal</a></li>
+          <li><a href="pricing.html" class="footer-link">Membership Tiers</a></li>
+          <li><a href="dashboard-user.html" class="footer-link">Collector's Registry</a></li>
+          <li><a href="dashboard-admin.html" class="footer-link">Curator Portal</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <h4 class="footer-heading">The Reading Room</h4>
+        <ul class="space-y-4">
+          <li class="flex items-start gap-3 contact-info-item">
+            <i class="fa-solid fa-location-dot mt-0.5 flex-shrink-0" style="color:var(--color-accent);"></i>
+            <span class="footer-link text-sm">144 Oxford Circle, Suite B<br>London, LDN 408</span>
+          </li>
+          <li class="flex items-center gap-3 contact-info-item">
+            <i class="fa-solid fa-phone flex-shrink-0" style="color:var(--color-accent);"></i>
+            <a href="tel:+442079460831" class="footer-link text-sm">+44 (0) 20 7946 0831</a>
+          </li>
+          <li class="flex items-center gap-3 contact-info-item">
+            <i class="fa-solid fa-envelope flex-shrink-0" style="color:var(--color-accent);"></i>
+            <a href="mailto:inquiries@antiquarian.rare" class="footer-link text-sm">inquiries@antiquarian.rare</a>
+          </li>
+          <li class="flex items-center gap-3 contact-info-item">
+            <i class="fa-regular fa-clock flex-shrink-0" style="color:var(--color-accent);"></i>
+            <span class="footer-link text-sm">Mon–Sat · 09:00–18:00</span>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="border-t pt-8 flex flex-col md:flex-row justify-between items-center gap-4" style="border-color:rgba(212,175,55,0.15);">
+      <p class="footer-copyright">&copy; 2026 Antiquarian Rare Books. All rights preserved.</p>
+      <div class="flex gap-6">
+        <a href="#" class="footer-copyright hover:text-brandAccent transition-colors">Terms of Trade</a>
+        <a href="#" class="footer-copyright hover:text-brandAccent transition-colors">Privacy Paradigm</a>
+        <a href="sitemap.xml" class="footer-copyright hover:text-brandAccent transition-colors">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/animations.js"></script>
+<script src="../assets/js/forms.js"></script>
+</body>
+</html>

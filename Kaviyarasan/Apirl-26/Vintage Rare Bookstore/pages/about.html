@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us – Antiquarian Rare Books | Our Heritage Since 1894</title>
+    <meta name="description" content="Learn the 130-year heritage of Antiquarian Rare Books. Meet our expert curators, discover our mission, and explore our London shop.">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicons/favicon-32.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config={darkMode:['class','[data-theme="dark"]'],theme:{extend:{colors:{brand:'var(--color-primary)',brandSecondary:'var(--color-secondary)',brandAccent:'var(--color-accent)',brandBg:'var(--color-bg-main)',brandCard:'var(--color-bg-card)',brandFooter:'var(--color-bg-footer)',brandText:'var(--color-text-main)',brandTextMuted:'var(--color-text-muted)',brandTextSub:'var(--color-text-sub)',borderNav:'var(--color-border)'},fontFamily:{heading:'var(--font-heading)',body:'var(--font-body)'}}}}</script>
+    <link rel="stylesheet" href="../assets/css/main.css"><link rel="stylesheet" href="../assets/css/rtl.css">
+</head>
+<body class="bg-brandBg text-brandText">
+
+<!-- NAV -->
+<nav class="fixed-nav" role="navigation" aria-label="Main navigation">
+  <div class="max-w-[1280px] w-full mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-full">
+    <a href="home-1.html" class="nav-brand flex items-center gap-2 text-brand font-heading font-bold text-2xl shrink-0 group"><i class="fa-solid fa-book-open group-hover:scale-110 transition-transform"></i><span class="tracking-tight">Antiquarian</span></a>
+    <div class="hidden lg:flex items-center h-full nav-links-container" style="gap:0;">
+      <div class="nav-dropdown-parent relative h-full flex items-center"><button class="nav-link flex items-center gap-1">Home <i class="fa-solid fa-chevron-down text-[10px]"></i></button><div class="nav-dropdown"><a href="home-1.html">Curated Collection</a><a href="home-2.html">Academic Niche</a></div></div>
+      <a href="about.html" class="nav-link active">About Us</a>
+      <a href="services.html" class="nav-link">Services</a>
+      <a href="blog.html" class="nav-link">Blog</a>
+      <a href="pricing.html" class="nav-link">Pricing</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </div>
+    <div class="flex items-center gap-2 lg:gap-3 shrink-0">
+      <button class="theme-toggle-btn w-9 h-9 flex items-center justify-center rounded-full bg-brandCard border border-borderNav text-brandText hover:border-brand transition-colors" aria-label="Toggle theme"><i class="theme-icon fa-solid fa-moon text-sm"></i></button>
+      <button class="dir-toggle-btn w-9 h-9 flex items-center justify-center rounded-full bg-brandCard border border-borderNav text-brandText hover:border-brand transition-colors" aria-label="Toggle direction"><i class="fa-solid fa-globe text-sm"></i></button>
+      <a href="login.html" class="hidden sm:inline-flex btn-accent px-4 py-2 text-sm rounded-sm">Sign In</a>
+      <button id="mobile-menu-btn" class="lg:hidden w-10 h-10 flex items-center justify-center text-brandText hover:text-brand" aria-label="Open menu" aria-expanded="false"><i class="fa-solid fa-bars text-xl"></i></button>
+    </div>
+  </div>
+  <div id="mobile-menu" class="mobile-nav-menu lg:hidden">
+    <a href="home-1.html" class="mobile-nav-link">Home – Curated</a><a href="home-2.html" class="mobile-nav-link">Home – Academic</a>
+    <div class="mobile-nav-divider"></div>
+    <a href="about.html" class="mobile-nav-link active">About Us</a><a href="services.html" class="mobile-nav-link">Services</a><a href="blog.html" class="mobile-nav-link">Blog</a><a href="pricing.html" class="mobile-nav-link">Pricing</a><a href="contact.html" class="mobile-nav-link">Contact</a>
+    <div class="mobile-nav-divider"></div><a href="login.html" class="btn-accent w-full text-center py-2.5 rounded-sm text-sm font-semibold">Sign In</a>
+  </div>
+</nav>
+
+<main class="pt-nav flex-1 w-full">
+
+  <!-- S1: HERO -->
+  <section class="relative w-full min-h-[60vh] flex items-center justify-center overflow-hidden" aria-labelledby="about-hero-heading">
+    <div class="absolute inset-0 z-0">
+      <img src="../assets/images/hero/hero_reading_room.jpg" alt="Victorian private reading room with leather armchairs and bookshelves" class="w-full h-full object-cover">
+      <div class="hero-gradient absolute inset-0"></div>
+    </div>
+    <div class="relative z-10 text-center text-white py-24 px-4">
+      <span class="overline mb-4 block reveal" style="color:var(--color-accent);">Our Heritage</span>
+      <h1 id="about-hero-heading" class="reveal font-heading font-bold mb-4" style="color:#FFFFF0;">About Antiquarian Rare Books</h1>
+      <p class="reveal subtext max-w-2xl mx-auto text-lg delay-100" style="color:rgba(245,245,220,0.85);">A century of stewardship, scholarship, and the preservation of humanity's literary legacy.</p>
+    </div>
+  </section>
+
+  <!-- S2: HISTORY TIMELINE -->
+  <section class="py-20 lg:py-28 bg-brandBg" aria-labelledby="history-heading">
+    <div class="section-container">
+      <div class="section-heading reveal">
+        <span class="overline">Our Journey</span>
+        <h2 id="history-heading" class="text-brand mt-2">130 Years of Literary Stewardship</h2>
+        <p class="subtext mt-3">From a modest Victorian bookshop to an internationally recognised authority on rare books and manuscripts.</p>
+      </div>
+      <div class="relative max-w-3xl mx-auto">
+        <!-- Timeline vertical line -->
+        <div class="absolute left-8 top-0 bottom-0 w-px" style="background:var(--color-border); display:none;" aria-hidden="true"></div>
+        <div class="space-y-10">
+          <div class="process-step reveal">
+            <div class="step-number flex-shrink-0" style="background:var(--color-accent); color:#1A0A00; font-family:var(--font-body); font-size:0.8rem; font-weight:700;">1894</div>
+            <div><h3 class="font-heading text-brand font-semibold mb-2 text-lg">Founded on Oxford Circle</h3><p class="subtext text-sm">Harold Edmund Fitch opens a modest antiquarian bookshop, specialising in Victorian first editions and hand-painted illuminations.</p></div>
+          </div>
+          <div class="process-step reveal delay-100">
+            <div class="step-number flex-shrink-0" style="background:var(--color-primary); font-family:var(--font-body); font-size:0.8rem; font-weight:700;">1921</div>
+            <div><h3 class="font-heading text-brand font-semibold mb-2 text-lg">Royal Warrant of Appointment</h3><p class="subtext text-sm">Appointed Official Bookseller to His Majesty's Household — cementing our reputation for impeccable provenance research and discretion.</p></div>
+          </div>
+          <div class="process-step reveal delay-200">
+            <div class="step-number flex-shrink-0" style="background:var(--color-accent); color:#1A0A00; font-family:var(--font-body); font-size:0.8rem; font-weight:700;">1968</div>
+            <div><h3 class="font-heading text-brand font-semibold mb-2 text-lg">Forensic Authentication Lab</h3><p class="subtext text-sm">We established one of Europe's first dedicated rare book forensics laboratories, pioneering paper stock dating and ink composition analysis.</p></div>
+          </div>
+          <div class="process-step reveal delay-300">
+            <div class="step-number flex-shrink-0" style="background:var(--color-primary); font-family:var(--font-body); font-size:0.8rem; font-weight:700;">2004</div>
+            <div><h3 class="font-heading text-brand font-semibold mb-2 text-lg">International Expansion</h3><p class="subtext text-sm">Partnerships established with the Bibliothèque nationale de France, the Library of Congress, and 40+ private foundations worldwide.</p></div>
+          </div>
+          <div class="process-step reveal delay-400">
+            <div class="step-number flex-shrink-0" style="background:var(--color-accent); color:#1A0A00; font-family:var(--font-body); font-size:0.8rem; font-weight:700;">2024</div>
+            <div><h3 class="font-heading text-brand font-semibold mb-2 text-lg">Digital Archive Initiative</h3><p class="subtext text-sm">Launch of our proprietary Provenance Network — a global digital archive linking auction records, library stamps, and dealer histories across 200 years.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S3: TEAM MEMBERS -->
+  <section class="py-20 lg:py-28 bg-brandCard border-y border-borderNav" aria-labelledby="team-heading">
+    <div class="section-container">
+      <div class="section-heading reveal">
+        <span class="overline">Our Curators</span>
+        <h2 id="team-heading" class="text-brand mt-2">Meet the Bibliophiles</h2>
+        <p class="subtext mt-3">Specialists in rare books, manuscripts, and literary antiquities, each with decades of dedicated expertise.</p>
+      </div>
+      <!-- 3 curators — consistent aspect ratio, compact sizing -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-8">
+        <div class="card reveal text-center group">
+          <div class="aspect-3-4 overflow-hidden">
+            <img src="../assets/images/team/curator_01.jpg" alt="Dr. Margaret Fitch, Head Curator and bibliographer" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+          </div>
+          <div class="p-5">
+            <h3 class="font-heading text-brand font-semibold mb-1 text-lg">Dr. Margaret Fitch</h3>
+            <p class="text-brandAccent text-xs font-bold uppercase tracking-wider mb-3">Head Curator &amp; Bibliographer</p>
+            <p class="card-text text-xs leading-relaxed">A great-great-granddaughter of our founder, Margaret has 32 years of fellowship at the British Library, specialising in Victorian periodical literature.</p>
+          </div>
+        </div>
+        <div class="card reveal delay-100 text-center group">
+          <div class="aspect-3-4 overflow-hidden">
+            <img src="../assets/images/team/curator_02.jpg" alt="Prof. James Alderton, Senior Authentication Specialist" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+          </div>
+          <div class="p-5">
+            <h3 class="font-heading text-brand font-semibold mb-1 text-lg">Prof. James Alderton</h3>
+            <p class="text-brandAccent text-xs font-bold uppercase tracking-wider mb-3">Senior Authentication Specialist</p>
+            <p class="card-text text-xs leading-relaxed">Oxford fellow and former director of the Ashmolean Book Forensics Unit. Author of three seminal works on paper dating and incunabula authentication.</p>
+          </div>
+        </div>
+        <div class="card reveal delay-200 text-center group">
+          <div class="aspect-3-4 overflow-hidden">
+            <img src="../assets/images/team/curator_03.jpg" alt="Dr. Sophia Rahman, Manuscript Conservation Specialist" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+          </div>
+          <div class="p-5">
+            <h3 class="font-heading text-brand font-semibold mb-1 text-lg">Dr. Sophia Rahman</h3>
+            <p class="text-brandAccent text-xs font-bold uppercase tracking-wider mb-3">Manuscript Conservation</p>
+            <p class="card-text text-xs leading-relaxed">A specialist in Islamic manuscripts and medieval illuminations. Trained at the Institut National du Patrimoine, Paris, with 18 years in manuscript conservation.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S4: MISSION & VALUES -->
+  <section class="py-20 lg:py-28 bg-brandBg" aria-labelledby="mission-heading">
+    <div class="section-container">
+      <div class="section-heading reveal">
+        <span class="overline">Our Principles</span>
+        <h2 id="mission-heading" class="text-brand mt-2">Mission &amp; Values</h2>
+        <p class="subtext mt-3">The philosophy that has guided four generations of Antiquarian curators.</p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="reveal p-6 bg-brandCard border border-borderNav rounded-sm text-center hover:shadow-md transition-shadow">
+          <div class="w-14 h-14 mx-auto rounded-full bg-brandBg border border-borderNav flex items-center justify-center text-brandAccent text-xl mb-4"><i class="fa-solid fa-shield-halved"></i></div>
+          <h3 class="font-heading text-brand font-semibold mb-2">Integrity</h3>
+          <p class="card-text text-sm">Absolute honesty in provenance reporting — we will never misrepresent condition, edition, or authenticity.</p>
+        </div>
+        <div class="reveal delay-100 p-6 bg-brandCard border border-borderNav rounded-sm text-center hover:shadow-md transition-shadow">
+          <div class="w-14 h-14 mx-auto rounded-full bg-brandBg border border-borderNav flex items-center justify-center text-brandAccent text-xl mb-4"><i class="fa-solid fa-hand-holding-heart"></i></div>
+          <h3 class="font-heading text-brand font-semibold mb-2">Stewardship</h3>
+          <p class="card-text text-sm">Each book entrusted to us is handled with museum-grade care and documented with the highest bibliographic standards.</p>
+        </div>
+        <div class="reveal delay-200 p-6 bg-brandCard border border-borderNav rounded-sm text-center hover:shadow-md transition-shadow">
+          <div class="w-14 h-14 mx-auto rounded-full bg-brandBg border border-borderNav flex items-center justify-center text-brandAccent text-xl mb-4"><i class="fa-solid fa-microscope"></i></div>
+          <h3 class="font-heading text-brand font-semibold mb-2">Scholarship</h3>
+          <p class="card-text text-sm">Our team maintains active research programmes — publishing in peer-reviewed journals and presenting at international bibliographic conferences.</p>
+        </div>
+        <div class="reveal delay-300 p-6 bg-brandCard border border-borderNav rounded-sm text-center hover:shadow-md transition-shadow">
+          <div class="w-14 h-14 mx-auto rounded-full bg-brandBg border border-borderNav flex items-center justify-center text-brandAccent text-xl mb-4"><i class="fa-solid fa-earth-americas"></i></div>
+          <h3 class="font-heading text-brand font-semibold mb-2">Accessibility</h3>
+          <p class="card-text text-sm">We believe these cultural artefacts should be accessible for study. We partner with 60+ public institutions to facilitate academic access.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S5: TESTIMONIALS -->
+  <section class="py-20 lg:py-28 bg-brandCard border-y border-borderNav" aria-labelledby="testimonials-heading">
+    <div class="section-container">
+      <div class="section-heading reveal">
+        <span class="overline">Client Voices</span>
+        <h2 id="testimonials-heading" class="text-brand mt-2">From Institutions &amp; Collectors</h2>
+      </div>
+      <div class="testimonial-carousel max-w-3xl mx-auto reveal">
+        <div class="testimonial-track">
+          <div class="testimonial-card">
+            <div class="flex gap-1 text-brandAccent mb-4">
+              <i class="fa-solid fa-star text-sm"></i><i class="fa-solid fa-star text-sm"></i><i class="fa-solid fa-star text-sm"></i><i class="fa-solid fa-star text-sm"></i><i class="fa-solid fa-star text-sm"></i>
+            </div>
+            <p class="subtext text-base italic leading-relaxed mb-6">"Antiquarian authenticated our Caxton incunabulum in three weeks — a task that three other firms declined. Their report is a masterwork of bibliographic scholarship. We are now regular clients."</p>
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 rounded-full bg-brand flex items-center justify-center text-white font-heading font-bold">BL</div>
+              <div><div class="font-semibold text-brandText text-sm">Dr. R. Whitmore</div><div class="text-xs text-brandTextSub">Keeper of Printed Books, British Library</div></div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="flex gap-1 text-brandAccent mb-4">
+              <i class="fa-solid fa-star text-sm"></i><i class="fa-solid fa-star text-sm"></i><i class="fa-solid fa-star text-sm"></i><i class="fa-solid fa-star text-sm"></i><i class="fa-solid fa-star text-sm"></i>
+            </div>
+            <p class="subtext text-base italic leading-relaxed mb-6">"I purchased what I believed was a reprinted Dickens — they discovered it was a presentation copy inscribed personally by Dickens himself. The house's scholarly rigour transforming my collection's most important acquisition."</p>
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 rounded-full bg-brandAccent flex items-center justify-center font-heading font-bold text-sm" style="color:#1A0A00; background:var(--color-accent);">PH</div>
+              <div><div class="font-semibold text-brandText text-sm">Philippe Hartmann</div><div class="text-xs text-brandTextSub">Private Collector, Zurich</div></div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="flex gap-1 text-brandAccent mb-4">
+              <i class="fa-solid fa-star text-sm"></i><i class="fa-solid fa-star text-sm"></i><i class="fa-solid fa-star text-sm"></i><i class="fa-solid fa-star text-sm"></i><i class="fa-solid fa-star text-sm"></i>
+            </div>
+            <p class="subtext text-base italic leading-relaxed mb-6">"We commissioned Antiquarian to curate our foundation's 2,400-volume private library. The resulting catalogue is a landmark scholarly document. The team's dedication was extraordinary."</p>
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 rounded-full bg-brand flex items-center justify-center text-white font-heading font-bold">GF</div>
+              <div><div class="font-semibold text-brandText text-sm">Prof. A. Müller</div><div class="text-xs text-brandTextSub">Director, Gutenberg Foundation, Mainz</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-dots">
+          <div class="testimonial-dot active" role="button" aria-label="Testimonial 1"></div>
+          <div class="testimonial-dot" role="button" aria-label="Testimonial 2"></div>
+          <div class="testimonial-dot" role="button" aria-label="Testimonial 3"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S6: VISIT OUR SHOP CTA -->
+  <section class="relative py-24 overflow-hidden" aria-labelledby="visit-heading">
+    <div class="absolute inset-0 z-0">
+      <img src="../assets/images/hero/hero_bookshop.jpg" alt="Antiquarian Rare Books bookshop exterior at dusk" class="w-full h-full object-cover">
+      <div class="absolute inset-0 hero-gradient" style="background:linear-gradient(to right, rgba(20,6,6,0.88) 0%, rgba(10,2,2,0.6) 100%);"></div>
+    </div>
+    <div class="relative z-10 section-container">
+      <div class="max-w-xl reveal">
+        <span class="overline mb-4 block" style="color:var(--color-accent);">Visit Us</span>
+        <h2 id="visit-heading" class="font-heading font-bold mb-6" style="color:#FFFFF0;">Come In. Browse. Discover.</h2>
+        <p class="mb-6 leading-relaxed" style="color:rgba(245,245,220,0.82);">Our shop on Oxford Circle is open Monday to Saturday. We welcome collectors, scholars, and curious readers alike. White-glove viewing of our vault items by appointment.</p>
+        <ul class="space-y-3 mb-8">
+          <li class="flex items-center gap-3" style="color:rgba(245,245,220,0.85)"><i class="fa-solid fa-location-dot" style="color:var(--color-accent);"></i> 144 Oxford Circle, Suite B, London</li>
+          <li class="flex items-center gap-3" style="color:rgba(245,245,220,0.85)"><i class="fa-regular fa-clock" style="color:var(--color-accent);"></i> Monday–Saturday · 09:00–18:00</li>
+          <li class="flex items-center gap-3" style="color:rgba(245,245,220,0.85)"><i class="fa-solid fa-phone" style="color:var(--color-accent);"></i> +44 (0) 20 7946 0831</li>
+        </ul>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="contact.html" class="btn-accent px-7 py-3"><i class="fa-solid fa-calendar-check"></i> Book an Appointment</a>
+          <a href="contact.html" class="btn-outline px-7 py-3" style="border-color:rgba(245,245,220,0.4); color:#FFFFF0;">Get Directions</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer pt-16 pb-8" role="contentinfo">
+  <div class="section-container">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+      <div><a href="home-1.html" class="flex items-center gap-2 mb-5"><i class="fa-solid fa-book-open text-2xl" style="color:var(--color-accent);"></i><span class="footer-brand-name">Antiquarian</span></a><p class="footer-tagline mb-6">Dedicated stewards of literary history since 1894.</p><div class="flex gap-3 footer-social-links"><a href="#" class="w-9 h-9 rounded-full bg-brand flex items-center justify-center hover:bg-brandAccent transition-colors" aria-label="Facebook" style="color:#fff;"><i class="fa-brands fa-facebook-f text-sm"></i></a><a href="#" class="w-9 h-9 rounded-full bg-brand flex items-center justify-center hover:bg-brandAccent transition-colors" aria-label="Instagram" style="color:#fff;"><i class="fa-brands fa-instagram text-sm"></i></a><a href="#" class="w-9 h-9 rounded-full bg-brand flex items-center justify-center hover:bg-brandAccent transition-colors" aria-label="Twitter" style="color:#fff;"><i class="fa-brands fa-x-twitter text-sm"></i></a></div></div>
+      <div><h4 class="footer-heading">Expertise</h4><ul class="space-y-3"><li><a href="services.html" class="footer-link">First Editions</a></li><li><a href="services.html" class="footer-link">Manuscripts</a></li><li><a href="services.html" class="footer-link">Appraisals</a></li><li><a href="services.html" class="footer-link">Restoration</a></li></ul></div>
+      <div><h4 class="footer-heading">Library Vault</h4><ul class="space-y-3"><li><a href="blog.html" class="footer-link">Recent Acquisitions</a></li><li><a href="blog.html" class="footer-link">Curator's Journal</a></li><li><a href="pricing.html" class="footer-link">Membership Tiers</a></li><li><a href="dashboard-user.html" class="footer-link">Collector's Registry</a></li></ul></div>
+      <div><h4 class="footer-heading">The Reading Room</h4><ul class="space-y-4"><li class="flex items-start gap-3 contact-info-item"><i class="fa-solid fa-location-dot mt-0.5" style="color:var(--color-accent);"></i><span class="footer-link text-sm">144 Oxford Circle, Suite B<br>London, LDN 408</span></li><li class="flex items-center gap-3 contact-info-item"><i class="fa-solid fa-phone" style="color:var(--color-accent);"></i><a href="tel:+442079460831" class="footer-link text-sm">+44 (0) 20 7946 0831</a></li><li class="flex items-center gap-3 contact-info-item"><i class="fa-solid fa-envelope" style="color:var(--color-accent);"></i><a href="mailto:inquiries@antiquarian.rare" class="footer-link text-sm">inquiries@antiquarian.rare</a></li></ul></div>
+    </div>
+    <div class="border-t pt-8 flex flex-col md:flex-row justify-between items-center gap-4" style="border-color:rgba(212,175,55,0.15);"><p class="footer-copyright">&copy; 2026 Antiquarian Rare Books. All rights preserved.</p><div class="flex gap-6"><a href="#" class="footer-copyright hover:text-brandAccent transition-colors">Terms of Trade</a><a href="#" class="footer-copyright hover:text-brandAccent transition-colors">Privacy Paradigm</a></div></div>
+  </div>
+</footer>
+
+<script src="../assets/js/main.js"></script><script src="../assets/js/animations.js"></script>
+</body>
+</html>

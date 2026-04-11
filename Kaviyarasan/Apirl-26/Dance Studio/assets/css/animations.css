@@ -3,32 +3,6 @@
    GPU-accelerated (transform/opacity only)
    ======================================== */
 
-/* === Preloader === */
-@keyframes preloaderSpin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-@keyframes preloaderPulse {
-  0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.1); opacity: 0.7; }
-}
-
-@keyframes preloaderFade {
-  0% { opacity: 1; transform: scale(1); }
-  100% { opacity: 0; transform: scale(1.5); pointer-events: none; }
-}
-
-/* === Curtain Reveal === */
-@keyframes curtainLeft {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-100%); }
-}
-
-@keyframes curtainRight {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(100%); }
-}
 
 /* === Content Reveals === */
 @keyframes fadeUp {
@@ -346,108 +320,7 @@
   will-change: transform;
 }
 
-/* === Preloader Styles === */
-.preloader {
-  position: fixed;
-  inset: 0;
-  z-index: var(--z-preloader);
-  background: var(--bg-primary);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-6);
-  transition: opacity 0.6s ease, visibility 0.6s ease;
-}
 
-.preloader.hidden {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-}
-
-.preloader__dancer {
-  width: 80px;
-  height: 80px;
-  position: relative;
-}
-
-.preloader__dancer svg {
-  width: 100%;
-  height: 100%;
-  animation: preloaderPulse 1.5s ease-in-out infinite;
-}
-
-.preloader__ring {
-  position: absolute;
-  inset: -10px;
-  border: 3px solid transparent;
-  border-top-color: var(--color-primary);
-  border-radius: 50%;
-  animation: preloaderSpin 1s linear infinite;
-}
-
-.preloader__ring:nth-child(2) {
-  inset: -20px;
-  border-top-color: var(--color-accent);
-  animation-duration: 1.5s;
-  animation-direction: reverse;
-}
-
-.preloader__text {
-  font-family: var(--font-accent);
-  font-size: var(--font-size-xl);
-  color: var(--text-primary);
-  letter-spacing: var(--letter-spacing-wide);
-}
-
-.preloader__progress {
-  width: 200px;
-  height: 3px;
-  background: var(--border-color);
-  border-radius: var(--radius-full);
-  overflow: hidden;
-}
-
-.preloader__progress-bar {
-  height: 100%;
-  background: var(--gradient-primary);
-  border-radius: var(--radius-full);
-  transform-origin: left;
-  animation: progressGrow 1.5s ease forwards;
-}
-
-/* === Curtain === */
-.curtain {
-  position: fixed;
-  inset: 0;
-  z-index: calc(var(--z-preloader) - 1);
-  pointer-events: none;
-}
-
-.curtain__panel {
-  position: absolute;
-  top: 0;
-  width: 50%;
-  height: 100%;
-  background: var(--color-primary);
-}
-
-.curtain__panel--left {
-  inset-inline-start: 0;
-}
-
-.curtain__panel--right {
-  inset-inline-end: 0;
-}
-
-.curtain.open .curtain__panel--left {
-  animation: curtainLeft 1s cubic-bezier(0.65, 0, 0.35, 1) 1.2s forwards;
-}
-
-.curtain.open .curtain__panel--right {
-  animation: curtainRight 1s cubic-bezier(0.65, 0, 0.35, 1) 1.2s forwards;
-}
 
 /* === Custom Cursor === */
 .custom-cursor {
@@ -474,25 +347,3 @@
   .custom-cursor { display: none; }
 }
 
-/* === Page Transition Overlay === */
-.page-transition {
-  position: fixed;
-  inset: 0;
-  z-index: calc(var(--z-preloader) + 1);
-  background: var(--color-primary);
-  transform: scaleY(0);
-  transform-origin: bottom;
-  pointer-events: none;
-}
-
-.page-transition.entering {
-  animation: 0.5s ease forwards;
-  transform: scaleY(1);
-  transform-origin: bottom;
-}
-
-.page-transition.leaving {
-  transform: scaleY(1);
-  animation: 0.5s ease forwards;
-  transform-origin: top;
-}

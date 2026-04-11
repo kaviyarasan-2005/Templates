@@ -6,7 +6,7 @@
   <meta name="description" content="Élan Dance Studio Blog — Tips, stories, tutorials, and news from the world of dance.">
   <title>Blog — Élan Dance Studio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@300..800&family=Dancing+Script:wght@400..700&family=Cairo:wght@300..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@300..800&family=Dancing+Script:wght@400..700&family=Cairo:wght@300..900&family=Amiri:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="../assets/css/variables.css">
   <link rel="stylesheet" href="../assets/css/animations.css">
@@ -61,9 +61,7 @@
   </style>
 </head>
 <body>
-  <div class="preloader" id="preloader"><div class="preloader__dancer"><svg viewBox="0 0 100 100" fill="none"><circle cx="50" cy="20" r="10" fill="var(--color-primary)"/><path d="M50 30 L50 60 M50 40 L30 55 M50 40 L70 35 M50 60 L35 85 M50 60 L65 80" stroke="var(--color-primary)" stroke-width="3" stroke-linecap="round"/></svg><div class="preloader__ring"></div><div class="preloader__ring"></div></div><span class="preloader__text">Loading...</span><div class="preloader__progress"><div class="preloader__progress-bar"></div></div></div>
-  <div class="curtain"><div class="curtain__panel curtain__panel--left"></div><div class="curtain__panel curtain__panel--right"></div></div>
-  <div class="custom-cursor"></div><div class="page-transition"></div><div class="scroll-progress"></div>
+  <div class="custom-cursor"></div><div class="scroll-progress"></div>
 
   <nav class="navbar" id="navbar"><div class="container"><div class="navbar__inner">
     <a href="../index.html" class="navbar__logo"><div class="navbar__logo-icon"><i class="fas fa-music"></i></div><div class="navbar__logo-text"><span>Élan</span> Studio</div></a>
@@ -76,7 +74,9 @@
       <li><a href="contact.html" class="navbar__link">Contact</a></li>
     </ul>
     <div class="navbar__actions">
-      <div class="lang-dropdown"><button class="navbar__action-btn" data-lang-toggle><i class="fas fa-globe"></i></button><div class="lang-dropdown__menu"><button class="lang-dropdown__item active" data-lang="en">🇺🇸 English</button><button class="lang-dropdown__item" data-lang="ar">🇸🇦 العربية</button><button class="lang-dropdown__item" data-lang="he">🇮🇱 עברית</button></div></div>
+      <button class="navbar__action-btn" data-rtl-toggle aria-label="Toggle RTL">
+        <i class="fas fa-globe"></i>
+      </button>
       <button class="navbar__action-btn" data-theme-toggle><i class="fas fa-moon"></i></button>
       <a href="admin-dashboard.html" class="navbar__action-btn"><i class="fas fa-user"></i></a>
       <button class="navbar__mobile-toggle" id="mobileToggle"><span></span><span></span><span></span></button>

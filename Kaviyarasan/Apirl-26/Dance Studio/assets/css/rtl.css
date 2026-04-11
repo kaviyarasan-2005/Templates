@@ -3,27 +3,33 @@
    Uses CSS logical properties throughout
    ======================================== */
 
-/* === Base Direction === */
+/* === Base Direction & Fonts === */
 [dir="rtl"] {
-  font-family: 'Cairo', 'Inter', sans-serif;
+  --font-body: 'Cairo', 'Inter', sans-serif;
+  --font-heading: 'Amiri', 'Playfair Display', serif;
+  --font-accent: 'Amiri', 'Dancing Script', serif;
+  
+  font-family: var(--font-body);
 }
 
 [dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3,
 [dir="rtl"] h4, [dir="rtl"] h5, [dir="rtl"] h6 {
-  font-family: 'Cairo', 'Playfair Display', serif;
+  font-family: var(--font-heading);
 }
 
 [dir="rtl"] .text-accent {
-  font-family: 'Cairo', 'Dancing Script', cursive;
+  font-family: var(--font-accent);
 }
 
 /* === Layout Mirroring === */
-[dir="rtl"] .navbar__menu {
-  transform: translateX(-100%);
-}
+@media (max-width: 768px) {
+  [dir="rtl"] .navbar__menu {
+    transform: translateX(-100%);
+  }
 
-[dir="rtl"] .navbar__menu.open {
-  transform: translateX(0);
+  [dir="rtl"] .navbar__menu.open {
+    transform: translateX(0);
+  }
 }
 
 /* Flip directional icons */

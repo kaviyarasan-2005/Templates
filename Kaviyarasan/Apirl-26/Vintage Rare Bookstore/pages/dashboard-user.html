@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Collection – Collector Dashboard | Antiquarian Rare Books</title>
+    <meta name="description" content="Manage your rare book collection, view appraisals, track orders, and access exclusive member benefits in your Antiquarian Rare Books dashboard.">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicons/favicon-32.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config={darkMode:['class','[data-theme="dark"]'],theme:{extend:{colors:{brand:'var(--color-primary)',brandSecondary:'var(--color-secondary)',brandAccent:'var(--color-accent)',brandBg:'var(--color-bg-main)',brandCard:'var(--color-bg-card)',brandFooter:'var(--color-bg-footer)',brandText:'var(--color-text-main)',brandTextMuted:'var(--color-text-muted)',brandTextSub:'var(--color-text-sub)',borderNav:'var(--color-border)'},fontFamily:{heading:'var(--font-heading)',body:'var(--font-body)'}}}}</script>
+    <link rel="stylesheet" href="../assets/css/main.css"><link rel="stylesheet" href="../assets/css/rtl.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body class="bg-brandBg text-brandText">
+
+<div class="dashboard-layout">
+
+  <!-- SIDEBAR -->
+  <aside id="dashboard-sidebar" class="dashboard-sidebar" role="navigation" aria-label="Collector navigation">
+    <div class="sidebar-brand">
+      <i class="fa-solid fa-book-open text-xl" style="color:var(--color-accent);"></i>
+      <span class="sidebar-brand-name">Antiquarian</span>
+    </div>
+    <nav class="flex-1 py-4">
+      <div class="sidebar-nav-label">My Account</div>
+      <a href="#" class="sidebar-link active"><i class="sidebar-icon fa-solid fa-house"></i> Overview</a>
+      <a href="#" class="sidebar-link"><i class="sidebar-icon fa-solid fa-book"></i> My Collection</a>
+      <a href="#" class="sidebar-link"><i class="sidebar-icon fa-solid fa-basket-shopping"></i> My Orders</a>
+      <a href="#" class="sidebar-link"><i class="sidebar-icon fa-solid fa-certificate"></i> Appraisals</a>
+
+      <div class="sidebar-nav-label">Services</div>
+      <a href="services.html" class="sidebar-link"><i class="sidebar-icon fa-solid fa-scroll"></i> Browse Services</a>
+      <a href="pricing.html" class="sidebar-link"><i class="sidebar-icon fa-solid fa-crown"></i> Membership</a>
+      <a href="blog.html" class="sidebar-link"><i class="sidebar-icon fa-solid fa-newspaper"></i> The Chronicle</a>
+
+      <div class="sidebar-nav-label">Account</div>
+      <a href="home-1.html" class="sidebar-link"><i class="sidebar-icon fa-solid fa-arrow-up-right-from-square"></i> View Shop</a>
+      <a href="contact.html" class="sidebar-link"><i class="sidebar-icon fa-solid fa-headset"></i> Support</a>
+    </nav>
+    <div class="border-t border-[rgba(212,175,55,0.12)] p-4">
+      <div class="flex items-center gap-3 mb-3 px-2">
+        <div class="w-8 h-8 rounded-full bg-brand flex items-center justify-center text-white text-xs font-bold flex-shrink-0">PH</div>
+        <div class="min-w-0"><div class="font-semibold text-sm" style="color:var(--color-accent);">P. Hartmann</div><div class="text-xs text-brandTextSub truncate">Scholar Member</div></div>
+      </div>
+      <a href="login.html" class="sidebar-link w-full" style="border-radius:4px; justify-content:center; background:rgba(192,57,43,0.1); color:#E74C3C;">
+        <i class="sidebar-icon fa-solid fa-right-from-bracket"></i> Log Out
+      </a>
+    </div>
+  </aside>
+
+  <!-- OVERLAY -->
+  <div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+  <!-- MAIN CONTENT -->
+  <div class="dashboard-main">
+    <header class="dashboard-topbar">
+      <button id="sidebar-toggle" class="w-9 h-9 flex items-center justify-center rounded-full bg-brandCard border border-borderNav text-brandText hover:border-brand transition-colors lg:hidden" aria-label="Toggle sidebar"><i class="fa-solid fa-bars text-sm"></i></button>
+      <div class="flex-1">
+        <h1 class="font-heading font-semibold" style="font-size:1.1rem;">Collector's Registry</h1>
+        <p class="text-xs text-brandTextSub">Welcome back, Philippe</p>
+      </div>
+      <div class="flex items-center gap-2 ms-auto">
+        <button class="theme-toggle-btn w-9 h-9 flex items-center justify-center rounded-full bg-brandCard border border-borderNav text-brandText hover:border-brand transition-colors" aria-label="Toggle theme"><i class="theme-icon fa-solid fa-moon text-sm"></i></button>
+        <button class="dir-toggle-btn w-9 h-9 flex items-center justify-center rounded-full bg-brandCard border border-borderNav text-brandText hover:border-brand transition-colors" aria-label="Toggle direction"><i class="fa-solid fa-globe text-sm"></i></button>
+        <div class="w-9 h-9 rounded-full bg-brand flex items-center justify-center text-white text-xs font-bold flex-shrink-0">PH</div>
+      </div>
+    </header>
+
+    <div class="p-4 lg:p-6 flex-1">
+
+      <!-- S1: WELCOME + MEMBERSHIP BADGE -->
+      <section aria-labelledby="user-welcome-h" class="mb-8">
+        <h2 id="user-welcome-h" class="sr-only">Account Overview</h2>
+        <div class="bg-brandCard border border-borderNav rounded-sm p-5 flex flex-col sm:flex-row items-start sm:items-center gap-5">
+          <div class="w-16 h-16 rounded-full bg-brand flex items-center justify-center text-white font-heading font-bold text-2xl flex-shrink-0">PH</div>
+          <div class="flex-1">
+            <h3 class="font-heading font-bold text-xl text-brand mb-0.5">Philippe Hartmann</h3>
+            <p class="text-brandTextSub text-sm">Zurich, Switzerland · Member since January 2022</p>
+            <div class="flex flex-wrap gap-2 mt-2">
+              <span class="badge badge-warning"><i class="fa-solid fa-crown me-1"></i> Scholar Member</span>
+              <span class="badge badge-success">Active</span>
+              <span class="badge badge-info">2 Consultations Remaining</span>
+            </div>
+          </div>
+          <a href="pricing.html" class="btn-accent text-sm px-5 py-2 flex-shrink-0">Upgrade Plan</a>
+        </div>
+      </section>
+
+      <!-- S2: COLLECTION STATS -->
+      <section aria-labelledby="collection-stats-h" class="mb-8">
+        <h2 id="collection-stats-h" class="font-heading font-semibold text-brand mb-4" style="font-size:1.1rem;">My Collection</h2>
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="stat-card"><div class="stat-value animate-counter" data-target="84">84</div><div class="stat-label">Books Catalogued</div></div>
+          <div class="stat-card"><div class="stat-value">£<span class="animate-counter" data-target="184000">184,000</span></div><div class="stat-label">Estimated Collection Value</div></div>
+          <div class="stat-card"><div class="stat-value animate-counter" data-target="12">12</div><div class="stat-label">Authenticated Items</div></div>
+          <div class="stat-card"><div class="stat-value animate-counter" data-target="3">3</div><div class="stat-label">In Restoration</div></div>
+        </div>
+      </section>
+
+      <!-- S3: PORTFOLIO CHART + DOUGHNUT -->
+      <section aria-labelledby="portfolio-chart-h" class="mb-8">
+        <h2 id="portfolio-chart-h" class="font-heading font-semibold text-brand mb-4" style="font-size:1.1rem;">Portfolio Analytics</h2>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div class="bg-brandCard border border-borderNav rounded-sm p-5">
+            <h3 class="font-body font-semibold text-brandText mb-4 text-sm">Portfolio Value Trend (2026)</h3>
+            <canvas id="line-chart" height="200" role="img" aria-label="Portfolio value trend chart"></canvas>
+          </div>
+          <div class="bg-brandCard border border-borderNav rounded-sm p-5">
+            <h3 class="font-body font-semibold text-brandText mb-4 text-sm">Collection by Category</h3>
+            <canvas id="doughnut-chart" height="200" role="img" aria-label="Collection category chart"></canvas>
+          </div>
+        </div>
+      </section>
+
+      <!-- S4: RECENT ORDERS -->
+      <section aria-labelledby="user-orders-h" class="mb-8">
+        <div class="flex items-center justify-between mb-4">
+          <h2 id="user-orders-h" class="font-heading font-semibold text-brand" style="font-size:1.1rem;">My Orders</h2>
+          <a href="#" class="text-xs font-semibold text-brand hover:text-brandAccent transition-colors">View All</a>
+        </div>
+        <div class="bg-brandCard border border-borderNav rounded-sm overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="data-table min-w-full" role="table" aria-label="My recent orders">
+              <thead><tr><th scope="col">Order</th><th scope="col">Item</th><th scope="col">Amount</th><th scope="col">Status</th><th scope="col">Date</th></tr></thead>
+              <tbody>
+                <tr><td class="font-medium">#AQ-2041</td><td>First Ed. Frankenstein, 1818</td><td class="font-semibold text-brand">£28,500</td><td><span class="badge badge-success">Shipped</span></td><td class="text-brandTextSub">11 Apr 2026</td></tr>
+                <tr><td class="font-medium">#AQ-2019</td><td>Scholar Membership – Annual</td><td class="font-semibold text-brand">£924</td><td><span class="badge badge-success">Active</span></td><td class="text-brandTextSub">1 Jan 2026</td></tr>
+                <tr><td class="font-medium">#AQ-1982</td><td>Dickens Presentation Copy – Full Auth.</td><td class="font-semibold text-brand">£980</td><td><span class="badge badge-success">Completed</span></td><td class="text-brandTextSub">12 Nov 2025</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- S5: VAULT WISHLIST -->
+      <section aria-labelledby="wishlist-h" class="mb-8">
+        <div class="flex items-center justify-between mb-4">
+          <h2 id="wishlist-h" class="font-heading font-semibold text-brand" style="font-size:1.1rem;">Vault Wishlist</h2>
+          <button class="btn-accent text-xs px-4 py-2"><i class="fa-solid fa-plus"></i> Add Item</button>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div class="bg-brandCard border border-borderNav rounded-sm overflow-hidden hover:shadow-md transition-shadow">
+            <div class="aspect-16-9 overflow-hidden"><img src="../assets/images/books/rare_manuscript.jpg" alt="First edition On the Origin of Species" class="w-full h-full object-cover"></div>
+            <div class="p-4"><h3 class="font-heading text-brand font-semibold text-sm mb-1">Origin of Species, 1st Ed.</h3><p class="text-xs text-brandTextSub mb-2">Darwin · 1859 · Christie's Watch List</p><span class="badge badge-warning text-xs">Est. £65,000+</span></div>
+          </div>
+          <div class="bg-brandCard border border-borderNav rounded-sm overflow-hidden hover:shadow-md transition-shadow">
+            <div class="aspect-16-9 overflow-hidden"><img src="../assets/images/books/first_edition.jpg" alt="Shakespeare Folio" class="w-full h-full object-cover"></div>
+            <div class="p-4"><h3 class="font-heading text-brand font-semibold text-sm mb-1">Shakespeare Second Folio</h3><p class="text-xs text-brandTextSub mb-2">Shakespeare · 1632 · Sotheby's</p><span class="badge badge-danger text-xs">Est. £85,000</span></div>
+          </div>
+          <div class="bg-brandCard border border-borderNav rounded-sm overflow-hidden hover:shadow-md transition-shadow">
+            <div class="aspect-16-9 overflow-hidden"><img src="../assets/images/books/leather_books.jpg" alt="Thomas Hardy first edition" class="w-full h-full object-cover"></div>
+            <div class="p-4"><h3 class="font-heading text-brand font-semibold text-sm mb-1">Tess of the d'Urbervilles</h3><p class="text-xs text-brandTextSub mb-2">T. Hardy · 1891 · Private Estate</p><span class="badge badge-info text-xs">POA</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- S6: NOTIFICATIONS + SETTINGS -->
+      <section aria-labelledby="user-notif-h">
+        <h2 id="user-notif-h" class="font-heading font-semibold text-brand mb-4" style="font-size:1.1rem;">Notifications</h2>
+        <div class="bg-brandCard border border-borderNav rounded-sm divide-y divide-borderNav">
+          <div class="p-4 flex gap-3 items-start hover:bg-brandBg transition-colors">
+            <div class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background:rgba(212,175,55,0.15); color:var(--color-accent);"><i class="fa-solid fa-crown text-xs"></i></div>
+            <div><p class="text-sm font-semibold text-brandText">Scholar Membership Renews in 30 Days</p><p class="text-xs text-brandTextSub mt-0.5">Your annual Scholar membership renews on 1 January 2027. <a href="pricing.html" class="text-brand hover:text-brandAccent underline">Manage membership</a></p></div>
+            <span class="text-xs text-brandTextSub flex-shrink-0">Today</span>
+          </div>
+          <div class="p-4 flex gap-3 items-start hover:bg-brandBg transition-colors">
+            <div class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background:rgba(114,47,55,0.12); color:var(--color-primary);"><i class="fa-solid fa-truck-fast text-xs"></i></div>
+            <div><p class="text-sm font-semibold text-brandText">Order #AQ-2041 Dispatched</p><p class="text-xs text-brandTextSub mt-0.5">Your First Edition Frankenstein has been dispatched by insured courier. <a href="#" class="text-brand hover:text-brandAccent underline">Track shipment</a></p></div>
+            <span class="text-xs text-brandTextSub flex-shrink-0">11 Apr</span>
+          </div>
+          <div class="p-4 flex gap-3 items-start hover:bg-brandBg transition-colors opacity-70">
+            <div class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background:rgba(212,175,55,0.15); color:var(--color-accent);"><i class="fa-solid fa-certificate text-xs"></i></div>
+            <div><p class="text-sm font-semibold text-brandText">Dickens Authentication Certificate Ready</p><p class="text-xs text-brandTextSub mt-0.5">Your Certificate of Authenticity for the Dickens Presentation Copy is ready for download.</p></div>
+            <span class="text-xs text-brandTextSub flex-shrink-0">12 Nov</span>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+</div>
+
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/animations.js"></script>
+<script src="../assets/js/dashboard.js"></script>
+</body>
+</html>

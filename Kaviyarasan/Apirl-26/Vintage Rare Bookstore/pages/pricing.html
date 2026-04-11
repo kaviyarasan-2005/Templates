@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Membership &amp; Pricing – Antiquarian Rare Books</title>
+    <meta name="description" content="Membership tiers for rare book collectors: Collector, Scholar, Institution, and Dealer plans with monthly or annual billing options.">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicons/favicon-32.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config={darkMode:['class','[data-theme="dark"]'],theme:{extend:{colors:{brand:'var(--color-primary)',brandSecondary:'var(--color-secondary)',brandAccent:'var(--color-accent)',brandBg:'var(--color-bg-main)',brandCard:'var(--color-bg-card)',brandFooter:'var(--color-bg-footer)',brandText:'var(--color-text-main)',brandTextMuted:'var(--color-text-muted)',brandTextSub:'var(--color-text-sub)',borderNav:'var(--color-border)'},fontFamily:{heading:'var(--font-heading)',body:'var(--font-body)'}}}}</script>
+    <link rel="stylesheet" href="../assets/css/main.css"><link rel="stylesheet" href="../assets/css/rtl.css">
+</head>
+<body class="bg-brandBg text-brandText">
+
+<!-- NAV -->
+<nav class="fixed-nav" role="navigation"><div class="max-w-[1280px] w-full mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-full"><a href="home-1.html" class="nav-brand flex items-center gap-2 text-brand font-heading font-bold text-2xl shrink-0 group"><i class="fa-solid fa-book-open group-hover:scale-110 transition-transform"></i><span class="tracking-tight">Antiquarian</span></a><div class="hidden lg:flex items-center h-full nav-links-container" style="gap:0;"><div class="nav-dropdown-parent relative h-full flex items-center"><button class="nav-link flex items-center gap-1">Home <i class="fa-solid fa-chevron-down text-[10px]"></i></button><div class="nav-dropdown"><a href="home-1.html">Curated Collection</a><a href="home-2.html">Academic Niche</a></div></div><a href="about.html" class="nav-link">About Us</a><a href="services.html" class="nav-link">Services</a><a href="blog.html" class="nav-link">Blog</a><a href="pricing.html" class="nav-link active">Pricing</a><a href="contact.html" class="nav-link">Contact</a></div><div class="flex items-center gap-2 lg:gap-3 shrink-0"><button class="theme-toggle-btn w-9 h-9 flex items-center justify-center rounded-full bg-brandCard border border-borderNav text-brandText hover:border-brand transition-colors" aria-label="Toggle theme"><i class="theme-icon fa-solid fa-moon text-sm"></i></button><button class="dir-toggle-btn w-9 h-9 flex items-center justify-center rounded-full bg-brandCard border border-borderNav text-brandText hover:border-brand transition-colors" aria-label="Toggle direction"><i class="fa-solid fa-globe text-sm"></i></button><a href="login.html" class="hidden sm:inline-flex btn-accent px-4 py-2 text-sm rounded-sm">Sign In</a><button id="mobile-menu-btn" class="lg:hidden w-10 h-10 flex items-center justify-center text-brandText hover:text-brand" aria-label="Open menu" aria-expanded="false"><i class="fa-solid fa-bars text-xl"></i></button></div></div><div id="mobile-menu" class="mobile-nav-menu lg:hidden"><a href="home-1.html" class="mobile-nav-link">Home – Curated</a><a href="home-2.html" class="mobile-nav-link">Home – Academic</a><div class="mobile-nav-divider"></div><a href="about.html" class="mobile-nav-link">About Us</a><a href="services.html" class="mobile-nav-link">Services</a><a href="blog.html" class="mobile-nav-link">Blog</a><a href="pricing.html" class="mobile-nav-link active">Pricing</a><a href="contact.html" class="mobile-nav-link">Contact</a><div class="mobile-nav-divider"></div><a href="login.html" class="btn-accent w-full text-center py-2.5 rounded-sm text-sm font-semibold">Sign In</a></div></nav>
+
+<main class="pt-nav flex-1 w-full">
+
+  <!-- S1: HERO -->
+  <section class="relative w-full min-h-[50vh] flex items-center justify-center overflow-hidden" aria-labelledby="pricing-hero-h">
+    <div class="absolute inset-0 z-0"><img src="../assets/images/hero/hero_reading_room.jpg" alt="Victorian reading room — pricing backdrop" class="w-full h-full object-cover"><div class="hero-gradient absolute inset-0"></div></div>
+    <div class="relative z-10 text-center text-white py-24 px-4">
+      <span class="overline mb-4 block reveal" style="color:var(--color-accent);">Membership Plans</span>
+      <h1 id="pricing-hero-h" class="reveal font-heading font-bold mb-4" style="color:#FFFFF0;">Invest in Your Collection</h1>
+      <p class="reveal subtext max-w-xl mx-auto delay-100" style="color:rgba(245,245,220,0.85);">Flexible membership tiers designed for individual collectors, academic scholars, institutions, and professional dealers.</p>
+    </div>
+  </section>
+
+  <!-- S2: BILLING TOGGLE + CARDS -->
+  <section class="py-20 lg:py-28 bg-brandBg" aria-labelledby="pricing-cards-h">
+    <div class="section-container">
+      <!-- Toggle -->
+      <div class="flex justify-center mb-12 reveal">
+        <div id="pricing-toggle" class="toggle-switch" role="group" aria-label="Billing period">
+          <div class="toggle-option active" data-mode="monthly">Monthly</div>
+          <div class="toggle-option" data-mode="annual">Annual <span class="text-xs ms-1 font-normal opacity-75">(Save 20%)</span></div>
+        </div>
+      </div>
+
+      <div class="section-heading reveal" style="margin-bottom:2rem;"><h2 id="pricing-cards-h" class="text-brand">Choose Your Membership</h2></div>
+
+      <!-- 4 cards: Collector, Scholar, Institution, Dealer -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+        <!-- Collector -->
+        <div class="pricing-card reveal text-center">
+          <div class="w-12 h-12 mx-auto rounded-full bg-brandBg border border-borderNav flex items-center justify-center text-brandAccent text-xl mb-4"><i class="fa-solid fa-user"></i></div>
+          <h3 class="font-heading font-semibold mb-1 text-xl">Collector</h3>
+          <p class="text-xs text-brandTextSub mb-4">For individual bibliophiles</p>
+          <div class="price-monthly"><div class="price-amount mb-0.5">£29</div><div class="price-period mb-5">/month</div></div>
+          <div class="price-annual hidden"><div class="price-amount mb-0.5">£23</div><div class="price-period mb-5">/month <span class="text-xs">(£276/yr)</span></div></div>
+          <ul class="space-y-2.5 text-sm text-brandTextSub text-left mb-7 pricing-feature-row" style="display:block;">
+            <li class="flex items-center gap-2.5"><i class="fa-solid fa-check feature-check text-green-600"></i>Monthly acquisition newsletter</li>
+            <li class="flex items-center gap-2.5"><i class="fa-solid fa-check feature-check text-green-600"></i>Online collection catalogue</li>
+            <li class="flex items-center gap-2.5"><i class="fa-solid fa-check feature-check text-green-600"></i>Priority event invitations</li>
+            <li class="flex items-center gap-2.5"><i class="fa-solid fa-times feature-cross"></i>Curator consultations</li>
+            <li class="flex items-center gap-2.5"><i class="fa-solid fa-times feature-cross"></i>Vault preview access</li>
+          </ul>
+          <a href="register.html" class="btn-outline w-full text-sm">Get Started</a>
+        </div>
+
+        <!-- Scholar (featured) -->
+        <div class="pricing-card featured reveal delay-100 text-center">
+          <div class="pricing-badge">Most Popular</div>
+          <div class="w-12 h-12 mx-auto rounded-full flex items-center justify-center text-xl mb-4" style="background:rgba(255,255,240,0.15);"><i class="fa-solid fa-graduation-cap" style="color:var(--color-accent);"></i></div>
+          <h3 class="font-heading font-semibold mb-1 text-xl">Scholar</h3>
+          <p class="text-xs mb-4" style="color:rgba(255,255,240,0.6);">For serious collectors</p>
+          <div class="price-monthly"><div class="price-amount mb-0.5">£79</div><div class="price-period mb-5">/month</div></div>
+          <div class="price-annual hidden"><div class="price-amount mb-0.5">£63</div><div class="price-period mb-5">/month <span class="text-xs">(£756/yr)</span></div></div>
+          <ul class="space-y-2.5 text-sm mb-7 text-left" style="color:rgba(255,255,240,0.85);">
+            <li class="flex items-center gap-2.5"><i class="fa-solid fa-check" style="color:#D4AF37; flex-shrink:0;"></i>Everything in Collector</li>
+            <li class="flex items-center gap-2.5"><i class="fa-solid fa-check" style="color:#D4AF37; flex-shrink:0;"></i>2 curator consultations/month</li>
+            <li class="flex items-center gap-2.5"><i class="fa-solid fa-check" style="color:#D4AF37; flex-shrink:0;"></i>Vault preview access</li>
+            <li class="flex items-center gap-2.5"><i class="fa-solid fa-check" style="color:#D4AF37; flex-shrink:0;"></i>Authentication discounts (15%)</li>
+            <li class="flex items-center gap-2.5"><i class="fa-solid fa-times" style="color:rgba(255,255,240,0.3); flex-shrink:0;"></i>Institutional library tools</li>
+          </ul>
+          <a href="register.html" class="btn-accent w-full text-sm">Get Started</a>
+        </div>
+
+        <!-- Institution -->
+        <div class="pricing-card reveal delay-200 text-center">
+          <div class="w-12 h-12 mx-auto rounded-full bg-brandBg border border-borderNav flex items-center justify-center text-brandAccent text-xl mb-4"><i class="fa-solid fa-university"></i></div>
+          <h3 class="font-heading font-semibold mb-1 text-xl">Institution</h3>
+          <p class="text-xs text-brandTextSub mb-4">For libraries &amp; foundations</p>
+          <div class="price-monthly"><div class="price-amount mb-0.5">£249</div><div class="price-period mb-5">/month</div></div>
+          <div class="price-annual hidden"><div class="price-amount mb-0.5">£199</div><div class="price-period mb-5">/month <span class="text-xs">(£2,388/yr)</span></div></div>
+          <ul class="space-y-2.5 text-sm text-brandTextSub text-left mb-7">
+            <li class="flex items-center gap-2.5"><i class="fa-solid fa-check feature-check text-green-600"></i>Everything in Scholar</li>
+            <li class="flex items-center gap-2.5"><i class="fa-solid fa-check feature-check text-green-600"></i>Dedicated senior curator</li>
+            <li class="flex items-center gap-2.5"><i class="fa-solid fa-check feature-check text-green-600"></i>Institutional catalogue tools</li>
+            <li class="flex items-center gap-2.5"><i class="fa-solid fa-check feature-check text-green-600"></i>0% commission on acquisitions</li>
+            <li class="flex items-center gap-2.5"><i class="fa-solid fa-check feature-check text-green-600"></i>Priority restoration slots</li>
+          </ul>
+          <a href="register.html" class="btn-outline w-full text-sm">Get Started</a>
+        </div>
+
+        <!-- Dealer -->
+        <div class="pricing-card reveal delay-300 text-center">
+          <div class="w-12 h-12 mx-auto rounded-full bg-brandBg border border-borderNav flex items-center justify-center text-brandAccent text-xl mb-4"><i class="fa-solid fa-store"></i></div>
+          <h3 class="font-heading font-semibold mb-1 text-xl">Dealer</h3>
+          <p class="text-xs text-brandTextSub mb-4">For professional trade</p>
+          <div class="price-monthly"><div class="price-amount mb-0.5">POA</div><div class="price-period mb-5">custom</div></div>
+          <div class="price-annual hidden"><div class="price-amount mb-0.5">POA</div><div class="price-period mb-5">custom</div></div>
+          <ul class="space-y-2.5 text-sm text-brandTextSub text-left mb-7">
+            <li class="flex items-center gap-2.5"><i class="fa-solid fa-check feature-check text-green-600"></i>Everything in Institution</li>
+            <li class="flex items-center gap-2.5"><i class="fa-solid fa-check feature-check text-green-600"></i>Trade authentication rates</li>
+            <li class="flex items-center gap-2.5"><i class="fa-solid fa-check feature-check text-green-600"></i>Joint marketing options</li>
+            <li class="flex items-center gap-2.5"><i class="fa-solid fa-check feature-check text-green-600"></i>Co-branded certificates</li>
+            <li class="flex items-center gap-2.5"><i class="fa-solid fa-check feature-check text-green-600"></i>Custom SLA guarantees</li>
+          </ul>
+          <a href="contact.html" class="btn-primary w-full text-sm">Contact Us</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- S3: FEATURE CHECKLIST COMPARISON -->
+  <section class="py-20 lg:py-28 bg-brandCard border-y border-borderNav" aria-labelledby="features-compare-h">
+    <div class="section-container">
+      <div class="section-heading reveal"><span class="overline">Detailed Comparison</span><h2 id="features-compare-h" class="text-brand mt-2">Feature Breakdown</h2></div>
+      <div class="overflow-x-auto reveal">
+        <table class="data-table min-w-full" role="table" aria-label="Membership feature comparison">
+          <thead>
+            <tr>
+              <th scope="col">Feature</th>
+              <th scope="col" class="text-center">Collector</th>
+              <th scope="col" class="text-center" style="background:rgba(114,47,55,0.06); color:var(--color-primary);">Scholar</th>
+              <th scope="col" class="text-center">Institution</th>
+              <th scope="col" class="text-center">Dealer</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="font-medium">Monthly Newsletter</td><td class="text-center"><i class="fa-solid fa-check text-green-600"></i></td><td class="text-center" style="background:rgba(114,47,55,0.04);"><i class="fa-solid fa-check text-green-600"></i></td><td class="text-center"><i class="fa-solid fa-check text-green-600"></i></td><td class="text-center"><i class="fa-solid fa-check text-green-600"></i></td></tr>
+            <tr><td class="font-medium">Online Collection Catalogue</td><td class="text-center"><i class="fa-solid fa-check text-green-600"></i></td><td class="text-center" style="background:rgba(114,47,55,0.04);"><i class="fa-solid fa-check text-green-600"></i></td><td class="text-center"><i class="fa-solid fa-check text-green-600"></i></td><td class="text-center"><i class="fa-solid fa-check text-green-600"></i></td></tr>
+            <tr><td class="font-medium">Vault Preview Access</td><td class="text-center"><i class="fa-solid fa-times text-gray-400"></i></td><td class="text-center" style="background:rgba(114,47,55,0.04);"><i class="fa-solid fa-check text-green-600"></i></td><td class="text-center"><i class="fa-solid fa-check text-green-600"></i></td><td class="text-center"><i class="fa-solid fa-check text-green-600"></i></td></tr>
+            <tr><td class="font-medium">Monthly Curator Consultations</td><td class="text-center text-brandTextSub text-sm">—</td><td class="text-center font-medium text-brand" style="background:rgba(114,47,55,0.04);">2/month</td><td class="text-center font-medium text-brand">Unlimited</td><td class="text-center font-medium text-brand">Unlimited</td></tr>
+            <tr><td class="font-medium">Authentication Discount</td><td class="text-center text-brandTextSub text-sm">—</td><td class="text-center font-medium text-brand" style="background:rgba(114,47,55,0.04);">15%</td><td class="text-center font-medium text-brand">25%</td><td class="text-center font-medium text-brand">Trade rate</td></tr>
+            <tr><td class="font-medium">Dedicated Senior Curator</td><td class="text-center"><i class="fa-solid fa-times text-gray-400"></i></td><td class="text-center" style="background:rgba(114,47,55,0.04);"><i class="fa-solid fa-times text-gray-400"></i></td><td class="text-center"><i class="fa-solid fa-check text-green-600"></i></td><td class="text-center"><i class="fa-solid fa-check text-green-600"></i></td></tr>
+            <tr><td class="font-medium">Institutional Catalogue Tools</td><td class="text-center"><i class="fa-solid fa-times text-gray-400"></i></td><td class="text-center" style="background:rgba(114,47,55,0.04);"><i class="fa-solid fa-times text-gray-400"></i></td><td class="text-center"><i class="fa-solid fa-check text-green-600"></i></td><td class="text-center"><i class="fa-solid fa-check text-green-600"></i></td></tr>
+            <tr><td class="font-medium">Co-branded Certificates</td><td class="text-center"><i class="fa-solid fa-times text-gray-400"></i></td><td class="text-center" style="background:rgba(114,47,55,0.04);"><i class="fa-solid fa-times text-gray-400"></i></td><td class="text-center"><i class="fa-solid fa-times text-gray-400"></i></td><td class="text-center"><i class="fa-solid fa-check text-green-600"></i></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- S4 & S5: FAQ + ENTERPRISE CTA Combined -->
+  <section class="py-20 lg:py-28 bg-brandBg" aria-labelledby="pricing-faq-h">
+    <div class="section-container">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+        <div>
+          <div class="reveal mb-8"><span class="overline mb-3">Common Questions</span><h2 id="pricing-faq-h" class="font-heading text-brand font-bold mt-2">Membership FAQs</h2></div>
+          <div class="accordion-container reveal">
+            <div class="accordion-item"><button class="accordion-trigger" aria-expanded="false">Can I cancel my membership at any time?<i class="accordion-icon fa-solid fa-plus"></i></button><div class="accordion-body"><div class="accordion-content">Monthly memberships can be cancelled with 30 days' notice. Annual memberships are non-refundable after 14 days from first payment.</div></div></div>
+            <div class="accordion-item"><button class="accordion-trigger" aria-expanded="false">What payment methods do you accept?<i class="accordion-icon fa-solid fa-plus"></i></button><div class="accordion-body"><div class="accordion-content">We accept all major debit and credit cards, BACS transfer, and invoicing for Institution and Dealer Members.</div></div></div>
+            <div class="accordion-item"><button class="accordion-trigger" aria-expanded="false">Is there a free trial available?<i class="accordion-icon fa-solid fa-plus"></i></button><div class="accordion-body"><div class="accordion-content">New individual members receive a 30-day complimentary trial of the Scholar tier. No credit card required for the trial period.</div></div></div>
+            <div class="accordion-item"><button class="accordion-trigger" aria-expanded="false">Can institutions have multiple user accounts?<i class="accordion-icon fa-solid fa-plus"></i></button><div class="accordion-body"><div class="accordion-content">Institution memberships include up to 10 named user accounts. Additional seats can be added at £25/month per seat.</div></div></div>
+          </div>
+        </div>
+        <!-- S6: Enterprise CTA -->
+        <div class="reveal delay-100">
+          <div class="bg-brandCard border-2 border-borderNav rounded-sm p-8 h-full flex flex-col justify-center" style="border-color:var(--color-accent);">
+            <i class="fa-solid fa-handshake text-4xl mb-6" style="color:var(--color-accent);"></i>
+            <h2 class="font-heading text-brand font-bold mb-4 text-2xl">Enterprise &amp; Custom Plans</h2>
+            <p class="subtext text-sm leading-relaxed mb-6">National archives, museum consortia, university library networks, and large-scale dealers require tailored solutions. Speak with a senior curator to design a plan matched to your specific operational requirements.</p>
+            <ul class="space-y-2.5 mb-8">
+              <li class="flex items-center gap-2.5 text-sm text-brandTextSub"><i class="fa-solid fa-check feature-check text-green-600"></i>Custom volume pricing</li>
+              <li class="flex items-center gap-2.5 text-sm text-brandTextSub"><i class="fa-solid fa-check feature-check text-green-600"></i>Dedicated account manager</li>
+              <li class="flex items-center gap-2.5 text-sm text-brandTextSub"><i class="fa-solid fa-check feature-check text-green-600"></i>SLA &amp; compliance documentation</li>
+              <li class="flex items-center gap-2.5 text-sm text-brandTextSub"><i class="fa-solid fa-check feature-check text-green-600"></i>White-glove onboarding</li>
+            </ul>
+            <a href="contact.html" class="btn-primary px-7 py-3 self-start"><i class="fa-solid fa-phone"></i> Speak to a Curator</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer pt-16 pb-8" role="contentinfo"><div class="section-container"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12"><div><a href="home-1.html" class="flex items-center gap-2 mb-5"><i class="fa-solid fa-book-open text-2xl" style="color:var(--color-accent);"></i><span class="footer-brand-name">Antiquarian</span></a><p class="footer-tagline mb-6">Dedicated stewards of literary history since 1894.</p><div class="flex gap-3"><a href="#" class="w-9 h-9 rounded-full bg-brand flex items-center justify-center hover:bg-brandAccent transition-colors" aria-label="Facebook" style="color:#fff;"><i class="fa-brands fa-facebook-f text-sm"></i></a><a href="#" class="w-9 h-9 rounded-full bg-brand flex items-center justify-center hover:bg-brandAccent transition-colors" aria-label="Instagram" style="color:#fff;"><i class="fa-brands fa-instagram text-sm"></i></a></div></div><div><h4 class="footer-heading">Expertise</h4><ul class="space-y-3"><li><a href="services.html" class="footer-link">First Editions</a></li><li><a href="services.html" class="footer-link">Appraisals</a></li><li><a href="services.html" class="footer-link">Restoration</a></li></ul></div><div><h4 class="footer-heading">Library Vault</h4><ul class="space-y-3"><li><a href="blog.html" class="footer-link">Curator's Journal</a></li><li><a href="pricing.html" class="footer-link">Membership Tiers</a></li><li><a href="dashboard-user.html" class="footer-link">My Account</a></li></ul></div><div><h4 class="footer-heading">The Reading Room</h4><ul class="space-y-4"><li class="flex items-start gap-3"><i class="fa-solid fa-location-dot mt-0.5" style="color:var(--color-accent);"></i><span class="footer-link text-sm">144 Oxford Circle, London</span></li><li class="flex items-center gap-3"><i class="fa-solid fa-phone" style="color:var(--color-accent);"></i><a href="tel:+442079460831" class="footer-link text-sm">+44 (0) 20 7946 0831</a></li></ul></div></div><div class="border-t pt-8 flex flex-col md:flex-row justify-between items-center gap-4" style="border-color:rgba(212,175,55,0.15);"><p class="footer-copyright">&copy; 2026 Antiquarian Rare Books. All rights preserved.</p><div class="flex gap-6"><a href="#" class="footer-copyright hover:text-brandAccent transition-colors">Terms of Trade</a></div></div></div></footer>
+
+<script src="../assets/js/main.js"></script><script src="../assets/js/animations.js"></script>
+</body>
+</html>

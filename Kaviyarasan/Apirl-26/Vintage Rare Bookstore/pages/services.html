@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services – Antiquarian Rare Books | Appraisal, Restoration &amp; Sourcing</title>
+    <meta name="description" content="Expert rare book services: certified appraisals, manuscript restoration, book sourcing, and private library curation. From £180 per service.">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicons/favicon-32.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config={darkMode:['class','[data-theme="dark"]'],theme:{extend:{colors:{brand:'var(--color-primary)',brandSecondary:'var(--color-secondary)',brandAccent:'var(--color-accent)',brandBg:'var(--color-bg-main)',brandCard:'var(--color-bg-card)',brandFooter:'var(--color-bg-footer)',brandText:'var(--color-text-main)',brandTextMuted:'var(--color-text-muted)',brandTextSub:'var(--color-text-sub)',borderNav:'var(--color-border)'},fontFamily:{heading:'var(--font-heading)',body:'var(--font-body)'}}}}</script>
+    <link rel="stylesheet" href="../assets/css/main.css"><link rel="stylesheet" href="../assets/css/rtl.css">
+</head>
+<body class="bg-brandBg text-brandText">
+
+<!-- NAV -->
+<nav class="fixed-nav" role="navigation"><div class="max-w-[1280px] w-full mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-full"><a href="home-1.html" class="nav-brand flex items-center gap-2 text-brand font-heading font-bold text-2xl shrink-0 group"><i class="fa-solid fa-book-open group-hover:scale-110 transition-transform"></i><span class="tracking-tight">Antiquarian</span></a><div class="hidden lg:flex items-center h-full nav-links-container" style="gap:0;"><div class="nav-dropdown-parent relative h-full flex items-center"><button class="nav-link flex items-center gap-1">Home <i class="fa-solid fa-chevron-down text-[10px]"></i></button><div class="nav-dropdown"><a href="home-1.html">Curated Collection</a><a href="home-2.html">Academic Niche</a></div></div><a href="about.html" class="nav-link">About Us</a><a href="services.html" class="nav-link active">Services</a><a href="blog.html" class="nav-link">Blog</a><a href="pricing.html" class="nav-link">Pricing</a><a href="contact.html" class="nav-link">Contact</a></div><div class="flex items-center gap-2 lg:gap-3 shrink-0"><button class="theme-toggle-btn w-9 h-9 flex items-center justify-center rounded-full bg-brandCard border border-borderNav text-brandText hover:border-brand transition-colors" aria-label="Toggle theme"><i class="theme-icon fa-solid fa-moon text-sm"></i></button><button class="dir-toggle-btn w-9 h-9 flex items-center justify-center rounded-full bg-brandCard border border-borderNav text-brandText hover:border-brand transition-colors" aria-label="Toggle direction"><i class="fa-solid fa-globe text-sm"></i></button><a href="login.html" class="hidden sm:inline-flex btn-accent px-4 py-2 text-sm rounded-sm">Sign In</a><button id="mobile-menu-btn" class="lg:hidden w-10 h-10 flex items-center justify-center text-brandText hover:text-brand" aria-label="Open menu" aria-expanded="false"><i class="fa-solid fa-bars text-xl"></i></button></div></div><div id="mobile-menu" class="mobile-nav-menu lg:hidden"><a href="home-1.html" class="mobile-nav-link">Home – Curated</a><a href="home-2.html" class="mobile-nav-link">Home – Academic</a><div class="mobile-nav-divider"></div><a href="about.html" class="mobile-nav-link">About Us</a><a href="services.html" class="mobile-nav-link active">Services</a><a href="blog.html" class="mobile-nav-link">Blog</a><a href="pricing.html" class="mobile-nav-link">Pricing</a><a href="contact.html" class="mobile-nav-link">Contact</a><div class="mobile-nav-divider"></div><a href="login.html" class="btn-accent w-full text-center py-2.5 rounded-sm text-sm font-semibold">Sign In</a></div></nav>
+
+<main class="pt-nav flex-1 w-full">
+
+  <!-- S1: HERO -->
+  <section class="relative w-full min-h-[55vh] flex items-center justify-center overflow-hidden" aria-labelledby="svc-hero-heading">
+    <div class="absolute inset-0 z-0"><img src="../assets/images/hero/hero_library.jpg" alt="Grand antique library – services backdrop" class="w-full h-full object-cover"><div class="hero-gradient absolute inset-0"></div></div>
+    <div class="relative z-10 text-center text-white py-24 px-4">
+      <span class="overline mb-4 block reveal" style="color:var(--color-accent);">Expert Literary Services</span>
+      <h1 id="svc-hero-heading" class="reveal font-heading font-bold mb-4" style="color:#FFFFF0;">Services for Collectors &amp; Institutions</h1>
+      <p class="reveal subtext max-w-2xl mx-auto text-lg delay-100" style="color:rgba(245,245,220,0.85);">Museum-grade expertise at every stage of the rare book lifecycle — from discovery to preservation.</p>
+    </div>
+  </section>
+
+  <!-- S2: SERVICES GRID (4 services – 2x2 balanced) -->
+  <section class="py-20 lg:py-28 bg-brandBg" aria-labelledby="services-grid-heading">
+    <div class="section-container">
+      <div class="section-heading reveal"><span class="overline">What We Do</span><h2 id="services-grid-heading" class="text-brand mt-2">Our Core Services</h2><p class="subtext mt-3">Four specialist disciplines, each backed by decades of scholarly rigour and hands-on expertise.</p></div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+        <a href="service-details.html" class="card reveal group p-0 block hover:no-underline">
+          <div class="relative aspect-16-9 overflow-hidden"><img src="../assets/images/books/leather_books.jpg" alt="Rare book restoration workshop" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"></div>
+          <div class="p-6"><div class="flex items-center gap-3 mb-3"><div class="w-10 h-10 rounded-full bg-brandBg border border-borderNav flex items-center justify-center text-brandAccent flex-shrink-0"><i class="fa-solid fa-scroll"></i></div><h3 class="font-heading text-brand font-semibold text-lg">Book Restoration</h3></div><p class="card-text text-sm leading-relaxed mb-4">Museum-grade leather reconsolidation, page deacidification, gold tooling restoration, and custom period-accurate rebinding by our master binders.</p><span class="text-sm font-semibold text-brand group-hover:text-brandAccent transition-colors inline-flex items-center gap-1">Learn More <i class="fa-solid fa-arrow-right text-[9px]"></i></span></div>
+        </a>
+        <a href="service-details.html" class="card reveal delay-100 group p-0 block hover:no-underline">
+          <div class="relative aspect-16-9 overflow-hidden"><img src="../assets/images/books/rare_manuscript.jpg" alt="Manuscript appraisal with magnifying glass" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"></div>
+          <div class="p-6"><div class="flex items-center gap-3 mb-3"><div class="w-10 h-10 rounded-full bg-brandBg border border-borderNav flex items-center justify-center text-brandAccent flex-shrink-0"><i class="fa-solid fa-magnifying-glass"></i></div><h3 class="font-heading text-brand font-semibold text-lg">Appraisals &amp; Authentication</h3></div><p class="card-text text-sm leading-relaxed mb-4">Certified provenance investigation, paper stock dating, ink analysis, and authoritative market valuation for insurance, sale, or estate purposes.</p><span class="text-sm font-semibold text-brand group-hover:text-brandAccent transition-colors inline-flex items-center gap-1">Learn More <i class="fa-solid fa-arrow-right text-[9px]"></i></span></div>
+        </a>
+        <a href="service-details.html" class="card reveal delay-200 group p-0 block hover:no-underline">
+          <div class="relative aspect-16-9 overflow-hidden"><img src="../assets/images/books/first_edition.jpg" alt="Rare book sourcing and acquisition" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"></div>
+          <div class="p-6"><div class="flex items-center gap-3 mb-3"><div class="w-10 h-10 rounded-full bg-brandBg border border-borderNav flex items-center justify-center text-brandAccent flex-shrink-0"><i class="fa-solid fa-gavel"></i></div><h3 class="font-heading text-brand font-semibold text-lg">Sourcing &amp; Acquisition</h3></div><p class="card-text text-sm leading-relaxed mb-4">Bespoke representation at Christie's, Sotheby's, and private estate sales. We define your precise copy criteria and pursue it with expert rigour.</p><span class="text-sm font-semibold text-brand group-hover:text-brandAccent transition-colors inline-flex items-center gap-1">Learn More <i class="fa-solid fa-arrow-right text-[9px]"></i></span></div>
+        </a>
+        <a href="service-details.html" class="card reveal delay-300 group p-0 block hover:no-underline">
+          <div class="relative aspect-16-9 overflow-hidden"><img src="../assets/images/blog/blog_03.jpg" alt="Private library curation and cataloguing" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"></div>
+          <div class="p-6"><div class="flex items-center gap-3 mb-3"><div class="w-10 h-10 rounded-full bg-brandBg border border-borderNav flex items-center justify-center text-brandAccent flex-shrink-0"><i class="fa-solid fa-landmark"></i></div><h3 class="font-heading text-brand font-semibold text-lg">Library Curation</h3></div><p class="card-text text-sm leading-relaxed mb-4">Full lifecycle management for private and institutional collections — cataloguing, environmental assessment, digitisation planning, and acquisition advising.</p><span class="text-sm font-semibold text-brand group-hover:text-brandAccent transition-colors inline-flex items-center gap-1">Learn More <i class="fa-solid fa-arrow-right text-[9px]"></i></span></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- S3: PROCESS / METHODOLOGY -->
+  <section class="py-20 lg:py-28 bg-brandCard border-y border-borderNav" aria-labelledby="process-svc-heading">
+    <div class="section-container">
+      <div class="section-heading reveal"><span class="overline">How We Work</span><h2 id="process-svc-heading" class="text-brand mt-2">Our Engagement Process</h2><p class="subtext mt-3">A rigorous, transparent, and collaborative approach from first enquiry to final delivery.</p></div>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div class="reveal text-center"><div class="step-number mx-auto mb-4 w-12 h-12"><span>1</span></div><h3 class="font-heading text-brand font-semibold mb-2 text-base">Initial Enquiry</h3><p class="card-text text-sm">Submit details via our consultation form or call directly. We respond within one business day.</p></div>
+        <div class="reveal delay-100 text-center"><div class="step-number mx-auto mb-4 w-12 h-12" style="background:var(--color-accent);color:#1A0A00"><span>2</span></div><h3 class="font-heading text-brand font-semibold mb-2 text-base">Scope &amp; Quote</h3><p class="card-text text-sm">We assess your requirements and provide a detailed, fixed-price quotation with timeline.</p></div>
+        <div class="reveal delay-200 text-center"><div class="step-number mx-auto mb-4 w-12 h-12"><span>3</span></div><h3 class="font-heading text-brand font-semibold mb-2 text-base">Expert Analysis</h3><p class="card-text text-sm">Our specialists conduct research, testing, and hands-on examination at our London premises.</p></div>
+        <div class="reveal delay-300 text-center"><div class="step-number mx-auto mb-4 w-12 h-12" style="background:var(--color-accent);color:#1A0A00"><span>4</span></div><h3 class="font-heading text-brand font-semibold mb-2 text-base">Certified Report</h3><p class="card-text text-sm">You receive a comprehensive written report with numbered certificate and our liability warranty.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S4: FAQ ACCORDION -->
+  <section class="py-20 lg:py-28 bg-brandBg" aria-labelledby="faq-svc-heading">
+    <div class="section-container max-w-3xl mx-auto">
+      <div class="section-heading reveal"><span class="overline">Common Questions</span><h2 id="faq-svc-heading" class="text-brand mt-2">Frequently Asked Questions</h2></div>
+      <div class="accordion-container space-y-0 reveal">
+        <div class="accordion-item"><button class="accordion-trigger" aria-expanded="false">How long does an appraisal take?<i class="accordion-icon fa-solid fa-plus"></i></button><div class="accordion-body"><div class="accordion-content">Standard appraisals are completed within 10–15 business days. Complex engagements requiring additional forensic testing may take 3–5 weeks. We will advise on timelines at the quotation stage.</div></div></div>
+        <div class="accordion-item"><button class="accordion-trigger" aria-expanded="false">Do you collect books directly from my home?<i class="accordion-icon fa-solid fa-plus"></i></button><div class="accordion-body"><div class="accordion-content">Yes. For collections exceeding 50 volumes or items of high monetary value, we offer a white-glove collection service using acid-free transit materials and a specialist courier.</div></div></div>
+        <div class="accordion-item"><button class="accordion-trigger" aria-expanded="false">What makes your Certificates of Authenticity legally defensible?<i class="accordion-icon fa-solid fa-plus"></i></button><div class="accordion-body"><div class="accordion-content">Our certificates are issued by named specialists holding academic qualifications in bibliography and book history, accompanied by our full forensic data. They are accepted by Christie's, Sotheby's, and the major specialist insurers.</div></div></div>
+        <div class="accordion-item"><button class="accordion-trigger" aria-expanded="false">Can you restore a book I intend to resell?<i class="accordion-icon fa-solid fa-plus"></i></button><div class="accordion-body"><div class="accordion-content">Absolutely. We follow reversible conservation principles consistent with ICON guidelines, meaning all interventions can be documented and are non-destructive to intrinsic value. We can advise on the appropriate level of intervention for commercial resale.</div></div></div>
+        <div class="accordion-item"><button class="accordion-trigger" aria-expanded="false">Do you offer insurance valuations?<i class="accordion-icon fa-solid fa-plus"></i></button><div class="accordion-body"><div class="accordion-content">Yes. Our insurance valuation reports are prepared to Lloyd's and Allianz requirements and are accepted by all major specialist fine art and collectibles insurers in the UK and Europe.</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S5: PRICING TABLE -->
+  <section class="py-20 lg:py-28 bg-brandCard border-y border-borderNav" aria-labelledby="pricing-svc-heading">
+    <div class="section-container">
+      <div class="section-heading reveal"><span class="overline">Service Fees</span><h2 id="pricing-svc-heading" class="text-brand mt-2">Transparent Pricing</h2><p class="subtext mt-3">Fixed, all-inclusive fees. No hidden charges. Full quote provided before any work commences.</p></div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="pricing-card reveal text-center">
+          <div class="w-12 h-12 mx-auto rounded-full bg-brandBg border border-borderNav flex items-center justify-center text-brandAccent mb-4"><i class="fa-solid fa-magnifying-glass"></i></div>
+          <h3 class="font-heading font-semibold mb-2 text-lg">Standard Appraisal</h3>
+          <div class="price-amount mb-0.5">£380</div>
+          <div class="price-period mb-5">per item</div>
+          <ul class="space-y-2 text-sm text-brandTextSub text-left mb-6">
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check feature-check"></i> Condition assessment</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check feature-check"></i> Edition identification</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check feature-check"></i> Market valuation</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-times feature-cross"></i> Forensic testing</li>
+          </ul>
+          <a href="service-details.html" class="btn-outline w-full text-sm">Book Now</a>
+        </div>
+        <div class="pricing-card featured reveal delay-100 text-center">
+          <div class="pricing-badge">Most Requested</div>
+          <div class="w-12 h-12 mx-auto rounded-full flex items-center justify-center mb-4" style="background:rgba(255,255,240,0.15);"><i class="fa-solid fa-certificate" style="color:var(--color-accent);"></i></div>
+          <h3 class="font-heading font-semibold mb-2 text-lg">Full Authentication</h3>
+          <div class="price-amount mb-0.5">£980</div>
+          <div class="price-period mb-5">per item</div>
+          <ul class="space-y-2 text-sm mb-6 text-left" style="color:rgba(255,255,240,0.85)">
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check" style="color:var(--color-accent);"></i> Full forensic analysis</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check" style="color:var(--color-accent);"></i> Provenance chain research</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check" style="color:var(--color-accent);"></i> Numbered certificate</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check" style="color:var(--color-accent);"></i> Insurance valuation</li>
+          </ul>
+          <a href="service-details.html" class="btn-accent w-full text-sm">Book Now</a>
+        </div>
+        <div class="pricing-card reveal delay-200 text-center">
+          <div class="w-12 h-12 mx-auto rounded-full bg-brandBg border border-borderNav flex items-center justify-center text-brandAccent mb-4"><i class="fa-solid fa-scroll"></i></div>
+          <h3 class="font-heading font-semibold mb-2 text-lg">Restoration — Minor</h3>
+          <div class="price-amount mb-0.5">£280</div>
+          <div class="price-period mb-5">starting from</div>
+          <ul class="space-y-2 text-sm text-brandTextSub text-left mb-6">
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check feature-check"></i> Cover cleaning</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check feature-check"></i> Spine reinforcement</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check feature-check"></i> Page stabilisation</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-times feature-cross"></i> Full rebinding</li>
+          </ul>
+          <a href="service-details.html" class="btn-outline w-full text-sm">Book Now</a>
+        </div>
+        <div class="pricing-card reveal delay-300 text-center">
+          <div class="w-12 h-12 mx-auto rounded-full bg-brandBg border border-borderNav flex items-center justify-center text-brandAccent mb-4"><i class="fa-solid fa-landmark"></i></div>
+          <h3 class="font-heading font-semibold mb-2 text-lg">Library Curation</h3>
+          <div class="price-amount mb-0.5">POA</div>
+          <div class="price-period mb-5">custom scope</div>
+          <ul class="space-y-2 text-sm text-brandTextSub text-left mb-6">
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check feature-check"></i> Full collection audit</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check feature-check"></i> Digital cataloguing</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check feature-check"></i> Acquisition planning</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check feature-check"></i> Ongoing management</li>
+          </ul>
+          <a href="contact.html" class="btn-outline w-full text-sm">Get a Quote</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S6: CONSULTATION CTA -->
+  <section class="relative py-24 overflow-hidden text-white" aria-labelledby="consult-heading" style="background-color:var(--color-secondary);">
+    <div class="absolute inset-0 z-0"><img src="../assets/images/hero/hero_typewriter.jpg" alt="Antique typewriter background" class="w-full h-full object-cover opacity-15"><div class="absolute inset-0" style="background:linear-gradient(135deg,rgba(74,4,4,0.96),rgba(20,8,4,0.98));"></div></div>
+    <div class="relative z-10 section-container text-center">
+      <div class="reveal max-w-xl mx-auto">
+        <i class="fa-solid fa-calendar-check text-4xl mb-6" style="color:var(--color-accent);"></i>
+        <h2 id="consult-heading" class="font-heading font-bold mb-5" style="color:#FFFFF0;">Book a Free Consultation</h2>
+        <p class="text-[15px] leading-relaxed mb-8" style="color:rgba(245,245,220,0.82);">Speak with one of our senior curators at no obligation. We'll assess your requirements and recommend the most appropriate service pathway.</p>
+        <a href="service-details.html" class="btn-accent px-10 py-3.5 text-base"><i class="fa-solid fa-phone"></i> Book Consultation</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER (shared) -->
+<footer class="site-footer pt-16 pb-8" role="contentinfo"><div class="section-container"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12"><div><a href="home-1.html" class="flex items-center gap-2 mb-5"><i class="fa-solid fa-book-open text-2xl" style="color:var(--color-accent);"></i><span class="footer-brand-name">Antiquarian</span></a><p class="footer-tagline mb-6">Dedicated stewards of literary history since 1894.</p><div class="flex gap-3 footer-social-links"><a href="#" class="w-9 h-9 rounded-full bg-brand flex items-center justify-center hover:bg-brandAccent transition-colors" aria-label="Facebook" style="color:#fff;"><i class="fa-brands fa-facebook-f text-sm"></i></a><a href="#" class="w-9 h-9 rounded-full bg-brand flex items-center justify-center hover:bg-brandAccent transition-colors" aria-label="Instagram" style="color:#fff;"><i class="fa-brands fa-instagram text-sm"></i></a><a href="#" class="w-9 h-9 rounded-full bg-brand flex items-center justify-center hover:bg-brandAccent transition-colors" aria-label="Twitter" style="color:#fff;"><i class="fa-brands fa-x-twitter text-sm"></i></a></div></div><div><h4 class="footer-heading">Expertise</h4><ul class="space-y-3"><li><a href="services.html" class="footer-link">First Editions</a></li><li><a href="services.html" class="footer-link">Manuscripts</a></li><li><a href="services.html" class="footer-link">Appraisals</a></li><li><a href="services.html" class="footer-link">Restoration</a></li></ul></div><div><h4 class="footer-heading">Library Vault</h4><ul class="space-y-3"><li><a href="blog.html" class="footer-link">Recent Acquisitions</a></li><li><a href="blog.html" class="footer-link">Curator's Journal</a></li><li><a href="pricing.html" class="footer-link">Membership Tiers</a></li><li><a href="dashboard-user.html" class="footer-link">Collector's Registry</a></li></ul></div><div><h4 class="footer-heading">The Reading Room</h4><ul class="space-y-4"><li class="flex items-start gap-3 contact-info-item"><i class="fa-solid fa-location-dot mt-0.5" style="color:var(--color-accent);"></i><span class="footer-link text-sm">144 Oxford Circle, Suite B<br>London, LDN 408</span></li><li class="flex items-center gap-3 contact-info-item"><i class="fa-solid fa-phone" style="color:var(--color-accent);"></i><a href="tel:+442079460831" class="footer-link text-sm">+44 (0) 20 7946 0831</a></li><li class="flex items-center gap-3 contact-info-item"><i class="fa-solid fa-envelope" style="color:var(--color-accent);"></i><a href="mailto:inquiries@antiquarian.rare" class="footer-link text-sm">inquiries@antiquarian.rare</a></li></ul></div></div><div class="border-t pt-8 flex flex-col md:flex-row justify-between items-center gap-4" style="border-color:rgba(212,175,55,0.15);"><p class="footer-copyright">&copy; 2026 Antiquarian Rare Books. All rights preserved.</p><div class="flex gap-6"><a href="#" class="footer-copyright hover:text-brandAccent transition-colors">Terms of Trade</a><a href="#" class="footer-copyright hover:text-brandAccent transition-colors">Privacy Paradigm</a></div></div></div></footer>
+
+<script src="../assets/js/main.js"></script><script src="../assets/js/animations.js"></script>
+</body>
+</html>

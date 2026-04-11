@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic & Collector Niche – Antiquarian Rare Books</title>
+    <meta name="description" content="Scholarly services for academic institutions and serious collectors: first editions, manuscript authentication, library curation, and expert appraisals.">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicons/favicon-32.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {darkMode:['class','[data-theme="dark"]'],theme:{extend:{colors:{brand:'var(--color-primary)',brandSecondary:'var(--color-secondary)',brandAccent:'var(--color-accent)',brandBg:'var(--color-bg-main)',brandCard:'var(--color-bg-card)',brandFooter:'var(--color-bg-footer)',brandText:'var(--color-text-main)',brandTextMuted:'var(--color-text-muted)',brandTextSub:'var(--color-text-sub)',borderNav:'var(--color-border)'},fontFamily:{heading:'var(--font-heading)',body:'var(--font-body)'}}}}
+    </script>
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/rtl.css">
+</head>
+<body class="bg-brandBg text-brandText">
+
+<!-- NAVIGATION -->
+<nav class="fixed-nav" role="navigation" aria-label="Main navigation">
+  <div class="max-w-[1280px] w-full mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-full">
+    <a href="home-1.html" class="nav-brand flex items-center gap-2 text-brand font-heading font-bold text-2xl shrink-0 group" aria-label="Antiquarian – Home">
+      <i class="fa-solid fa-book-open group-hover:scale-110 transition-transform"></i>
+      <span class="tracking-tight">Antiquarian</span>
+    </a>
+    <div class="hidden lg:flex items-center h-full nav-links-container" style="gap:0;">
+      <div class="nav-dropdown-parent relative h-full flex items-center">
+        <button class="nav-link active flex items-center gap-1" aria-haspopup="true">
+          Home <i class="fa-solid fa-chevron-down text-[10px]"></i>
+        </button>
+        <div class="nav-dropdown">
+          <a href="home-1.html">Curated Collection</a>
+          <a href="home-2.html" class="font-semibold" style="color:var(--color-accent)"><i class="fa-solid fa-circle-dot mr-2 text-xs"></i>Academic Niche</a>
+        </div>
+      </div>
+      <a href="about.html"   class="nav-link">About Us</a>
+      <a href="services.html" class="nav-link">Services</a>
+      <a href="blog.html"    class="nav-link">Blog</a>
+      <a href="pricing.html" class="nav-link">Pricing</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </div>
+    <div class="flex items-center gap-2 lg:gap-3 shrink-0">
+      <button class="theme-toggle-btn w-9 h-9 flex items-center justify-center rounded-full bg-brandCard border border-borderNav text-brandText hover:border-brand transition-colors" aria-label="Toggle theme">
+        <i class="theme-icon fa-solid fa-moon text-sm"></i>
+      </button>
+      <button class="dir-toggle-btn w-9 h-9 flex items-center justify-center rounded-full bg-brandCard border border-borderNav text-brandText hover:border-brand transition-colors" aria-label="Toggle direction">
+        <i class="fa-solid fa-globe text-sm"></i>
+      </button>
+      <a href="login.html" class="hidden sm:inline-flex btn-accent px-4 py-2 text-sm rounded-sm">Sign In</a>
+      <button id="mobile-menu-btn" class="lg:hidden w-10 h-10 flex items-center justify-center text-brandText hover:text-brand" aria-label="Open menu" aria-expanded="false">
+        <i class="fa-solid fa-bars text-xl"></i>
+      </button>
+    </div>
+  </div>
+  <div id="mobile-menu" class="mobile-nav-menu lg:hidden">
+    <a href="home-1.html" class="mobile-nav-link">Home – Curated</a>
+    <a href="home-2.html" class="mobile-nav-link active">Home – Academic</a>
+    <div class="mobile-nav-divider"></div>
+    <a href="about.html"   class="mobile-nav-link">About Us</a>
+    <a href="services.html" class="mobile-nav-link">Services</a>
+    <a href="blog.html"    class="mobile-nav-link">Blog</a>
+    <a href="pricing.html" class="mobile-nav-link">Pricing</a>
+    <a href="contact.html" class="mobile-nav-link">Contact</a>
+    <div class="mobile-nav-divider"></div>
+    <a href="login.html" class="btn-accent w-full text-center py-2.5 rounded-sm text-sm font-semibold">Sign In</a>
+  </div>
+</nav>
+
+<main class="pt-nav flex-1 w-full">
+
+  <!-- SECTION 1: SCHOLARLY HERO -->
+  <section class="relative w-full min-h-[88vh] flex items-center justify-center overflow-hidden" aria-labelledby="hero-h2-heading">
+    <div class="absolute inset-0 z-0">
+      <img src="../assets/images/hero/hero_manuscripts.jpg" alt="Illuminated manuscripts and magnifying glass on scholarly desk" class="w-full h-full object-cover hero-ken-burns">
+      <div class="hero-gradient absolute inset-0" style="background:linear-gradient(to bottom, rgba(10,4,4,0.55),rgba(47,4,4,0.7) 55%,rgba(4,2,2,0.84) 100%);"></div>
+    </div>
+    <div class="relative z-10 w-full max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 text-center text-white py-32">
+      <span class="overline mb-4 block reveal" style="color:var(--color-accent);">Academic &amp; Collector Services</span>
+      <h1 id="hero-h2-heading" class="reveal mb-6 font-heading font-bold max-w-4xl mx-auto" style="color:#F5F5DC;">
+        Where Scholarship Meets Antiquity
+      </h1>
+      <p class="reveal subtext text-lg lg:text-xl font-body max-w-2xl mx-auto mb-12 delay-100" style="color:rgba(245,245,220,0.85);">
+        Specialist services for academic institutions, museum curators, and serious private collectors. Authentication, appraisal, and curation at the highest level.
+      </p>
+      <div class="reveal hero-cta-group flex flex-col sm:flex-row justify-center items-center gap-4 delay-200">
+        <a href="services.html" class="btn-primary w-full sm:w-auto px-8 py-3.5">
+          <i class="fa-solid fa-graduation-cap"></i> Academic Services
+        </a>
+        <a href="contact.html" class="btn-accent w-full sm:w-auto px-8 py-3.5">
+          <i class="fa-solid fa-user-tie"></i> Book a Consultation
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2: FIRST EDITIONS COMPARISON TABLE -->
+  <section class="py-20 lg:py-28 bg-brandBg" aria-labelledby="editions-heading">
+    <div class="section-container">
+      <div class="section-heading reveal">
+        <span class="overline">Collector Focus</span>
+        <h2 id="editions-heading" class="text-brand mt-2">First Editions: A Comparative Guide</h2>
+        <p class="subtext mt-3">Understanding condition grades, provenance factors, and market value tiers for serious collectors.</p>
+      </div>
+
+      <div class="overflow-x-auto reveal">
+        <table class="data-table min-w-full" role="table" aria-label="First editions comparison guide">
+          <thead>
+            <tr role="row">
+              <th scope="col">Edition Type</th>
+              <th scope="col">Condition Grade</th>
+              <th scope="col">Provenance Required</th>
+              <th scope="col">Est. Market Value</th>
+              <th scope="col">Authentication</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="font-semibold">True First Printing</td>
+              <td><span class="badge badge-success">Fine–Very Fine</span></td>
+              <td>Full Chain of Ownership</td>
+              <td class="font-semibold text-brand">£50,000+</td>
+              <td><i class="fa-solid fa-circle-check text-green-600"></i> Mandatory</td>
+            </tr>
+            <tr>
+              <td class="font-semibold">First Trade Edition</td>
+              <td><span class="badge badge-info">Very Good+</span></td>
+              <td>Publisher's Records</td>
+              <td class="font-semibold text-brand">£10,000–50,000</td>
+              <td><i class="fa-solid fa-circle-check text-green-600"></i> Mandatory</td>
+            </tr>
+            <tr>
+              <td class="font-semibold">Limited Signed Edition</td>
+              <td><span class="badge badge-info">Very Good</span></td>
+              <td>Signature Verification</td>
+              <td class="font-semibold text-brand">£5,000–25,000</td>
+              <td><i class="fa-solid fa-circle-check text-green-600"></i> Required</td>
+            </tr>
+            <tr>
+              <td class="font-semibold">Early Reprint</td>
+              <td><span class="badge badge-warning">Good–Very Good</span></td>
+              <td>Publication Records</td>
+              <td class="font-semibold text-brand">£500–5,000</td>
+              <td><i class="fa-regular fa-circle text-gray-400"></i> Optional</td>
+            </tr>
+            <tr>
+              <td class="font-semibold">Facsimile Edition</td>
+              <td><span class="badge badge-danger">Reference Only</span></td>
+              <td>None Required</td>
+              <td class="font-semibold text-brandTextSub">£50–500</td>
+              <td>—</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-xs text-brandTextSub mt-3 reveal">* All valuations are indicative. Contact our appraisers for formal assessments.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 3: APPRAISAL CASE STUDIES -->
+  <section class="py-20 lg:py-28 bg-brandCard border-y border-borderNav" aria-labelledby="casestudies-heading">
+    <div class="section-container">
+      <div class="section-heading reveal">
+        <span class="overline">Case Studies</span>
+        <h2 id="casestudies-heading" class="text-brand mt-2">Appraisal Success Stories</h2>
+        <p class="subtext mt-3">Real-world outcomes from our certified appraisal and authentication engagements.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="card reveal p-6">
+          <div class="w-12 h-12 rounded-full bg-brand flex items-center justify-center text-white mb-4">
+            <i class="fa-solid fa-university text-lg"></i>
+          </div>
+          <span class="overline text-xs mb-2">Oxford Bodleian Library</span>
+          <h3 class="font-heading text-brand font-semibold mb-3 text-lg">Medieval Psalter Authentication</h3>
+          <p class="card-text mb-4">We authenticated a 14th-century Psalter for the Bodleian, confirming its English provenance and enabling its acquisition at £1.2M — within budget and below market estimate.</p>
+          <div class="flex items-center gap-2 text-sm font-semibold text-brand">
+            <i class="fa-solid fa-chart-line text-brandAccent"></i> £1.2M Acquisition
+          </div>
+        </div>
+        <div class="card reveal delay-100 p-6">
+          <div class="w-12 h-12 rounded-full bg-brandAccent flex items-center justify-center text-black mb-4" style="background:var(--color-accent);">
+            <i class="fa-solid fa-user-graduate text-lg"></i>
+          </div>
+          <span class="overline text-xs mb-2">Private Collector, Geneva</span>
+          <h3 class="font-heading text-brand font-semibold mb-3 text-lg">First Edition Darwin Discovery</h3>
+          <p class="card-text mb-4">A Swiss collector purchased what was believed to be a later reprint of <em>On the Origin of Species.</em> Our forensics identified it as a true first printing, increasing value by 840%.</p>
+          <div class="flex items-center gap-2 text-sm font-semibold text-brand">
+            <i class="fa-solid fa-chart-line text-brandAccent"></i> 840% Value Uplift
+          </div>
+        </div>
+        <div class="card reveal delay-200 p-6">
+          <div class="w-12 h-12 rounded-full bg-brand flex items-center justify-center text-white mb-4">
+            <i class="fa-solid fa-landmark text-lg"></i>
+          </div>
+          <span class="overline text-xs mb-2">National Library, Edinburgh</span>
+          <h3 class="font-heading text-brand font-semibold mb-3 text-lg">Robert Burns Manuscript Sourcing</h3>
+          <p class="card-text mb-4">We sourced and authenticated an unpublished Burns verse manuscript at a private Swiss estate sale, securing it for Scottish national heritage at auction.</p>
+          <div class="flex items-center gap-2 text-sm font-semibold text-brand">
+            <i class="fa-solid fa-chart-line text-brandAccent"></i> National Heritage Secured
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: LIBRARY CURATION PRICING TEASER -->
+  <section class="py-20 lg:py-28 bg-brandBg" aria-labelledby="pricing-teaser-heading">
+    <div class="section-container">
+      <div class="section-heading reveal">
+        <span class="overline">Library Curation</span>
+        <h2 id="pricing-teaser-heading" class="text-brand mt-2">Institutional Collection Management</h2>
+        <p class="subtext mt-3">Bespoke curation and cataloguing packages for private libraries, foundations, and academic institutions.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="pricing-card reveal text-center">
+          <h3 class="font-heading font-semibold mb-2 text-lg">Assembly</h3>
+          <div class="price-amount text-3xl mb-1">£980</div>
+          <div class="price-period mb-4">per visit</div>
+          <ul class="space-y-2 text-sm text-brandTextSub mb-6 text-left">
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check feature-check"></i> Up to 200 volumes assessed</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check feature-check"></i> Basic condition report</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check feature-check"></i> Digital catalogue entry</li>
+          </ul>
+          <a href="pricing.html" class="btn-outline w-full text-sm">Get Started</a>
+        </div>
+        <div class="pricing-card featured reveal delay-100 text-center">
+          <div class="pricing-badge">Most Popular</div>
+          <h3 class="font-heading font-semibold mb-2 text-lg">Scholar</h3>
+          <div class="price-amount text-3xl mb-1">£2,400</div>
+          <div class="price-period mb-4">per engagement</div>
+          <ul class="space-y-2 text-sm mb-6 text-left" style="color:rgba(255,255,240,0.85)">
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check" style="color:#D4AF37;"></i> Up to 800 volumes</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check" style="color:#D4AF37;"></i> Full provenance research</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check" style="color:#D4AF37;"></i> Restoration recommendations</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check" style="color:#D4AF37;"></i> Insurance valuation report</li>
+          </ul>
+          <a href="pricing.html" class="btn-accent w-full text-sm">Select Plan</a>
+        </div>
+        <div class="pricing-card reveal delay-200 text-center">
+          <h3 class="font-heading font-semibold mb-2 text-lg">Institution</h3>
+          <div class="price-amount text-3xl mb-1">£6,500</div>
+          <div class="price-period mb-4">per quarter</div>
+          <ul class="space-y-2 text-sm text-brandTextSub mb-6 text-left">
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check feature-check"></i> Unlimited volume assessment</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check feature-check"></i> Dedicated senior curator</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check feature-check"></i> Quarterly written reports</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check feature-check"></i> Acquisition advisory</li>
+          </ul>
+          <a href="pricing.html" class="btn-outline w-full text-sm">Learn More</a>
+        </div>
+        <div class="pricing-card reveal delay-300 text-center">
+          <h3 class="font-heading font-semibold mb-2 text-lg">Enterprise</h3>
+          <div class="price-amount text-3xl mb-1">POA</div>
+          <div class="price-period mb-4">custom</div>
+          <ul class="space-y-2 text-sm text-brandTextSub mb-6 text-left">
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check feature-check"></i> National collection scope</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check feature-check"></i> Multi-site management</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check feature-check"></i> Full white-glove service</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check feature-check"></i> SLA guarantees</li>
+          </ul>
+          <a href="contact.html" class="btn-primary w-full text-sm">Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: EXPERT AUTHENTICATION PROCESS -->
+  <section class="py-20 lg:py-28 bg-brandCard border-y border-borderNav" aria-labelledby="process-heading">
+    <div class="section-container">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div class="reveal">
+          <span class="overline mb-3">Our Methodology</span>
+          <h2 id="process-heading" class="font-heading text-brand font-bold mb-8">The Authentication Process</h2>
+          <div class="space-y-8">
+            <div class="process-step">
+              <div class="step-number">1</div>
+              <div class="pt-1">
+                <h3 class="font-heading font-semibold text-brand mb-2 text-lg">Initial Assessment</h3>
+                <p class="subtext text-sm">Preliminary condition review, preliminary edition identification, and risk assessment by a senior bibliographer.</p>
+              </div>
+            </div>
+            <div class="process-step">
+              <div class="step-number">2</div>
+              <div class="pt-1">
+                <h3 class="font-heading font-semibold text-brand mb-2 text-lg">Forensic Analysis</h3>
+                <p class="subtext text-sm">Paper stock dating, ink composition testing, typeface matching against period catalogues, and binding technique analysis.</p>
+              </div>
+            </div>
+            <div class="process-step">
+              <div class="step-number">3</div>
+              <div class="pt-1">
+                <h3 class="font-heading font-semibold text-brand mb-2 text-lg">Provenance Investigation</h3>
+                <p class="subtext text-sm">Library bookplates, ownership inscriptions, auction records, and dealer stamps traced through our proprietary archival network.</p>
+              </div>
+            </div>
+            <div class="process-step">
+              <div class="step-number">4</div>
+              <div class="pt-1">
+                <h3 class="font-heading font-semibold text-brand mb-2 text-lg">Certification Issued</h3>
+                <p class="subtext text-sm">A numbered, signed Certificate of Authenticity issued with full bibliographic detail and our liability guarantee.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="reveal delay-100">
+          <img src="../assets/images/hero/hero_manuscripts.jpg" alt="Expert examines illuminated manuscript under magnification" class="w-full h-[480px] object-cover rounded-sm shadow-lg">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 6: COLLECTOR'S CLUB CTA -->
+  <section class="relative py-24 text-white overflow-hidden" aria-labelledby="club-heading" style="background-color:var(--color-secondary);">
+    <div class="absolute inset-0 z-0">
+      <img src="../assets/images/hero/hero_reading_room.jpg" alt="Private reading room background" class="w-full h-full object-cover opacity-15">
+      <div class="absolute inset-0" style="background:linear-gradient(135deg,rgba(74,4,4,0.95),rgba(20,4,4,0.98));"></div>
+    </div>
+    <div class="relative z-10 section-container text-center">
+      <div class="reveal max-w-2xl mx-auto">
+        <i class="fa-solid fa-crown text-4xl mb-6" style="color:var(--color-accent);"></i>
+        <h2 id="club-heading" class="font-heading font-bold mb-5" style="color:#FFFFF0;">Join the Collector's Club</h2>
+        <p class="text-[15px] leading-relaxed mb-8" style="color:rgba(245,245,220,0.82);">
+          Exclusive membership granting first access to private acquisitions, priority appraisal slots, bespoke literary research, and invitations to our preview evenings.
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10 max-w-lg mx-auto text-left">
+          <div class="flex items-center gap-2 text-sm" style="color:rgba(245,245,220,0.9)">
+            <i class="fa-solid fa-check" style="color:var(--color-accent);"></i> Early acquisition access
+          </div>
+          <div class="flex items-center gap-2 text-sm" style="color:rgba(245,245,220,0.9)">
+            <i class="fa-solid fa-check" style="color:var(--color-accent);"></i> Priority curator slots
+          </div>
+          <div class="flex items-center gap-2 text-sm" style="color:rgba(245,245,220,0.9)">
+            <i class="fa-solid fa-check" style="color:var(--color-accent);"></i> Preview evening invites
+          </div>
+        </div>
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+          <a href="register.html" class="btn-accent px-8 py-3.5">
+            <i class="fa-solid fa-user-plus"></i> Become a Member
+          </a>
+          <a href="pricing.html" class="btn-outline px-8 py-3.5" style="border-color:rgba(245,245,220,0.4); color:#FFFFF0;">
+            View Membership Tiers
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer pt-16 pb-8" role="contentinfo">
+  <div class="section-container">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+      <div>
+        <a href="home-1.html" class="flex items-center gap-2 mb-5">
+          <i class="fa-solid fa-book-open text-2xl" style="color:var(--color-accent);"></i>
+          <span class="footer-brand-name">Antiquarian</span>
+        </a>
+        <p class="footer-tagline mb-6">Dedicated stewards of literary history since 1894. World-class provenance authentication and museum-quality restoration.</p>
+        <div class="flex gap-3 footer-social-links">
+          <a href="#" class="w-9 h-9 rounded-full bg-brand flex items-center justify-center footer-link hover:bg-brandAccent transition-colors" aria-label="Facebook" style="color:#fff;"><i class="fa-brands fa-facebook-f text-sm"></i></a>
+          <a href="#" class="w-9 h-9 rounded-full bg-brand flex items-center justify-center footer-link hover:bg-brandAccent transition-colors" aria-label="Instagram" style="color:#fff;"><i class="fa-brands fa-instagram text-sm"></i></a>
+          <a href="#" class="w-9 h-9 rounded-full bg-brand flex items-center justify-center footer-link hover:bg-brandAccent transition-colors" aria-label="Twitter" style="color:#fff;"><i class="fa-brands fa-x-twitter text-sm"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4 class="footer-heading">Expertise</h4>
+        <ul class="space-y-3">
+          <li><a href="services.html" class="footer-link">First Editions</a></li>
+          <li><a href="services.html" class="footer-link">Manuscripts</a></li>
+          <li><a href="services.html" class="footer-link">Appraisals</a></li>
+          <li><a href="services.html" class="footer-link">Restoration</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-heading">Library Vault</h4>
+        <ul class="space-y-3">
+          <li><a href="blog.html" class="footer-link">Recent Acquisitions</a></li>
+          <li><a href="blog.html" class="footer-link">Curator's Journal</a></li>
+          <li><a href="pricing.html" class="footer-link">Membership Tiers</a></li>
+          <li><a href="dashboard-user.html" class="footer-link">Collector's Registry</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-heading">The Reading Room</h4>
+        <ul class="space-y-4">
+          <li class="flex items-start gap-3 contact-info-item">
+            <i class="fa-solid fa-location-dot mt-0.5" style="color:var(--color-accent);"></i>
+            <span class="footer-link text-sm">144 Oxford Circle, Suite B<br>London, LDN 408</span>
+          </li>
+          <li class="flex items-center gap-3 contact-info-item">
+            <i class="fa-solid fa-phone" style="color:var(--color-accent);"></i>
+            <a href="tel:+442079460831" class="footer-link text-sm">+44 (0) 20 7946 0831</a>
+          </li>
+          <li class="flex items-center gap-3 contact-info-item">
+            <i class="fa-solid fa-envelope" style="color:var(--color-accent);"></i>
+            <a href="mailto:inquiries@antiquarian.rare" class="footer-link text-sm">inquiries@antiquarian.rare</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t pt-8 flex flex-col md:flex-row justify-between items-center gap-4" style="border-color:rgba(212,175,55,0.15);">
+      <p class="footer-copyright">&copy; 2026 Antiquarian Rare Books. All rights preserved.</p>
+      <div class="flex gap-6">
+        <a href="#" class="footer-copyright hover:text-brandAccent transition-colors">Terms of Trade</a>
+        <a href="#" class="footer-copyright hover:text-brandAccent transition-colors">Privacy Paradigm</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/animations.js"></script>
+</body>
+</html>

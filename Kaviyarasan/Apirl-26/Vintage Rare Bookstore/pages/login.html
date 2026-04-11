@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In – Antiquarian Rare Books</title>
+    <meta name="description" content="Sign in to your Antiquarian Rare Books collector account to access your collection dashboard, appraisal reports, and member benefits.">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicons/favicon-32.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config={darkMode:['class','[data-theme="dark"]'],theme:{extend:{colors:{brand:'var(--color-primary)',brandSecondary:'var(--color-secondary)',brandAccent:'var(--color-accent)',brandBg:'var(--color-bg-main)',brandCard:'var(--color-bg-card)',brandFooter:'var(--color-bg-footer)',brandText:'var(--color-text-main)',brandTextMuted:'var(--color-text-muted)',brandTextSub:'var(--color-text-sub)',borderNav:'var(--color-border)'},fontFamily:{heading:'var(--font-heading)',body:'var(--font-body)'}}}}</script>
+    <link rel="stylesheet" href="../assets/css/main.css"><link rel="stylesheet" href="../assets/css/rtl.css">
+</head>
+<body class="bg-brandSecondary text-white min-h-screen flex flex-col" style="background-color:var(--color-secondary);">
+
+<!-- Standalone topbar (no nav/footer) -->
+<div class="auth-topbar">
+  <a href="home-1.html" class="auth-brand" aria-label="Return to Antiquarian Rare Books Home">
+    <i class="fa-solid fa-book-open text-xl" style="color:var(--color-accent);"></i>
+    <span class="auth-brand-name">Antiquarian</span>
+  </a>
+  <div class="flex items-center gap-2">
+    <button class="theme-toggle-btn w-9 h-9 flex items-center justify-center rounded-full border border-white/20 text-white hover:border-white/50 transition-colors" aria-label="Toggle theme">
+      <i class="theme-icon fa-solid fa-moon text-sm"></i>
+    </button>
+    <button class="dir-toggle-btn w-9 h-9 flex items-center justify-center rounded-full border border-white/20 text-white hover:border-white/50 transition-colors" aria-label="Toggle direction">
+      <i class="fa-solid fa-globe text-sm"></i>
+    </button>
+  </div>
+</div>
+
+<!-- MAIN: Split layout -->
+<main class="auth-main flex-1 flex items-stretch min-h-[calc(100vh-60px)]" id="main-content">
+
+  <!-- LEFT: Image panel -->
+  <div class="auth-image-panel hidden lg:flex" role="presentation">
+    <img src="../assets/images/hero/hero_library.jpg" alt="Grand antique library interior" class="auth-bg-image">
+    <div class="auth-image-overlay absolute inset-0"></div>
+    <div class="auth-image-quote relative z-10">
+      <i class="fa-solid fa-quote-left text-4xl mb-4" style="color:var(--color-accent); opacity:0.7;"></i>
+      <blockquote class="text-xl italic font-heading leading-relaxed mb-6" style="color:#FFFFF0;">"A great book is a friend that never lets you down."</blockquote>
+      <p style="color:rgba(245,245,220,0.6); font-size:0.85rem;">— Victor Hugo</p>
+    </div>
+  </div>
+
+  <!-- RIGHT: Form panel -->
+  <div class="auth-form-panel flex items-center justify-center p-8 w-full lg:w-[480px] flex-shrink-0">
+    <div class="w-full max-w-[380px]">
+
+      <div class="text-center mb-8">
+        <div class="w-14 h-14 mx-auto rounded-full flex items-center justify-center mb-4" style="background:rgba(212,175,55,0.15); border:1px solid rgba(212,175,55,0.3);">
+          <i class="fa-solid fa-lock text-xl" style="color:var(--color-accent);"></i>
+        </div>
+        <h1 class="font-heading font-bold text-2xl mb-1" style="color:var(--color-text-main);">Welcome Back</h1>
+        <p class="text-sm" style="color:var(--color-text-sub);">Sign in to your Collector's Registry</p>
+      </div>
+
+      <form id="login-form" class="space-y-4" novalidate>
+        <div>
+          <label class="form-label" for="login-email">Email Address</label>
+          <input id="login-email" type="email" class="form-field w-full" placeholder="your@email.com" required autofocus autocomplete="email">
+          <div id="login-email-error" class="form-error"></div>
+        </div>
+        <div>
+          <div class="flex justify-between items-center mb-1.5">
+            <label class="form-label mb-0" for="login-password">Password</label>
+            <a href="#" class="text-xs text-brand hover:text-brandAccent transition-colors">Forgot password?</a>
+          </div>
+          <div class="relative">
+            <input id="login-password" type="password" class="form-field w-full" placeholder="Enter password" required autocomplete="current-password">
+            <button type="button" class="absolute end-3 top-1/2 -translate-y-1/2 text-brandTextSub hover:text-brand transition-colors" onclick="this.previousElementSibling.type=this.previousElementSibling.type==='password'?'text':'password';this.querySelector('i').className=this.previousElementSibling.type==='password'?'fa-solid fa-eye':'fa-solid fa-eye-slash';" aria-label="Toggle password visibility">
+              <i class="fa-solid fa-eye text-sm"></i>
+            </button>
+          </div>
+          <div id="login-password-error" class="form-error"></div>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <input id="login-remember" type="checkbox" class="w-4 h-4 rounded accent-brand">
+          <label for="login-remember" class="text-sm" style="color:var(--color-text-sub);">Remember me for 30 days</label>
+        </div>
+
+        <button type="submit" class="btn-primary w-full py-3.5 mt-2">
+          <i class="fa-solid fa-right-to-bracket"></i> Sign In
+        </button>
+
+        <!-- Social auth -->
+        <div class="social-divider"><span>or continue with</span></div>
+        <div class="grid grid-cols-2 gap-3">
+          <button type="button" class="social-btn"><i class="fa-brands fa-google text-[#4285F4]"></i> Google</button>
+          <button type="button" class="social-btn"><i class="fa-brands fa-facebook-f text-[#1877F2]"></i> Facebook</button>
+        </div>
+
+        <p class="text-center text-sm mt-2" style="color:var(--color-text-sub);">
+          No account? <a href="register.html" class="font-semibold text-brand hover:text-brandAccent transition-colors">Create one</a>
+        </p>
+      </form>
+
+    </div>
+  </div>
+</main>
+
+<script src="../assets/js/main.js"></script><script src="../assets/js/forms.js"></script>
+</body>
+</html>

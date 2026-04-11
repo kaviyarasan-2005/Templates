@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Chronicle – Blog | Antiquarian Rare Books</title>
+    <meta name="description" content="Expert articles on rare book collecting, manuscript authentication, book restoration techniques, and antiquarian market insights from our curators.">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicons/favicon-32.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config={darkMode:['class','[data-theme="dark"]'],theme:{extend:{colors:{brand:'var(--color-primary)',brandSecondary:'var(--color-secondary)',brandAccent:'var(--color-accent)',brandBg:'var(--color-bg-main)',brandCard:'var(--color-bg-card)',brandFooter:'var(--color-bg-footer)',brandText:'var(--color-text-main)',brandTextMuted:'var(--color-text-muted)',brandTextSub:'var(--color-text-sub)',borderNav:'var(--color-border)'},fontFamily:{heading:'var(--font-heading)',body:'var(--font-body)'}}}}</script>
+    <link rel="stylesheet" href="../assets/css/main.css"><link rel="stylesheet" href="../assets/css/rtl.css">
+</head>
+<body class="bg-brandBg text-brandText">
+
+<!-- NAV -->
+<nav class="fixed-nav" role="navigation"><div class="max-w-[1280px] w-full mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-full"><a href="home-1.html" class="nav-brand flex items-center gap-2 text-brand font-heading font-bold text-2xl shrink-0 group"><i class="fa-solid fa-book-open group-hover:scale-110 transition-transform"></i><span class="tracking-tight">Antiquarian</span></a><div class="hidden lg:flex items-center h-full nav-links-container" style="gap:0;"><div class="nav-dropdown-parent relative h-full flex items-center"><button class="nav-link flex items-center gap-1">Home <i class="fa-solid fa-chevron-down text-[10px]"></i></button><div class="nav-dropdown"><a href="home-1.html">Curated Collection</a><a href="home-2.html">Academic Niche</a></div></div><a href="about.html" class="nav-link">About Us</a><a href="services.html" class="nav-link">Services</a><a href="blog.html" class="nav-link active">Blog</a><a href="pricing.html" class="nav-link">Pricing</a><a href="contact.html" class="nav-link">Contact</a></div><div class="flex items-center gap-2 lg:gap-3 shrink-0"><button class="theme-toggle-btn w-9 h-9 flex items-center justify-center rounded-full bg-brandCard border border-borderNav text-brandText hover:border-brand transition-colors" aria-label="Toggle theme"><i class="theme-icon fa-solid fa-moon text-sm"></i></button><button class="dir-toggle-btn w-9 h-9 flex items-center justify-center rounded-full bg-brandCard border border-borderNav text-brandText hover:border-brand transition-colors" aria-label="Toggle direction"><i class="fa-solid fa-globe text-sm"></i></button><a href="login.html" class="hidden sm:inline-flex btn-accent px-4 py-2 text-sm rounded-sm">Sign In</a><button id="mobile-menu-btn" class="lg:hidden w-10 h-10 flex items-center justify-center text-brandText hover:text-brand" aria-label="Open menu" aria-expanded="false"><i class="fa-solid fa-bars text-xl"></i></button></div></div><div id="mobile-menu" class="mobile-nav-menu lg:hidden"><a href="home-1.html" class="mobile-nav-link">Home – Curated</a><a href="home-2.html" class="mobile-nav-link">Home – Academic</a><div class="mobile-nav-divider"></div><a href="about.html" class="mobile-nav-link">About Us</a><a href="services.html" class="mobile-nav-link">Services</a><a href="blog.html" class="mobile-nav-link active">Blog</a><a href="pricing.html" class="mobile-nav-link">Pricing</a><a href="contact.html" class="mobile-nav-link">Contact</a><div class="mobile-nav-divider"></div><a href="login.html" class="btn-accent w-full text-center py-2.5 rounded-sm text-sm font-semibold">Sign In</a></div></nav>
+
+<main class="pt-nav flex-1 w-full">
+
+  <!-- S1: HERO -->
+  <section class="relative w-full min-h-[55vh] flex items-center justify-center overflow-hidden" aria-labelledby="blog-hero-h">
+    <div class="absolute inset-0 z-0"><img src="../assets/images/hero/hero_typewriter.jpg" alt="Antique typewriter and manuscript papers" class="w-full h-full object-cover"><div class="hero-gradient absolute inset-0"></div></div>
+    <div class="relative z-10 text-center text-white py-24 px-4">
+      <span class="overline mb-4 block reveal" style="color:var(--color-accent);">The Collector's Chronicle</span>
+      <h1 id="blog-hero-h" class="reveal font-heading font-bold mb-4" style="color:#FFFFF0;">Insights from the Literary Vault</h1>
+      <p class="reveal subtext max-w-xl mx-auto text-lg delay-100" style="color:rgba(245,245,220,0.85);">Expert articles on rare books, authentication, restoration, and the antiquarian market from our curators.</p>
+    </div>
+  </section>
+
+  <!-- S2: FILTERABLE ARTICLE GRID -->
+  <section class="py-20 lg:py-28 bg-brandBg" aria-labelledby="blog-grid-h">
+    <div class="section-container">
+      <!-- Filter tags -->
+      <div class="flex flex-wrap gap-2 justify-center mb-10 tags-row reveal">
+        <button class="article-tag active" data-filter="all">All Articles</button>
+        <button class="article-tag" data-filter="restoration">Restoration</button>
+        <button class="article-tag" data-filter="authentication">Authentication</button>
+        <button class="article-tag" data-filter="collecting">Collecting</button>
+        <button class="article-tag" data-filter="auctions">Auctions</button>
+        <button class="article-tag" data-filter="manuscripts">Manuscripts</button>
+      </div>
+      <div class="section-heading reveal" style="margin-bottom:2rem;">
+        <h2 id="blog-grid-h" class="text-brand">Latest Articles</h2>
+      </div>
+      <!-- 3-column grid (no orphans) -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="article-card reveal" data-category="restoration">
+          <div class="relative overflow-hidden aspect-16-9"><img src="../assets/images/blog/blog_01.jpg" alt="Book conservation workshop photo" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"></div>
+          <div class="p-5">
+            <div class="flex gap-2 mb-3"><span class="article-tag text-xs">Restoration</span><span class="text-xs text-brandTextSub">12 Mar 2026</span></div>
+            <h3 class="font-heading text-brand font-semibold mb-2 text-lg leading-snug"><a href="blog-details.html" class="hover:text-brandAccent transition-colors">The Art of Leather Reconsolidation: A Conservator's Guide</a></h3>
+            <p class="card-text text-sm mb-4 line-clamp-3">How our master binders approach aged and deteriorated leather covers — the tools, materials, and philosophy behind museum-grade restoration.</p>
+            <div class="flex items-center justify-between pt-4 border-t border-borderNav">
+              <div class="flex items-center gap-2"><div class="w-7 h-7 rounded-full bg-brand flex items-center justify-center" style="font-size:0.65rem;color:#fff;font-family:var(--font-heading);font-weight:700;">MF</div><span class="text-xs text-brandTextSub">Dr. M. Fitch</span></div>
+              <a href="blog-details.html" class="text-xs font-semibold text-brand hover:text-brandAccent transition-colors inline-flex items-center gap-1">Read More <i class="fa-solid fa-arrow-right text-[8px]"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="article-card reveal delay-100" data-category="auctions">
+          <div class="relative overflow-hidden aspect-16-9"><img src="../assets/images/blog/blog_02.jpg" alt="Rare book auction preview room" class="w-full h-full object-cover"></div>
+          <div class="p-5">
+            <div class="flex gap-2 mb-3"><span class="article-tag text-xs">Auctions</span><span class="text-xs text-brandTextSub">28 Feb 2026</span></div>
+            <h3 class="font-heading text-brand font-semibold mb-2 text-lg leading-snug"><a href="blog-details.html" class="hover:text-brandAccent transition-colors">Bidding with Precision: What Separates Expert Buyers at Auction</a></h3>
+            <p class="card-text text-sm mb-4 line-clamp-3">A behind-the-scenes look at how our procurement specialists evaluate lots, set limits, and bid at major auction houses without overpaying.</p>
+            <div class="flex items-center justify-between pt-4 border-t border-borderNav">
+              <div class="flex items-center gap-2"><div class="w-7 h-7 rounded-full flex items-center justify-center" style="background:var(--color-accent);font-size:0.65rem;color:#1A0A00;font-family:var(--font-heading);font-weight:700;">JA</div><span class="text-xs text-brandTextSub">Prof. J. Alderton</span></div>
+              <a href="blog-details.html" class="text-xs font-semibold text-brand hover:text-brandAccent transition-colors inline-flex items-center gap-1">Read More <i class="fa-solid fa-arrow-right text-[8px]"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="article-card reveal delay-200" data-category="manuscripts">
+          <div class="relative overflow-hidden aspect-16-9"><img src="../assets/images/blog/blog_03.jpg" alt="Professional library curation scene" class="w-full h-full object-cover"></div>
+          <div class="p-5">
+            <div class="flex gap-2 mb-3"><span class="article-tag text-xs">Manuscripts</span><span class="text-xs text-brandTextSub">15 Jan 2026</span></div>
+            <h3 class="font-heading text-brand font-semibold mb-2 text-lg leading-snug"><a href="blog-details.html" class="hover:text-brandAccent transition-colors">Illuminated Manuscripts: Reading the Language of Medieval Art</a></h3>
+            <p class="card-text text-sm mb-4 line-clamp-3">How iconographic programmes, pigment sourcing, and scribal hands can unlock the provenance and dating of illuminated manuscripts.</p>
+            <div class="flex items-center justify-between pt-4 border-t border-borderNav">
+              <div class="flex items-center gap-2"><div class="w-7 h-7 rounded-full bg-brand flex items-center justify-center" style="font-size:0.65rem;color:#fff;font-family:var(--font-heading);font-weight:700;">SR</div><span class="text-xs text-brandTextSub">Dr. S. Rahman</span></div>
+              <a href="blog-details.html" class="text-xs font-semibold text-brand hover:text-brandAccent transition-colors inline-flex items-center gap-1">Read More <i class="fa-solid fa-arrow-right text-[8px]"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="article-card reveal" data-category="authentication">
+          <div class="relative overflow-hidden aspect-16-9"><img src="../assets/images/books/rare_manuscript.jpg" alt="Authentication process for a medieval manuscript" class="w-full h-full object-cover"></div>
+          <div class="p-5">
+            <div class="flex gap-2 mb-3"><span class="article-tag text-xs">Authentication</span><span class="text-xs text-brandTextSub">8 Jan 2026</span></div>
+            <h3 class="font-heading text-brand font-semibold mb-2 text-lg leading-snug"><a href="blog-details.html" class="hover:text-brandAccent transition-colors">Paper Dating: How Watermarks Reveal a Book's True Age</a></h3>
+            <p class="card-text text-sm mb-4 line-clamp-3">The science and craft of watermark identification and beta-radiography — primary tools in determining an undocumented book's printing date.</p>
+            <div class="flex items-center justify-between pt-4 border-t border-borderNav">
+              <div class="flex items-center gap-2"><div class="w-7 h-7 rounded-full flex items-center justify-center" style="background:var(--color-accent);font-size:0.65rem;color:#1A0A00;font-family:var(--font-heading);font-weight:700;">JA</div><span class="text-xs text-brandTextSub">Prof. J. Alderton</span></div>
+              <a href="blog-details.html" class="text-xs font-semibold text-brand hover:text-brandAccent transition-colors inline-flex items-center gap-1">Read More <i class="fa-solid fa-arrow-right text-[8px]"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="article-card reveal delay-100" data-category="collecting">
+          <div class="relative overflow-hidden aspect-16-9"><img src="../assets/images/books/leather_books.jpg" alt="Collection of rare leather bound books" class="w-full h-full object-cover"></div>
+          <div class="p-5">
+            <div class="flex gap-2 mb-3"><span class="article-tag text-xs">Collecting</span><span class="text-xs text-brandTextSub">22 Dec 2025</span></div>
+            <h3 class="font-heading text-brand font-semibold mb-2 text-lg leading-snug"><a href="blog-details.html" class="hover:text-brandAccent transition-colors">Building a Focused Collection: 10 Rules for New Bibliophiles</a></h3>
+            <p class="card-text text-sm mb-4 line-clamp-3">Whether your passion is Victorian travel writing or 18th-century philosophy, a coherent collection strategy will always outperform opportunistic buying.</p>
+            <div class="flex items-center justify-between pt-4 border-t border-borderNav">
+              <div class="flex items-center gap-2"><div class="w-7 h-7 rounded-full bg-brand flex items-center justify-center" style="font-size:0.65rem;color:#fff;font-family:var(--font-heading);font-weight:700;">MF</div><span class="text-xs text-brandTextSub">Dr. M. Fitch</span></div>
+              <a href="blog-details.html" class="text-xs font-semibold text-brand hover:text-brandAccent transition-colors inline-flex items-center gap-1">Read More <i class="fa-solid fa-arrow-right text-[8px]"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="article-card reveal delay-200" data-category="restoration">
+          <div class="relative overflow-hidden aspect-16-9"><img src="../assets/images/books/first_edition.jpg" alt="First edition book with gold embossed cover" class="w-full h-full object-cover"></div>
+          <div class="p-5">
+            <div class="flex gap-2 mb-3"><span class="article-tag text-xs">Restoration</span><span class="text-xs text-brandTextSub">5 Dec 2025</span></div>
+            <h3 class="font-heading text-brand font-semibold mb-2 text-lg leading-snug"><a href="blog-details.html" class="hover:text-brandAccent transition-colors">When to Restore — and When to Leave Well Alone</a></h3>
+            <p class="card-text text-sm mb-4 line-clamp-3">Not all intervention is beneficial. Our key principles for knowing when conservation is essential, desirable, or counterproductive to the object's value and integrity.</p>
+            <div class="flex items-center justify-between pt-4 border-t border-borderNav">
+              <div class="flex items-center gap-2"><div class="w-7 h-7 rounded-full bg-brand flex items-center justify-center" style="font-size:0.65rem;color:#fff;font-family:var(--font-heading);font-weight:700;">SR</div><span class="text-xs text-brandTextSub">Dr. S. Rahman</span></div>
+              <a href="blog-details.html" class="text-xs font-semibold text-brand hover:text-brandAccent transition-colors inline-flex items-center gap-1">Read More <i class="fa-solid fa-arrow-right text-[8px]"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S3: CATEGORY TAGS SECTION -->
+  <section class="py-16 bg-brandCard border-y border-borderNav" aria-labelledby="categories-h">
+    <div class="section-container">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div class="reveal">
+          <span class="overline mb-3">Browse By Category</span>
+          <h2 id="categories-h" class="font-heading text-brand font-bold mb-4">Topics We Cover</h2>
+          <p class="subtext text-sm leading-relaxed">Our curators write from their areas of deepest specialist knowledge. Explore by topic to find the most relevant expertise.</p>
+        </div>
+        <div class="reveal delay-100">
+          <div class="flex flex-wrap gap-3 tags-row">
+            <a href="#" class="article-tag">Restoration</a>
+            <a href="#" class="article-tag">Authentication</a>
+            <a href="#" class="article-tag">Collecting Tips</a>
+            <a href="#" class="article-tag">Auction Guides</a>
+            <a href="#" class="article-tag">Manuscripts</a>
+            <a href="#" class="article-tag">First Editions</a>
+            <a href="#" class="article-tag">Library History</a>
+            <a href="#" class="article-tag">Market Watch</a>
+            <a href="#" class="article-tag">Incunabula</a>
+            <a href="#" class="article-tag">Provenance</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S4: FEATURED POST HIGHLIGHT -->
+  <section class="py-20 lg:py-28 bg-brandBg" aria-labelledby="featured-post-h">
+    <div class="section-container">
+      <div class="section-heading reveal"><span class="overline">Editor's Pick</span><h2 id="featured-post-h" class="text-brand mt-2">Featured Article</h2></div>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-stretch">
+        <div class="reveal overflow-hidden rounded-sm shadow-lg">
+          <img src="../assets/images/blog/blog_02.jpg" alt="Rare book auction preview — featured article" class="w-full h-full min-h-[300px] object-cover">
+        </div>
+        <div class="reveal delay-100 flex flex-col justify-center">
+          <span class="article-tag mb-3 inline-block w-fit">Auctions &amp; Market</span>
+          <h3 class="font-heading text-brand font-bold text-2xl mb-4 leading-snug"><a href="blog-details.html" class="hover:text-brandAccent transition-colors">The Antiquarian Book Market in 2026: A 12-Month Overview</a></h3>
+          <p class="subtext text-base leading-relaxed mb-6">Despite geopolitical headwinds, the rare book market achieved a 14% growth in auction realised values in 2025. We examine the categories driving demand, the surprising underperformers, and how serious collectors should position their acquisitions for 2026.</p>
+          <div class="flex items-center gap-4 mb-6 pb-6 border-b border-borderNav">
+            <div class="w-10 h-10 rounded-full bg-brandCard border border-borderNav overflow-hidden flex-shrink-0">
+              <img src="../assets/images/team/curator_02.jpg" alt="Prof. James Alderton" class="w-full h-full object-cover">
+            </div>
+            <div><div class="font-semibold text-sm text-brandText">Prof. James Alderton</div><div class="text-xs text-brandTextSub">Senior Authentication Specialist · 11 Apr 2026</div></div>
+          </div>
+          <a href="blog-details.html" class="btn-primary self-start px-7 py-3"><i class="fa-solid fa-book-open-reader"></i> Read Full Article</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S5: SIDEBAR — recent posts, categories, archives -->
+  <section class="py-20 lg:py-28 bg-brandCard border-y border-borderNav" aria-labelledby="sidebar-h">
+    <div class="section-container">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+        <div class="reveal">
+          <h2 id="sidebar-h" class="font-heading text-brand font-bold mb-6 text-xl">Recent Posts</h2>
+          <ul class="space-y-4">
+            <li class="flex gap-3 pb-4 border-b border-borderNav"><div class="flex-shrink-0 w-16 h-16 overflow-hidden rounded-sm"><img src="../assets/images/blog/blog_01.jpg" alt="Conservation article" class="w-full h-full object-cover"></div><div><a href="blog-details.html" class="text-sm font-semibold text-brandText hover:text-brand transition-colors leading-snug block mb-1">The Art of Leather Reconsolidation</a><span class="text-xs text-brandTextSub">12 Mar 2026</span></div></li>
+            <li class="flex gap-3 pb-4 border-b border-borderNav"><div class="flex-shrink-0 w-16 h-16 overflow-hidden rounded-sm"><img src="../assets/images/blog/blog_02.jpg" alt="Auctions article" class="w-full h-full object-cover"></div><div><a href="blog-details.html" class="text-sm font-semibold text-brandText hover:text-brand transition-colors leading-snug block mb-1">Bidding with Precision at Auction</a><span class="text-xs text-brandTextSub">28 Feb 2026</span></div></li>
+            <li class="flex gap-3 pb-4 border-b border-borderNav"><div class="flex-shrink-0 w-16 h-16 overflow-hidden rounded-sm"><img src="../assets/images/blog/blog_03.jpg" alt="Manuscripts article" class="w-full h-full object-cover"></div><div><a href="blog-details.html" class="text-sm font-semibold text-brandText hover:text-brand transition-colors leading-snug block mb-1">Illuminated Manuscripts: Reading Medieval Art</a><span class="text-xs text-brandTextSub">15 Jan 2026</span></div></li>
+          </ul>
+        </div>
+        <div class="reveal delay-100">
+          <h3 class="font-heading text-brand font-bold mb-6 text-xl">Categories</h3>
+          <ul class="space-y-2">
+            <li class="flex justify-between items-center p-3 bg-brandBg rounded-sm border border-borderNav hover:border-brand transition-colors"><a href="#" class="text-sm font-medium text-brandText hover:text-brand transition-colors">Restoration &amp; Conservation</a><span class="text-xs text-brandTextSub bg-brandCard px-2 py-0.5 rounded">12</span></li>
+            <li class="flex justify-between items-center p-3 bg-brandBg rounded-sm border border-borderNav hover:border-brand transition-colors"><a href="#" class="text-sm font-medium text-brandText hover:text-brand transition-colors">Authentication &amp; Forensics</a><span class="text-xs text-brandTextSub bg-brandCard px-2 py-0.5 rounded">9</span></li>
+            <li class="flex justify-between items-center p-3 bg-brandBg rounded-sm border border-borderNav hover:border-brand transition-colors"><a href="#" class="text-sm font-medium text-brandText hover:text-brand transition-colors">Collecting &amp; Acquisition</a><span class="text-xs text-brandTextSub bg-brandCard px-2 py-0.5 rounded">15</span></li>
+            <li class="flex justify-between items-center p-3 bg-brandBg rounded-sm border border-borderNav hover:border-brand transition-colors"><a href="#" class="text-sm font-medium text-brandText hover:text-brand transition-colors">Auctions &amp; Market</a><span class="text-xs text-brandTextSub bg-brandCard px-2 py-0.5 rounded">7</span></li>
+            <li class="flex justify-between items-center p-3 bg-brandBg rounded-sm border border-borderNav hover:border-brand transition-colors"><a href="#" class="text-sm font-medium text-brandText hover:text-brand transition-colors">Manuscripts &amp; Incunabula</a><span class="text-xs text-brandTextSub bg-brandCard px-2 py-0.5 rounded">6</span></li>
+          </ul>
+        </div>
+        <div class="reveal delay-200">
+          <h3 class="font-heading text-brand font-bold mb-6 text-xl">Archives</h3>
+          <ul class="space-y-2">
+            <li><a href="#" class="flex items-center justify-between p-3 bg-brandBg rounded-sm border border-borderNav hover:border-brand transition-colors"><span class="text-sm font-medium text-brandText hover:text-brand transition-colors">2026</span><span class="text-xs text-brandTextSub">14 articles</span></a></li>
+            <li><a href="#" class="flex items-center justify-between p-3 bg-brandBg rounded-sm border border-borderNav hover:border-brand transition-colors"><span class="text-sm font-medium text-brandText hover:text-brand transition-colors">2025</span><span class="text-xs text-brandTextSub">38 articles</span></a></li>
+            <li><a href="#" class="flex items-center justify-between p-3 bg-brandBg rounded-sm border border-borderNav hover:border-brand transition-colors"><span class="text-sm font-medium text-brandText hover:text-brand transition-colors">2024</span><span class="text-xs text-brandTextSub">42 articles</span></a></li>
+            <li><a href="#" class="flex items-center justify-between p-3 bg-brandBg rounded-sm border border-borderNav hover:border-brand transition-colors"><span class="text-sm font-medium text-brandText hover:text-brand transition-colors">2023</span><span class="text-xs text-brandTextSub">29 articles</span></a></li>
+          </ul>
+          <div class="mt-6 p-4 bg-brandBg border border-borderNav rounded-sm">
+            <h4 class="font-heading text-brand font-semibold mb-3 text-base">Search Articles</h4>
+            <div class="relative"><input type="search" placeholder="Search The Chronicle…" class="form-field w-full pr-10" aria-label="Search blog articles"><button class="absolute end-3 top-1/2 -translate-y-1/2 text-brandTextSub hover:text-brand transition-colors" aria-label="Search"><i class="fa-solid fa-magnifying-glass text-sm"></i></button></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S6: NEWSLETTER -->
+  <section class="relative py-24 overflow-hidden text-white" style="background-color:var(--color-secondary);">
+    <div class="absolute inset-0 z-0"><img src="../assets/images/hero/hero_reading_room.jpg" alt="" class="w-full h-full object-cover opacity-10"><div class="absolute inset-0" style="background:rgba(74,4,4,0.95);"></div></div>
+    <div class="relative z-10 section-container text-center">
+      <div class="reveal max-w-lg mx-auto">
+        <i class="fa-solid fa-newspaper text-4xl mb-6" style="color:var(--color-accent);"></i>
+        <h2 class="font-heading font-bold mb-4" style="color:#FFFFF0;">Never Miss an Article</h2>
+        <p class="mb-8 text-sm leading-relaxed" style="color:rgba(245,245,220,0.8);">New articles from our curators delivered to your inbox, alongside acquisition previews and event invitations.</p>
+        <form class="newsletter-form flex flex-col sm:flex-row gap-3 max-w-md mx-auto" novalidate>
+          <input type="email" placeholder="Subscription email address" required class="form-field flex-1" style="background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.2);color:#fff;" aria-label="Email for newsletter">
+          <button type="submit" class="btn-accent px-5 py-3 whitespace-nowrap">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer pt-16 pb-8" role="contentinfo"><div class="section-container"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12"><div><a href="home-1.html" class="flex items-center gap-2 mb-5"><i class="fa-solid fa-book-open text-2xl" style="color:var(--color-accent);"></i><span class="footer-brand-name">Antiquarian</span></a><p class="footer-tagline mb-6">Dedicated stewards of literary history since 1894.</p><div class="flex gap-3 footer-social-links"><a href="#" class="w-9 h-9 rounded-full bg-brand flex items-center justify-center hover:bg-brandAccent transition-colors" aria-label="Facebook" style="color:#fff;"><i class="fa-brands fa-facebook-f text-sm"></i></a><a href="#" class="w-9 h-9 rounded-full bg-brand flex items-center justify-center hover:bg-brandAccent transition-colors" aria-label="Instagram" style="color:#fff;"><i class="fa-brands fa-instagram text-sm"></i></a></div></div><div><h4 class="footer-heading">Expertise</h4><ul class="space-y-3"><li><a href="services.html" class="footer-link">First Editions</a></li><li><a href="services.html" class="footer-link">Manuscripts</a></li><li><a href="services.html" class="footer-link">Appraisals</a></li><li><a href="services.html" class="footer-link">Restoration</a></li></ul></div><div><h4 class="footer-heading">Library Vault</h4><ul class="space-y-3"><li><a href="blog.html" class="footer-link">Recent Acquisitions</a></li><li><a href="blog.html" class="footer-link">Curator's Journal</a></li><li><a href="pricing.html" class="footer-link">Membership Tiers</a></li></ul></div><div><h4 class="footer-heading">The Reading Room</h4><ul class="space-y-4"><li class="flex items-start gap-3"><i class="fa-solid fa-location-dot mt-0.5" style="color:var(--color-accent);"></i><span class="footer-link text-sm">144 Oxford Circle, London</span></li><li class="flex items-center gap-3"><i class="fa-solid fa-phone" style="color:var(--color-accent);"></i><a href="tel:+442079460831" class="footer-link text-sm">+44 (0) 20 7946 0831</a></li></ul></div></div><div class="border-t pt-8 flex flex-col md:flex-row justify-between items-center gap-4" style="border-color:rgba(212,175,55,0.15);"><p class="footer-copyright">&copy; 2026 Antiquarian Rare Books. All rights preserved.</p><div class="flex gap-6"><a href="#" class="footer-copyright hover:text-brandAccent transition-colors">Terms of Trade</a><a href="#" class="footer-copyright hover:text-brandAccent transition-colors">Privacy</a></div></div></div></footer>
+
+<script src="../assets/js/main.js"></script><script src="../assets/js/animations.js"></script><script src="../assets/js/forms.js"></script>
+</body>
+</html>

@@ -11,17 +11,21 @@
   inset-inline: 0;
   z-index: var(--z-sticky);
   padding: var(--space-4) 0;
-  background: transparent;
+  background: var(--bg-nav);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border-bottom: 1px solid var(--glass-border);
+  box-shadow: var(--navbar-shadow);
   transition: background var(--transition-base), padding var(--transition-base),
-              box-shadow var(--transition-base), backdrop-filter var(--transition-base);
+              box-shadow var(--transition-base), backdrop-filter var(--transition-base),
+              border-color var(--transition-base);
 }
 
 .navbar.scrolled {
   background: var(--bg-nav-scrolled);
-  backdrop-filter: blur(var(--glass-blur));
-  -webkit-backdrop-filter: blur(var(--glass-blur));
   padding: var(--space-2) 0;
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-lg);
+  border-bottom-color: var(--border-color);
 }
 
 .navbar__inner {
@@ -240,10 +244,7 @@
   transform: translateY(-7px) rotate(-45deg);
 }
 
-/* Language Dropdown */
-.lang-dropdown {
-  position: relative;
-}
+/* RTL Toggle is handled by .navbar__action-btn and data-rtl-toggle */
 
 .lang-dropdown__menu {
   position: absolute;

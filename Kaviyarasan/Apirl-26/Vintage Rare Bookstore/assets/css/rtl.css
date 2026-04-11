@@ -1,0 +1,235 @@
+/* ============================================
+   RTL LAYOUT OVERRIDES
+   rtl.css · v1.0
+   Activated when <html dir="rtl"> is set
+   ============================================ */
+
+/* ---- Text Directions ---- */
+[dir="rtl"] body {
+  direction: rtl;
+  text-align: right;
+}
+
+/* ---- Nav & Logo ---- */
+[dir="rtl"] .fixed-nav .nav-inner {
+  flex-direction: row-reverse;
+}
+
+/* Brand flips right for RTL */
+[dir="rtl"] .nav-brand {
+  flex-direction: row-reverse;
+}
+
+/* Nav links container: space-x flips in RTL naturally, but ensure consistent gaps */
+[dir="rtl"] .nav-links-container {
+  flex-direction: row-reverse;
+}
+
+/* Dropdown alignment flips */
+[dir="rtl"] .nav-dropdown {
+  left: auto;
+  right: 0;
+}
+
+/* Nav link active underline flips */
+[dir="rtl"] .nav-link.active::after {
+  left: auto;
+  right: 0.75rem;
+}
+
+/* Arrow icon rotation in RTL */
+[dir="rtl"] .fa-arrow-right {
+  transform: scaleX(-1);
+}
+[dir="rtl"] .fa-arrow-left {
+  transform: scaleX(-1);
+}
+[dir="rtl"] .fa-chevron-right {
+  transform: scaleX(-1);
+}
+
+/* ---- Flex Layouts ---- */
+[dir="rtl"] .flex-row-ltr {
+  flex-direction: row-reverse;
+}
+
+/* Hero CTA buttons: reverse order */
+[dir="rtl"] .hero-cta-group {
+  flex-direction: row-reverse;
+}
+
+/* ---- Grid Text Alignment ---- */
+[dir="rtl"] .section-heading {
+  text-align: right;
+}
+[dir="rtl"] .section-heading .subtext {
+  text-align: right;
+  margin-inline-start: 0;
+  margin-inline-end: auto;
+}
+
+/* ---- Split Sections (Our Story) ---- */
+/* Image swaps to right, text to left in RTL */
+[dir="rtl"] .split-section-grid {
+  direction: rtl;
+}
+
+/* ---- Footer ---- */
+[dir="rtl"] .site-footer {
+  text-align: right;
+}
+[dir="rtl"] .footer-social-links {
+  flex-direction: row-reverse;
+}
+
+/* ---- Breadcrumb ---- */
+[dir="rtl"] .breadcrumb {
+  flex-direction: row-reverse;
+}
+[dir="rtl"] .breadcrumb-sep {
+  transform: scaleX(-1);
+}
+
+/* ---- Tables ---- */
+[dir="rtl"] .data-table th,
+[dir="rtl"] .data-table td {
+  text-align: right;
+}
+
+/* ---- Process Steps ---- */
+[dir="rtl"] .process-step {
+  flex-direction: row-reverse;
+}
+
+/* ---- Cards ---- */
+[dir="rtl"] .card-text {
+  text-align: right;
+}
+
+/* ---- Blog article body ---- */
+[dir="rtl"] .article-body {
+  text-align: right;
+}
+[dir="rtl"] .article-body ul,
+[dir="rtl"] .article-body ol {
+  padding-right: 1.25rem;
+  padding-left: 0;
+}
+
+/* ---- Form Elements ---- */
+[dir="rtl"] .form-field {
+  text-align: right;
+}
+[dir="rtl"] .form-label {
+  text-align: right;
+}
+
+/* ---- Accordion ---- */
+[dir="rtl"] .accordion-trigger {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+/* ---- Testimonials ---- */
+[dir="rtl"] .testimonial-card {
+  text-align: right;
+}
+
+/* ---- Dashboard ---- */
+[dir="rtl"] .dashboard-topbar {
+  flex-direction: row-reverse;
+}
+[dir="rtl"] .sidebar-brand {
+  flex-direction: row-reverse;
+}
+[dir="rtl"] .sidebar-link {
+  flex-direction: row-reverse;
+}
+[dir="rtl"] .sidebar-link.active {
+  border-right: none;
+  border-left: 3px solid var(--color-accent);
+}
+[dir="rtl"] .stat-card {
+  text-align: right;
+}
+
+/* ---- Auth Pages ---- */
+[dir="rtl"] .auth-topbar {
+  right: auto;
+  left: 1.25rem;
+  flex-direction: row-reverse;
+}
+[dir="rtl"] .auth-grid {
+  direction: rtl;
+}
+
+/* ---- Mobile Menu ---- */
+[dir="rtl"] .mobile-nav-menu {
+  text-align: right;
+}
+
+/* ---- Toast notifications ---- */
+[dir="rtl"] .toast-container {
+  right: auto;
+  left: 1.5rem;
+}
+[dir="rtl"] .toast {
+  flex-direction: row-reverse;
+}
+
+/* ---- Icon spacing in buttons ---- */
+[dir="rtl"] .btn-primary,
+[dir="rtl"] .btn-accent,
+[dir="rtl"] .btn-outline {
+  flex-direction: row-reverse;
+}
+
+/* ---- Sidebar for Dashboard ---- */
+[dir="rtl"] .dashboard-sidebar {
+  left: auto;
+  right: 0;
+  border-right: none;
+  border-left: 1px solid rgba(212,175,55,0.15);
+  transform: translateX(100%);
+}
+[dir="rtl"] .dashboard-sidebar.open,
+[dir="rtl"] .dashboard-sidebar:not(.collapsed) {
+  transform: translateX(0);
+}
+@media (min-width: 1024px) {
+  [dir="rtl"] .dashboard-sidebar {
+    transform: translateX(0);
+  }
+  [dir="rtl"] .dashboard-main {
+    margin-right: 260px;
+    margin-left: 0;
+  }
+}
+
+/* ---- Overline / label ---- */
+[dir="rtl"] .overline {
+  text-align: right;
+}
+
+/* ---- Pricing cards ---- */
+[dir="rtl"] .pricing-card {
+  text-align: right;
+}
+[dir="rtl"] .pricing-feature-row {
+  flex-direction: row-reverse;
+}
+
+/* ---- Contact info list ---- */
+[dir="rtl"] .contact-info-item {
+  flex-direction: row-reverse;
+}
+
+/* ---- Category tags row ---- */
+[dir="rtl"] .tags-row {
+  flex-direction: row-reverse;
+}
+
+/* ---- Countdown ---- */
+[dir="rtl"] .countdown-row {
+  flex-direction: row-reverse;
+}

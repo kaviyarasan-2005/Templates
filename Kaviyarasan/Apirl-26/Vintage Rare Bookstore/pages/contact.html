@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us – Antiquarian Rare Books | Get In Touch</title>
+    <meta name="description" content="Contact Antiquarian Rare Books in London. Phone, email, or visit our Oxford Circle shop. Book a consultation with our expert curators.">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicons/favicon-32.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config={darkMode:['class','[data-theme="dark"]'],theme:{extend:{colors:{brand:'var(--color-primary)',brandSecondary:'var(--color-secondary)',brandAccent:'var(--color-accent)',brandBg:'var(--color-bg-main)',brandCard:'var(--color-bg-card)',brandFooter:'var(--color-bg-footer)',brandText:'var(--color-text-main)',brandTextMuted:'var(--color-text-muted)',brandTextSub:'var(--color-text-sub)',borderNav:'var(--color-border)'},fontFamily:{heading:'var(--font-heading)',body:'var(--font-body)'}}}}</script>
+    <link rel="stylesheet" href="../assets/css/main.css"><link rel="stylesheet" href="../assets/css/rtl.css">
+</head>
+<body class="bg-brandBg text-brandText">
+
+<!-- NAV -->
+<nav class="fixed-nav" role="navigation"><div class="max-w-[1280px] w-full mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-full"><a href="home-1.html" class="nav-brand flex items-center gap-2 text-brand font-heading font-bold text-2xl shrink-0 group"><i class="fa-solid fa-book-open group-hover:scale-110 transition-transform"></i><span class="tracking-tight">Antiquarian</span></a><div class="hidden lg:flex items-center h-full nav-links-container" style="gap:0;"><div class="nav-dropdown-parent relative h-full flex items-center"><button class="nav-link flex items-center gap-1">Home <i class="fa-solid fa-chevron-down text-[10px]"></i></button><div class="nav-dropdown"><a href="home-1.html">Curated Collection</a><a href="home-2.html">Academic Niche</a></div></div><a href="about.html" class="nav-link">About Us</a><a href="services.html" class="nav-link">Services</a><a href="blog.html" class="nav-link">Blog</a><a href="pricing.html" class="nav-link">Pricing</a><a href="contact.html" class="nav-link active">Contact</a></div><div class="flex items-center gap-2 lg:gap-3 shrink-0"><button class="theme-toggle-btn w-9 h-9 flex items-center justify-center rounded-full bg-brandCard border border-borderNav text-brandText hover:border-brand transition-colors" aria-label="Toggle theme"><i class="theme-icon fa-solid fa-moon text-sm"></i></button><button class="dir-toggle-btn w-9 h-9 flex items-center justify-center rounded-full bg-brandCard border border-borderNav text-brandText hover:border-brand transition-colors" aria-label="Toggle direction"><i class="fa-solid fa-globe text-sm"></i></button><a href="login.html" class="hidden sm:inline-flex btn-accent px-4 py-2 text-sm rounded-sm">Sign In</a><button id="mobile-menu-btn" class="lg:hidden w-10 h-10 flex items-center justify-center text-brandText hover:text-brand" aria-label="Open menu" aria-expanded="false"><i class="fa-solid fa-bars text-xl"></i></button></div></div><div id="mobile-menu" class="mobile-nav-menu lg:hidden"><a href="home-1.html" class="mobile-nav-link">Home – Curated</a><a href="home-2.html" class="mobile-nav-link">Home – Academic</a><div class="mobile-nav-divider"></div><a href="about.html" class="mobile-nav-link">About Us</a><a href="services.html" class="mobile-nav-link">Services</a><a href="blog.html" class="mobile-nav-link">Blog</a><a href="pricing.html" class="mobile-nav-link">Pricing</a><a href="contact.html" class="mobile-nav-link active">Contact</a><div class="mobile-nav-divider"></div><a href="login.html" class="btn-accent w-full text-center py-2.5 rounded-sm text-sm font-semibold">Sign In</a></div></nav>
+
+<main class="pt-nav flex-1 w-full">
+
+  <!-- S1: HERO -->
+  <section class="relative w-full min-h-[50vh] flex items-center justify-center overflow-hidden" aria-labelledby="contact-hero-h">
+    <div class="absolute inset-0 z-0"><img src="../assets/images/hero/hero_bookshop.jpg" alt="Antiquarian Rare Books shop exterior at dusk" class="w-full h-full object-cover"><div class="hero-gradient absolute inset-0"></div></div>
+    <div class="relative z-10 text-center text-white py-24 px-4">
+      <span class="overline mb-4 block reveal" style="color:var(--color-accent);">Get In Touch</span>
+      <h1 id="contact-hero-h" class="reveal font-heading font-bold mb-4" style="color:#FFFFF0;">Contact Our Curators</h1>
+      <p class="reveal subtext max-w-xl mx-auto delay-100" style="color:rgba(245,245,220,0.85);">We welcome enquiries from collectors, institutions, and scholars. Our team responds within one business day.</p>
+    </div>
+  </section>
+
+  <!-- S2: CONTACT FORM -->
+  <section class="py-20 lg:py-28 bg-brandBg" aria-labelledby="contact-form-h">
+    <div class="section-container">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+        <div class="reveal">
+          <span class="overline mb-3">Send a Message</span>
+          <h2 id="contact-form-h" class="font-heading text-brand font-bold mb-6">Write to Us</h2>
+          <form id="contact-form" class="space-y-5" novalidate>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div><label class="form-label" for="cf-name">Full Name *</label><input id="cf-name" type="text" class="form-field" placeholder="Your full name" required data-error-required="Please enter your name."><div id="cf-name-error" class="form-error"></div></div>
+              <div><label class="form-label" for="cf-email">Email Address *</label><input id="cf-email" type="email" class="form-field" placeholder="your@email.com" required><div id="cf-email-error" class="form-error"></div></div>
+            </div>
+            <div><label class="form-label" for="cf-phone">Phone Number</label><input id="cf-phone" type="tel" class="form-field" placeholder="+44 20 0000 0000"></div>
+            <div><label class="form-label" for="cf-subject">Subject *</label>
+              <select id="cf-subject" class="form-field" required data-error-required="Please select a subject."><option value="">– Select a topic –</option><option>Appraisal Enquiry</option><option>Restoration Service</option><option>Acquisition / Sourcing</option><option>Library Curation</option><option>Selling a Collection</option><option>General Enquiry</option></select>
+              <div id="cf-subject-error" class="form-error"></div>
+            </div>
+            <div><label class="form-label" for="cf-message">Your Message *</label><textarea id="cf-message" rows="5" class="form-field" placeholder="Please describe your enquiry in detail…" required data-error-required="Please enter your message."></textarea><div id="cf-message-error" class="form-error"></div></div>
+            <button type="submit" class="btn-primary w-full py-3.5"><i class="fa-solid fa-paper-plane"></i> Send Message</button>
+          </form>
+        </div>
+        <div class="reveal delay-100 flex flex-col gap-6">
+          <div>
+            <span class="overline mb-3">Visit &amp; Call</span>
+            <h2 class="font-heading text-brand font-bold mb-6">Contact Information</h2>
+          </div>
+          <!-- Info cards -->
+          <div class="card p-5 flex gap-4 items-start">
+            <div class="w-12 h-12 rounded-full flex items-center justify-center text-xl flex-shrink-0" style="background:rgba(114,47,55,0.1); color:var(--color-primary);"><i class="fa-solid fa-location-dot"></i></div>
+            <div><h3 class="font-heading font-semibold text-brand mb-1">Shop Address</h3><p class="card-text text-sm">144 Oxford Circle, Suite B<br>London, LDN 408<br>United Kingdom</p></div>
+          </div>
+          <div class="card p-5 flex gap-4 items-start">
+            <div class="w-12 h-12 rounded-full flex items-center justify-center text-xl flex-shrink-0" style="background:rgba(212,175,55,0.1); color:var(--color-accent);"><i class="fa-solid fa-phone"></i></div>
+            <div><h3 class="font-heading font-semibold text-brand mb-1">Telephone</h3><a href="tel:+442079460831" class="card-text text-sm hover:text-brand transition-colors">+44 (0) 20 7946 0831</a><p class="text-xs text-brandTextSub mt-1">Mon–Fri · 09:00–17:00 GMT</p></div>
+          </div>
+          <div class="card p-5 flex gap-4 items-start">
+            <div class="w-12 h-12 rounded-full flex items-center justify-center text-xl flex-shrink-0" style="background:rgba(114,47,55,0.1); color:var(--color-primary);"><i class="fa-solid fa-envelope"></i></div>
+            <div><h3 class="font-heading font-semibold text-brand mb-1">Email</h3><a href="mailto:inquiries@antiquarian.rare" class="card-text text-sm hover:text-brand transition-colors">inquiries@antiquarian.rare</a><p class="text-xs text-brandTextSub mt-1">Responses within 1 business day</p></div>
+          </div>
+          <div class="card p-5 flex gap-4 items-start">
+            <div class="w-12 h-12 rounded-full flex items-center justify-center text-xl flex-shrink-0" style="background:rgba(212,175,55,0.1); color:var(--color-accent);"><i class="fa-regular fa-clock"></i></div>
+            <div><h3 class="font-heading font-semibold text-brand mb-1">Opening Hours</h3><p class="card-text text-sm">Monday – Saturday<br>09:00 – 18:00 GMT<br><span class="text-xs text-brandTextSub mt-1 block">Vault viewings by appointment only</span></p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S3: MAP PLACEHOLDER -->
+  <section class="py-16 bg-brandCard border-y border-borderNav" aria-label="Shop location map">
+    <div class="section-container">
+      <div class="section-heading reveal"><span class="overline">Find Us</span><h2 class="text-brand mt-2">Our London Location</h2></div>
+      <div class="map-placeholder reveal" role="img" aria-label="Map showing Antiquarian Rare Books at 144 Oxford Circle, London">
+        <i class="fa-solid fa-map-location-dot text-5xl" style="color:var(--color-accent); opacity:0.5;"></i>
+        <div class="text-center">
+          <p class="font-semibold text-brandText mb-1">144 Oxford Circle, Suite B, London, LDN 408</p>
+          <p class="text-sm text-brandTextSub">Nearest Tube: Oxford Circus (2 min walk)</p>
+        </div>
+        <a href="https://maps.google.com" target="_blank" rel="noopener" class="btn-primary text-sm px-5 py-2"><i class="fa-solid fa-map-location-dot"></i> Open in Google Maps</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- S4: CONTACT INFO CARDS / SOCIAL -->
+  <section class="py-20 lg:py-28 bg-brandBg" aria-labelledby="social-links-h">
+    <div class="section-container">
+      <div class="section-heading reveal"><span class="overline">Connect With Us</span><h2 id="social-links-h" class="text-brand mt-2">Follow the Antiquarian</h2><p class="subtext mt-3">Stay updated on new acquisitions, auction previews, and scholarly articles.</p></div>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl mx-auto">
+        <a href="#" class="flex flex-col items-center gap-3 p-5 bg-brandCard border border-borderNav rounded-sm hover:shadow-md hover:border-brand transition-all reveal" aria-label="Facebook page">
+          <div class="w-12 h-12 rounded-full flex items-center justify-center" style="background:#1877F2;"><i class="fa-brands fa-facebook-f text-white text-xl"></i></div>
+          <span class="text-sm font-semibold text-brandText">Facebook</span>
+          <span class="text-xs text-brandTextSub">8.2K followers</span>
+        </a>
+        <a href="#" class="flex flex-col items-center gap-3 p-5 bg-brandCard border border-borderNav rounded-sm hover:shadow-md hover:border-brand transition-all reveal delay-100" aria-label="Instagram page">
+          <div class="w-12 h-12 rounded-full flex items-center justify-center" style="background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);"><i class="fa-brands fa-instagram text-white text-xl"></i></div>
+          <span class="text-sm font-semibold text-brandText">Instagram</span>
+          <span class="text-xs text-brandTextSub">12.4K followers</span>
+        </a>
+        <a href="#" class="flex flex-col items-center gap-3 p-5 bg-brandCard border border-borderNav rounded-sm hover:shadow-md hover:border-brand transition-all reveal delay-200" aria-label="Twitter / X page">
+          <div class="w-12 h-12 rounded-full flex items-center justify-center bg-black"><i class="fa-brands fa-x-twitter text-white text-xl"></i></div>
+          <span class="text-sm font-semibold text-brandText">X / Twitter</span>
+          <span class="text-xs text-brandTextSub">5.8K followers</span>
+        </a>
+        <a href="#" class="flex flex-col items-center gap-3 p-5 bg-brandCard border border-borderNav rounded-sm hover:shadow-md hover:border-brand transition-all reveal delay-300" aria-label="LinkedIn page">
+          <div class="w-12 h-12 rounded-full flex items-center justify-center" style="background:#0A66C2;"><i class="fa-brands fa-linkedin-in text-white text-xl"></i></div>
+          <span class="text-sm font-semibold text-brandText">LinkedIn</span>
+          <span class="text-xs text-brandTextSub">3.1K followers</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- S5: FAQ -->
+  <section class="py-20 lg:py-28 bg-brandCard border-y border-borderNav" aria-labelledby="contact-faq-h">
+    <div class="section-container max-w-3xl mx-auto">
+      <div class="section-heading reveal"><span class="overline">Common Questions</span><h2 id="contact-faq-h" class="text-brand mt-2">Frequently Asked Questions</h2></div>
+      <div class="accordion-container reveal">
+        <div class="accordion-item"><button class="accordion-trigger" aria-expanded="false">Do you accept walk-in visitors?<i class="accordion-icon fa-solid fa-plus"></i></button><div class="accordion-body"><div class="accordion-content">Yes — our shop is open Monday to Saturday, 09:00–18:00. White-glove viewing of vault materials requires a prior appointment booked by telephone or email.</div></div></div>
+        <div class="accordion-item"><button class="accordion-trigger" aria-expanded="false">How quickly do you respond to enquiries?<i class="accordion-icon fa-solid fa-plus"></i></button><div class="accordion-body"><div class="accordion-content">All enquiries submitted via our form or by email receive a response from a named curator within one business day. Complex technical questions may require two to three days for a thorough reply.</div></div></div>
+        <div class="accordion-item"><button class="accordion-trigger" aria-expanded="false">Can I send books by post for appraisal?<i class="accordion-icon fa-solid fa-plus"></i></button><div class="accordion-body"><div class="accordion-content">Items valued above £1,000 should always be sent via registered insured post or courier. We will advise on the safest packing method. For items above £10,000, we recommend our white-glove collection service.</div></div></div>
+        <div class="accordion-item"><button class="accordion-trigger" aria-expanded="false">Do you offer Skype or video consultations?<i class="accordion-icon fa-solid fa-plus"></i></button><div class="accordion-body"><div class="accordion-content">Yes. Video consultations with our senior curators can be arranged for remote clients. These are free of charge for new client introductory calls up to 30 minutes.</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S6: NEWSLETTER -->
+  <section class="relative py-24 overflow-hidden text-white" style="background-color:var(--color-secondary);">
+    <div class="absolute inset-0 z-0"><img src="../assets/images/hero/hero_reading_room.jpg" alt="" class="w-full h-full object-cover opacity-10"><div class="absolute inset-0" style="background:rgba(74,4,4,0.95);"></div></div>
+    <div class="relative z-10 section-container text-center">
+      <div class="reveal max-w-lg mx-auto">
+        <i class="fa-solid fa-envelope-open-text text-4xl mb-6" style="color:var(--color-accent);"></i>
+        <h2 class="font-heading font-bold mb-4" style="color:#FFFFF0;">Join The Chronicle</h2>
+        <p class="mb-8 text-sm" style="color:rgba(245,245,220,0.8);">New acquisitions, scholarly articles, and exclusive auction previews delivered directly to your inbox.</p>
+        <form class="newsletter-form flex flex-col sm:flex-row gap-3 max-w-md mx-auto" novalidate>
+          <input type="email" placeholder="Your email address" required class="form-field flex-1" style="background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.2);color:#fff;" aria-label="Email for newsletter">
+          <button type="submit" class="btn-accent px-5 py-3 whitespace-nowrap">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer pt-16 pb-8" role="contentinfo"><div class="section-container"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12"><div><a href="home-1.html" class="flex items-center gap-2 mb-5"><i class="fa-solid fa-book-open text-2xl" style="color:var(--color-accent);"></i><span class="footer-brand-name">Antiquarian</span></a><p class="footer-tagline mb-6">Dedicated stewards of literary history since 1894.</p><div class="flex gap-3"><a href="#" class="w-9 h-9 rounded-full bg-brand flex items-center justify-center hover:bg-brandAccent transition-colors" aria-label="Facebook" style="color:#fff;"><i class="fa-brands fa-facebook-f text-sm"></i></a><a href="#" class="w-9 h-9 rounded-full bg-brand flex items-center justify-center hover:bg-brandAccent transition-colors" aria-label="Instagram" style="color:#fff;"><i class="fa-brands fa-instagram text-sm"></i></a></div></div><div><h4 class="footer-heading">Expertise</h4><ul class="space-y-3"><li><a href="services.html" class="footer-link">First Editions</a></li><li><a href="services.html" class="footer-link">Manuscripts</a></li><li><a href="services.html" class="footer-link">Appraisals</a></li><li><a href="services.html" class="footer-link">Restoration</a></li></ul></div><div><h4 class="footer-heading">Library Vault</h4><ul class="space-y-3"><li><a href="blog.html" class="footer-link">Recent Acquisitions</a></li><li><a href="blog.html" class="footer-link">Curator's Journal</a></li><li><a href="pricing.html" class="footer-link">Membership</a></li></ul></div><div><h4 class="footer-heading">The Reading Room</h4><ul class="space-y-4"><li class="flex items-start gap-3"><i class="fa-solid fa-location-dot mt-0.5" style="color:var(--color-accent);"></i><span class="footer-link text-sm">144 Oxford Circle, London</span></li><li class="flex items-center gap-3"><i class="fa-solid fa-phone" style="color:var(--color-accent);"></i><a href="tel:+442079460831" class="footer-link text-sm">+44 (0) 20 7946 0831</a></li></ul></div></div><div class="border-t pt-8 flex flex-col md:flex-row justify-between items-center gap-4" style="border-color:rgba(212,175,55,0.15);"><p class="footer-copyright">&copy; 2026 Antiquarian Rare Books. All rights preserved.</p><div class="flex gap-6"><a href="#" class="footer-copyright hover:text-brandAccent transition-colors">Terms of Trade</a></div></div></div></footer>
+
+<script src="../assets/js/main.js"></script><script src="../assets/js/animations.js"></script><script src="../assets/js/forms.js"></script>
+</body>
+</html>

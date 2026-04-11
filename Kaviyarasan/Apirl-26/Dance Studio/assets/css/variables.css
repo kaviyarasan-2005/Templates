@@ -148,9 +148,10 @@
   --container-2xl: 1440px;
 
   /* === Glass Effect === */
-  --glass-bg: rgba(255, 255, 255, 0.1);
-  --glass-border: rgba(255, 255, 255, 0.2);
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.15);
   --glass-blur: 20px;
+  --navbar-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
 }
 
 /* ========================================
@@ -162,7 +163,7 @@
   --bg-tertiary: #16213E;
   --bg-card: #1A1A2E;
   --bg-card-hover: #222244;
-  --bg-nav: rgba(15, 15, 15, 0.85);
+  --bg-nav: rgba(15, 15, 15, 0.8);
   --bg-nav-scrolled: rgba(15, 15, 15, 0.95);
   --bg-footer: #0A0A0A;
   --bg-input: #1A1A2E;
@@ -189,8 +190,9 @@
 
   --gradient-card: linear-gradient(145deg, rgba(107,70,193,0.1) 0%, rgba(255,107,107,0.1) 100%);
 
-  --glass-bg: rgba(26, 26, 46, 0.4);
-  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-bg: rgba(26, 26, 46, 0.2);
+  --glass-border: rgba(255, 255, 255, 0.05);
+  --navbar-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
 }
 
 /* ========================================

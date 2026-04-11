@@ -52,8 +52,6 @@ const Navigation = (() => {
     // Active nav link
     setActiveLink();
 
-    // Page transition links
-    initPageTransitions();
   }
 
   function toggleMobileMenu() {
@@ -110,37 +108,6 @@ const Navigation = (() => {
     });
   }
 
-  function initPageTransitions() {
-    const transitionOverlay = document.querySelector('.page-transition');
-    if (!transitionOverlay) return;
-
-    document.querySelectorAll('a[href]').forEach(link => {
-      const href = link.getAttribute('href');
-      if (!href || href.startsWith('#') || href.startsWith('mailto:') || 
-          href.startsWith('tel:') || href.startsWith('http') || link.getAttribute('target') === '_blank') return;
-
-      link.addEventListener('click', (e) => {
-        e.preventDefault();
-        transitionOverlay.style.transformOrigin = 'bottom';
-        transitionOverlay.style.transform = 'scaleY(1)';
-        transitionOverlay.style.transition = 'transform 0.4s ease';
-        
-        setTimeout(() => {
-          window.location.href = href;
-        }, 400);
-      });
-    });
-
-    // On page load, reverse the transition
-    window.addEventListener('pageshow', () => {
-      if (transitionOverlay.style.transform === 'scaleY(1)') {
-        transitionOverlay.style.transformOrigin = 'top';
-        requestAnimationFrame(() => {
-          transitionOverlay.style.transform = 'scaleY(0)';
-        });
-      }
-    });
-  }
 
   return { init, closeMobileMenu };
 })();

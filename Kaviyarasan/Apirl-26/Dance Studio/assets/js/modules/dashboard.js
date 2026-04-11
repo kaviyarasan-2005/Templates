@@ -11,7 +11,11 @@ const Dashboard = (() => {
     initRoleToggle();
     initSortableTable();
     initProgressRings();
+    initCounters();
     initLineChart();
+    initDonutChart();
+    initRadarChart();
+    initHeatMap();
     initChat();
     initMobileNav();
   }
@@ -145,13 +149,39 @@ const Dashboard = (() => {
     });
   }
 
-  function animateValue(el, start, end, duration, suffix = '') {
+  function initCounters() {
+    document.querySelectorAll('[data-counter]').forEach(el => {
+      const target = parseFloat(el.dataset.counter);
+      const prefix = el.dataset.counterPrefix || '';
+      const suffix = el.dataset.counterSuffix || '';
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            animateValue(el, 0, target, 1500, suffix, prefix);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.5 });
+      
+      observer.observe(el);
+    });
+  }
+
+  function animateValue(el, start, end, duration, suffix = '', prefix = '') {
     const startTime = performance.now();
     function update(now) {
       const elapsed = now - startTime;
       const progress = Math.min(elapsed / duration, 1);
       const eased = 1 - Math.pow(1 - progress, 3);
-      el.textContent = Math.floor(eased * (end - start) + start) + suffix;
+      const current = eased * (end - start) + start;
+      
+      if (end % 1 === 0) {
+        el.textContent = prefix + Math.floor(current).toLocaleString() + suffix;
+      } else {
+        el.textContent = prefix + current.toFixed(1) + suffix;
+      }
+      
       if (progress < 1) requestAnimationFrame(update);
     }
     requestAnimationFrame(update);
@@ -267,6 +297,183 @@ const Dashboard = (() => {
     });
 
     chartContainer.appendChild(svg);
+  }
+
+  /* === SVG Donut Chart === */
+  function initDonutChart() {
+    document.querySelectorAll('.donut-chart').forEach(container => {
+      const data = JSON.parse(container.dataset.values || '[]');
+      if (!data.length) return;
+
+      const size = 200;
+      const radius = 80;
+      const thickness = 20;
+      const center = size / 2;
+      const circumference = 2 * Math.PI * (radius - thickness / 2);
+
+      const svg = createSVGElement('svg', { width: size, height: size, viewBox: `0 0 ${size} ${size}` });
+      
+      let currentAngle = -90;
+      const total = data.reduce((sum, item) => sum + item.value, 0);
+
+      data.forEach((item, i) => {
+        const slicePercent = (item.value / total);
+        const dashArray = (slicePercent * circumference);
+        const dashOffset = -currentAngle / 360 * (2 * Math.PI * radius); // Simplified for this logic
+
+        const circle = createSVGElement('circle', {
+          cx: center, cy: center, r: radius - thickness / 2,
+          fill: 'none', stroke: item.color || 'var(--color-primary)',
+          'stroke-width': thickness,
+          'stroke-dasharray': `${dashArray} ${circumference}`,
+          'stroke-dashoffset': 0,
+          transform: `rotate(${currentAngle} ${center} ${center})`,
+          'stroke-linecap': 'butt'
+        });
+
+        // Animation
+        circle.style.opacity = '0';
+        circle.style.transition = 'stroke-dashoffset 1s ease, opacity 0.5s ease';
+        
+        svg.appendChild(circle);
+        
+        // Cumulative angle
+        currentAngle += (slicePercent * 360);
+      });
+
+      // Center text
+      const totalLabel = createSVGElement('text', {
+        x: center, y: center + 5, 'text-anchor': 'middle',
+        fill: 'var(--text-primary)', 'font-size': '20', 'font-weight': 'bold'
+      });
+      totalLabel.textContent = total;
+      svg.appendChild(totalLabel);
+
+      container.appendChild(svg);
+      
+      // Trigger animation
+      setTimeout(() => {
+        svg.querySelectorAll('circle').forEach(c => c.style.opacity = '1');
+      }, 100);
+    });
+  }
+
+  /* === SVG Radar Chart === */
+  function initRadarChart() {
+    document.querySelectorAll('.radar-chart').forEach(container => {
+      const data = JSON.parse(container.dataset.values || '[]');
+      const labels = JSON.parse(container.dataset.labels || '[]');
+      if (!data.length) return;
+
+      const size = 300;
+      const center = size / 2;
+      const radius = 100;
+      const angleStep = (Math.PI * 2) / labels.length;
+
+      const svg = createSVGElement('svg', { width: size, height: size, viewBox: `0 0 ${size} ${size}` });
+
+      // Draw background polygons (grid)
+      for (let level = 1; level <= 4; level++) {
+        const r = (radius / 4) * level;
+        const points = labels.map((_, i) => {
+          const x = center + r * Math.cos(i * angleStep - Math.PI / 2);
+          const y = center + r * Math.sin(i * angleStep - Math.PI / 2);
+          return `${x},${y}`;
+        }).join(' ');
+
+        svg.appendChild(createSVGElement('polygon', {
+          points, fill: 'none', stroke: 'var(--border-color)', 'stroke-width': 1
+        }));
+      }
+
+      // Draw axes
+      labels.forEach((label, i) => {
+        const x = center + radius * Math.cos(i * angleStep - Math.PI / 2);
+        const y = center + radius * Math.sin(i * angleStep - Math.PI / 2);
+        svg.appendChild(createSVGElement('line', {
+          x1: center, y1: center, x2: x, y2: y,
+          stroke: 'var(--border-color)', 'stroke-width': 1
+        }));
+
+        // Label
+        const lx = center + (radius + 20) * Math.cos(i * angleStep - Math.PI / 2);
+        const ly = center + (radius + 20) * Math.sin(i * angleStep - Math.PI / 2);
+        const text = createSVGElement('text', {
+          x: lx, y: ly, 'text-anchor': 'middle', 'dominant-baseline': 'middle',
+          fill: 'var(--text-tertiary)', 'font-size': '10'
+        });
+        text.textContent = label;
+        svg.appendChild(text);
+      });
+
+      // Draw data polygon
+      const points = data.map((val, i) => {
+        const r = (val / 100) * radius;
+        const x = center + r * Math.cos(i * angleStep - Math.PI / 2);
+        const y = center + r * Math.sin(i * angleStep - Math.PI / 2);
+        return `${x},${y}`;
+      }).join(' ');
+
+      const poly = createSVGElement('polygon', {
+        points, fill: 'var(--color-primary)', 'fill-opacity': '0.3',
+        stroke: 'var(--color-primary)', 'stroke-width': 2
+      });
+      poly.style.animation = 'fadeIn 1s ease forwards';
+      svg.appendChild(poly);
+
+      container.appendChild(svg);
+    });
+  }
+
+  /* === SVG Heatmap === */
+  function initHeatMap() {
+    const container = document.querySelector('.activity-heatmap');
+    if (!container) return;
+
+    const data = [
+      [2, 5, 8, 3, 1, 0, 4], // 9AM
+      [4, 9, 3, 6, 8, 3, 2], // 11AM
+      [7, 3, 9, 1, 5, 8, 4], // 1PM
+      [3, 6, 2, 8, 4, 3, 9], // 3PM
+      [8, 4, 7, 3, 9, 2, 5], // 5PM
+      [9, 8, 4, 2, 6, 9, 3]  // 7PM
+    ];
+
+    const size = { w: container.offsetWidth, h: 180 };
+    const svg = createSVGElement('svg', { width: '100%', height: size.h });
+    
+    const rows = data.length;
+    const cols = 7;
+    const padding = 4;
+    const cellW = (container.offsetWidth - (cols * padding)) / cols;
+    const cellH = (size.h - (rows * padding)) / rows;
+
+    data.forEach((row, ri) => {
+      row.forEach((val, ci) => {
+        const opacity = val / 10;
+        const rect = createSVGElement('rect', {
+          x: ci * (cellW + padding),
+          y: ri * (cellH + padding),
+          width: cellW, height: cellH,
+          rx: 4, ry: 4,
+          fill: 'var(--color-primary)',
+          'fill-opacity': opacity === 0 ? 0.05 : opacity
+        });
+        
+        // Tooltip interaction
+        rect.addEventListener('mouseenter', (e) => {
+          rect.style.stroke = 'var(--color-accent)';
+          rect.style.strokeWidth = '2px';
+        });
+        rect.addEventListener('mouseleave', () => {
+          rect.style.stroke = 'none';
+        });
+
+        svg.appendChild(rect);
+      });
+    });
+
+    container.appendChild(svg);
   }
 
   function createSVGElement(tag, attrs) {

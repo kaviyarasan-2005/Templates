@@ -6,102 +6,45 @@
   <meta name="description" content="Create your Élan Dance Studio account and start dancing today.">
   <title>Sign Up — Élan Dance Studio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@300..800&family=Dancing+Script:wght@400..700&family=Cairo:wght@300..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@300..800&family=Dancing+Script:wght@400..700&family=Cairo:wght@300..900&family=Amiri:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="../assets/css/variables.css">
   <link rel="stylesheet" href="../assets/css/animations.css">
   <link rel="stylesheet" href="../assets/css/components.css">
   <link rel="stylesheet" href="../assets/css/rtl.css">
-  <style>
-    .auth-page{min-height:100vh;display:grid;grid-template-columns:1fr 1fr}
-    .auth-visual{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
-    .auth-visual__bg{position:absolute;inset:0}
-    .auth-visual__bg img{width:100%;height:100%;object-fit:cover}
-    .auth-visual__overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,107,107,.7),rgba(26,32,44,.9),rgba(107,70,193,.85))}
-    .auth-visual__content{position:relative;z-index:1;text-align:center;padding:var(--space-8);max-width:450px}
-    .auth-visual__logo{width:80px;height:80px;margin:0 auto var(--space-6);background:rgba(255,255,255,.15);border-radius:var(--radius-lg);display:flex;align-items:center;justify-content:center;font-size:2rem;color:white;backdrop-filter:blur(10px);animation:float 6s ease-in-out infinite}
-    .auth-visual__title{font-size:var(--font-size-3xl);color:white;margin-bottom:var(--space-4)}
-    .auth-visual__text{color:rgba(255,255,255,.7);margin-bottom:var(--space-6)}
-    .auth-visual__stats{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-4);text-align:center}
-    .auth-visual__stat-number{font-size:var(--font-size-2xl);font-weight:var(--font-weight-black);color:white}
-    .auth-visual__stat-label{font-size:var(--font-size-xs);color:rgba(255,255,255,.6)}
-
-    .auth-form-section{display:flex;align-items:center;justify-content:center;padding:var(--space-6);background:var(--bg-primary);position:relative;overflow-y:auto}
-    .auth-form-wrap{width:100%;max-width:440px}
-    .auth-form__top{display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--space-6)}
-    .auth-form__back{display:flex;align-items:center;gap:var(--space-2);color:var(--text-tertiary);font-size:var(--font-size-sm);text-decoration:none}
-    .auth-form__back:hover{color:var(--color-primary)}
-    .auth-form__title{font-size:var(--font-size-3xl);margin-bottom:var(--space-2)}
-    .auth-form__subtitle{font-size:var(--font-size-sm);color:var(--text-tertiary);margin-bottom:var(--space-6)}
-    .auth-form__subtitle a{color:var(--color-primary);font-weight:var(--font-weight-semibold);text-decoration:none}
-
-    .auth-social{display:flex;gap:var(--space-3);margin-bottom:var(--space-4)}
-    .auth-social__btn{flex:1;display:flex;align-items:center;justify-content:center;gap:var(--space-2);padding:var(--space-3);background:var(--bg-secondary);border:1px solid var(--border-color);border-radius:var(--radius-sm);font-family:var(--font-body);font-size:var(--font-size-sm);font-weight:var(--font-weight-medium);color:var(--text-primary);cursor:pointer;transition:all .2s ease}
-    .auth-social__btn:hover{border-color:var(--color-primary)}
-    .auth-social__btn i{font-size:var(--font-size-lg)}
-    .auth-divider{display:flex;align-items:center;gap:var(--space-4);margin-bottom:var(--space-4)}
-    .auth-divider::before,.auth-divider::after{content:'';flex:1;height:1px;background:var(--border-color)}
-    .auth-divider span{font-size:var(--font-size-xs);color:var(--text-tertiary);text-transform:uppercase;letter-spacing:var(--letter-spacing-wider)}
-
-    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-3)}
-    .auth-form .form-group{margin-bottom:var(--space-3)}
-    .auth-form .form-input{padding:var(--space-3) var(--space-4)}
-
-    .password-wrap{position:relative}
-    .password-toggle{position:absolute;top:50%;inset-inline-end:var(--space-4);transform:translateY(-50%);background:none;border:none;color:var(--text-tertiary);cursor:pointer;font-size:var(--font-size-base);padding:0}
-    .password-strength{height:4px;border-radius:2px;background:var(--border-color);margin-top:var(--space-2);overflow:hidden}
-    .password-strength__bar{height:100%;width:0;border-radius:2px;transition:width .3s ease,background .3s ease}
-    .password-strength[data-strength="1"] .password-strength__bar{width:25%;background:#E53E3E}
-    .password-strength[data-strength="2"] .password-strength__bar{width:50%;background:#DD6B20}
-    .password-strength[data-strength="3"] .password-strength__bar{width:75%;background:#ECC94B}
-    .password-strength[data-strength="4"] .password-strength__bar{width:100%;background:#48BB78}
-
-    .auth-form__terms{display:flex;align-items:flex-start;gap:var(--space-2);font-size:var(--font-size-xs);color:var(--text-tertiary);margin-bottom:var(--space-4)}
-    .auth-form__terms input{accent-color:var(--color-primary);margin-top:2px}
-    .auth-form__terms a{color:var(--color-primary)}
-
-    .auth-theme-toggle{position:absolute;top:var(--space-6);inset-inline-end:var(--space-6)}
-
-    @media(max-width:1024px){.auth-page{grid-template-columns:1fr}.auth-visual{display:none}}
-    @media(max-width:480px){.form-row{grid-template-columns:1fr}}
-  </style>
+  <link rel="stylesheet" href="../assets/css/auth.css">
 </head>
 <body>
   <div class="auth-page">
-    <!-- LEFT VISUAL -->
-    <div class="auth-visual">
-      <div class="auth-visual__bg"><img src="https://images.unsplash.com/photo-1547153760-18fc86c76817?w=800&h=1200&fit=crop" alt="Dance class" loading="lazy"><div class="auth-visual__overlay"></div></div>
-      <div class="auth-visual__content">
-        <div class="auth-visual__logo"><i class="fas fa-music"></i></div>
-        <h2 class="auth-visual__title">Join Our Community</h2>
-        <p class="auth-visual__text">Create your account and unlock a world of dance. Your first class is always free!</p>
-        <div class="auth-visual__stats">
-          <div><div class="auth-visual__stat-number">2,500+</div><div class="auth-visual__stat-label">Active Students</div></div>
-          <div><div class="auth-visual__stat-number">120+</div><div class="auth-visual__stat-label">Weekly Classes</div></div>
-          <div><div class="auth-visual__stat-number">45</div><div class="auth-visual__stat-label">Instructors</div></div>
-        </div>
+    <!-- Animated Cosmic Background -->
+    <div class="landing__bg" style="position: fixed; inset: 0; z-index: -1;">
+      <div class="landing__bg-gradient"></div>
+      <canvas class="landing__particles" id="landing-particles"></canvas>
+    </div>
+
+    <!-- Perfectly Aligned Topbar for Toggles & Back -->
+    <div class="auth-topbar">
+      <a href="../index.html" class="navbar__logo" style="text-decoration:none;">
+        <div class="navbar__logo-icon"><i class="fas fa-music"></i></div>
+        <div class="navbar__logo-text"><span>Élan</span> Studio</div>
+      </a>
+      <div class="auth-toggles">
+        <button class="navbar__action-btn" data-theme-toggle aria-label="Theme"><i class="fas fa-moon"></i></button>
+        <button class="navbar__action-btn" data-rtl-toggle aria-label="Toggle RTL"><i class="fas fa-globe"></i></button>
       </div>
     </div>
 
-    <!-- RIGHT FORM -->
-    <div class="auth-form-section">
-      <div class="auth-theme-toggle">
-        <button class="navbar__action-btn" data-theme-toggle aria-label="Theme"><i class="fas fa-moon"></i></button>
-      </div>
-      <div class="auth-form-wrap">
-        <div class="auth-form__top">
-          <a href="../index.html" class="auth-form__back"><i class="fas fa-arrow-left"></i> Home</a>
-          <div class="lang-dropdown" style="position:relative"><button class="navbar__action-btn" data-lang-toggle><i class="fas fa-globe"></i></button><div class="lang-dropdown__menu"><button class="lang-dropdown__item active" data-lang="en">🇺🇸 English</button><button class="lang-dropdown__item" data-lang="ar">🇸🇦 العربية</button><button class="lang-dropdown__item" data-lang="he">🇮🇱 עברית</button></div></div>
-        </div>
-
-        <h1 class="auth-form__title">Create Account</h1>
-        <p class="auth-form__subtitle">Already have an account? <a href="login.html">Sign in</a></p>
+    <!-- Centered Glass Card -->
+    <div class="auth-container">
+      <div class="auth-glass-card">
+        <h1 class="auth-title">Create Account</h1>
+        <p class="auth-subtitle">Already have an account? <a href="login.html">Sign in</a></p>
 
         <div class="auth-social">
           <button class="auth-social__btn"><i class="fab fa-google" style="color:#EA4335"></i> Google</button>
           <button class="auth-social__btn"><i class="fab fa-facebook-f" style="color:#1877F2"></i> Facebook</button>
         </div>
-        <div class="auth-divider"><span>or</span></div>
+        <div class="auth-divider"><span>or fill out form</span></div>
 
         <form class="auth-form" data-validate>
           <div class="form-row">
@@ -109,7 +52,6 @@
             <div class="form-group"><label class="form-label" for="lastName">Last Name</label><input type="text" class="form-input" id="lastName" placeholder="Doe" required><span class="form-error">Required</span></div>
           </div>
           <div class="form-group"><label class="form-label" for="regEmail">Email Address</label><input type="email" class="form-input" id="regEmail" placeholder="you@example.com" required><span class="form-error">Valid email required</span></div>
-          <div class="form-group"><label class="form-label" for="regPhone">Phone (Optional)</label><input type="tel" class="form-input" id="regPhone" placeholder="(555) 000-0000"></div>
           <div class="form-group">
             <label class="form-label" for="regPassword">Password</label>
             <div class="password-wrap">
@@ -119,18 +61,9 @@
             <div class="password-strength" id="passwordMeter" data-strength="0"><div class="password-strength__bar"></div></div>
             <span class="form-error">Min 8 characters required</span>
           </div>
-          <div class="form-group">
-            <label class="form-label" for="danceInterest">Primary Dance Interest</label>
-            <select class="form-input" id="danceInterest">
-              <option value="">Select style (optional)</option>
-              <option>Ballet</option><option>Contemporary</option><option>Hip Hop</option>
-              <option>Jazz</option><option>Latin/Salsa</option><option>Kids Dance</option>
-              <option>Not sure yet</option>
-            </select>
-          </div>
           <div class="auth-form__terms">
             <input type="checkbox" id="terms" required>
-            <label for="terms">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>. I also consent to receiving occasional emails about classes and promotions.</label>
+            <label for="terms">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.</label>
           </div>
           <button type="submit" class="btn btn--primary btn--lg" style="width:100%">
             Create Account <i class="fas fa-arrow-right"></i>

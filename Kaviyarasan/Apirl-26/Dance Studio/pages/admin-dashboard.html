@@ -6,7 +6,7 @@
   <meta name="description" content="Élan Dance Studio Dashboard — Manage classes, track students, view analytics.">
   <title>Dashboard — Élan Dance Studio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@300..800&family=Dancing+Script:wght@400..700&family=Cairo:wght@300..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@300..800&family=Dancing+Script:wght@400..700&family=Cairo:wght@300..900&family=Amiri:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="../assets/css/variables.css">
   <link rel="stylesheet" href="../assets/css/animations.css">
@@ -15,6 +15,12 @@
   <link rel="stylesheet" href="../assets/css/rtl.css">
 </head>
 <body>
+  <!-- Animated Cosmic Background -->
+  <div class="landing__bg" style="position: fixed; inset: 0; z-index: -1;">
+    <div class="landing__bg-gradient"></div>
+    <canvas class="landing__particles" id="landing-particles"></canvas>
+  </div>
+
   <div class="dashboard">
     <!-- SIDEBAR -->
     <aside class="dashboard__sidebar" id="dashboardSidebar">
@@ -71,7 +77,9 @@
           </div>
         </div>
         <div class="dashboard__topbar-right">
-          <div class="lang-dropdown" style="position:relative"><button class="navbar__action-btn" data-lang-toggle><i class="fas fa-globe"></i></button><div class="lang-dropdown__menu"><button class="lang-dropdown__item active" data-lang="en">🇺🇸 English</button><button class="lang-dropdown__item" data-lang="ar">🇸🇦 العربية</button><button class="lang-dropdown__item" data-lang="he">🇮🇱 עברית</button></div></div>
+          <button class="navbar__action-btn" data-rtl-toggle aria-label="Toggle RTL">
+            <i class="fas fa-globe"></i>
+          </button>
           <button class="navbar__action-btn" data-theme-toggle><i class="fas fa-moon"></i></button>
           <button class="navbar__action-btn" style="position:relative"><i class="fas fa-bell"></i><span style="position:absolute;top:2px;inset-inline-end:2px;width:8px;height:8px;background:var(--color-accent);border-radius:50%"></span></button>
           <div style="display:flex;align-items:center;gap:var(--space-2)">
@@ -111,41 +119,70 @@
         <div class="dashboard__stats" data-role="user" style="display:none">
           <div class="stat-card">
             <div class="stat-card__icon" style="background:rgba(var(--color-primary-rgb),.12);color:var(--color-primary)"><i class="fas fa-fire"></i></div>
-            <div class="stat-card__info"><div class="stat-card__number">12</div><div class="stat-card__label">Classes This Month</div></div>
+            <div class="stat-card__info"><div class="stat-card__number" data-counter="12">0</div><div class="stat-card__label">Classes This Month</div></div>
             <div class="stat-card__trend stat-card__trend--up"><i class="fas fa-arrow-up"></i> 3</div>
           </div>
           <div class="stat-card">
             <div class="stat-card__icon" style="background:rgba(var(--color-accent-rgb),.12);color:var(--color-accent)"><i class="fas fa-clock"></i></div>
-            <div class="stat-card__info"><div class="stat-card__number">18h</div><div class="stat-card__label">Practice Time</div></div>
+            <div class="stat-card__info"><div class="stat-card__number" data-counter="18.5" data-counter-suffix="h">0</div><div class="stat-card__label">Practice Time</div></div>
             <div class="stat-card__trend stat-card__trend--up"><i class="fas fa-arrow-up"></i> 4h</div>
           </div>
           <div class="stat-card">
             <div class="stat-card__icon" style="background:rgba(72,187,120,.12);color:#48BB78"><i class="fas fa-bullseye"></i></div>
-            <div class="stat-card__info"><div class="stat-card__number">85%</div><div class="stat-card__label">Goal Progress</div></div>
+            <div class="stat-card__info"><div class="stat-card__number" data-counter="85" data-counter-suffix="%">0</div><div class="stat-card__label">Goal Progress</div></div>
             <div class="stat-card__trend stat-card__trend--up"><i class="fas fa-arrow-up"></i> 10%</div>
           </div>
           <div class="stat-card">
             <div class="stat-card__icon" style="background:rgba(183,110,121,.12);color:var(--color-rose-gold)"><i class="fas fa-medal"></i></div>
-            <div class="stat-card__info"><div class="stat-card__number">7</div><div class="stat-card__label">Achievements</div></div>
+            <div class="stat-card__info"><div class="stat-card__number" data-counter="14">0</div><div class="stat-card__label">Achievements</div></div>
             <div class="stat-card__trend"><i class="fas fa-arrow-up"></i> New!</div>
           </div>
         </div>
 
         <div class="dashboard__grid">
-          <!-- CHART -->
-          <div class="dashboard__card dashboard__card--wide" data-role="admin">
-            <div class="dashboard__card-header">
-              <h3 class="dashboard__card-title"><i class="fas fa-chart-line"></i> Revenue Overview</h3>
-              <select class="form-input" style="width:auto;padding:var(--space-1) var(--space-3);font-size:var(--font-size-xs)">
-                <option>Last 7 days</option><option>Last 30 days</option><option>Last 90 days</option>
-              </select>
+          <!-- CHART: REVENUE -->
+          <div class="dashboard__card dashboard__card--wide chart-card" data-role="admin">
+            <div class="chart-card__header">
+              <h3 class="chart-card__title"><i class="fas fa-chart-line"></i> Revenue Trend</h3>
+              <div class="chart-card__actions">
+                <button class="chart-card__filter active">Week</button>
+                <button class="chart-card__filter">Month</button>
+              </div>
             </div>
             <div class="line-chart" data-values="[28000,32000,29000,35000,42000,38000,48250]" data-labels='["Mon","Tue","Wed","Thu","Fri","Sat","Sun"]' style="min-height:250px"></div>
           </div>
 
+          <!-- CHART: SKILLS (User Only) -->
+          <div class="dashboard__card chart-card" data-role="user" style="display:none">
+            <div class="chart-card__header"><h3 class="chart-card__title"><i class="fas fa-bullseye"></i> Skill Breakdown</h3></div>
+            <div class="radar-chart" data-values="[85, 70, 90, 65, 80]" data-labels='["Technique","Rhythm","Flexibility","Performance","Strength"]' style="display:flex;justify-content:center"></div>
+          </div>
+
+          <!-- DONUT: ENROLLMENT -->
+          <div class="dashboard__card chart-card" data-role="admin">
+            <div class="chart-card__header"><h3 class="chart-card__title"><i class="fas fa-chart-pie"></i> Memberships</h3></div>
+            <div class="donut-chart" data-values='[{"label":"Pro","value":45,"color":"var(--color-primary)"},{"label":"Elite","value":25,"color":"var(--color-accent)"},{"label":"Starter","value":30,"color":"#48BB78"}]' style="display:flex;justify-content:center"></div>
+          </div>
+
+          <!-- HEATMAP: STUDIO LOAD -->
+          <div class="dashboard__card chart-card" data-role="admin">
+            <div class="chart-card__header"><h3 class="chart-card__title"><i class="fas fa-th"></i> Studio Load</h3></div>
+            <div class="activity-heatmap"></div>
+            <div style="display:flex;justify-content:space-between;margin-top:var(--space-2);font-size:10px;color:var(--text-tertiary)">
+              <span>Low</span>
+              <div style="display:flex;gap:2px">
+                <div style="width:10px;height:10px;background:var(--color-primary);opacity:0.1;border-radius:2px"></div>
+                <div style="width:10px;height:10px;background:var(--color-primary);opacity:0.4;border-radius:2px"></div>
+                <div style="width:10px;height:10px;background:var(--color-primary);opacity:0.7;border-radius:2px"></div>
+                <div style="width:10px;height:10px;background:var(--color-primary);opacity:1;border-radius:2px"></div>
+              </div>
+              <span>Peak</span>
+            </div>
+          </div>
+
           <!-- PROGRESS RINGS -->
-          <div class="dashboard__card" data-role="admin,user">
-            <div class="dashboard__card-header"><h3 class="dashboard__card-title"><i class="fas fa-chart-pie"></i> Performance</h3></div>
+          <div class="chart-card" data-role="admin,user">
+            <div class="chart-card__header"><h3 class="chart-card__title"><i class="fas fa-star"></i> Performance</h3></div>
             <div style="display:flex;justify-content:space-around;padding:var(--space-4) 0">
               <div class="progress-ring" data-percent="87" style="text-align:center">
                 <svg width="100" height="100"><circle cx="50" cy="50" r="42" fill="none" stroke="var(--border-color)" stroke-width="8"/><circle class="progress-ring__circle" cx="50" cy="50" r="42" fill="none" stroke="var(--color-primary)" stroke-width="8" transform="rotate(-90 50 50)" stroke-linecap="round"/></svg>
@@ -161,8 +198,8 @@
           </div>
 
           <!-- TODAY'S SCHEDULE -->
-          <div class="dashboard__card" data-role="admin,user">
-            <div class="dashboard__card-header"><h3 class="dashboard__card-title"><i class="fas fa-calendar-day"></i> Today's Schedule</h3></div>
+          <div class="chart-card" data-role="admin,user">
+            <div class="chart-card__header"><h3 class="chart-card__title"><i class="fas fa-calendar-day"></i> Today's Schedule</h3></div>
             <div style="display:flex;flex-direction:column;gap:var(--space-3)">
               <div style="display:flex;align-items:center;gap:var(--space-3);padding:var(--space-3);background:rgba(var(--color-primary-rgb),.05);border-radius:var(--radius-sm);border-inline-start:3px solid var(--color-primary)">
                 <div style="min-width:50px;text-align:center"><div style="font-weight:var(--font-weight-bold)">9:00</div><div style="font-size:var(--font-size-xs);color:var(--text-tertiary)">AM</div></div>
@@ -184,27 +221,27 @@
           </div>
 
           <!-- RECENT STUDENTS TABLE (Admin) -->
-          <div class="dashboard__card dashboard__card--wide" data-role="admin">
-            <div class="dashboard__card-header">
-              <h3 class="dashboard__card-title"><i class="fas fa-user-plus"></i> Recent Enrollments</h3>
+          <div class="dashboard__card dashboard__card--wide chart-card" data-role="admin">
+            <div class="chart-card__header">
+              <h3 class="chart-card__title"><i class="fas fa-user-plus"></i> Recent Enrollments</h3>
               <a href="#" style="font-size:var(--font-size-sm);color:var(--color-primary);font-weight:var(--font-weight-semibold)">View All</a>
             </div>
             <div style="overflow-x:auto">
               <table class="data-table" style="width:100%">
                 <thead><tr><th data-sort="name">Student</th><th data-sort="class">Class</th><th data-sort="plan">Plan</th><th data-sort="status">Status</th><th data-sort="joined">Joined</th></tr></thead>
                 <tbody>
-                  <tr><td style="display:flex;align-items:center;gap:var(--space-2)"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=32&h=32&fit=crop&crop=face" style="width:28px;height:28px;border-radius:50%;object-fit:cover"> Sarah M.</td><td>Ballet I</td><td>Pro</td><td><span style="display:inline-flex;align-items:center;gap:4px;padding:2px 8px;background:rgba(72,187,120,.12);color:#48BB78;font-size:11px;font-weight:600;border-radius:20px"><i class="fas fa-circle" style="font-size:6px"></i> Active</span></td><td>Apr 5</td></tr>
-                  <tr><td style="display:flex;align-items:center;gap:var(--space-2)"><img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32&h=32&fit=crop&crop=face" style="width:28px;height:28px;border-radius:50%;object-fit:cover"> James R.</td><td>Hip Hop</td><td>Starter</td><td><span style="display:inline-flex;align-items:center;gap:4px;padding:2px 8px;background:rgba(72,187,120,.12);color:#48BB78;font-size:11px;font-weight:600;border-radius:20px"><i class="fas fa-circle" style="font-size:6px"></i> Active</span></td><td>Apr 4</td></tr>
-                  <tr><td style="display:flex;align-items:center;gap:var(--space-2)"><img src="https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=32&h=32&fit=crop&crop=face" style="width:28px;height:28px;border-radius:50%;object-fit:cover"> Linda P.</td><td>Kids Dance</td><td>Pro</td><td><span style="display:inline-flex;align-items:center;gap:4px;padding:2px 8px;background:rgba(236,201,75,.15);color:#D69E2E;font-size:11px;font-weight:600;border-radius:20px"><i class="fas fa-circle" style="font-size:6px"></i> Trial</span></td><td>Apr 3</td></tr>
-                  <tr><td style="display:flex;align-items:center;gap:var(--space-2)"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=32&h=32&fit=crop&crop=face" style="width:28px;height:28px;border-radius:50%;object-fit:cover"> David K.</td><td>Salsa</td><td>Elite</td><td><span style="display:inline-flex;align-items:center;gap:4px;padding:2px 8px;background:rgba(72,187,120,.12);color:#48BB78;font-size:11px;font-weight:600;border-radius:20px"><i class="fas fa-circle" style="font-size:6px"></i> Active</span></td><td>Apr 2</td></tr>
+                  <tr><td style="display:flex;align-items:center;gap:var(--space-2)"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=32&h=32&fit=crop&crop=face" style="width:28px;height:28px;border-radius:50%;object-fit:cover"> Sarah M.</td><td>Ballet I</td><td>Pro</td><td><span class="status-badge status-badge--active">Active</span></td><td>Apr 5</td></tr>
+                  <tr><td style="display:flex;align-items:center;gap:var(--space-2)"><img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32&h=32&fit=crop&crop=face" style="width:28px;height:28px;border-radius:50%;object-fit:cover"> James R.</td><td>Hip Hop</td><td>Starter</td><td><span class="status-badge status-badge--active">Active</span></td><td>Apr 4</td></tr>
+                  <tr><td style="display:flex;align-items:center;gap:var(--space-2)"><img src="https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=32&h=32&fit=crop&crop=face" style="width:28px;height:28px;border-radius:50%;object-fit:cover"> Linda P.</td><td>Kids Dance</td><td>Pro</td><td><span class="status-badge status-badge--pending">Trial</span></td><td>Apr 3</td></tr>
+                  <tr><td style="display:flex;align-items:center;gap:var(--space-2)"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=32&h=32&fit=crop&crop=face" style="width:28px;height:28px;border-radius:50%;object-fit:cover"> David K.</td><td>Salsa</td><td>Elite</td><td><span class="status-badge status-badge--active">Active</span></td><td>Apr 2</td></tr>
                 </tbody>
               </table>
             </div>
           </div>
 
           <!-- CHAT -->
-          <div class="dashboard__card" data-role="admin,user">
-            <div class="dashboard__card-header"><h3 class="dashboard__card-title"><i class="fas fa-comments"></i> Messages</h3></div>
+          <div class="chart-card" data-role="admin,user">
+            <div class="chart-card__header"><h3 class="chart-card__title"><i class="fas fa-comments"></i> Messages</h3></div>
             <div class="chat-messages" style="height:250px;overflow-y:auto;display:flex;flex-direction:column;gap:var(--space-3);padding:var(--space-4)">
               <div class="chat-message chat-message--received">
                 <div class="chat-message__bubble" style="background:var(--bg-secondary);padding:var(--space-3);border-radius:var(--radius-sm) var(--radius-sm) var(--radius-sm) 0;font-size:var(--font-size-sm)">Hi! I wanted to ask about the ballet schedule change next week.</div>

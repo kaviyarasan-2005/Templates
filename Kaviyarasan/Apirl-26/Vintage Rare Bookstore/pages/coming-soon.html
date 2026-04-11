@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opening Our Doors – Coming Soon | Antiquarian Rare Books</title>
+    <meta name="description" content="Antiquarian Rare Books is launching our new digital collection catalogue. Join the waitlist to receive first access.">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicons/favicon-32.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config={darkMode:['class','[data-theme="dark"]'],theme:{extend:{colors:{brand:'var(--color-primary)',brandAccent:'var(--color-accent)'},fontFamily:{heading:'var(--font-heading)',body:'var(--font-body)'}}}}</script>
+    <link rel="stylesheet" href="../assets/css/main.css"><link rel="stylesheet" href="../assets/css/rtl.css">
+</head>
+<body class="min-h-screen flex flex-col overflow-hidden" style="background-color:var(--color-secondary);">
+
+<!-- Standalone topbar -->
+<div class="auth-topbar">
+  <a href="home-1.html" class="auth-brand" aria-label="Return to Antiquarian Rare Books">
+    <i class="fa-solid fa-book-open text-xl" style="color:var(--color-accent);"></i>
+    <span class="auth-brand-name">Antiquarian</span>
+  </a>
+  <div class="flex items-center gap-2">
+    <button class="theme-toggle-btn w-9 h-9 flex items-center justify-center rounded-full border border-white/20 text-white hover:border-white/50 transition-colors" aria-label="Toggle theme"><i class="theme-icon fa-solid fa-moon text-sm"></i></button>
+    <button class="dir-toggle-btn w-9 h-9 flex items-center justify-center rounded-full border border-white/20 text-white hover:border-white/50 transition-colors" aria-label="Toggle direction"><i class="fa-solid fa-globe text-sm"></i></button>
+  </div>
+</div>
+
+<main class="flex-1 flex items-center justify-center relative" id="main-content" style="min-height:calc(100vh - 60px);">
+  <!-- BG image -->
+  <div class="absolute inset-0 z-0">
+    <img src="../assets/images/hero/hero_library.jpg" alt="Antiquarian library" class="w-full h-full object-cover hero-ken-burns">
+    <div class="absolute inset-0" style="background:linear-gradient(135deg, rgba(20,4,4,0.96) 0%, rgba(74,4,4,0.92) 100%);"></div>
+  </div>
+
+  <div class="relative z-10 text-center px-4 py-16 w-full max-w-3xl mx-auto">
+    <i class="fa-solid fa-hourglass-half text-5xl mb-8" style="color:var(--color-accent);"></i>
+    <h1 class="font-heading font-bold text-4xl lg:text-6xl mb-4" style="color:#FFFFF0;">Something Extraordinary is Coming</h1>
+    <p class="text-lg mb-12 max-w-xl mx-auto" style="color:rgba(245,245,220,0.75);">We are preparing our digital catalogue for launch. Our curators are documenting over 4,200 rare volumes for your discovery.</p>
+
+    <!-- Countdown -->
+    <div id="countdown-target" data-date="2026-09-01T00:00:00" class="grid grid-cols-4 gap-4 max-w-md mx-auto mb-14" aria-label="Countdown timer">
+      <div class="text-center">
+        <div id="cd-days" class="countdown-unit" aria-label="Days">00</div>
+        <div class="countdown-label">Days</div>
+      </div>
+      <div class="text-center">
+        <div id="cd-hours" class="countdown-unit" aria-label="Hours">00</div>
+        <div class="countdown-label">Hours</div>
+      </div>
+      <div class="text-center">
+        <div id="cd-mins" class="countdown-unit" aria-label="Minutes">00</div>
+        <div class="countdown-label">Minutes</div>
+      </div>
+      <div class="text-center">
+        <div id="cd-secs" class="countdown-unit" aria-label="Seconds">00</div>
+        <div class="countdown-label">Seconds</div>
+      </div>
+    </div>
+
+    <!-- Early Access Form -->
+    <div class="max-w-md mx-auto mb-10">
+      <p class="text-sm mb-4" style="color:rgba(245,245,220,0.65);">Register for first access when we open:</p>
+      <form id="coming-soon-form" class="flex flex-col sm:flex-row gap-3" novalidate>
+        <input type="email" placeholder="Your email address" required class="form-field flex-1" style="background:rgba(255,255,255,0.08); border-color:rgba(255,255,255,0.15); color:#fff;" aria-label="Email for early access notification">
+        <button type="submit" class="btn-accent px-6 py-3 whitespace-nowrap">Notify Me</button>
+      </form>
+    </div>
+
+    <div class="flex justify-center gap-5">
+      <a href="home-1.html" class="text-sm hover:text-white transition-colors" style="color:rgba(245,245,220,0.55);">Visit Shop</a>
+      <a href="contact.html" class="text-sm hover:text-white transition-colors" style="color:rgba(245,245,220,0.55);">Contact Us</a>
+    </div>
+  </div>
+</main>
+
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/animations.js"></script>
+<script src="../assets/js/dashboard.js"></script>
+<script src="../assets/js/forms.js"></script>
+</body>
+</html>

@@ -21,8 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // Tab functionality
   initTabs();
 
-  // Preloader
-  initPreloader();
 
   // Smooth scroll for anchor links
   initSmoothScroll();
@@ -37,28 +35,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initFilterGrid();
 });
 
-/* === Preloader === */
-function initPreloader() {
-  const preloader = document.querySelector('.preloader');
-  const curtain = document.querySelector('.curtain');
-  
-  if (preloader) {
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        preloader.classList.add('hidden');
-        if (curtain) curtain.classList.add('open');
-        
-        // Remove from DOM after animation
-        setTimeout(() => {
-          preloader.remove();
-          if (curtain) {
-            setTimeout(() => curtain.remove(), 1000);
-          }
-        }, 600);
-      }, 1200);
-    });
-  }
-}
 
 /* === Accordion === */
 function initAccordions() {
