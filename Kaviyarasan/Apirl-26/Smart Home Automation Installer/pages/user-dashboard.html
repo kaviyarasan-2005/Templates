@@ -114,7 +114,28 @@
     input:checked + .slider:before { transform: translateX(20px); }
 
     .infograph-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--space-3); margin-bottom: var(--space-3); }
-    .infograph-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--border-radius-lg); padding: var(--space-3); min-width: 0; overflow: hidden; }
+    .infograph-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--border-radius-lg); padding: var(--space-3); min-width: 0; overflow: hidden; position: relative; }
+
+    /* Gauge / Radial Styles */
+    .gauge-container { display: flex; justify-content: space-around; align-items: center; margin-top: 12px; }
+    .gauge { text-align: center; }
+    .gauge-circle { width: 60px; height: 60px; border-radius: 50%; border: 4px solid var(--border-color); border-top-color: var(--color-primary); margin: 0 auto 4px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: bold; }
+    
+    /* Room Card Grid */
+    .room-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: var(--space-2); margin-top: 12px; }
+    .room-card { background: var(--bg-card-hover); padding: 12px; border-radius: var(--border-radius); border: 1px solid var(--border-color); display: flex; flex-direction: column; gap: 4px; }
+    .room-card__header { display: flex; justify-content: space-between; align-items: center; }
+    .room-card__title { font-size: 13px; font-weight: bold; margin: 0; }
+    .room-card__stats { font-size: 11px; color: var(--text-tertiary); display: flex; gap: 8px; }
+
+    /* Signal Strength */
+    .signal { display: flex; align-items: flex-end; gap: 2px; height: 16px; margin-left: 8px; }
+    .signal-bar { width: 3px; background: var(--border-color); border-radius: 1px; }
+    .signal-bar.active { background: var(--color-primary); }
+    .signal-bar:nth-child(1) { height: 4px; }
+    .signal-bar:nth-child(2) { height: 8px; }
+    .signal-bar:nth-child(3) { height: 12px; }
+    .signal-bar:nth-child(4) { height: 16px; }
 
     @media (max-width: 1024px) {
       .dashboard__sidebar { top: 0; height: 100vh; z-index: 1100; }
@@ -161,10 +182,15 @@
           <button id="sidebar-toggle" style="display:none;background:none;border:none;color:var(--text-primary);"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
           <div><h1>My Smart Home</h1><p style="font-size:var(--fs-sm);color:var(--text-tertiary);">All systems functional • Austin, TX</p></div>
         </div>
-        <div style="display:flex;align-items:center;gap:var(--space-2);">
-          <button class="navbar__icon-btn" id="theme-toggle"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" id="theme-icon"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2"/></svg></button>
-          <img src="../assets/images/testimonial-avatar-1.jpg" style="width:40px;height:40px;border-radius:50%;border:2px solid var(--color-primary);" />
-        </div>
+          <div style="display:flex;align-items:center;gap:var(--space-2);">
+            <div class="signal">
+              <div class="signal-bar active"></div>
+              <div class="signal-bar active"></div>
+              <div class="signal-bar active"></div>
+              <div class="signal-bar active"></div>
+            </div>
+            <img src="../assets/images/testimonial-avatar-1.jpg" style="width:40px;height:40px;border-radius:50%;border:2px solid var(--color-primary);" />
+          </div>
       </div>
 
       <!-- QUICK SCENES -->
@@ -195,6 +221,24 @@
             <p style="font-weight:bold; color:#10B981">System Armed</p>
           </div>
         </div>
+        <div class="infograph-card">
+          <h4>Air Quality</h4>
+          <div class="gauge-container">
+            <div class="gauge"><div class="gauge-circle">420<br>PPM</div><span class="fs-xs">CO2</span></div>
+            <div class="gauge"><div class="gauge-circle" style="border-top-color:#3B82F6">55%</div><span class="fs-xs">Humid</span></div>
+            <div class="gauge"><div class="gauge-circle" style="border-top-color:#F59E0B">72°F</div><span class="fs-xs">Temp</span></div>
+          </div>
+        </div>
+        <div class="infograph-card">
+          <h4>Water Usage</h4>
+          <div style="text-align:center; padding-top:8px;">
+            <svg viewBox="0 0 36 36" style="width:80px; height:80px; transform:rotate(-90deg);">
+              <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="var(--border-color)" stroke-width="3" />
+              <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#2563EB" stroke-width="3" stroke-dasharray="65, 100" stroke-linecap="round" />
+            </svg>
+            <div style="margin-top:-50px; padding-bottom:20px;"><strong style="font-size:16px;">65%</strong><br><span style="font-size:9px; color:var(--text-tertiary);">Weekly Goal</span></div>
+          </div>
+        </div>
       </div>
 
       <!-- DEVICE CONTROLS -->
@@ -215,6 +259,39 @@
         <div class="device-card">
           <div class="device-info"><h4>Garden Sprinklers</h4><p>Rachio Hub • Off</p></div>
           <label class="switch"><input type="checkbox"><span class="slider"></span></label>
+        </div>
+      </div>
+
+      <!-- ROOM CONDITIONS -->
+      <h3 style="margin: var(--space-4) 0 var(--space-2);">Room Conditions</h3>
+      <div class="room-grid">
+        <div class="room-card">
+          <div class="room-card__header">
+            <h4 class="room-card__title">Living Room</h4>
+            <span style="width:8px; height:8px; background:#10B981; border-radius:50%;"></span>
+          </div>
+          <div class="room-card__stats"><span>72°F</span><span>45% RH</span></div>
+        </div>
+        <div class="room-card">
+          <div class="room-card__header">
+            <h4 class="room-card__title">Bedroom</h4>
+            <span style="width:8px; height:8px; background:#10B981; border-radius:50%;"></span>
+          </div>
+          <div class="room-card__stats"><span>68°F</span><span>50% RH</span></div>
+        </div>
+        <div class="room-card">
+          <div class="room-card__header">
+            <h4 class="room-card__title">Kitchen</h4>
+            <span style="width:8px; height:8px; background:#F59E0B; border-radius:50%;"></span>
+          </div>
+          <div class="room-card__stats"><span>75°F</span><span>60% RH</span></div>
+        </div>
+        <div class="room-card">
+          <div class="room-card__header">
+            <h4 class="room-card__title">Home Office</h4>
+            <span style="width:8px; height:8px; background:#10B981; border-radius:50%;"></span>
+          </div>
+          <div class="room-card__stats"><span>71°F</span><span>42% RH</span></div>
         </div>
       </div>
 
