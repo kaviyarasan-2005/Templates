@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aura — Digital Studio</title>
+  <script src="assets/js/theme-toggle.js"></script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <style>
+    /* Hero with mesh gradient */
+    .hero2 {
+      min-height: 100vh; display: flex; align-items: center;
+      background: var(--color-bg);
+      overflow: hidden; position: relative; padding-top: var(--navbar-height);
+    }
+    .mesh-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background:
+        radial-gradient(ellipse at 15% 50%, rgba(13,115,119,0.2) 0%, transparent 50%),
+        radial-gradient(ellipse at 85% 20%, rgba(212,175,55,0.1) 0%, transparent 40%),
+        radial-gradient(ellipse at 70% 90%, rgba(13,115,119,0.1) 0%, transparent 50%);
+      animation: meshAnimate 10s ease infinite alternate;
+    }
+    @keyframes meshAnimate {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.05) translateX(20px); }
+    }
+    .hero2-content { position: relative; z-index: 1; max-width: 520px; }
+    .hero2 h1, .hero2 p { color: var(--color-text-primary); }
+    .hero2-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(13,115,119,0.15); border: 1px solid rgba(13,115,119,0.3);
+      color: var(--color-primary); padding: 6px 16px; border-radius: 20px; font-size: 0.8125rem;
+      font-weight: 600; letter-spacing: 0.05em; margin-bottom: 20px;
+    }
+    .badge-dot { width: 6px; height: 6px; background: var(--color-primary); border-radius: 50%; animation: blink 1.4s infinite; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+    /* Floating mockup cards */
+    .hero2-visual {
+      position: relative; height: 520px; display: flex; align-items: center; justify-content: center;
+    }
+    .mockup-card {
+      position: absolute; background: var(--color-surface); border: 1px solid var(--color-border);
+      backdrop-filter: blur(16px); border-radius: 16px; padding: 20px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    }
+    .mockup-main { width: 320px; left: 50%; top: 50%; transform: translate(-50%, -50%); }
+    .mockup-stat { width: 180px; z-index: 2; }
+    .mockup-stat-1 { top: 60px; left: 0; animation: float1 5s ease-in-out infinite; }
+    .mockup-stat-2 { bottom: 80px; right: 0; animation: float2 6s ease-in-out infinite; }
+    @keyframes float1 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-15px)} }
+    @keyframes float2 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(10px)} }
+    .stat-val { font-size: 1.5rem; font-weight: 700; color: var(--color-primary); }
+    .stat-lbl { font-size: 0.75rem; color: var(--color-text-secondary); }
+    .mock-bar { height: 4px; border-radius: 4px; background: var(--color-border); margin-top: 8px; overflow: hidden; }
+    .mock-bar-fill { height: 100%; border-radius: 4px; background: linear-gradient(90deg, var(--color-primary), var(--color-secondary)); }
+
+    /* Before/After Slider */
+    .before-after-section { background: var(--color-surface); }
+    .before-after-wrap {
+      position: relative; overflow: hidden; border-radius: 16px; cursor: col-resize; height: 380px;
+      user-select: none; border: 1px solid var(--color-border);
+    }
+    .before-after-wrap img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; }
+    .after-img { clip-path: inset(0 50% 0 0); transition: clip-path 0.1s; }
+    .slider-handle {
+      position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+      width: 4px; height: 100%; background: var(--color-primary); z-index: 10; cursor: col-resize;
+    }
+    .slider-btn {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      width: 40px; height: 40px; background: white; border-radius: 50%; z-index: 11;
+      display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      color: var(--color-primary); font-weight: 700; font-size: 1rem;
+    }
+    .slider-label {
+      position: absolute; top: 16px; padding: 4px 12px; border-radius: 20px;
+      font-size: 0.75rem; font-weight: 600;
+    }
+    .label-before { left: 16px; background: rgba(0,0,0,0.7); color: white; }
+    .label-after { right: 16px; background: var(--color-primary); color: white; }
+
+    /* How It Works timeline */
+    .hiw-section { background: var(--color-bg); }
+    .timeline-v {
+      max-width: 640px; margin: 0 auto; position: relative;
+    }
+    .timeline-v::before {
+      content: ''; position: absolute; left: 28px; top: 0; bottom: 0;
+      width: 2px; background: linear-gradient(180deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    }
+    .tv-item { display: flex; gap: 24px; margin-bottom: 40px; align-items: flex-start; }
+    .tv-icon {
+      flex-shrink: 0; width: 56px; height: 56px; border-radius: 50%;
+      background: var(--color-surface); border: 2px solid var(--color-primary); display: flex; align-items: center;
+      justify-content: center; color: var(--color-primary); font-size: 1.25rem; font-weight: 700; z-index: 1;
+    }
+    .tv-content h3 { margin-bottom: 8px; }
+    .tv-content p { color: var(--color-text-secondary); font-size: 0.9375rem; }
+
+    /* Integration logos marquee */
+    .marquee-section { background: var(--color-surface); overflow: hidden; padding: var(--space-5) 0; position: relative; border-block: 1px solid var(--color-border); }
+    .marquee-track {
+      display: flex; gap: 48px; animation: marquee 20s linear infinite; width: max-content;
+    }
+    @keyframes marquee { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+    .logo-item {
+      flex-shrink: 0; padding: 12px 24px;
+      background: var(--color-bg); border: 1px solid var(--color-border);
+      border-radius: 8px; color: var(--color-text-secondary); font-weight: 600; white-space: nowrap;
+    }
+
+    @media (max-width: 768px) { .hero2-visual { display: none; } }
+  </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="home-1.html" class="navbar-brand">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+        Aura
+      </a>
+      
+      <ul class="navbar-menu d-md-flex d-none">
+        <li class="navbar-item">
+          <button class="dropdown-toggle">Home <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"></path></svg></button>
+          <div class="dropdown-menu">
+            <a href="home-1.html" class="dropdown-link">Home 1</a>
+            <a href="home-2.html" class="dropdown-link">Home 2</a>
+          </div>
+        </li>
+        <li class="navbar-item"><a href="about.html" class="navbar-link">About</a></li>
+        <li class="navbar-item">
+          <button class="dropdown-toggle">Services <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"></path></svg></button>
+          <div class="dropdown-menu">
+            <a href="services.html" class="dropdown-link">All Services</a>
+            <a href="service-details.html" class="dropdown-link">Service Details</a>
+          </div>
+        </li>
+        <li class="navbar-item"><a href="pricing.html" class="navbar-link">Pricing</a></li>
+        <li class="navbar-item">
+          <button class="dropdown-toggle">Blog <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"></path></svg></button>
+          <div class="dropdown-menu">
+            <a href="blog.html" class="dropdown-link">Blog</a>
+            <a href="blog-details.html" class="dropdown-link">Blog Details</a>
+          </div>
+        </li>
+        <li class="navbar-item"><a href="contact.html" class="navbar-link">Contact</a></li>
+        <li class="navbar-item">
+          <button class="dropdown-toggle">Dashboard <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"></path></svg></button>
+          <div class="dropdown-menu">
+            <a href="dashboard.html?role=admin" class="dropdown-link">Admin Dashboard</a>
+            <a href="dashboard.html?role=user" class="dropdown-link">User Dashboard</a>
+          </div>
+        </li>
+      </ul>
+      
+      <div class="navbar-actions">
+        <!-- Theme Toggle -->
+        <button class="icon-btn d-none d-md-flex" id="themeToggle" aria-label="Toggle dark/light mode">
+          <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line></svg>
+        </button>
+        <!-- Globe/RTL Toggle -->
+        <button class="icon-btn d-none d-md-flex" id="langToggle" aria-label="Toggle language direction" style="transition: transform 0.4s ease;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+        </button>
+        <a href="login.html" class="btn btn-primary d-none d-md-flex">Login</a>
+        <button class="icon-btn mobile-toggle d-md-none" aria-label="Toggle Menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+  
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu-overlay">
+    <button class="icon-btn mobile-toggle" style="position: absolute; right: var(--space-4); top: var(--space-4);">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
+    <ul class="navbar-menu">
+      <li class="navbar-item"><a href="home-1.html" class="navbar-link">Home 1</a></li>
+      <li class="navbar-item"><a href="home-2.html" class="navbar-link">Home 2</a></li>
+      <li class="navbar-item"><a href="about.html" class="navbar-link">About</a></li>
+      <li class="navbar-item"><a href="services.html" class="navbar-link">All Services</a></li>
+      <li class="navbar-item"><a href="service-details.html" class="navbar-link">Service Details</a></li>
+      <li class="navbar-item"><a href="pricing.html" class="navbar-link">Pricing</a></li>
+      <li class="navbar-item"><a href="blog.html" class="navbar-link">Blog</a></li>
+      <li class="navbar-item"><a href="blog-details.html" class="navbar-link">Blog Details</a></li>
+      <li class="navbar-item"><a href="contact.html" class="navbar-link">Contact</a></li>
+      <li class="navbar-item"><a href="dashboard.html?role=admin" class="navbar-link">Admin Dashboard</a></li>
+      <li class="navbar-item"><a href="dashboard.html?role=user" class="navbar-link">User Dashboard</a></li>
+      <li class="navbar-item"><a href="login.html" class="btn btn-primary">Login</a></li>
+    </ul>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero2">
+    <div class="mesh-bg"></div>
+    <div class="container" style="display:grid; grid-template-columns: 1fr 1fr; gap: var(--space-6); align-items: center;">
+      <div class="hero2-content animate-on-scroll fade-up">
+        <div class="hero2-badge"><span class="badge-dot"></span> Now Available Virtually</div>
+        <h1 style="font-size:clamp(2.25rem, 5vw, 3.75rem); margin-bottom: 20px;">Interior Design <br>Powered by Vision</h1>
+        <p style="color:rgba(255,255,255,0.7); font-size:1.125rem; margin-bottom:32px; line-height:1.8;">We blend advanced 3D visualization with high-end design expertise to make luxury transformation accessible — from anywhere in the world.</p>
+        <div style="display:flex; gap:12px; flex-wrap:wrap;">
+          <a href="services.html" class="btn" style="background:#0D7377; color:white;">Explore Services</a>
+          <a href="pricing.html" class="btn" style="background:rgba(255,255,255,0.08); color:white; border:1px solid rgba(255,255,255,0.2);">View Pricing</a>
+        </div>
+      </div>
+
+      <div class="hero2-visual animate-on-scroll fade-up delay-200">
+        <!-- Main Card -->
+        <div class="mockup-card mockup-main">
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom:16px;">
+            <div style="width:10px; height:10px; border-radius:50%; background:#dc3545;"></div>
+            <div style="width:10px; height:10px; border-radius:50%; background:#ffc107;"></div>
+            <div style="width:10px; height:10px; border-radius:50%; background:#28a745;"></div>
+            <span style="font-size:0.75rem; color:rgba(255,255,255,0.4); margin-left:auto;">Aura Studio</span>
+          </div>
+          <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=400&q=80" style="width:100%; height:160px; object-fit:cover; border-radius:8px;">
+          <div style="margin-top:12px; display:flex; gap:8px;">
+            <div style="height:8px; flex:3; background:rgba(20,184,190,0.4); border-radius:4px;"></div>
+            <div style="height:8px; flex:1; background:rgba(255,255,255,0.1); border-radius:4px;"></div>
+          </div>
+          <div style="margin-top:8px; font-size:0.75rem; color:rgba(255,255,255,0.5);">Living Room Render — 92% complete</div>
+        </div>
+        <!-- Stat Card 1 -->
+        <div class="mockup-card mockup-stat mockup-stat-1">
+          <div class="stat-val">250+</div>
+          <div class="stat-lbl">Happy Clients</div>
+          <div class="mock-bar"><div class="mock-bar-fill" style="width:78%"></div></div>
+        </div>
+        <!-- Stat Card 2 -->
+        <div class="mockup-card mockup-stat mockup-stat-2">
+          <div class="stat-val">4.9 ★</div>
+          <div class="stat-lbl">Average Rating</div>
+          <div class="mock-bar"><div class="mock-bar-fill" style="width:95%"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Integration logos marquee -->
+  <section class="marquee-section">
+    <div class="marquee-track" id="marquee">
+      <span class="logo-item">AutoCAD</span>
+      <span class="logo-item">SketchUp Pro</span>
+      <span class="logo-item">3ds Max</span>
+      <span class="logo-item">Lumion</span>
+      <span class="logo-item">V-Ray</span>
+      <span class="logo-item">Revit</span>
+      <span class="logo-item">Enscape</span>
+      <span class="logo-item">D5 Render</span>
+      <span class="logo-item">Adobe CC</span>
+      <span class="logo-item">Pinterest Boards</span>
+      <!-- Duplicate for seamless loop -->
+      <span class="logo-item">AutoCAD</span>
+      <span class="logo-item">SketchUp Pro</span>
+      <span class="logo-item">3ds Max</span>
+      <span class="logo-item">Lumion</span>
+      <span class="logo-item">V-Ray</span>
+      <span class="logo-item">Revit</span>
+      <span class="logo-item">Enscape</span>
+      <span class="logo-item">D5 Render</span>
+      <span class="logo-item">Adobe CC</span>
+      <span class="logo-item">Pinterest Boards</span>
+    </div>
+  </section>
+
+  <!-- Before/After slider -->
+  <section class="before-after-section section">
+    <div class="container">
+      <div class="text-center mb-5 animate-on-scroll fade-up">
+        <h2 style="color:white;">The Transformation</h2>
+        <p style="color:rgba(255,255,255,0.6);">Drag the slider to explore our before and after.</p>
+      </div>
+      <div class="before-after-wrap animate-on-scroll scale-in" id="baWrap">
+        <img src="https://images.unsplash.com/photo-1507652313519-d4e9174996dd?auto=format&fit=crop&w=1200&q=60" alt="Before" class="before-img">
+        <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=60" alt="After" class="after-img" id="afterImg">
+        <div class="slider-handle" id="sliderHandle">
+          <div class="slider-btn">⇔</div>
+        </div>
+        <span class="slider-label label-before">BEFORE</span>
+        <span class="slider-label label-after">AFTER</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="section hiw-section">
+    <div class="container">
+      <div class="text-center mb-6 animate-on-scroll fade-up">
+        <h2>How It Works</h2>
+        <p style="color:rgba(255,255,255,0.6);">Your design journey in four simple steps.</p>
+      </div>
+      <div class="timeline-v animate-on-scroll fade-up">
+        <div class="tv-item">
+          <div class="tv-icon">1</div>
+          <div class="tv-content">
+            <h3>Book a Discovery Call</h3>
+            <p>Tell us about your space, vision, and budget. No design experience needed — we speak your language.</p>
+          </div>
+        </div>
+        <div class="tv-item">
+          <div class="tv-icon">2</div>
+          <div class="tv-content">
+            <h3>Receive Concepts & Moodboards</h3>
+            <p>Our team creates tailored moodboards and initial 2D layouts within 48 hours.</p>
+          </div>
+        </div>
+        <div class="tv-item">
+          <div class="tv-icon">3</div>
+          <div class="tv-content">
+            <h3>Explore in 3D</h3>
+            <p>Walk through photorealistic 3D renders of your transformed space before anything is purchased.</p>
+          </div>
+        </div>
+        <div class="tv-item">
+          <div class="tv-icon">4</div>
+          <div class="tv-content">
+            <h3>Implement & Transform</h3>
+            <p>Receive your complete shopping list, contractor guide, and color codes. Bring your vision to life.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h3 class="footer-heading" style="font-family: var(--font-heading); color: var(--color-primary); font-size: 1.5rem; font-weight: 700;">Aura</h3>
+          <p class="text-secondary mb-3">Redefining indoor spaces with bespoke virtual interior design architecture tailored for you.</p>
+          <div class="d-flex gap-2">
+            <!-- Social icons -->
+            <a href="#" class="icon-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
+            <a href="#" class="icon-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer-heading">Services</h4>
+          <ul class="footer-links">
+            <li><a href="service-details.html">Residential Design</a></li>
+            <li><a href="service-details.html">Commercial Spaces</a></li>
+            <li><a href="service-details.html">Kitchen & Bath</a></li>
+            <li><a href="pricing.html">Pricing Plans</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-heading">Company</h4>
+          <ul class="footer-links">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="blog.html">Journal</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="dashboard.html">Client Portal</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-heading">Contact</h4>
+          <ul class="footer-links">
+            <li><a href="mailto:hello@auradesign.com">hello@auradesign.com</a></li>
+            <li><a href="tel:+1234567890">+1 (234) 567-890</a></li>
+            <li><span class="text-secondary">123 Design Ave,<br>Los Angeles, CA 90028</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Aura. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/utils.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/animations.js"></script>
+  <script>
+    // Before/After slider interactivity
+    const wrap = document.getElementById('baWrap');
+    const handle = document.getElementById('sliderHandle');
+    const afterImg = document.getElementById('afterImg');
+    if (wrap) {
+      let dragging = false;
+      const getPos = (x) => {
+        const rect = wrap.getBoundingClientRect();
+        let pct = Math.max(0, Math.min(100, ((x - rect.left) / rect.width) * 100));
+        return pct;
+      };
+      const update = (pct) => {
+        afterImg.style.clipPath = `inset(0 ${100 - pct}% 0 0)`;
+        handle.style.left = pct + '%';
+      };
+      update(50);
+      wrap.addEventListener('mousedown', (e) => { dragging = true; update(getPos(e.clientX)); });
+      wrap.addEventListener('touchstart', (e) => { dragging = true; update(getPos(e.touches[0].clientX)); });
+      window.addEventListener('mousemove', (e) => { if (dragging) update(getPos(e.clientX)); });
+      window.addEventListener('touchmove', (e) => { if (dragging) update(getPos(e.touches[0].clientX)); });
+      window.addEventListener('mouseup', () => dragging = false);
+      window.addEventListener('touchend', () => dragging = false);
+    }
+  </script>
+</body>
+</html>

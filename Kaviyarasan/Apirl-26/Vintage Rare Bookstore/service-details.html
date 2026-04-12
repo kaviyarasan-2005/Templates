@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Appraisal Service Details | Vintage Rare Bookstore</title>
+  <meta name="description" content="Professional rare book appraisal service. Certified bibliographers provide authoritative valuations for insurance, estate, and sale purposes.">
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicons/favicon.svg">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <style>
+    .page-hero{background:linear-gradient(135deg,var(--primary-dark),var(--bg-dark));padding:calc(var(--nav-height)+var(--space-4xl)) 0 var(--space-4xl);color:#fff;position:relative;overflow:hidden}
+    .page-hero::after{content:'';position:absolute;inset:0;background:url('assets/images/books/appraisal.png') center/cover;opacity:0.12}
+    .page-hero .container{position:relative;z-index:1}
+    .page-hero h1{color:#fff}
+    .detail-layout{display:grid;grid-template-columns:1fr 320px;gap:var(--space-3xl);align-items:start}
+    .detail-main{}
+    .detail-sidebar{display:flex;flex-direction:column;gap:var(--space-lg);position:sticky;top:calc(var(--nav-height)+var(--space-lg))}
+    .sidebar-widget{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--border-radius-lg);padding:var(--space-xl)}
+    .sidebar-widget h4{font-family:var(--font-heading);font-size:1.125rem;margin-bottom:var(--space-md);padding-bottom:var(--space-md);border-bottom:1px solid var(--border)}
+    .related-link{display:flex;align-items:center;gap:var(--space-sm);padding:var(--space-sm) 0;border-bottom:1px solid var(--border);font-family:var(--font-ui);font-size:0.875rem;color:var(--text-secondary);transition:color var(--transition-base)}
+    .related-link:hover{color:var(--accent)}
+    .related-link:last-child{border-bottom:none}
+    .drop-cap::first-letter{font-family:var(--font-heading);font-size:4rem;font-weight:700;line-height:0.8;float:left;margin-right:var(--space-sm);margin-top:var(--space-xs);color:var(--accent)}
+    .pricing-tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-md);margin:var(--space-2xl) 0}
+    .tier-card{background:var(--bg-secondary);border:2px solid var(--border);border-radius:var(--border-radius-lg);padding:var(--space-xl);text-align:center;transition:all var(--transition-base)}
+    .tier-card.featured{border-color:var(--accent);background:rgba(212,175,55,0.04)}
+    .tier-card:hover{border-color:var(--primary-light);transform:translateY(-4px)}
+    .tier-name{font-family:var(--font-ui);font-size:0.8125rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent-hover);margin-bottom:var(--space-sm)}
+    .tier-price{font-family:var(--font-heading);font-size:2rem;font-weight:700;color:var(--text-primary);margin-bottom:4px}
+    .tier-desc{font-size:0.875rem;color:var(--text-muted);margin-bottom:var(--space-md)}
+    @media(max-width:1024px){.detail-layout{grid-template-columns:1fr}.detail-sidebar{position:static}}
+    @media(max-width:640px){.pricing-tiers{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <header class="navbar" role="banner"><div class="container"><div class="navbar__inner">
+    <a href="index.html" class="navbar__logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40"><rect width="40" height="40" rx="7" fill="#8B4513"/><rect x="7" y="6" width="19" height="28" rx="2" fill="#D4AF37"/><rect x="9" y="8" width="15" height="24" rx="1" fill="#FDF8F0"/><rect x="11" y="13" width="11" height="1.5" rx="0.75" fill="#8B4513"/><rect x="27" y="8" width="6" height="24" rx="1" fill="#5D3A1A"/></svg><span class="navbar__logo-text">Vintage Rare Bookstore</span></a>
+    <ul class="navbar__nav" role="list"><li class="nav-item"><a href="index.html" class="nav-link">Home</a></li><li class="nav-item"><a href="about.html" class="nav-link">About</a></li><li class="nav-item"><a href="services.html" class="nav-link active">Services</a></li><li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li><li class="nav-item"><a href="pricing.html" class="nav-link">Pricing</a></li><li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li></ul>
+    <div class="navbar__actions"><button id="rtl-toggle" class="nav-icon-btn" aria-label="Toggle RTL"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></button><button id="theme-toggle" class="nav-icon-btn" aria-label="Toggle theme"><svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/></svg></button><a href="login.html" class="btn btn-primary btn-sm">Login</a><button id="hamburger" class="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button></div>
+  </div></div></header>
+  <nav id="mobile-nav" class="mobile-nav"><ul class="mobile-nav__links"><li><a href="index.html" class="nav-link">Home</a></li><li><a href="about.html" class="nav-link">About</a></li><li><a href="services.html" class="nav-link active">Services</a></li><li><a href="blog.html" class="nav-link">Blog</a></li><li><a href="contact.html" class="nav-link">Contact</a></li></ul><div class="mobile-nav__footer"><a href="login.html" class="btn btn-primary btn-full">Login</a></div></nav>
+
+  <main id="main-content">
+    <div class="page-hero"><div class="container"><nav aria-label="Breadcrumb"><ul class="breadcrumb" style="margin-bottom:var(--space-lg)"><li><a href="index.html" style="color:rgba(255,255,255,0.6)">Home</a></li><li><svg class="breadcrumb-sep" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></li><li><a href="services.html" style="color:rgba(255,255,255,0.6)">Services</a></li><li><svg class="breadcrumb-sep" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></li><li>Book Appraisal</li></ul></nav><span class="card__tag" style="margin-bottom:var(--space-md)">Expert Service</span><h1 class="reveal">Professional Book Appraisal</h1><p class="reveal" style="color:rgba(255,255,255,0.75);max-width:600px">Authoritative valuations by certified bibliographers — for insurance, estate, or sale purposes.</p></div></div>
+
+    <section class="section"><div class="container"><div class="detail-layout">
+      <div class="detail-main reveal">
+        <img src="assets/images/books/appraisal.png" alt="Rare book appraisal expert examining a first edition" style="width:100%;border-radius:var(--border-radius-lg);margin-bottom:var(--space-2xl);box-shadow:var(--shadow-xl)" loading="lazy">
+        <h2>What Is a Professional Book Appraisal?</h2>
+        <p class="drop-cap">A professional rare book appraisal is a scholarly and market-informed assessment of a volume's monetary value, historical significance, and physical condition. Our certified appraisers — members of the Antiquarian Booksellers' Association of America (ABAA) and the International League of Antiquarian Booksellers (ILAB) — combine deep bibliographic knowledge with current market data to produce authoritative valuation reports.</p>
+        <p>Unlike casual estimates or online price lookups, a professional appraisal considers dozens of factors: edition and printing sequence, binding condition, provenance, association copies, inscriptions, dust jacket presence and condition, and current market comparables from recent auction results worldwide.</p>
+        <h3>Our Appraisal Process</h3>
+        <ol style="padding-left:var(--space-xl);color:var(--text-secondary);line-height:2;font-size:0.9375rem">
+          <li><strong>Initial Consultation:</strong> We discuss your book(s) and why you need an appraisal (insurance, estate, donation, sale).</li>
+          <li><strong>Physical Examination:</strong> Our specialist examines the volume in person or from detailed photographs.</li>
+          <li><strong>Bibliographic Research:</strong> We consult auction records, dealer catalogues, and bibliographic databases.</li>
+          <li><strong>Market Analysis:</strong> Comparable sales from Christie's, Sotheby's, Heritage Auctions, and specialist booksellers.</li>
+          <li><strong>Written Report:</strong> A comprehensive, signed document suitable for legal and insurance purposes.</li>
+        </ol>
+
+        <!-- Pricing Tiers -->
+        <h3 style="margin-top:var(--space-2xl)">Service Tiers</h3>
+        <div class="pricing-tiers">
+          <div class="tier-card"><div class="tier-name">Standard</div><div class="tier-price">£150</div><div class="tier-desc">Per volume. Written report within 14 days.</div><a href="contact.html" class="btn btn-outline btn-full btn-sm">Book Now</a></div>
+          <div class="tier-card featured"><div class="tier-name">Priority</div><div class="tier-price">£250</div><div class="tier-desc">Per volume. Report within 5 business days.</div><a href="contact.html" class="btn btn-accent btn-full btn-sm">Book Now</a></div>
+          <div class="tier-card"><div class="tier-name">Collection</div><div class="tier-price">Custom</div><div class="tier-desc">10+ volumes. Discounted rate available.</div><a href="contact.html" class="btn btn-outline btn-full btn-sm">Get Quote</a></div>
+        </div>
+
+        <!-- FAQ -->
+        <h3 style="margin-top:var(--space-2xl)">Frequently Asked Questions</h3>
+        <div class="accordion accordion-single" style="margin-top:var(--space-lg)">
+          <div class="accordion-item"><button class="accordion-trigger" aria-expanded="false">How long does an appraisal take?<svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="accordion-content"><p class="accordion-body">Standard appraisals are completed within 14 business days. Priority service is available with a 5-day turnaround. Complex collections or incunabula may require additional time.</p></div></div>
+          <div class="accordion-item"><button class="accordion-trigger" aria-expanded="false">Is the appraisal report legally recognised?<svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="accordion-content"><p class="accordion-body">Yes. Our appraisal reports are prepared by ABAA and ILAB-certified specialists and are accepted by insurance companies, courts, and tax authorities in the UK, EU, and USA.</p></div></div>
+          <div class="accordion-item"><button class="accordion-trigger" aria-expanded="false">Can you appraise books remotely?<svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="accordion-content"><p class="accordion-body">Yes, we offer remote preliminary assessments from high-resolution photographs. For formal appraisals, books must either be shipped to our London facility or examined at your location (travel fees apply).</p></div></div>
+        </div>
+      </div>
+
+      <aside class="detail-sidebar">
+        <div class="sidebar-widget"><h4>Book This Service</h4><p style="font-size:0.9375rem;color:var(--text-secondary);margin-bottom:var(--space-lg)">Get a free consultation to discuss your appraisal needs.</p><a href="contact.html" class="btn btn-accent btn-full">Contact Us</a></div>
+        <div class="sidebar-widget"><h4>Related Services</h4><a href="service-details.html" class="related-link">📚 Book Restoration</a><a href="service-details.html" class="related-link">🔍 Book Sourcing</a><a href="service-details.html" class="related-link">🛡 Conservation</a><a href="service-details.html" class="related-link">📋 Estate Services</a></div>
+        <div class="sidebar-widget"><h4>Download Brochure</h4><p style="font-size:0.9375rem;color:var(--text-secondary);margin-bottom:var(--space-lg)">Full service guide with pricing and sample reports.</p><a href="#" class="btn btn-outline btn-full btn-sm">📄 Download PDF</a></div>
+      </aside>
+    </div></div></section>
+  </main>
+
+  <footer class="footer" role="contentinfo"><div class="container"><div class="footer__grid"><div class="footer__brand"><a href="index.html" class="navbar__logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40"><rect width="40" height="40" rx="7" fill="#D4AF37"/><rect x="7" y="6" width="19" height="28" rx="2" fill="#8B4513"/><rect x="9" y="8" width="15" height="24" rx="1" fill="#FDF8F0"/><rect x="27" y="8" width="6" height="24" rx="1" fill="#5D3A1A"/></svg><span class="navbar__logo-text">Vintage Rare Bookstore</span></a><p class="footer__tagline">Preserving the world's literary heritage since 1978.</p></div><div><h3 class="footer__heading">Explore</h3><ul class="footer__links"><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="services.html">Services</a></li></ul></div><div><h3 class="footer__heading">Services</h3><ul class="footer__links"><li><a href="service-details.html">Appraisal</a></li><li><a href="service-details.html">Restoration</a></li><li><a href="service-details.html">Sourcing</a></li></ul></div><div><h3 class="footer__heading">Contact</h3><ul class="footer__links"><li><a href="contact.html">Get in Touch</a></li></ul></div></div><div class="footer__bottom"><p>&copy; 2024 Vintage Rare Bookstore.</p></div></div></footer>
+  <script src="assets/js/main.js" defer></script><script src="assets/js/animations.js" defer></script><script src="assets/js/rtl-ltr.js" defer></script>
+</body></html>

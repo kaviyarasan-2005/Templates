@@ -1,0 +1,122 @@
+/* responsive.css — Comprehensive mobile-first media queries */
+
+/* ---- Base Mobile (< 640px) ---- */
+@media (max-width: 639px) {
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.75rem; }
+  h3 { font-size: 1.25rem; }
+
+  .container { padding: 0 var(--space-3); }
+  .section { padding: var(--space-5) 0; }
+
+  /* Hero */
+  .hero { min-height: 70vh; background-attachment: scroll !important; }
+  .hero h1 { font-size: 2rem; }
+
+  /* Navbar */
+  .navbar { height: var(--navbar-height-mobile); }
+
+  /* Auth Pages */
+  .auth-page { grid-template-columns: 1fr; }
+  .auth-visual { display: none; }
+  .auth-panel { padding: var(--space-5) var(--space-3); }
+
+  /* Service Layout */
+  .service-layout { grid-template-columns: 1fr; }
+  .sidebar-sticky { position: static; }
+
+  /* Blog Article */
+  .article-layout { grid-template-columns: 1fr; }
+  .share-bar { flex-wrap: wrap; }
+
+  /* Blog search */
+  .blog-search-bar { margin: var(--space-3) auto 0; max-width: 100%; }
+
+  /* Footer */
+  .footer-grid { grid-template-columns: 1fr; }
+  .footer-dark-grid { grid-template-columns: 1fr; }
+
+  /* Team cards */
+  .team-grid { grid-template-columns: 1fr; }
+
+  /* Contact */
+  .contact-layout { grid-template-columns: 1fr; }
+
+  /* Pricing */
+  .pricing-cards { grid-template-columns: 1fr; margin-top: var(--space-4); }
+  .pricing-card.elevated { transform: none; }
+
+  /* Tables */
+  .compare-table { font-size: 0.8125rem; }
+  .compare-table th, .compare-table td { padding: var(--space-2); }
+
+  /* Dashboard */
+  .stat-cards { grid-template-columns: 1fr 1fr; }
+  .charts-grid { grid-template-columns: 1fr; }
+  .project-cards { grid-template-columns: 1fr; }
+
+  /* 404 */
+  .error-num { font-size: 5rem; }
+  .btn-group { flex-direction: column; align-items: center; }
+
+  /* Coming soon */
+  .countdown { gap: 10px; }
+  .flip-num { width: 64px; height: 64px; font-size: 1.75rem; }
+
+  /* Before/After */
+  .before-after-wrap { height: 260px; }
+
+  /* Hero 2 grid */
+  .hero2 > .container > div { grid-template-columns: 1fr !important; }
+  .hero2-visual { display: none; }
+}
+
+/* ---- Small Tablets (640px – 767px) ---- */
+@media (min-width: 640px) and (max-width: 767px) {
+  .hero { background-attachment: scroll !important; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .stat-cards { grid-template-columns: repeat(2, 1fr); }
+  .team-grid { grid-template-columns: repeat(2, 1fr); }
+  .pricing-cards { grid-template-columns: 1fr; }
+}
+
+/* ---- Tablets (768px – 1023px) ---- */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .footer-grid { grid-template-columns: 2fr 1fr 1fr; }
+  .footer-dark-grid { grid-template-columns: 2fr 1fr 1fr; }
+  .team-grid { grid-template-columns: repeat(2, 1fr); }
+  .stat-cards { grid-template-columns: repeat(2, 1fr); }
+  .charts-grid { grid-template-columns: 1fr; }
+  .service-layout { grid-template-columns: 1fr; }
+  .article-layout { grid-template-columns: 1fr; }
+  .contact-layout { grid-template-columns: 1fr; }
+  .pricing-cards { grid-template-columns: repeat(2, 1fr); }
+  .pricing-card.elevated { transform: none; }
+  .hero2 > .container { grid-template-columns: 1fr !important; }
+  .hero2-visual { display: none; }
+}
+
+/* ---- Small Desktops (1024px – 1279px) ---- */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .stat-cards { grid-template-columns: repeat(2, 1fr); }
+  .team-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* ---- Large screens (1536px+) ---- */
+@media (min-width: 1536px) {
+  .container { max-width: 1440px; }
+  h1 { font-size: var(--text-6xl); }
+}
+
+/* ---- Touch devices ---- */
+@media (hover: none) {
+  .team-overlay { opacity: 0.9; }
+  .card:hover { transform: none; }
+}
+
+/* ---- Print ---- */
+@media print {
+  .navbar, .footer, .dash-sidebar, .dash-header, .btn { display: none !important; }
+  body { color: black; background: white; }
+  .dash-main { margin: 0 !important; }
+}

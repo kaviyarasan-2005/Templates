@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Aura Pricing — Transparent, flexible pricing packages for virtual interior design. No hidden fees.">
+  <title>Aura - Pricing Plans</title>
+
+  <!-- Theme init before render (prevents flash) -->
+  <script src="assets/js/theme-toggle.js"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS Stack -->
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+
+  <style>
+    .pricing-header {
+      text-align: center;
+      padding: var(--space-8) 0 var(--space-6);
+      background: var(--color-surface);
+    }
+    .pricing-header h1 { margin-bottom: var(--space-2); }
+    
+    /* Toggle switch */
+    .pricing-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-3);
+      margin-top: var(--space-4);
+    }
+    .switch-label { font-weight: 500; }
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 56px;
+      height: 30px;
+    }
+    .switch input { opacity: 0; width: 0; height: 0; }
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: var(--color-primary);
+      transition: .4s;
+      border-radius: 34px;
+    }
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 22px;
+      width: 22px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      transition: .4s;
+      border-radius: 50%;
+    }
+    input:checked + .slider { background-color: var(--color-primary-dark); }
+    input:checked + .slider:before { transform: translateX(26px); }
+    
+    .discount-badge {
+      background: var(--color-secondary);
+      color: #000;
+      font-size: var(--text-xs);
+      padding: 2px 8px;
+      border-radius: 12px;
+      position: absolute;
+      top: -10px;
+      right: -40px;
+      font-weight: 600;
+    }
+
+    /* Pricing Cards */
+    .pricing-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-4);
+      align-items: center;
+      margin-top: -40px; /* pull up into header */
+    }
+    @media (max-width: 900px) {
+      .pricing-cards { grid-template-columns: 1fr; margin-top: var(--space-4); }
+    }
+
+    .pricing-card {
+      background: var(--color-bg);
+      border-radius: var(--border-radius-lg);
+      border: 1px solid var(--color-border);
+      padding: var(--space-5);
+      text-align: center;
+      transition: transform var(--transition-base), box-shadow var(--transition-base);
+    }
+    .pricing-card.elevated {
+      border-color: var(--color-primary);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+      transform: scale(1.05);
+      position: relative;
+      z-index: 2;
+    }
+    @media (max-width: 900px) {
+      .pricing-card.elevated { transform: scale(1); }
+    }
+
+    .price-value {
+      font-size: var(--text-5xl);
+      font-weight: 700;
+      color: var(--color-primary);
+      font-family: var(--font-heading);
+    }
+    .price-features {
+      list-style: none;
+      margin: var(--space-4) 0;
+      text-align: left;
+    }
+    .price-features li {
+      margin-bottom: var(--space-2);
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+    
+    /* Comparison Table */
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: var(--space-6);
+    }
+    .compare-table th {
+      position: sticky;
+      top: var(--navbar-height);
+      background: var(--color-surface);
+      z-index: 10;
+      padding: var(--space-3);
+      text-align: left;
+      border-bottom: 2px solid var(--color-border);
+    }
+    .compare-table td {
+      padding: var(--space-3);
+      border-bottom: 1px solid var(--color-border);
+    }
+    .compare-table tr:hover td { background: var(--color-surface); }
+
+
+  </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="home-1.html" class="navbar-brand">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+        Aura
+      </a>
+      
+      <ul class="navbar-menu d-md-flex d-none">
+        <li class="navbar-item">
+          <button class="dropdown-toggle">Home <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"></path></svg></button>
+          <div class="dropdown-menu">
+            <a href="home-1.html" class="dropdown-link">Home 1</a>
+            <a href="home-2.html" class="dropdown-link">Home 2</a>
+          </div>
+        </li>
+        <li class="navbar-item"><a href="about.html" class="navbar-link">About</a></li>
+        <li class="navbar-item">
+          <button class="dropdown-toggle">Services <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"></path></svg></button>
+          <div class="dropdown-menu">
+            <a href="services.html" class="dropdown-link">All Services</a>
+            <a href="service-details.html" class="dropdown-link">Service Details</a>
+          </div>
+        </li>
+        <li class="navbar-item"><a href="pricing.html" class="navbar-link">Pricing</a></li>
+        <li class="navbar-item">
+          <button class="dropdown-toggle">Blog <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"></path></svg></button>
+          <div class="dropdown-menu">
+            <a href="blog.html" class="dropdown-link">Blog</a>
+            <a href="blog-details.html" class="dropdown-link">Blog Details</a>
+          </div>
+        </li>
+        <li class="navbar-item"><a href="contact.html" class="navbar-link">Contact</a></li>
+        <li class="navbar-item">
+          <button class="dropdown-toggle">Dashboard <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"></path></svg></button>
+          <div class="dropdown-menu">
+            <a href="dashboard.html?role=admin" class="dropdown-link">Admin Dashboard</a>
+            <a href="dashboard.html?role=user" class="dropdown-link">User Dashboard</a>
+          </div>
+        </li>
+      </ul>
+      
+      <div class="navbar-actions">
+        <!-- Theme Toggle -->
+        <button class="icon-btn d-none d-md-flex" id="themeToggle" aria-label="Toggle dark/light mode">
+          <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line></svg>
+        </button>
+        <!-- Globe/RTL Toggle -->
+        <button class="icon-btn d-none d-md-flex" id="langToggle" aria-label="Toggle language direction" style="transition: transform 0.4s ease;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+        </button>
+        <a href="login.html" class="btn btn-primary d-none d-md-flex">Login</a>
+        <button class="icon-btn mobile-toggle d-md-none" aria-label="Toggle Menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+  
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu-overlay">
+    <button class="icon-btn mobile-toggle" style="position: absolute; right: var(--space-4); top: var(--space-4);">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
+    <ul class="navbar-menu">
+      <li class="navbar-item"><a href="home-1.html" class="navbar-link">Home 1</a></li>
+      <li class="navbar-item"><a href="home-2.html" class="navbar-link">Home 2</a></li>
+      <li class="navbar-item"><a href="about.html" class="navbar-link">About</a></li>
+      <li class="navbar-item"><a href="services.html" class="navbar-link">All Services</a></li>
+      <li class="navbar-item"><a href="service-details.html" class="navbar-link">Service Details</a></li>
+      <li class="navbar-item"><a href="pricing.html" class="navbar-link">Pricing</a></li>
+      <li class="navbar-item"><a href="blog.html" class="navbar-link">Blog</a></li>
+      <li class="navbar-item"><a href="blog-details.html" class="navbar-link">Blog Details</a></li>
+      <li class="navbar-item"><a href="contact.html" class="navbar-link">Contact</a></li>
+      <li class="navbar-item"><a href="dashboard.html?role=admin" class="navbar-link">Admin Dashboard</a></li>
+      <li class="navbar-item"><a href="dashboard.html?role=user" class="navbar-link">User Dashboard</a></li>
+      <li class="navbar-item"><a href="login.html" class="btn btn-primary">Login</a></li>
+    </ul>
+  </div>
+
+  <!-- Header -->
+  <header class="pricing-header">
+    <div class="container animate-on-scroll fade-up">
+      <h1>Transparent Pricing Packages</h1>
+      <p class="text-secondary text-lg">No hidden fees. Just exceptional design.</p>
+      
+      <div class="pricing-toggle">
+        <span class="switch-label text-secondary">Pay Per Room</span>
+        <label class="switch">
+          <input type="checkbox" id="pricingToggle">
+          <span class="slider"></span>
+        </label>
+        <span class="switch-label position-relative">
+          Whole House Bundle
+          <span class="discount-badge">Save 20%</span>
+        </span>
+      </div>
+    </div>
+  </header>
+
+  <section class="section pt-0">
+    <div class="container">
+      <!-- Cards -->
+      <div class="pricing-cards animate-on-scroll fade-up delay-100">
+        <!-- Basic -->
+        <div class="pricing-card">
+          <h3>Essential Plan</h3>
+          <p class="text-secondary text-sm">Perfect for DIYers needing guidance.</p>
+          <div class="my-4">
+            <span class="price-value" data-monthly="299" data-yearly="239">$299</span>
+            <span class="text-secondary text-sm">/room</span>
+          </div>
+          <ul class="price-features">
+            <li><svg width="20" height="20" stroke="var(--color-primary)" fill="none"><polyline points="20 6 9 17 4 12"></polyline></svg> 2D Floor Plan</li>
+            <li><svg width="20" height="20" stroke="var(--color-primary)" fill="none"><polyline points="20 6 9 17 4 12"></polyline></svg> Concept Mood Board</li>
+            <li><svg width="20" height="20" stroke="var(--color-primary)" fill="none"><polyline points="20 6 9 17 4 12"></polyline></svg> Basic Shopping List</li>
+            <li class="text-muted"><svg width="20" height="20" stroke="currentColor" fill="none"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg> 3D Renderings</li>
+          </ul>
+          <a href="contact.html" class="btn btn-outline d-block w-100" style="width: 100%;">Get Started</a>
+        </div>
+
+        <!-- Premium (Elevated) -->
+        <div class="pricing-card elevated">
+          <span class="popular-badge" style="top: -12px; right: 24px;">Most Popular</span>
+          <h3>Signature Plan</h3>
+          <p class="text-secondary text-sm">Complete visualization and sourcing.</p>
+          <div class="my-4">
+            <span class="price-value" data-monthly="699" data-yearly="559">$699</span>
+            <span class="text-secondary text-sm">/room</span>
+          </div>
+          <ul class="price-features">
+            <li><svg width="20" height="20" stroke="var(--color-primary)" fill="none"><polyline points="20 6 9 17 4 12"></polyline></svg> 2D Floor Plan layout</li>
+            <li><svg width="20" height="20" stroke="var(--color-primary)" fill="none"><polyline points="20 6 9 17 4 12"></polyline></svg> 2 Revisions</li>
+            <li><svg width="20" height="20" stroke="var(--color-primary)" fill="none"><polyline points="20 6 9 17 4 12"></polyline></svg> Photorealistic 3D Renders</li>
+            <li><svg width="20" height="20" stroke="var(--color-primary)" fill="none"><polyline points="20 6 9 17 4 12"></polyline></svg> Click-to-buy Shopping List</li>
+          </ul>
+          <a href="contact.html" class="btn btn-primary d-block w-100" style="width: 100%;">Get Started</a>
+        </div>
+
+        <!-- Platinum -->
+        <div class="pricing-card">
+          <h3>Bespoke Plan</h3>
+          <p class="text-secondary text-sm">Custom millwork and contractor ready.</p>
+          <div class="my-4">
+            <span class="price-value" data-monthly="1299" data-yearly="999">$1299</span>
+            <span class="text-secondary text-sm">/room</span>
+          </div>
+          <ul class="price-features">
+            <li><svg width="20" height="20" stroke="var(--color-primary)" fill="none"><polyline points="20 6 9 17 4 12"></polyline></svg> Everything in Signature</li>
+            <li><svg width="20" height="20" stroke="var(--color-primary)" fill="none"><polyline points="20 6 9 17 4 12"></polyline></svg> Unlimited Revisions</li>
+            <li><svg width="20" height="20" stroke="var(--color-primary)" fill="none"><polyline points="20 6 9 17 4 12"></polyline></svg> Contractor blueprints</li>
+            <li><svg width="20" height="20" stroke="var(--color-primary)" fill="none"><polyline points="20 6 9 17 4 12"></polyline></svg> Phone Consultation</li>
+          </ul>
+          <a href="contact.html" class="btn btn-outline d-block w-100" style="width: 100%;">Get Started</a>
+        </div>
+      </div>
+
+      <!-- Feature Table -->
+      <div class="mt-5 pt-5 overflow-auto animate-on-scroll fade-up">
+        <h3 class="mb-4 text-center">Compare All Features</h3>
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>Essential</th>
+              <th>Signature</th>
+              <th>Bespoke</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="font-weight-bold">Floor Plan</td>
+              <td>Basic Layout</td>
+              <td>Detailed Layout</td>
+              <td>Blueprint Grade</td>
+            </tr>
+            <tr>
+              <td class="font-weight-bold">3D Renderings</td>
+              <td>-</td>
+              <td>3 Views</td>
+              <td>Unlimited Views</td>
+            </tr>
+            <tr>
+              <td class="font-weight-bold">Shopping List</td>
+              <td>Generic Links</td>
+              <td>Click-to-buy</td>
+              <td>Trade Discounts</td>
+            </tr>
+            <tr>
+              <td class="font-weight-bold">Support</td>
+              <td>Email only</td>
+              <td>Email + Chat</td>
+              <td>24/7 Phone + Chat</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+    <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h3 class="footer-heading" style="font-family: var(--font-heading); color: var(--color-primary); font-size: 1.5rem; font-weight: 700;">Aura</h3>
+          <p class="text-secondary mb-3">Redefining indoor spaces with bespoke virtual interior design architecture tailored for you.</p>
+          <div class="d-flex gap-2">
+            <!-- Social icons -->
+            <a href="#" class="icon-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
+            <a href="#" class="icon-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer-heading">Services</h4>
+          <ul class="footer-links">
+            <li><a href="service-details.html">Residential Design</a></li>
+            <li><a href="service-details.html">Commercial Spaces</a></li>
+            <li><a href="service-details.html">Kitchen & Bath</a></li>
+            <li><a href="pricing.html">Pricing Plans</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-heading">Company</h4>
+          <ul class="footer-links">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="blog.html">Journal</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="dashboard.html">Client Portal</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-heading">Contact</h4>
+          <ul class="footer-links">
+            <li><a href="mailto:hello@auradesign.com">hello@auradesign.com</a></li>
+            <li><a href="tel:+1234567890">+1 (234) 567-890</a></li>
+            <li><span class="text-secondary">123 Design Ave,<br>Los Angeles, CA 90028</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Aura. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/utils.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/animations.js"></script>
+  <script>
+    const toggle = document.getElementById('pricingToggle');
+    const priceElements = document.querySelectorAll('.price-value');
+    if (toggle) {
+      toggle.addEventListener('change', (e) => {
+        const isYearly = e.target.checked;
+        priceElements.forEach(el => {
+          const val = isYearly ? el.getAttribute('data-yearly') : el.getAttribute('data-monthly');
+          el.style.opacity = '0';
+          setTimeout(() => {
+            el.textContent = '$' + val;
+            el.style.opacity = '1';
+          }, 200);
+        });
+      });
+    }
+  </script>
+</body>
+</html>

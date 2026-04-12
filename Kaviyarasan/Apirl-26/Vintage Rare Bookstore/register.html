@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Account | Vintage Rare Bookstore</title>
+  <meta name="description" content="Join Vintage Rare Bookstore to access our expert services, curated marketplace, and community of rare book collectors.">
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicons/favicon.svg">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <style>
+    html,body{height:100%;overflow:hidden}
+    .auth-wrapper{display:grid;grid-template-columns:40% 60%;height:100vh;max-height:100vh}
+    .auth-left{position:relative;overflow:hidden}
+    .auth-left__bg{position:absolute;inset:0;background:url('assets/images/backgrounds/bookstore-interior.png') center/cover}
+    .auth-left__overlay{position:absolute;inset:0;background:linear-gradient(160deg,rgba(26,20,16,0.75) 0%,rgba(93,58,26,0.65) 100%)}
+    .auth-left__content{position:relative;z-index:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:var(--space-3xl)}
+    .auth-steps{display:flex;flex-direction:column;gap:var(--space-lg);margin-bottom:var(--space-xl)}
+    .auth-step{display:flex;align-items:center;gap:var(--space-md);opacity:0.5;transition:opacity var(--transition-base)}
+    .auth-step.active{opacity:1}
+    .step-num{width:36px;height:36px;border-radius:50%;border:2px solid rgba(212,175,55,0.6);display:flex;align-items:center;justify-content:center;font-family:var(--font-ui);font-size:0.8125rem;font-weight:700;color:#fff;flex-shrink:0}
+    .auth-step.active .step-num{background:var(--accent);border-color:var(--accent);color:var(--text-primary)}
+    .step-label{font-family:var(--font-ui);font-size:0.875rem;font-weight:600;color:rgba(255,255,255,0.9)}
+    .auth-right{display:flex;align-items:center;justify-content:center;background:var(--bg-primary);overflow-y:auto;padding:var(--space-xl)}
+    .auth-card{width:100%;max-width:480px}
+    .auth-logo{text-align:center;margin-bottom:var(--space-2xl)}
+    .auth-logo a{display:inline-flex;flex-direction:column;align-items:center;gap:var(--space-sm);text-decoration:none}
+    .auth-logo-name{font-family:var(--font-heading);font-size:1.125rem;font-weight:700;color:var(--primary)}
+    .auth-title{font-family:var(--font-heading);font-size:1.75rem;font-weight:700;color:var(--text-primary);text-align:center;margin-bottom:var(--space-sm)}
+    .auth-subtitle{text-align:center;color:var(--text-muted);font-size:0.9375rem;margin-bottom:var(--space-2xl)}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-md)}
+    .plan-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-sm);margin-bottom:var(--space-lg)}
+    .plan-opt{border:2px solid var(--border);border-radius:var(--border-radius);padding:var(--space-md);text-align:center;cursor:pointer;transition:all var(--transition-base);background:none}
+    .plan-opt:hover{border-color:var(--primary-light)}
+    .plan-opt.selected{border-color:var(--accent);background:rgba(212,175,55,0.06)}
+    .plan-opt__name{font-family:var(--font-ui);font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:2px}
+    .plan-opt__price{font-family:var(--font-heading);font-size:1.1rem;font-weight:700;color:var(--text-primary)}
+    .auth-footer{text-align:center;margin-top:var(--space-md);font-family:var(--font-ui);font-size:0.9375rem;color:var(--text-muted)}
+    .auth-footer a{color:var(--accent-hover);font-weight:600}
+    .auth-topbar{position:fixed;top:var(--space-md);right:var(--space-md);z-index:100}
+    .pw-strength-bar{height:4px;background:var(--border);border-radius:2px;margin-top:6px;overflow:hidden}
+    .pw-strength-fill{height:100%;border-radius:2px;width:0;transition:width 0.4s ease,background 0.3s ease}
+    .pw-strength-fill.weak{width:25%;background:var(--error)}
+    .pw-strength-fill.fair{width:50%;background:var(--warning)}
+    .pw-strength-fill.good{width:75%;background:#4CAF50}
+    .pw-strength-fill.strong{width:100%;background:var(--success)}
+    .pw-strength-label{font-family:var(--font-ui);font-size:0.75rem;color:var(--text-muted);margin-top:4px}
+    @media(max-width:768px){html,body{overflow:auto}.auth-wrapper{grid-template-columns:1fr}.auth-left{display:none}.auth-right{min-height:100vh;height:auto}.form-row{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <div class="auth-topbar">
+    <button id="theme-toggle" class="nav-icon-btn" aria-label="Toggle theme" style="background:var(--bg-secondary);border:1px solid var(--border);border-radius:var(--border-radius)"><svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/></svg></button>
+  </div>
+
+  <div class="auth-wrapper">
+    <div class="auth-left"><div class="auth-left__bg"></div><div class="auth-left__overlay"></div>
+      <div class="auth-left__content">
+        <h2 style="color:#fff;margin-bottom:var(--space-lg)">Join Our Community</h2>
+        <div class="auth-steps">
+          <div class="auth-step active"><div class="step-num">1</div><span class="step-label">Create your account</span></div>
+          <div class="auth-step"><div class="step-num">2</div><span class="step-label">Choose a plan</span></div>
+          <div class="auth-step"><div class="step-num">3</div><span class="step-label">Access your dashboard</span></div>
+        </div>
+        <blockquote style="border-left:3px solid rgba(212,175,55,0.5);padding-left:var(--space-lg);font-family:var(--font-heading);font-style:italic;color:rgba(255,255,255,0.8);font-size:1.0625rem">"A library is not a luxury but one of the necessities of life."<br><cite style="font-size:0.875rem;color:rgba(212,175,55,0.8)">— Henry Ward Beecher</cite></blockquote>
+      </div>
+    </div>
+
+    <div class="auth-right">
+      <div class="auth-card">
+        <div class="auth-logo">
+          <a href="index.html" aria-label="Return to Home">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="56" height="56"><rect width="64" height="64" rx="12" fill="#8B4513"/><rect x="11" y="10" width="30" height="44" rx="3" fill="#D4AF37"/><rect x="14" y="13" width="24" height="38" rx="2" fill="#FDF8F0"/><rect x="17" y="21" width="18" height="2.5" rx="1.25" fill="#8B4513"/><rect x="17" y="27" width="14" height="2.5" rx="1.25" fill="#8B4513"/><rect x="43" y="13" width="10" height="38" rx="2" fill="#5D3A1A"/></svg>
+            <span class="auth-logo-name">Vintage Rare Bookstore</span>
+          </a>
+        </div>
+        <h1 class="auth-title">Create Your Account</h1>
+        <p class="auth-subtitle">Join thousands of collectors and begin your journey</p>
+
+        <form id="register-form" novalidate>
+          <!-- Plan selection -->
+          <div style="margin-bottom:var(--space-lg)">
+            <div style="font-family:var(--font-ui);font-size:0.875rem;font-weight:600;color:var(--text-secondary);margin-bottom:var(--space-sm)">Choose your plan:</div>
+            <div class="plan-cards">
+              <button type="button" class="plan-opt" data-plan="collector">
+                <div class="plan-opt__name">Collector</div>
+                <div class="plan-opt__price">£29/mo</div>
+              </button>
+              <button type="button" class="plan-opt selected" data-plan="curator">
+                <div class="plan-opt__name">Curator ✦</div>
+                <div class="plan-opt__price">£79/mo</div>
+              </button>
+              <button type="button" class="plan-opt" data-plan="connoisseur">
+                <div class="plan-opt__name">Connoisseur</div>
+                <div class="plan-opt__price">£199/mo</div>
+              </button>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="reg-firstname" class="form-label">First Name <span class="required">*</span></label>
+              <input type="text" id="reg-firstname" name="firstname" class="form-input" placeholder="John" required minlength="2">
+            </div>
+            <div class="form-group">
+              <label for="reg-lastname" class="form-label">Last Name <span class="required">*</span></label>
+              <input type="text" id="reg-lastname" name="lastname" class="form-input" placeholder="Smith" required minlength="2">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="reg-email" class="form-label">Email Address <span class="required">*</span></label>
+            <input type="email" id="reg-email" name="email" class="form-input" placeholder="john@example.com" required autocomplete="email">
+          </div>
+          <div class="form-group">
+            <label for="password" class="form-label">Password <span class="required">*</span></label>
+            <div style="position:relative">
+              <input type="password" id="password" name="password" class="form-input" placeholder="Min. 8 chars, uppercase, number, symbol" required autocomplete="new-password" style="padding-right:44px">
+              <button type="button" class="pw-toggle" aria-label="Show password"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
+            </div>
+            <div class="pw-strength-bar"><div class="pw-strength-fill"></div></div>
+            <div class="pw-strength-label"></div>
+          </div>
+          <div class="form-group">
+            <label for="confirm-password" class="form-label">Confirm Password <span class="required">*</span></label>
+            <div style="position:relative">
+              <input type="password" id="confirm-password" name="confirm-password" class="form-input" placeholder="Repeat your password" required style="padding-right:44px">
+              <button type="button" class="pw-toggle" aria-label="Show password"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="checkbox-wrap" style="display:flex;align-items:flex-start;gap:10px;font-family:var(--font-ui);font-size:0.875rem;color:var(--text-secondary);cursor:pointer">
+              <input type="checkbox" id="reg-terms" name="terms" required style="width:16px;height:16px;accent-color:var(--accent);margin-top:2px;flex-shrink:0">
+              <span>I agree to the <a href="#" style="color:var(--accent-hover);font-weight:600">Terms of Service</a> and <a href="#" style="color:var(--accent-hover);font-weight:600">Privacy Policy</a></span>
+            </label>
+          </div>
+          <button type="submit" class="btn btn-accent btn-full btn-lg form-submit" id="register-btn">Create Account</button>
+        </form>
+
+        <p class="auth-footer">Already have an account? <a href="login.html">Sign in →</a></p>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/forms.js" defer></script>
+  <script>
+    document.querySelectorAll('.plan-opt').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.plan-opt').forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+      });
+    });
+  </script>
+</body>
+</html>

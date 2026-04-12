@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="About Aura — We are a premium virtual interior design studio crafting beautiful, functional spaces since 2012.">
+  <title>Aura - About Us</title>
+
+  <script src="assets/js/theme-toggle.js"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+
+  <style>
+    .hero-about {
+      min-height: 50vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: linear-gradient(rgba(248, 249, 250, 0.9), rgba(248, 249, 250, 0.9)), url('https://images.unsplash.com/photo-1510627489930-0c1b0bfb6785?auto=format&fit=crop&w=1920&q=80') center/cover;
+      padding-top: var(--navbar-height);
+    }
+    .hero-about h1 {
+      position: relative;
+      display: inline-block;
+      padding-bottom: var(--space-2);
+    }
+    .hero-about h1::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 25%;
+      width: 50%;
+      height: 3px;
+      background-color: var(--color-primary);
+    }
+    
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-6);
+      align-items: stretch;
+    }
+    .story-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .story-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      min-height: 400px;
+      border-radius: var(--border-radius-lg);
+    }
+    .story-stats {
+      display: flex;
+      gap: var(--space-4);
+      margin-top: var(--space-4);
+      padding-top: var(--space-4);
+      border-top: 1px solid var(--color-border);
+    }
+    
+    @media (max-width: 768px) {
+      .story-grid { grid-template-columns: 1fr; }
+      .story-image { min-height: 300px; }
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-4);
+      justify-items: center;
+    }
+    
+    .team-card {
+      max-width: 280px;
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--border-radius-lg);
+      background-color: var(--color-bg);
+    }
+    .team-photo {
+      width: 100%;
+      aspect-ratio: 1/1;
+      object-fit: cover;
+    }
+    .team-info {
+      padding: var(--space-3) 0;
+      text-align: center;
+    }
+    .team-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: calc(100% - 80px); /* Exclude name/role area */
+      background: rgba(13, 115, 119, 0.85);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity var(--transition-fast);
+      padding: var(--space-3);
+      text-align: center;
+    }
+    .team-card:hover .team-overlay {
+      opacity: 1;
+    }
+    .social-links {
+      display: flex;
+      gap: var(--space-2);
+      margin-top: var(--space-2);
+    }
+    .social-links a {
+      color: white;
+    }
+    
+    @media (max-width: 1024px) { .team-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 640px) { .team-grid { grid-template-columns: 1fr; } }
+
+    .mission-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-4);
+      background: var(--color-surface);
+      padding: var(--space-6) var(--space-4);
+      border-radius: var(--border-radius-lg);
+    }
+    @media (max-width: 768px) { .mission-grid { grid-template-columns: repeat(1, 1fr); } }
+    
+    /* Footer imported styles (could be in components.css later) */
+
+
+
+
+
+
+
+    @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 480px) { .footer-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="home-1.html" class="navbar-brand">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+        Aura
+      </a>
+      
+      <ul class="navbar-menu d-md-flex d-none">
+        <li class="navbar-item">
+          <button class="dropdown-toggle">Home <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"></path></svg></button>
+          <div class="dropdown-menu">
+            <a href="home-1.html" class="dropdown-link">Home 1</a>
+            <a href="home-2.html" class="dropdown-link">Home 2</a>
+          </div>
+        </li>
+        <li class="navbar-item"><a href="about.html" class="navbar-link">About</a></li>
+        <li class="navbar-item">
+          <button class="dropdown-toggle">Services <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"></path></svg></button>
+          <div class="dropdown-menu">
+            <a href="services.html" class="dropdown-link">All Services</a>
+            <a href="service-details.html" class="dropdown-link">Service Details</a>
+          </div>
+        </li>
+        <li class="navbar-item"><a href="pricing.html" class="navbar-link">Pricing</a></li>
+        <li class="navbar-item">
+          <button class="dropdown-toggle">Blog <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"></path></svg></button>
+          <div class="dropdown-menu">
+            <a href="blog.html" class="dropdown-link">Blog</a>
+            <a href="blog-details.html" class="dropdown-link">Blog Details</a>
+          </div>
+        </li>
+        <li class="navbar-item"><a href="contact.html" class="navbar-link">Contact</a></li>
+        <li class="navbar-item">
+          <button class="dropdown-toggle">Dashboard <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"></path></svg></button>
+          <div class="dropdown-menu">
+            <a href="dashboard.html?role=admin" class="dropdown-link">Admin Dashboard</a>
+            <a href="dashboard.html?role=user" class="dropdown-link">User Dashboard</a>
+          </div>
+        </li>
+      </ul>
+      
+      <div class="navbar-actions">
+        <!-- Theme Toggle -->
+        <button class="icon-btn d-none d-md-flex" id="themeToggle" aria-label="Toggle dark/light mode">
+          <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line></svg>
+        </button>
+        <!-- Globe/RTL Toggle -->
+        <button class="icon-btn d-none d-md-flex" id="langToggle" aria-label="Toggle language direction" style="transition: transform 0.4s ease;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+        </button>
+        <a href="login.html" class="btn btn-primary d-none d-md-flex">Login</a>
+        <button class="icon-btn mobile-toggle d-md-none" aria-label="Toggle Menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+  
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu-overlay">
+    <button class="icon-btn mobile-toggle" style="position: absolute; right: var(--space-4); top: var(--space-4);">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
+    <ul class="navbar-menu">
+      <li class="navbar-item"><a href="home-1.html" class="navbar-link">Home 1</a></li>
+      <li class="navbar-item"><a href="home-2.html" class="navbar-link">Home 2</a></li>
+      <li class="navbar-item"><a href="about.html" class="navbar-link">About</a></li>
+      <li class="navbar-item"><a href="services.html" class="navbar-link">All Services</a></li>
+      <li class="navbar-item"><a href="service-details.html" class="navbar-link">Service Details</a></li>
+      <li class="navbar-item"><a href="pricing.html" class="navbar-link">Pricing</a></li>
+      <li class="navbar-item"><a href="blog.html" class="navbar-link">Blog</a></li>
+      <li class="navbar-item"><a href="blog-details.html" class="navbar-link">Blog Details</a></li>
+      <li class="navbar-item"><a href="contact.html" class="navbar-link">Contact</a></li>
+      <li class="navbar-item"><a href="dashboard.html?role=admin" class="navbar-link">Admin Dashboard</a></li>
+      <li class="navbar-item"><a href="dashboard.html?role=user" class="navbar-link">User Dashboard</a></li>
+      <li class="navbar-item"><a href="login.html" class="btn btn-primary">Login</a></li>
+    </ul>
+  </div>
+
+  <!-- Hero -->
+  <header class="hero-about">
+    <div class="container animate-on-scroll fade-up">
+      <h1>Our Story</h1>
+      <p class="text-lg text-secondary mt-3">Crafting beautiful spaces since 2012</p>
+    </div>
+  </header>
+
+  <!-- Our Story -->
+  <section class="section">
+    <div class="container">
+      <div class="story-grid">
+        <div class="story-content animate-on-scroll fade-up">
+          <h2 class="mb-4">Elevating standards in digital interior architecture.</h2>
+          <p class="text-secondary text-lg mb-3">At Aura, we believe that your environment shapes your life. What started as a boutique design firm in Los Angeles has evolved into a fully virtual platform bringing high-end interior design to homeowners and businesses globally.</p>
+          <p class="text-secondary">We leverage advanced 3D rendering and a holistic approach to spatial planning to ensure every project is not only visually stunning, but functionally perfect. Our process is transparent, efficient, and entirely tailored to your unique aesthetic preferences.</p>
+          
+          <div class="story-stats">
+            <div>
+              <h3 style="color: var(--color-primary);">12+</h3>
+              <span class="text-xs text-secondary text-uppercase font-weight-bold">Years Exp.</span>
+            </div>
+            <div>
+              <h3 style="color: var(--color-primary);">400+</h3>
+              <span class="text-xs text-secondary text-uppercase font-weight-bold">Spaces Designed</span>
+            </div>
+          </div>
+        </div>
+        <div class="animate-on-scroll fade-up delay-200">
+          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="Interior Design Studio" class="story-image">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission/Vision -->
+  <section class="section">
+    <div class="container">
+      <div class="mission-grid animate-on-scroll fade-up">
+        <div class="text-center">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-secondary)" stroke-width="2" class="mb-3 d-inline-block"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+          <h3>Our Mission</h3>
+          <p class="text-secondary mt-2">To democratize access to premium interior design through innovative virtual modeling without compromising on quality or personalization.</p>
+        </div>
+        <div class="text-center">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-secondary)" stroke-width="2" class="mb-3 d-inline-block"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+          <h3>Our Vision</h3>
+          <p class="text-secondary mt-2">To become the global standard for remote interior architecture, blending technology with timeless aesthetics.</p>
+        </div>
+        <div class="text-center">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-secondary)" stroke-width="2" class="mb-3 d-inline-block"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+          <h3>Our Values</h3>
+          <p class="text-secondary mt-2">Integrity, collaboration, sustainability, and an unwavering commitment to bringing our clients' visions to life.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team Section -->
+  <section class="section">
+    <div class="container">
+      <div class="text-center mb-5 animate-on-scroll fade-up">
+        <h2>Meet The Experts</h2>
+        <p class="text-secondary">The creative minds behind Aura.</p>
+      </div>
+      <div class="team-grid">
+        <div class="team-card animate-on-scroll fade-up">
+          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&h=400&q=80" alt="Elena Rodriguez" class="team-photo">
+          <div class="team-overlay">
+            <p>"Design is not just what it looks like, it's how it works."</p>
+            <div class="social-links">
+              <a href="#"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+              <a href="#"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+            </div>
+          </div>
+          <div class="team-info">
+            <h4 class="mb-1" style="font-size: 1.125rem;">Elena Rodriguez</h4>
+            <span class="text-sm text-secondary">Founder & Principal Designer</span>
+          </div>
+        </div>
+
+        <div class="team-card animate-on-scroll fade-up delay-100">
+          <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&h=400&q=80" alt="Marcus Chen" class="team-photo">
+          <div class="team-overlay">
+            <p>"Balancing aesthetic with true functionality is key."</p>
+            <div class="social-links">
+              <a href="#"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+            </div>
+          </div>
+          <div class="team-info">
+            <h4 class="mb-1" style="font-size: 1.125rem;">Marcus Chen</h4>
+            <span class="text-sm text-secondary">Head of 3D Visualization</span>
+          </div>
+        </div>
+
+        <div class="team-card animate-on-scroll fade-up delay-200">
+          <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=400&h=400&q=80" alt="Sophia Walker" class="team-photo">
+          <div class="team-overlay">
+            <p>"I love integrating sustainable materials into modern homes."</p>
+            <div class="social-links">
+              <a href="#"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+            </div>
+          </div>
+          <div class="team-info">
+            <h4 class="mb-1" style="font-size: 1.125rem;">Sophia Walker</h4>
+            <span class="text-sm text-secondary">Senior Interior Architect</span>
+          </div>
+        </div>
+
+        <div class="team-card animate-on-scroll fade-up delay-300">
+          <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=400&h=400&q=80" alt="James Wilson" class="team-photo">
+          <div class="team-overlay">
+            <p>"Lighting changes everything. It's the secret to great design."</p>
+            <div class="social-links">
+              <a href="#"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+            </div>
+          </div>
+          <div class="team-info">
+            <h4 class="mb-1" style="font-size: 1.125rem;">James Wilson</h4>
+            <span class="text-sm text-secondary">Lighting Specialist</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h3 class="footer-heading" style="font-family: var(--font-heading); color: var(--color-primary); font-size: 1.5rem; font-weight: 700;">Aura</h3>
+          <p class="text-secondary mb-3">Redefining indoor spaces with bespoke virtual interior design architecture tailored for you.</p>
+          <div class="d-flex gap-2">
+            <!-- Social icons -->
+            <a href="#" class="icon-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
+            <a href="#" class="icon-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer-heading">Services</h4>
+          <ul class="footer-links">
+            <li><a href="service-details.html">Residential Design</a></li>
+            <li><a href="service-details.html">Commercial Spaces</a></li>
+            <li><a href="service-details.html">Kitchen & Bath</a></li>
+            <li><a href="pricing.html">Pricing Plans</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-heading">Company</h4>
+          <ul class="footer-links">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="blog.html">Journal</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="dashboard.html">Client Portal</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-heading">Contact</h4>
+          <ul class="footer-links">
+            <li><a href="mailto:hello@auradesign.com">hello@auradesign.com</a></li>
+            <li><a href="tel:+1234567890">+1 (234) 567-890</a></li>
+            <li><span class="text-secondary">123 Design Ave,<br>Los Angeles, CA 90028</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Aura. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/utils.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/animations.js"></script>
+</body>
+</html>

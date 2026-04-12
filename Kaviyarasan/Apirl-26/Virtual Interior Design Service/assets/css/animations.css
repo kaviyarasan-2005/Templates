@@ -1,78 +1,65 @@
-/* VIRTUAL INTERIOR DESIGN — ANIMATION SYSTEM */
+/* animations.css: Keyframes and Scroll triggered animations */
 
-@keyframes fadeIn { from{opacity:0} to{opacity:1} }
-@keyframes fadeInUp { from{opacity:0;transform:translateY(40px)} to{opacity:1;transform:translateY(0)} }
-@keyframes fadeInDown { from{opacity:0;transform:translateY(-40px)} to{opacity:1;transform:translateY(0)} }
-@keyframes fadeInLeft { from{opacity:0;transform:translateX(-40px)} to{opacity:1;transform:translateX(0)} }
-@keyframes fadeInRight { from{opacity:0;transform:translateX(40px)} to{opacity:1;transform:translateX(0)} }
-@keyframes scaleIn { from{opacity:0;transform:scale(.9)} to{opacity:1;transform:scale(1)} }
-@keyframes popIn { 0%{opacity:0;transform:scale(.5)} 70%{transform:scale(1.05)} 100%{opacity:1;transform:scale(1)} }
-@keyframes slideDown { from{transform:translateY(-100%)} to{transform:translateY(0)} }
-@keyframes slideUp { from{transform:translateY(100%)} to{transform:translateY(0)} }
-@keyframes shimmer { 0%{background-position:-200% center} 100%{background-position:200% center} }
-@keyframes pulse { 0%,100%{transform:scale(1);opacity:1} 50%{transform:scale(1.1);opacity:.8} }
-@keyframes pulseRing { 0%{transform:scale(1);opacity:1} 100%{transform:scale(1.6);opacity:0} }
-@keyframes shake { 0%,100%{transform:translateX(0)} 10%,30%,50%,70%,90%{transform:translateX(-4px)} 20%,40%,60%,80%{transform:translateX(4px)} }
-@keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
-@keyframes floatSlow { 0%,100%{transform:translateY(0) rotate(0)} 33%{transform:translateY(-8px) rotate(1deg)} 66%{transform:translateY(-4px) rotate(-1deg)} }
-@keyframes spin { from{transform:rotate(0)} to{transform:rotate(360deg)} }
-@keyframes bounce { 0%,20%,50%,80%,100%{transform:translateY(0)} 40%{transform:translateY(-12px)} 60%{transform:translateY(-6px)} }
-@keyframes blurIn { from{filter:blur(10px);opacity:0} to{filter:blur(0);opacity:1} }
-@keyframes gradientShift { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
-@keyframes clipRevealUp { from{clip-path:inset(100% 0 0 0)} to{clip-path:inset(0)} }
-@keyframes clipRevealLeft { from{clip-path:inset(0 100% 0 0)} to{clip-path:inset(0)} }
-@keyframes maskReveal { from{clip-path:polygon(0 0,0 0,0 100%,0 100%)} to{clip-path:polygon(0 0,100% 0,100% 100%,0 100%)} }
-@keyframes marqueeLeft { from{transform:translateX(0)} to{transform:translateX(-50%)} }
-@keyframes marqueeRight { from{transform:translateX(-50%)} to{transform:translateX(0)} }
-@keyframes drawLine { from{stroke-dashoffset:1000} to{stroke-dashoffset:0} }
-@keyframes checkDraw { from{stroke-dashoffset:50} to{stroke-dashoffset:0} }
-@keyframes confettiFall { 0%{transform:translateY(-100vh) rotate(0);opacity:1} 100%{transform:translateY(100vh) rotate(720deg);opacity:0} }
-@keyframes kenBurns { 0%{transform:scale(1) translate(0,0)} 100%{transform:scale(1.1) translate(-2%,-1%)} }
-@keyframes flipTop { 0%{transform:rotateX(0)} 100%{transform:rotateX(-90deg)} }
-@keyframes flipBottom { 0%{transform:rotateX(90deg)} 100%{transform:rotateX(0)} }
-@keyframes dotPulse { 0%,80%,100%{transform:scale(0);opacity:0} 40%{transform:scale(1);opacity:1} }
-@keyframes hamburgerTop { 0%{transform:translateY(0) rotate(0)} 50%{transform:translateY(8px) rotate(0)} 100%{transform:translateY(8px) rotate(45deg)} }
-@keyframes hamburgerBottom { 0%{transform:translateY(0) rotate(0)} 50%{transform:translateY(-8px) rotate(0)} 100%{transform:translateY(-8px) rotate(-45deg)} }
-
-/* Utility Classes */
-.animate-fadeIn{animation:fadeIn .6s ease forwards}
-.animate-fadeInUp{animation:fadeInUp .6s ease forwards}
-.animate-fadeInDown{animation:fadeInDown .6s ease forwards}
-.animate-fadeInLeft{animation:fadeInLeft .6s ease forwards}
-.animate-fadeInRight{animation:fadeInRight .6s ease forwards}
-.animate-scaleIn{animation:scaleIn .5s ease forwards}
-.animate-popIn{animation:popIn .5s cubic-bezier(.68,-.55,.27,1.55) forwards}
-.animate-float{animation:float 3s ease-in-out infinite}
-.animate-floatSlow{animation:floatSlow 6s ease-in-out infinite}
-.animate-pulse{animation:pulse 2s ease-in-out infinite}
-.animate-spin{animation:spin 1s linear infinite}
-.animate-bounce{animation:bounce 1s ease infinite}
-.animate-blurIn{animation:blurIn .8s ease forwards}
-.animate-shake{animation:shake .5s ease}
-.animate-marqueeLeft{animation:marqueeLeft 30s linear infinite}
-.animate-marqueeRight{animation:marqueeRight 30s linear infinite}
-.animate-shimmer{background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent);background-size:200% 100%;animation:shimmer 2s infinite}
-.animate-gradientShift{background-size:200% 200%;animation:gradientShift 8s ease infinite}
-.ken-burns{animation:kenBurns 20s ease-in-out infinite alternate}
-
-/* Scroll Reveal */
-.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s cubic-bezier(.25,.46,.45,.94),transform .8s cubic-bezier(.25,.46,.45,.94)}
-.reveal.revealed{opacity:1;transform:translateY(0)}
-.reveal-left{opacity:0;transform:translateX(-40px);transition:opacity .8s ease,transform .8s ease}
-.reveal-left.revealed{opacity:1;transform:translateX(0)}
-.reveal-right{opacity:0;transform:translateX(40px);transition:opacity .8s ease,transform .8s ease}
-.reveal-right.revealed{opacity:1;transform:translateX(0)}
-.reveal-scale{opacity:0;transform:scale(.9);transition:opacity .8s ease,transform .8s ease}
-.reveal-scale.revealed{opacity:1;transform:scale(1)}
-.reveal-blur{opacity:0;filter:blur(10px);transition:opacity .8s ease,filter .8s ease}
-.reveal-blur.revealed{opacity:1;filter:blur(0)}
-
-/* Stagger Delays */
-.delay-1{transition-delay:.1s} .delay-2{transition-delay:.2s} .delay-3{transition-delay:.3s}
-.delay-4{transition-delay:.4s} .delay-5{transition-delay:.5s} .delay-6{transition-delay:.6s}
-.delay-7{transition-delay:.7s} .delay-8{transition-delay:.8s}
-
-@media(prefers-reduced-motion:reduce){
-    .reveal,.reveal-left,.reveal-right,.reveal-scale,.reveal-blur{opacity:1;transform:none;filter:none;transition:none}
-    .animate-float,.animate-floatSlow,.animate-pulse,.animate-spin,.animate-bounce,.animate-shimmer,.animate-marqueeLeft,.animate-marqueeRight,.ken-burns{animation:none}
+/* Keyframes */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes rotateIcon {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Base utility classes for intersection observer */
+.animate-on-scroll {
+  opacity: 0;
+  will-change: opacity, transform;
+}
+
+/* Add these classes via JS when in view */
+.is-visible.fade-up {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.is-visible.fade-left {
+  animation: slideInLeft 0.6s ease forwards;
+}
+
+.is-visible.scale-in {
+  animation: scaleIn 0.6s ease forwards;
+}
+
+/* Stagger delays */
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coming Soon | Vintage Rare Bookstore</title>
+  <meta name="description" content="Something extraordinary is being prepared. Subscribe to be notified when we launch our new collection.">
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicons/favicon.svg">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <style>
+    html,body{height:100%;overflow:hidden;background:var(--bg-dark)}
+    .coming-page{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:var(--space-xl);position:relative;overflow:hidden}
+    .coming-bg{position:fixed;inset:0;background:url('assets/images/backgrounds/hero-library.png') center/cover;opacity:0.08}
+    .coming-content{position:relative;z-index:1;max-width:680px}
+    .coming-logo{margin-bottom:var(--space-2xl)}
+    .coming-eyebrow{display:inline-flex;align-items:center;gap:var(--space-sm);padding:6px 20px;border-radius:100px;background:rgba(212,175,55,0.15);border:1px solid rgba(212,175,55,0.35);font-family:var(--font-ui);font-size:0.8125rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:var(--space-xl)}
+    .coming-title{font-family:var(--font-heading);font-size:clamp(2.5rem,7vw,4.5rem);font-weight:800;line-height:1.05;color:#fff;margin-bottom:var(--space-lg)}
+    .coming-title span{background:linear-gradient(135deg,var(--accent),var(--primary-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .coming-text{color:rgba(245,230,211,0.7);font-size:1.0625rem;line-height:1.7;margin-bottom:var(--space-3xl);max-width:520px}
+    /* Countdown */
+    .countdown-wrap{display:flex;gap:var(--space-xl);justify-content:center;margin-bottom:var(--space-3xl);flex-wrap:wrap}
+    .countdown-unit{text-align:center}
+    .countdown-num{font-family:var(--font-heading);font-size:clamp(2.5rem,8vw,4rem);font-weight:800;color:var(--accent);line-height:1;display:block;min-width:80px;background:rgba(255,255,255,0.06);border:1px solid rgba(212,175,55,0.2);border-radius:var(--border-radius-lg);padding:var(--space-md) var(--space-lg)}
+    .countdown-label{font-family:var(--font-ui);font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(212,175,55,0.6);margin-top:var(--space-sm);display:block}
+    /* Newsletter */
+    .notify-form{display:flex;gap:0;max-width:480px;margin:0 auto;box-shadow:var(--shadow-xl)}
+    .notify-input{flex:1;padding:14px 20px;background:rgba(255,255,255,0.1);border:2px solid rgba(255,255,255,0.15);border-right:none;border-radius:var(--border-radius) 0 0 var(--border-radius);color:#fff;font-family:var(--font-ui);font-size:0.9375rem;backdrop-filter:blur(8px)}
+    .notify-input::placeholder{color:rgba(255,255,255,0.4)}
+    .notify-input:focus{outline:none;border-color:var(--accent)}
+    .notify-btn{padding:14px 28px;background:var(--accent);color:var(--text-primary);border:none;border-radius:0 var(--border-radius) var(--border-radius) 0;font-family:var(--font-ui);font-size:0.9375rem;font-weight:700;cursor:pointer;transition:background var(--transition-base);white-space:nowrap}
+    .notify-btn:hover{background:var(--accent-hover)}
+    .coming-socials{display:flex;gap:var(--space-md);justify-content:center;margin-top:var(--space-2xl)}
+    .coming-social{width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.6);transition:all var(--transition-base)}
+    .coming-social:hover{background:var(--accent);color:var(--text-primary);border-color:var(--accent);transform:translateY(-3px)}
+    .corner-btn{position:fixed;top:var(--space-md);right:var(--space-md);display:flex;gap:var(--space-sm)}
+    @media(max-width:640px){.notify-form{flex-direction:column;border-radius:var(--border-radius)}.notify-input{border-right:2px solid rgba(255,255,255,0.15);border-bottom:none;border-radius:var(--border-radius) var(--border-radius) 0 0}.notify-btn{border-radius:0 0 var(--border-radius) var(--border-radius)}}
+  </style>
+</head>
+<body>
+  <div class="coming-bg" aria-hidden="true"></div>
+  <div class="particles-container" aria-hidden="true"></div>
+
+  <div class="corner-btn">
+    <a href="index.html" class="nav-icon-btn" aria-label="Home" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:var(--border-radius);display:flex;align-items:center;justify-content:center;width:40px;height:40px"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></a>
+    <button id="theme-toggle" class="nav-icon-btn" aria-label="Toggle theme" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:var(--border-radius)"><svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/></svg></button>
+  </div>
+
+  <div class="coming-page">
+    <div class="coming-content">
+      <div class="coming-logo">
+        <a href="index.html"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="56" height="56"><rect width="40" height="40" rx="7" fill="#8B4513"/><rect x="7" y="6" width="19" height="28" rx="2" fill="#D4AF37"/><rect x="9" y="8" width="15" height="24" rx="1" fill="#FDF8F0"/><rect x="11" y="13" width="11" height="1.5" rx="0.75" fill="#8B4513"/><rect x="27" y="8" width="6" height="24" rx="1" fill="#5D3A1A"/></svg></a>
+      </div>
+      <div class="coming-eyebrow">✦ Something extraordinary is coming</div>
+      <h1 class="coming-title">A New Chapter<br>is Being <span>Written</span></h1>
+      <p class="coming-text">We're carefully curating an extraordinary new collection and digital experience for our collectors. Subscribe to be among the first to experience it.</p>
+
+      <!-- Countdown -->
+      <div id="countdown" class="countdown-wrap" data-date="2024-09-01T09:00:00">
+        <div class="countdown-unit" data-unit="days"><span class="countdown-num" id="cd-days">00</span><span class="countdown-label">Days</span></div>
+        <div class="countdown-unit" data-unit="hours"><span class="countdown-num" id="cd-hours">00</span><span class="countdown-label">Hours</span></div>
+        <div class="countdown-unit" data-unit="minutes"><span class="countdown-num" id="cd-mins">00</span><span class="countdown-label">Minutes</span></div>
+        <div class="countdown-unit" data-unit="seconds"><span class="countdown-num" id="cd-secs">00</span><span class="countdown-label">Seconds</span></div>
+      </div>
+
+      <!-- Newsletter -->
+      <form class="notify-form newsletter-form" id="notify-form" novalidate>
+        <input type="email" class="notify-input" placeholder="Enter your email address" required aria-label="Email address">
+        <button type="submit" class="notify-btn">Notify Me</button>
+      </form>
+      <p style="font-family:var(--font-ui);font-size:0.8125rem;color:rgba(245,230,211,0.4);margin-top:var(--space-md)">No spam, ever. Unsubscribe at any time.</p>
+
+      <div class="coming-socials" aria-label="Follow us on social media">
+        <a href="#" class="coming-social" aria-label="Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg></a>
+        <a href="#" class="coming-social" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/></svg></a>
+        <a href="#" class="coming-social" aria-label="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+        <a href="#" class="coming-social" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/animations.js" defer></script>
+  <script src="assets/js/forms.js" defer></script>
+  <script>
+    // Countdown
+    function tick() {
+      const target = new Date('2024-09-01T09:00:00');
+      const now = new Date();
+      const diff = target - now;
+      if (diff <= 0) { document.getElementById('countdown').innerHTML = '<span style="color:var(--accent);font-family:var(--font-heading);font-size:2rem">🚀 We\'ve Launched!</span>'; return; }
+      const d = Math.floor(diff / 864e5);
+      const h = Math.floor((diff % 864e5) / 36e5);
+      const m = Math.floor((diff % 36e5) / 6e4);
+      const s = Math.floor((diff % 6e4) / 1000);
+      const pad = n => String(n).padStart(2,'0');
+      document.getElementById('cd-days').textContent = pad(d);
+      document.getElementById('cd-hours').textContent = pad(h);
+      document.getElementById('cd-mins').textContent = pad(m);
+      document.getElementById('cd-secs').textContent = pad(s);
+    }
+    tick(); setInterval(tick, 1000);
+  </script>
+</body>
+</html>

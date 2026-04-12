@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aura - Top Interior Design Trends 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <script src="assets/js/theme-toggle.js"></script>
+  <style>
+    .article-hero {
+      width: 100%;
+      height: 60vh;
+      object-fit: cover;
+      display: block;
+      margin-top: var(--navbar-height);
+    }
+    .article-layout {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: var(--space-6);
+      align-items: start;
+      padding: var(--space-6) 0;
+    }
+    @media (max-width: 1024px) { .article-layout { grid-template-columns: 1fr; } }
+
+    .article-meta { display: flex; align-items: center; gap: var(--space-3); flex-wrap: wrap; margin-bottom: var(--space-4); padding-bottom: var(--space-4); border-bottom: 1px solid var(--color-border); }
+    .article-meta img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; }
+    .article-content { font-size: 1.0625rem; line-height: 1.8; }
+    .article-content h2 { margin: var(--space-5) 0 var(--space-3); }
+    .article-content h3 { margin: var(--space-4) 0 var(--space-2); }
+    .article-content p { margin-bottom: var(--space-3); color: var(--color-text-primary); }
+    blockquote {
+      border-left: 4px solid var(--color-primary);
+      padding: var(--space-3) var(--space-4);
+      background: var(--color-surface);
+      border-radius: 0 var(--border-radius) var(--border-radius) 0;
+      margin: var(--space-4) 0;
+      font-size: 1.125rem;
+      font-style: italic;
+      color: var(--color-text-secondary);
+    }
+    .article-tags { display: flex; gap: var(--space-2); flex-wrap: wrap; margin-top: var(--space-4); padding-top: var(--space-4); border-top: 1px solid var(--color-border); }
+    .tag { padding: 4px 12px; background: var(--color-surface); border-radius: 20px; font-size: var(--text-xs); border: 1px solid var(--color-border); }
+
+    /* Social sharing */
+    .share-bar { display: flex; gap: var(--space-2); margin-bottom: var(--space-4); }
+    .share-btn { display: flex; align-items: center; gap: 6px; padding: 8px 16px; border-radius: 20px; font-size: var(--text-sm); font-weight: 600; cursor: pointer; border: none; color: white; transition: opacity 0.2s; }
+    .share-btn:hover { opacity: 0.85; }
+    .share-fb { background: #1877F2; }
+    .share-tw { background: #000; }
+    .share-li { background: #0A66C2; }
+    .share-pi { background: #E60023; }
+
+    /* Sidebar */
+    .sidebar-sticky { position: sticky; top: calc(var(--navbar-height) + var(--space-4)); display: flex; flex-direction: column; gap: var(--space-4); }
+    .sidebar-card { background: var(--color-bg); border: 1px solid var(--color-border); border-radius: var(--border-radius-lg); padding: var(--space-4); }
+    .related-article { display: flex; gap: var(--space-3); padding: var(--space-2) 0; border-bottom: 1px solid var(--color-border); }
+    .related-article:last-child { border-bottom: none; }
+    .related-article img { width: 64px; height: 64px; border-radius: var(--border-radius); object-fit: cover; flex-shrink: 0; }
+    .newsletter-input { display: flex; gap: var(--space-2); margin-top: var(--space-3); }
+    .newsletter-input input { flex: 1; }
+    .breadcrumb { display: flex; gap: var(--space-2); font-size: var(--text-sm); color: var(--color-text-secondary); padding: var(--space-4) 0 0; }
+    .breadcrumb a { color: var(--color-primary); }
+
+
+  </style>
+</head>
+<body>
+    <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="home-1.html" class="navbar-brand">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+        Aura
+      </a>
+      
+      <ul class="navbar-menu d-md-flex d-none">
+        <li class="navbar-item">
+          <button class="dropdown-toggle">Home <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"></path></svg></button>
+          <div class="dropdown-menu">
+            <a href="home-1.html" class="dropdown-link">Home 1</a>
+            <a href="home-2.html" class="dropdown-link">Home 2</a>
+          </div>
+        </li>
+        <li class="navbar-item"><a href="about.html" class="navbar-link">About</a></li>
+        <li class="navbar-item">
+          <button class="dropdown-toggle">Services <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"></path></svg></button>
+          <div class="dropdown-menu">
+            <a href="services.html" class="dropdown-link">All Services</a>
+            <a href="service-details.html" class="dropdown-link">Service Details</a>
+          </div>
+        </li>
+        <li class="navbar-item"><a href="pricing.html" class="navbar-link">Pricing</a></li>
+        <li class="navbar-item">
+          <button class="dropdown-toggle">Blog <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"></path></svg></button>
+          <div class="dropdown-menu">
+            <a href="blog.html" class="dropdown-link">Blog</a>
+            <a href="blog-details.html" class="dropdown-link">Blog Details</a>
+          </div>
+        </li>
+        <li class="navbar-item"><a href="contact.html" class="navbar-link">Contact</a></li>
+        <li class="navbar-item">
+          <button class="dropdown-toggle">Dashboard <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"></path></svg></button>
+          <div class="dropdown-menu">
+            <a href="dashboard.html?role=admin" class="dropdown-link">Admin Dashboard</a>
+            <a href="dashboard.html?role=user" class="dropdown-link">User Dashboard</a>
+          </div>
+        </li>
+      </ul>
+      
+      <div class="navbar-actions">
+        <!-- Theme Toggle -->
+        <button class="icon-btn d-none d-md-flex" id="themeToggle" aria-label="Toggle dark/light mode">
+          <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line></svg>
+        </button>
+        <!-- Globe/RTL Toggle -->
+        <button class="icon-btn d-none d-md-flex" id="langToggle" aria-label="Toggle language direction" style="transition: transform 0.4s ease;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+        </button>
+        <a href="login.html" class="btn btn-primary d-none d-md-flex">Login</a>
+        <button class="icon-btn mobile-toggle d-md-none" aria-label="Toggle Menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+  
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu-overlay">
+    <button class="icon-btn mobile-toggle" style="position: absolute; right: var(--space-4); top: var(--space-4);">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
+    <ul class="navbar-menu">
+      <li class="navbar-item"><a href="home-1.html" class="navbar-link">Home 1</a></li>
+      <li class="navbar-item"><a href="home-2.html" class="navbar-link">Home 2</a></li>
+      <li class="navbar-item"><a href="about.html" class="navbar-link">About</a></li>
+      <li class="navbar-item"><a href="services.html" class="navbar-link">All Services</a></li>
+      <li class="navbar-item"><a href="service-details.html" class="navbar-link">Service Details</a></li>
+      <li class="navbar-item"><a href="pricing.html" class="navbar-link">Pricing</a></li>
+      <li class="navbar-item"><a href="blog.html" class="navbar-link">Blog</a></li>
+      <li class="navbar-item"><a href="blog-details.html" class="navbar-link">Blog Details</a></li>
+      <li class="navbar-item"><a href="contact.html" class="navbar-link">Contact</a></li>
+      <li class="navbar-item"><a href="dashboard.html?role=admin" class="navbar-link">Admin Dashboard</a></li>
+      <li class="navbar-item"><a href="dashboard.html?role=user" class="navbar-link">User Dashboard</a></li>
+      <li class="navbar-item"><a href="login.html" class="btn btn-primary">Login</a></li>
+    </ul>
+  </div>
+
+  <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1920&q=80" alt="Interior Trends 2026" class="article-hero">
+
+  <div class="container">
+    <div class="breadcrumb"><a href="home-1.html">Home</a> &rsaquo; <a href="blog.html">Blog</a> &rsaquo; <span>Top Interior Design Trends 2026</span></div>
+
+    <div class="article-layout">
+      <!-- Main Content -->
+      <article>
+        <h1 class="animate-on-scroll fade-up" style="margin-bottom: var(--space-4);">Top Interior Design Trends Shaping 2026</h1>
+
+        <div class="article-meta animate-on-scroll fade-up">
+          <img src="https://i.pravatar.cc/96?img=47" alt="Elena Rodriguez">
+          <div>
+            <strong>Elena Rodriguez</strong>
+            <div class="text-sm text-secondary">April 10, 2026 · 5 min read</div>
+          </div>
+          <div class="share-bar ms-auto">
+            <button class="share-btn share-fb"><svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg> Share</button>
+            <button class="share-btn share-tw"><svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53A4.48 4.48 0 0 0 22.43.36a9 9 0 0 1-2.88 1.1A4.52 4.52 0 0 0 16.11 0c-2.5 0-4.52 2.02-4.52 4.52 0 .35.04.7.11 1.03A12.84 12.84 0 0 1 2.35.85a4.52 4.52 0 0 0 1.4 6.04 4.49 4.49 0 0 1-2.05-.57v.06c0 2.2 1.56 4.03 3.64 4.44a4.54 4.54 0 0 1-2.04.08 4.52 4.52 0 0 0 4.22 3.14A9.07 9.07 0 0 1 1 18.07 12.79 12.79 0 0 0 7.93 20c8.31 0 12.85-6.88 12.85-12.85 0-.2 0-.39-.01-.58A9.17 9.17 0 0 0 23 3z"></path></svg> Tweet</button>
+          </div>
+        </div>
+
+        <div class="article-content animate-on-scroll fade-up">
+          <p>Interior design in 2026 is a fascinating convergence of technological innovation and an intensified desire for comfort, authenticity, and natural connection. As remote and hybrid work continues to redefine how we inhabit our homes, spaces are being asked to do more — and designers are rising magnificently to the challenge.</p>
+
+          <h2>1. Biophilic Design: Nature as a Co-Architect</h2>
+          <p>The biophilic movement has been gaining traction for years, but 2026 marks the year it becomes non-negotiable. Homeowners are no longer satisfied with a few potted plants — they're commissioning living walls, integrating natural stone, bringing in organic curves, and demanding transparency to the outdoors via expansive windows and skylights.</p>
+          <blockquote>"We no longer decorate with nature. We design with it. Every new Aura project begins with a biophilic audit of the space." — Elena Rodriguez</blockquote>
+
+          <h2>2. Warm Minimalism Replacing Cold Sterility</h2>
+          <p>The era of the stark, all-white interior is closing. In its place rises "warm minimalism" — spaces that are clean and uncluttered, but layered with organic textures, earthy tones, and handcrafted elements. Think terracotta, linen, rattan, and raw wood alongside contemporary architecture.</p>
+
+          <h3>Key palette shifts:</h3>
+          <p>Out go the cool grays and blue-whites. In come warm whites, blush taupes, deep clarets, and warm sage — colors that feel earthy, sophisticated, and emotionally grounding.</p>
+
+          <h2>3. The Return of Curves</h2>
+          <p>After years of angular, industrial-inspired furniture, curves are back with a vengeance. Arched doorways, rounded sofas, circular dining tables, and kidney-shaped ottomans are all commanding attention. Curves make spaces feel softer, more inviting, and more human.</p>
+
+          <div class="grid grid-cols-2 my-4">
+            <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=500&q=80" alt="Curved furniture" style="border-radius: var(--border-radius); width:100%; height:200px; object-fit:cover;">
+            <img src="https://images.unsplash.com/photo-1507652313519-d4e9174996dd?auto=format&fit=crop&w=500&q=80" alt="Warm tones" style="border-radius: var(--border-radius); width:100%; height:200px; object-fit:cover;">
+          </div>
+
+          <h2>4. Multifunctionality is a Design Mandate</h2>
+          <p>As homes continue to serve as offices, gyms, schools, and social spaces simultaneously, designers are being asked to engineer multifunctionality into their plans — not as an afterthought, but as the primary objective. Modular furniture, transformable rooms, and intelligent storage are not longer luxuries.</p>
+        </div>
+
+        <div class="article-tags animate-on-scroll fade-up">
+          <span class="tag">Trends 2026</span>
+          <span class="tag">Biophilic</span>
+          <span class="tag">Minimalism</span>
+          <span class="tag">Furniture</span>
+          <span class="tag">Color Palettes</span>
+        </div>
+      </article>
+
+      <!-- Sidebar -->
+      <aside class="sidebar-sticky animate-on-scroll fade-left">
+        <!-- Author Bio -->
+        <div class="sidebar-card">
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <img src="https://i.pravatar.cc/96?img=47" alt="Elena" style="width:56px; height:56px; border-radius:50%;">
+            <div>
+              <strong>Elena Rodriguez</strong>
+              <div class="text-sm text-secondary">Founder & Lead Designer</div>
+            </div>
+          </div>
+          <p class="text-sm text-secondary">Elena has been reshaping spaces for over 12 years, combining classical theory with modern material innovation.</p>
+          <a href="about.html" class="btn btn-outline mt-3" style="height:36px; padding:0 16px; font-size:0.875rem;">View Profile</a>
+        </div>
+
+        <!-- Related -->
+        <div class="sidebar-card">
+          <h4 class="mb-3">Related Articles</h4>
+          <div class="related-article">
+            <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=64&h=64&fit=crop" alt="Small space">
+            <div><a href="blog-details.html" class="text-sm font-weight-bold" style="color:inherit;">Maximize Your Small Living Room</a><div class="text-xs text-secondary mt-1">Apr 7, 2026</div></div>
+          </div>
+          <div class="related-article">
+            <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=64&h=64&fit=crop" alt="Lighting">
+            <div><a href="blog-details.html" class="text-sm font-weight-bold" style="color:inherit;">The Transformative Power of Lighting</a><div class="text-xs text-secondary mt-1">Mar 28, 2026</div></div>
+          </div>
+          <div class="related-article">
+            <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?w=64&h=64&fit=crop" alt="Loft">
+            <div><a href="blog-details.html" class="text-sm font-weight-bold" style="color:inherit;">Modern Minimalist Loft — Full Reveal</a><div class="text-xs text-secondary mt-1">Apr 3, 2026</div></div>
+          </div>
+        </div>
+
+        <!-- Newsletter -->
+        <div class="sidebar-card" style="background: var(--color-primary);">
+          <h4 style="color:white; margin-bottom:8px;">Design Digest</h4>
+          <p class="text-sm" style="color:rgba(255,255,255,0.8);">Monthly tips from our designers. No spam, ever.</p>
+          <div class="newsletter-input" style="flex-direction:column; gap:8px;">
+            <input class="form-control" type="email" placeholder="your@email.com" style="background:rgba(255,255,255,0.15); border-color:rgba(255,255,255,0.3); color:white;">
+            <button class="btn" style="background:var(--color-secondary); color:#000; height:40px; font-size:0.875rem;">Subscribe</button>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+    <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h3 class="footer-heading" style="font-family: var(--font-heading); color: var(--color-primary); font-size: 1.5rem; font-weight: 700;">Aura</h3>
+          <p class="text-secondary mb-3">Redefining indoor spaces with bespoke virtual interior design architecture tailored for you.</p>
+          <div class="d-flex gap-2">
+            <!-- Social icons -->
+            <a href="#" class="icon-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
+            <a href="#" class="icon-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer-heading">Services</h4>
+          <ul class="footer-links">
+            <li><a href="service-details.html">Residential Design</a></li>
+            <li><a href="service-details.html">Commercial Spaces</a></li>
+            <li><a href="service-details.html">Kitchen & Bath</a></li>
+            <li><a href="pricing.html">Pricing Plans</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-heading">Company</h4>
+          <ul class="footer-links">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="blog.html">Journal</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="dashboard.html">Client Portal</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-heading">Contact</h4>
+          <ul class="footer-links">
+            <li><a href="mailto:hello@auradesign.com">hello@auradesign.com</a></li>
+            <li><a href="tel:+1234567890">+1 (234) 567-890</a></li>
+            <li><span class="text-secondary">123 Design Ave,<br>Los Angeles, CA 90028</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Aura. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/utils.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/animations.js"></script>
+</body>
+</html>

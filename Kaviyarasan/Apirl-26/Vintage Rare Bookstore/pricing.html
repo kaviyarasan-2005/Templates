@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pricing | Vintage Rare Bookstore — Membership Plans</title>
+  <meta name="description" content="Choose your membership plan and access our expert rare book services, from standard appraisals to white-glove collection management.">
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicons/favicon.svg">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <style>
+    .page-hero{background:linear-gradient(135deg,var(--primary-dark),var(--bg-dark));padding:calc(var(--nav-height)+var(--space-4xl)) 0 var(--space-4xl);color:#fff;text-align:center}
+    .page-hero h1{color:#fff}.page-hero p{color:rgba(255,255,255,0.75);max-width:560px;margin:var(--space-md) auto 0}
+    .billing-toggle{display:flex;align-items:center;justify-content:center;gap:var(--space-md);margin-bottom:var(--space-3xl)}
+    .billing-label{font-family:var(--font-ui);font-size:0.9375rem;font-weight:600;color:var(--text-secondary);cursor:pointer}
+    .toggle-sw{width:52px;height:28px;border-radius:14px;background:var(--border);border:none;cursor:pointer;position:relative;transition:background var(--transition-base);flex-shrink:0}
+    .toggle-sw::after{content:'';position:absolute;top:4px;left:4px;width:20px;height:20px;border-radius:50%;background:#fff;box-shadow:var(--shadow-sm);transition:transform var(--transition-base)}
+    .toggle-sw.on{background:var(--accent)}
+    .toggle-sw.on::after{transform:translateX(24px)}
+    .save-tag{background:var(--success);color:#fff;font-size:0.75rem;font-weight:700;padding:3px 12px;border-radius:100px;font-family:var(--font-ui)}
+    .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-lg);margin-bottom:var(--space-4xl)}
+    .price-card{background:var(--bg-card);border:2px solid var(--border);border-radius:var(--border-radius-lg);padding:var(--space-2xl);position:relative;transition:all var(--transition-slow)}
+    .price-card:hover:not(.featured):not(.connoisseur){border-color:var(--primary-light);transform:translateY(-4px);box-shadow:var(--shadow-md)}
+    .price-card.featured{border-color:var(--accent);box-shadow:var(--shadow-gold),var(--shadow-xl);transform:translateY(-16px)}
+    .price-card.connoisseur{border-color:var(--primary-light)}
+    .popular-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--accent);color:var(--text-primary);font-family:var(--font-ui);font-size:0.75rem;font-weight:800;padding:6px 20px;border-radius:100px;white-space:nowrap;letter-spacing:0.05em}
+    .price-tier{font-family:var(--font-ui);font-size:0.8125rem;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent-hover);margin-bottom:var(--space-md)}
+    .price-num{font-family:var(--font-heading);font-size:3rem;font-weight:700;color:var(--text-primary);line-height:1;margin-bottom:4px}
+    .price-period{font-family:var(--font-ui);font-size:0.875rem;color:var(--text-muted);margin-bottom:var(--space-md)}
+    .price-desc{font-size:0.9375rem;color:var(--text-secondary);margin-bottom:var(--space-xl);min-height:60px}
+    .price-features{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:var(--space-2xl);font-family:var(--font-ui);font-size:0.875rem}
+    .price-features li{display:flex;align-items:center;gap:var(--space-sm);color:var(--text-secondary)}
+    .price-features li.included::before{content:'✓';width:20px;height:20px;background:rgba(46,125,50,0.12);color:var(--success);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.75rem;flex-shrink:0}
+    .price-features li.excluded{opacity:0.45}
+    .price-features li.excluded::before{content:'✗';width:20px;height:20px;background:rgba(150,150,150,0.1);color:var(--text-muted);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.75rem;flex-shrink:0}
+    .compare-table{width:100%;border-collapse:collapse;font-family:var(--font-ui);font-size:0.9375rem}
+    .compare-table th,.compare-table td{padding:14px 20px;text-align:center;border-bottom:1px solid var(--border)}
+    .compare-table thead th:first-child,.compare-table tbody td:first-child{text-align:left}
+    .compare-table thead{background:var(--bg-secondary)}
+    .compare-table thead th{font-weight:700;font-size:0.8125rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted)}
+    .guarantee{display:flex;align-items:center;justify-content:center;gap:var(--space-lg);background:rgba(212,175,55,0.08);border:2px solid rgba(212,175,55,0.25);border-radius:var(--border-radius-lg);padding:var(--space-2xl);margin-top:var(--space-2xl)}
+    .seal{width:80px;height:80px;border-radius:50%;border:3px solid var(--accent);display:flex;align-items:center;justify-content:center;font-size:2rem;flex-shrink:0}
+    @media(max-width:1024px){.pricing-grid{grid-template-columns:1fr;margin-bottom:var(--space-2xl)}.price-card.featured{transform:none}}
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <header class="navbar" role="banner"><div class="container"><div class="navbar__inner">
+    <a href="index.html" class="navbar__logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40"><rect width="40" height="40" rx="7" fill="#8B4513"/><rect x="7" y="6" width="19" height="28" rx="2" fill="#D4AF37"/><rect x="9" y="8" width="15" height="24" rx="1" fill="#FDF8F0"/><rect x="11" y="13" width="11" height="1.5" rx="0.75" fill="#8B4513"/><rect x="27" y="8" width="6" height="24" rx="1" fill="#5D3A1A"/></svg><span class="navbar__logo-text">Vintage Rare Bookstore</span></a>
+    <ul class="navbar__nav" role="list"><li class="nav-item"><a href="index.html" class="nav-link">Home</a></li><li class="nav-item"><a href="about.html" class="nav-link">About</a></li><li class="nav-item"><a href="services.html" class="nav-link">Services</a></li><li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li><li class="nav-item"><a href="pricing.html" class="nav-link active">Pricing</a></li><li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li></ul>
+    <div class="navbar__actions"><button id="rtl-toggle" class="nav-icon-btn" aria-label="Toggle RTL"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></button><button id="theme-toggle" class="nav-icon-btn" aria-label="Toggle theme"><svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/></svg></button><a href="login.html" class="btn btn-primary btn-sm">Login</a><button id="hamburger" class="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button></div>
+  </div></div></header>
+  <nav id="mobile-nav" class="mobile-nav"><ul class="mobile-nav__links"><li><a href="index.html" class="nav-link">Home</a></li><li><a href="about.html" class="nav-link">About</a></li><li><a href="services.html" class="nav-link">Services</a></li><li><a href="pricing.html" class="nav-link active">Pricing</a></li><li><a href="contact.html" class="nav-link">Contact</a></li></ul><div class="mobile-nav__footer"><a href="login.html" class="btn btn-primary btn-full">Login</a></div></nav>
+
+  <main id="main-content">
+    <div class="page-hero"><div class="container"><h1 class="reveal">Simple, Transparent Pricing</h1><p class="reveal">Choose the level that fits your collecting ambitions. Cancel or upgrade anytime.</p></div></div>
+
+    <section class="section"><div class="container">
+      <div class="billing-toggle reveal">
+        <span class="billing-label" id="label-monthly">Monthly</span>
+        <button id="billing-toggle-btn" class="toggle-sw" role="switch" aria-checked="false" aria-label="Toggle annual billing"></button>
+        <span class="billing-label" id="label-annual">Annual</span>
+        <span class="save-tag">Save 20%</span>
+      </div>
+
+      <div class="pricing-grid stagger-children">
+        <!-- Collector -->
+        <div class="price-card reveal">
+          <div class="price-tier">Collector</div>
+          <div class="price-num" data-monthly="29" data-annual="23">£29</div>
+          <div class="price-period">per month, billed <span class="billing-freq">monthly</span></div>
+          <p class="price-desc">Perfect for hobbyist collectors building their first rare book library.</p>
+          <ul class="price-features">
+            <li class="included">5 professional appraisals/year</li>
+            <li class="included">Marketplace browse access</li>
+            <li class="included">Monthly rare book newsletter</li>
+            <li class="included">Email support (48hr response)</li>
+            <li class="excluded">Priority sourcing</li>
+            <li class="excluded">Restoration discounts</li>
+            <li class="excluded">Dedicated advisor</li>
+          </ul>
+          <a href="register.html" class="btn btn-outline btn-full">Get Started</a>
+        </div>
+
+        <!-- Curator (Featured) -->
+        <div class="price-card featured reveal">
+          <div class="popular-badge">✦ Most Popular</div>
+          <div class="price-tier" style="color:var(--accent)">Curator</div>
+          <div class="price-num" data-monthly="79" data-annual="63">£79</div>
+          <div class="price-period">per month, billed <span class="billing-freq">monthly</span></div>
+          <p class="price-desc">For serious collectors and dealers who require priority access and advisory support.</p>
+          <ul class="price-features">
+            <li class="included">20 professional appraisals/year</li>
+            <li class="included">Priority sourcing (14-day SLA)</li>
+            <li class="included">15% restoration discount</li>
+            <li class="included">Private sale early access</li>
+            <li class="included">Dedicated book advisor</li>
+            <li class="included">Quarterly collection review</li>
+            <li class="excluded">Annual gala invitation</li>
+          </ul>
+          <a href="register.html" class="btn btn-accent btn-full">Get Started</a>
+        </div>
+
+        <!-- Connoisseur -->
+        <div class="price-card connoisseur reveal">
+          <div class="price-tier" style="color:var(--primary)">Connoisseur</div>
+          <div class="price-num" data-monthly="199" data-annual="159">£199</div>
+          <div class="price-period">per month, billed <span class="billing-freq">monthly</span></div>
+          <p class="price-desc">White-glove service for institutions, major collectors, and estate managers.</p>
+          <ul class="price-features">
+            <li class="included">Unlimited appraisals</li>
+            <li class="included">White-glove sourcing (48hr)</li>
+            <li class="included">Complimentary restoration (1/yr)</li>
+            <li class="included">Exclusive auction access</li>
+            <li class="included">Personal account manager</li>
+            <li class="included">Annual collection review report</li>
+            <li class="included">Annual Collectors' Gala invitation</li>
+          </ul>
+          <a href="register.html" class="btn btn-primary btn-full">Get Started</a>
+        </div>
+      </div>
+
+      <!-- Comparison Table -->
+      <div class="reveal" style="overflow-x:auto">
+        <h2 class="text-center" style="margin-bottom:var(--space-2xl)">Full Feature Comparison</h2>
+        <table class="compare-table">
+          <thead><tr><th>Feature</th><th>Collector</th><th>Curator</th><th>Connoisseur</th></tr></thead>
+          <tbody>
+            <tr><td>Appraisals per year</td><td>5</td><td>20</td><td>Unlimited</td></tr>
+            <tr><td>Sourcing SLA</td><td>—</td><td>14 days</td><td>48 hours</td></tr>
+            <tr><td>Restoration discount</td><td>—</td><td>15%</td><td>1 free/year</td></tr>
+            <tr><td>Private sales access</td><td>—</td><td>✓</td><td>✓</td></tr>
+            <tr><td>Dedicated advisor</td><td>—</td><td>✓</td><td>✓</td></tr>
+            <tr><td>Collection review</td><td>—</td><td>Quarterly</td><td>Annual Report</td></tr>
+            <tr><td>Gala invitation</td><td>—</td><td>—</td><td>✓</td></tr>
+            <tr><td>Support</td><td>Email</td><td>Priority Email</td><td>Phone + Email</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Guarantee -->
+      <div class="guarantee reveal">
+        <div class="seal">🛡</div>
+        <div><h3 style="margin-bottom:var(--space-sm)">30-Day Money-Back Guarantee</h3><p style="color:var(--text-secondary);font-size:0.9375rem;margin:0">Not satisfied within 30 days? We'll issue a full refund — no questions asked. We're confident in the quality of our service and stand behind every membership.</p></div>
+      </div>
+
+      <!-- FAQ -->
+      <div class="section-header reveal" style="margin-top:var(--space-4xl)"><span class="eyebrow">FAQ</span><h2>Pricing Questions</h2></div>
+      <div class="accordion accordion-single" style="max-width:720px;margin:0 auto">
+        <div class="accordion-item"><button class="accordion-trigger" aria-expanded="false">Can I cancel my membership at any time?<svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="accordion-content"><p class="accordion-body">Yes, you can cancel at any time. Monthly memberships are cancelled immediately. Annual memberships are cancelled at the end of the billing period with a pro-rata refund available within the first 90 days.</p></div></div>
+        <div class="accordion-item"><button class="accordion-trigger" aria-expanded="false">Can I upgrade or downgrade my plan?<svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="accordion-content"><p class="accordion-body">Absolutely. You can upgrade instantly and we'll prorate the difference. Downgrades take effect at the next billing cycle. Contact your advisor or our support team to make changes.</p></div></div>
+        <div class="accordion-item"><button class="accordion-trigger" aria-expanded="false">Are there discounts for institutions or libraries?<svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="accordion-content"><p class="accordion-body">Yes, we offer custom institutional pricing for universities, public libraries, and charitable foundations. Please contact us at enquiries@vintagerarebookstore.com for a bespoke quote.</p></div></div>
+      </div>
+    </div></section>
+  </main>
+
+  <footer class="footer" role="contentinfo"><div class="container"><div class="footer__grid"><div class="footer__brand"><a href="index.html" class="navbar__logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40"><rect width="40" height="40" rx="7" fill="#D4AF37"/><rect x="7" y="6" width="19" height="28" rx="2" fill="#8B4513"/><rect x="9" y="8" width="15" height="24" rx="1" fill="#FDF8F0"/><rect x="27" y="8" width="6" height="24" rx="1" fill="#5D3A1A"/></svg><span class="navbar__logo-text">Vintage Rare Bookstore</span></a><p class="footer__tagline">Preserving the world's literary heritage since 1978.</p></div><div><h3 class="footer__heading">Explore</h3><ul class="footer__links"><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="services.html">Services</a></li><li><a href="pricing.html">Pricing</a></li></ul></div><div><h3 class="footer__heading">Services</h3><ul class="footer__links"><li><a href="service-details.html">Appraisal</a></li><li><a href="service-details.html">Restoration</a></li></ul></div><div><h3 class="footer__heading">Contact</h3><ul class="footer__links"><li><a href="contact.html">Get in Touch</a></li></ul></div></div><div class="footer__bottom"><p>&copy; 2024 Vintage Rare Bookstore.</p></div></div></footer>
+  <script src="assets/js/main.js" defer></script><script src="assets/js/animations.js" defer></script><script src="assets/js/rtl-ltr.js" defer></script>
+  <script>
+    const toggle = document.getElementById('billing-toggle-btn');
+    let annual = false;
+    toggle?.addEventListener('click', () => {
+      annual = !annual;
+      toggle.classList.toggle('on', annual);
+      toggle.setAttribute('aria-checked', annual.toString());
+      document.querySelectorAll('.price-num[data-monthly]').forEach(el => {
+        el.textContent = '£' + (annual ? el.dataset.annual : el.dataset.monthly);
+      });
+      document.querySelectorAll('.billing-freq').forEach(el => {
+        el.textContent = annual ? 'annually' : 'monthly';
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Aura — Residential Design Makeover service. 3D renders, 2D layouts, and shoppable lists delivered virtually.">
+  <title>Aura - Residential Design Details</title>
+
+  <script src="assets/js/theme-toggle.js"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+
+  <style>
+    .breadcrumb {
+      display: flex;
+      gap: var(--space-2);
+      font-size: var(--text-sm);
+      color: var(--color-text-secondary);
+      margin-bottom: var(--space-4);
+    }
+    .breadcrumb a { color: var(--color-primary); }
+
+    .service-layout {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: var(--space-6);
+      align-items: start;
+    }
+    @media (max-width: 1024px) {
+      .service-layout { grid-template-columns: 1fr; }
+    }
+
+    /* Process Timeline */
+    .timeline {
+      position: relative;
+      margin-top: var(--space-6);
+      padding-left: var(--space-6);
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 20px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--color-border);
+    }
+    .timeline-item {
+      position: relative;
+      margin-bottom: var(--space-5);
+    }
+    .timeline-icon {
+      position: absolute;
+      left: calc(20px - var(--space-6) - 16px);
+      top: 0;
+      width: 32px;
+      height: 32px;
+      background: white;
+      border: 2px solid var(--color-primary);
+      border-radius: 50%;
+      z-index: 2;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(13, 115, 119, 0.4); }
+      70% { box-shadow: 0 0 0 10px rgba(13, 115, 119, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(13, 115, 119, 0); }
+    }
+
+    /* Sidebar Sticky */
+    .sidebar-sticky {
+      position: sticky;
+      top: calc(var(--navbar-height) + var(--space-4));
+    }
+
+    /* Sidebar Pricing Table */
+    .pricing-tier {
+      border: 1px solid var(--color-border);
+      border-radius: var(--border-radius);
+      padding: var(--space-3);
+      margin-bottom: var(--space-3);
+      position: relative;
+      background: var(--color-bg);
+      transition: all var(--transition-fast);
+      cursor: pointer;
+    }
+    .pricing-tier:hover { border-color: var(--color-primary); }
+    .pricing-tier.popular {
+      border-color: var(--color-primary);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      background: var(--color-surface);
+    }
+    .popular-badge {
+      position: absolute;
+      top: -10px;
+      right: 16px;
+      background: var(--color-secondary);
+      color: #000;
+      font-size: var(--text-xs);
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 20px;
+    }
+
+    /* FAQ */
+    .accordion-item {
+      border-bottom: 1px solid var(--color-border);
+    }
+    .accordion-btn {
+      width: 100%;
+      text-align: left;
+      background: none;
+      border: none;
+      padding: var(--space-3) 0;
+      font-weight: 600;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      color: var(--color-text-primary);
+    }
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+    .accordion-inner {
+      padding-bottom: var(--space-3);
+      color: var(--color-text-secondary);
+    }
+    .icon-rotate { transition: transform 0.3s ease; }
+    .accordion-item.active .icon-rotate { transform: rotate(45deg); color: var(--color-primary); }
+    
+    /* Global fixes */
+
+
+  </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="home-1.html" class="navbar-brand">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+        Aura
+      </a>
+      
+      <ul class="navbar-menu d-md-flex d-none">
+        <li class="navbar-item">
+          <button class="dropdown-toggle">Home <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"></path></svg></button>
+          <div class="dropdown-menu">
+            <a href="home-1.html" class="dropdown-link">Home 1</a>
+            <a href="home-2.html" class="dropdown-link">Home 2</a>
+          </div>
+        </li>
+        <li class="navbar-item"><a href="about.html" class="navbar-link">About</a></li>
+        <li class="navbar-item">
+          <button class="dropdown-toggle">Services <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"></path></svg></button>
+          <div class="dropdown-menu">
+            <a href="services.html" class="dropdown-link">All Services</a>
+            <a href="service-details.html" class="dropdown-link">Service Details</a>
+          </div>
+        </li>
+        <li class="navbar-item"><a href="pricing.html" class="navbar-link">Pricing</a></li>
+        <li class="navbar-item">
+          <button class="dropdown-toggle">Blog <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"></path></svg></button>
+          <div class="dropdown-menu">
+            <a href="blog.html" class="dropdown-link">Blog</a>
+            <a href="blog-details.html" class="dropdown-link">Blog Details</a>
+          </div>
+        </li>
+        <li class="navbar-item"><a href="contact.html" class="navbar-link">Contact</a></li>
+        <li class="navbar-item">
+          <button class="dropdown-toggle">Dashboard <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"></path></svg></button>
+          <div class="dropdown-menu">
+            <a href="dashboard.html?role=admin" class="dropdown-link">Admin Dashboard</a>
+            <a href="dashboard.html?role=user" class="dropdown-link">User Dashboard</a>
+          </div>
+        </li>
+      </ul>
+      
+      <div class="navbar-actions">
+        <!-- Theme Toggle -->
+        <button class="icon-btn d-none d-md-flex" id="themeToggle" aria-label="Toggle dark/light mode">
+          <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line></svg>
+        </button>
+        <!-- Globe/RTL Toggle -->
+        <button class="icon-btn d-none d-md-flex" id="langToggle" aria-label="Toggle language direction" style="transition: transform 0.4s ease;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+        </button>
+        <a href="login.html" class="btn btn-primary d-none d-md-flex">Login</a>
+        <button class="icon-btn mobile-toggle d-md-none" aria-label="Toggle Menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+  
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu-overlay">
+    <button class="icon-btn mobile-toggle" style="position: absolute; right: var(--space-4); top: var(--space-4);">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
+    <ul class="navbar-menu">
+      <li class="navbar-item"><a href="home-1.html" class="navbar-link">Home 1</a></li>
+      <li class="navbar-item"><a href="home-2.html" class="navbar-link">Home 2</a></li>
+      <li class="navbar-item"><a href="about.html" class="navbar-link">About</a></li>
+      <li class="navbar-item"><a href="services.html" class="navbar-link">All Services</a></li>
+      <li class="navbar-item"><a href="service-details.html" class="navbar-link">Service Details</a></li>
+      <li class="navbar-item"><a href="pricing.html" class="navbar-link">Pricing</a></li>
+      <li class="navbar-item"><a href="blog.html" class="navbar-link">Blog</a></li>
+      <li class="navbar-item"><a href="blog-details.html" class="navbar-link">Blog Details</a></li>
+      <li class="navbar-item"><a href="contact.html" class="navbar-link">Contact</a></li>
+      <li class="navbar-item"><a href="dashboard.html?role=admin" class="navbar-link">Admin Dashboard</a></li>
+      <li class="navbar-item"><a href="dashboard.html?role=user" class="navbar-link">User Dashboard</a></li>
+      <li class="navbar-item"><a href="login.html" class="btn btn-primary">Login</a></li>
+    </ul>
+  </div>
+
+  <div class="container" style="padding-top: calc(var(--navbar-height) + var(--space-4));">
+    <!-- Breadcrumb -->
+    <div class="breadcrumb animate-on-scroll fade-left">
+      <a href="home-1.html">Home</a> &rsaquo; 
+      <a href="services.html">Services</a> &rsaquo; 
+      <span>Residential Design</span>
+    </div>
+    
+    <!-- Hero Header -->
+    <h1 class="mb-4 animate-on-scroll fade-up">Residential Design Makeover</h1>
+    <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1280&q=80" alt="Residential Makeover" class="card-img mb-5 animate-on-scroll scale-in" style="border-radius: var(--border-radius-lg); height: 400px;">
+    
+    <div class="service-layout">
+      <!-- Main Content (2/3) -->
+      <main>
+        <div class="animate-on-scroll fade-up">
+          <h2>Overview</h2>
+          <p>Our residential design service is built around understanding how you live. We focus on transforming your basic living quarters into a cohesive, aesthetically pleasing, and functionally optimized sanctuary.</p>
+          <p>By leveraging advanced 3D virtual modeling, you get to explore your new home before a single piece of furniture is ordered. This package covers everything from space planning and palette selection to custom millwork design and shoppable furniture lists.</p>
+        </div>
+
+        <!-- Process Timeline -->
+        <div class="mt-5 animate-on-scroll fade-up">
+          <h3>Our Process</h3>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-icon"></div>
+              <h4>1. Discovery Call</h4>
+              <p class="text-secondary text-sm">We define your aesthetic preferences, functional needs, and project budget.</p>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-icon"></div>
+              <h4>2. Concepts & Floorplans</h4>
+              <p class="text-secondary text-sm">We provide 2D layouts and mood boards for your initial review.</p>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-icon"></div>
+              <h4>3. 3D Renderings</h4>
+              <p class="text-secondary text-sm">Experience your space via photorealistic 3D virtual tours.</p>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-icon"></div>
+              <h4>4. Final Deliverables</h4>
+              <p class="text-secondary text-sm">Receive your exact shopping list, paint codes, and implementation guide.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Image Gallery -->
+        <div class="mt-5 animate-on-scroll fade-up">
+          <h3 class="mb-3">Gallery</h3>
+          <div class="grid grid-cols-2">
+            <img src="https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?w=400&h=300&fit=crop" style="border-radius:8px">
+            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&h=300&fit=crop" style="border-radius:8px">
+          </div>
+        </div>
+      </main>
+
+      <!-- Sidebar (1/3) -->
+      <aside class="sidebar-sticky animate-on-scroll fade-left delay-200">
+        <!-- Pricing Table -->
+        <div class="card mb-4">
+          <div class="card-body">
+            <h3 class="mb-3">Pricing Options</h3>
+            
+            <div class="pricing-tier">
+              <h4>Basic Consult</h4>
+              <p class="text-secondary text-sm mb-0">Floorplan + Moodboard</p>
+              <div class="mt-2 font-weight-bold" style="font-size: 1.25rem;">$499</div>
+            </div>
+            
+            <div class="pricing-tier popular">
+              <span class="popular-badge">Most Popular</span>
+              <h4>Full Room</h4>
+              <p class="text-secondary text-sm mb-0">3D Render + Shopping List</p>
+              <div class="mt-2 font-weight-bold" style="font-size: 1.25rem;">$999</div>
+            </div>
+
+            <div class="pricing-tier">
+              <h4>Whole Home</h4>
+              <p class="text-secondary text-sm mb-0">Entire property design</p>
+              <div class="mt-2 font-weight-bold" style="font-size: 1.25rem;">Custom</div>
+            </div>
+
+            <a href="contact.html" class="btn btn-primary d-block w-100" style="width: 100%; margin-top: var(--space-3);">Book a Free Call</a>
+          </div>
+        </div>
+
+        <!-- FAQ Accordion -->
+        <div class="card">
+          <div class="card-body">
+            <h4 class="mb-3">Frequently Asked</h4>
+            <div class="accordion-item">
+              <button class="accordion-btn">How long does it take? <svg class="icon-rotate" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></button>
+              <div class="accordion-content"><div class="accordion-inner text-sm">Typically 2-3 weeks for a standard room package.</div></div>
+            </div>
+            <div class="accordion-item">
+              <button class="accordion-btn">Can I use existing furniture? <svg class="icon-rotate" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></button>
+              <div class="accordion-content"><div class="accordion-inner text-sm">Yes, we can incorporate any pieces you wish to keep into the 3D model.</div></div>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+    <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h3 class="footer-heading" style="font-family: var(--font-heading); color: var(--color-primary); font-size: 1.5rem; font-weight: 700;">Aura</h3>
+          <p class="text-secondary mb-3">Redefining indoor spaces with bespoke virtual interior design architecture tailored for you.</p>
+          <div class="d-flex gap-2">
+            <!-- Social icons -->
+            <a href="#" class="icon-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
+            <a href="#" class="icon-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer-heading">Services</h4>
+          <ul class="footer-links">
+            <li><a href="service-details.html">Residential Design</a></li>
+            <li><a href="service-details.html">Commercial Spaces</a></li>
+            <li><a href="service-details.html">Kitchen & Bath</a></li>
+            <li><a href="pricing.html">Pricing Plans</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-heading">Company</h4>
+          <ul class="footer-links">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="blog.html">Journal</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="dashboard.html">Client Portal</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-heading">Contact</h4>
+          <ul class="footer-links">
+            <li><a href="mailto:hello@auradesign.com">hello@auradesign.com</a></li>
+            <li><a href="tel:+1234567890">+1 (234) 567-890</a></li>
+            <li><span class="text-secondary">123 Design Ave,<br>Los Angeles, CA 90028</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Aura. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/utils.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/animations.js"></script>
+  <script>
+    // Accordion Logic
+    document.querySelectorAll('.accordion-btn').forEach(button => {
+      button.addEventListener('click', () => {
+        const item = button.parentElement;
+        const content = button.nextElementSibling;
+        
+        item.classList.toggle('active');
+        if (item.classList.contains('active')) {
+          content.style.maxHeight = content.scrollHeight + 'px';
+        } else {
+          content.style.maxHeight = '0';
+        }
+      });
+    });
+  </script>
+</body>
+</html>

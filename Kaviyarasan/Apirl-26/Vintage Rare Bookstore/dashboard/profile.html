@@ -1,0 +1,154 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Profile — Dashboard | Vintage Rare Bookstore</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicons/favicon.svg">
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="stylesheet" href="../assets/css/dashboard.css">
+  <link rel="stylesheet" href="../assets/css/dark-mode.css">
+  <style>
+    .profile-layout { display: grid; grid-template-columns: 300px 1fr; gap: var(--space-xl); align-items: start; }
+    .profile-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--border-radius-lg); padding: var(--space-2xl); text-align: center; position: sticky; top: calc(72px + var(--space-lg)); }
+    .profile-avatar-wrap { position: relative; width: 96px; height: 96px; margin: 0 auto var(--space-lg); }
+    .profile-avatar-img { width: 96px; height: 96px; border-radius: 50%; border: 3px solid var(--accent); background: linear-gradient(135deg, var(--primary-light), var(--accent)); display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-size: 2.5rem; font-weight: 700; color: var(--text-primary); }
+    .avatar-edit-btn { position: absolute; bottom: 0; right: 0; width: 28px; height: 28px; background: var(--accent); border-radius: 50%; border: 2px solid var(--bg-primary); display: flex; align-items: center; justify-content: center; cursor: pointer; }
+    .profile-name { font-family: var(--font-heading); font-size: 1.25rem; font-weight: 700; margin-bottom: 4px; }
+    .profile-role-badge { display: inline-flex; align-items: center; gap: 6px; padding: 4px 14px; border-radius: 100px; background: rgba(212,175,55,0.12); color: var(--accent-hover); font-family: var(--font-ui); font-size: 0.8125rem; font-weight: 700; margin-bottom: var(--space-lg); }
+    .profile-stats { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-sm); margin-bottom: var(--space-xl); }
+    .p-stat { background: var(--bg-secondary); border-radius: var(--border-radius); padding: var(--space-md); text-align: center; }
+    .p-stat__num { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700; color: var(--accent); }
+    .p-stat__label { font-family: var(--font-ui); font-size: 0.75rem; color: var(--text-muted); }
+    .plan-badge { background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: #fff; border-radius: var(--border-radius); padding: var(--space-md) var(--space-lg); margin-bottom: var(--space-md); }
+    .plan-badge h4 { font-family: var(--font-ui); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; opacity: 0.8; margin-bottom: 4px; }
+    .plan-badge p { font-family: var(--font-heading); font-size: 1.25rem; font-weight: 700; margin: 0; }
+    .form-section-title { font-family: var(--font-heading); font-size: 1.125rem; font-weight: 700; color: var(--text-primary); margin-bottom: var(--space-lg); padding-bottom: var(--space-md); border-bottom: 1px solid var(--border); }
+    .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md); }
+    .order-history-item { display: grid; grid-template-columns: auto 1fr auto auto; gap: var(--space-md); align-items: center; padding: var(--space-md) 0; border-bottom: 1px solid var(--border); font-family: var(--font-ui); font-size: 0.875rem; }
+    .order-history-item:last-child { border-bottom: none; }
+    @media(max-width:1024px) { .profile-layout { grid-template-columns: 1fr; } .profile-card { position: static; } }
+    @media(max-width:640px) { .form-row-2 { grid-template-columns: 1fr; } .profile-stats { grid-template-columns: 1fr 1fr; } }
+  </style>
+</head>
+<body class="dashboard-body">
+  <div class="sidebar-overlay" aria-hidden="true"></div>
+  <aside class="sidebar" role="navigation" aria-label="Dashboard sidebar">
+    <div class="sidebar__header">
+      <a href="../index.html" class="sidebar__logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="36" height="36"><rect width="40" height="40" rx="7" fill="#8B4513"/><rect x="7" y="6" width="19" height="28" rx="2" fill="#D4AF37"/><rect x="9" y="8" width="15" height="24" rx="1" fill="#FDF8F0"/><rect x="11" y="13" width="11" height="1.5" rx="0.75" fill="#8B4513"/><rect x="27" y="8" width="6" height="24" rx="1" fill="#5D3A1A"/></svg><span class="sidebar__logo-text">VRB Dashboard</span></a>
+    </div>
+    <div class="sidebar__role-switcher"><button class="role-btn active" data-role="admin">Admin</button><button class="role-btn" data-role="user">User</button></div>
+    <nav class="sidebar__nav">
+      <ul class="sidebar-nav-list" role="list">
+        <li><a href="index.html" class="sidebar-nav-link"><svg class="sidebar-nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg><span>Dashboard</span></a></li>
+        <li><a href="users.html" class="sidebar-nav-link" data-role-section="admin"><svg class="sidebar-nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg><span>Users</span></a></li>
+        <li><a href="orders.html" class="sidebar-nav-link"><svg class="sidebar-nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/></svg><span>Orders</span></a></li>
+        <li><a href="messages.html" class="sidebar-nav-link"><svg class="sidebar-nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><span>Messages</span></a></li>
+        <li><a href="profile.html" class="sidebar-nav-link active"><svg class="sidebar-nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span>Profile</span></a></li>
+      </ul>
+      <div class="sidebar-section-label">Settings</div>
+      <ul class="sidebar-nav-list"><li><a href="../login.html" class="sidebar-nav-link"><svg class="sidebar-nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg><span>Logout</span></a></li></ul>
+    </nav>
+    <div class="sidebar__footer"><div class="sidebar-user"><div class="sidebar-user__avatar">C</div><div class="sidebar-user__info"><div class="sidebar-user__name">Dr. C. Hartley</div><div class="sidebar-user__role">Super Admin</div></div></div></div>
+  </aside>
+
+  <div class="dashboard-main">
+    <header class="dashboard-header">
+      <div class="dashboard-header__left">
+        <button id="sidebar-toggle" class="sidebar-toggle-btn" aria-label="Toggle sidebar"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+        <div><h1 style="font-size:1.25rem;margin:0;font-family:var(--font-heading)">My Profile</h1><div style="font-size:0.8125rem;color:var(--text-muted);font-family:var(--font-ui)">Manage your account details</div></div>
+      </div>
+      <div class="dashboard-header__right">
+        <button id="theme-toggle" class="nav-icon-btn dash-icon-btn" aria-label="Toggle theme"><svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/></svg></button>
+        <a href="../index.html" class="btn btn-outline btn-sm">← Back to Site</a>
+      </div>
+    </header>
+
+    <div class="dashboard-content">
+      <div class="profile-layout">
+        <!-- Profile Card (Left) -->
+        <div class="profile-card">
+          <div class="profile-avatar-wrap">
+            <div class="profile-avatar-img" id="avatar-preview">C</div>
+            <label class="avatar-edit-btn" for="avatar-input" aria-label="Change profile picture" style="cursor:pointer">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+            </label>
+            <input type="file" id="avatar-input" accept="image/*" style="display:none" aria-label="Upload profile picture">
+          </div>
+          <div class="profile-name">Dr. Catherine Hartley</div>
+          <div class="profile-role-badge">⭐ Super Admin</div>
+          <div class="profile-stats">
+            <div class="p-stat"><div class="p-stat__num" data-counter data-target="47">0</div><div class="p-stat__label">Orders</div></div>
+            <div class="p-stat"><div class="p-stat__num" data-counter data-target="12">0</div><div class="p-stat__label">Appraisals</div></div>
+            <div class="p-stat"><div class="p-stat__num" data-counter data-target="4">0</div><div class="p-stat__label">Restorations</div></div>
+            <div class="p-stat"><div class="p-stat__num">46</div><div class="p-stat__label">Yrs Member</div></div>
+          </div>
+          <div class="plan-badge">
+            <h4>Current Plan</h4>
+            <p>Connoisseur ✦</p>
+          </div>
+          <a href="../pricing.html" class="btn btn-outline btn-full btn-sm">Manage Plan</a>
+          <div style="margin-top:var(--space-lg);padding-top:var(--space-lg);border-top:1px solid var(--border)">
+            <div style="font-family:var(--font-ui);font-size:0.75rem;color:var(--text-muted);margin-bottom:var(--space-sm)">Member since</div>
+            <div style="font-family:var(--font-ui);font-size:0.9375rem;font-weight:600;color:var(--text-primary)">March 1978</div>
+          </div>
+        </div>
+
+        <!-- Profile forms (Right) -->
+        <div style="display:flex;flex-direction:column;gap:var(--space-xl)">
+          <!-- Personal Info -->
+          <div class="dashboard-widget">
+            <div class="form-section-title">Personal Information</div>
+            <form id="profile-form" novalidate>
+              <div class="form-row-2">
+                <div class="form-group"><label for="p-fname" class="form-label">First Name</label><input type="text" id="p-fname" class="form-input" value="Catherine"></div>
+                <div class="form-group"><label for="p-lname" class="form-label">Last Name</label><input type="text" id="p-lname" class="form-input" value="Hartley"></div>
+              </div>
+              <div class="form-row-2">
+                <div class="form-group"><label for="p-email" class="form-label">Email Address</label><input type="email" id="p-email" class="form-input" value="c.hartley@vintagerarebookstore.com"></div>
+                <div class="form-group"><label for="p-phone" class="form-label">Phone Number</label><input type="tel" id="p-phone" class="form-input" value="+44 (0)20 7946 0958"></div>
+              </div>
+              <div class="form-group"><label for="p-bio" class="form-label">Bio</label><textarea id="p-bio" class="form-input form-textarea" style="min-height:80px">Third-generation bibliophile and Chief Curator of Vintage Rare Bookstore. PhD in Book History from Oxford University. Specialising in Victorian literature and 20th-century first editions.</textarea></div>
+              <div class="form-group"><label for="p-website" class="form-label">Website</label><input type="url" id="p-website" class="form-input" value="https://vintagerarebookstore.com"></div>
+              <button type="submit" class="btn btn-accent">Save Changes</button>
+            </form>
+          </div>
+
+          <!-- Password -->
+          <div class="dashboard-widget">
+            <div class="form-section-title">Change Password</div>
+            <form novalidate>
+              <div class="form-group"><label for="p-current-pw" class="form-label">Current Password</label><input type="password" id="p-current-pw" class="form-input" placeholder="Enter current password"></div>
+              <div class="form-row-2">
+                <div class="form-group"><label for="p-new-pw" class="form-label">New Password</label><input type="password" id="p-new-pw" class="form-input" placeholder="Min. 8 characters"></div>
+                <div class="form-group"><label for="p-confirm-pw" class="form-label">Confirm New Password</label><input type="password" id="p-confirm-pw" class="form-input" placeholder="Repeat new password"></div>
+              </div>
+              <button type="submit" class="btn btn-outline">Update Password</button>
+            </form>
+          </div>
+
+          <!-- Order History -->
+          <div class="dashboard-widget">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--space-lg);padding-bottom:var(--space-md);border-bottom:1px solid var(--border)"><h3 style="font-family:var(--font-heading);font-size:1.125rem;margin:0">Order History</h3><a href="orders.html" class="btn btn-ghost btn-sm" style="font-size:0.8125rem">View All →</a></div>
+            <div class="order-history-item"><span class="badge badge-success">Completed</span><div><div style="font-weight:600;font-family:var(--font-ui);font-size:0.875rem">1st Ed. Mrs Dalloway (1925)</div><div style="font-size:0.75rem;color:var(--text-muted)">28 Apr 2024</div></div><span style="font-family:var(--font-ui);font-weight:700;color:var(--accent)">£2,400</span><a href="orders.html" class="action-btn">View</a></div>
+            <div class="order-history-item"><span class="badge badge-success">Completed</span><div><div style="font-weight:600;font-family:var(--font-ui);font-size:0.875rem">Illuminated MS — Appraisal Report</div><div style="font-size:0.75rem;color:var(--text-muted)">15 Mar 2024</div></div><span style="font-family:var(--font-ui);font-weight:700;color:var(--accent)">£250</span><a href="orders.html" class="action-btn">View</a></div>
+            <div class="order-history-item"><span class="badge badge-warning">Processing</span><div><div style="font-weight:600;font-family:var(--font-ui);font-size:0.875rem">Victorian Poetry — Full Restoration</div><div style="font-size:0.75rem;color:var(--text-muted)">02 Mar 2024</div></div><span style="font-family:var(--font-ui);font-weight:700;color:var(--accent)">£780</span><a href="orders.html" class="action-btn">View</a></div>
+          </div>
+
+          <!-- Danger Zone -->
+          <div class="dashboard-widget" style="border-color:rgba(239,68,68,0.3)">
+            <div class="form-section-title" style="color:var(--error)">Danger Zone</div>
+            <p style="font-size:0.9375rem;color:var(--text-secondary);margin-bottom:var(--space-lg)">Once you delete your account, there is no going back. Please be certain.</p>
+            <button class="btn btn-sm" style="border:2px solid var(--error);color:var(--error);background:none;padding:8px 20px;border-radius:var(--border-radius);font-family:var(--font-ui);font-weight:600;cursor:pointer" onclick="if(confirm('Are you sure? This cannot be undone.')) window.location.href='../login.html'">Delete Account</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../assets/js/main.js" defer></script>
+  <script src="../assets/js/animations.js" defer></script>
+  <script src="../assets/js/dashboard.js" defer></script>
+  <script src="../assets/js/forms.js" defer></script>
+</body>
+</html>
+

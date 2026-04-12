@@ -1,0 +1,138 @@
+/* dark-mode.css — Dark theme variable overrides */
+
+[data-theme="dark"] {
+  --color-bg: #0F172A;
+  --color-surface: #1E293B;
+  --color-border: #334155;
+  --color-text-primary: #F8FAFC;
+  --color-text-secondary: #94A3B8;
+  --color-text-muted: #64748B;
+
+  /* Slightly brighter primaries for dark bg */
+  --color-primary: #14B8BE;
+  --color-primary-light: #38D4DA;
+  --color-primary-dark: #0D7377;
+}
+
+[data-theme="dark"] .navbar {
+  background: rgba(15, 23, 42, 0.9);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+[data-theme="dark"] .navbar-link,
+[data-theme="dark"] .dropdown-toggle {
+  color: var(--color-text-secondary);
+}
+
+[data-theme="dark"] .navbar-brand {
+  color: #14B8BE;
+}
+
+[data-theme="dark"] .dropdown-menu {
+  background: var(--color-surface);
+  border-color: var(--color-border);
+}
+
+[data-theme="dark"] .dropdown-link {
+  color: var(--color-text-secondary);
+}
+
+[data-theme="dark"] .dropdown-link:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: #14B8BE;
+}
+
+[data-theme="dark"] .card,
+[data-theme="dark"] .chart-card,
+[data-theme="dark"] .table-card,
+[data-theme="dark"] .stat-card,
+[data-theme="dark"] .project-card,
+[data-theme="dark"] .sidebar-card,
+[data-theme="dark"] .blog-card,
+[data-theme="dark"] .contact-form-card {
+  background: var(--color-surface);
+  border-color: var(--color-border);
+}
+
+[data-theme="dark"] .form-control {
+  background: var(--color-surface);
+  border-color: var(--color-border);
+  color: var(--color-text-primary);
+}
+
+[data-theme="dark"] .form-control::placeholder {
+  color: var(--color-text-muted);
+}
+
+[data-theme="dark"] .btn-outline {
+  color: #14B8BE;
+  border-color: #14B8BE;
+}
+
+[data-theme="dark"] .footer,
+[data-theme="dark"] .footer-dark {
+  background: #071120;
+}
+
+[data-theme="dark"] .footer-links a {
+  color: var(--color-text-secondary);
+}
+
+[data-theme="dark"] .hero-about,
+[data-theme="dark"] .hero-services,
+[data-theme="dark"] .pricing-header {
+  background: var(--color-surface);
+}
+
+[data-theme="dark"] .dash-sidebar,
+[data-theme="dark"] .dash-header {
+  background: #1E293B;
+  border-color: var(--color-border);
+}
+
+[data-theme="dark"] .dash-wrapper {
+  background: var(--color-bg);
+}
+
+[data-theme="dark"] .data-table th {
+  background: var(--color-bg);
+  border-color: var(--color-border);
+}
+
+[data-theme="dark"] .data-table td {
+  border-color: var(--color-border);
+}
+
+[data-theme="dark"] .data-table tr:hover td {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+[data-theme="dark"] .compare-table th {
+  background: var(--color-surface);
+}
+
+[data-theme="dark"] .dash-search input {
+  background: var(--color-bg);
+  border-color: var(--color-border);
+  color: var(--color-text-primary);
+}
+
+[data-theme="dark"] .pricing-card {
+  background: var(--color-surface);
+  border-color: var(--color-border);
+}
+
+[data-theme="dark"] .testimonial-card {
+  background: var(--color-surface);
+}
+
+[data-theme="dark"] .hero {
+  background-image: linear-gradient(to right, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 100%),
+    url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1920&q=80');
+}
+
+/* Smooth transition for all theme changes */
+body,
+body * {
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}

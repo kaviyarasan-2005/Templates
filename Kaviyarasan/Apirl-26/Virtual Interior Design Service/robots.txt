@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+# Disallow admin and auth pages from indexing
+Disallow: /dashboard.html
+Disallow: /login.html
+Disallow: /register.html
+Disallow: /maintenance.html
+Disallow: /coming-soon.html
+
+Sitemap: https://auradesign.com/sitemap.xml

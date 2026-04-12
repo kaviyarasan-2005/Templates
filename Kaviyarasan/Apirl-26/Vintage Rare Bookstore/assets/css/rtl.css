@@ -1,0 +1,245 @@
+/* ==========================================================================
+   RTL (Right-To-Left) LAYOUT SUPPORT
+   Applied via dir="rtl" on <html>
+   ========================================================================== */
+
+[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+}
+
+/* ===== NAVIGATION RTL ===== */
+[dir="rtl"] .navbar__inner {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .navbar__nav {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .dropdown-menu {
+  left: auto;
+  right: 0;
+}
+
+[dir="rtl"] .navbar__actions {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .navbar__logo {
+  flex-direction: row-reverse;
+}
+
+/* Active nav underline */
+[dir="rtl"] .navbar__nav .nav-link.active::after {
+  left: auto;
+  right: 14px;
+}
+
+/* ===== MOBILE NAV RTL ===== */
+[dir="rtl"] .mobile-nav {
+  left: auto;
+  right: 0;
+  transform: translateX(100%);
+}
+[dir="rtl"] .mobile-nav.open {
+  transform: translateX(0);
+}
+
+[dir="rtl"] .mobile-nav__links .nav-link {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .mobile-sub-menu {
+  padding-left: 0;
+  padding-right: var(--space-md);
+}
+
+/* ===== FOOTER RTL ===== */
+[dir="rtl"] .footer__grid {
+  direction: rtl;
+}
+
+[dir="rtl"] .footer__bottom {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .footer__links a {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .footer__links a:hover {
+  padding-left: 0;
+  padding-right: 4px;
+}
+
+[dir="rtl"] .footer__social {
+  flex-direction: row-reverse;
+}
+
+/* ===== CARDS RTL ===== */
+[dir="rtl"] .card__link {
+  flex-direction: row-reverse;
+}
+[dir="rtl"] .card__link svg {
+  transform: scaleX(-1);
+}
+[dir="rtl"] .card__link:hover {
+  gap: 10px;
+}
+[dir="rtl"] .card__link:hover svg {
+  transform: scaleX(-1) translateX(3px);
+}
+
+/* ===== SECTION HEADERS RTL ===== */
+[dir="rtl"] .section-header .eyebrow::before,
+[dir="rtl"] .section-header .eyebrow::after {
+  /* Swap sides */
+}
+[dir="rtl"] .section-header .eyebrow::before {
+  right: auto;
+  left: 100%;
+  transform: translateX(calc(-1 * var(--space-sm)));
+}
+[dir="rtl"] .section-header .eyebrow::after {
+  left: auto;
+  right: 100%;
+  transform: translateX(var(--space-sm));
+}
+
+/* ===== FORMS RTL ===== */
+[dir="rtl"] .form-label { text-align: right; }
+[dir="rtl"] .form-group.floating .form-label {
+  left: auto;
+  right: 14px;
+}
+[dir="rtl"] .form-input,
+[dir="rtl"] .form-select,
+[dir="rtl"] .form-textarea {
+  text-align: right;
+}
+[dir="rtl"] .pw-toggle {
+  right: auto;
+  left: 14px;
+}
+[dir="rtl"] .form-error {
+  flex-direction: row-reverse;
+}
+
+/* ===== BREADCRUMB RTL ===== */
+[dir="rtl"] .breadcrumb {
+  flex-direction: row-reverse;
+}
+[dir="rtl"] .breadcrumb-sep {
+  transform: scaleX(-1);
+}
+
+/* ===== ACCORDION RTL ===== */
+[dir="rtl"] .accordion-trigger {
+  flex-direction: row-reverse;
+}
+
+/* ===== TESTIMONIALS RTL ===== */
+[dir="rtl"] .testimonial-author {
+  flex-direction: row-reverse;
+}
+[dir="rtl"] .testimonial-card::before {
+  left: auto;
+  right: var(--space-xl);
+  content: '"';
+}
+
+/* ===== TIMELINE RTL ===== */
+[dir="rtl"] .timeline::before {
+  left: auto;
+  right: 50%;
+  transform: translateX(50%);
+}
+
+[dir="rtl"] .timeline-item:nth-child(odd) .timeline-content {
+  margin-left: 0;
+  margin-right: 0;
+  text-align: right;
+  padding-right: 0;
+  padding-left: var(--space-2xl);
+}
+
+[dir="rtl"] .timeline-item:nth-child(even) .timeline-content {
+  text-align: left;
+  padding-left: 0;
+  padding-right: var(--space-2xl);
+}
+
+/* ===== DASHBOARD SIDEBAR RTL ===== */
+[dir="rtl"] .sidebar {
+  left: auto;
+  right: 0;
+}
+[dir="rtl"] .dash-main {
+  margin-left: 0;
+  margin-right: var(--sidebar-width);
+}
+[dir="rtl"] .sidebar.collapsed ~ .dash-main {
+  margin-right: var(--sidebar-collapsed-width);
+}
+
+[dir="rtl"] .sidebar-nav-link {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .sidebar-toggle {
+  left: auto;
+  right: calc(var(--sidebar-width) - 18px);
+}
+
+[dir="rtl"] .sidebar.collapsed + * + .dash-main .sidebar-toggle {
+  right: calc(var(--sidebar-collapsed-width) - 18px);
+}
+
+/* ===== GRIDS / FLEX RTL ===== */
+[dir="rtl"] .hero__ctas {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .navbar__actions .nav-icon-btn:first-child {
+  order: 2;
+}
+
+/* ===== HOVER UNDERLINE RTL ===== */
+[dir="rtl"] .hover-underline::after {
+  left: auto;
+  right: 0;
+}
+
+/* ===== CARD FOLD RTL ===== */
+[dir="rtl"] .card-fold::after {
+  right: auto;
+  left: 0;
+  border-width: 0 32px 32px 0;
+  border-color: transparent var(--border) transparent transparent;
+}
+[dir="rtl"] .card-fold:hover::after {
+  border-width: 0 48px 48px 0;
+  border-right-color: var(--accent);
+}
+
+/* ===== STAT BAR RTL ===== */
+[dir="rtl"] .stat-bar-fill {
+  background: linear-gradient(270deg, var(--primary-light), var(--accent));
+  float: right;
+}
+
+/* ===== SOCIAL BUTTONS RTL ===== */
+[dir="rtl"] .social-btn {
+  flex-direction: row-reverse;
+}
+
+/* ===== PAGINATION RTL ===== */
+[dir="rtl"] .pagination {
+  flex-direction: row-reverse;
+}
+
+/* ===== SCROLLBAR RTL ===== */
+[dir="rtl"] ::-webkit-scrollbar {
+  direction: rtl;
+}

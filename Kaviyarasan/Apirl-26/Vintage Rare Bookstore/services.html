@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services | Vintage Rare Bookstore — Book Appraisal, Restoration & More</title>
+  <meta name="description" content="Explore our comprehensive rare book services: expert appraisal, professional restoration, international sourcing, and archival conservation.">
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicons/favicon.svg">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <style>
+    .page-hero { background: linear-gradient(135deg, var(--primary-dark), var(--bg-dark)); padding: calc(var(--nav-height) + var(--space-4xl)) 0 var(--space-4xl); text-align: center; color: #fff; position: relative; overflow: hidden; }
+    .page-hero::after { content:''; position:absolute; inset:0; background:url('assets/images/backgrounds/hero-library.png') center/cover; opacity:0.08; }
+    .page-hero .container { position:relative; z-index:1; }
+    .page-hero h1 { color: #fff; }
+    .page-hero p { color:rgba(255,255,255,0.75); max-width:600px; margin:var(--space-md) auto 0; }
+    /* Filter pills */
+    .filter-bar { display:flex; gap:var(--space-sm); flex-wrap:wrap; margin-bottom:var(--space-2xl); }
+    .filter-pill { padding:8px 22px; border-radius:100px; font-family:var(--font-ui); font-size:0.875rem; font-weight:600; border:2px solid var(--border); background:none; color:var(--text-secondary); cursor:pointer; transition:all var(--transition-base); }
+    .filter-pill:hover, .filter-pill.active { border-color:var(--accent); background:var(--accent); color:var(--text-primary); }
+    /* Service card - tall */
+    .svc-card { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--border-radius-lg); overflow:hidden; transition:all var(--transition-slow); display:flex; flex-direction:column; }
+    .svc-card:hover { transform:translateY(-8px); box-shadow:var(--shadow-xl); border-color:rgba(212,175,55,0.3); }
+    .svc-card__img { aspect-ratio:16/9; overflow:hidden; position:relative; }
+    .svc-card__img img { width:100%; height:100%; object-fit:cover; transition:transform var(--transition-slow); }
+    .svc-card:hover .svc-card__img img { transform:scale(1.06); }
+    .svc-card__img-overlay { position:absolute; inset:0; background:linear-gradient(to top, rgba(26,20,16,0.6), transparent); opacity:0; transition:opacity var(--transition-base); display:flex; align-items:center; justify-content:center; }
+    .svc-card:hover .svc-card__img-overlay { opacity:1; }
+    .svc-card__body { padding:var(--space-xl); flex:1; display:flex; flex-direction:column; }
+    .svc-card__tag { display:inline-block; padding:4px 12px; border-radius:100px; font-family:var(--font-ui); font-size:0.75rem; font-weight:700; letter-spacing:0.05em; text-transform:uppercase; background:rgba(212,175,55,0.12); color:var(--accent-hover); margin-bottom:var(--space-sm); }
+    .svc-card__title { font-family:var(--font-heading); font-size:1.25rem; font-weight:700; margin-bottom:var(--space-sm); }
+    .svc-card__text { font-size:0.9375rem; color:var(--text-secondary); line-height:1.7; margin-bottom:var(--space-lg); flex:1; }
+    .svc-card__footer { display:flex; justify-content:space-between; align-items:center; margin-top:auto; }
+    .price-badge { font-family:var(--font-ui); font-size:0.8125rem; font-weight:600; color:var(--text-muted); }
+    .services-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:var(--space-xl); }
+    @media(max-width:1024px) { .services-grid { grid-template-columns:repeat(2,1fr); } }
+    @media(max-width:640px) { .services-grid { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <header class="navbar" role="banner">
+    <div class="container"><div class="navbar__inner">
+      <a href="index.html" class="navbar__logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40"><rect width="40" height="40" rx="7" fill="#8B4513"/><rect x="7" y="6" width="19" height="28" rx="2" fill="#D4AF37"/><rect x="9" y="8" width="15" height="24" rx="1" fill="#FDF8F0"/><rect x="11" y="13" width="11" height="1.5" rx="0.75" fill="#8B4513"/><rect x="27" y="8" width="6" height="24" rx="1" fill="#5D3A1A"/></svg><span class="navbar__logo-text">Vintage Rare Bookstore</span></a>
+      <ul class="navbar__nav" role="list">
+        <li class="nav-item has-dropdown"><a href="index.html" class="nav-link">Home <svg class="nav-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><polyline points="6 9 12 15 18 9"/></svg></a><ul class="dropdown-menu"><li><a href="index.html">General Services</a></li><li><a href="home-saas.html">SaaS / Agency</a></li></ul></li>
+        <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+        <li class="nav-item"><a href="services.html" class="nav-link active">Services</a></li>
+        <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+        <li class="nav-item"><a href="pricing.html" class="nav-link">Pricing</a></li>
+        <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+        <li class="nav-item has-dropdown"><a href="dashboard/index.html" class="nav-link">Dashboard <svg class="nav-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><polyline points="6 9 12 15 18 9"/></svg></a><ul class="dropdown-menu"><li><a href="dashboard/index.html">Admin View</a></li><li><a href="dashboard/profile.html">User View</a></li></ul></li>
+      </ul>
+      <div class="navbar__actions">
+        <button id="rtl-toggle" class="nav-icon-btn" aria-label="Toggle RTL"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></button>
+        <button id="theme-toggle" class="nav-icon-btn" aria-label="Toggle theme"><svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/></svg></button>
+        <a href="login.html" class="btn btn-primary btn-sm">Login</a>
+        <button id="hamburger" class="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      </div>
+    </div></div>
+  </header>
+  <nav id="mobile-nav" class="mobile-nav"><ul class="mobile-nav__links"><li><a href="index.html" class="nav-link">Home</a></li><li><a href="about.html" class="nav-link">About</a></li><li><a href="services.html" class="nav-link active">Services</a></li><li><a href="blog.html" class="nav-link">Blog</a></li><li><a href="pricing.html" class="nav-link">Pricing</a></li><li><a href="contact.html" class="nav-link">Contact</a></li></ul><div class="mobile-nav__footer"><a href="login.html" class="btn btn-primary btn-full">Login</a></div></nav>
+
+  <main id="main-content">
+    <div class="page-hero">
+      <div class="container">
+        <nav aria-label="Breadcrumb"><ul class="breadcrumb" style="justify-content:center;margin-bottom:var(--space-lg)"><li><a href="index.html" style="color:rgba(255,255,255,0.6)">Home</a></li><li><svg class="breadcrumb-sep" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></li><li>Services</li></ul></nav>
+        <h1 class="reveal">Our Services</h1>
+        <p class="reveal">Expert care for the world's most precious books — from discovery to preservation.</p>
+      </div>
+    </div>
+
+    <section class="section" id="main-content">
+      <div class="container">
+        <!-- Filter -->
+        <div class="filter-bar reveal" role="group" aria-label="Filter services">
+          <button class="filter-pill active" data-filter="all">All Services</button>
+          <button class="filter-pill" data-filter="appraisal">Appraisal</button>
+          <button class="filter-pill" data-filter="restoration">Restoration</button>
+          <button class="filter-pill" data-filter="sourcing">Sourcing</button>
+          <button class="filter-pill" data-filter="conservation">Conservation</button>
+        </div>
+        <div class="services-grid stagger-children">
+          <article class="svc-card reveal" data-category="appraisal" id="service-appraisal">
+            <div class="svc-card__img"><img src="assets/images/books/appraisal.png" alt="Book appraisal service" loading="lazy"><div class="svc-card__img-overlay"><a href="service-details.html" class="btn btn-accent btn-sm">View Details</a></div></div>
+            <div class="svc-card__body"><span class="svc-card__tag">Appraisal</span><h2 class="svc-card__title">Book Appraisal</h2><p class="svc-card__text">Professionally documented valuations by certified bibliographers for insurance, estate settlement, or sale purposes. Includes provenance research and condition reports.</p><div class="svc-card__footer"><span class="price-badge">From £150/volume</span><a href="service-details.html" class="card__link">Learn More <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a></div></div>
+          </article>
+          <article class="svc-card reveal" data-category="restoration" id="service-restoration">
+            <div class="svc-card__img"><img src="assets/images/books/restoration.png" alt="Book restoration service" loading="lazy"><div class="svc-card__img-overlay"><a href="service-details.html" class="btn btn-accent btn-sm">View Details</a></div></div>
+            <div class="svc-card__body"><span class="svc-card__tag">Restoration</span><h2 class="svc-card__title">Book Restoration</h2><p class="svc-card__text">Master bookbinders breathe new life into damaged volumes using historically accurate techniques, period-appropriate materials, and archival-quality adhesives.</p><div class="svc-card__footer"><span class="price-badge">From £250/volume</span><a href="service-details.html" class="card__link">Learn More <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a></div></div>
+          </article>
+          <article class="svc-card reveal" data-category="sourcing" id="service-sourcing">
+            <div class="svc-card__img"><img src="assets/images/books/books-collection.png" alt="Book sourcing service" loading="lazy"><div class="svc-card__img-overlay"><a href="service-details.html" class="btn btn-accent btn-sm">View Details</a></div></div>
+            <div class="svc-card__body"><span class="svc-card__tag">Sourcing</span><h2 class="svc-card__title">Book Sourcing</h2><p class="svc-card__text">Our global network of 200+ dealers, auction houses, and private collectors enables us to locate virtually any rare or out-of-print title within weeks.</p><div class="svc-card__footer"><span class="price-badge">Commission-based</span><a href="service-details.html" class="card__link">Learn More <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a></div></div>
+          </article>
+          <article class="svc-card reveal" data-category="conservation" id="service-conservation">
+            <div class="svc-card__img"><img src="assets/images/backgrounds/bookstore-interior.png" alt="Book conservation service" loading="lazy"><div class="svc-card__img-overlay"><a href="service-details.html" class="btn btn-accent btn-sm">View Details</a></div></div>
+            <div class="svc-card__body"><span class="svc-card__tag">Conservation</span><h2 class="svc-card__title">Conservation</h2><p class="svc-card__text">Archival-quality storage solutions, climate-controlled recommendations, and ongoing preservation consultations to protect your collection for generations.</p><div class="svc-card__footer"><span class="price-badge">From £95/consultation</span><a href="service-details.html" class="card__link">Learn More <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a></div></div>
+          </article>
+          <article class="svc-card reveal" data-category="appraisal sourcing" id="service-estate">
+            <div class="svc-card__img"><img src="assets/images/books/appraisal.png" alt="Estate services" loading="lazy" style="filter:sepia(0.3);"><div class="svc-card__img-overlay"><a href="service-details.html" class="btn btn-accent btn-sm">View Details</a></div></div>
+            <div class="svc-card__body"><span class="svc-card__tag">Estate Services</span><h2 class="svc-card__title">Estate & Collection Management</h2><p class="svc-card__text">Comprehensive management of inherited or acquired collections — appraisal, cataloguing, selective selling, and long-term preservation strategy.</p><div class="svc-card__footer"><span class="price-badge">Custom pricing</span><a href="service-details.html" class="card__link">Learn More <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a></div></div>
+          </article>
+          <article class="svc-card reveal" data-category="restoration conservation" id="service-binding">
+            <div class="svc-card__img"><img src="assets/images/books/restoration.png" alt="Custom binding service" loading="lazy" style="filter:hue-rotate(30deg);"><div class="svc-card__img-overlay"><a href="service-details.html" class="btn btn-accent btn-sm">View Details</a></div></div>
+            <div class="svc-card__body"><span class="svc-card__tag">Bookbinding</span><h2 class="svc-card__title">Custom Bookbinding</h2><p class="svc-card__text">Bespoke hand-binding services for manuscripts, journals, family genealogies, and luxury editions. Choose from full leather, half-leather, or cloth bindings.</p><div class="svc-card__footer"><span class="price-badge">From £180/volume</span><a href="service-details.html" class="card__link">Learn More <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a></div></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-parallax"><div class="cta-parallax__bg"></div><div class="container"><div class="cta-parallax__content reveal"><h2>Not Sure Which Service You Need?</h2><p>Our experts are happy to provide a free 30-minute consultation to assess your collection and recommend the best path forward.</p><a href="contact.html" class="btn btn-shimmer btn-lg">Book Free Consultation</a></div></div></section>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand"><a href="index.html" class="navbar__logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40"><rect width="40" height="40" rx="7" fill="#D4AF37"/><rect x="7" y="6" width="19" height="28" rx="2" fill="#8B4513"/><rect x="9" y="8" width="15" height="24" rx="1" fill="#FDF8F0"/><rect x="11" y="13" width="11" height="1.5" rx="0.75" fill="#5D3A1A"/><rect x="27" y="8" width="6" height="24" rx="1" fill="#5D3A1A"/></svg><span class="navbar__logo-text">Vintage Rare Bookstore</span></a><p class="footer__tagline">Preserving the world's literary heritage since 1978.</p></div>
+        <div><h3 class="footer__heading">Explore</h3><ul class="footer__links"><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="services.html">Services</a></li><li><a href="pricing.html">Pricing</a></li></ul></div>
+        <div><h3 class="footer__heading">Services</h3><ul class="footer__links"><li><a href="service-details.html">Appraisal</a></li><li><a href="service-details.html">Restoration</a></li><li><a href="service-details.html">Sourcing</a></li><li><a href="service-details.html">Conservation</a></li></ul></div>
+        <div><h3 class="footer__heading">Contact</h3><ul class="footer__links"><li><a href="contact.html">Get in Touch</a></li><li><a href="#">Privacy Policy</a></li></ul></div>
+      </div>
+      <div class="footer__bottom"><p>© 2024 Vintage Rare Bookstore.</p></div>
+    </div>
+  </footer>
+  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/animations.js" defer></script>
+  <script src="assets/js/rtl-ltr.js" defer></script>
+</body>
+</html>

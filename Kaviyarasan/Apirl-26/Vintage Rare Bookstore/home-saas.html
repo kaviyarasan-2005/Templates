@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home — SaaS & Agency | Vintage Rare Bookstore</title>
+  <meta name="description" content="Curate. Collect. Connect. Vintage Rare Bookstore's platform for book collectors, institutions, and literary professionals.">
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicons/favicon.svg">
+  <meta name="theme-color" content="#8B4513">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <style>
+    /* SaaS Hero - Split Layout */
+    .saas-hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 55% 45%;
+      align-items: center;
+      background: var(--cream);
+      padding-top: var(--nav-height);
+      overflow: hidden;
+    }
+    [data-theme="dark"] .saas-hero { background: var(--bg-primary); }
+    .saas-hero__left { padding: var(--space-4xl) var(--space-4xl) var(--space-4xl) 0; padding-left: max(var(--space-xl), calc((100vw - 1280px) / 2 + var(--space-lg))); }
+    .saas-hero__right { position: relative; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(139,69,19,0.08), rgba(212,175,55,0.12)); min-height: 100vh; overflow: hidden; }
+    .saas-eyebrow { display: inline-flex; align-items: center; gap: var(--space-sm); padding: 6px 16px; background: rgba(212,175,55,0.12); border: 1px solid rgba(212,175,55,0.3); border-radius: 100px; font-family: var(--font-ui); font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent-hover); margin-bottom: var(--space-xl); }
+    .saas-hero__title { font-size: clamp(2.5rem, 5vw, 3.5rem); line-height: 1.1; margin-bottom: var(--space-xl); }
+    .saas-hero__subtitle { font-size: 1.125rem; color: var(--text-secondary); max-width: 520px; line-height: 1.7; margin-bottom: var(--space-2xl); }
+    .saas-hero__metrics { display: flex; gap: var(--space-xl); margin-bottom: var(--space-2xl); flex-wrap: wrap; }
+    .saas-metric { display: flex; flex-direction: column; }
+    .saas-metric__num { font-family: var(--font-heading); font-size: 1.75rem; font-weight: 700; color: var(--accent); }
+    .saas-metric__label { font-family: var(--font-ui); font-size: 0.8125rem; color: var(--text-muted); }
+    /* Right side - animated book stack */
+    .book-stack { position: relative; width: 340px; height: 400px; }
+    .stacked-book { position: absolute; border-radius: 4px 12px 12px 4px; box-shadow: var(--shadow-lg); }
+    .stacked-book--1 { width: 200px; height: 260px; background: linear-gradient(to right, #5D3A1A 0%, #5D3A1A 10%, #8B4513 10%); bottom: 80px; left: 60px; transform: rotate(-8deg); animation: floatBook 12s ease-in-out infinite; }
+    .stacked-book--2 { width: 220px; height: 280px; background: linear-gradient(to right, #2E4A4E 0%, #2E4A4E 10%, #3D6B70 10%); bottom: 60px; left: 80px; transform: rotate(-3deg); animation: floatBook 14s ease-in-out infinite 2s; }
+    .stacked-book--3 { width: 210px; height: 270px; background: linear-gradient(to right, #4A2E50 0%, #4A2E50 10%, #6B3F7A 10%); bottom: 50px; left: 70px; transform: rotate(4deg); animation: floatBook 16s ease-in-out infinite 4s; }
+    .stacked-book--4 { width: 230px; height: 290px; background: linear-gradient(to right, #1A3A1A 0%, #1A3A1A 10%, #2E5A2E 10%); bottom: 40px; left: 50px; transform: rotate(1deg); animation: floatBook 18s ease-in-out infinite 1s; }
+    /* Floating UI cards */
+    .float-card { position: absolute; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--border-radius-lg); padding: var(--space-md) var(--space-lg); box-shadow: var(--shadow-xl); animation: floatBook 8s ease-in-out infinite; font-family: var(--font-ui); font-size: 0.8125rem; }
+    .float-card--1 { top: 15%; right: 5%; animation-delay: 0s; }
+    .float-card--2 { bottom: 25%; left: 2%; animation-delay: -3s; }
+    .float-card--3 { top: 55%; right: 8%; animation-delay: -6s; }
+    /* Zigzag Features */
+    .zigzag-item { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3xl); align-items: center; margin-bottom: var(--space-4xl); }
+    .zigzag-item:nth-child(even) .zigzag-img { order: 2; }
+    .zigzag-item:nth-child(even) .zigzag-text { order: 1; }
+    .zigzag-img { border-radius: var(--border-radius-lg); overflow: hidden; box-shadow: var(--shadow-xl); aspect-ratio: 4/3; }
+    .zigzag-img img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--transition-slow); }
+    .zigzag-img:hover img { transform: scale(1.04); }
+    .zigzag-tag { display: inline-block; padding: 4px 14px; border-radius: 100px; background: rgba(212,175,55,0.12); color: var(--accent-hover); font-family: var(--font-ui); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: var(--space-md); }
+    .zigzag-text h3 { font-size: 1.875rem; margin-bottom: var(--space-md); }
+    .zigzag-text p { font-size: 1rem; line-height: 1.8; margin-bottom: var(--space-lg); }
+    /* Pricing mini cards (teaser) */
+    .pricing-teaser-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-lg); }
+    .pricing-mini { background: var(--bg-card); border: 2px solid var(--border); border-radius: var(--border-radius-lg); padding: var(--space-2xl) var(--space-xl); text-align: center; transition: all 0.3s ease; position: relative; }
+    .pricing-mini.featured { border-color: var(--accent); box-shadow: var(--shadow-gold), var(--shadow-lg); transform: translateY(-12px); }
+    .pricing-mini.featured::before { content: 'Most Popular'; position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--accent); color: var(--text-primary); font-family: var(--font-ui); font-size: 0.75rem; font-weight: 700; padding: 4px 16px; border-radius: 100px; white-space: nowrap; }
+    .pricing-mini:hover:not(.featured) { border-color: var(--primary-light); transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .pricing-mini__tier { font-family: var(--font-ui); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent-hover); margin-bottom: var(--space-sm); }
+    .pricing-mini__price { font-family: var(--font-heading); font-size: 2.5rem; font-weight: 700; color: var(--text-primary); line-height: 1; margin-bottom: var(--space-xs); }
+    .pricing-mini__period { font-family: var(--font-ui); font-size: 0.875rem; color: var(--text-muted); margin-bottom: var(--space-lg); }
+    .pricing-mini__features { list-style: none; text-align: left; margin-bottom: var(--space-xl); font-family: var(--font-ui); font-size: 0.875rem; display: flex; flex-direction: column; gap: var(--space-sm); }
+    .pricing-mini__features li::before { content: '✓ '; color: var(--success); font-weight: 700; }
+    /* Partners marquee */
+    .partner-logo { display: flex; align-items: center; justify-content: center; padding: var(--space-md) var(--space-2xl); font-family: var(--font-heading); font-size: 1.125rem; font-weight: 700; color: var(--text-muted); opacity: 0.6; transition: opacity var(--transition-base); white-space: nowrap; }
+    .partner-logo:hover { opacity: 1; color: var(--primary); }
+    /* Pricing toggle */
+    .billing-toggle { display: flex; align-items: center; justify-content: center; gap: var(--space-md); margin-bottom: var(--space-3xl); }
+    .billing-toggle label { font-family: var(--font-ui); font-size: 0.9375rem; font-weight: 600; color: var(--text-secondary); cursor: pointer; }
+    .toggle-switch { width: 50px; height: 26px; border-radius: 13px; background: var(--border); border: none; cursor: pointer; position: relative; transition: background var(--transition-base); }
+    .toggle-switch::after { content: ''; position: absolute; top: 3px; left: 3px; width: 20px; height: 20px; border-radius: 50%; background: #fff; box-shadow: var(--shadow-sm); transition: transform var(--transition-base); }
+    .toggle-switch.annual { background: var(--accent); }
+    .toggle-switch.annual::after { transform: translateX(24px); }
+    .save-badge { background: var(--success); color: #fff; font-size: 0.75rem; font-weight: 700; padding: 2px 10px; border-radius: 100px; font-family: var(--font-ui); }
+    @media (max-width: 1024px) {
+      .saas-hero { grid-template-columns: 1fr; min-height: auto; }
+      .saas-hero__right { min-height: 400px; padding: var(--space-2xl); }
+      .saas-hero__left { padding: var(--space-2xl); }
+      .zigzag-item { grid-template-columns: 1fr; }
+      .zigzag-item:nth-child(even) .zigzag-img,
+      .zigzag-item:nth-child(even) .zigzag-text { order: unset; }
+      .pricing-teaser-grid { grid-template-columns: 1fr; }
+      .pricing-mini.featured { transform: none; }
+    }
+    @media (max-width: 640px) {
+      .book-stack { width: 260px; height: 300px; }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- NAVBAR -->
+  <header class="navbar" role="banner">
+    <div class="container">
+      <div class="navbar__inner">
+        <a href="index.html" class="navbar__logo" aria-label="Vintage Rare Bookstore — Home">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40" aria-hidden="true"><rect width="40" height="40" rx="7" fill="#8B4513"/><rect x="7" y="6" width="19" height="28" rx="2" fill="#D4AF37"/><rect x="9" y="8" width="15" height="24" rx="1" fill="#FDF8F0"/><rect x="11" y="13" width="11" height="1.5" rx="0.75" fill="#8B4513"/><rect x="11" y="16.5" width="9" height="1.5" rx="0.75" fill="#8B4513"/><rect x="27" y="8" width="6" height="24" rx="1" fill="#5D3A1A"/></svg>
+          <span class="navbar__logo-text">Vintage Rare Bookstore</span>
+        </a>
+        <ul class="navbar__nav" role="list">
+          <li class="nav-item has-dropdown"><a href="#" class="nav-link active">Home <svg class="nav-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></a>
+            <ul class="dropdown-menu" role="menu"><li><a href="index.html">🏠 General Services</a></li><li><a href="home-saas.html">🚀 SaaS / Agency</a></li></ul>
+          </li>
+          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+          <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
+          <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+          <li class="nav-item"><a href="pricing.html" class="nav-link">Pricing</a></li>
+          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+          <li class="nav-item has-dropdown"><a href="dashboard/index.html" class="nav-link">Dashboard <svg class="nav-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></a>
+            <ul class="dropdown-menu" role="menu"><li><a href="dashboard/index.html">⚙️ Admin View</a></li><li><a href="dashboard/profile.html">👤 User View</a></li></ul>
+          </li>
+        </ul>
+        <div class="navbar__actions">
+          <button id="rtl-toggle" class="nav-icon-btn" aria-label="Toggle RTL layout"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></button>
+          <button id="theme-toggle" class="nav-icon-btn" aria-label="Toggle theme"><svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button>
+          <a href="login.html" class="btn btn-primary btn-sm">Login</a>
+          <button id="hamburger" class="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+        </div>
+      </div>
+    </div>
+  </header>
+  <nav id="mobile-nav" class="mobile-nav">
+    <ul class="mobile-nav__links">
+      <li><a href="index.html" class="nav-link">Home — General</a></li>
+      <li><a href="home-saas.html" class="nav-link active">Home — SaaS</a></li>
+      <li><a href="about.html" class="nav-link">About</a></li>
+      <li><a href="services.html" class="nav-link">Services</a></li>
+      <li><a href="pricing.html" class="nav-link">Pricing</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+    </ul>
+    <div class="mobile-nav__footer"><a href="login.html" class="btn btn-primary btn-full">Login</a></div>
+  </nav>
+
+  <main id="main-content">
+    <!-- SAAS HERO -->
+    <section class="saas-hero" aria-label="Hero">
+      <!-- Left text -->
+      <div class="saas-hero__left">
+        <div class="saas-eyebrow reveal">✦ The Platform for Book Collectors</div>
+        <h1 class="saas-hero__title reveal">
+          <span data-typewriter="Curate.|Collect.|Connect.|Discover."></span>
+        </h1>
+        <p class="saas-hero__subtitle reveal">A sophisticated platform that connects rare book collectors, dealers, and institutions — powered by decades of expertise and a passion for literary heritage.</p>
+        <div class="saas-hero__metrics reveal">
+          <div class="saas-metric"><span class="saas-metric__num" data-counter data-target="46" data-suffix="+">0+</span><span class="saas-metric__label">Years Experience</span></div>
+          <div class="saas-metric"><span class="saas-metric__num" data-counter data-target="24500" data-suffix="+">0+</span><span class="saas-metric__label">Books Curated</span></div>
+          <div class="saas-metric"><span class="saas-metric__num" data-counter data-target="98" data-suffix="%">0%</span><span class="saas-metric__label">Satisfied Clients</span></div>
+        </div>
+        <div style="display:flex;gap:var(--space-md);flex-wrap:wrap" class="reveal">
+          <a href="register.html" class="btn btn-accent btn-lg">Start Free Trial</a>
+          <a href="pricing.html" class="btn btn-outline btn-lg">View Pricing</a>
+        </div>
+      </div>
+      <!-- Right visual -->
+      <div class="saas-hero__right">
+        <div class="book-stack" aria-hidden="true">
+          <div class="stacked-book stacked-book--1"></div>
+          <div class="stacked-book stacked-book--2"></div>
+          <div class="stacked-book stacked-book--3"></div>
+          <div class="stacked-book stacked-book--4"></div>
+        </div>
+        <!-- Floating UI cards -->
+        <div class="float-card float-card--1" aria-hidden="true">
+          <div style="font-weight:700;color:var(--success);font-size:1rem;margin-bottom:2px">📈 +24%</div>
+          <div style="color:var(--text-muted);font-size:0.75rem">Collection value this month</div>
+        </div>
+        <div class="float-card float-card--2" aria-hidden="true">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">
+            <div style="width:10px;height:10px;border-radius:50%;background:var(--success)"></div>
+            <span style="font-weight:600;font-size:0.8125rem">New Rare Find</span>
+          </div>
+          <div style="color:var(--text-muted);font-size:0.75rem">1st Ed. Ulysses — £12,400</div>
+        </div>
+        <div class="float-card float-card--3" aria-hidden="true">
+          <div style="font-size:0.75rem;color:var(--text-muted);margin-bottom:4px">⭐ ⭐ ⭐ ⭐ ⭐</div>
+          <div style="font-weight:600;font-size:0.8125rem">"Finest appraisal service"</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ZIGZAG FEATURES -->
+    <section class="section" style="background:var(--bg-secondary)" aria-labelledby="features-zz">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="eyebrow">How It Works</span>
+          <h2 id="features-zz">Everything You Need to Build Your Collection</h2>
+          <p>Our platform combines decades of expertise with modern tools to help you curate, acquire, and protect rare books.</p>
+        </div>
+        <div class="zigzag-item">
+          <div class="zigzag-img reveal-left">
+            <img src="assets/images/books/appraisal.png" alt="Expert book appraisal service" loading="lazy">
+          </div>
+          <div class="zigzag-text reveal-right">
+            <span class="zigzag-tag">Step 01</span>
+            <h3>Discover & Identify</h3>
+            <p>Our certified specialists identify and authenticate rare volumes from your collection or from our curated marketplace. Every item is thoroughly documented with provenance research.</p>
+            <a href="service-details.html" class="btn btn-outline">Learn About Appraisal</a>
+          </div>
+        </div>
+        <div class="zigzag-item">
+          <div class="zigzag-text reveal-left">
+            <span class="zigzag-tag">Step 02</span>
+            <h3>Restore & Preserve</h3>
+            <p>Damaged or aged volumes are transformed by our master bookbinders using historically accurate techniques. Our conservation department ensures every piece meets archival standards.</p>
+            <a href="service-details.html" class="btn btn-outline">Learn About Restoration</a>
+          </div>
+          <div class="zigzag-img reveal-right">
+            <img src="assets/images/books/restoration.png" alt="Book restoration workshop" loading="lazy">
+          </div>
+        </div>
+        <div class="zigzag-item">
+          <div class="zigzag-img reveal-left">
+            <img src="assets/images/books/books-collection.png" alt="Rare book collection" loading="lazy">
+          </div>
+          <div class="zigzag-text reveal-right">
+            <span class="zigzag-tag">Step 03</span>
+            <h3>Collect & Connect</h3>
+            <p>Build relationships with fellow collectors, institutions, and dealers through our exclusive network. Access private sales, auction previews, and collector events worldwide.</p>
+            <a href="register.html" class="btn btn-outline">Join Our Network</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICING TEASER -->
+    <section class="section" aria-labelledby="pricing-heading">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="eyebrow">Pricing</span>
+          <h2 id="pricing-heading">Simple, Transparent Plans</h2>
+          <p>Choose the membership level that matches your collecting ambitions.</p>
+        </div>
+        <div class="billing-toggle reveal">
+          <label for="billing-switch">Monthly</label>
+          <button id="billing-switch" class="toggle-switch" role="switch" aria-checked="false" aria-label="Toggle annual billing"></button>
+          <label for="billing-switch">Annual</label>
+          <span class="save-badge">Save 20%</span>
+        </div>
+        <div class="pricing-teaser-grid stagger-children">
+          <div class="pricing-mini reveal">
+            <div class="pricing-mini__tier">Collector</div>
+            <div class="pricing-mini__price" data-monthly="29" data-annual="23">£29</div>
+            <div class="pricing-mini__period">per month</div>
+            <ul class="pricing-mini__features">
+              <li>5 appraisals/year</li>
+              <li>Marketplace access</li>
+              <li>Monthly newsletter</li>
+              <li>Email support</li>
+            </ul>
+            <a href="pricing.html" class="btn btn-outline btn-full">Get Started</a>
+          </div>
+          <div class="pricing-mini featured reveal">
+            <div class="pricing-mini__tier">Curator</div>
+            <div class="pricing-mini__price" data-monthly="79" data-annual="63">£79</div>
+            <div class="pricing-mini__period">per month</div>
+            <ul class="pricing-mini__features">
+              <li>20 appraisals/year</li>
+              <li>Priority sourcing</li>
+              <li>Restoration discounts</li>
+              <li>Private sale access</li>
+              <li>Dedicated advisor</li>
+            </ul>
+            <a href="pricing.html" class="btn btn-accent btn-full">Get Started</a>
+          </div>
+          <div class="pricing-mini reveal">
+            <div class="pricing-mini__tier">Connoisseur</div>
+            <div class="pricing-mini__price" data-monthly="199" data-annual="159">£199</div>
+            <div class="pricing-mini__period">per month</div>
+            <ul class="pricing-mini__features">
+              <li>Unlimited appraisals</li>
+              <li>White-glove sourcing</li>
+              <li>Complimentary restoration</li>
+              <li>Exclusive auction access</li>
+              <li>Account manager</li>
+              <li>Annual collection review</li>
+            </ul>
+            <a href="pricing.html" class="btn btn-primary btn-full">Get Started</a>
+          </div>
+        </div>
+        <div class="text-center mt-xl reveal"><a href="pricing.html" class="btn btn-ghost">View Full Pricing Details →</a></div>
+      </div>
+    </section>
+
+    <!-- PARTNERS MARQUEE -->
+    <section class="section-sm" style="background:var(--bg-secondary);overflow:hidden" aria-label="Our partners">
+      <div class="container">
+        <div class="section-header reveal" style="margin-bottom:var(--space-xl)">
+          <span class="eyebrow">Trusted By</span>
+          <h2>Our Partner Network</h2>
+        </div>
+      </div>
+      <div class="marquee-wrapper">
+        <div class="marquee-track">
+          <span class="partner-logo">📚 Christie's Books</span>
+          <span class="partner-logo">🏛 British Library</span>
+          <span class="partner-logo">🔨 Bonhams Auctioneers</span>
+          <span class="partner-logo">📖 Sotheby's Rare Books</span>
+          <span class="partner-logo">🎓 Oxford University Press</span>
+          <span class="partner-logo">📜 Bodleian Library</span>
+          <span class="partner-logo">🏅 ABA Members</span>
+          <span class="partner-logo">📚 Christie's Books</span>
+          <span class="partner-logo">🏛 British Library</span>
+          <span class="partner-logo">🔨 Bonhams Auctioneers</span>
+          <span class="partner-logo">📖 Sotheby's Rare Books</span>
+          <span class="partner-logo">🎓 Oxford University Press</span>
+          <span class="partner-logo">📜 Bodleian Library</span>
+          <span class="partner-logo">🏅 ABA Members</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-parallax" aria-labelledby="saas-cta">
+      <div class="cta-parallax__bg" aria-hidden="true"></div>
+      <div class="container">
+        <div class="cta-parallax__content reveal">
+          <span class="hero__eyebrow">Join Today</span>
+          <h2 id="saas-cta">Start Your Free 14-Day Trial</h2>
+          <p>No credit card required. Access our full platform and discover the difference expert curation makes.</p>
+          <div style="display:flex;gap:var(--space-md);justify-content:center;flex-wrap:wrap">
+            <a href="register.html" class="btn btn-shimmer btn-lg">Create Free Account</a>
+            <a href="contact.html" class="btn btn-outline-accent btn-lg" style="color:#fff;border-color:rgba(255,255,255,0.4)">Talk to an Expert</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="index.html" class="navbar__logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40" aria-hidden="true"><rect width="40" height="40" rx="7" fill="#D4AF37"/><rect x="7" y="6" width="19" height="28" rx="2" fill="#8B4513"/><rect x="9" y="8" width="15" height="24" rx="1" fill="#FDF8F0"/><rect x="11" y="13" width="11" height="1.5" rx="0.75" fill="#5D3A1A"/><rect x="27" y="8" width="6" height="24" rx="1" fill="#5D3A1A"/></svg><span class="navbar__logo-text">Vintage Rare Bookstore</span></a>
+          <p class="footer__tagline">Preserving the world's literary heritage since 1978.</p>
+          <div class="footer__social">
+            <a href="#" aria-label="Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg></a>
+            <a href="#" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+          </div>
+        </div>
+        <div><h3 class="footer__heading">Platform</h3><ul class="footer__links"><li><a href="index.html">Home</a></li><li><a href="home-saas.html">Platform</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="register.html">Get Started</a></li></ul></div>
+        <div><h3 class="footer__heading">Services</h3><ul class="footer__links"><li><a href="service-details.html">Appraisal</a></li><li><a href="service-details.html">Restoration</a></li><li><a href="service-details.html">Sourcing</a></li></ul></div>
+        <div><h3 class="footer__heading">Company</h3><ul class="footer__links"><li><a href="about.html">About</a></li><li><a href="blog.html">Blog</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      </div>
+      <div class="footer__bottom"><p>© 2024 Vintage Rare Bookstore. All rights reserved.</p></div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/animations.js" defer></script>
+  <script src="assets/js/rtl-ltr.js" defer></script>
+  <script>
+    // Billing toggle
+    const billSwitch = document.getElementById('billing-switch');
+    let annual = false;
+    billSwitch?.addEventListener('click', () => {
+      annual = !annual;
+      billSwitch.classList.toggle('annual', annual);
+      billSwitch.setAttribute('aria-checked', annual.toString());
+      document.querySelectorAll('.pricing-mini__price[data-monthly]').forEach(el => {
+        el.textContent = '£' + (annual ? el.dataset.annual : el.dataset.monthly);
+      });
+    });
+  </script>
+</body>
+</html>

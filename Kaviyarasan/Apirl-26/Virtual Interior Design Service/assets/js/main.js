@@ -1,94 +1,46 @@
-/* VIRTUAL INTERIOR DESIGN — MAIN JS */
-'use strict';
+// main.js
 
-const App = {
-    modules: {},
-    
-    init() {
-        this.initPreloader();
-        this.loadModules();
-        this.initReadingProgress();
-        this.initCustomCursor();
-        this.initSmoothScroll();
-        this.initSkipLink();
-    },
+document.addEventListener('DOMContentLoaded', () => {
+  // Mobile Menu Toggle
+  const mobileToggle = document.querySelector('.mobile-toggle');
+  const mobileMenu = document.querySelector('.mobile-menu-overlay');
 
-    initPreloader() {
-        const preloader = document.querySelector('.preloader');
-        if (!preloader) return;
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                preloader.classList.add('loaded');
-                document.body.classList.add('loaded');
-                setTimeout(() => preloader.remove(), 600);
-            }, 1200);
-        });
-    },
+  if (mobileToggle && mobileMenu) {
+    mobileToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('active');
+      document.body.classList.toggle('menu-open');
+    });
+  }
 
-    loadModules() {
-        if (typeof Navigation !== 'undefined') Navigation.init();
-        if (typeof Theme !== 'undefined') Theme.init();
-        if (typeof RTL !== 'undefined') RTL.init();
-        if (typeof Animations !== 'undefined') Animations.init();
-        if (typeof Forms !== 'undefined') Forms.init();
-        if (typeof BeforeAfter !== 'undefined') BeforeAfter.init();
-        if (typeof Dashboard !== 'undefined') Dashboard.init();
-    },
+  // Intersection Observer for scroll animations
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.2
+  };
 
-    initReadingProgress() {
-        const bar = document.querySelector('.reading-progress');
-        if (!bar) return;
-        window.addEventListener('scroll', () => {
-            const h = document.documentElement;
-            const pct = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
-            bar.style.width = pct + '%';
-        }, { passive: true });
-    },
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        // Optional: stop observing once animated
+        // observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
 
-    initCustomCursor() {
-        if (window.matchMedia('(hover: none)').matches) return;
-        const cursor = document.querySelector('.custom-cursor');
-        if (!cursor) return;
-        let mx = 0, my = 0, cx = 0, cy = 0;
-        document.addEventListener('mousemove', e => {
-            mx = e.clientX; my = e.clientY;
-            cursor.classList.add('visible');
-        });
-        const lerp = (a, b, n) => a + (b - a) * n;
-        (function update() {
-            cx = lerp(cx, mx, 0.15); cy = lerp(cy, my, 0.15);
-            cursor.style.left = cx + 'px'; cursor.style.top = cy + 'px';
-            requestAnimationFrame(update);
-        })();
-        document.querySelectorAll('a, button, [role="button"], input, textarea, select, .card').forEach(el => {
-            el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-            el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
-        });
-        document.addEventListener('mousedown', () => cursor.classList.add('click'));
-        document.addEventListener('mouseup', () => cursor.classList.remove('click'));
-    },
+  const animatedElements = document.querySelectorAll('.animate-on-scroll');
+  animatedElements.forEach(el => observer.observe(el));
 
-    initSmoothScroll() {
-        document.querySelectorAll('a[href^="#"]').forEach(a => {
-            a.addEventListener('click', e => {
-                const id = a.getAttribute('href');
-                if (id === '#') return;
-                const target = document.querySelector(id);
-                if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
-            });
-        });
-    },
-
-    initSkipLink() {
-        const skip = document.querySelector('.skip-link');
-        if (skip) {
-            skip.addEventListener('click', e => {
-                e.preventDefault();
-                const main = document.querySelector('main') || document.querySelector('#main-content');
-                if (main) { main.focus(); main.scrollIntoView({ behavior: 'smooth' }); }
-            });
-        }
-    }
-};
-
-document.addEventListener('DOMContentLoaded', () => App.init());
+  // Navbar blur and shrink on scroll
+  const navbar = document.querySelector('.navbar');
+  if (navbar) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navbar.style.boxShadow = '0 4px 20px rgba(0,0,0,0.1)';
+      } else {
+        navbar.style.boxShadow = '0 1px 0 rgba(0, 0, 0, 0.05)';
+      }
+    });
+  }
+});

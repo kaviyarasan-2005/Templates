@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us | Vintage Rare Bookstore — Our Story Since 1978</title>
+  <meta name="description" content="Learn about the passionate team behind Vintage Rare Bookstore and our 46-year journey preserving literary heritage for collectors worldwide.">
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicons/favicon.svg">
+  <meta name="theme-color" content="#8B4513">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <style>
+    .page-hero { background: linear-gradient(135deg, var(--primary-dark) 0%, var(--bg-dark) 100%); padding: var(--space-4xl) 0; padding-top: calc(var(--nav-height) + var(--space-4xl)); text-align: center; color: #fff; position: relative; overflow: hidden; }
+    .page-hero::after { content: ''; position: absolute; inset: 0; background: url('assets/images/backgrounds/hero-library.png') center/cover; opacity: 0.1; }
+    .page-hero .container { position: relative; z-index: 1; }
+    .page-hero h1 { color: #fff; margin-bottom: var(--space-md); }
+    .page-hero p { color: rgba(255,255,255,0.75); max-width: 580px; margin: 0 auto; font-size: 1.125rem; }
+    /* Our story 2-col */
+    .story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3xl); align-items: start; }
+    .story-img { border-radius: var(--border-radius-lg); overflow: hidden; box-shadow: var(--shadow-xl); position: sticky; top: calc(var(--nav-height) + var(--space-lg)); }
+    .story-img img { width: 100%; height: 500px; object-fit: cover; display: block; }
+    .story-text h2 { margin-bottom: var(--space-lg); }
+    .story-text .lead { font-size: 1.125rem; line-height: 1.8; color: var(--text-secondary); margin-bottom: var(--space-lg); }
+    /* Team */
+    .team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-lg); }
+    .team-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--border-radius-lg); padding: var(--space-xl) var(--space-lg); text-align: center; transition: all var(--transition-slow); max-width: 280px; margin: 0 auto; width: 100%; }
+    .team-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg), var(--shadow-gold); border-color: rgba(212,175,55,0.3); }
+    .team-photo { width: 96px; height: 96px; border-radius: 50%; border: 3px solid var(--accent); background: linear-gradient(135deg, var(--primary-light), var(--accent)); display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-md); font-family: var(--font-heading); font-size: 2rem; font-weight: 700; color: var(--text-primary); overflow: hidden; transition: border-color var(--transition-base); }
+    .team-card:hover .team-photo { border-color: var(--primary); }
+    .team-name { font-family: var(--font-heading); font-size: 1.125rem; font-weight: 700; margin-bottom: 4px; }
+    .team-role { font-family: var(--font-ui); font-size: 0.8125rem; color: var(--text-muted); margin-bottom: var(--space-sm); }
+    .team-bio { font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: var(--space-md); }
+    .team-social { display: flex; gap: var(--space-sm); justify-content: center; opacity: 0; transform: translateY(8px); transition: all var(--transition-base); }
+    .team-card:hover .team-social { opacity: 1; transform: translateY(0); }
+    .team-social a { width: 32px; height: 32px; border-radius: var(--border-radius); background: var(--bg-secondary); display: flex; align-items: center; justify-content: center; color: var(--text-muted); transition: all var(--transition-base); }
+    .team-social a:hover { background: var(--accent); color: var(--text-primary); }
+    /* Timeline */
+    .timeline { position: relative; max-width: 800px; margin: 0 auto; }
+    .timeline::before { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--accent), var(--primary-light)); transform: translateX(-50%); }
+    .timeline-item { display: grid; grid-template-columns: 1fr auto 1fr; gap: var(--space-lg); align-items: start; margin-bottom: var(--space-3xl); }
+    .timeline-content { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--border-radius-lg); padding: var(--space-lg); transition: all var(--transition-base); }
+    .timeline-content:hover { box-shadow: var(--shadow-md); border-color: rgba(212,175,55,0.3); }
+    .timeline-item:nth-child(odd) .timeline-content:first-child { text-align: right; }
+    .timeline-item:nth-child(odd) .timeline-content:last-child { visibility: hidden; }
+    .timeline-item:nth-child(even) .timeline-content:first-child { visibility: hidden; }
+    .timeline-dot { width: 48px; height: 48px; border-radius: 50%; background: var(--accent); border: 4px solid var(--bg-primary); display: flex; align-items: center; justify-content: center; font-family: var(--font-ui); font-size: 0.75rem; font-weight: 700; color: var(--text-primary); flex-shrink: 0; box-shadow: var(--shadow-gold); }
+    .timeline-year { font-family: var(--font-heading); font-size: 1rem; font-weight: 700; color: var(--accent); margin-bottom: 4px; }
+    .timeline-title { font-family: var(--font-heading); font-size: 1.125rem; font-weight: 600; margin-bottom: var(--space-sm); }
+    /* Testimonials 2x2 */
+    .reviews-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-lg); }
+    @media (max-width: 1024px) {
+      .team-grid { grid-template-columns: repeat(2, 1fr); }
+      .story-grid { grid-template-columns: 1fr; }
+      .story-img { position: static; }
+      .story-img img { height: 350px; }
+      .timeline::before { left: 24px; }
+      .timeline-item { grid-template-columns: auto 1fr; }
+      .timeline-item:nth-child(odd) .timeline-content:last-child,
+      .timeline-item:nth-child(even) .timeline-content:first-child { display: none; }
+      .timeline-item:nth-child(odd) .timeline-content:first-child { text-align: left; order: 2; }
+      .timeline-dot { order: 1; }
+    }
+    @media (max-width: 640px) {
+      .team-grid { grid-template-columns: 1fr 1fr; }
+      .reviews-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .team-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <!-- NAVBAR -->
+  <header class="navbar" role="banner">
+    <div class="container"><div class="navbar__inner">
+      <a href="index.html" class="navbar__logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40" aria-hidden="true"><rect width="40" height="40" rx="7" fill="#8B4513"/><rect x="7" y="6" width="19" height="28" rx="2" fill="#D4AF37"/><rect x="9" y="8" width="15" height="24" rx="1" fill="#FDF8F0"/><rect x="11" y="13" width="11" height="1.5" rx="0.75" fill="#8B4513"/><rect x="27" y="8" width="6" height="24" rx="1" fill="#5D3A1A"/></svg><span class="navbar__logo-text">Vintage Rare Bookstore</span></a>
+      <ul class="navbar__nav" role="list">
+        <li class="nav-item has-dropdown"><a href="#" class="nav-link">Home <svg class="nav-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><polyline points="6 9 12 15 18 9"/></svg></a><ul class="dropdown-menu"><li><a href="index.html">🏠 General Services</a></li><li><a href="home-saas.html">🚀 SaaS / Agency</a></li></ul></li>
+        <li class="nav-item"><a href="about.html" class="nav-link active">About</a></li>
+        <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
+        <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+        <li class="nav-item"><a href="pricing.html" class="nav-link">Pricing</a></li>
+        <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+        <li class="nav-item has-dropdown"><a href="dashboard/index.html" class="nav-link">Dashboard <svg class="nav-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><polyline points="6 9 12 15 18 9"/></svg></a><ul class="dropdown-menu"><li><a href="dashboard/index.html">⚙️ Admin View</a></li><li><a href="dashboard/profile.html">👤 User View</a></li></ul></li>
+      </ul>
+      <div class="navbar__actions">
+        <button id="rtl-toggle" class="nav-icon-btn" aria-label="Toggle RTL"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></button>
+        <button id="theme-toggle" class="nav-icon-btn" aria-label="Toggle theme"><svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/></svg></button>
+        <a href="login.html" class="btn btn-primary btn-sm">Login</a>
+        <button id="hamburger" class="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      </div>
+    </div></div>
+  </header>
+  <nav id="mobile-nav" class="mobile-nav"><ul class="mobile-nav__links"><li><a href="index.html" class="nav-link">Home</a></li><li><a href="about.html" class="nav-link active">About</a></li><li><a href="services.html" class="nav-link">Services</a></li><li><a href="blog.html" class="nav-link">Blog</a></li><li><a href="pricing.html" class="nav-link">Pricing</a></li><li><a href="contact.html" class="nav-link">Contact</a></li></ul><div class="mobile-nav__footer"><a href="login.html" class="btn btn-primary btn-full">Login</a></div></nav>
+
+  <main id="main-content">
+    <!-- Page Hero -->
+    <div class="page-hero">
+      <div class="container">
+        <nav aria-label="Breadcrumb"><ul class="breadcrumb" style="justify-content:center;margin-bottom:var(--space-lg)"><li><a href="index.html" style="color:rgba(255,255,255,0.6)">Home</a></li><li><svg class="breadcrumb-sep" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></li><li>About Us</li></ul></nav>
+        <h1 class="reveal">Our Story</h1>
+        <p class="reveal">Four decades of passion, expertise, and dedication to preserving the world's most precious literary works.</p>
+      </div>
+    </div>
+
+    <!-- OUR STORY -->
+    <section class="section" aria-labelledby="story-heading">
+      <div class="container">
+        <div class="story-grid">
+          <div class="story-img reveal-left">
+            <img src="assets/images/backgrounds/bookstore-interior.png" alt="The interior of Vintage Rare Bookstore showing shelves of rare books" loading="lazy">
+          </div>
+          <div class="story-text reveal-right">
+            <span class="section-header__eyebrow" style="font-family:var(--font-ui);font-size:0.8125rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent-hover);">Est. 1978</span>
+            <div class="gold-divider" style="margin:var(--space-md) 0"></div>
+            <h2 id="story-heading">A Legacy Built on Literary Passion</h2>
+            <p class="lead">Founded by retired Cambridge professor Edmund Hartley in 1978, Vintage Rare Bookstore began as a modest corner shop on Antiquarian Lane in London's Bloomsbury district.</p>
+            <p>What started as a personal passion project — a curated selection of Victorian first editions — quickly gained reputation among the city's literary elite. Word spread through academic circles, private libraries, and auction houses that a new kind of bookstore had arrived: one that treated every volume as a cultural treasure deserving the highest standards of scholarship and care.</p>
+            <p>Today, under the stewardship of Edmund's granddaughter, Dr. Catherine Hartley, we maintain that same rigorous dedication. Our team of eight specialists — covering everything from medieval manuscripts to 20th-century literature — brings collective expertise exceeding 140 years to every client relationship.</p>
+            <p>We believe that rare books are not merely objects, but portals. Each cracked spine and foxed page carries the fingerprints of history — and our mission is to ensure those connections endure for generations to come.</p>
+            <div style="display:flex;gap:var(--space-xl);margin-top:var(--space-xl);flex-wrap:wrap">
+              <div><div style="font-family:var(--font-heading);font-size:2rem;font-weight:700;color:var(--accent)" data-counter data-target="46" data-suffix="+">0+</div><div style="font-family:var(--font-ui);font-size:0.875rem;color:var(--text-muted)">Years of Excellence</div></div>
+              <div><div style="font-family:var(--font-heading);font-size:2rem;font-weight:700;color:var(--accent)" data-counter data-target="8" data-suffix=" Specialists">0 Specialists</div><div style="font-family:var(--font-ui);font-size:0.875rem;color:var(--text-muted)">In-House Experts</div></div>
+              <div><div style="font-family:var(--font-heading);font-size:2rem;font-weight:700;color:var(--accent)" data-counter data-target="50" data-suffix="+ Countries">0+ Countries</div><div style="font-family:var(--font-ui);font-size:0.875rem;color:var(--text-muted)">We Ship Worldwide</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TEAM -->
+    <section class="section" style="background:var(--bg-secondary)" aria-labelledby="team-heading">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="eyebrow">Our People</span>
+          <h2 id="team-heading">The Experts Behind Every Book</h2>
+          <p>Our small but extraordinary team brings together scholars, bookbinders, appraisers, and collectors united by a shared love of literary heritage.</p>
+        </div>
+        <div class="team-grid stagger-children">
+          <div class="team-card reveal" id="team-catherine">
+            <div class="team-photo">C</div>
+            <div class="team-name">Dr. Catherine Hartley</div>
+            <div class="team-role">Founder & Chief Curator</div>
+            <p class="team-bio">Third-generation bibliophile with a PhD in Book History from Oxford. Specialises in Victorian literature and 20th-century first editions.</p>
+            <div class="team-social">
+              <a href="#" aria-label="Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg></a>
+              <a href="#" aria-label="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+            </div>
+          </div>
+          <div class="team-card reveal" id="team-william">
+            <div class="team-photo" style="background:linear-gradient(135deg,var(--primary),#8B4513)">W</div>
+            <div class="team-name">William Pemberton</div>
+            <div class="team-role">Head of Acquisitions</div>
+            <p class="team-bio">Former Sotheby's rare books specialist with 28 years of experience. Our man in the field at auctions from London to New York.</p>
+            <div class="team-social">
+              <a href="#" aria-label="Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg></a>
+              <a href="#" aria-label="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+            </div>
+          </div>
+          <div class="team-card reveal" id="team-amira">
+            <div class="team-photo" style="background:linear-gradient(135deg,#2E4A4E,#3D6B70)">A</div>
+            <div class="team-name">Amira Al-Rashid</div>
+            <div class="team-role">Rare Books Specialist</div>
+            <p class="team-bio">Expert in Arabic manuscripts and Islamic texts. Holds certifications from ABAA and the International League of Antiquarian Booksellers.</p>
+            <div class="team-social">
+              <a href="#" aria-label="Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg></a>
+            </div>
+          </div>
+          <div class="team-card reveal" id="team-thomas">
+            <div class="team-photo" style="background:linear-gradient(135deg,#1A3A1A,#2E5A2E)">T</div>
+            <div class="team-name">Thomas Blackwood</div>
+            <div class="team-role">Master Bookbinder</div>
+            <p class="team-bio">30 years of traditional bookbinding experience. Trained in Florence and apprenticed under the legendary bookbinder Cosimo de Rossi.</p>
+            <div class="team-social">
+              <a href="#" aria-label="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TIMELINE -->
+    <section class="section" aria-labelledby="timeline-heading">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="eyebrow">Our History</span>
+          <h2 id="timeline-heading">Milestones Along Our Journey</h2>
+        </div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-content reveal-left">
+              <div class="timeline-year">1978</div>
+              <h4 class="timeline-title">The Beginning</h4>
+              <p style="font-size:0.9375rem;color:var(--text-secondary)">Professor Edmund Hartley opens a modest rare bookshop on Antiquarian Lane, Bloomsbury, with a personal collection of 200 Victorian volumes.</p>
+            </div>
+            <div class="timeline-dot">78</div>
+            <div class="timeline-content"></div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-content"></div>
+            <div class="timeline-dot">89</div>
+            <div class="timeline-content reveal-right">
+              <div class="timeline-year">1989</div>
+              <h4 class="timeline-title">First Major Acquisition</h4>
+              <p style="font-size:0.9375rem;color:var(--text-secondary)">Successfully acquires a complete set of Dickens first editions at Christie's, establishing our reputation in the rare books market.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-content reveal-left">
+              <div class="timeline-year">2001</div>
+              <h4 class="timeline-title">Conservation Workshop</h4>
+              <p style="font-size:0.9375rem;color:var(--text-secondary)">Opened our dedicated conservation and restoration workshop, bringing in Master Bookbinder Cosimo de Rossi as a founding consultant.</p>
+            </div>
+            <div class="timeline-dot">01</div>
+            <div class="timeline-content"></div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-content"></div>
+            <div class="timeline-dot">14</div>
+            <div class="timeline-content reveal-right">
+              <div class="timeline-year">2014</div>
+              <h4 class="timeline-title">Second Generation</h4>
+              <p style="font-size:0.9375rem;color:var(--text-secondary)">Dr. Catherine Hartley joins as Chief Curator, bringing Oxford-trained scholarship and a modern digital catalogue to our operations.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-content reveal-left">
+              <div class="timeline-year">2024</div>
+              <h4 class="timeline-title">Global Platform Launch</h4>
+              <p style="font-size:0.9375rem;color:var(--text-secondary)">Launching our digital platform to connect collectors, dealers, and institutions worldwide — bringing rare books to a new generation.</p>
+            </div>
+            <div class="timeline-dot">24</div>
+            <div class="timeline-content"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS 2x2 -->
+    <section class="section" style="background:var(--bg-secondary)" aria-labelledby="reviews-heading">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="eyebrow">Testimonials</span>
+          <h2 id="reviews-heading">What Our Clients Say</h2>
+        </div>
+        <div class="reviews-grid stagger-children">
+          <div class="testimonial-card reveal"><p class="testimonial-text">"An institution in every sense. Finding a 1922 Ulysses here was the highlight of my collecting life."</p><div class="testimonial-author"><div style="width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--primary-light),var(--accent));display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--text-primary);font-family:var(--font-heading);flex-shrink:0">E</div><div><div class="testimonial-name">Eleanor Whitmore</div><div class="testimonial-role">Private Collector</div></div></div></div>
+          <div class="testimonial-card reveal"><p class="testimonial-text">"The restoration of my Victorian poetry collection was nothing short of miraculous. Museum-quality craftsmanship."</p><div class="testimonial-author"><div style="width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--primary-light));display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff;font-family:var(--font-heading);flex-shrink:0">M</div><div><div class="testimonial-name">Margaret Chen</div><div class="testimonial-role">Antique Dealer, HK</div></div></div></div>
+          <div class="testimonial-card reveal"><p class="testimonial-text">"The appraisal service was thorough, professional, and backed by genuine expertise. Instrumental in our estate proceedings."</p><div class="testimonial-author"><div style="width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--accent-hover),var(--accent));display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--text-primary);font-family:var(--font-heading);flex-shrink:0">J</div><div><div class="testimonial-name">Prof. James Harrington</div><div class="testimonial-role">Literary Historian</div></div></div></div>
+          <div class="testimonial-card reveal"><p class="testimonial-text">"Our university library has acquired over 300 volumes through VRB over a decade. Their sourcing network is extraordinary."</p><div class="testimonial-author"><div style="width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#4A2E12,var(--primary));display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff;font-family:var(--font-heading);flex-shrink:0">R</div><div><div class="testimonial-name">Dr. Robert Ashford</div><div class="testimonial-role">University Librarian</div></div></div></div>
+        </div>
+        <div class="text-center mt-2xl reveal"><a href="contact.html" class="btn btn-primary btn-lg">Read More Reviews</a></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand"><a href="index.html" class="navbar__logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40"><rect width="40" height="40" rx="7" fill="#D4AF37"/><rect x="7" y="6" width="19" height="28" rx="2" fill="#8B4513"/><rect x="9" y="8" width="15" height="24" rx="1" fill="#FDF8F0"/><rect x="11" y="13" width="11" height="1.5" rx="0.75" fill="#5D3A1A"/><rect x="27" y="8" width="6" height="24" rx="1" fill="#5D3A1A"/></svg><span class="navbar__logo-text">Vintage Rare Bookstore</span></a><p class="footer__tagline">Preserving the world's literary heritage since 1978.</p><div class="footer__social"><a href="#" aria-label="Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg></a><a href="#" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a></div></div>
+        <div><h3 class="footer__heading">Explore</h3><ul class="footer__links"><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="services.html">Services</a></li><li><a href="blog.html">Blog</a></li><li><a href="pricing.html">Pricing</a></li></ul></div>
+        <div><h3 class="footer__heading">Services</h3><ul class="footer__links"><li><a href="service-details.html">Book Appraisal</a></li><li><a href="service-details.html">Restoration</a></li><li><a href="service-details.html">Book Sourcing</a></li><li><a href="service-details.html">Conservation</a></li></ul></div>
+        <div><h3 class="footer__heading">Contact</h3><ul class="footer__links"><li><a href="contact.html">Get in Touch</a></li><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms of Service</a></li></ul><p style="color:rgba(245,230,211,0.5);font-size:0.8125rem;font-family:var(--font-ui);margin-top:var(--space-lg)">📍 42 Antiquarian Lane<br>London, WC2B 5NA</p></div>
+      </div>
+      <div class="footer__bottom"><p>© 2024 Vintage Rare Bookstore. All rights reserved.</p><p>Crafted with love for literary history.</p></div>
+    </div>
+  </footer>
+  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/animations.js" defer></script>
+  <script src="assets/js/rtl-ltr.js" defer></script>
+</body>
+</html>

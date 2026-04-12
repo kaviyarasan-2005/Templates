@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | Vintage Rare Bookstore — Get In Touch</title>
+  <meta name="description" content="Contact our team of rare book specialists for appraisals, restoration, sourcing, or general enquiries. Visit our London store or reach us online.">
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicons/favicon.svg">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <style>
+    .page-hero{background:linear-gradient(135deg,var(--primary-dark),var(--bg-dark));padding:calc(var(--nav-height)+var(--space-4xl)) 0 var(--space-4xl);color:#fff;text-align:center;position:relative;overflow:hidden}
+    .page-hero h1{color:#fff}.page-hero p{color:rgba(255,255,255,0.75);max-width:560px;margin:var(--space-md) auto 0}
+    .contact-layout{display:grid;grid-template-columns:1fr 1.4fr;gap:var(--space-3xl);align-items:start}
+    .contact-info h3{margin-bottom:var(--space-lg)}
+    .contact-item{display:flex;gap:var(--space-md);align-items:flex-start;margin-bottom:var(--space-xl)}
+    .contact-icon{width:48px;height:48px;border-radius:var(--border-radius-lg);background:rgba(212,175,55,0.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--accent)}
+    .contact-icon svg{width:24px;height:24px}
+    .contact-label{font-family:var(--font-ui);font-size:0.8125rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted);margin-bottom:4px}
+    .contact-value{font-size:1rem;color:var(--text-primary);font-family:var(--font-ui)}
+    .social-links{display:flex;gap:var(--space-sm);margin-top:var(--space-xl)}
+    .social-link{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border:2px solid var(--border);border-radius:var(--border-radius);font-family:var(--font-ui);font-size:0.875rem;font-weight:600;color:var(--text-secondary);transition:all var(--transition-base)}
+    .social-link:hover{transform:translateY(-2px)}
+    .social-link--tw:hover{border-color:#1DA1F2;color:#1DA1F2}
+    .social-link--fb:hover{border-color:#1877F2;color:#1877F2}
+    .social-link--ig:hover{border-color:#E4405F;color:#E4405F}
+    .map-container{border-radius:var(--border-radius-lg);overflow:hidden;height:300px;margin-top:var(--space-xl);background:var(--bg-secondary);display:flex;align-items:center;justify-content:center;border:1px solid var(--border);filter:sepia(0.15)}
+    .contact-form-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--border-radius-lg);padding:var(--space-2xl);box-shadow:var(--shadow-md)}
+    .contact-form-card h3{margin-bottom:var(--space-lg);padding-bottom:var(--space-lg);border-bottom:1px solid var(--border)}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-md)}
+    @media(max-width:1024px){.contact-layout{grid-template-columns:1fr}}
+    @media(max-width:640px){.form-row{grid-template-columns:1fr}.social-links{flex-wrap:wrap}}
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <header class="navbar" role="banner"><div class="container"><div class="navbar__inner">
+    <a href="index.html" class="navbar__logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40"><rect width="40" height="40" rx="7" fill="#8B4513"/><rect x="7" y="6" width="19" height="28" rx="2" fill="#D4AF37"/><rect x="9" y="8" width="15" height="24" rx="1" fill="#FDF8F0"/><rect x="11" y="13" width="11" height="1.5" rx="0.75" fill="#8B4513"/><rect x="27" y="8" width="6" height="24" rx="1" fill="#5D3A1A"/></svg><span class="navbar__logo-text">Vintage Rare Bookstore</span></a>
+    <ul class="navbar__nav" role="list"><li class="nav-item"><a href="index.html" class="nav-link">Home</a></li><li class="nav-item"><a href="about.html" class="nav-link">About</a></li><li class="nav-item"><a href="services.html" class="nav-link">Services</a></li><li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li><li class="nav-item"><a href="pricing.html" class="nav-link">Pricing</a></li><li class="nav-item"><a href="contact.html" class="nav-link active">Contact</a></li></ul>
+    <div class="navbar__actions"><button id="rtl-toggle" class="nav-icon-btn" aria-label="Toggle RTL"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></button><button id="theme-toggle" class="nav-icon-btn" aria-label="Toggle theme"><svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/></svg></button><a href="login.html" class="btn btn-primary btn-sm">Login</a><button id="hamburger" class="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button></div>
+  </div></div></header>
+  <nav id="mobile-nav" class="mobile-nav"><ul class="mobile-nav__links"><li><a href="index.html" class="nav-link">Home</a></li><li><a href="about.html" class="nav-link">About</a></li><li><a href="services.html" class="nav-link">Services</a></li><li><a href="contact.html" class="nav-link active">Contact</a></li></ul><div class="mobile-nav__footer"><a href="login.html" class="btn btn-primary btn-full">Login</a></div></nav>
+
+  <main id="main-content">
+    <div class="page-hero"><div class="container"><h1 class="reveal">Get In Touch</h1><p class="reveal">Our specialists are ready to assist with appraisals, restoration enquiries, book sourcing, and everything in between.</p></div></div>
+    <section class="section"><div class="container"><div class="contact-layout">
+      <!-- Info -->
+      <div class="reveal-left">
+        <h2>Visit Our London Store</h2>
+        <div class="gold-divider" style="margin:var(--space-lg) 0;margin-left:0"></div>
+        <div class="contact-item"><div class="contact-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><div class="contact-label">Address</div><div class="contact-value">42 Antiquarian Lane<br>Bloomsbury, London<br>WC2B 5NA, United Kingdom</div></div></div>
+        <div class="contact-item"><div class="contact-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.4a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.69l3-.01a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.29 6.29l.88-.88a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 17z"/></svg></div><div><div class="contact-label">Phone</div><div class="contact-value">+44 (0)20 7946 0958</div></div></div>
+        <div class="contact-item"><div class="contact-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div><div class="contact-label">Email</div><div class="contact-value">enquiries@vintagerarebookstore.com</div></div></div>
+        <div class="contact-item"><div class="contact-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div><div class="contact-label">Opening Hours</div><div class="contact-value">Mon – Fri: 9:00 – 18:00<br>Saturday: 10:00 – 17:00<br>Sunday: Closed</div></div></div>
+
+        <h3 style="margin-bottom:var(--space-md)">Follow Us</h3>
+        <div class="social-links">
+          <a href="#" class="social-link social-link--tw"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>Twitter</a>
+          <a href="#" class="social-link social-link--fb"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>Facebook</a>
+          <a href="#" class="social-link social-link--ig"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/></svg>Instagram</a>
+        </div>
+
+        <div class="map-container" role="img" aria-label="Map showing location of Vintage Rare Bookstore at 42 Antiquarian Lane London">
+          <div style="text-align:center;font-family:var(--font-ui);color:var(--text-muted)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin-bottom:var(--space-md);color:var(--accent)"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <p><strong>42 Antiquarian Lane</strong><br>Bloomsbury, London WC2B 5NA</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="contact-form-card reveal-right">
+        <h3>Send Us a Message</h3>
+        <form id="contact-form" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="c-name" class="form-label">Full Name <span class="required">*</span></label>
+              <input type="text" id="c-name" name="name" class="form-input" placeholder="John Smith" required minlength="2">
+            </div>
+            <div class="form-group">
+              <label for="c-email" class="form-label">Email Address <span class="required">*</span></label>
+              <input type="email" id="c-email" name="email" class="form-input" placeholder="john@example.com" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="c-phone" class="form-label">Phone Number</label>
+              <input type="tel" id="c-phone" name="phone" class="form-input" placeholder="+44 7xxx xxxxxx">
+            </div>
+            <div class="form-group">
+              <label for="c-subject" class="form-label">Subject <span class="required">*</span></label>
+              <select id="c-subject" name="subject" class="form-input form-select" required>
+                <option value="" disabled selected>Select a subject</option>
+                <option value="appraisal">Book Appraisal</option>
+                <option value="restoration">Restoration Enquiry</option>
+                <option value="sourcing">Book Sourcing</option>
+                <option value="conservation">Conservation</option>
+                <option value="general">General Enquiry</option>
+                <option value="sell">I Want to Sell Books</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="c-message" class="form-label">Your Message <span class="required">*</span></label>
+            <textarea id="c-message" name="message" class="form-input form-textarea" placeholder="Tell us about your books, your collection, or your enquiry..." required minlength="20" style="min-height:140px"></textarea>
+          </div>
+          <button type="submit" class="btn btn-accent btn-full btn-lg form-submit" id="contact-submit">Send Message</button>
+        </form>
+      </div>
+    </div></div></section>
+  </main>
+
+  <footer class="footer" role="contentinfo"><div class="container"><div class="footer__grid"><div class="footer__brand"><a href="index.html" class="navbar__logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40"><rect width="40" height="40" rx="7" fill="#D4AF37"/><rect x="7" y="6" width="19" height="28" rx="2" fill="#8B4513"/><rect x="9" y="8" width="15" height="24" rx="1" fill="#FDF8F0"/><rect x="27" y="8" width="6" height="24" rx="1" fill="#5D3A1A"/></svg><span class="navbar__logo-text">Vintage Rare Bookstore</span></a><p class="footer__tagline">Preserving the world's literary heritage since 1978.</p></div><div><h3 class="footer__heading">Explore</h3><ul class="footer__links"><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="services.html">Services</a></li><li><a href="blog.html">Blog</a></li></ul></div><div><h3 class="footer__heading">Services</h3><ul class="footer__links"><li><a href="service-details.html">Appraisal</a></li><li><a href="service-details.html">Restoration</a></li><li><a href="service-details.html">Sourcing</a></li></ul></div><div><h3 class="footer__heading">Contact</h3><ul class="footer__links"><li><a href="contact.html">Contact</a></li><li><a href="#">Privacy Policy</a></li></ul><p style="color:rgba(245,230,211,0.5);font-size:0.8125rem;font-family:var(--font-ui);margin-top:var(--space-md)">📍 42 Antiquarian Lane<br>London, WC2B 5NA</p></div></div><div class="footer__bottom"><p>&copy; 2024 Vintage Rare Bookstore. All rights reserved.</p></div></div></footer>
+  <script src="assets/js/main.js" defer></script><script src="assets/js/animations.js" defer></script><script src="assets/js/rtl-ltr.js" defer></script><script src="assets/js/forms.js" defer></script>
+</body>
+</html>

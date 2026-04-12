@@ -1,0 +1,295 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard | Vintage Rare Bookstore</title>
+  <meta name="description" content="Admin dashboard for Vintage Rare Bookstore — Monitor analytics, orders, users, and messages.">
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicons/favicon.svg">
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="stylesheet" href="../assets/css/dashboard.css">
+  <link rel="stylesheet" href="../assets/css/dark-mode.css">
+  <style>
+    /* Sparkline containers */
+    .sparkline { width: 100%; min-height: 60px; }
+    .metric-delta { font-size: 0.75rem; font-weight: 700; display: inline-flex; align-items: center; gap: 4px; }
+    .metric-delta.up { color: var(--success); }
+    .metric-delta.down { color: var(--error); }
+    /* Chart bars */
+    .bar-chart { display: flex; align-items: flex-end; gap: 6px; height: 160px; padding: var(--space-md) 0; }
+    .chart-bar { flex: 1; border-radius: 4px 4px 0 0; background: linear-gradient(to top, var(--primary), var(--primary-light)); height: 0; transition: height 1.2s cubic-bezier(0.34, 1.56, 0.64, 1); cursor: pointer; position: relative; }
+    .chart-bar:hover { background: linear-gradient(to top, var(--accent), var(--accent-hover)); }
+    .chart-bar::after { content: attr(data-label); position: absolute; bottom: -22px; left: 50%; transform: translateX(-50%); font-family: var(--font-ui); font-size: 0.6875rem; color: var(--text-muted); white-space: nowrap; }
+    .chart-labels { margin-top: 28px; }
+    /* Quick actions */
+    .quick-actions { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-md); }
+    .quick-btn { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--border-radius-lg); padding: var(--space-lg); text-align: center; cursor: pointer; transition: all var(--transition-base); text-decoration: none; display: block; }
+    .quick-btn:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: var(--shadow-md); }
+    .quick-btn__icon { font-size: 1.75rem; margin-bottom: var(--space-sm); display: block; }
+    .quick-btn__label { font-family: var(--font-ui); font-size: 0.875rem; font-weight: 600; color: var(--text-secondary); }
+    /* Recent activity */
+    .activity-list { display: flex; flex-direction: column; gap: var(--space-md); }
+    .activity-item { display: flex; align-items: flex-start; gap: var(--space-md); padding: var(--space-md) 0; border-bottom: 1px solid var(--border); }
+    .activity-item:last-child { border-bottom: none; }
+    .activity-dot { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+    .activity-dot.order { background: rgba(46,125,50,0.12); }
+    .activity-dot.user { background: rgba(25,118,210,0.12); }
+    .activity-dot.appraisal { background: rgba(212,175,55,0.12); }
+    .activity-text { font-family: var(--font-ui); font-size: 0.875rem; color: var(--text-primary); line-height: 1.5; }
+    .activity-time { font-size: 0.75rem; color: var(--text-muted); margin-top: 2px; }
+    /* Infographics */
+    .css-pie { width: 120px; height: 120px; border-radius: 50%; background: conic-gradient(var(--accent) 0% 45%, var(--primary) 45% 75%, rgba(212,175,55,0.4) 75% 90%, var(--border) 90% 100%); box-shadow: inset 0 0 0 2px var(--bg-card), var(--shadow-md); border: 2px solid var(--bg-card); animation: pieSpin 1s cubic-bezier(0.1, 0.8, 0.2, 1); }
+    @keyframes pieSpin { from { transform: rotate(-90deg) scale(0.8); opacity: 0; } to { transform: rotate(0) scale(1); opacity: 1; } }
+    .pie-legend li { display: flex; align-items: center; gap: 6px; }
+    .pie-legend li span { width: 10px; height: 10px; border-radius: 2px; }
+    .hbar-fill { transition: width 1.5s cubic-bezier(0.1, 0.8, 0.2, 1); }
+    .funnel-step { transition: transform 0.3s ease; cursor: default; }
+    .funnel-step:hover { transform: scale(1.05); box-shadow: var(--shadow-sm); z-index: 2; position: relative; }
+    @media(max-width:768px) { .quick-actions { grid-template-columns: repeat(2, 1fr); } .info-grid { grid-template-columns: 1fr !important; } }
+  </style>
+</head>
+<body class="dashboard-body">
+  <!-- Sidebar Overlay -->
+  <div class="sidebar-overlay" aria-hidden="true"></div>
+
+  <!-- Sidebar -->
+  <aside class="sidebar" role="navigation" aria-label="Dashboard sidebar">
+    <div class="sidebar__header">
+      <a href="../index.html" class="sidebar__logo" aria-label="Go to main site">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="36" height="36"><rect width="40" height="40" rx="7" fill="#8B4513"/><rect x="7" y="6" width="19" height="28" rx="2" fill="#D4AF37"/><rect x="9" y="8" width="15" height="24" rx="1" fill="#FDF8F0"/><rect x="11" y="13" width="11" height="1.5" rx="0.75" fill="#8B4513"/><rect x="27" y="8" width="6" height="24" rx="1" fill="#5D3A1A"/></svg>
+        <span class="sidebar__logo-text">VRB Admin</span>
+      </a>
+    </div>
+
+    <!-- Role Switcher -->
+    <div class="sidebar__role-switcher">
+      <button class="role-btn active" data-role="admin" id="role-admin">Admin</button>
+      <button class="role-btn" data-role="user" id="role-user">User</button>
+    </div>
+
+    <nav class="sidebar__nav" aria-label="Admin navigation">
+      <ul class="sidebar-nav-list" role="list">
+        <li><a href="index.html" class="sidebar-nav-link active" id="nav-dashboard"><svg class="sidebar-nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg><span>Dashboard</span></a></li>
+        <li><a href="users.html" class="sidebar-nav-link" id="nav-users"><svg class="sidebar-nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span>Users</span><span class="sidebar-badge">24</span></a></li>
+        <li><a href="orders.html" class="sidebar-nav-link" id="nav-orders"><svg class="sidebar-nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg><span>Orders</span><span class="sidebar-badge sidebar-badge--warning">7</span></a></li>
+        <li><a href="messages.html" class="sidebar-nav-link" id="nav-messages"><svg class="sidebar-nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><span>Messages</span><span class="sidebar-badge sidebar-badge--danger">3</span></a></li>
+        <li><a href="profile.html" class="sidebar-nav-link" id="nav-profile"><svg class="sidebar-nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span>Profile</span></a></li>
+      </ul>
+
+      <div class="sidebar-section-label">Settings</div>
+      <ul class="sidebar-nav-list" role="list">
+        <li><a href="#" class="sidebar-nav-link"><svg class="sidebar-nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 1.41 14.84"/><path d="M4.93 4.93a10 10 0 0 0-1.41 14.84"/></svg><span>Settings</span></a></li>
+        <li><a href="../login.html" class="sidebar-nav-link"><svg class="sidebar-nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg><span>Logout</span></a></li>
+      </ul>
+    </nav>
+
+    <div class="sidebar__footer">
+      <div class="sidebar-user">
+        <div class="sidebar-user__avatar">C</div>
+        <div class="sidebar-user__info">
+          <div class="sidebar-user__name">Dr. C. Hartley</div>
+          <div class="sidebar-user__role">Super Admin</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <div class="dashboard-main">
+    <!-- Top bar -->
+    <header class="dashboard-header" role="banner">
+      <div class="dashboard-header__left">
+        <button id="sidebar-toggle" class="sidebar-toggle-btn" aria-label="Toggle sidebar">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+        <div>
+          <h1 style="font-size:1.25rem;margin:0;font-family:var(--font-heading)">Dashboard Overview</h1>
+          <div style="font-size:0.8125rem;color:var(--text-muted);font-family:var(--font-ui)">Welcome back, Dr. Hartley — Sunday, April 28, 2024</div>
+        </div>
+      </div>
+      <div class="dashboard-header__right">
+        <button id="theme-toggle" class="nav-icon-btn dash-icon-btn" aria-label="Toggle theme">
+          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/></svg>
+        </button>
+        <div style="position:relative">
+          <button class="notif-btn dash-icon-btn" aria-label="Notifications">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+            <span class="notif-badge" aria-label="3 new notifications">3</span>
+          </button>
+          <div class="notif-panel">
+            <div class="notif-panel__header">Notifications <span class="badge badge-warning" style="font-size:0.7rem">3 new</span></div>
+            <div class="notif-item"><div class="notif-dot" style="background:var(--accent)"></div><div><div class="notif-text">New appraisal request from E. Whitmore</div><div class="notif-time">5 min ago</div></div></div>
+            <div class="notif-item"><div class="notif-dot" style="background:var(--success)"></div><div><div class="notif-text">Order #2841 completed successfully</div><div class="notif-time">1 hour ago</div></div></div>
+            <div class="notif-item"><div class="notif-dot" style="background:var(--error)"></div><div><div class="notif-text">Payment failed for Order #2839</div><div class="notif-time">3 hours ago</div></div></div>
+          </div>
+        </div>
+        <div style="position:relative">
+          <button class="profile-btn" aria-label="Profile menu" style="display:flex;align-items:center;gap:8px;background:none;border:none;cursor:pointer;color:var(--text-primary)">
+            <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--primary-light),var(--accent));display:flex;align-items:center;justify-content:center;font-weight:700;font-family:var(--font-heading)">C</div>
+            <span style="font-family:var(--font-ui);font-size:0.875rem;font-weight:600">Dr. Hartley</span>
+          </button>
+          <div class="profile-panel">
+            <a href="profile.html" class="profile-panel__item">👤 View Profile</a>
+            <a href="#" class="profile-panel__item">⚙️ Settings</a>
+            <a href="../index.html" class="profile-panel__item">🌐 Visit Site</a>
+            <a href="../login.html" class="profile-panel__item" style="color:var(--error)">🚪 Log Out</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Content -->
+    <div class="dashboard-content">
+      <!-- Stats Cards -->
+      <div class="stats-grid" role="region" aria-label="Key metrics">
+        <div class="stat-card reveal">
+          <div class="stat-card__header"><div class="stat-card__icon" style="background:rgba(212,175,55,0.12);color:var(--accent)"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><span class="metric-delta up">↑ 12.4%</span></div>
+          <div class="stat-value" data-counter data-target="48200" data-prefix="£" data-suffix="">£0</div>
+          <div class="stat-label">Monthly Revenue</div>
+          <div class="sparkline" id="sparkline-revenue"></div>
+        </div>
+        <div class="stat-card reveal">
+          <div class="stat-card__header"><div class="stat-card__icon" style="background:rgba(46,125,50,0.12);color:var(--success)"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/></svg></div><span class="metric-delta up">↑ 8.2%</span></div>
+          <div class="stat-value" data-counter data-target="127">0</div>
+          <div class="stat-label">Orders This Month</div>
+          <div class="sparkline" id="sparkline-orders"></div>
+        </div>
+        <div class="stat-card reveal">
+          <div class="stat-card__header"><div class="stat-card__icon" style="background:rgba(25,118,210,0.12);color:#1976D2"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><span class="metric-delta up">↑ 18.7%</span></div>
+          <div class="stat-value" data-counter data-target="8243">0</div>
+          <div class="stat-label">Total Members</div>
+          <div class="sparkline" id="sparkline-users"></div>
+        </div>
+        <div class="stat-card reveal">
+          <div class="stat-card__header"><div class="stat-card__icon" style="background:rgba(239,68,68,0.12);color:var(--error)"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><span class="metric-delta down">↓ 3.1%</span></div>
+          <div class="stat-value" data-counter data-target="47">0</div>
+          <div class="stat-label">Pending Messages</div>
+        </div>
+      </div>
+
+      <!-- Grid 2-col -->
+      <div class="dashboard-two-col" style="display:grid;grid-template-columns:1.5fr 1fr;gap:var(--space-xl);margin-top:var(--space-xl)">
+        <!-- Revenue chart -->
+        <div class="dashboard-widget reveal">
+          <div class="widget-header"><h3 class="widget-title">Revenue Overview</h3><span style="font-family:var(--font-ui);font-size:0.8125rem;color:var(--text-muted)">Last 12 months</span></div>
+          <div class="bar-chart">
+            <div class="chart-bar" data-height="60" data-label="May" style="background:linear-gradient(to top,var(--primary),var(--primary-light))"></div>
+            <div class="chart-bar" data-height="75" data-label="Jun"></div>
+            <div class="chart-bar" data-height="82" data-label="Jul"></div>
+            <div class="chart-bar" data-height="68" data-label="Aug"></div>
+            <div class="chart-bar" data-height="90" data-label="Sep"></div>
+            <div class="chart-bar" data-height="95" data-label="Oct"></div>
+            <div class="chart-bar" data-height="85" data-label="Nov"></div>
+            <div class="chart-bar" data-height="110" data-label="Dec"></div>
+            <div class="chart-bar" data-height="98" data-label="Jan"></div>
+            <div class="chart-bar" data-height="120" data-label="Feb"></div>
+            <div class="chart-bar" data-height="105" data-label="Mar"></div>
+            <div class="chart-bar" data-height="130" data-label="Apr" style="background:linear-gradient(to top,var(--accent),var(--accent-hover))"></div>
+          </div>
+          <div class="chart-labels"></div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="dashboard-widget reveal">
+          <div class="widget-header"><h3 class="widget-title">Quick Actions</h3></div>
+          <div class="quick-actions">
+            <a href="orders.html" class="quick-btn"><span class="quick-btn__icon">📦</span><span class="quick-btn__label">New Order</span></a>
+            <a href="users.html" class="quick-btn"><span class="quick-btn__icon">👤</span><span class="quick-btn__label">Add User</span></a>
+            <a href="messages.html" class="quick-btn"><span class="quick-btn__icon">💬</span><span class="quick-btn__label">Messages</span></a>
+            <a href="../service-details.html" class="quick-btn"><span class="quick-btn__icon">📚</span><span class="quick-btn__label">Catalogue</span></a>
+          </div>
+          <!-- Recent activity -->
+          <div style="margin-top:var(--space-xl)">
+            <div style="font-family:var(--font-ui);font-size:0.8125rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:var(--space-md)">Recent Activity</div>
+            <div class="activity-list">
+              <div class="activity-item"><div class="activity-dot order">🛒</div><div><div class="activity-text">Order #2841 — 1st Ed. Woolf <strong>£2,400</strong></div><div class="activity-time">2 hours ago</div></div></div>
+              <div class="activity-item"><div class="activity-dot user">👤</div><div><div class="activity-text">New member: <strong>Prof. T. Ashford</strong></div><div class="activity-time">4 hours ago</div></div></div>
+              <div class="activity-item"><div class="activity-dot appraisal">🔍</div><div><div class="activity-text">Appraisal submitted for <strong>1923 Yeats</strong></div><div class="activity-time">Yesterday</div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Infographics 3-col -->
+      <div class="info-grid dashboard-two-col" style="display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-xl);margin-top:var(--space-xl)">
+        <!-- Info 1: Pie Chart -->
+        <div class="dashboard-widget reveal">
+          <div class="widget-header"><h3 class="widget-title">Sales by Era</h3></div>
+          <div style="display:flex;align-items:center;justify-content:center;gap:var(--space-md);margin-top:var(--space-md)">
+            <div class="css-pie"></div>
+            <ul class="pie-legend" style="list-style:none;font-family:var(--font-ui);font-size:0.75rem;display:flex;flex-direction:column;gap:8px">
+              <li><span style="background:var(--accent)"></span>Victorian (45%)</li>
+              <li><span style="background:var(--primary)"></span>Edwardian (30%)</li>
+              <li><span style="background:rgba(212,175,55,0.4)"></span>Modern (15%)</li>
+              <li><span style="background:var(--border)"></span>Antiquity (10%)</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Info 2: H-Bar Chart -->
+        <div class="dashboard-widget reveal" style="animation-delay:0.1s">
+          <div class="widget-header"><h3 class="widget-title">Regional Demand</h3></div>
+          <div style="margin-top:var(--space-md);display:flex;flex-direction:column;gap:12px">
+            <div>
+              <div style="display:flex;justify-content:space-between;font-family:var(--font-ui);font-size:0.75rem;margin-bottom:4px"><span>London</span><span>42%</span></div>
+              <div style="height:6px;background:var(--bg-secondary);border-radius:3px;overflow:hidden"><div class="hbar-fill" style="width:42%;height:100%;background:var(--accent);border-radius:3px;animation:growW 1s cubic-bezier(0.1, 0.8, 0.2, 1)"></div></div>
+            </div>
+            <div>
+              <div style="display:flex;justify-content:space-between;font-family:var(--font-ui);font-size:0.75rem;margin-bottom:4px"><span>New York</span><span>28%</span></div>
+              <div style="height:6px;background:var(--bg-secondary);border-radius:3px;overflow:hidden"><div class="hbar-fill" style="width:28%;height:100%;background:var(--primary);border-radius:3px"></div></div>
+            </div>
+            <div>
+              <div style="display:flex;justify-content:space-between;font-family:var(--font-ui);font-size:0.75rem;margin-bottom:4px"><span>Paris</span><span>15%</span></div>
+              <div style="height:6px;background:var(--bg-secondary);border-radius:3px;overflow:hidden"><div class="hbar-fill" style="width:15%;height:100%;background:rgba(212,175,55,0.6);border-radius:3px"></div></div>
+            </div>
+            <div>
+              <div style="display:flex;justify-content:space-between;font-family:var(--font-ui);font-size:0.75rem;margin-bottom:4px"><span>Tokyo</span><span>15%</span></div>
+              <div style="height:6px;background:var(--bg-secondary);border-radius:3px;overflow:hidden"><div class="hbar-fill" style="width:15%;height:100%;background:var(--border);border-radius:3px"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Info 3: Funnel -->
+        <div class="dashboard-widget reveal" style="animation-delay:0.2s">
+          <div class="widget-header"><h3 class="widget-title">Appraisal Funnel</h3></div>
+          <div style="display:flex;flex-direction:column;align-items:center;margin-top:var(--space-md);gap:4px">
+            <div class="funnel-step" style="width:100%;background:var(--border);color:var(--text-primary);padding:8px;text-align:center;font-family:var(--font-ui);font-size:0.75rem;font-weight:700;border-radius:4px">Requests (342)</div>
+            <div class="funnel-step" style="width:80%;background:var(--primary-light);color:var(--text-primary);padding:8px;text-align:center;font-family:var(--font-ui);font-size:0.75rem;font-weight:700;border-radius:4px">Reviewed (274)</div>
+            <div class="funnel-step" style="width:60%;background:var(--primary);color:#fff;padding:8px;text-align:center;font-family:var(--font-ui);font-size:0.75rem;font-weight:700;border-radius:4px">Valued (164)</div>
+            <div class="funnel-step" style="width:40%;background:var(--accent);color:var(--bg-primary);padding:8px;text-align:center;font-family:var(--font-ui);font-size:0.75rem;font-weight:700;border-radius:4px">Acquired (42)</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recent Orders Table -->
+      <div class="dashboard-widget reveal" style="margin-top:var(--space-xl)">
+        <div class="widget-header">
+          <h3 class="widget-title">Recent Orders</h3>
+          <div style="display:flex;gap:var(--space-sm)">
+            <input type="text" class="table-filter-input" data-target="orders-table" placeholder="Filter orders..." style="padding:6px 14px;border-radius:var(--border-radius);border:1px solid var(--border);font-family:var(--font-ui);font-size:0.875rem;background:var(--bg-secondary);color:var(--text-primary)">
+            <a href="orders.html" class="btn btn-primary btn-sm">View All</a>
+          </div>
+        </div>
+        <div class="table-wrapper" style="overflow-x:auto">
+          <table id="orders-table">
+            <thead><tr><th data-sort="id">#</th><th data-sort="customer">Customer</th><th data-sort="item">Item</th><th data-sort="date">Date</th><th data-sort="amount">Amount</th><th data-sort="status">Status</th><th>Actions</th></tr></thead>
+            <tbody>
+              <tr data-status="completed"><td>#2841</td><td>Eleanor Whitmore</td><td>1st Ed. Mrs Dalloway</td><td>28 Apr 2024</td><td>£2,400</td><td><span class="badge badge-success">Completed</span></td><td><button class="action-btn action-btn--view" data-order-view="2841">View</button></td></tr>
+              <tr data-status="processing"><td>#2840</td><td>Prof. J. Harrington</td><td>Shakespeare Folio (1623)</td><td>27 Apr 2024</td><td>£18,500</td><td><span class="badge badge-warning">Processing</span></td><td><button class="action-btn action-btn--view" data-order-view="2840">View</button></td></tr>
+              <tr data-status="pending"><td>#2839</td><td>Margaret Chen</td><td>Victorian Poetry Collection</td><td>26 Apr 2024</td><td>£3,200</td><td><span class="badge badge-info">Pending</span></td><td><button class="action-btn action-btn--view" data-order-view="2839">View</button></td></tr>
+              <tr data-status="completed"><td>#2838</td><td>Dr. R. Ashford</td><td>Illuminated MS (14th C.)</td><td>25 Apr 2024</td><td>£9,800</td><td><span class="badge badge-success">Completed</span></td><td><button class="action-btn action-btn--view" data-order-view="2838">View</button></td></tr>
+              <tr data-status="cancelled"><td>#2837</td><td>T. Pemberton</td><td>1922 Ulysses (standard)</td><td>24 Apr 2024</td><td>£4,100</td><td><span class="badge badge-danger">Cancelled</span></td><td><button class="action-btn action-btn--view" data-order-view="2837">View</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <!-- End content -->
+  </div>
+
+  <script src="../assets/js/main.js" defer></script>
+  <script src="../assets/js/animations.js" defer></script>
+  <script src="../assets/js/dashboard.js" defer></script>
+</body>
+</html>
+

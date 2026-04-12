@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Not Found — 404 | Vintage Rare Bookstore</title>
+  <meta name="description" content="The page you're looking for has been lost to history. Return to our rare book collection.">
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicons/favicon.svg">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <style>
+    html,body{height:100%;overflow:hidden;background:var(--bg-dark)}
+    .not-found-page{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:var(--space-xl);position:relative;overflow:hidden}
+    .falling-pages-container{position:fixed;inset:0;pointer-events:none;z-index:0}
+    .falling-page{position:absolute;width:40px;height:52px;background:var(--cream);border-radius:2px;box-shadow:var(--shadow-sm);animation:fallPage linear infinite;opacity:0}
+    @keyframes fallPage{0%{transform:translateY(-80px) rotate(0deg) translateX(0);opacity:0}5%{opacity:1}95%{opacity:0.6}100%{transform:translateY(110vh) rotate(720deg) translateX(60px);opacity:0}}
+    .error-content{position:relative;z-index:1;max-width:600px}
+    .error-num{font-family:var(--font-heading);font-size:clamp(6rem,20vw,12rem);font-weight:800;line-height:.85;background:linear-gradient(135deg,var(--accent),var(--primary-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:var(--space-md);display:block}
+    .error-icon{font-size:4rem;margin-bottom:var(--space-lg);display:block;animation:bookFloat 4s ease-in-out infinite}
+    @keyframes bookFloat{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-12px) rotate(3deg)}}
+    .error-title{color:#fff;font-size:2rem;margin-bottom:var(--space-md)}
+    .error-text{color:rgba(245,230,211,0.7);font-size:1.0625rem;line-height:1.7;max-width:480px;margin:0 auto var(--space-2xl)}
+    .error-actions{display:flex;gap:var(--space-md);justify-content:center;flex-wrap:wrap}
+    .search-wrapper{max-width:400px;margin:var(--space-xl) auto 0;position:relative}
+    .search-wrapper input{width:100%;padding:12px 20px 12px 46px;border-radius:100px;border:2px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.08);color:#fff;font-family:var(--font-ui);font-size:0.9375rem;backdrop-filter:blur(8px)}
+    .search-wrapper input::placeholder{color:rgba(255,255,255,0.4)}
+    .search-wrapper svg{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:rgba(255,255,255,0.5)}
+    .theme-corner{position:fixed;top:var(--space-md);right:var(--space-md)}
+    /* Book shelves deco */
+    .shelf-deco{position:fixed;bottom:-20px;left:0;right:0;height:120px;background:linear-gradient(to top,rgba(93,58,26,0.5),transparent);pointer-events:none}
+    .shelf-books{position:fixed;bottom:0;left:0;right:0;height:80px;display:flex;align-items:flex-end;justify-content:center;gap:4px;pointer-events:none;overflow:hidden}
+    .shelf-book{width:28px;border-radius:2px 4px 4px 2px;opacity:0.4}
+    @media(max-width:640px){.error-actions{flex-direction:column;align-items:center}}
+  </style>
+</head>
+<body>
+  <div class="falling-pages-container" aria-hidden="true"></div>
+
+  <div class="not-found-page">
+    <div class="shelf-deco" aria-hidden="true"></div>
+    <div class="shelf-books" aria-hidden="true">
+      <div class="shelf-book" style="height:60px;background:#8B4513"></div>
+      <div class="shelf-book" style="height:72px;background:#D4AF37"></div>
+      <div class="shelf-book" style="height:55px;background:#2E4A4E"></div>
+      <div class="shelf-book" style="height:68px;background:#5D3A1A"></div>
+      <div class="shelf-book" style="height:80px;background:#4A2E50"></div>
+      <div class="shelf-book" style="height:62px;background:#8B4513"></div>
+      <div class="shelf-book" style="height:74px;background:#3D6B70"></div>
+      <div class="shelf-book" style="height:58px;background:#D4AF37;opacity:0.25"></div>
+    </div>
+
+    <div class="theme-corner">
+      <button id="theme-toggle" class="nav-icon-btn" aria-label="Toggle theme" style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:var(--border-radius)"><svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/></svg></button>
+    </div>
+
+    <div class="error-content">
+      <a href="index.html" aria-label="Go to Home" style="text-decoration:none;display:inline-block;margin-bottom:var(--space-2xl)">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="48" height="48"><rect width="40" height="40" rx="7" fill="#8B4513"/><rect x="7" y="6" width="19" height="28" rx="2" fill="#D4AF37"/><rect x="9" y="8" width="15" height="24" rx="1" fill="#FDF8F0"/><rect x="11" y="13" width="11" height="1.5" rx="0.75" fill="#8B4513"/><rect x="27" y="8" width="6" height="24" rx="1" fill="#5D3A1A"/></svg>
+      </a>
+      <span class="error-icon" aria-hidden="true">📖</span>
+      <span class="error-num" aria-label="404">404</span>
+      <h1 class="error-title">Chapter Not Found</h1>
+      <p class="error-text">Like a rare book that slipped between the shelves, the page you're looking for has been lost to history. Perhaps it was an early edition that never made it to print.</p>
+      <div class="error-actions">
+        <a href="index.html" class="btn btn-accent btn-lg">Return Home</a>
+        <a href="services.html" class="btn btn-glass btn-lg" style="border:2px solid rgba(255,255,255,0.25);color:#fff;background:rgba(255,255,255,0.08)">Browse Services</a>
+      </div>
+      <div class="search-wrapper" role="search">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="search" placeholder="Search our collection..." aria-label="Search the bookstore" onkeypress="if(event.key==='Enter')window.location.href='blog.html'">
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/animations.js" defer></script>
+</body>
+</html>

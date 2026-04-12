@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aura - Journal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <script src="assets/js/theme-toggle.js"></script>
+  <style>
+    .blog-hero {
+      min-height: 40vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: linear-gradient(rgba(13,115,119,0.85), rgba(7,67,69,0.9)), url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1920&q=80') center/cover;
+      padding-top: var(--navbar-height);
+      color: white;
+    }
+    .blog-hero h1, .blog-hero p { color: white; }
+
+    .blog-search-bar {
+      display: flex;
+      max-width: 500px;
+      margin: var(--space-4) auto 0;
+      background: white;
+      border-radius: 40px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+    .blog-search-bar input {
+      flex: 1;
+      border: none;
+      padding: 0 var(--space-4);
+      font-size: var(--text-base);
+      color: var(--color-text-primary);
+      background: transparent;
+    }
+    .blog-search-bar input:focus { outline: none; }
+    .blog-search-bar button {
+      background: var(--color-primary);
+      border: none;
+      padding: 0 var(--space-4);
+      color: white;
+      cursor: pointer;
+      height: 48px;
+    }
+
+    .filter-pills {
+      display: flex;
+      gap: var(--space-2);
+      overflow-x: auto;
+      padding-bottom: var(--space-2);
+      scrollbar-width: none;
+    }
+    .filter-pills::-webkit-scrollbar { display: none; }
+    .pill {
+      flex-shrink: 0;
+      padding: 6px 16px;
+      border-radius: 20px;
+      border: 1px solid var(--color-border);
+      background: transparent;
+      font-size: var(--text-sm);
+      font-weight: 500;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      color: var(--color-text-primary);
+    }
+    .pill:hover, .pill.active { background: var(--color-primary); color: white; border-color: var(--color-primary); }
+
+    .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); }
+    @media (max-width: 1024px) { .blog-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 640px) { .blog-grid { grid-template-columns: 1fr; } }
+
+    .blog-card { border-radius: var(--border-radius-lg); overflow: hidden; border: 1px solid var(--color-border); transition: all var(--transition-base); background: var(--color-bg); }
+    .blog-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+    .blog-card-img { width: 100%; height: 200px; object-fit: cover; transition: transform var(--transition-base); overflow: hidden; }
+    .blog-card:hover .blog-card-img img { transform: scale(1.05); }
+    .blog-card-img img { width: 100%; height: 100%; object-fit: cover; }
+    .category-badge { display: inline-block; background: var(--color-primary); color: white; font-size: var(--text-xs); font-weight: 600; padding: 3px 10px; border-radius: 12px; margin-bottom: var(--space-2); }
+    .blog-meta { display: flex; align-items: center; gap: var(--space-2); margin-top: var(--space-3); }
+    .blog-meta img { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; }
+    .read-time { margin-left: auto; font-size: var(--text-xs); color: var(--color-text-muted); }
+
+    .pagination { display: flex; justify-content: center; gap: var(--space-2); margin-top: var(--space-6); }
+    .page-btn { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--color-border); border-radius: var(--border-radius); cursor: pointer; transition: all var(--transition-fast); background: var(--color-bg); color: var(--color-text-primary); font-weight: 500; }
+    .page-btn:hover, .page-btn.active { background: var(--color-primary); color: white; border-color: var(--color-primary); }
+
+
+  </style>
+</head>
+<body>
+    <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="home-1.html" class="navbar-brand">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+        Aura
+      </a>
+      
+      <ul class="navbar-menu d-md-flex d-none">
+        <li class="navbar-item">
+          <button class="dropdown-toggle">Home <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"></path></svg></button>
+          <div class="dropdown-menu">
+            <a href="home-1.html" class="dropdown-link">Home 1</a>
+            <a href="home-2.html" class="dropdown-link">Home 2</a>
+          </div>
+        </li>
+        <li class="navbar-item"><a href="about.html" class="navbar-link">About</a></li>
+        <li class="navbar-item">
+          <button class="dropdown-toggle">Services <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"></path></svg></button>
+          <div class="dropdown-menu">
+            <a href="services.html" class="dropdown-link">All Services</a>
+            <a href="service-details.html" class="dropdown-link">Service Details</a>
+          </div>
+        </li>
+        <li class="navbar-item"><a href="pricing.html" class="navbar-link">Pricing</a></li>
+        <li class="navbar-item">
+          <button class="dropdown-toggle">Blog <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"></path></svg></button>
+          <div class="dropdown-menu">
+            <a href="blog.html" class="dropdown-link">Blog</a>
+            <a href="blog-details.html" class="dropdown-link">Blog Details</a>
+          </div>
+        </li>
+        <li class="navbar-item"><a href="contact.html" class="navbar-link">Contact</a></li>
+        <li class="navbar-item">
+          <button class="dropdown-toggle">Dashboard <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"></path></svg></button>
+          <div class="dropdown-menu">
+            <a href="dashboard.html?role=admin" class="dropdown-link">Admin Dashboard</a>
+            <a href="dashboard.html?role=user" class="dropdown-link">User Dashboard</a>
+          </div>
+        </li>
+      </ul>
+      
+      <div class="navbar-actions">
+        <!-- Theme Toggle -->
+        <button class="icon-btn d-none d-md-flex" id="themeToggle" aria-label="Toggle dark/light mode">
+          <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line></svg>
+        </button>
+        <!-- Globe/RTL Toggle -->
+        <button class="icon-btn d-none d-md-flex" id="langToggle" aria-label="Toggle language direction" style="transition: transform 0.4s ease;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+        </button>
+        <a href="login.html" class="btn btn-primary d-none d-md-flex">Login</a>
+        <button class="icon-btn mobile-toggle d-md-none" aria-label="Toggle Menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+  
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu-overlay">
+    <button class="icon-btn mobile-toggle" style="position: absolute; right: var(--space-4); top: var(--space-4);">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
+    <ul class="navbar-menu">
+      <li class="navbar-item"><a href="home-1.html" class="navbar-link">Home 1</a></li>
+      <li class="navbar-item"><a href="home-2.html" class="navbar-link">Home 2</a></li>
+      <li class="navbar-item"><a href="about.html" class="navbar-link">About</a></li>
+      <li class="navbar-item"><a href="services.html" class="navbar-link">All Services</a></li>
+      <li class="navbar-item"><a href="service-details.html" class="navbar-link">Service Details</a></li>
+      <li class="navbar-item"><a href="pricing.html" class="navbar-link">Pricing</a></li>
+      <li class="navbar-item"><a href="blog.html" class="navbar-link">Blog</a></li>
+      <li class="navbar-item"><a href="blog-details.html" class="navbar-link">Blog Details</a></li>
+      <li class="navbar-item"><a href="contact.html" class="navbar-link">Contact</a></li>
+      <li class="navbar-item"><a href="dashboard.html?role=admin" class="navbar-link">Admin Dashboard</a></li>
+      <li class="navbar-item"><a href="dashboard.html?role=user" class="navbar-link">User Dashboard</a></li>
+      <li class="navbar-item"><a href="login.html" class="btn btn-primary">Login</a></li>
+    </ul>
+  </div>
+
+  <header class="blog-hero">
+    <div class="container animate-on-scroll fade-up">
+      <h1>Design Journal</h1>
+      <p class="text-lg" style="color:rgba(255,255,255,0.85);">Trends, tips & inspiration for your perfect space.</p>
+      <div class="blog-search-bar">
+        <input type="text" id="blogSearch" placeholder="Search articles...">
+        <button type="button"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button>
+      </div>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container">
+      <!-- Category Filters -->
+      <div class="filter-pills mb-5 animate-on-scroll fade-up">
+        <button class="pill active" data-cat="all">All Posts</button>
+        <button class="pill" data-cat="design-tips">Design Tips</button>
+        <button class="pill" data-cat="trends">Trends 2026</button>
+        <button class="pill" data-cat="case-study">Case Studies</button>
+        <button class="pill" data-cat="how-to">How-To Guides</button>
+      </div>
+
+      <!-- Blog Grid -->
+      <div class="blog-grid" id="blogGrid">
+        <!-- Post 1 -->
+        <article class="blog-card animate-on-scroll fade-up" data-cat="trends">
+          <div class="blog-card-img"><img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=600&q=80" alt="2026 Trends" loading="lazy"></div>
+          <div class="card-body">
+            <span class="category-badge">Trends 2026</span>
+            <h3 style="font-size:1.125rem; margin-bottom:8px;"><a href="blog-details.html" style="color:inherit;">Top Interior Design Trends Shaping 2026</a></h3>
+            <p class="text-secondary text-sm" style="-webkit-line-clamp:3; display:-webkit-box; -webkit-box-orient:vertical; overflow:hidden;">Explore the defining aesthetic movements from biophilic integration to curve-forward furniture that will dominate interiors this year.</p>
+            <div class="blog-meta">
+              <img src="https://i.pravatar.cc/64?img=47" alt="Elena">
+              <div><span class="text-sm font-weight-bold d-block">Elena Rodriguez</span><span class="text-xs text-secondary">Apr 10, 2026</span></div>
+              <span class="read-time">5 min read</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Post 2 -->
+        <article class="blog-card animate-on-scroll fade-up delay-100" data-cat="how-to">
+          <div class="blog-card-img"><img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=600&q=80" alt="Small spaces" loading="lazy"></div>
+          <div class="card-body">
+            <span class="category-badge" style="background:var(--color-secondary);color:#000;">How-To</span>
+            <h3 style="font-size:1.125rem; margin-bottom:8px;"><a href="blog-details.html" style="color:inherit;">Maximize Your Small Living Room in 7 Steps</a></h3>
+            <p class="text-secondary text-sm" style="-webkit-line-clamp:3; display:-webkit-box; -webkit-box-orient:vertical; overflow:hidden;">Space is limitless when you know how to use it. Our expert guide walks you through decluttering, multi-functional furniture, and optical tricks.</p>
+            <div class="blog-meta">
+              <img src="https://i.pravatar.cc/64?img=29" alt="Marcus">
+              <div><span class="text-sm font-weight-bold d-block">Marcus Chen</span><span class="text-xs text-secondary">Apr 7, 2026</span></div>
+              <span class="read-time">8 min read</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Post 3 -->
+        <article class="blog-card animate-on-scroll fade-up delay-200" data-cat="case-study">
+          <div class="blog-card-img"><img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80" alt="Loft Case" loading="lazy"></div>
+          <div class="card-body">
+            <span class="category-badge" style="background: #6c757d;">Case Study</span>
+            <h3 style="font-size:1.125rem; margin-bottom:8px;"><a href="blog-details.html" style="color:inherit;">Modern Minimalist Loft — Full Reveal</a></h3>
+            <p class="text-secondary text-sm" style="-webkit-line-clamp:3; display:-webkit-box; -webkit-box-orient:vertical; overflow:hidden;">How we transformed a 650sqft raw loft into a highly functional, Instagram-worthy home office and living space.</p>
+            <div class="blog-meta">
+              <img src="https://i.pravatar.cc/64?img=11" alt="Sophia">
+              <div><span class="text-sm font-weight-bold d-block">Sophia Walker</span><span class="text-xs text-secondary">Apr 3, 2026</span></div>
+              <span class="read-time">12 min read</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Post 4 -->
+        <article class="blog-card animate-on-scroll fade-up" data-cat="design-tips">
+          <div class="blog-card-img"><img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=600&q=80" alt="Lighting" loading="lazy"></div>
+          <div class="card-body">
+            <span class="category-badge" style="background: #17a2b8;">Design Tips</span>
+            <h3 style="font-size:1.125rem; margin-bottom:8px;"><a href="blog-details.html" style="color:inherit;">The Transformative Power of Layered Lighting</a></h3>
+            <p class="text-secondary text-sm" style="-webkit-line-clamp:3; display:-webkit-box; -webkit-box-orient:vertical; overflow:hidden;">Ambient, task, and accent lighting — the three tiers that can make or break any interior design aesthetic.</p>
+            <div class="blog-meta">
+              <img src="https://i.pravatar.cc/64?img=58" alt="James">
+              <div><span class="text-sm font-weight-bold d-block">James Wilson</span><span class="text-xs text-secondary">Mar 28, 2026</span></div>
+              <span class="read-time">6 min read</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Post 5 -->
+        <article class="blog-card animate-on-scroll fade-up delay-100" data-cat="design-tips">
+          <div class="blog-card-img"><img src="https://images.unsplash.com/photo-1507652313519-d4e9174996dd?auto=format&fit=crop&w=600&q=80" alt="Color" loading="lazy"></div>
+          <div class="card-body">
+            <span class="category-badge" style="background: #17a2b8;">Design Tips</span>
+            <h3 style="font-size:1.125rem; margin-bottom:8px;"><a href="blog-details.html" style="color:inherit;">Choosing Paint Colors That Actually Work Together</a></h3>
+            <p class="text-secondary text-sm" style="-webkit-line-clamp:3; display:-webkit-box; -webkit-box-orient:vertical; overflow:hidden;">Go beyond color swatches — learn the 60/30/10 rule and how undertones affect your entire palette.</p>
+            <div class="blog-meta">
+              <img src="https://i.pravatar.cc/64?img=47" alt="Elena">
+              <div><span class="text-sm font-weight-bold d-block">Elena Rodriguez</span><span class="text-xs text-secondary">Mar 22, 2026</span></div>
+              <span class="read-time">7 min read</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Post 6 -->
+        <article class="blog-card animate-on-scroll fade-up delay-200" data-cat="case-study">
+          <div class="blog-card-img"><img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=600&q=80" alt="Office" loading="lazy"></div>
+          <div class="card-body">
+            <span class="category-badge" style="background: #6c757d;">Case Study</span>
+            <h3 style="font-size:1.125rem; margin-bottom:8px;"><a href="blog-details.html" style="color:inherit;">Executive Office Suite — Coastal Refresh</a></h3>
+            <p class="text-secondary text-sm" style="-webkit-line-clamp:3; display:-webkit-box; -webkit-box-orient:vertical; overflow:hidden;">A corporate boardroom transformed into an airy workspace with biophilic elements and custom built-ins.</p>
+            <div class="blog-meta">
+              <img src="https://i.pravatar.cc/64?img=29" alt="Marcus">
+              <div><span class="text-sm font-weight-bold d-block">Marcus Chen</span><span class="text-xs text-secondary">Mar 15, 2026</span></div>
+              <span class="read-time">10 min read</span>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Pagination -->
+      <div class="pagination animate-on-scroll fade-up">
+        <button class="page-btn">&laquo;</button>
+        <button class="page-btn active">1</button>
+        <button class="page-btn">2</button>
+        <button class="page-btn">3</button>
+        <button class="page-btn">&raquo;</button>
+      </div>
+    </div>
+  </section>
+
+    <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h3 class="footer-heading" style="font-family: var(--font-heading); color: var(--color-primary); font-size: 1.5rem; font-weight: 700;">Aura</h3>
+          <p class="text-secondary mb-3">Redefining indoor spaces with bespoke virtual interior design architecture tailored for you.</p>
+          <div class="d-flex gap-2">
+            <!-- Social icons -->
+            <a href="#" class="icon-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
+            <a href="#" class="icon-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer-heading">Services</h4>
+          <ul class="footer-links">
+            <li><a href="service-details.html">Residential Design</a></li>
+            <li><a href="service-details.html">Commercial Spaces</a></li>
+            <li><a href="service-details.html">Kitchen & Bath</a></li>
+            <li><a href="pricing.html">Pricing Plans</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-heading">Company</h4>
+          <ul class="footer-links">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="blog.html">Journal</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="dashboard.html">Client Portal</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-heading">Contact</h4>
+          <ul class="footer-links">
+            <li><a href="mailto:hello@auradesign.com">hello@auradesign.com</a></li>
+            <li><a href="tel:+1234567890">+1 (234) 567-890</a></li>
+            <li><span class="text-secondary">123 Design Ave,<br>Los Angeles, CA 90028</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Aura. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/utils.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/animations.js"></script>
+  <script>
+    // Category filter
+    document.querySelectorAll('.filter-pills .pill').forEach(pill => {
+      pill.addEventListener('click', () => {
+        document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+        const cat = pill.dataset.cat;
+        document.querySelectorAll('#blogGrid article').forEach(card => {
+          card.style.display = (cat === 'all' || card.dataset.cat === cat) ? 'block' : 'none';
+        });
+      });
+    });
+    // Search
+    document.getElementById('blogSearch').addEventListener('input', function() {
+      const q = this.value.toLowerCase();
+      document.querySelectorAll('#blogGrid article').forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(q) ? 'block' : 'none';
+      });
+    });
+  </script>
+</body>
+</html>
