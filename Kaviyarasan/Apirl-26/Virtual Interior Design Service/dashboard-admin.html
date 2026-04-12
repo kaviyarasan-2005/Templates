@@ -4,14 +4,16 @@
   <link rel="icon" type="image/png" href="assets/images/favicon.png">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aura - Client Dashboard</title>
+  <title>Aura - Admin Dashboard</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/base.css">
   <link rel="stylesheet" href="assets/css/layout.css">
   <link rel="stylesheet" href="assets/css/components.css">
   <link rel="stylesheet" href="assets/css/animations.css">
   <link rel="stylesheet" href="assets/css/dashboard.css">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
   <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
 </head>
 <body>
 
@@ -30,17 +32,17 @@
       </a>
     </div>
 
-    <!-- Admin Nav -->
-    <nav class="sidebar-nav" id="adminNav">
-      <p class="nav-section-label">Overview</p>
+    <!-- Unified Nav -->
+    <nav class="sidebar-nav">
+      <p class="nav-section-label">Aura Studio</p>
       <ul>
         <li class="nav-item"><a href="#" class="nav-link active" onclick="switchSection('admin-overview',this)">
           <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
-          <span class="nav-label">Dashboard</span>
+          <span class="nav-label">Overview</span>
         </a></li>
         <li class="nav-item"><a href="#" class="nav-link" onclick="switchSection('admin-orders',this)">
           <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
-          <span class="nav-label">Orders</span>
+          <span class="nav-label">All Orders</span>
           <span class="nav-badge">3</span>
         </a></li>
       </ul>
@@ -48,36 +50,12 @@
       <ul>
         <li class="nav-item"><a href="#" class="nav-link" onclick="switchSection('admin-users',this)">
           <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-          <span class="nav-label">Users</span>
+          <span class="nav-label">User Base</span>
         </a></li>
         <li class="nav-item"><a href="#" class="nav-link" onclick="switchSection('admin-messages',this)">
           <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-          <span class="nav-label">Messages</span>
-          <span class="nav-badge">5</span>
-        </a></li>
-      </ul>
-    </nav>
-
-    <!-- User Nav -->
-    <nav class="sidebar-nav" id="userNav" style="display:none;">
-      <p class="nav-section-label">My Space</p>
-      <ul>
-        <li class="nav-item"><a href="#" class="nav-link active" onclick="switchSection('user-overview',this)">
-          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
-          <span class="nav-label">Overview</span>
-        </a></li>
-        <li class="nav-item"><a href="#" class="nav-link" onclick="switchSection('user-projects',this)">
-          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-          <span class="nav-label">My Projects</span>
-        </a></li>
-        <li class="nav-item"><a href="#" class="nav-link" onclick="switchSection('user-orders',this)">
-          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path></svg>
-          <span class="nav-label">Order History</span>
-        </a></li>
-        <li class="nav-item"><a href="#" class="nav-link" onclick="switchSection('user-messages',this)">
-          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-          <span class="nav-label">Messages</span>
-          <span class="nav-badge">2</span>
+          <span class="nav-label">Studio Messaging</span>
+          <span class="nav-badge">7</span>
         </a></li>
       </ul>
     </nav>
@@ -106,11 +84,14 @@
       </div>
 
       <div class="dash-header-actions">
-        <!-- Role Switcher -->
-        <div class="role-switcher">
-          <button class="role-btn active" id="roleAdmin" onclick="switchRole('admin')">Admin</button>
-          <button class="role-btn" id="roleUser" onclick="switchRole('user')">User</button>
-        </div>
+        <!-- Globe/RTL Toggle -->
+        <button class="header-icon-btn" id="langToggle" aria-label="Toggle language direction">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+          </svg>
+        </button>
 
         <!-- Theme Toggle -->
         <button class="header-icon-btn" id="themeToggle" aria-label="Toggle theme">
@@ -186,16 +167,12 @@
           </div>
         </div>
 
-        <!-- Charts -->
-        <div class="charts-grid">
-          <!-- Bar Chart: Revenue -->
+        <!-- Charts Grid (4+ Infographics) -->
+        <div class="charts-grid-expanded">
+          <!-- 1. Monthly Revenue (Bar) -->
           <div class="chart-card">
             <div class="chart-header">
               <span class="chart-title">Monthly Revenue</span>
-              <select style="border:1px solid var(--color-border);border-radius:6px;padding:4px 8px;font-size:0.8125rem;color:var(--color-text-secondary);">
-                <option>2026</option>
-                <option>2025</option>
-              </select>
             </div>
             <div class="css-bar-chart" id="revenueChart">
               <div class="bar-wrap"><div class="bar" style="height:55%"></div><span class="bar-lbl">Jan</span></div>
@@ -204,32 +181,55 @@
               <div class="bar-wrap"><div class="bar" style="height:90%"></div><span class="bar-lbl">Apr</span></div>
               <div class="bar-wrap"><div class="bar" style="height:63%"></div><span class="bar-lbl">May</span></div>
               <div class="bar-wrap"><div class="bar" style="height:80%"></div><span class="bar-lbl">Jun</span></div>
-              <div class="bar-wrap"><div class="bar" style="height:68%"></div><span class="bar-lbl">Jul</span></div>
-              <div class="bar-wrap"><div class="bar" style="height:77%"></div><span class="bar-lbl">Aug</span></div>
-              <div class="bar-wrap"><div class="bar" style="height:85%"></div><span class="bar-lbl">Sep</span></div>
-              <div class="bar-wrap"><div class="bar" style="height:91%"></div><span class="bar-lbl">Oct</span></div>
-              <div class="bar-wrap"><div class="bar" style="height:95%"></div><span class="bar-lbl">Nov</span></div>
-              <div class="bar-wrap"><div class="bar" style="height:100%; background:var(--color-secondary);"></div><span class="bar-lbl">Dec</span></div>
             </div>
           </div>
 
-          <!-- Donut + Sparkline -->
+          <!-- 2. Service Mix (Donut) -->
           <div class="chart-card">
             <div class="chart-header"><span class="chart-title">Service Mix</span></div>
             <div class="donut-wrap">
               <svg class="donut-svg" viewBox="0 0 36 36">
                 <circle cx="18" cy="18" r="15.915" fill="none" stroke="#E9ECEF" stroke-width="3.5"/>
-                <circle cx="18" cy="18" r="15.915" fill="none" stroke="var(--color-primary)" stroke-width="3.5"
-                  stroke-dasharray="45 55" stroke-dashoffset="25"/>
-                <circle cx="18" cy="18" r="15.915" fill="none" stroke="var(--color-secondary)" stroke-width="3.5"
-                  stroke-dasharray="30 70" stroke-dashoffset="-20"/>
-                <circle cx="18" cy="18" r="15.915" fill="none" stroke="var(--color-info)" stroke-width="3.5"
-                  stroke-dasharray="25 75" stroke-dashoffset="-50"/>
+                <circle cx="18" cy="18" r="15.915" fill="none" stroke="var(--color-primary)" stroke-width="3.5" stroke-dasharray="45 55" stroke-dashoffset="25"/>
+                <circle cx="18" cy="18" r="15.915" fill="none" stroke="var(--color-secondary)" stroke-width="3.5" stroke-dasharray="30 70" stroke-dashoffset="-20"/>
               </svg>
               <div class="donut-legend">
-                <div class="donut-item"><div class="donut-dot" style="background:var(--color-primary)"></div><span class="text-sm">Residential 45%</span></div>
-                <div class="donut-item"><div class="donut-dot" style="background:var(--color-secondary)"></div><span class="text-sm">Commercial 30%</span></div>
-                <div class="donut-item"><div class="donut-dot" style="background:var(--color-info)"></div><span class="text-sm">Consultation 25%</span></div>
+                <div class="donut-item"><div class="donut-dot" style="background:var(--color-primary)"></div><span class="text-sm">Residential (45%)</span></div>
+                <div class="donut-item"><div class="donut-dot" style="background:var(--color-secondary)"></div><span class="text-sm">Commercial (30%)</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. Project Momentum (Radial Gauge) - NEW -->
+          <div class="chart-card">
+            <div class="chart-header"><span class="chart-title">Project Momentum</span></div>
+            <div class="gauge-wrap">
+              <div class="gauge-base">
+                <div class="gauge-fill" style="transform: rotate(135deg);"></div>
+                <div class="gauge-center">
+                  <div class="gauge-value">84%</div>
+                  <div class="gauge-label">On Track</div>
+                </div>
+              </div>
+              <p class="text-xs text-secondary mt-3 text-center">Velocity increased by 15% vs last week</p>
+            </div>
+          </div>
+
+          <!-- 4. Design Style Trends (Horizontal Bar) - NEW -->
+          <div class="chart-card">
+            <div class="chart-header"><span class="chart-title">Popular Styles</span></div>
+            <div class="trend-list">
+              <div class="trend-item">
+                <div class="trend-info"><span>Minimalist</span><span>68%</span></div>
+                <div class="trend-bar-bg"><div class="trend-bar-fill" style="width:68%"></div></div>
+              </div>
+              <div class="trend-item">
+                <div class="trend-info"><span>Industrial</span><span>42%</span></div>
+                <div class="trend-bar-bg"><div class="trend-bar-fill" style="width:42%; background:var(--color-secondary);"></div></div>
+              </div>
+              <div class="trend-item">
+                <div class="trend-info"><span>Biophilic</span><span>25%</span></div>
+                <div class="trend-bar-bg"><div class="trend-bar-fill" style="width:25%; background:var(--color-info);"></div></div>
               </div>
             </div>
           </div>
@@ -378,136 +378,7 @@
         </div>
       </div>
 
-      <!-- ========== USER OVERVIEW ========== -->
-      <div id="user-overview" class="dash-section" style="display:none;">
-        <div style="display:flex;gap:var(--space-4);align-items:center;margin-bottom:var(--space-5);flex-wrap:wrap;">
-          <img src="https://i.pravatar.cc/96?img=1" style="width:72px;height:72px;border-radius:50%;border:3px solid var(--color-primary);">
-          <div>
-            <h2 style="margin-bottom:4px;">Welcome back, Sarah!</h2>
-            <p class="text-secondary">Signature Plan · Member since Jan 2026</p>
-          </div>
-          <div style="margin-left:auto; background:rgba(13,115,119,0.08); border:1px solid rgba(13,115,119,0.2); border-radius:12px; padding:12px 20px; text-align:center;">
-            <div style="font-size:1.5rem; font-weight:700; color:var(--color-primary);">72%</div>
-            <div class="text-xs text-secondary">Project Complete</div>
-            <div style="height:4px;background:var(--color-border);border-radius:4px;margin-top:8px;overflow:hidden;"><div style="width:72%;height:100%;background:var(--color-primary);border-radius:4px;"></div></div>
-          </div>
-        </div>
 
-        <!-- User Stat Cards -->
-        <div class="stat-cards">
-          <div class="stat-card">
-            <div class="stat-icon" style="background:rgba(13,115,119,0.1);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></div>
-            <div><div class="stat-value">3</div><div class="stat-label">Active Projects</div></div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-icon" style="background:rgba(40,167,69,0.1);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-success)" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
-            <div><div class="stat-value">2</div><div class="stat-label">Completed</div></div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-icon" style="background:rgba(255,193,7,0.1);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-warning)" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></div>
-            <div><div class="stat-value">2</div><div class="stat-label">Unread Messages</div></div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-icon" style="background:rgba(23,162,184,0.1);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-info)" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path></svg></div>
-            <div><div class="stat-value">$699</div><div class="stat-label">Total Spent</div></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- ========== USER PROJECTS ========== -->
-      <div id="user-projects" class="dash-section" style="display:none;">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--space-4);">
-          <h2>My Projects</h2>
-          <a href="contact.html" class="btn btn-primary" style="height:38px;padding:0 16px;font-size:0.875rem;">+ New Project</a>
-        </div>
-        <div class="project-cards">
-          <div class="project-card">
-            <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=400&q=80" alt="Project" class="project-card-img">
-            <div class="project-card-body">
-              <span class="status-badge status-progress" style="margin-bottom:8px;display:inline-block;">In Progress</span>
-              <h4 style="margin-bottom:4px;">Modern Minimalist Loft</h4>
-              <p class="text-sm text-secondary mb-2">Designer: Elena Rodriguez</p>
-              <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:72%"></div></div>
-              <div style="display:flex;justify-content:space-between;font-size:0.75rem;color:var(--color-text-muted);margin-top:4px;"><span>72% complete</span><span>Next: 3D Review</span></div>
-            </div>
-          </div>
-          <div class="project-card">
-            <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=400&q=80" alt="Project" class="project-card-img">
-            <div class="project-card-body">
-              <span class="status-badge status-completed" style="margin-bottom:8px;display:inline-block;">Completed</span>
-              <h4 style="margin-bottom:4px;">Coastal Family Home</h4>
-              <p class="text-sm text-secondary mb-2">Designer: Sophia Walker</p>
-              <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:100%;background:var(--color-success);"></div></div>
-              <div style="display:flex;justify-content:space-between;font-size:0.75rem;color:var(--color-text-muted);margin-top:4px;"><span>100% complete</span><span>Delivered Mar 15</span></div>
-            </div>
-          </div>
-          <div class="project-card">
-            <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=400&q=80" alt="Project" class="project-card-img">
-            <div class="project-card-body">
-              <span class="status-badge status-pending" style="margin-bottom:8px;display:inline-block;">Pending</span>
-              <h4 style="margin-bottom:4px;">Executive Office Suite</h4>
-              <p class="text-sm text-secondary mb-2">Designer: TBD — waiting to start</p>
-              <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:5%;background:var(--color-warning);"></div></div>
-              <div style="display:flex;justify-content:space-between;font-size:0.75rem;color:var(--color-text-muted);margin-top:4px;"><span>Awaiting deposit</span><span>Starts: May 1</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- ========== USER ORDERS ========== -->
-      <div id="user-orders" class="dash-section" style="display:none;">
-        <h2 style="margin-bottom:var(--space-4);">Order History</h2>
-        <div class="table-card">
-          <div style="overflow-x:auto;">
-            <table class="data-table">
-              <thead><tr><th>Invoice</th><th>Service</th><th>Date</th><th>Amount</th><th>Status</th><th>Download</th></tr></thead>
-              <tbody>
-                <tr>
-                  <td style="font-weight:600;color:var(--color-primary);">#INV-0042</td>
-                  <td>Signature Plan – Full Room</td>
-                  <td>Mar 15, 2026</td>
-                  <td style="font-weight:600;">$699</td>
-                  <td><span class="status-badge status-completed">Paid</span></td>
-                  <td><button class="btn btn-outline" style="height:28px;padding:0 10px;font-size:0.75rem;" onclick="alert('Downloading invoice...')">PDF ↓</button></td>
-                </tr>
-                <tr>
-                  <td style="font-weight:600;color:var(--color-primary);">#INV-0031</td>
-                  <td>Essential Plan – Consultation</td>
-                  <td>Jan 20, 2026</td>
-                  <td style="font-weight:600;">$299</td>
-                  <td><span class="status-badge status-completed">Paid</span></td>
-                  <td><button class="btn btn-outline" style="height:28px;padding:0 10px;font-size:0.75rem;" onclick="alert('Downloading invoice...')">PDF ↓</button></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-
-      <!-- ========== USER MESSAGES ========== -->
-      <div id="user-messages" class="dash-section" style="display:none;">
-        <h2 style="margin-bottom:var(--space-4);">Messages</h2>
-        <div class="chart-card" style="max-width:700px;">
-          <div style="border-bottom:1px solid var(--color-border);padding-bottom:12px;margin-bottom:16px;display:flex;gap:12px;align-items:center;">
-            <img src="https://i.pravatar.cc/48?img=47" style="width:44px;height:44px;border-radius:50%;">
-            <div><div style="font-weight:600;">Elena Rodriguez</div><div class="text-xs text-secondary">Lead Designer · usually replies within 1 hour</div></div>
-          </div>
-          <div style="display:flex;flex-direction:column;gap:12px;max-height:320px;overflow-y:auto;padding-bottom:16px;">
-            <div style="align-self:flex-start;max-width:70%;background:var(--color-surface);border-radius:0 12px 12px 12px;padding:10px 14px;">
-              <p class="text-sm mb-0">Hi Sarah! Your 3D renders are almost ready. I'll send them over by Thursday.</p>
-              <span class="text-xs text-secondary mt-1 d-block">Elena · 10:22 AM</span>
-            </div>
-            <div style="align-self:flex-end;max-width:70%;background:var(--color-primary);color:white;border-radius:12px 12px 0 12px;padding:10px 14px;">
-              <p class="text-sm mb-0" style="color:white;">That's wonderful! Looking forward to it. Should I prepare any feedback notes beforehand?</p>
-              <span class="text-xs" style="opacity:0.7;margin-top:4px;display:block;">You · 11:05 AM</span>
-            </div>
-          </div>
-          <div style="border-top:1px solid var(--color-border);padding-top:12px;display:flex;gap:8px;">
-            <input class="form-control" type="text" placeholder="Type a message..." style="flex:1;">
-            <button class="btn btn-primary" style="height:44px;padding:0 20px;">Send</button>
-          </div>
-        </div>
-      </div>
 
     </div><!-- end dash-content -->
   </div><!-- end dash-main -->

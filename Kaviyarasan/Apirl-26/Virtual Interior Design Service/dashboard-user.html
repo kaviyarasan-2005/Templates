@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/png" href="assets/images/favicon.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aura - Client Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+</head>
+<body>
+
+<!-- Mobile Sidebar Overlay -->
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<!-- Dashboard Wrapper -->
+<div class="dash-wrapper">
+
+  <!-- ===== SIDEBAR ===== -->
+  <aside class="dash-sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <a href="home-1.html" style="display:flex;align-items:center;gap:8px;text-decoration:none;">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+        <span class="sidebar-header-title">Aura</span>
+      </a>
+    </div>
+
+    <!-- Unified Nav -->
+    <nav class="sidebar-nav">
+      <p class="nav-section-label">My Space</p>
+      <ul>
+        <li class="nav-item"><a href="#" class="nav-link active" onclick="switchSection('user-overview',this)">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+          <span class="nav-label">Overview</span>
+        </a></li>
+        <li class="nav-item"><a href="#" class="nav-link" onclick="switchSection('user-projects',this)">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          <span class="nav-label">My Projects</span>
+        </a></li>
+        <li class="nav-item"><a href="#" class="nav-link" onclick="switchSection('user-orders',this)">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path></svg>
+          <span class="nav-label">Order History</span>
+        </a></li>
+        <li class="nav-item"><a href="#" class="nav-link" onclick="switchSection('user-messages',this)">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+          <span class="nav-label">Messages</span>
+          <span class="nav-badge">2</span>
+        </a></li>
+      </ul>
+    </nav>
+
+    <!-- Sidebar Footer -->
+    <div style="padding:var(--space-3);border-top:1px solid var(--color-border);margin-top:auto;">
+      <a href="home-1.html" class="nav-link" style="margin:0;">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+        <span class="nav-label">Logout</span>
+      </a>
+    </div>
+  </aside>
+
+  <!-- ===== MAIN AREA ===== -->
+  <div class="dash-main" id="dashMain">
+
+    <!-- Header -->
+    <header class="dash-header">
+      <button class="sidebar-toggle-btn" id="sidebarToggle" aria-label="Toggle sidebar">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+
+      <div class="dash-search">
+        <svg class="dash-search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="text" placeholder="Search projects, orders...">
+      </div>
+
+      <div class="dash-header-actions">
+        <!-- Globe/RTL Toggle -->
+        <button class="header-icon-btn" id="langToggle" aria-label="Toggle language direction">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+          </svg>
+        </button>
+
+        <!-- Theme Toggle -->
+        <button class="header-icon-btn" id="themeToggle" aria-label="Toggle theme">
+          <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line></svg>
+        </button>
+
+        <!-- Notifications -->
+        <button class="header-icon-btn" aria-label="Notifications">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+          <span class="notif-dot"></span>
+        </button>
+
+        <!-- Profile -->
+        <img src="https://i.pravatar.cc/96?img=47" alt="Profile" class="user-avatar">
+      </div>
+    </header>
+
+    <!-- ===== DASHBOARD CONTENT ===== -->
+    <div class="dash-content">
+
+      <!-- ========== USER OVERVIEW ========== -->
+      <div id="user-overview" class="dash-section">
+        <div style="display:flex;gap:var(--space-4);align-items:center;margin-bottom:var(--space-5);flex-wrap:wrap;">
+          <img src="https://i.pravatar.cc/96?img=1" style="width:72px;height:72px;border-radius:50%;border:3px solid var(--color-primary);">
+          <div>
+            <h2 style="margin-bottom:4px;">Welcome back, Sarah!</h2>
+            <p class="text-secondary">Signature Plan · Member since Jan 2026</p>
+          </div>
+          <div style="margin-left:auto; background:rgba(13,115,119,0.08); border:1px solid rgba(13,115,119,0.2); border-radius:12px; padding:12px 20px; text-align:center;">
+            <div style="font-size:1.5rem; font-weight:700; color:var(--color-primary);">72%</div>
+            <div class="text-xs text-secondary">Project Complete</div>
+            <div style="height:4px;background:var(--color-border);border-radius:4px;margin-top:8px;overflow:hidden;"><div style="width:72%;height:100%;background:var(--color-primary);border-radius:4px;"></div></div>
+          </div>
+        </div>
+
+        <!-- User Stat Cards -->
+        <div class="stat-cards">
+          <div class="stat-card">
+            <div class="stat-icon" style="background:rgba(13,115,119,0.1);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></div>
+            <div><div class="stat-value">3</div><div class="stat-label">Active Projects</div></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon" style="background:rgba(40,167,69,0.1);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-success)" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+            <div><div class="stat-value">2</div><div class="stat-label">Completed</div></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon" style="background:rgba(255,193,7,0.1);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-warning)" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></div>
+            <div><div class="stat-value">2</div><div class="stat-label">Unread Messages</div></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon" style="background:rgba(23,162,184,0.1);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-info)" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path></svg></div>
+            <div><div class="stat-value">$699</div><div class="stat-label">Total Spent</div></div>
+          </div>
+        </div>
+
+        <!-- Client Infographics Suite -->
+        <div class="charts-grid-expanded" style="margin-top:var(--space-4);">
+          <!-- 1. Project Milestone Timeline -->
+          <div class="chart-card">
+            <div class="chart-header"><span class="chart-title">Project Journey</span></div>
+            <div class="timeline-wrap">
+              <div class="timeline-item completed">
+                <div class="timeline-dot"></div>
+                <div style="font-weight:600; font-size:0.875rem;">Discovery & Brief</div>
+                <div class="text-xs text-secondary">Completed Mar 10</div>
+              </div>
+              <div class="timeline-item completed">
+                <div class="timeline-dot"></div>
+                <div style="font-weight:600; font-size:0.875rem;">Concept Approval</div>
+                <div class="text-xs text-secondary">Completed Mar 25</div>
+              </div>
+              <div class="timeline-item active">
+                <div class="timeline-dot"></div>
+                <div style="font-weight:600; font-size:0.875rem; color:var(--color-primary);">3D Rendering</div>
+                <div class="text-xs text-secondary">In progress (est. Apr 15)</div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div style="font-weight:600; font-size:0.875rem; color:var(--color-text-muted);">Final Handover</div>
+                <div class="text-xs text-secondary">Pending</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. Extracted Palette -->
+          <div class="chart-card">
+            <div class="chart-header"><span class="chart-title">Your Palette</span></div>
+            <p class="text-xs text-secondary mb-3">Extracted from your moodboard.</p>
+            <div class="palette-wrap">
+              <div class="color-swatch-col">
+                <div class="color-swatch" style="background:#2C363F;"></div>
+                <span class="hex-code">#2C363F</span>
+              </div>
+              <div class="color-swatch-col">
+                <div class="color-swatch" style="background:#D4AF37;"></div>
+                <span class="hex-code">#D4AF37</span>
+              </div>
+              <div class="color-swatch-col">
+                <div class="color-swatch" style="background:#E1D8CE;"></div>
+                <span class="hex-code">#E1D8CE</span>
+              </div>
+              <div class="color-swatch-col">
+                <div class="color-swatch" style="background:#8C9A9E;"></div>
+                <span class="hex-code">#8C9A9E</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. Asset Snapshots -->
+          <div class="chart-card">
+            <div class="chart-header">
+              <span class="chart-title">Recent Assets</span>
+              <span class="text-xs text-primary" style="cursor:pointer; font-weight:600;">View All</span>
+            </div>
+            <div class="asset-grid">
+              <div class="asset-card">
+                <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=300&q=80" alt="Living Room Board">
+                <div class="asset-badge">Moodboard</div>
+              </div>
+              <div class="asset-card">
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=300&q=80" alt="Floor Plan">
+                <div class="asset-badge">Layout v2</div>
+              </div>
+              <div class="asset-card">
+                <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=300&q=80" alt="Material Swatches">
+                <div class="asset-badge">Fabrics</div>
+              </div>
+              <div class="asset-card">
+                <div style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; background:var(--color-surface); color:var(--color-primary); font-size:1.5rem; border-radius:8px;">
+                  +3
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. Client Action Items -->
+          <div class="chart-card">
+            <div class="chart-header"><span class="chart-title">Action Required</span></div>
+            <div style="display:flex; flex-direction:column; gap:12px; margin-top:var(--space-2);">
+              <label style="display:flex; gap:10px; align-items:flex-start; cursor:pointer;">
+                <input type="checkbox" style="margin-top:4px;" checked disabled>
+                <div>
+                  <div style="font-size:0.875rem; font-weight:600; text-decoration:line-through; color:var(--color-text-muted);">Sign Contract</div>
+                </div>
+              </label>
+              <label style="display:flex; gap:10px; align-items:flex-start; cursor:pointer;">
+                <input type="checkbox" style="margin-top:4px;">
+                <div>
+                  <div style="font-size:0.875rem; font-weight:600;">Approve Kitchen Layout</div>
+                  <div style="font-size:0.75rem; color:var(--color-error); margin-top:2px;">Overdue (Apr 10)</div>
+                </div>
+              </label>
+              <label style="display:flex; gap:10px; align-items:flex-start; cursor:pointer;">
+                <input type="checkbox" style="margin-top:4px;">
+                <div>
+                  <div style="font-size:0.875rem; font-weight:600;">Confirm Sofa Fabric</div>
+                  <div style="font-size:0.75rem; color:var(--color-text-muted); margin-top:2px;">Due Apr 15</div>
+                </div>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========== USER PROJECTS ========== -->
+      <div id="user-projects" class="dash-section" style="display:none;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--space-4);">
+          <h2>My Projects</h2>
+          <a href="contact.html" class="btn btn-primary" style="height:38px;padding:0 16px;font-size:0.875rem;">+ New Project</a>
+        </div>
+        <div class="project-cards">
+          <div class="project-card">
+            <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=400&q=80" alt="Project" class="project-card-img">
+            <div class="project-card-body">
+              <span class="status-badge status-progress" style="margin-bottom:8px;display:inline-block;">In Progress</span>
+              <h4 style="margin-bottom:4px;">Modern Minimalist Loft</h4>
+              <p class="text-sm text-secondary mb-2">Designer: Elena Rodriguez</p>
+              <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:72%"></div></div>
+              <div style="display:flex;justify-content:space-between;font-size:0.75rem;color:var(--color-text-muted);margin-top:4px;"><span>72% complete</span><span>Next: 3D Review</span></div>
+            </div>
+          </div>
+          <div class="project-card">
+            <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=400&q=80" alt="Project" class="project-card-img">
+            <div class="project-card-body">
+              <span class="status-badge status-completed" style="margin-bottom:8px;display:inline-block;">Completed</span>
+              <h4 style="margin-bottom:4px;">Coastal Family Home</h4>
+              <p class="text-sm text-secondary mb-2">Designer: Sophia Walker</p>
+              <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:100%;background:var(--color-success);"></div></div>
+              <div style="display:flex;justify-content:space-between;font-size:0.75rem;color:var(--color-text-muted);margin-top:4px;"><span>100% complete</span><span>Delivered Mar 15</span></div>
+            </div>
+          </div>
+          <div class="project-card">
+            <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=400&q=80" alt="Project" class="project-card-img">
+            <div class="project-card-body">
+              <span class="status-badge status-pending" style="margin-bottom:8px;display:inline-block;">Pending</span>
+              <h4 style="margin-bottom:4px;">Executive Office Suite</h4>
+              <p class="text-sm text-secondary mb-2">Designer: TBD — waiting to start</p>
+              <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:5%;background:var(--color-warning);"></div></div>
+              <div style="display:flex;justify-content:space-between;font-size:0.75rem;color:var(--color-text-muted);margin-top:4px;"><span>Awaiting deposit</span><span>Starts: May 1</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========== USER ORDERS ========== -->
+      <div id="user-orders" class="dash-section" style="display:none;">
+        <h2 style="margin-bottom:var(--space-4);">Order History</h2>
+        <div class="table-card">
+          <div style="overflow-x:auto;">
+            <table class="data-table">
+              <thead><tr><th>Invoice</th><th>Service</th><th>Date</th><th>Amount</th><th>Status</th><th>Download</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td style="font-weight:600;color:var(--color-primary);">#INV-0042</td>
+                  <td>Signature Plan – Full Room</td>
+                  <td>Mar 15, 2026</td>
+                  <td style="font-weight:600;">$699</td>
+                  <td><span class="status-badge status-completed">Paid</span></td>
+                  <td><button class="btn btn-outline" style="height:28px;padding:0 10px;font-size:0.75rem;" onclick="alert('Downloading invoice...')">PDF ↓</button></td>
+                </tr>
+                <tr>
+                  <td style="font-weight:600;color:var(--color-primary);">#INV-0031</td>
+                  <td>Essential Plan – Consultation</td>
+                  <td>Jan 20, 2026</td>
+                  <td style="font-weight:600;">$299</td>
+                  <td><span class="status-badge status-completed">Paid</span></td>
+                  <td><button class="btn btn-outline" style="height:28px;padding:0 10px;font-size:0.75rem;" onclick="alert('Downloading invoice...')">PDF ↓</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========== USER MESSAGES ========== -->
+      <div id="user-messages" class="dash-section" style="display:none;">
+        <h2 style="margin-bottom:var(--space-4);">Messages</h2>
+        <div class="chart-card" style="max-width:700px;">
+          <div style="border-bottom:1px solid var(--color-border);padding-bottom:12px;margin-bottom:16px;display:flex;gap:12px;align-items:center;">
+            <img src="https://i.pravatar.cc/48?img=47" style="width:44px;height:44px;border-radius:50%;">
+            <div><div style="font-weight:600;">Elena Rodriguez</div><div class="text-xs text-secondary">Lead Designer · usually replies within 1 hour</div></div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:12px;max-height:320px;overflow-y:auto;padding-bottom:16px;">
+            <div style="align-self:flex-start;max-width:70%;background:var(--color-surface);border-radius:0 12px 12px 12px;padding:10px 14px;">
+              <p class="text-sm mb-0">Hi Sarah! Your 3D renders are almost ready. I'll send them over by Thursday.</p>
+              <span class="text-xs text-secondary mt-1 d-block">Elena · 10:22 AM</span>
+            </div>
+            <div style="align-self:flex-end;max-width:70%;background:var(--color-primary);color:white;border-radius:12px 12px 0 12px;padding:10px 14px;">
+              <p class="text-sm mb-0" style="color:white;">That's wonderful! Looking forward to it. Should I prepare any feedback notes beforehand?</p>
+              <span class="text-xs" style="opacity:0.7;margin-top:4px;display:block;">You · 11:05 AM</span>
+            </div>
+          </div>
+          <div style="border-top:1px solid var(--color-border);padding-top:12px;display:flex;gap:8px;">
+            <input class="form-control" type="text" placeholder="Type a message..." style="flex:1;">
+            <button class="btn btn-primary" style="height:44px;padding:0 20px;">Send</button>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- end dash-content -->
+  </div><!-- end dash-main -->
+</div><!-- end dash-wrapper -->
+
+<script src="assets/js/utils.js"></script>
+<script src="assets/js/dashboard.js"></script>
+<script src="assets/js/theme-toggle.js"></script>
+</body>
+</html>

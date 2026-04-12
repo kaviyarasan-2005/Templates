@@ -257,44 +257,210 @@
 .stat-up { color: var(--color-success); }
 .stat-down { color: var(--color-error); }
 
-/* Charts Grid */
-.charts-grid { display: grid; grid-template-columns: 2fr 1fr; gap: var(--space-3); margin-bottom: var(--space-4); }
-@media (max-width: 1024px) { .charts-grid { grid-template-columns: 1fr; } }
-
-.chart-card {
-  background: var(--color-bg); border: 1px solid var(--color-border);
-  border-radius: var(--border-radius-lg); padding: var(--space-4);
+/* Expanded Charts Grid */
+.charts-grid-expanded {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
 }
 
-.chart-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-3); }
-.chart-title { font-size: var(--text-lg); font-weight: 600; }
-
-/* CSS Bar Chart */
-.css-bar-chart { display: flex; align-items: flex-end; gap: 8px; height: 140px; padding-top: var(--space-2); }
-.bar-wrap { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; }
-.bar {
-  width: 100%; border-radius: 4px 4px 0 0;
-  background: linear-gradient(180deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
-  transition: height 1s ease;
+@media (max-width: 1400px) {
+  .charts-grid-expanded { grid-template-columns: repeat(2, 1fr); }
 }
-.bar-lbl { font-size: 10px; color: var(--color-text-muted); }
 
-/* CSS Line (sparkline simulation) */
-.sparkline-wrap { height: 80px; display: flex; align-items: flex-end; gap: 2px; }
-.spark-bar {
-  flex: 1; border-radius: 2px 2px 0 0;
-  background: linear-gradient(180deg, var(--color-secondary) 0%, rgba(212,175,55,0.3) 100%);
-  transition: height 0.6s ease;
-  cursor: pointer;
+@media (max-width: 768px) {
+  .charts-grid-expanded { grid-template-columns: 1fr; }
 }
-.spark-bar:hover { opacity: 0.8; }
 
-/* Pie-like donut */
+/* Radial Gauge Chart */
+.gauge-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-2) 0;
+}
+
+.gauge-base {
+  position: relative;
+  width: 120px;
+  height: 60px;
+  background: var(--color-surface);
+  border-radius: 120px 120px 0 0;
+  overflow: hidden;
+}
+
+.gauge-fill {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: conic-gradient(var(--color-primary) 0deg, var(--color-primary-light) 180deg);
+  transform-origin: center top;
+  transition: transform 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.gauge-center {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 0;
+  background: var(--color-bg);
+  border-radius: 100px 100px 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding-bottom: 5px;
+}
+
+.gauge-value {
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1;
+}
+
+.gauge-label {
+  font-size: 10px;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+/* Trend List (Horizontal Bars) */
+.trend-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-2) 0;
+}
+
+.trend-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.trend-bar-bg {
+  height: 6px;
+  background: var(--color-surface);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.trend-bar-fill {
+  height: 100%;
+  background: var(--color-primary);
+  border-radius: 3px;
+  transition: width 1s ease-in-out;
+}
+
+/* Donut cleanup */
 .donut-wrap { display: flex; justify-content: center; align-items: center; flex-direction: column; gap: 12px; }
 .donut-svg { width: 100px; height: 100px; }
 .donut-legend { display: flex; flex-direction: column; gap: 6px; }
 .donut-item { display: flex; align-items: center; gap: 8px; font-size: var(--text-sm); }
 .donut-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+
+/* === CLIENT-SPECIFIC INFOGRAPHICS === */
+
+/* 1. Project Timeline */
+.timeline-wrap {
+  position: relative;
+  padding-left: 20px;
+  margin-top: var(--space-2);
+}
+.timeline-wrap::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 5px; bottom: 0;
+  width: 2px;
+  background: var(--color-surface);
+  border-radius: 2px;
+}
+.timeline-item {
+  position: relative;
+  margin-bottom: var(--space-3);
+  padding-left: var(--space-3);
+}
+.timeline-item:last-child { margin-bottom: 0; }
+.timeline-dot {
+  position: absolute;
+  top: 4px; left: -20px;
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: var(--color-border);
+  border: 2px solid var(--color-bg);
+  transition: all 0.3s ease;
+}
+.timeline-item.active .timeline-dot {
+  background: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(13, 115, 119, 0.2);
+}
+.timeline-item.completed .timeline-dot {
+  background: var(--color-success);
+}
+
+/* 2. Color Palette Extractor */
+.palette-wrap {
+  display: flex;
+  gap: var(--space-2);
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-2) 0;
+}
+.color-swatch-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.color-swatch {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(0,0,0,0.05);
+  transition: transform 0.3s ease;
+}
+.color-swatch:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+.hex-code { font-size: 10px; font-weight: 600; color: var(--color-text-muted); text-transform: uppercase; }
+
+/* 3. Asset Mini-Gallery */
+.asset-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+.asset-card {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  aspect-ratio: 4/3;
+}
+.asset-card img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.4s ease;
+}
+.asset-card:hover img { transform: scale(1.05); }
+.asset-badge {
+  position: absolute;
+  bottom: 6px; left: 6px;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(4px);
+  color: white;
+  font-size: 9px;
+  padding: 3px 6px;
+  border-radius: 4px;
+  font-weight: 500;
+}
 
 /* Orders Table */
 .table-card {
@@ -358,6 +524,10 @@
 .role-btn.active { background: var(--color-bg); color: var(--color-primary); box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
 
 /* Responsive mobile sidebar */
+@media (min-width: 769px) {
+  .sidebar-toggle-btn { display: none; }
+}
+
 @media (max-width: 768px) {
   .dash-sidebar {
     transform: translateX(-100%);

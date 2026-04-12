@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const btn = loginForm.querySelector('button[type="submit"]');
       btn.textContent = 'Signing in...';
       btn.disabled = true;
-      setTimeout(() => { window.location.href = 'dashboard.html'; }, 1500);
+      setTimeout(() => { window.location.href = 'dashboard-user.html'; }, 1500);
     });
   }
 
@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const btn = registerForm.querySelector('button[type="submit"]');
       btn.textContent = 'Creating Account...';
       btn.disabled = true;
-      setTimeout(() => { window.location.href = 'dashboard.html'; }, 1500);
+      setTimeout(() => { window.location.href = 'dashboard-user.html'; }, 1500);
     });
 
     // Password strength indicator

@@ -1,5 +1,4 @@
-// dashboard.js — Role switching, sidebar collapse, animated counters
-
+// dashboard.js — Sidebar collapse, animated counters, section switching
 document.addEventListener('DOMContentLoaded', () => {
 
   // ---- Sidebar Toggle ----
@@ -43,36 +42,6 @@ document.addEventListener('DOMContentLoaded', () => {
     return false;
   };
 
-  // ---- Role Switcher ----
-  window.switchRole = function(role) {
-    const adminNav = document.getElementById('adminNav');
-    const userNav = document.getElementById('userNav');
-    const roleAdminBtn = document.getElementById('roleAdmin');
-    const roleUserBtn = document.getElementById('roleUser');
-
-    if (role === 'admin') {
-      if (adminNav) adminNav.style.display = 'block';
-      if (userNav) userNav.style.display = 'none';
-      roleAdminBtn.classList.add('active');
-      roleUserBtn.classList.remove('active');
-      // Show admin overview
-      document.querySelectorAll('.dash-section').forEach(s => s.style.display = 'none');
-      const ov = document.getElementById('admin-overview');
-      if (ov) ov.style.display = 'block';
-      // Re-trigger counters
-      initCounters();
-    } else {
-      if (adminNav) adminNav.style.display = 'none';
-      if (userNav) userNav.style.display = 'block';
-      roleUserBtn.classList.add('active');
-      roleAdminBtn.classList.remove('active');
-      // Show user overview
-      document.querySelectorAll('.dash-section').forEach(s => s.style.display = 'none');
-      const ov = document.getElementById('user-overview');
-      if (ov) ov.style.display = 'block';
-    }
-  };
-
   // ---- Animated Counter ----
   function countUp(el, target, prefix) {
     const duration = 1500;
@@ -109,11 +78,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   initCounters();
 
-  // ---- Auto-switch role from URL query param (?role=admin or ?role=user) ----
+  // ---- Auto-switch section from URL query param ----
   const urlParams = new URLSearchParams(window.location.search);
-  const roleParam = urlParams.get('role');
-  if (roleParam === 'admin' || roleParam === 'user') {
-    // Slight delay to ensure DOM is fully ready
-    setTimeout(() => switchRole(roleParam), 50);
+  const sectionParam = urlParams.get('section');
+  if (sectionParam) {
+    setTimeout(() => switchSection(sectionParam, null), 50);
   }
 });
