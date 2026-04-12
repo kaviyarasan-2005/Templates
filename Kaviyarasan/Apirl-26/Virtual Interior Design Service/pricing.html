@@ -103,11 +103,11 @@
       padding: 2px 8px;
       border-radius: 12px;
       position: absolute;
-      top: -16px;
-      left: 100%;
-      margin-left: 8px;
+      top: -12px;
+      left: 102%;
       white-space: nowrap;
       font-weight: 600;
+      z-index: 10;
     }
 
     /* Pricing Cards */
@@ -144,6 +144,13 @@
       z-index: 2;
     }
 
+    /* Improved Add-on Grid */
+    .addon-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: var(--space-4);
+    }
+
     @media (max-width: 900px) {
       .pricing-card.elevated {
         transform: scale(1);
@@ -173,6 +180,7 @@
     /* Comparison Table Container */
     .compare-container {
       width: 100%;
+      max-width: 100vw;
       overflow-x: auto;
       margin-top: var(--space-6);
       border-radius: var(--border-radius-lg);
@@ -358,9 +366,9 @@
           <input type="checkbox" id="pricingToggle">
           <span class="slider"></span>
         </label>
-        <div class="position-relative d-inline-block">
+        <div class="position-relative d-inline-flex align-items-center">
           <span class="switch-label">Whole House Bundle</span>
-          <span class="discount-badge" style="left: auto; right: -70px; top: -14px;">Save 20%</span>
+          <span class="discount-badge">Save 20%</span>
         </div>
       </div>
     </div>
@@ -500,7 +508,7 @@
         <h2>Elevate Your Package</h2>
         <p class="text-secondary">Specific solutions to round out your design experience.</p>
       </div>
-      <div class="grid grid-cols-4">
+      <div class="addon-grid">
         <div class="feature-box animate-on-scroll fade-up">
           <div class="mb-3 color-primary"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
               stroke="currentColor" stroke-width="2">
