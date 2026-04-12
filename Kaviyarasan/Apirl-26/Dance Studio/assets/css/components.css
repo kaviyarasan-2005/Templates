@@ -1104,11 +1104,21 @@
     z-index: calc(var(--z-overlay) + 1);
   }
 
+  .navbar__item {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+  }
+
   .navbar__link {
     font-size: var(--font-size-2xl);
     padding: var(--space-2) var(--space-4);
     width: auto;
     border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
     justify-content: center;
     text-align: center;
     opacity: 0;
@@ -1126,6 +1136,12 @@
   .navbar__menu.open .navbar__link {
     opacity: 1;
     transform: translateY(0);
+  }
+
+  .navbar__item {
+    width: 100%;
+    display: block;
+    text-align: center;
   }
 
   .navbar__menu > li:nth-child(8) .navbar__link { transition-delay: 0.45s; }

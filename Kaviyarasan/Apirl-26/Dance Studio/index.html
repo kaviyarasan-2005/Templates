@@ -549,14 +549,13 @@
     /* ============ RESPONSIVE ============ */
     @media (max-width: 1024px) {
       .services-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (max-width: 768px) {
       .services-grid { grid-template-columns: 1fr; }
       .schedule__days, .schedule__body { grid-template-columns: repeat(3, 1fr); }
       .schedule__column:nth-child(n+4) { display: none; }
       .schedule__day-label:nth-child(n+4) { display: none; }
       .newsletter__form { flex-direction: column; }
       .hero__title { padding-top: var(--space-8); }
+      .hero__scroll { display: none; }
     }
     @media (max-width: 480px) {
       .schedule__days, .schedule__body { grid-template-columns: repeat(2, 1fr); }
@@ -573,34 +572,59 @@
   <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
     <div class="container">
       <div class="navbar__inner">
-        <!-- Logo -->
         <a href="index.html" class="navbar__logo">
           <div class="navbar__logo-icon"><i class="fas fa-music"></i></div>
           <div class="navbar__logo-text"><span>Élan</span></div>
         </a>
-
-        <!-- Nav Links -->
         
-
-        <!-- Right Actions -->
+        <ul class="navbar__menu">
+          <li class="navbar__item navbar__dropdown">
+            <a href="index.html" class="navbar__link navbar__dropdown-toggle">Home <i class="fas fa-chevron-down"></i></a>
+            <ul class="navbar__dropdown-menu">
+              <li><a href="index.html" class="navbar__dropdown-item">Home 1</a></li>
+              <li><a href="pages/home-2.html" class="navbar__dropdown-item">Home 2</a></li>
+            </ul>
+          </li>
+          <li class="navbar__item"><a href="pages/about.html" class="navbar__link">About</a></li>
+          <li class="navbar__item navbar__dropdown">
+            <a href="pages/services.html" class="navbar__link navbar__dropdown-toggle">Services <i class="fas fa-chevron-down"></i></a>
+            <ul class="navbar__dropdown-menu">
+              <li><a href="pages/services.html" class="navbar__dropdown-item">Services</a></li>
+              <li><a href="pages/service-detail.html" class="navbar__dropdown-item">Service Details</a></li>
+            </ul>
+          </li>
+          <li class="navbar__item navbar__dropdown">
+            <a href="pages/blog.html" class="navbar__link navbar__dropdown-toggle">Blog <i class="fas fa-chevron-down"></i></a>
+            <ul class="navbar__dropdown-menu">
+              <li><a href="pages/blog.html" class="navbar__dropdown-item">Blogs</a></li>
+              <li><a href="pages/blog-detail.html" class="navbar__dropdown-item">Blog Details</a></li>
+            </ul>
+          </li>
+          <li class="navbar__item"><a href="pages/pricing.html" class="navbar__link">Pricing</a></li>
+          <li class="navbar__item navbar__dropdown">
+            <a href="#" class="navbar__link navbar__dropdown-toggle">Dashboard <i class="fas fa-chevron-down"></i></a>
+            <ul class="navbar__dropdown-menu">
+              <li><a href="pages/admin-dashboard.html" class="navbar__dropdown-item">Admin</a></li>
+              <li><a href="pages/dashboard.html" class="navbar__dropdown-item">Dashboard</a></li>
+            </ul>
+          </li>
+          <li class="navbar__item"><a href="pages/contact.html" class="navbar__link">Contact</a></li>
+          <li class="navbar__mobile-login"><a href="pages/login.html" class="btn btn--primary">Sign In</a></li>
+        </ul>
+        
         <div class="navbar__actions">
           <a href="pages/login.html" class="btn" style="padding:0.5rem 1.25rem;border-radius:var(--radius-full);margin-inline-end:0.5rem;background:var(--gradient-primary);color:white;border:none;transition:none;transform:none;box-shadow:none;">Sign In</a>
-          <!-- Language -->
           <button class="navbar__action-btn" data-rtl-toggle aria-label="Toggle RTL">
             <i class="fas fa-globe"></i>
           </button>
-          <!-- Theme -->
           <button class="navbar__action-btn" data-theme-toggle aria-label="Toggle theme">
             <i class="fas fa-moon"></i>
           </button>
-          <!-- Mobile Toggle -->
           <button class="navbar__mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
             <span></span><span></span><span></span>
           </button>
         </div>
-      </div>
-    </div>
-  </nav>
+      </div></div></nav>
 
   <main>
     <!-- ========== SECTION 1: HERO ========== -->
@@ -842,7 +866,7 @@
         <div class="schedule-widget reveal">
           <div class="schedule__header">
             <button class="schedule__nav-btn" aria-label="Previous week"><i class="fas fa-chevron-left"></i></button>
-            <span class="schedule__week-title">This Week — April 7 â€“ 13, 2026</span>
+            <span class="schedule__week-title">This Week — April 7 – 13, 2026</span>
             <button class="schedule__nav-btn" aria-label="Next week"><i class="fas fa-chevron-right"></i></button>
           </div>
           <div class="schedule__days">
@@ -956,7 +980,6 @@
       </div>
       <div class="footer__bottom">
         <p class="footer__copyright">© 2026 Élan. All rights reserved.</p>
-        
       </div>
     </div>
   </footer>
@@ -1030,4 +1053,3 @@
   </script>
 </body>
 </html>
-
