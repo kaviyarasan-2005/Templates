@@ -15,83 +15,132 @@
   <style>
     .sidebar-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:1000;}
     .sidebar-overlay.open{display:block;}
-    .sidebar-logo{display:none;} /* Hidden as global navbar has logo */
+    .sidebar-logo{display:flex;align-items:center;gap:var(--space-1);text-decoration:none;padding:var(--space-2);margin-bottom:var(--space-2);border-bottom:1px solid var(--border-color);}
+    .sidebar-logo img{height:32px;width:32px;}
+    .sidebar-logo span{font-family:var(--font-heading);font-size:var(--fs-lg);font-weight:var(--fw-bold);color:var(--text-primary);}
+    .sidebar-logo span span{color:var(--color-primary);}
     .sidebar-section{font-size:var(--fs-xs);text-transform:uppercase;letter-spacing:1.5px;color:var(--text-tertiary);margin:var(--space-2) 0 var(--space-1);padding:0 var(--space-2);}
     .view-toggle{display:flex;background:var(--bg-card-hover);border-radius:var(--border-radius);padding:4px;margin-bottom:var(--space-3);}
     .view-toggle button{flex:1;padding:8px;border-radius:6px;font-size:var(--fs-sm);font-weight:var(--fw-medium);color:var(--text-secondary);transition:all var(--transition-base);background:none;border:none;cursor:pointer;}
     .view-toggle button.active{background:var(--color-primary);color:#fff;box-shadow:var(--shadow-sm);}
-    .dashboard-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--space-3);flex-wrap:wrap;gap:var(--space-2);}
+    .dashboard-header{
+      position: sticky;
+      top: 0;
+      background: var(--bg-body);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:var(--space-3);
+      padding: var(--space-3) 0;
+      z-index: 10;
+      flex-wrap:wrap;
+      gap:var(--space-2);
+      border-bottom: 1px solid transparent;
+      transition: all var(--transition-base);
+    }
+    .dashboard-header.scrolled {
+      background: rgba(var(--bg-body-rgb, 248, 250, 252), 0.8);
+      backdrop-filter: blur(12px);
+      border-bottom-color: var(--border-color);
+      padding: var(--space-2) 16px;
+      margin: 0 -16px var(--space-3);
+    }
     .dashboard-header h1{font-size:var(--fs-2xl);}
     
-    /* Layout adjustments for global navbar */
-    .dashboard__sidebar { top: 72px; height: calc(100vh - 72px); }
-    .dashboard__main { min-height: calc(100vh - 72px); }
-    .footer { margin-left: 260px; }
+    /* Missing Infographic Styles & Responsiveness */
+    .infograph-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-3);
+      margin-bottom: var(--space-3);
+    }
+    .infograph-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--border-radius-lg);
+      padding: var(--space-3);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      transition: transform var(--transition-base), box-shadow var(--transition-base);
+      min-width: 0; /* Prevent overflow */
+    }
+    .infograph-card:hover { 
+      transform: translateY(-4px); 
+      box-shadow: var(--shadow-sm); /* Subtler shadow to avoid "glow" complaints */
+    }
+    .infograph-card h3 {
+      font-family: var(--font-heading);
+      font-size: var(--fs-base);
+      margin-bottom: var(--space-2);
+      color: var(--text-primary);
+    }
+    .infograph-svg {
+      width: 100%;
+      height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .infograph-svg svg {
+      max-width: 100%;
+      max-height: 100%;
+    }
+    
+    .dashboard-grid-main {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: var(--space-3);
+      margin-bottom: var(--space-3);
+    }
+    .data-table--compact th,
+    .data-table--compact td {
+      padding: 8px 12px !important;
+      font-size: 13px !important;
+    }
+    .table-responsive::-webkit-scrollbar {
+      height: 6px;
+    }
+    .table-responsive::-webkit-scrollbar-thumb {
+      background: var(--border-color);
+      border-radius: 10px;
+    }
+    
+    @media (max-width: 1280px) {
+      .infograph-grid { grid-template-columns: repeat(2, 1fr); }
+      .dashboard-grid-main { grid-template-columns: 1fr; }
+    }
 
     @media (max-width: 1024px) {
       .dashboard__sidebar { top: 0; height: 100vh; z-index: 1100; }
-      .dashboard__main { margin-left: 0; }
-      .footer { margin-left: 0; }
+      .dashboard__main { margin-left: 0; padding-top: 0; }
+      [dir="rtl"] .dashboard__main { margin-right: 0; }
+      .dashboard-header { position: static; padding: var(--space-3) 0; }
+      .infograph-grid { grid-template-columns: repeat(2, 1fr); }
+      .dashboard-grid-main { grid-template-columns: 1fr; }
       #sidebar-toggle { display: block !important; }
+    }
+    
+    @media (max-width: 640px) {
+      .infograph-grid { grid-template-columns: 1fr; }
+      .grid-2, .grid-4 { grid-template-columns: 1fr !important; }
     }
   </style>
 </head>
 </head>
-<body class="has-navbar">
+<body>
 
-<!-- ===== NAVBAR ===== -->
-<nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
-  <div class="navbar__inner">
-    <a href="index.html" class="navbar__logo" aria-label="SmartNest Home">
-      <img src="../assets/images/logo.svg" alt="SmartNest Logo" width="36" height="36" />
-      Smart<span>Nest</span>
-    </a>
-
-    <ul class="navbar__links" role="menubar">
-      <li><div class="nav-dropdown"><button class="nav-dropdown__trigger">Home <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="nav-dropdown__menu"><a href="index.html">Home 1</a><a href="home-saas.html">Home 2</a></div></div></li>
-      <li><a href="about.html">About</a></li>
-      <li><div class="nav-dropdown"><button class="nav-dropdown__trigger">Services <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="nav-dropdown__menu"><a href="services.html">Services</a><a href="service-details.html">Service Details</a></div></div></li>
-      <li><div class="nav-dropdown"><button class="nav-dropdown__trigger">Blog <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="nav-dropdown__menu"><a href="blog.html">Blog</a><a href="blog-details.html">Blog Details</a></div></div></li>
-      <li><a href="pricing.html">Pricing</a></li>
-      <li><a href="contact.html">Contact</a></li>
-      <li><div class="nav-dropdown active"><button class="nav-dropdown__trigger">Dashboard <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="nav-dropdown__menu"><a href="dashboard.html">Admin Dashboard</a><a href="dashboard.html">User Dashboard</a></div></div></li>
-    </ul>
-    
-    <div class="navbar__actions">
-      <button class="navbar__icon-btn mobile-visible" id="theme-toggle-global" aria-label="Toggle dark mode" title="Toggle theme">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" id="theme-icon-global"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
-      </button>
-      <button class="navbar__icon-btn mobile-visible" id="rtl-toggle-global" aria-label="Toggle RTL layout" title="Toggle RTL/LTR">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-      </button>
-      <a href="login.html" class="btn btn-primary btn-sm" style="display:none;" id="nav-cta">Login</a>
-      <button class="navbar__hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </div>
-</nav>
-
-<!-- Mobile Nav -->
-<div class="mobile-nav" id="mobile-nav" role="dialog" aria-label="Mobile Navigation">
-  <a href="index.html">Home 1</a>
-  <a href="home-saas.html">Home 2</a>
-  <a href="about.html">About</a>
-  <a href="services.html">Services</a>
-  <a href="service-details.html">Service Details</a>
-  <a href="blog.html">Blog</a>
-  <a href="blog-details.html">Blog Details</a>
-  <a href="pricing.html">Pricing</a>
-  <a href="contact.html">Contact</a>
-  <a href="dashboard.html" class="active">Admin Dashboard</a>
-  <a href="dashboard.html">User Dashboard</a>
-</div>
   <div class="dashboard">
     <!-- SIDEBAR OVERLAY (mobile) -->
     <div class="sidebar-overlay" id="sidebar-overlay"></div>
 
     <!-- SIDEBAR -->
     <aside class="dashboard__sidebar" id="dashboard-sidebar" aria-label="Dashboard sidebar">
+      <a href="index.html" class="sidebar-logo" aria-label="SmartNest Home">
+        <img src="../assets/images/logo.svg" alt="SmartNest Logo" />
+        Smart<span>Nest</span>
+      </a>
 
 
       <p class="sidebar-section">Main</p>
@@ -225,18 +274,25 @@
         </div>
 
         <!-- TABLE + SIDEBAR WIDGETS -->
-        <div class="grid-2" style="grid-template-columns:1fr 340px;">
+        <div class="dashboard-grid-main">
           <!-- ORDERS TABLE -->
           <div class="dashboard__chart-container">
             <h3 style="font-family:var(--font-heading);font-size:var(--fs-base);margin-bottom:var(--space-2);">Recent Orders</h3>
             <div class="skeleton-wrapper"><div class="skeleton skeleton--text" style="width:100%;height:200px;"></div></div>
             <div class="table-responsive hidden">
-              <table class="data-table">
+              <table class="data-table data-table--compact">
                 <thead><tr><th>Order ID</th><th>Client</th><th>Service</th><th>Amount</th><th>Status</th></tr></thead>
                 <tbody>
                   <tr><td>#SN-2841</td><td>Michael R.</td><td>Smart Lighting</td><td>$1,299</td><td><span class="badge badge--success">Completed</span></td></tr>
                   <tr><td>#SN-2840</td><td>Sarah L.</td><td>Full Home</td><td>$8,450</td><td><span class="badge badge--primary">In Progress</span></td></tr>
                   <tr><td>#SN-2839</td><td>James K.</td><td>Security</td><td>$2,100</td><td><span class="badge badge--success">Completed</span></td></tr>
+                  <tr><td>#SN-2838</td><td>Robert M.</td><td>Climate Control</td><td>$3,420</td><td><span class="badge badge--success">Completed</span></td></tr>
+                  <tr><td>#SN-2837</td><td>Emily W.</td><td>Entertainment</td><td>$5,100</td><td><span class="badge badge--warning">Pending</span></td></tr>
+                  <tr><td>#SN-2836</td><td>David H.</td><td>Smart Kitchen</td><td>$2,850</td><td><span class="badge badge--success">Completed</span></td></tr>
+                  <tr><td>#SN-2835</td><td>Lisa T.</td><td>Security Upgrade</td><td>$950</td><td><span class="badge badge--primary">In Progress</span></td></tr>
+                  <tr><td>#SN-2834</td><td>Kevin C.</td><td>Solar Integration</td><td>$12,400</td><td><span class="badge badge--warning">Pending</span></td></tr>
+                  <tr><td>#SN-2833</td><td>Anna S.</td><td>Voice Control</td><td>$1,500</td><td><span class="badge badge--success">Completed</span></td></tr>
+                  <tr><td>#SN-2832</td><td>Tom B.</td><td>Irrigation System</td><td>$3,200</td><td><span class="badge badge--success">Completed</span></td></tr>
                 </tbody>
               </table>
             </div>
@@ -253,8 +309,75 @@
             <!-- MESSAGES -->
             <div class="dashboard__chart-container">
               <h3 style="font-family:var(--font-heading);font-size:var(--fs-base);margin-bottom:var(--space-2);">Recent Messages</h3>
-              <div class="msg-item"><img src="../assets/images/testimonial-avatar-1.jpg" class="msg-avatar" alt="Michael"/><div style="flex:1;min-width:0;"><div style="display:flex;justify-content:space-between;"><span class="msg-name">Michael R.</span><span class="msg-time">2m ago</span></div><p class="msg-text">Hi, can we schedule the lighting inspection for Friday?</p></div></div>
-              <div class="msg-item"><img src="../assets/images/testimonial-avatar-2.jpg" class="msg-avatar" alt="Sarah"/><div style="flex:1;min-width:0;"><div style="display:flex;justify-content:space-between;"><span class="msg-name">Sarah L.</span><span class="msg-time">1h ago</span></div><p class="msg-text">The thermostat integration is working perfectly now, thank you!</p></div></div>
+              <div class="table-responsive">
+                <table class="data-table data-table--compact">
+                  <thead>
+                    <tr>
+                      <th>User</th>
+                      <th>Message</th>
+                      <th>Time</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <div style="display:flex; align-items:center; gap:8px;">
+                          <img src="../assets/images/testimonial-avatar-1.jpg" style="width:24px; height:24px; border-radius:50%;" alt="Michael"/>
+                          <span>Michael R.</span>
+                        </div>
+                      </td>
+                      <td><div style="max-width:180px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;" title="Hi, can we schedule the lighting inspection for Friday?">Hi, can we schedule the lighting inspection for Friday?</div></td>
+                      <td>2m ago</td>
+                      <td><span class="badge badge--primary">New</span></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div style="display:flex; align-items:center; gap:8px;">
+                          <img src="../assets/images/testimonial-avatar-2.jpg" style="width:24px; height:24px; border-radius:50%;" alt="Sarah"/>
+                          <span>Sarah L.</span>
+                        </div>
+                      </td>
+                      <td><div style="max-width:180px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;" title="The thermostat integration is working perfectly now, thank you!">The thermostat integration is working perfectly now, thank you!</div></td>
+                      <td>1h ago</td>
+                      <td><span class="badge badge--success">Read</span></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div style="display:flex; align-items:center; gap:8px;">
+                          <img src="../assets/images/testimonial-avatar-1.jpg" style="width:24px; height:24px; border-radius:50%;" alt="James"/>
+                          <span>James K.</span>
+                        </div>
+                      </td>
+                      <td><div style="max-width:180px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;" title="Please send the invoice for the security upgrade.">Please send the invoice for the security upgrade.</div></td>
+                      <td>3h ago</td>
+                      <td><span class="badge badge--success">Read</span></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div style="display:flex; align-items:center; gap:8px;">
+                          <img src="../assets/images/testimonial-avatar-2.jpg" style="width:24px; height:24px; border-radius:50%;" alt="Emily"/>
+                          <span>Emily W.</span>
+                        </div>
+                      </td>
+                      <td><div style="max-width:180px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;" title="Can you check my hub connectivity? It seems laggy.">Can you check my hub connectivity? It seems laggy.</div></td>
+                      <td>5h ago</td>
+                      <td><span class="badge badge--primary">New</span></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div style="display:flex; align-items:center; gap:8px;">
+                          <img src="../assets/images/testimonial-avatar-1.jpg" style="width:24px; height:24px; border-radius:50%;" alt="Robert"/>
+                          <span>Robert M.</span>
+                        </div>
+                      </td>
+                      <td><div style="max-width:180px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;" title="The new lighting scenes are amazing. Great job!">The new lighting scenes are amazing. Great job!</div></td>
+                      <td>1d ago</td>
+                      <td><span class="badge badge--success">Read</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>
@@ -264,63 +387,20 @@
     </main>
   </div>
 
-<!-- ===== FOOTER ===== -->
-<footer class="footer" role="contentinfo">
-  <div class="container">
-    <div class="footer__grid">
-      <div class="footer__brand">
-        <a href="index.html" class="navbar__logo" aria-label="SmartNest Home" style="color: #fff;">
-          <img src="../assets/images/logo-white.svg" alt="SmartNest Logo" width="36" height="36" />
-          Smart<span style="color: var(--color-accent);">Nest</span>
-        </a>
-        <p>Expert smart home automation installation services. Transforming houses into intelligent living spaces.</p>
-        <div class="footer__social">
-          <a href="#" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
-
-          <a href="#" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" /></svg></a>
-        </div>
-      </div>
-      <div>
-        <h3 class="footer__heading">Services</h3>
-        <ul class="footer__links">
-          <li><a href="service-details.html">Smart Lighting</a></li>
-          <li><a href="service-details.html">Security Systems</a></li>
-          <li><a href="service-details.html">Climate Control</a></li>
-          <li><a href="service-details.html">Entertainment</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3 class="footer__heading">Company</h3>
-        <ul class="footer__links">
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="services.html">All Services</a></li>
-          <li><a href="pricing.html">Pricing</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="coming-soon.html">Coming Soon</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3 class="footer__heading">Contact</h3>
-        <ul class="footer__links">
-          <li><a href="tel:+15551234567">+1 (555) 123-4567</a></li>
-          <li><a href="mailto:hello@smartnest.io">hello@smartnest.io</a></li>
-          <li><a href="contact.html">123 Innovation Drive<br>Austin, TX 78701</a></li>
-        </ul>
-        <div style="margin-top:var(--space-2);">
-          <a href="contact.html" class="btn btn-primary btn-sm">Get Free Quote</a>
-        </div>
-      </div>
-    </div>
-    <div class="footer__bottom">
-      <p style="color:rgba(255,255,255,0.5); font-size:var(--fs-xs);">© 2026 SmartNest. All rights reserved.</p>
-    </div>
-  </div>
-</footer>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <script src="../assets/js/main.js"></script>
 <script src="../assets/js/dashboard.js"></script>
+<script>
+  window.addEventListener('scroll', () => {
+    const header = document.querySelector('.dashboard-header');
+    if (window.scrollY > 20) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  });
+</script>
 <style>
   @media (max-width:1024px) { #nav-cta { display: none !important; } }
   @media (min-width:1025px) { #nav-cta { display: inline-flex !important; } }
