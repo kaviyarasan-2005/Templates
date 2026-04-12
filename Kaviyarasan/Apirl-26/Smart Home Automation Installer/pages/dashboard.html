@@ -37,13 +37,17 @@
       gap:var(--space-2);
       border-bottom: 1px solid transparent;
       transition: all var(--transition-base);
-    }
-    .dashboard-header.scrolled {
+    }    .dashboard-header.scrolled {
       background: rgba(var(--bg-body-rgb, 248, 250, 252), 0.8);
       backdrop-filter: blur(12px);
       border-bottom-color: var(--border-color);
       padding: var(--space-2) 16px;
-      margin: 0 -16px var(--space-3);
+      margin: 0 0 var(--space-3); /* Removed negative horizontal margins */
+      width: calc(100% + 32px); /* Allow expansion if needed but controlled */
+      margin-left: -16px;
+      margin-right: -16px;
+      padding-left: 32px;
+      padding-right: 32px;
     }
     .dashboard-header h1{font-size:var(--fs-2xl);}
     
@@ -65,10 +69,11 @@
       text-align: center;
       transition: transform var(--transition-base), box-shadow var(--transition-base);
       min-width: 0; /* Prevent overflow */
+      overflow: hidden; /* Catch any internal bleed */
     }
     .infograph-card:hover { 
       transform: translateY(-4px); 
-      box-shadow: var(--shadow-sm); /* Subtler shadow to avoid "glow" complaints */
+      box-shadow: var(--shadow-sm);
     }
     .infograph-card h3 {
       font-family: var(--font-heading);
@@ -82,10 +87,12 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      min-width: 0;
     }
     .infograph-svg svg {
       max-width: 100%;
       max-height: 100%;
+      height: auto;
     }
     
     .dashboard-grid-main {
@@ -93,11 +100,17 @@
       grid-template-columns: 1fr 340px;
       gap: var(--space-3);
       margin-bottom: var(--space-3);
+      min-width: 0;
     }
     .data-table--compact th,
     .data-table--compact td {
       padding: 8px 12px !important;
       font-size: 13px !important;
+    }
+    .table-responsive {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
     }
     .table-responsive::-webkit-scrollbar {
       height: 6px;
@@ -111,12 +124,13 @@
       .infograph-grid { grid-template-columns: repeat(2, 1fr); }
       .dashboard-grid-main { grid-template-columns: 1fr; }
     }
-
+ 
     @media (max-width: 1024px) {
       .dashboard__sidebar { top: 0; height: 100vh; z-index: 1100; }
-      .dashboard__main { margin-left: 0; padding-top: 0; }
+      .dashboard__main { margin-left: 0; padding-top: 0; overflow-x: hidden; }
       [dir="rtl"] .dashboard__main { margin-right: 0; }
-      .dashboard-header { position: static; padding: var(--space-3) 0; }
+      .dashboard-header { position: static; padding: var(--space-3) 0; margin-left: 0; margin-right: 0; width: 100%; }
+      .dashboard-header.scrolled { margin: 0 0 var(--space-3); width: 100%; padding: var(--space-2) 0; }
       .infograph-grid { grid-template-columns: repeat(2, 1fr); }
       .dashboard-grid-main { grid-template-columns: 1fr; }
       #sidebar-toggle { display: block !important; }
@@ -125,7 +139,11 @@
     @media (max-width: 640px) {
       .infograph-grid { grid-template-columns: 1fr; }
       .grid-2, .grid-4 { grid-template-columns: 1fr !important; }
+      .dashboard-header h1 { font-size: var(--fs-xl); }
+      .dashboard-header { gap: var(--space-1); }
+      .dashboard__main { padding: 0 var(--space-2); }
     }
+
   </style>
 </head>
 </head>
