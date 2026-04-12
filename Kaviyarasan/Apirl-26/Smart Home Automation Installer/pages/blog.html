@@ -31,6 +31,41 @@
     .blog-card__link{font-size:var(--fs-sm);font-weight:var(--fw-semibold);color:var(--color-primary);display:inline-flex;align-items:center;gap:4px;}
     .blog-card__link:hover{gap:8px;}
     .blog-card__link svg{width:16px;height:16px;}
+    
+    /* Featured Post */
+    .featured-post{background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--border-radius-xl);overflow:hidden;margin-bottom:var(--space-6);display:grid;grid-template-columns:1fr 1fr;min-height:400px;transition:all var(--transition-base);}
+    .featured-post:hover{box-shadow:var(--shadow-xl);}
+    .featured-post__img{width:100%;height:100%;object-fit:cover;}
+    .featured-post__body{padding:var(--space-6);display:flex;flex-direction:column;justify-content:center;}
+    
+    /* Newsletter */
+    .newsletter-section{background:rgba(var(--bg-card-rgb, 255, 255, 255), 0.7);backdrop-filter:blur(20px);padding:var(--space-8);border-radius:var(--border-radius-xl);text-align:center;border:1px solid rgba(255,255,255,0.1);}
+    
+    /* Categories Grid */
+    .trending-categories{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-2);}
+    .category-card{background:var(--bg-card);padding:var(--space-3);border-radius:var(--border-radius);text-align:center;border:1px solid var(--border-color);transition:all var(--transition-base);cursor:pointer;}
+    .category-card:hover{border-color:var(--color-primary);transform:translateY(-2px);}
+    
+    /* Team */
+    .team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-4);}
+    .team-member{text-align:center;}
+    .team-member__img{width:100px;height:100px;border-radius:50%;object-fit:cover;margin-bottom:var(--space-2);}
+    
+    /* Social Grid */
+    .social-masonry{columns:4;column-gap:var(--space-2);margin-top:var(--space-4);}
+    .social-masonry img{width:100%;border-radius:var(--border-radius);margin-bottom:var(--space-2);transition:var(--transition-base);}
+    .social-masonry img:hover{opacity:0.8;}
+
+    @media(max-width:1024px){
+      .featured-post{grid-template-columns:1fr;}
+      .trending-categories{grid-template-columns:1fr 1fr;}
+      .social-masonry{columns:3;}
+    }
+    @media(max-width:640px){
+      .trending-categories{grid-template-columns:1fr;}
+      .team-grid{grid-template-columns:1fr;}
+      .social-masonry{columns:2;}
+    }
   </style>
 </head>
 <body class="has-navbar">
@@ -84,6 +119,21 @@
 </div>
 
 <section class="page-hero"><div class="container" data-aos="fade-up"><span class="section-header__tag" style="color:var(--color-accent);">Our Blog</span><h1>Smart Home Insights & Guides</h1><p>Expert tips, product reviews, and industry news to help you get the most from your smart home.</p></div></section>
+
+<!-- FEATURED POST -->
+<section class="section-padding" style="padding-bottom:0">
+  <div class="container" data-aos="fade-up">
+    <div class="featured-post">
+      <img src="../assets/images/featured-blog.jpg" alt="Future of Smart Homes" class="featured-post__img" />
+      <div class="featured-post__body">
+        <span class="blog-card__category" style="width:fit-content; margin-bottom:var(--space-2);">Deep Dive</span>
+        <h2 style="font-family:var(--font-heading); font-size:var(--fs-3xl); margin-bottom:var(--space-2);">The AI Revolution in Smart Home Automation</h2>
+        <p class="text-secondary mb-3">Explore how advanced machine learning is transforming how our homes anticipate our needs—from predictive climate control to intelligent energy distribution.</p>
+        <a href="blog-details.html" class="btn btn-primary">Read the Full Article</a>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section class="section-padding" aria-label="Blog posts">
   <div class="container">
@@ -161,6 +211,83 @@
       <a href="#" class="btn btn-outline btn-sm">3</a>
       <a href="#" class="btn btn-outline btn-sm">Next</a>
     </nav></div>
+  </div>
+</section>
+
+<!-- TRENDING CATEGORIES -->
+<section class="section-padding bg-light" aria-label="Trending search topics">
+  <div class="container" data-aos="fade-up">
+    <div class="section-header text-center">
+      <span class="section-header__tag">Popular Now</span>
+      <h2 class="section-header__title">Trending Categories</h2>
+    </div>
+    <div class="trending-categories">
+      <div class="category-card"><h4>Solar Energy</h4><p class="fs-xs text-tertiary">42 Articles</p></div>
+      <div class="category-card"><h4>Privacy Pro</h4><p class="fs-xs text-tertiary">28 Articles</p></div>
+      <div class="category-card"><h4>AI Home Bots</h4><p class="fs-xs text-tertiary">15 Articles</p></div>
+      <div class="category-card"><h4>Retrofit Tips</h4><p class="fs-xs text-tertiary">37 Articles</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER SIGNUP -->
+<section class="section-padding" aria-label="Subscribe to newsletter">
+  <div class="container" data-aos="fade-up">
+    <div class="newsletter-section">
+      <h2 style="font-family:var(--font-heading); margin-bottom:var(--space-1);">Join the SmartNest Newsletter</h2>
+      <p class="text-secondary mb-3">Get the latest smart home trends and exclusive installation tips delivered to your inbox.</p>
+      <form style="display:flex; gap:12px; max-width:500px; margin:0 auto; flex-wrap:wrap;">
+        <input type="email" class="form-input" placeholder="Enter your email" style="flex:1; min-width:250px;" required />
+        <button type="submit" class="btn btn-primary">Subscribe Now</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- EDITORIAL TEAM -->
+<section class="section-padding bg-light" aria-label="Meet the experts">
+  <div class="container" data-aos="fade-up">
+    <div class="section-header text-center">
+      <span class="section-header__tag">The Experts</span>
+      <h2 class="section-header__title">Our Editorial Team</h2>
+    </div>
+    <div class="team-grid">
+      <div class="team-member">
+        <img src="../assets/images/team-1.jpg" alt="Editor" class="team-member__img" />
+        <h4 class="mb-0">Marcus Thorne</h4>
+        <p class="fs-xs text-tertiary">Head of Integration</p>
+      </div>
+      <div class="team-member">
+        <img src="../assets/images/team-2.jpg" alt="Editor" class="team-member__img" />
+        <h4 class="mb-0">Elena Rossi</h4>
+        <p class="fs-xs text-tertiary">Smart Interior Architect</p>
+      </div>
+      <div class="team-member">
+        <img src="../assets/images/team-3.jpg" alt="Editor" class="team-member__img" />
+        <h4 class="mb-0">Sam Jenkins</h4>
+        <p class="fs-xs text-tertiary">Security Specialist</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF GRID -->
+<section class="section-padding" aria-label="Our community">
+  <div class="container" data-aos="fade-up">
+    <div class="section-header text-center">
+      <span class="section-header__tag">#SmartNestLife</span>
+      <h2 class="section-header__title">From Our Community</h2>
+    </div>
+    <div class="social-masonry">
+      <img src="../assets/images/social-1.jpg" alt="Smart Home" />
+      <img src="../assets/images/social-2.jpg" alt="Smart Home" />
+      <img src="../assets/images/social-3.jpg" alt="Smart Home" />
+      <img src="../assets/images/social-4.jpg" alt="Smart Home" />
+      <img src="../assets/images/social-5.jpg" alt="Smart Home" />
+      <img src="../assets/images/social-6.jpg" alt="Smart Home" />
+      <img src="../assets/images/social-7.jpg" alt="Smart Home" />
+      <img src="../assets/images/social-8.jpg" alt="Smart Home" />
+    </div>
   </div>
 </section>
 
