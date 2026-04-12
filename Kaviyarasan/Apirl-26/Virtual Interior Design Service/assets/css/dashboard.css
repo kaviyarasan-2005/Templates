@@ -281,7 +281,15 @@
   display: flex;
   flex-direction: column;
   position: relative;
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.03);
 }
+
+.chart-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+}
+
 .chart-header {
   display: flex;
   justify-content: space-between;
@@ -317,10 +325,10 @@
 }
 .bar {
   width: 100%;
-  max-width: 32px;
+  max-width: 24px;
   background: var(--color-primary);
-  border-radius: 4px 4px 0 0;
-  transition: height 1s ease;
+  border-radius: 6px 6px 0 0;
+  transition: height 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   min-height: 4px;
 }
 .bar-lbl {
@@ -599,4 +607,65 @@
     display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 199;
   }
   .sidebar-overlay.active { display: block; }
+}
+
+/* RTL Dashboard Fixes */
+[dir="rtl"] .dash-sidebar {
+  left: auto;
+  right: 0;
+  border-right: none;
+  border-left: 1px solid var(--color-border);
+}
+
+[dir="rtl"] .dash-main {
+  margin-left: 0;
+  margin-right: 260px;
+}
+
+[dir="rtl"] .dash-main.collapsed {
+  margin-right: 80px;
+}
+
+[dir="rtl"] .nav-badge {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+[dir="rtl"] .dash-search-icon {
+  left: auto;
+  right: 10px;
+}
+
+[dir="rtl"] .dash-search input {
+  padding: 0 36px 0 12px;
+}
+
+[dir="rtl"] .timeline-wrap {
+  padding-left: 0;
+  padding-right: 20px;
+}
+
+[dir="rtl"] .timeline-wrap::before {
+  left: auto;
+  right: 5px;
+}
+
+[dir="rtl"] .timeline-item {
+  padding-left: 0;
+  padding-right: var(--space-3);
+}
+
+[dir="rtl"] .timeline-dot {
+  left: auto;
+  right: -20px;
+}
+
+@media (max-width: 768px) {
+  [dir="rtl"] .dash-sidebar {
+    transform: translateX(100%);
+  }
+  [dir="rtl"] .dash-sidebar.mobile-open {
+    transform: translateX(0);
+  }
+  [dir="rtl"] .dash-main { margin-right: 0 !important; }
 }
