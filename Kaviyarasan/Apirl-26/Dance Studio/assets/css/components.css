@@ -1080,6 +1080,7 @@
   .navbar__menu { gap: var(--space-4); }
   .navbar__link { font-size: var(--font-size-sm); }
   .navbar__logo-text { display: none; } /* Show only icon on small tablets to save space */
+  .navbar__dropdown-toggle i { display: none; } /* Remove arrows on tablet */
 }
 
 /* ========================================
@@ -1184,6 +1185,8 @@
     justify-content: space-between;
     padding: var(--space-2) 0;
   }
+
+  .navbar__dropdown-toggle i { display: none; } /* Remove arrows on mobile */
 
   .navbar__dropdown-menu {
     position: relative;
