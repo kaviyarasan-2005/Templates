@@ -1241,11 +1241,19 @@
     /* ── View Switcher ── */
     function showView(v) {
       const isAdmin = v === 'admin';
-      document.getElementById('visitor-view').style.display = isAdmin ? 'none' : 'block';
-      document.getElementById('admin-view').style.display   = isAdmin ? 'block' : 'none';
-      document.getElementById('tab-user').classList.toggle('active', !isAdmin);
-      document.getElementById('tab-admin').classList.toggle('active', isAdmin);
-      document.querySelector('.dashboard-title') && (document.querySelector('.dashboard-title').textContent = isAdmin ? 'Admin Dashboard' : 'Welcome back, David 👋');
+      const visitorView = document.getElementById('visitor-view');
+      const adminView = document.getElementById('admin-view');
+      if (visitorView) visitorView.style.display = isAdmin ? 'none' : 'block';
+      if (adminView) adminView.style.display = isAdmin ? 'block' : 'none';
+      
+      const tabUser = document.getElementById('tab-user');
+      if (tabUser) tabUser.classList.toggle('active', !isAdmin);
+      
+      const tabAdmin = document.getElementById('tab-admin');
+      if (tabAdmin) tabAdmin.classList.toggle('active', isAdmin);
+      
+      const titleTarget = document.querySelector('.dashboard-title');
+      if (titleTarget) titleTarget.textContent = isAdmin ? 'Admin Dashboard' : 'Welcome back, David 👋';
     }
     function switchToAdmin() { showView('admin'); }
     if (window.location.hash === '#admin') showView('admin');
