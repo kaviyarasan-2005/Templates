@@ -1082,7 +1082,8 @@ tbody tr:last-child td { border-bottom: none; }
     flex-direction: column;
     align-items: center;
     text-align: center;
-    width: 60px;
+    width: 25%;
+    padding: 0 4px;
 }
 
 .journey-dot {
@@ -1096,6 +1097,8 @@ tbody tr:last-child td { border-bottom: none; }
     justify-content: center;
     margin-bottom: var(--space-sm);
     transition: all var(--transition-base);
+    font-size: 0.75rem;
+    font-weight: 700;
 }
 
 .journey-step.active .journey-dot {
@@ -1119,10 +1122,14 @@ tbody tr:last-child td { border-bottom: none; }
 }
 
 .journey-label {
-    font-size: 0.6875rem;
+    font-size: 0.625rem;
     font-weight: 700;
     color: var(--text-muted);
     font-family: var(--font-ui);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
 }
 
 .journey-step.active .journey-label { color: var(--text-primary); }
