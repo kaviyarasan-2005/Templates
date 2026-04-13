@@ -325,6 +325,190 @@
     </div>
   </section>
 
+  <!-- ===== SECTION 7: FEATURED ARTICLE ===== -->
+  <section class="section" style="background: var(--color-surface);">
+    <div class="container">
+      <div class="animate-on-scroll fade-up" style="text-align:center; margin-bottom:var(--space-5);">
+        <span style="font-size:0.8125rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--color-primary);">Editor's Pick</span>
+        <h2 style="margin-top:var(--space-2);">Featured Article</h2>
+      </div>
+
+      <div class="featured-card animate-on-scroll fade-up">
+        <!-- Image Side -->
+        <div class="featured-img-wrap">
+          <img src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?auto=format&fit=crop&w=900&q=80" alt="Japandi Living Room">
+          <span class="category-badge" style="position:absolute; top:16px; left:16px;">Trends 2026</span>
+        </div>
+
+        <!-- Content Side -->
+        <div class="featured-content">
+          <div style="display:flex; gap:12px; margin-bottom:12px; font-size:0.8125rem; color:var(--color-text-muted);">
+            <span>Apr 12, 2026</span>
+            <span>·</span>
+            <span>15 min read</span>
+          </div>
+          <h2 style="font-size:1.75rem; line-height:1.35; margin-bottom:16px;">
+            <a href="blog-details.html" style="color:inherit; text-decoration:none;">The Japandi Revolution: Why East Meets West is the Most Calming Interior Style of This Era</a>
+          </h2>
+          <p style="color:var(--color-text-secondary); line-height:1.75; margin-bottom:24px;">Japandi — the hybrid of Japanese minimalism and Scandinavian functionality — is no longer a niche trend. It's reshaping how we think about serenity at home, with natural textures, wabi-sabi imperfection, and a quiet elegance that no other style can replicate.</p>
+          <div class="blog-meta" style="margin-bottom:24px;">
+            <img src="https://i.pravatar.cc/64?img=11" alt="Sophia Walker">
+            <div>
+              <span style="font-size:0.9375rem; font-weight:600; display:block;">Sophia Walker</span>
+              <span style="font-size:0.8125rem; color:var(--color-text-muted);">Senior Design Editor</span>
+            </div>
+          </div>
+          <a href="blog-details.html" class="btn btn-primary" style="display:inline-flex; align-items:center; gap:8px;">
+            Read Full Article
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <style>
+    .featured-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-radius: var(--border-radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--color-border);
+      background: var(--color-bg);
+      min-height: 420px;
+    }
+    .featured-img-wrap {
+      position: relative;
+      overflow: hidden;
+    }
+    .featured-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+    .featured-img-wrap:hover img {
+      transform: scale(1.05);
+    }
+    .featured-content {
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    @media (max-width: 768px) {
+      .featured-card {
+        grid-template-columns: 1fr;
+        min-height: unset;
+      }
+      .featured-img-wrap {
+        height: 260px;
+      }
+      .featured-img-wrap img {
+        height: 260px;
+      }
+      .featured-content {
+        padding: 24px;
+      }
+    }
+  </style>
+
+
+  <!-- ===== SECTION 8: INSPIRATION GALLERY ===== -->
+  <section class="section">
+    <div class="container">
+      <div class="animate-on-scroll fade-up" style="text-align:center; margin-bottom:var(--space-5);">
+        <span style="font-size:0.8125rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--color-primary);">Mood Board</span>
+        <h2 style="margin-top:var(--space-2);">Design Inspiration Gallery</h2>
+        <p class="text-secondary" style="max-width:540px; margin:var(--space-2) auto 0;">Curated spaces from our latest projects and editorial shoots — save, share, and get inspired.</p>
+      </div>
+      <div class="animate-on-scroll fade-up" style="display:grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: auto; gap:var(--space-3);">
+        <!-- Large tile -->
+        <div style="grid-column: span 2; grid-row: span 2; border-radius:var(--border-radius-lg); overflow:hidden; position:relative; cursor:pointer;" class="gallery-tile">
+          <img src="https://images.unsplash.com/photo-1618219944342-824e40a13285?auto=format&fit=crop&w=800&q=80" alt="Warm Living Room" style="width:100%; height:100%; object-fit:cover; display:block; min-height:360px;">
+          <div class="gallery-label">Warm Contemporary</div>
+        </div>
+        <!-- Small tiles -->
+        <div style="border-radius:var(--border-radius-lg); overflow:hidden; position:relative; cursor:pointer;" class="gallery-tile">
+          <img src="https://images.unsplash.com/photo-1598928506311-c55ded91a20c?auto=format&fit=crop&w=400&q=80" alt="Bedroom" style="width:100%; height:100%; object-fit:cover; display:block; min-height:175px;">
+          <div class="gallery-label">Serene Bedroom</div>
+        </div>
+        <div style="border-radius:var(--border-radius-lg); overflow:hidden; position:relative; cursor:pointer;" class="gallery-tile">
+          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=400&q=80" alt="Dining" style="width:100%; height:100%; object-fit:cover; display:block; min-height:175px;">
+          <div class="gallery-label">Nordic Dining</div>
+        </div>
+        <div style="border-radius:var(--border-radius-lg); overflow:hidden; position:relative; cursor:pointer;" class="gallery-tile">
+          <img src="https://images.unsplash.com/photo-1556909172-54557c7e4fb7?auto=format&fit=crop&w=400&q=80" alt="Kitchen" style="width:100%; height:100%; object-fit:cover; display:block; min-height:175px;">
+          <div class="gallery-label">Chef's Kitchen</div>
+        </div>
+        <div style="border-radius:var(--border-radius-lg); overflow:hidden; position:relative; cursor:pointer;" class="gallery-tile">
+          <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=400&q=80" alt="Study" style="width:100%; height:100%; object-fit:cover; display:block; min-height:175px;">
+          <div class="gallery-label">Cozy Study</div>
+        </div>
+      </div>
+      <div style="text-align:center; margin-top:var(--space-4);">
+        <a href="services.html" class="btn btn-outline" style="border:1px solid var(--color-primary); color:var(--color-primary); padding:10px 28px; border-radius:var(--border-radius); font-weight:600; text-decoration:none; transition:all 0.2s;">View All Projects</a>
+      </div>
+    </div>
+  </section>
+  <style>
+    .gallery-tile { position: relative; }
+    .gallery-label {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,0.6));
+      color: white;
+      font-size: 0.875rem;
+      font-weight: 600;
+      padding: 24px 16px 14px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .gallery-tile:hover .gallery-label { opacity: 1; }
+    .gallery-tile img { transition: transform 0.5s ease; }
+    .gallery-tile:hover img { transform: scale(1.06); }
+    @media (max-width: 768px) {
+      .gallery-tile:first-child { grid-column: span 1 !important; grid-row: span 1 !important; }
+    }
+  </style>
+
+  <!-- ===== SECTION 9: NEWSLETTER SIGNUP ===== -->
+  <section class="section" style="background: linear-gradient(135deg, var(--color-primary) 0%, #074345 100%); position:relative; overflow:hidden;">
+    <!-- Decorative blobs -->
+    <div style="position:absolute; top:-80px; right:-80px; width:320px; height:320px; border-radius:50%; background:rgba(255,255,255,0.05); pointer-events:none;"></div>
+    <div style="position:absolute; bottom:-60px; left:-60px; width:240px; height:240px; border-radius:50%; background:rgba(255,255,255,0.05); pointer-events:none;"></div>
+    <div class="container animate-on-scroll fade-up" style="position:relative; z-index:1;">
+      <div style="max-width:640px; margin:0 auto; text-align:center;">
+        <span style="display:inline-block; background:rgba(255,255,255,0.15); color:white; font-size:0.8125rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; padding:5px 16px; border-radius:20px; margin-bottom:var(--space-3);">Stay Inspired</span>
+        <h2 style="color:white; font-size:2.25rem; margin-bottom:var(--space-3);">Get Weekly Design Insights</h2>
+        <p style="color:rgba(255,255,255,0.8); font-size:1.0625rem; line-height:1.7; margin-bottom:var(--space-5);">Join over 18,000 design enthusiasts receiving our curated weekly digest — trends, project reveals, expert tips, and early access to new collections.</p>
+        <form onsubmit="return false;" style="display:flex; gap:var(--space-2); background:rgba(255,255,255,0.12); backdrop-filter:blur(10px); border:1px solid rgba(255,255,255,0.2); border-radius:50px; padding:6px 6px 6px var(--space-4); max-width:520px; margin:0 auto var(--space-4);">
+          <input type="email" placeholder="Enter your email address" style="flex:1; border:none; background:transparent; color:white; font-size:1rem; outline:none; min-width:0;" required>
+          <button type="submit" style="background:white; color:var(--color-primary); border:none; border-radius:50px; padding:12px 28px; font-weight:700; font-size:0.9375rem; cursor:pointer; white-space:nowrap; transition:all 0.2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">Subscribe</button>
+        </form>
+        <p style="color:rgba(255,255,255,0.55); font-size:0.8125rem;">No spam. Unsubscribe anytime. We respect your privacy.</p>
+        <div style="display:flex; justify-content:center; gap:var(--space-5); margin-top:var(--space-5);">
+          <div style="text-align:center;">
+            <div style="font-size:1.75rem; font-weight:800; color:white;">18k+</div>
+            <div style="font-size:0.8125rem; color:rgba(255,255,255,0.65);">Subscribers</div>
+          </div>
+          <div style="width:1px; background:rgba(255,255,255,0.2);"></div>
+          <div style="text-align:center;">
+            <div style="font-size:1.75rem; font-weight:800; color:white;">Weekly</div>
+            <div style="font-size:0.8125rem; color:rgba(255,255,255,0.65);">Digest</div>
+          </div>
+          <div style="width:1px; background:rgba(255,255,255,0.2);"></div>
+          <div style="text-align:center;">
+            <div style="font-size:1.75rem; font-weight:800; color:white;">100%</div>
+            <div style="font-size:0.8125rem; color:rgba(255,255,255,0.65);">Free</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
     <!-- Footer -->
   <footer class="footer">
     <div class="container">
