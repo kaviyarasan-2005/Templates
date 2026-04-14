@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -49,46 +49,47 @@
           <header class="navbar" role="banner">
     <div class="container">
       <div class="navbar__inner">
-        <a href="index.html" class="navbar__logo" aria-label="VintStore - Home"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 2H6a3 3 0 0 0-3 3v14a3 3 0 0 0 6 3h13V2zM6 4h11v14H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1zm0 13h11v1H6a1 1 0 0 1 0-2z"/></svg>
+        <!-- Logo -->
+        <a href="index.html" class="navbar__logo" aria-label="VintStore — Home">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 2H6a3 3 0 0 0-3 3v14a3 3 0 0 0 6 3h13V2zM6 4h11v14H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1zm0 13h11v1H6a1 1 0 0 1 0-2z"/></svg>
           <span class="navbar__logo-text">VintStore</span>
         </a>
         <ul class="navbar__nav" role="list">
           <li class="nav-item has-dropdown">
-            <a href="#" class="nav-link" aria-haspopup="true">Home <svg class="nav-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></a>
+            <a href="#" class="nav-link" aria-haspopup="true" aria-expanded="false">Home <svg class="nav-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></a>
             <ul class="dropdown-menu" role="menu">
-              <li><a href="index.html">Home 1</a></li>
-              <li><a href="home-saas.html">Home 2</a></li>
+              <li><a href="index.html" role="menuitem">Home 1</a></li>
+              <li><a href="home-saas.html" role="menuitem">Home 2</a></li>
             </ul>
           </li>
           <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
           <li class="nav-item has-dropdown">
-            <a href="services.html" class="nav-link" aria-haspopup="true">Services <svg class="nav-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></a>
+            <a href="services.html" class="nav-link" aria-haspopup="true">Services <svg class="nav-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></a>
             <ul class="dropdown-menu" role="menu">
-              <li><a href="services.html">Service</a></li>
-              <li><a href="service-details.html">Service Details</a></li>
-              
+              <li><a href="services.html" role="menuitem">Service</a></li>
+              <li><a href="service-details.html" role="menuitem">Service Details</a></li>
             </ul>
           </li>
           <li class="nav-item has-dropdown">
-            <a href="blog.html" class="nav-link" aria-haspopup="true">Blog <svg class="nav-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></a>
+            <a href="blog.html" class="nav-link" aria-haspopup="true">Blog <svg class="nav-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></a>
             <ul class="dropdown-menu" role="menu">
-              <li><a href="blog.html">Blogs</a></li>
-              <li><a href="blog-details.html">Blog Details</a></li>
+              <li><a href="blog.html" role="menuitem">Blogs</a></li>
+              <li><a href="blog-details.html" role="menuitem">Blog Details</a></li>
             </ul>
           </li>
           <li class="nav-item"><a href="pricing.html" class="nav-link active">Pricing</a></li>
           <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
           <li class="nav-item has-dropdown">
-            <a href="admin-dashboard.html" class="nav-link">Dashboard <svg class="nav-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></a>
+            <a href="admin-dashboard.html" class="nav-link" aria-haspopup="true">Dashboard <svg class="nav-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></a>
             <ul class="dropdown-menu" role="menu">
-              <li><a href="admin-dashboard.html">Admin View</a></li>
-              <li><a href="user-dashboard.html">User View</a></li>
+              <li><a href="admin-dashboard.html" role="menuitem">Admin View</a></li>
+              <li><a href="user-dashboard.html" role="menuitem">User View</a></li>
             </ul>
           </li>
         </ul>
         <div class="navbar__actions">
-          <button id="rtl-toggle" class="nav-icon-btn" aria-label="Toggle RTL/LTR"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></button>
-          <button id="theme-toggle" class="nav-icon-btn" aria-label="Toggle theme"><svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button>
+          <button id="rtl-toggle" class="nav-icon-btn" aria-label="Switch to RTL layout" title="Toggle RTL/LTR"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></button>
+          <button id="theme-toggle" class="nav-icon-btn" aria-label="Switch to dark mode" title="Toggle theme"><svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button>
           <a href="login.html" class="btn btn-primary btn-sm">Login</a>
           <button id="hamburger" class="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
         </div>
