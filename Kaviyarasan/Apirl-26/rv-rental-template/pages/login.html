@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
@@ -221,10 +221,7 @@
         <div class="form-group" style="margin-bottom:8px;">
           <label class="form-label" for="login-password">Password</label>
           <div class="password-wrapper">
-            <input type="password" class="form-input" id="login-password" name="password" required placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢" autocomplete="current-password" minlength="8" />
-            <button type="button" class="password-toggle" aria-label="Toggle password visibility" id="toggle-password">
-              <i class="fas fa-eye" id="pw-icon"></i>
-            </button>
+            <input type="password" class="form-input" id="login-password" name="password" required placeholder="••••••••" autocomplete="current-password" minlength="8" />
           </div>
         </div>
         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:28px;flex-wrap:wrap;gap:8px;">
@@ -247,15 +244,5 @@
   </div>
 
   <script src="../assets/js/main.js" defer></script>
-  <script>
-    const toggleBtn = document.getElementById('toggle-password');
-    const pwInput = document.getElementById('login-password');
-    const pwIcon = document.getElementById('pw-icon');
-    toggleBtn?.addEventListener('click', () => {
-      const isPass = pwInput.type === 'password';
-      pwInput.type = isPass ? 'text' : 'password';
-      pwIcon.className = isPass ? 'fas fa-eye-slash' : 'fas fa-eye';
-    });
-  </script>
 </body>
 </html>
