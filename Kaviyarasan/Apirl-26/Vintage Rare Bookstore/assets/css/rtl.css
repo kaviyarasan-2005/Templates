@@ -9,12 +9,11 @@
 }
 
 /* ===== NAVIGATION RTL ===== */
-[dir="rtl"] .navbar__inner {
-  flex-direction: row-reverse;
-}
-
-[dir="rtl"] .navbar__nav {
-  flex-direction: row-reverse;
+[dir="rtl"] .navbar__inner,
+[dir="rtl"] .navbar__nav,
+[dir="rtl"] .navbar__actions,
+[dir="rtl"] .navbar__logo {
+  flex-direction: row; /* Browser handles reversal naturally with direction: rtl */
 }
 
 [dir="rtl"] .dropdown-menu {
@@ -22,18 +21,11 @@
   right: 0;
 }
 
-[dir="rtl"] .navbar__actions {
-  flex-direction: row-reverse;
-}
-
-[dir="rtl"] .navbar__logo {
-  flex-direction: row-reverse;
-}
-
 /* Active nav underline */
-[dir="rtl"] .navbar__nav .nav-link.active::after {
-  left: auto;
-  right: 14px;
+[dir="rtl"] .navbar__nav .nav-link::after {
+  left: 50%;
+  right: auto;
+  transform: translateX(-50%);
 }
 
 /* ===== MOBILE NAV RTL ===== */
@@ -61,11 +53,11 @@
 }
 
 [dir="rtl"] .footer__bottom {
-  flex-direction: row-reverse;
+  flex-direction: row;
 }
 
 [dir="rtl"] .footer__links a {
-  flex-direction: row-reverse;
+  flex-direction: row;
 }
 
 [dir="rtl"] .footer__links a:hover {
@@ -74,7 +66,7 @@
 }
 
 [dir="rtl"] .footer__social {
-  flex-direction: row-reverse;
+  flex-direction: row;
 }
 
 /* ===== CARDS RTL ===== */
@@ -175,10 +167,12 @@
   left: auto;
   right: 0;
 }
+[dir="rtl"] .dashboard-main,
 [dir="rtl"] .dash-main {
   margin-left: 0;
   margin-right: var(--sidebar-width);
 }
+[dir="rtl"] .sidebar.collapsed ~ .dashboard-main,
 [dir="rtl"] .sidebar.collapsed ~ .dash-main {
   margin-right: var(--sidebar-collapsed-width);
 }
@@ -187,22 +181,22 @@
   flex-direction: row-reverse;
 }
 
+[dir="rtl"] #sidebar-toggle,
 [dir="rtl"] .sidebar-toggle {
   left: auto;
   right: calc(var(--sidebar-width) - 18px);
 }
 
-[dir="rtl"] .sidebar.collapsed + * + .dash-main .sidebar-toggle {
+[dir="rtl"] .sidebar.collapsed ~ .dashboard-main #sidebar-toggle {
   right: calc(var(--sidebar-collapsed-width) - 18px);
 }
 
 /* ===== GRIDS / FLEX RTL ===== */
-[dir="rtl"] .hero__ctas {
-  flex-direction: row-reverse;
-}
-
-[dir="rtl"] .navbar__actions .nav-icon-btn:first-child {
-  order: 2;
+[dir="rtl"] .hero__ctas,
+[dir="rtl"] .social-btn,
+[dir="rtl"] .pagination,
+[dir="rtl"] .sidebar-nav-link {
+  flex-direction: row;
 }
 
 /* ===== HOVER UNDERLINE RTL ===== */
@@ -230,13 +224,12 @@
 }
 
 /* ===== SOCIAL BUTTONS RTL ===== */
-[dir="rtl"] .social-btn {
-  flex-direction: row-reverse;
-}
-
-/* ===== PAGINATION RTL ===== */
-[dir="rtl"] .pagination {
-  flex-direction: row-reverse;
+[dir="rtl"] .social-btn,
+[dir="rtl"] .pagination,
+[dir="rtl"] .testimonial-author,
+[dir="rtl"] .accordion-trigger,
+[dir="rtl"] .form-error {
+  flex-direction: row;
 }
 
 /* ===== SCROLLBAR RTL ===== */
