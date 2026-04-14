@@ -22,6 +22,9 @@
       background: var(--color-bg);
       overflow: hidden; position: relative; padding-top: var(--navbar-height);
     }
+    .hero2-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-6); align-items: center;
+    }
     .mesh-bg {
       position: absolute; inset: 0; z-index: 0;
       background:
@@ -120,7 +123,11 @@
       border-radius: 8px; color: var(--color-text-secondary); font-weight: 600; white-space: nowrap;
     }
 
-    @media (max-width: 768px) { .hero2-visual { display: none; } }
+    @media (max-width: 768px) { 
+      .hero2-visual { display: none; } 
+      .hero2-grid { grid-template-columns: 1fr !important; gap: var(--space-4); }
+      .hero2 h1 { font-size: 2.25rem !important; }
+    }
   </style>
 </head>
 <body>
@@ -229,7 +236,7 @@
   <!-- Hero -->
   <section class="hero2">
     <div class="mesh-bg"></div>
-    <div class="container" style="display:grid; grid-template-columns: 1fr 1fr; gap: var(--space-6); align-items: center;">
+    <div class="container hero2-grid">
       <div class="hero2-content animate-on-scroll fade-up">
         <div class="hero2-badge"><span class="badge-dot"></span> Now Available Virtually</div>
         <h1 style="font-size:clamp(2.25rem, 5vw, 3.75rem); margin-bottom: 20px;">Interior Design <br>Powered by Vision</h1>

@@ -78,6 +78,8 @@
   .stat-cards { grid-template-columns: repeat(2, 1fr); }
   .team-grid { grid-template-columns: repeat(2, 1fr); }
   .pricing-cards { grid-template-columns: 1fr; }
+  .hero2-grid { grid-template-columns: 1fr !important; }
+  .hero2-visual { display: none; }
 }
 
 /* ---- Tablets (768px – 1023px) ---- */
@@ -92,7 +94,7 @@
   .contact-layout { grid-template-columns: 1fr; }
   .pricing-cards { grid-template-columns: repeat(2, 1fr); }
   .pricing-card.elevated { transform: none; }
-  .hero2 > .container { grid-template-columns: 1fr !important; }
+  .hero2-grid { grid-template-columns: 1fr !important; }
   .hero2-visual { display: none; }
 }
 
