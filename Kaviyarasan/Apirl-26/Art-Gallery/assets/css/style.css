@@ -1262,6 +1262,10 @@ textarea.form-group__input {
 }
 .newsletter input:focus { border-color: var(--color-primary); outline: none; }
 
+@media (max-width: 480px) {
+  .newsletter input { flex: none; width: 100%; }
+}
+
 /* Tooltip */
 .tooltip {
   position: relative;
