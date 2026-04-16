@@ -15,6 +15,7 @@
     .blog-search-bar input::placeholder{color:rgba(255,255,255,0.5)}
     .blog-search-bar input:focus{outline:none;border-color:var(--accent);background:rgba(255,255,255,0.15)}
     .blog-search-bar svg{position:absolute;left:18px;top:50%;transform:translateY(-50%);color:rgba(255,255,255,0.6)}
+    
     .blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-xl)}
     .blog-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--border-radius-lg);overflow:hidden;transition:all var(--transition-slow);display:flex;flex-direction:column}
     .blog-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-xl);border-color:rgba(212,175,55,0.25)}
@@ -29,16 +30,92 @@
     .blog-card__title{font-family:var(--font-heading);font-size:1.25rem;font-weight:700;margin-bottom:var(--space-sm);line-height:1.3;color:var(--text-primary);transition:color var(--transition-base)}
     .blog-card:hover .blog-card__title{color:var(--accent)}
     .blog-card__excerpt{font-size:0.9375rem;color:var(--text-secondary);line-height:1.6;flex:1;margin-bottom:var(--space-lg)}
-    .cat-pills{display:flex;gap:var(--space-sm);flex-wrap:wrap;margin-bottom:var(--space-2xl)}
-    .cat-pill{padding:6px 18px;border-radius:100px;font-family:var(--font-ui);font-size:0.8125rem;font-weight:600;border:2px solid var(--border);background:none;color:var(--text-secondary);cursor:pointer;transition:all var(--transition-base)}
+    
+    .cat-pills{display:flex;justify-content:center;gap:var(--space-sm);flex-wrap:wrap;margin:var(--space-2xl) 0 var(--space-4xl)}
+    .cat-pill{padding:8px 20px;border-radius:100px;font-family:var(--font-ui);font-size:0.875rem;font-weight:600;border:2px solid var(--border);background:none;color:var(--text-secondary);cursor:pointer;transition:all var(--transition-base)}
     .cat-pill:hover,.cat-pill.active{border-color:var(--accent);background:var(--accent);color:var(--text-primary)}
-    @media(max-width:1024px){.blog-grid{grid-template-columns:repeat(2,1fr)}}
-    @media(max-width:640px){.blog-grid{grid-template-columns:1fr}}
+
+    /* Featured Section Overlap */
+    .featured-post-section {
+      margin-top: -120px;
+      position: relative;
+      z-index: 20;
+      padding-bottom: var(--space-4xl);
+    }
+    .featured-card-wrapper {
+      background: var(--bg-card);
+      border-radius: var(--border-radius-lg);
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      box-shadow: 0 40px 120px rgba(0,0,0,0.15);
+      border: 1px solid var(--border);
+    }
+    .featured-card__image {
+      min-height: 450px;
+      position: relative;
+    }
+    .featured-card__image img {
+      position: absolute; inset:0; width:100%; height:100%; object-fit: cover;
+    }
+    .featured-card__text {
+      padding: var(--space-4xl);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    /* Insta Gallery */
+    .insta-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: var(--space-md);
+      margin-top: var(--space-3xl);
+    }
+    .insta-item {
+      aspect-ratio: 1;
+      overflow: hidden;
+      border-radius: var(--border-radius);
+      position: relative;
+    }
+    .insta-item img {
+      width: 100%; height: 100%; object-fit: cover; transition: transform var(--transition-slow);
+    }
+    .insta-overlay {
+      position: absolute; inset: 0; background: rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center; opacity: 0; color: #fff; transition: opacity 0.3s;
+    }
+    .insta-item:hover img { transform: scale(1.1); }
+    .insta-item:hover .insta-overlay { opacity: 1; }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .featured-card-wrapper { grid-template-columns: 1fr; }
+      .featured-card__image { min-height: 350px; }
+      .featured-post-section { margin-top: -80px; }
+      .insta-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    
+    @media (max-width: 992px) {
+      .blog-page .blog-grid { 
+        grid-template-columns: 1fr !important; 
+        gap: var(--space-xl);
+      }
+      .blog-page .section-header h2 {
+        font-size: 2rem !important;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .insta-grid { grid-template-columns: repeat(2, 1fr); }
+      .featured-card__text { padding: var(--space-xl); }
+      .featured-card__text h2 { font-size: 1.75rem; }
+    }
   </style>
 </head>
 <body>
   <a href="#main-content" class="skip-link">Skip to main content</a>
-          <header class="navbar" role="banner">
+  
+  <header class="navbar" role="banner">
     <div class="container">
       <div class="navbar__inner">
         <!-- Logo -->
@@ -50,7 +127,7 @@
         <!-- Desktop Nav -->
         <ul class="navbar__nav" role="list">
           <li class="nav-item has-dropdown">
-            <a href="#" class="nav-link " aria-haspopup="true" aria-expanded="false">Home <svg class="nav-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></a>
+            <a href="#" class="nav-link" aria-haspopup="true" aria-expanded="false">Home <svg class="nav-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></a>
             <ul class="dropdown-menu" role="menu">
               <li><a href="index.html" role="menuitem">Home 1</a></li>
               <li><a href="home-saas.html" role="menuitem">Home 2</a></li>
@@ -58,22 +135,14 @@
           </li>
           <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
           <li class="nav-item has-dropdown">
-            <a href="services.html" class="nav-link" aria-haspopup="true">Services <svg class="nav-chevron"
-                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2.5" aria-hidden="true">
-                <polyline points="6 9 12 15 18 9" />
-              </svg></a>
+            <a href="services.html" class="nav-link" aria-haspopup="true">Services <svg class="nav-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></a>
             <ul class="dropdown-menu" role="menu">
               <li><a href="services.html" role="menuitem">Service</a></li>
               <li><a href="service-details.html" role="menuitem">Service Details</a></li>
             </ul>
           </li>
           <li class="nav-item has-dropdown">
-            <a href="blog.html" class="nav-link active" aria-haspopup="true">Blog <svg class="nav-chevron"
-                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2.5" aria-hidden="true">
-                <polyline points="6 9 12 15 18 9" />
-              </svg></a>
+            <a href="blog.html" class="nav-link active" aria-haspopup="true">Blog <svg class="nav-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></a>
             <ul class="dropdown-menu" role="menu">
               <li><a href="blog.html" role="menuitem">Blogs</a></li>
               <li><a href="blog-details.html" role="menuitem">Blog Details</a></li>
@@ -100,7 +169,8 @@
       </div>
     </div>
   </header>
-          <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile navigation">
+
+  <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile navigation">
     <ul class="mobile-nav__links" role="list">
       <li>
         <button class="nav-link mobile-sub-toggle">
@@ -124,7 +194,7 @@
         </ul>
       </li>
       <li>
-        <button class="nav-link mobile-sub-toggle">
+        <button class="nav-link mobile-sub-toggle" style="width:100%;border:none;background:none;cursor:pointer;font-family:var(--font-ui);font-size:1rem;font-weight:500;color:var(--text-primary);text-align:left;">
           Blog
           <svg class="nav-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
@@ -136,7 +206,7 @@
       <li><a href="pricing.html" class="nav-link">Pricing</a></li>
       <li><a href="contact.html" class="nav-link">Contact</a></li>
       <li>
-        <button class="nav-link mobile-sub-toggle">
+        <button class="nav-link mobile-sub-toggle" style="width:100%;border:none;background:none;cursor:pointer;font-family:var(--font-ui);font-size:1rem;font-weight:500;color:var(--text-primary);text-align:left;">
           Dashboard
           <svg class="nav-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
@@ -151,49 +221,122 @@
     </div>
   </nav>
 
-  <main id="main-content" class="page-content">
-    <section class="hero" aria-label="Blog Hero">
-      <div class="hero__bg" aria-hidden="true"></div>
-      <div class="hero__overlay" aria-hidden="true"></div>
-      <div class="particles-container" aria-hidden="true"></div>
-      <!-- Floating books -->
-      <div class="hero__float hero__float--1" aria-hidden="true">📖</div>
-      <div class="hero__float hero__float--2" aria-hidden="true">📜</div>
-      <div class="hero__float hero__float--3" aria-hidden="true">🖋️</div>
-      <div class="hero__float hero__float--4" aria-hidden="true">📚</div>
+  <main id="main-content" class="page-content blog-page">
+    <!-- HERO -->
+    <section class="hero" style="padding-bottom: 240px; text-align: center;">
+      <div class="hero__bg"></div>
+      <div class="hero__overlay"></div>
+      <div class="container" style="position: relative; z-index: 5;">
+        <span class="eyebrow" style="color: var(--accent); letter-spacing: 0.1em; font-weight: 700;">THE LITERARY CHRONICLE</span>
+        <h1 style="font-size: clamp(2.5rem, 8vw, 4rem); margin: 20px 0; line-height: 1.1; color: #fff;">Insights from the World<br> of Rare Books</h1>
+        <p style="max-width: 600px; margin: 0 auto; font-size: 1.125rem; color: rgba(255,255,255,0.8);">Expert guides, rare find stories, and the latest news from our antiquarian collection.</p>
+        <div class="blog-search-bar" style="margin-top: 40px;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="position: absolute; left: 18px; top: 50%; transform: translateY(-50%); color: rgba(255,255,255,0.6);"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="search" placeholder="Search the collection..." style="width: 100%; padding: 14px 20px 14px 50px; border-radius: 100px; border: 2px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.1); color: #fff; backdrop-filter: blur(8px);">
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURED -->
+    <section class="featured-post-section">
       <div class="container">
-        <div class="hero__content">
-          <span class="hero__eyebrow reveal">The Literary Chronicle</span>
-          <h1 class="hero__title reveal">Insights from the<br> World of Rare Books</h1>
-          <p class="hero__subtitle reveal">Expert guides, rare find stories, and the latest news from our antiquarian collection.</p>
-          <div class="blog-search-bar reveal">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-            </svg>
-            <input type="search" id="blog-search" placeholder="Search articles..." aria-label="Search blog articles">
+        <div class="featured-card-wrapper">
+          <div class="featured-card__image">
+            <img src="assets/images/backgrounds/featured-blog.png" alt="Featured Article">
+          </div>
+          <div class="featured-card__text">
+            <span style="display: inline-block; padding: 6px 14px; background: rgba(212,175,55,0.15); color: var(--accent); border-radius: 100px; font-size: 0.75rem; font-weight: 700; margin-bottom: 20px;">EDITOR'S CHOICE</span>
+            <h2 style="font-size: 2.25rem; font-family: var(--font-heading); line-height: 1.2; margin-bottom: 16px;">The Alchemy of Ink: Tracing the Evolution of 15th Century Printing</h2>
+            <p style="color: var(--text-secondary); margin-bottom: 30px; line-height: 1.6;">Dive deep into the secret history of the earliest printing presses and how a small group of Venetian masters changed how the world consumed knowledge forever.</p>
+            <div class="blog-card__meta" style="margin-bottom: 30px;">
+              <div class="blog-card__author"><div class="author-avatar">P</div><span>P. Sterling</span></div>
+              <span>·</span>
+              <span>15 min read</span>
+            </div>
+            <a href="blog-details.html" class="btn btn-primary" style="width: fit-content;">Read Article</a>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section"><div class="container">
-      <div class="cat-pills reveal" role="group" aria-label="Filter articles by category">
-        <button class="cat-pill active" data-filter="all">Blogs</button>
-        <button class="cat-pill" data-filter="news">News</button>
-        <button class="cat-pill" data-filter="guides">Guides</button>
-        <button class="cat-pill" data-filter="rare-finds">Rare Finds</button>
-        <button class="cat-pill" data-filter="events">Events</button>
+    <section class="section" style="padding-bottom: 100px;">
+      <div class="container">
+        <div class="section-header" style="text-align: center; margin-bottom: 50px; padding-top: 40px;">
+          <span class="eyebrow" style="color: var(--accent); letter-spacing: 0.1em; font-weight: 700; display: block; margin-bottom: 15px;">THE LATEST JOURNAL ENTRIES</span>
+          <h2 style="font-size: 2.75rem; color: var(--text-primary); font-family: var(--font-heading); margin-bottom: 20px;">The Collector's Journal</h2>
+          <div style="width: 60px; height: 3px; background: var(--accent); margin: 0 auto 20px;"></div>
+          <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto; line-height: 1.6;">Discover remarkable volumes, expert identification tips, and restoration guidance for your collection.</p>
+        </div>
+
+        <div class="cat-pills">
+          <button class="cat-pill active">All Articles</button>
+          <button class="cat-pill">Collecting</button>
+          <button class="cat-pill">Restoration</button>
+          <button class="cat-pill">Discoveries</button>
+        </div>
+        
+        <div class="blog-grid">
+          <article class="blog-card">
+            <div class="blog-card__img"><img src="assets/images/books/books-collection.png" alt="1"><span class="blog-card__date-badge">Apr 2024</span></div>
+            <div class="blog-card__body">
+              <h3 class="blog-card__title">The Magnificent Seven: Rarest Books of 2024</h3>
+              <p class="blog-card__excerpt">Discover the remarkable volumes that have recently joined our antiquarian collection.</p>
+              <a href="blog-details.html" style="color: var(--accent); font-weight: 600; text-decoration: none;">View Story →</a>
+            </div>
+          </article>
+          <article class="blog-card">
+            <div class="blog-card__img"><img src="assets/images/books/appraisal.png" alt="2"><span class="blog-card__date-badge">Mar 2024</span></div>
+            <div class="blog-card__body">
+              <h3 class="blog-card__title">How to Identify a Genuine First Edition</h3>
+              <p class="blog-card__excerpt">Expert tips on separating authentic first editions from later printings.</p>
+              <a href="blog-details.html" style="color: var(--accent); font-weight: 600; text-decoration: none;">View Story →</a>
+            </div>
+          </article>
+          <article class="blog-card">
+            <div class="blog-card__img"><img src="assets/images/books/restoration.png" alt="3"><span class="blog-card__date-badge">Feb 2024</span></div>
+            <div class="blog-card__body">
+              <h3 class="blog-card__title">10 Signs Your Book Needs Restoration</h3>
+              <p class="blog-card__excerpt">Warning signs that require immediate professional conservation attention.</p>
+              <a href="blog-details.html" style="color: var(--accent); font-weight: 600; text-decoration: none;">View Story →</a>
+            </div>
+          </article>
+        </div>
       </div>
-      <div class="blog-grid stagger-children">
-        <article class="blog-card reveal" data-category="rare-finds" id="post-1"><div class="blog-card__img"><img src="assets/images/books/books-collection.png" alt="Collection of rare leather bound books" loading="lazy"><span class="blog-card__date-badge">Apr 2024</span></div><div class="blog-card__body"><div class="blog-card__meta"><div class="blog-card__author"><div class="author-avatar">C</div><span>Dr. Hartley</span></div><span>·</span><span>8 min read</span></div><h2 class="blog-card__title">The Magnificent Seven: Rarest Books We've Acquired in 2024</h2><p class="blog-card__excerpt">This year has been extraordinary for rare book acquisitions. From a pristine 1623 Shakespeare First Folio to a handwritten Keats manuscript, discover the remarkable volumes that joined our collection.</p><a href="blog-details.html" class="card__link">Read Article <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a></div></article>
-        <article class="blog-card reveal" data-category="guides" id="post-2"><div class="blog-card__img"><img src="assets/images/books/appraisal.png" alt="Expert examining rare book" loading="lazy"><span class="blog-card__date-badge">Mar 2024</span></div><div class="blog-card__body"><div class="blog-card__meta"><div class="blog-card__author"><div class="author-avatar">W</div><span>W. Pemberton</span></div><span>·</span><span>12 min read</span></div><h2 class="blog-card__title">The Collector's Guide: How to Identify a Genuine First Edition</h2><p class="blog-card__excerpt">Separating authentic first editions from later printings requires knowledge, patience, and the right tools. Our Head of Acquisitions shares decades of hard-won expertise.</p><a href="blog-details.html" class="card__link">Read Article <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a></div></article>
-        <article class="blog-card reveal" data-category="guides" id="post-3"><div class="blog-card__img"><img src="assets/images/books/restoration.png" alt="Book restoration process" loading="lazy"><span class="blog-card__date-badge">Feb 2024</span></div><div class="blog-card__body"><div class="blog-card__meta"><div class="blog-card__author"><div class="author-avatar">T</div><span>T. Blackwood</span></div><span>·</span><span>10 min read</span></div><h2 class="blog-card__title">10 Signs Your Vintage Book Needs Professional Restoration</h2><p class="blog-card__excerpt">From detached boards to iron gall ink corrosion, our Master Bookbinder explains the warning signs that require immediate professional conservation attention.</p><a href="blog-details.html" class="card__link">Read Article <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a></div></article>
-        <article class="blog-card reveal" data-category="news" id="post-4"><div class="blog-card__img"><img src="assets/images/backgrounds/bookstore-interior.png" alt="Bookstore interior" loading="lazy"><span class="blog-card__date-badge">Jan 2024</span></div><div class="blog-card__body"><div class="blog-card__meta"><div class="blog-card__author"><div class="author-avatar">C</div><span>Dr. Hartley</span></div><span>·</span><span>5 min read</span></div><h2 class="blog-card__title">VRB Launches Digital Platform for Global Collectors</h2><p class="blog-card__excerpt">After two years in development, we're excited to announce the launch of our comprehensive digital platform connecting collectors, dealers, and institutions worldwide.</p><a href="blog-details.html" class="card__link">Read Article <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a></div></article>
-        <article class="blog-card reveal" data-category="rare-finds" id="post-5"><div class="blog-card__img"><img src="assets/images/books/books-collection.png" alt="Rare books collection" loading="lazy" style="filter:sepia(0.2)"><span class="blog-card__date-badge">Dec 2023</span></div><div class="blog-card__body"><div class="blog-card__meta"><div class="blog-card__author"><div class="author-avatar">A</div><span>A. Al-Rashid</span></div><span>·</span><span>7 min read</span></div><h2 class="blog-card__title">The Lost Library of Baghdad: Tracing Islamic Manuscripts</h2><p class="blog-card__excerpt">How our Arabic manuscripts specialist traced a collection of 11th-century Islamic texts from a private collection back to the legendary House of Wisdom.</p><a href="blog-details.html" class="card__link">Read Article <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a></div></article>
-        <article class="blog-card reveal" data-category="events" id="post-6"><div class="blog-card__img"><img src="assets/images/backgrounds/bookstore-interior.png" alt="Bookstore event space" loading="lazy" style="filter:hue-rotate(10deg)"><span class="blog-card__date-badge">Nov 2023</span></div><div class="blog-card__body"><div class="blog-card__meta"><div class="blog-card__author"><div class="author-avatar">C</div><span>Dr. Hartley</span></div><span>·</span><span>4 min read</span></div><h2 class="blog-card__title">Upcoming: The Annual Collectors' Evening — March 2024</h2><p class="blog-card__excerpt">Join us for our acclaimed private viewing evening featuring newly acquired rare editions, expert talks from our specialists, and champagne under the library chandelier.</p><a href="blog-details.html" class="card__link">Read Article <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a></div></article>
+    </section>
+
+    <!-- VISUALS -->
+    <section class="section" style="background: var(--bg-secondary); padding: 80px 0;">
+      <div class="container">
+        <div style="text-align: center; margin-bottom: 50px;">
+          <span style="color: var(--accent); font-weight: 700; letter-spacing: 0.1em;">VISUAL STORIES</span>
+          <h2 style="font-size: 2.25rem;">Daily Rare Finds</h2>
+        </div>
+        <div class="insta-grid">
+          <div class="insta-item"><img src="assets/images/books/books-collection.png" alt="1"><div class="insta-overlay">View</div></div>
+          <div class="insta-item"><img src="assets/images/books/restoration.png" alt="2"><div class="insta-overlay">View</div></div>
+          <div class="insta-item"><img src="assets/images/backgrounds/bookstore-interior.png" alt="3"><div class="insta-overlay">View</div></div>
+          <div class="insta-item"><img src="assets/images/books/appraisal.png" alt="4"><div class="insta-overlay">View</div></div>
+          <div class="insta-item"><img src="assets/images/books/books-collection.png" alt="5"><div class="insta-overlay">View</div></div>
+          <div class="insta-item"><img src="assets/images/backgrounds/bookstore-interior.png" alt="6"><div class="insta-overlay">View</div></div>
+        </div>
       </div>
-      <nav aria-label="Blog pagination"><ul class="pagination"><li><a href="#" class="page-btn" aria-label="Previous page"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></a></li><li><a href="#" class="page-btn active" aria-current="page">1</a></li><li><a href="#" class="page-btn">2</a></li><li><a href="#" class="page-btn">3</a></li><li><a href="#" class="page-btn" aria-label="Next page"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></a></li></ul></nav>
-    </div></section>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <section class="section" style="padding: 100px 0; text-align: center;">
+      <div class="container">
+        <div style="max-width: 600px; margin: 0 auto;">
+          <h2 style="font-size: 2rem; margin-bottom: 12px;">Get Literary News Delivered</h2>
+          <p style="color: var(--text-secondary); margin-bottom: 40px;">Join our registry for exclusive first looks at new collections and event invites.</p>
+          <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+            <input type="email" placeholder="Your email address" style="padding: 12px 24px; border-radius: 100px; border: 2px solid var(--border); background: var(--bg-primary); min-width: 280px;">
+            <button class="btn btn-primary" style="border-radius: 100px; padding: 12px 30px;">Subscribe</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
   <footer class="footer" role="contentinfo">
     <div class="container">
       <div class="footer__grid">
@@ -249,10 +392,9 @@
       </div>
     </div>
   </footer>
-  <script src="assets/js/main.js" defer></script><script src="assets/js/animations.js" defer></script><script src="assets/js/rtl-ltr.js" defer></script>
-</body></html>
 
-
-
-
-
+  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/animations.js" defer></script>
+  <script src="assets/js/rtl-ltr.js" defer></script>
+</body>
+</html>
