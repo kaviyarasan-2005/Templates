@@ -289,10 +289,7 @@ const Navbar = {
         clone.style.paddingLeft = '24px';
         clone.style.fontSize = '0.9rem';
         const cloneIcon = clone.querySelector('i');
-        if (cloneIcon) {
-          cloneIcon.className = 'fas fa-chevron-right';
-          cloneIcon.style.transition = 'none';
-        }
+        if (cloneIcon) cloneIcon.remove();
         parent.dataset.hasClone = 'true';
         // Insert clone at start of children
         children.unshift(clone);
