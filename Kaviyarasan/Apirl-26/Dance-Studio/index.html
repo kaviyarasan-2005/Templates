@@ -212,88 +212,6 @@
     }
     .service-card__link:hover { gap: var(--space-3); }
 
-    /* ============ INSTRUCTORS ============ */
-    .instructors-section {
-      background: var(--bg-secondary);
-      overflow: hidden;
-    }
-    .instructors-scroll {
-      display: flex;
-      gap: var(--space-8);
-      overflow-x: auto;
-      padding-bottom: var(--space-4);
-      scroll-snap-type: x mandatory;
-      scrollbar-width: none;
-      cursor: grab;
-    }
-    .instructors-scroll::-webkit-scrollbar { display: none; }
-    .instructor-card {
-      min-width: 300px;
-      scroll-snap-align: start;
-      position: relative;
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      group: true;
-    }
-    .instructor-card__image {
-      width: 300px;
-      height: 400px;
-      object-fit: cover;
-      border-radius: var(--radius-lg);
-      transition: transform 0.6s ease;
-    }
-    .instructor-card:hover .instructor-card__image {
-      transform: scale(1.05);
-    }
-    .instructor-card__overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(26,32,44,0.9) 0%, transparent 50%);
-      border-radius: var(--radius-lg);
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: var(--space-6);
-    }
-    .instructor-card__name {
-      font-size: var(--font-size-xl);
-      font-weight: var(--font-weight-bold);
-      color: white;
-      margin-bottom: var(--space-1);
-    }
-    .instructor-card__role {
-      font-size: var(--font-size-sm);
-      color: var(--color-accent);
-      font-family: var(--font-accent);
-    }
-    .instructor-card__social {
-      display: flex;
-      gap: var(--space-2);
-      margin-top: var(--space-3);
-      opacity: 0;
-      transform: translateY(10px);
-      transition: all 0.3s ease;
-    }
-    .instructor-card:hover .instructor-card__social {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .instructor-card__social a {
-      width: 32px;
-      height: 32px;
-      border-radius: var(--radius-sm);
-      background: rgba(255,255,255,0.2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: var(--font-size-sm);
-      transition: background 0.3s ease;
-    }
-    .instructor-card__social a:hover {
-      background: var(--color-primary);
-    }
-
     /* ============ TESTIMONIALS ============ */
     .testimonials-section { background: var(--bg-primary); position: relative; overflow: hidden; }
     .testimonials-section::before {
@@ -609,12 +527,16 @@
             </ul>
           </li>
           <li class="navbar__item"><a href="pages/contact.html" class="navbar__link">Contact</a></li>
-          <li class="navbar__mobile-login"><a href="pages/login.html" class="btn btn--primary">Sign In</a></li>
+          <li class="navbar__mobile-login">
+            <a href="pages/login.html" class="btn btn--ghost">Sign In</a>
+            <a href="pages/register.html" class="btn btn--primary">Sign Up</a>
+          </li>
 
         </ul>
         
         <div class="navbar__actions">
-          <a href="pages/login.html" class="btn" style="padding:0.5rem 1.25rem;border-radius:var(--radius-full);margin-inline-end:0.5rem;background:var(--gradient-primary);color:white;border:none;transition:none;transform:none;box-shadow:none;">Sign In</a>
+          <a href="pages/login.html" class="btn btn--ghost btn--sm">Sign In</a>
+          <a href="pages/register.html" class="btn btn--primary btn--sm">Sign Up</a>
           <button class="navbar__action-btn" data-rtl-toggle aria-label="Toggle RTL">
             <i class="fas fa-globe"></i>
           </button>
@@ -715,76 +637,6 @@
             <h3 class="service-card__title">Kids Dance</h3>
             <p class="service-card__text">Fun, age-appropriate classes that build confidence, coordination and a love for movement.</p>
             <a href="pages/service-detail.html" class="service-card__link">Learn More <i class="fas fa-arrow-right"></i></a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ========== SECTION 3: INSTRUCTORS ========== -->
-    <section class="section instructors-section" id="instructors">
-      <div class="container">
-        <div class="section-header reveal">
-          <span class="section-header__label"><i class="fas fa-users"></i> Meet the Team</span>
-          <h2 class="section-header__title">World-Class <span class="text-gradient">Instructors</span></h2>
-          <p class="section-header__desc">Learn from award-winning dancers and choreographers with decades of experience</p>
-        </div>
-
-        <div class="instructors-scroll" id="instructorScroll">
-          <div class="instructor-card reveal stagger-1">
-            <img src="https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?w=400&h=500&fit=crop&crop=face" alt="Sofia Martinez" class="instructor-card__image" loading="lazy">
-            <div class="instructor-card__overlay">
-              <h3 class="instructor-card__name">Sofia Martinez</h3>
-              <span class="instructor-card__role">Ballet & Contemporary</span>
-              <div class="instructor-card__social">
-                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-              </div>
-            </div>
-          </div>
-          <div class="instructor-card reveal stagger-2">
-            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=500&fit=crop&crop=face" alt="Marcus Johnson" class="instructor-card__image" loading="lazy">
-            <div class="instructor-card__overlay">
-              <h3 class="instructor-card__name">Marcus Johnson</h3>
-              <span class="instructor-card__role">Hip Hop & Breaking</span>
-              <div class="instructor-card__social">
-                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-              </div>
-            </div>
-          </div>
-          <div class="instructor-card reveal stagger-3">
-            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&h=500&fit=crop&crop=face" alt="Amira Khalil" class="instructor-card__image" loading="lazy">
-            <div class="instructor-card__overlay">
-              <h3 class="instructor-card__name">Amira Khalil</h3>
-              <span class="instructor-card__role">Jazz & Musical Theater</span>
-              <div class="instructor-card__social">
-                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-              </div>
-            </div>
-          </div>
-          <div class="instructor-card reveal stagger-4">
-            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=500&fit=crop&crop=face" alt="David Chen" class="instructor-card__image" loading="lazy">
-            <div class="instructor-card__overlay">
-              <h3 class="instructor-card__name">David Chen</h3>
-              <span class="instructor-card__role">Latin & Salsa</span>
-              <div class="instructor-card__social">
-                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-              </div>
-            </div>
-          </div>
-          <div class="instructor-card reveal stagger-5">
-            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&h=500&fit=crop&crop=face" alt="Elena Petrova" class="instructor-card__image" loading="lazy">
-            <div class="instructor-card__overlay">
-              <h3 class="instructor-card__name">Elena Petrova</h3>
-              <span class="instructor-card__role">Classical & Pointe</span>
-              <div class="instructor-card__social">
-                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-              </div>
-            </div>
           </div>
         </div>
       </div>

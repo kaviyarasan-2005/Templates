@@ -41,6 +41,14 @@
       .timeline-dot { grid-column: 1; }
     }
     @media (max-width: 640px) { .team-grid, .values-grid { grid-template-columns: 1fr; } }
+
+    /* RTL Alignment Fixes */
+    [dir="rtl"] .timeline::before { left: auto; right: 50%; transform: translateX(50%); }
+    [dir="rtl"] .timeline-content.left { text-align: left; }
+    
+    @media (max-width: 768px) {
+      [dir="rtl"] .timeline::before { left: auto; right: 24px; transform: none; }
+    }
   </style>
 </head>
 <body class="has-fixed-header">

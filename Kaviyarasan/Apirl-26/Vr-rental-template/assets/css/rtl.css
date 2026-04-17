@@ -46,20 +46,30 @@
   direction: rtl;
 }
 
-[dir="rtl"] .footer-links {
+[dir="rtl"] .footer-brand {
+  align-items: flex-start;
   text-align: right;
 }
 
+[dir="rtl"] .footer-socials {
+  justify-content: flex-start;
+}
+
+[dir="rtl"] .footer-links {
+  text-align: right;
+  padding: 0;
+}
+
 [dir="rtl"] .footer-link {
-  flex-direction: row-reverse;
+  /* Remove flex-direction: row-reverse to allow natural RTL order */
 }
 
 [dir="rtl"] .footer-bottom {
-  flex-direction: row-reverse;
+  /* Native flex behavior handles this */
 }
 
 [dir="rtl"] .footer-bottom-links {
-  flex-direction: row-reverse;
+  /* Native flex behavior handles this */
 }
 
 /* Cards */
