@@ -45,8 +45,35 @@
     .view-toggle button.active { background: var(--color-primary); color: white; border-color: var(--color-primary); }
     .results-count { font-size: 0.875rem; color: var(--color-text-muted); }
     .sort-select { height: 42px; padding: 0 40px 0 14px; border: 1.5px solid var(--color-border); border-radius: 10px; font-size: 0.875rem; color: var(--color-text-primary); background: var(--color-bg-card); cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%2395A5A6' d='M6 8L0 0h12z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; }
-    @media (max-width: 1024px) { .services-layout { grid-template-columns: 1fr; } .filter-sidebar { position: static; display: none; } .filter-sidebar.mobile-open { display: block; } .fleet-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 640px) { .fleet-grid { grid-template-columns: 1fr; } }
+    
+    /* Responsive Fixes */
+    .comparison-table-wrap { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; background: var(--color-bg-card); border-radius: 16px; border: 1px solid var(--color-border); margin-top: 24px; }
+    .comparison-table { min-width: 800px; width: 100%; border-collapse: collapse; }
+    .comparison-table th, .comparison-table td { padding: 16px; text-align: left; border-bottom: 1px solid var(--color-border-light); font-size: 0.875rem; }
+    .comparison-table th { background: var(--color-bg-section); color: var(--color-text-secondary); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.75rem; }
+    .safety-grid { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 64px; }
+    
+    @media (max-width: 1024px) { 
+      .services-layout { grid-template-columns: 1fr; } 
+      .filter-sidebar { position: static; display: none; } 
+      .filter-sidebar.mobile-open { display: block; } 
+      .fleet-grid { grid-template-columns: repeat(2, 1fr); } 
+      .safety-grid { grid-template-columns: 1fr; gap: 40px; }
+    }
+    @media (max-width: 640px) { 
+      .fleet-grid { grid-template-columns: 1fr; } 
+      .fleet-controls { flex-direction: column; align-items: flex-start; }
+      .fleet-search { max-width: 100%; width: 100%; }
+    }
+    @media (max-width: 480px) {
+      .container { padding: 0 16px !important; }
+      .section { padding: 40px 0 !important; }
+      .results-count { font-size: 0.8rem; margin-bottom: 8px; }
+      .sort-select { width: 100%; }
+      .view-toggle { display: none; } 
+      .reliability-badge { position: static !important; margin-top: 16px; text-align: center; }
+      .page-banner h1 { font-size: 2rem; }
+    }
   </style>
 </head>
 <body class="has-fixed-header">
@@ -482,7 +509,7 @@
     <!-- SAFETY & MAINTENANCE -->
     <section class="section section-alt" aria-labelledby="safety-heading">
       <div class="container">
-        <div class="services-layout" style="grid-template-columns: 1fr 1fr; align-items: center; gap: 64px;">
+        <div class="safety-grid">
           <div class="animate-fade-up">
             <div class="section-label"><i class="fas fa-check-shield"></i> Trust & Safety</div>
             <h2 id="safety-heading" class="section-title">Your Safety is Our Top Priority</h2>
@@ -514,7 +541,7 @@
           </div>
           <div class="animate-fade-up" style="position: relative;">
             <img src="https://images.unsplash.com/photo-1517524008697-84bbe3c3fd98?w=800&q=80" alt="RV maintenance check" style="border-radius: 24px; width: 100%; box-shadow: var(--shadow-xl);" />
-            <div style="position: absolute; bottom: -20px; right: -20px; background: var(--color-primary); color: white; padding: 24px; border-radius: 20px; box-shadow: var(--shadow-lg);">
+            <div class="reliability-badge" style="position: absolute; bottom: -20px; right: -20px; background: var(--color-primary); color: white; padding: 24px; border-radius: 20px; box-shadow: var(--shadow-lg);">
               <div style="font-size: 2rem; font-weight: 800;">100%</div>
               <div style="font-size: 0.8rem; font-weight: 600; text-transform: uppercase;">Reliability Score</div>
             </div>
@@ -678,10 +705,3 @@
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
