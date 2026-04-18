@@ -103,17 +103,25 @@ const Navigation = (() => {
 
   function setActiveLink() {
     const currentPath = window.location.pathname;
-    const filename = currentPath.split('/').pop() || 'index.html';
-    
+    // Strip trailing slash and .html extension for robust matching
+    const rawFile = currentPath.split('/').pop() || 'index';
+    const currentFile = rawFile.replace(/\.html$/, '') || 'index';
+
     document.querySelectorAll('.navbar__link, .navbar__dropdown-item').forEach(link => {
       const href = link.getAttribute('href');
-      if (!href) return;
-      const linkFile = href.split('/').pop();
-      
-      if (linkFile === filename || 
-          (filename === '' && linkFile === 'index.html') ||
-          (filename === 'index.html' && linkFile === 'index.html')) {
+      if (!href || href === '#') return;
+      const rawLink = href.split('/').pop();
+      const linkFile = rawLink.replace(/\.html$/, '') || 'index';
+
+      if (linkFile === currentFile) {
         link.classList.add('active');
+
+        // If this matched link is inside a dropdown, also mark the parent toggle active
+        const parentDropdown = link.closest('.navbar__dropdown');
+        if (parentDropdown) {
+          const toggle = parentDropdown.querySelector('.navbar__dropdown-toggle');
+          if (toggle) toggle.classList.add('active');
+        }
       }
     });
   }

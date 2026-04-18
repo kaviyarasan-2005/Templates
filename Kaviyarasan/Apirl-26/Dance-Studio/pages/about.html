@@ -57,6 +57,11 @@
     .timeline-item__year{font-family:var(--font-accent);font-size:var(--font-size-xl);color:var(--color-primary);margin-bottom:var(--space-2)}
     .timeline-item__title{font-size:var(--font-size-xl);margin-bottom:var(--space-2)}
     .timeline-item__text{font-size:var(--font-size-sm);color:var(--text-tertiary)}
+    /* RTL: flip the translateX on the center line (translateX is physical, not logical) */
+    [dir="rtl"] .timeline::before{transform:translateX(50%)}
+    /* RTL: keep text readable — items stay on their mirrored sides via logical props, just swap text-align */
+    [dir="rtl"] .timeline-item:nth-child(odd){text-align:start}
+    [dir="rtl"] .timeline-item:nth-child(even){text-align:end}
 
     /* TEAM */
     .team-section{background:var(--bg-primary)}
@@ -111,8 +116,9 @@
       .gallery-item:first-child{grid-column:span 2}
     }
     @media(max-width:768px){
-      .timeline::before{inset-inline-start:20px}
+      .timeline::before{inset-inline-start:20px;transform:none !important}
       .timeline-item{width:100%;padding-inline-start:60px !important;padding-inline-end:0 !important;inset-inline-start:0 !important;text-align:start !important}
+      [dir="rtl"] .timeline-item{padding-inline-start:60px !important;padding-inline-end:0 !important;text-align:start !important}
       .timeline-item__dot{inset-inline-start:12px !important;inset-inline-end:auto !important}
       .mission-grid{grid-template-columns:1fr}
       .values-grid{grid-template-columns:1fr}
@@ -239,12 +245,12 @@
           <p class="section-header__desc">Key milestones in our dance story</p>
         </div>
         <div class="timeline">
-          <div class="timeline-item reveal stagger-1"><div class="timeline-item__dot"></div><div class="timeline-item__year">2010</div><h3 class="timeline-item__title">The Beginning</h3><p class="timeline-item__text">Alan opens its doors with 3 instructors and a single studio room. Our first class had just 8 students.</p></div>
-          <div class="timeline-item reveal stagger-2"><div class="timeline-item__dot"></div><div class="timeline-item__year">2013</div><h3 class="timeline-item__title">First Expansion</h3><p class="timeline-item__text">Grew to 4 studios and 15 instructors. Launched our kids' dance program and hip-hop curriculum.</p></div>
-          <div class="timeline-item reveal stagger-3"><div class="timeline-item__dot"></div><div class="timeline-item__year">2016</div><h3 class="timeline-item__title">National Recognition</h3><p class="timeline-item__text">Won "Best Dance Studio" at the National Dance Awards. Students performed at major events nationwide.</p></div>
-          <div class="timeline-item reveal stagger-4"><div class="timeline-item__dot"></div><div class="timeline-item__year">2019</div><h3 class="timeline-item__title">New Headquarters</h3><p class="timeline-item__text">Moved to our current 15,000 sq ft facility with 8 studios, a performance theater, and recovery lounge.</p></div>
-          <div class="timeline-item reveal stagger-5"><div class="timeline-item__dot"></div><div class="timeline-item__year">2022</div><h3 class="timeline-item__title">Digital Platform</h3><p class="timeline-item__text">Launched our online booking platform and virtual classes, serving students across 20+ countries.</p></div>
-          <div class="timeline-item reveal stagger-6"><div class="timeline-item__dot"></div><div class="timeline-item__year">2026</div><h3 class="timeline-item__title">The Future</h3><p class="timeline-item__text">2,500+ students, 45 instructors, and expanding. Opening our second location this coming fall.</p></div>
+          <div class="timeline-item reveal stagger-1"><div class="timeline-item__dot"></div><div class="timeline-item__year" dir="ltr">2010</div><h3 class="timeline-item__title" dir="ltr">The Beginning</h3><p class="timeline-item__text" dir="ltr">Alan opens its doors with 3 instructors and a single studio room. Our first class had just 8 students.</p></div>
+          <div class="timeline-item reveal stagger-2"><div class="timeline-item__dot"></div><div class="timeline-item__year" dir="ltr">2013</div><h3 class="timeline-item__title" dir="ltr">First Expansion</h3><p class="timeline-item__text" dir="ltr">Grew to 4 studios and 15 instructors. Launched our kids' dance program and hip-hop curriculum.</p></div>
+          <div class="timeline-item reveal stagger-3"><div class="timeline-item__dot"></div><div class="timeline-item__year" dir="ltr">2016</div><h3 class="timeline-item__title" dir="ltr">National Recognition</h3><p class="timeline-item__text" dir="ltr">Won "Best Dance Studio" at the National Dance Awards. Students performed at major events nationwide.</p></div>
+          <div class="timeline-item reveal stagger-4"><div class="timeline-item__dot"></div><div class="timeline-item__year" dir="ltr">2019</div><h3 class="timeline-item__title" dir="ltr">New Headquarters</h3><p class="timeline-item__text" dir="ltr">Moved to our current 15,000 sq ft facility with 8 studios, a performance theater, and recovery lounge.</p></div>
+          <div class="timeline-item reveal stagger-5"><div class="timeline-item__dot"></div><div class="timeline-item__year" dir="ltr">2022</div><h3 class="timeline-item__title" dir="ltr">Digital Platform</h3><p class="timeline-item__text" dir="ltr">Launched our online booking platform and virtual classes, serving students across 20+ countries.</p></div>
+          <div class="timeline-item reveal stagger-6"><div class="timeline-item__dot"></div><div class="timeline-item__year" dir="ltr">2026</div><h3 class="timeline-item__title" dir="ltr">The Future</h3><p class="timeline-item__text" dir="ltr">2,500+ students, 45 instructors, and expanding. Opening our second location this coming fall.</p></div>
         </div>
       </div>
     </section>

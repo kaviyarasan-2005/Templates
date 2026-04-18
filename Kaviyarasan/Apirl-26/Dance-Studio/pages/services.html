@@ -66,8 +66,51 @@
     .cta-banner__title{font-size:var(--font-size-3xl);color:white;margin-bottom:var(--space-4)}
     .cta-banner__text{font-size:var(--font-size-lg);color:rgba(255,255,255,.8);margin-bottom:var(--space-8);max-width:600px;margin-inline:auto}
 
-    @media(max-width:1024px){.services-grid2{grid-template-columns:repeat(2,1fr)}.process-grid{grid-template-columns:repeat(2,1fr)}.process-step::after{display:none}}
-    @media(max-width:768px){.services-grid2{grid-template-columns:1fr}.process-grid{grid-template-columns:1fr}}
+    /* INSTRUCTORS SECTION */
+    .instructors-section{background:var(--bg-primary)}
+    .instructors-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-8)}
+    .instructor-card{background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--radius-lg);overflow:hidden;transition:all .4s ease;text-align:center}
+    .instructor-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-xl);border-color:rgba(var(--color-primary-rgb),.3)}
+    .instructor-card__img-wrap{position:relative;height:220px;overflow:hidden}
+    .instructor-card__img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+    .instructor-card:hover .instructor-card__img-wrap img{transform:scale(1.07)}
+    .instructor-card__overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(107,70,193,.8) 0%,transparent 60%);opacity:0;transition:opacity .3s ease;display:flex;align-items:flex-end;justify-content:center;padding:var(--space-4);gap:var(--space-3)}
+    .instructor-card:hover .instructor-card__overlay{opacity:1}
+    .instructor-card__social{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.4);display:flex;align-items:center;justify-content:center;color:white;font-size:var(--font-size-sm);text-decoration:none;transition:background .2s ease}
+    .instructor-card__social:hover{background:white;color:var(--color-primary)}
+    .instructor-card__body{padding:var(--space-5)}
+    .instructor-card__exp{display:inline-block;font-size:var(--font-size-xs);font-weight:var(--font-weight-bold);color:var(--color-accent);background:rgba(var(--color-accent-rgb),.1);padding:2px 10px;border-radius:var(--radius-full);margin-bottom:var(--space-2);text-transform:uppercase;letter-spacing:var(--letter-spacing-wider)}
+    .instructor-card__name{font-size:var(--font-size-lg);font-weight:var(--font-weight-bold);margin-bottom:var(--space-1)}
+    .instructor-card__specialty{font-size:var(--font-size-sm);color:var(--text-tertiary);font-family:var(--font-accent)}
+    .instructor-card__stats{display:flex;justify-content:center;gap:var(--space-4);margin-top:var(--space-4);padding-top:var(--space-4);border-top:1px solid var(--border-color)}
+    .instructor-card__stat{font-size:var(--font-size-xs);color:var(--text-tertiary);text-align:center}
+    .instructor-card__stat strong{display:block;font-size:var(--font-size-base);font-weight:var(--font-weight-bold);color:var(--color-primary)}
+
+    /* TESTIMONIALS SECTION */
+    .testimonials-section{background:var(--bg-secondary);position:relative;overflow:hidden}
+    .testimonials-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 30%,rgba(var(--color-primary-rgb),.06) 0%,transparent 60%)}
+    .testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-8)}
+    .testimonial-card{background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--radius-lg);padding:var(--space-8);position:relative;transition:all .3s ease}
+    .testimonial-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:rgba(var(--color-primary-rgb),.25)}
+    .testimonial-card__quote{position:absolute;top:var(--space-6);inset-inline-end:var(--space-6);font-size:3.5rem;font-family:Georgia,serif;line-height:1;background:var(--gradient-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;opacity:.25}
+    .testimonial-card__stars{display:flex;gap:4px;color:#F6C90E;margin-bottom:var(--space-4)}
+    .testimonial-card__text{font-size:var(--font-size-base);color:var(--text-secondary);line-height:var(--line-height-relaxed);margin-bottom:var(--space-6);font-style:italic}
+    .testimonial-card__author{display:flex;align-items:center;gap:var(--space-3)}
+    .testimonial-card__avatar{width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid var(--color-primary)}
+    .testimonial-card__info{}
+    .testimonial-card__name{font-weight:var(--font-weight-bold);font-size:var(--font-size-base)}
+    .testimonial-card__program{font-size:var(--font-size-xs);color:var(--color-accent);font-family:var(--font-accent)}
+    .testimonials-rating-bar{display:flex;align-items:center;justify-content:center;gap:var(--space-6);margin-top:var(--space-12);padding:var(--space-6);background:var(--bg-card);border-radius:var(--radius-lg);border:1px solid var(--border-color)}
+    .rating-bar__score{font-size:var(--font-size-4xl);font-weight:var(--font-weight-black);background:var(--gradient-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+    .rating-bar__stars{display:flex;gap:4px;color:#F6C90E;font-size:var(--font-size-xl);margin-bottom:var(--space-1)}
+    .rating-bar__label{font-size:var(--font-size-sm);color:var(--text-tertiary)}
+    .rating-bar__divider{width:1px;height:60px;background:var(--border-color)}
+    .rating-bar__stat strong{display:block;font-size:var(--font-size-2xl);font-weight:var(--font-weight-black);color:var(--text-primary)}
+    .rating-bar__stat span{font-size:var(--font-size-sm);color:var(--text-tertiary)}
+
+    @media(max-width:1024px){.services-grid2{grid-template-columns:repeat(2,1fr)}.process-grid{grid-template-columns:repeat(2,1fr)}.process-step::after{display:none}.instructors-grid{grid-template-columns:repeat(2,1fr)}.testimonials-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:768px){.services-grid2{grid-template-columns:1fr}.process-grid{grid-template-columns:1fr}.instructors-grid{grid-template-columns:repeat(2,1fr)}.testimonials-grid{grid-template-columns:1fr}.testimonials-rating-bar{flex-direction:column;gap:var(--space-4)}.rating-bar__divider{width:60px;height:1px}}
+    @media(max-width:480px){.instructors-grid{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
@@ -168,7 +211,7 @@
           </div>
 
           <div class="service-card2 reveal stagger-2" data-category="classical">
-            <div class="service-card2__image"><img src="https://images.unsplash.com/photo-1547153760-18fc86c76817?w=500&h=350&fit=crop" alt="Contemporary" loading="lazy"></div>
+            <div class="service-card2__image"><img src="https://images.unsplash.com/photo-1508700929628-666bc8bd84ea?w=500&h=350&fit=crop&crop=top" alt="Contemporary" loading="lazy"></div>
             <div class="service-card2__body">
               <div class="service-card2__category">Classical</div>
               <h3 class="service-card2__title">Contemporary Dance</h3>
@@ -190,7 +233,7 @@
           </div>
 
           <div class="service-card2 reveal stagger-4" data-category="urban">
-            <div class="service-card2__image"><img src="https://images.unsplash.com/photo-1535525153412-30a0c73a5237?w=500&h=350&fit=crop" alt="Breaking" loading="lazy"></div>
+            <div class="service-card2__image"><img src="https://images.unsplash.com/photo-1504609813442-a8924e83f76e?w=500&h=350&fit=crop" alt="Breaking" loading="lazy"></div>
             <div class="service-card2__body">
               <div class="service-card2__category">Urban</div>
               <h3 class="service-card2__title">Breaking & B-Boy</h3>
@@ -212,7 +255,7 @@
           </div>
 
           <div class="service-card2 reveal stagger-6" data-category="specialty">
-            <div class="service-card2__image"><img src="https://images.unsplash.com/photo-1508700929628-666bc8bd84ea?w=500&h=350&fit=crop" alt="Jazz" loading="lazy"></div>
+            <div class="service-card2__image"><img src="https://images.unsplash.com/photo-1524594152303-9fd13543fe6e?w=500&h=350&fit=crop&crop=top" alt="Jazz" loading="lazy"></div>
             <div class="service-card2__body">
               <div class="service-card2__category">Specialty</div>
               <h3 class="service-card2__title">Jazz & Musical Theater</h3>
@@ -271,6 +314,214 @@
           <div class="process-step reveal stagger-3"><div class="process-step__number">3</div><h3 class="process-step__title">Book & Pay</h3><p class="process-step__text">Reserve your spot online with secure checkout. Drop-ins always welcome.</p></div>
           <div class="process-step reveal stagger-4"><div class="process-step__number">4</div><h3 class="process-step__title">Dance!</h3><p class="process-step__text">Show up, move your body, and let the music guide you. We'll handle the rest.</p></div>
         </div>
+      </div>
+    </section>
+
+    <!-- FEATURED INSTRUCTORS -->
+    <section class="section instructors-section" id="instructors">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-header__label"><i class="fas fa-user-tie"></i> Our Experts</span>
+          <h2 class="section-header__title">Featured <span class="text-gradient">Instructors</span></h2>
+          <p class="section-header__desc">Learn from world-class professionals with decades of stage and teaching experience</p>
+        </div>
+        <div class="instructors-grid">
+
+          <div class="instructor-card reveal stagger-1">
+            <div class="instructor-card__img-wrap">
+              <img src="https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?w=400&h=300&fit=crop&crop=face" alt="Elena Rossi" loading="lazy">
+              <div class="instructor-card__overlay">
+                <a href="#" class="instructor-card__social" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="instructor-card__social" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="#" class="instructor-card__social" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+              </div>
+            </div>
+            <div class="instructor-card__body">
+              <span class="instructor-card__exp">12 yrs exp</span>
+              <h3 class="instructor-card__name">Elena Rossi</h3>
+              <p class="instructor-card__specialty">Ballet Master & Contemporary</p>
+              <div class="instructor-card__stats">
+                <div class="instructor-card__stat"><strong>320+</strong>Students</div>
+                <div class="instructor-card__stat"><strong>4.9</strong>Rating</div>
+                <div class="instructor-card__stat"><strong>8</strong>Awards</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="instructor-card reveal stagger-2">
+            <div class="instructor-card__img-wrap">
+              <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=300&fit=crop&crop=face" alt="Marcus Lee" loading="lazy">
+              <div class="instructor-card__overlay">
+                <a href="#" class="instructor-card__social" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="instructor-card__social" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="instructor-card__social" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+              </div>
+            </div>
+            <div class="instructor-card__body">
+              <span class="instructor-card__exp">9 yrs exp</span>
+              <h3 class="instructor-card__name">Marcus Lee</h3>
+              <p class="instructor-card__specialty">Hip Hop & Breaking</p>
+              <div class="instructor-card__stats">
+                <div class="instructor-card__stat"><strong>280+</strong>Students</div>
+                <div class="instructor-card__stat"><strong>4.8</strong>Rating</div>
+                <div class="instructor-card__stat"><strong>5</strong>Championships</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="instructor-card reveal stagger-3">
+            <div class="instructor-card__img-wrap">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&h=300&fit=crop&crop=face" alt="Sofia Reyes" loading="lazy">
+              <div class="instructor-card__overlay">
+                <a href="#" class="instructor-card__social" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="instructor-card__social" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="#" class="instructor-card__social" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+              </div>
+            </div>
+            <div class="instructor-card__body">
+              <span class="instructor-card__exp">15 yrs exp</span>
+              <h3 class="instructor-card__name">Sofia Reyes</h3>
+              <p class="instructor-card__specialty">Latin & Ballroom</p>
+              <div class="instructor-card__stats">
+                <div class="instructor-card__stat"><strong>410+</strong>Students</div>
+                <div class="instructor-card__stat"><strong>4.9</strong>Rating</div>
+                <div class="instructor-card__stat"><strong>12</strong>Titles</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="instructor-card reveal stagger-4">
+            <div class="instructor-card__img-wrap">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop&crop=face" alt="James Okafor" loading="lazy">
+              <div class="instructor-card__overlay">
+                <a href="#" class="instructor-card__social" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="instructor-card__social" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="instructor-card__social" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+              </div>
+            </div>
+            <div class="instructor-card__body">
+              <span class="instructor-card__exp">7 yrs exp</span>
+              <h3 class="instructor-card__name">James Okafor</h3>
+              <p class="instructor-card__specialty">Jazz & Musical Theater</p>
+              <div class="instructor-card__stats">
+                <div class="instructor-card__stat"><strong>195+</strong>Students</div>
+                <div class="instructor-card__stat"><strong>4.7</strong>Rating</div>
+                <div class="instructor-card__stat"><strong>3</strong>Productions</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- STUDENT TESTIMONIALS -->
+    <section class="section testimonials-section" id="testimonials">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-header__label"><i class="fas fa-comments"></i> Success Stories</span>
+          <h2 class="section-header__title">What Our <span class="text-gradient">Students Say</span></h2>
+          <p class="section-header__desc">Real stories from real dancers who transformed their lives with Alan Studio</p>
+        </div>
+        <div class="testimonials-grid">
+
+          <div class="testimonial-card reveal stagger-1">
+            <div class="testimonial-card__quote">&#8220;</div>
+            <div class="testimonial-card__stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="testimonial-card__text" dir="ltr">"I joined with zero dance experience and within 6 months I was performing on stage. Elena's ballet classes broke everything down so clearly — I never felt lost or behind."</p>
+            <div class="testimonial-card__author">
+              <img src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=100&h=100&fit=crop&crop=face" alt="Priya K." class="testimonial-card__avatar" loading="lazy">
+              <div class="testimonial-card__info">
+                <div class="testimonial-card__name" dir="ltr">Priya Krishnamurthy</div>
+                <div class="testimonial-card__program" dir="ltr">Classical Ballet · 2 years</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card reveal stagger-2">
+            <div class="testimonial-card__quote">&#8220;</div>
+            <div class="testimonial-card__stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="testimonial-card__text" dir="ltr">"Marcus transformed my freestyle. His hip-hop sessions are pure energy — you can feel the passion in every correction he gives. Won my first battle 4 months in!"</p>
+            <div class="testimonial-card__author">
+              <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=100&h=100&fit=crop&crop=face" alt="Devon S." class="testimonial-card__avatar" loading="lazy">
+              <div class="testimonial-card__info">
+                <div class="testimonial-card__name" dir="ltr">Devon Sanders</div>
+                <div class="testimonial-card__program" dir="ltr">Hip Hop & Street · 1.5 years</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card reveal stagger-3">
+            <div class="testimonial-card__quote">&#8220;</div>
+            <div class="testimonial-card__stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+            <p class="testimonial-card__text" dir="ltr">"Brought my 7-year-old daughter to the Kids Program and she absolutely loves it. The instructors make it so fun and safe — she now counts the days until her next class."</p>
+            <div class="testimonial-card__author">
+              <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=100&h=100&fit=crop&crop=face" alt="Rachel M." class="testimonial-card__avatar" loading="lazy">
+              <div class="testimonial-card__info">
+                <div class="testimonial-card__name" dir="ltr">Rachel Montgomery</div>
+                <div class="testimonial-card__program" dir="ltr">Kids Program · Parent</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card reveal stagger-4">
+            <div class="testimonial-card__quote">&#8220;</div>
+            <div class="testimonial-card__stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="testimonial-card__text" dir="ltr">"Sofia's salsa classes completely changed how I approach partner dancing. The social dance nights on Fridays are the highlight of my week — best community I've ever joined."</p>
+            <div class="testimonial-card__author">
+              <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=100&h=100&fit=crop&crop=face" alt="Carlos R." class="testimonial-card__avatar" loading="lazy">
+              <div class="testimonial-card__info">
+                <div class="testimonial-card__name" dir="ltr">Carlos Rivera</div>
+                <div class="testimonial-card__program" dir="ltr">Salsa & Bachata · 3 years</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card reveal stagger-5">
+            <div class="testimonial-card__quote">&#8220;</div>
+            <div class="testimonial-card__stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="testimonial-card__text" dir="ltr">"The Choreography Lab is unlike anything I've experienced. Having a professional guide your creative process and give real feedback is invaluable. My piece debuted at the annual showcase!"</p>
+            <div class="testimonial-card__author">
+              <img src="https://images.unsplash.com/photo-1524250502761-1ac6f2e30d43?w=100&h=100&fit=crop&crop=face" alt="Anya B." class="testimonial-card__avatar" loading="lazy">
+              <div class="testimonial-card__info">
+                <div class="testimonial-card__name" dir="ltr">Anya Belova</div>
+                <div class="testimonial-card__program" dir="ltr">Choreography Lab · Advanced</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card reveal stagger-6">
+            <div class="testimonial-card__quote">&#8220;</div>
+            <div class="testimonial-card__stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="testimonial-card__text" dir="ltr">"Private coaching with James helped me nail my wedding first dance in just 4 sessions. He was patient, creative, and made it so personal. Our guests were blown away!"</p>
+            <div class="testimonial-card__author">
+              <img src="https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=100&h=100&fit=crop&crop=face" alt="Tom H." class="testimonial-card__avatar" loading="lazy">
+              <div class="testimonial-card__info">
+                <div class="testimonial-card__name" dir="ltr">Thomas Hartley</div>
+                <div class="testimonial-card__program" dir="ltr">Private Coaching · Wedding</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Overall Rating Bar -->
+        <div class="testimonials-rating-bar reveal">
+          <div style="text-align:center">
+            <div class="rating-bar__score">4.9</div>
+            <div class="rating-bar__stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <div class="rating-bar__label">Overall Rating</div>
+          </div>
+          <div class="rating-bar__divider"></div>
+          <div class="rating-bar__stat"><strong>2,500+</strong><span>Happy Students</span></div>
+          <div class="rating-bar__divider"></div>
+          <div class="rating-bar__stat"><strong>98%</strong><span>Would Recommend</span></div>
+          <div class="rating-bar__divider"></div>
+          <div class="rating-bar__stat"><strong>1,200+</strong><span>5-Star Reviews</span></div>
+          <div class="rating-bar__divider"></div>
+          <div class="rating-bar__stat"><strong>16</strong><span>Years of Excellence</span></div>
+        </div>
+
       </div>
     </section>
 

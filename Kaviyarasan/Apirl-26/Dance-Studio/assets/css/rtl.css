@@ -38,17 +38,13 @@
 [dir="rtl"] .fa-arrow-left::before { content: "\f061"; }
 [dir="rtl"] .fa-chevron-left::before { content: "\f054"; }
 
-/* === Timeline RTL === */
+/* === Timeline RTL ===
+   Note: logical properties (inset-inline-start/end, padding-inline-*)
+   auto-flip in RTL. Only physical properties need overrides.
+   The translateX fix and text-align corrections are in about.html
+   page styles with higher specificity. */
 [dir="rtl"] .timeline::before {
-  inset-inline-start: 50%;
-}
-
-[dir="rtl"] .timeline-item:nth-child(odd) {
-  text-align: end;
-}
-
-[dir="rtl"] .timeline-item:nth-child(even) {
-  text-align: start;
+  transform: translateX(50%);
 }
 
 /* === Dashboard Sidebar === */

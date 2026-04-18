@@ -907,20 +907,24 @@
 }
 
 @media (max-width: 1024px) {
-  .dashboard__sidebar {
+  .dashboard__sidebar,
+  .dashboard__sidebar.collapsed {
     transform: translateX(-100%);
     width: 280px;
   }
 
-  [dir="rtl"] .dashboard__sidebar {
+  [dir="rtl"] .dashboard__sidebar,
+  [dir="rtl"] .dashboard__sidebar.collapsed {
     transform: translateX(100%);
   }
 
-  .dashboard__sidebar.mobile-open {
+  .dashboard__sidebar.mobile-open,
+  .dashboard__sidebar.collapsed.mobile-open {
     transform: translateX(0);
   }
 
-  .dashboard__main {
+  .dashboard__main,
+  .dashboard__sidebar.collapsed ~ .dashboard__main {
     margin-inline-start: 0;
   }
 

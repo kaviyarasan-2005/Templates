@@ -105,32 +105,51 @@
   display: none;
 }
 
-.navbar__link:hover,
-.navbar__link.active {
+.navbar__link:hover {
   color: var(--color-primary);
   background: rgba(var(--color-primary-rgb), 0.08);
 }
 
-.navbar__link::after {
+.navbar__link.active {
+  color: white;
+  background: var(--gradient-primary);
+  box-shadow: 0 4px 14px rgba(var(--color-primary-rgb), 0.35);
+  font-weight: var(--font-weight-semibold);
+}
+
+.navbar__link.active::after {
+  display: none;
+}
+
+.navbar__link:hover::after {
+  width: 60%;
+}
+
+/* Dropdown toggle active — when a child page is current */
+/* Note: color is inherited from .navbar__link.active (white) — do NOT override it here */
+.navbar__dropdown-toggle.active {
+  font-weight: var(--font-weight-semibold);
+}
+.navbar__dropdown-toggle.active .fa-chevron-down {
+  color: white;
+  opacity: 1;
+}
+
+/* Dropdown item active */
+.navbar__dropdown-item.active {
+  background: rgba(var(--color-primary-rgb), 0.1);
+  color: var(--color-primary);
+  font-weight: var(--font-weight-semibold);
+  position: relative;
+}
+.navbar__dropdown-item.active::before {
   content: '';
   position: absolute;
-  bottom: 0;
-  inset-inline-start: 50%;
-  width: 0;
-  height: 2px;
+  inset-block: 6px;
+  inset-inline-start: 0;
+  width: 3px;
   background: var(--gradient-primary);
-  border-radius: var(--radius-full);
-  transform: translateX(-50%);
-  transition: width var(--transition-base);
-}
-
-[dir="rtl"] .navbar__link::after {
-  transform: translateX(50%);
-}
-
-.navbar__link:hover::after,
-.navbar__link.active::after {
-  width: 60%;
+  border-radius: 0 var(--radius-full) var(--radius-full) 0;
 }
 
 /* Dropdown */
@@ -1067,7 +1086,7 @@
    ======================================== */
 @media (max-width: 1024px) {
   .footer__grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: var(--space-8);
   }
 }
@@ -1180,6 +1199,15 @@
     border-radius: 0;
   }
 
+  /* Mobile active: use a left accent border + color instead of pill */
+  .navbar__link.active {
+    background: transparent;
+    color: var(--color-primary);
+    box-shadow: none;
+    border-inline-start: 3px solid var(--color-primary);
+    padding-inline-start: calc(var(--space-3) - 3px);
+  }
+
   .navbar__dropdown-toggle {
     justify-content: space-between;
     padding: var(--space-2) 0;
@@ -1249,6 +1277,21 @@
 
   .navbar__actions .btn {
     display: none;
+  }
+
+  .footer__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+
+  .footer__brand {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .footer__social {
+    justify-content: flex-start;
   }
 }
 

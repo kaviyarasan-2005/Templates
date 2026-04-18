@@ -60,7 +60,29 @@
     .comparison-table td.highlight{background:rgba(var(--color-primary-rgb),.03)}
     .comparison-table td:first-child{text-align:start;font-weight:var(--font-weight-medium)}
 
-    @media(max-width:1024px){.pricing-grid{grid-template-columns:1fr;max-width:450px;margin-inline:auto}}
+    /* PROCESS */
+    .process-section{background:var(--bg-secondary)}
+    .process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-6);position:relative}
+    .process-step{text-align:center;padding:var(--space-6);position:relative}
+    .process-step::after{content:'';position:absolute;top:50px;inset-inline-start:calc(50% + 40px);width:calc(100% - 80px);height:2px;background:var(--border-color);z-index:0}
+    .process-step:last-child::after{display:none}
+    .process-step__number{width:60px;height:60px;margin:0 auto var(--space-4);border-radius:50%;background:var(--gradient-primary);color:white;font-size:var(--font-size-xl);font-weight:var(--font-weight-black);display:flex;align-items:center;justify-content:center;position:relative;z-index:1;box-shadow:var(--shadow-glow)}
+    .process-step__title{font-size:var(--font-size-lg);font-weight:var(--font-weight-bold);margin-bottom:var(--space-2)}
+    .process-step__text{font-size:var(--font-size-sm);color:var(--text-tertiary)}
+
+    /* CTA BANNER */
+    .cta-banner{background:var(--gradient-primary);padding:var(--space-16) 0;text-align:center}
+    .cta-banner__title{font-size:var(--font-size-3xl);color:white;margin-bottom:var(--space-4)}
+    .cta-banner__text{font-size:var(--font-size-lg);color:rgba(255,255,255,.8);margin-bottom:var(--space-8);max-width:600px;margin-inline:auto}
+
+    @media(max-width:1024px){
+      .pricing-grid{grid-template-columns:1fr;max-width:450px;margin-inline:auto}
+      .process-grid{grid-template-columns:repeat(2,1fr)}
+      .process-step::after{display:none}
+    }
+    @media(max-width:768px){
+      .process-grid{grid-template-columns:1fr}
+    }
   </style>
 </head>
 <body>
@@ -249,6 +271,34 @@
               <tr><td>Support</td><td>Email</td><td class="highlight">Priority email</td><td><strong>Dedicated manager</strong></td></tr>
             </tbody>
           </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="section process-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-header__label"><i class="fas fa-list-check"></i> Registration</span>
+          <h2 class="section-header__title">Start Dancing in <span class="text-gradient">4 Steps</span></h2>
+        </div>
+        <div class="process-grid">
+          <div class="process-step reveal stagger-1"><div class="process-step__number">1</div><h3 class="process-step__title">Explore & Choose</h3><p class="process-step__text">Browse our class schedule to find the perfect fit for your dancer's age, style, and goals.</p></div>
+          <div class="process-step reveal stagger-2"><div class="process-step__number">2</div><h3 class="process-step__title">Register Online</h3><p class="process-step__text">Create your account in our secure portal and select your preferred classes.</p></div>
+          <div class="process-step reveal stagger-3"><div class="process-step__number">3</div><h3 class="process-step__title">Secure Your Spot</h3><p class="process-step__text">Complete your enrollment, review studio policies, and lock in your schedule.</p></div>
+          <div class="process-step reveal stagger-4"><div class="process-step__number">4</div><h3 class="process-step__title">Join the Fun</h3><p class="process-step__text">Meet your instructors, make new friends, and get ready to dance!</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-banner">
+      <div class="container reveal">
+        <h2 class="cta-banner__title">Ready to Join the Dance Family?</h2>
+        <p class="cta-banner__text">Create memories, build confidence, and discover your passion for dance. Registration is open for our upcoming sessions!</p>
+        <div style="display:flex;gap:var(--space-4);justify-content:center;flex-wrap:wrap">
+          <a href="register.html" class="btn btn--white btn--lg">Book Your Class <i class="fas fa-arrow-right"></i></a>
+          <a href="contact.html" class="btn btn--secondary btn--lg" style="border-color:rgba(255,255,255,.4);color:white">Contact Us</a>
         </div>
       </div>
     </section>
