@@ -147,7 +147,7 @@
           </div>
 
           <!-- PROGRESS RINGS -->
-          <div class="chart-card">
+          <div class="chart-card" style="grid-column: 1 / -1">
             <div class="chart-card__header"><h3 class="chart-card__title"><i class="fas fa-star"></i> Performance</h3></div>
             <div style="display:flex;justify-content:space-around;padding:var(--space-4) 0">
               <div class="progress-ring" style="position:relative;width:100px;height:100px;display:inline-flex;align-items:center;justify-content:center" data-percent="87">
@@ -165,7 +165,7 @@
           </div>
 
           <!-- TODAY'S SCHEDULE -->
-          <div class="chart-card" data-role="admin,user">
+          <div class="chart-card" data-role="admin,user" style="grid-column: 1 / -1">
             <div class="chart-card__header"><h3 class="chart-card__title"><i class="fas fa-calendar-day"></i> Today's Schedule</h3></div>
             <div style="display:flex;flex-direction:column;gap:var(--space-3)">
               <div style="display:flex;align-items:center;gap:var(--space-3);padding:var(--space-3);background:rgba(var(--color-primary-rgb),.05);border-radius:var(--radius-sm);border-inline-start:3px solid var(--color-primary)">
@@ -253,13 +253,6 @@
       </div>
     </div>
 
-    <!-- MOBILE NAV -->
-    <div class="dashboard__mobile-nav">
-      <button class="dashboard__mobile-nav-item active"><i class="fas fa-chart-pie"></i><span>Overview</span></button>
-      <button class="dashboard__mobile-nav-item"><i class="fas fa-calendar"></i><span>Schedule</span></button>
-      <button class="dashboard__mobile-nav-item"><i class="fas fa-comments"></i><span>Chat</span></button>
-      <button class="dashboard__mobile-nav-item"><i class="fas fa-cog"></i><span>Settings</span></button>
-    </div>
   </div>
 
   <script src="../assets/js/modules/theme.js"></script>
