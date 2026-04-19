@@ -73,6 +73,7 @@
 
 /* --- Mobile Nav --- */
 [dir="rtl"] .mobile-nav { text-align: right; }
+[dir="rtl"] .mobile-nav .nav-dropdown__menu { padding: 0 var(--space-3) 0 0; }
 [dir="rtl"] .navbar__hamburger { margin-right: auto; margin-left: 0; }
 
 /* --- Footer --- */
