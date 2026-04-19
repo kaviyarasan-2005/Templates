@@ -1074,8 +1074,9 @@ textarea.form-input { resize: vertical; min-height: 120px; }
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius-lg);
   padding: var(--space-3);
+  min-width: 0;
 }
-.dashboard__chart-container canvas { max-height: 180px; }
+.dashboard__chart-container canvas { max-height: 180px; width: 100% !important; }
 
 /* Dashboard Table */
 .table-responsive { overflow-x: auto; -webkit-overflow-scrolling: touch; }
