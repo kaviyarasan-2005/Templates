@@ -1,206 +1,652 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" dir="ltr" data-theme="light">
 <head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Sign in or create your Lumière Gallery account to access exclusive exhibitions, manage bookings, and personalise your gallery experience.">
-  <title>Sign In / Register — Lumière Gallery</title>
+  <title>Sign In — Lumière Gallery</title>
   <!-- Favicons -->
   <link rel="icon" type="image/svg+xml" href="images/favicons/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicons/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="images/favicons/favicon-16x16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="images/favicons/apple-touch-icon-180x180.png">
   <link rel="manifest" href="site.webmanifest">
-  <meta name="theme-color" content="#2F2F2F">  <link rel="stylesheet" href="css/main.css"><link rel="stylesheet" href="css/dark-mode.css"><link rel="stylesheet" href="css/rtl.css"><link rel="stylesheet" href="css/animations.css">
-  <script>(function(){var t=localStorage.getItem('lumiere-theme');if(!t)t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t);var d=localStorage.getItem('lumiere-dir')||'ltr';document.documentElement.setAttribute('dir',d);})();</script>
+  <meta name="theme-color" content="#2F2F2F">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/dark-mode.css">
   <style>
-    .auth-layout { display: grid; grid-template-columns: 1fr 1fr; min-height: 100dvh; }
-    .auth-image-panel { position: relative; overflow: hidden; }
-    .auth-image-panel img { width: 100%; height: 100%; object-fit: cover; }
-    .auth-image-overlay { position: absolute; inset: 0; background: rgba(47,47,47,0.7); display: flex; align-items: flex-end; padding: var(--space-10); }
-    .auth-form-panel { display: flex; flex-direction: column; justify-content: center; align-items: center; padding: var(--space-12) var(--space-10); overflow-y: auto; }
-    .auth-tabs { display: flex; gap: 0; border: 1.5px solid var(--border-color); border-radius: var(--radius-full); overflow: hidden; margin-block-end: var(--space-8); }
-    .auth-tab { padding: var(--space-2) var(--space-8); font-size: var(--text-sm); font-weight: 600; cursor: pointer; transition: background-color var(--transition-base), color var(--transition-base); background: transparent; color: var(--text-muted); border: none; }
-    .auth-tab.active { background: var(--color-pink); color: var(--color-charcoal); }
-    .auth-form { width: 100%; max-width: 420px; }
-    .auth-form-section { animation: fadeIn 0.3s ease; }
-    .social-btn { display: flex; align-items: center; justify-content: center; gap: var(--space-3); width: 100%; padding: var(--space-3) var(--space-4); border: 1.5px solid var(--border-color); border-radius: var(--radius-md); font-size: var(--text-sm); font-weight: 500; color: var(--text-primary); background: var(--bg-primary); cursor: pointer; transition: border-color var(--transition-base), box-shadow var(--transition-base); min-height: 44px; }
-    .social-btn:hover { border-color: var(--color-pink); box-shadow: var(--shadow-sm); }
-    @media (max-width: 768px) { .auth-layout { grid-template-columns: 1fr; } .auth-image-panel { display: none; } .auth-form-panel { padding: var(--space-10) var(--space-5); } }
+    /* ── Reset & base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ── Full-viewport layout ── */
+    html, body { height: 100%; }
+    body {
+      font-family: var(--font-sans, 'Inter', system-ui, sans-serif);
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 100dvh;
+      overflow: hidden;
+    }
+
+    /* ══ LEFT — Art Panel ═════════════════════════════════ */
+    .ap {
+      position: relative;
+      overflow: hidden;
+      background: #1a1a1a;
+    }
+    .ap__img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transform: scale(1.04);
+      transition: transform 12s ease;
+      filter: brightness(0.75) saturate(1.1);
+    }
+    .ap:hover .ap__img { transform: scale(1.0); }
+
+    /* Gradient overlay */
+    .ap__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        135deg,
+        rgba(47,47,47,0.82) 0%,
+        rgba(47,47,47,0.3) 50%,
+        rgba(232,207,197,0.12) 100%
+      );
+    }
+
+    /* Decorative grain texture */
+    .ap__overlay::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+
+    /* Top logo area */
+    .ap__logo {
+      position: absolute;
+      top: clamp(1.5rem, 4vh, 2.5rem);
+      inset-inline-start: clamp(1.5rem, 4vw, 2.5rem);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+      z-index: 2;
+    }
+    .ap__logo-icon {
+      width: 34px; height: 34px;
+      border-radius: 8px;
+      background-image: url('images/favicons/favicon-32x32.png');
+      background-size: cover;
+      flex-shrink: 0;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+    }
+    .ap__logo-text {
+      font-size: 1.25rem;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      color: #F4EDE4;
+    }
+
+    /* Bottom quote */
+    .ap__quote {
+      position: absolute;
+      bottom: clamp(2rem, 5vh, 3.5rem);
+      inset-inline-start: clamp(1.5rem, 4vw, 2.5rem);
+      inset-inline-end: clamp(1.5rem, 4vw, 2.5rem);
+      z-index: 2;
+    }
+    .ap__quote-mark {
+      font-size: 4rem;
+      line-height: 1;
+      color: var(--color-pink, #E8CFC5);
+      opacity: 0.6;
+      font-family: Georgia, serif;
+      margin-block-end: 0.25rem;
+    }
+    .ap__quote-text {
+      font-size: clamp(0.95rem, 1.4vw, 1.15rem);
+      font-style: italic;
+      color: rgba(244,237,228,0.92);
+      line-height: 1.65;
+      max-width: 380px;
+      margin-block-end: 1rem;
+    }
+    .ap__quote-author {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-pink, #E8CFC5);
+    }
+
+    /* Trust badges */
+    .ap__badges {
+      display: flex;
+      gap: 0.625rem;
+      flex-wrap: wrap;
+      margin-block-start: 1.25rem;
+    }
+    .ap__badge {
+      background: rgba(244,237,228,0.1);
+      border: 1px solid rgba(244,237,228,0.18);
+      backdrop-filter: blur(8px);
+      border-radius: 999px;
+      padding: 0.3rem 0.85rem;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      color: rgba(244,237,228,0.8);
+    }
+
+    /* ══ RIGHT — Form Panel ═══════════════════════════════ */
+    .fp {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: clamp(2rem, 6vw, 4rem) clamp(1.5rem, 5vw, 3.5rem);
+      overflow-y: auto;
+      background: var(--bg-primary);
+      position: relative;
+    }
+
+    /* Subtle decorative circle */
+    .fp::before {
+      content: '';
+      position: absolute;
+      top: -120px;
+      inset-inline-end: -120px;
+      width: 380px;
+      height: 380px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(232,207,197,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .fp__inner {
+      width: 100%;
+      max-width: 420px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Back link */
+    .fp__back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-block-end: 2rem;
+      transition: color 0.2s, gap 0.2s;
+    }
+    .fp__back:hover { color: var(--text-primary); gap: 0.6rem; }
+    .fp__back-arrow { font-size: 1rem; }
+
+    /* Heading group */
+    .fp__eyebrow {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--color-pink-dark, #c9a49a);
+      margin-block-end: 0.5rem;
+    }
+    .fp__title {
+      font-size: clamp(1.6rem, 3vw, 2rem);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 1.15;
+      color: var(--text-primary);
+      margin-block-end: 0.5rem;
+    }
+    .fp__sub {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-block-end: 2rem;
+    }
+    .fp__sub a {
+      color: var(--color-pink-dark, #c9a49a);
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .fp__sub a:hover { text-decoration: underline; }
+
+    /* Tab switcher */
+    .auth-tabs {
+      display: flex;
+      gap: 0;
+      background: var(--bg-secondary, #f9f5f1);
+      border-radius: 999px;
+      padding: 3px;
+      margin-block-end: 2rem;
+    }
+    [data-theme="dark"] .auth-tabs { background: rgba(255,255,255,0.06); }
+    .auth-tab {
+      flex: 1;
+      padding: 0.5rem 1.5rem;
+      font-size: 0.8125rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      border-radius: 999px;
+      transition: background 0.22s, color 0.22s, box-shadow 0.22s;
+      white-space: nowrap;
+    }
+    .auth-tab.active {
+      background: var(--color-charcoal, #2F2F2F);
+      color: var(--color-beige, #F4EDE4);
+      box-shadow: 0 2px 10px rgba(47,47,47,0.25);
+    }
+    [data-theme="dark"] .auth-tab.active {
+      background: var(--color-pink, #E8CFC5);
+      color: var(--color-charcoal, #2F2F2F);
+    }
+
+    /* Form fields */
+    .auth-form-section { animation: authFadeIn 0.28s ease; }
+    @keyframes authFadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .field { margin-block-end: 1rem; }
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.875rem; }
+    .field-label {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      color: var(--text-secondary);
+      margin-block-end: 0.375rem;
+    }
+    .field-input {
+      width: 100%;
+      padding: 0.7rem 1rem;
+      border: 1.5px solid var(--border-color, #e8e0da);
+      border-radius: 10px;
+      font-size: 0.875rem;
+      color: var(--text-primary);
+      background: var(--bg-primary);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+      font-family: inherit;
+    }
+    .field-input::placeholder { color: var(--text-muted); opacity: 0.6; }
+    .field-input:focus {
+      border-color: var(--color-pink, #E8CFC5);
+      box-shadow: 0 0 0 3px rgba(232,207,197,0.22);
+    }
+
+    /* Options row */
+    .options-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-block-end: 1.5rem;
+      font-size: 0.8125rem;
+    }
+    .check-label {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--text-secondary);
+      cursor: pointer;
+    }
+    .check-label input[type="checkbox"] {
+      accent-color: var(--color-charcoal, #2F2F2F);
+      width: 14px; height: 14px;
+    }
+    .forgot-link {
+      color: var(--color-pink-dark, #c9a49a);
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .forgot-link:hover { text-decoration: underline; }
+
+    /* Submit button */
+    .auth-btn {
+      width: 100%;
+      padding: 0.85rem 1.5rem;
+      background: var(--color-charcoal, #2F2F2F);
+      color: var(--color-beige, #F4EDE4);
+      border: none;
+      border-radius: 12px;
+      font-size: 0.9375rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      cursor: pointer;
+      transition: background 0.22s, transform 0.18s, box-shadow 0.22s;
+      margin-block-end: 1.25rem;
+      font-family: inherit;
+    }
+    .auth-btn:hover {
+      background: var(--color-charcoal, #1e1e1e);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 24px rgba(47,47,47,0.3);
+    }
+    .auth-btn:active { transform: translateY(0); }
+    [data-theme="dark"] .auth-btn {
+      background: var(--color-pink, #E8CFC5);
+      color: var(--color-charcoal, #2F2F2F);
+    }
+
+    /* Divider */
+    .auth-divider {
+      position: relative;
+      text-align: center;
+      margin-block: 1.25rem;
+    }
+    .auth-divider::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      inset-inline-start: 0;
+      inset-inline-end: 0;
+      height: 1px;
+      background: var(--border-color, #e8e0da);
+    }
+    .auth-divider span {
+      position: relative;
+      background: var(--bg-primary);
+      padding: 0 0.75rem;
+      font-size: 0.73rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    /* Social buttons */
+    .social-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.625rem; }
+    .social-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      padding: 0.65rem 0.5rem;
+      border: 1.5px solid var(--border-color, #e8e0da);
+      border-radius: 10px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      background: var(--bg-primary);
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+      font-family: inherit;
+      white-space: nowrap;
+    }
+    .social-btn:hover {
+      border-color: var(--color-pink, #E8CFC5);
+      background: rgba(232,207,197,0.06);
+      box-shadow: 0 2px 8px rgba(232,207,197,0.2);
+    }
+
+    /* Terms checkbox */
+    .terms-label {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+      margin-block-end: 1.25rem;
+      cursor: pointer;
+    }
+    .terms-label input { margin-block-start: 2px; flex-shrink: 0; accent-color: var(--color-charcoal, #2F2F2F); }
+    .terms-label a { color: var(--color-pink-dark, #c9a49a); font-weight: 600; text-decoration: none; }
+
+    /* Success msg */
+    .success-msg { display: none; font-size: 0.875rem; font-weight: 600; color: #22a367; text-align: center; padding: 0.75rem; background: rgba(34,163,103,0.08); border-radius: 8px; margin-block-start: 0.75rem; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      body { grid-template-columns: 1fr; overflow: auto; }
+      .ap { display: none; }
+      .fp { padding: 2.5rem 1.5rem 3rem; overflow: visible; }
+      .fp::before { display: none; }
+      .social-row { grid-template-columns: 1fr; }
+    }
+
+    /* Dark mode tweaks */
+    [data-theme="dark"] .fp::before {
+      background: radial-gradient(circle, rgba(232,207,197,0.08) 0%, transparent 70%);
+    }
+
+    /* Theme toggle floating */
+    .theme-float {
+      position: fixed;
+      top: 1.25rem;
+      inset-inline-end: 1.25rem;
+      z-index: 100;
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      border: 1.5px solid var(--border-color, #e8e0da);
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow-sm);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .theme-float:hover { border-color: var(--color-pink, #E8CFC5); box-shadow: var(--shadow-md); }
   </style>
 </head>
 <body>
 
-<main id="main-content">
+  <!-- ══ LEFT: Art Visual Panel ══════════════════════════════════ -->
+  <aside class="ap" aria-hidden="true">
+    <img
+      class="ap__img"
+      src="images/hero/hero-gallery.png"
+      alt=""
+      fetchpriority="high"
+    >
+    <div class="ap__overlay"></div>
 
-<!-- SECTION 1 & 2: AUTH LAYOUT (Split Screen) -->
-<section class="auth-layout" aria-label="Authentication Layout">
+    <!-- Logo -->
+    <a href="index.html" class="ap__logo">
+      <div class="ap__logo-icon"></div>
+      <span class="ap__logo-text">Lumière</span>
+    </a>
 
-  <!-- Left: Image Panel -->
-  <div class="auth-image-panel" aria-hidden="true">
-    <img src="images/hero/hero-gallery.png" alt="Lumière Gallery interior — sign in to access exclusive features" fetchpriority="high">
-    <div class="auth-image-overlay">
-      <div>
-        <p style="color:rgba(244,237,228,0.6);font-size:var(--text-xs);letter-spacing:0.15em;text-transform:uppercase;margin-block-end:var(--space-3);">Gallery Member Quote</p>
-        <blockquote style="color:var(--color-beige);font-size:var(--text-xl);font-style:italic;line-height:1.6;max-width:400px;">"Being a Lumière member has completely transformed how I engage with and collect art. The access is extraordinary."</blockquote>
-        <p style="color:var(--color-pink);font-weight:600;margin-block-start:var(--space-4);">— Eleanor Whitman, Collector</p>
+    <!-- Quote -->
+    <div class="ap__quote">
+      <div class="ap__quote-mark">&ldquo;</div>
+      <p class="ap__quote-text">
+        Being a Lumière member has completely transformed how I engage with and collect art. The access is extraordinary.
+      </p>
+      <p class="ap__quote-author">— Eleanor Whitman, Collector</p>
+      <div class="ap__badges">
+        <span class="ap__badge">🏛 MoMA Certified</span>
+        <span class="ap__badge">⭐ 10,000+ Members</span>
+        <span class="ap__badge">🎨 500+ Exhibitions</span>
       </div>
     </div>
-  </div>
+  </aside>
 
-  <!-- Right: Auth Forms -->
-  <div class="auth-form-panel">
-    <div class="auth-form">
-      <a href="index.html" style="text-align:center;display:block;margin-block-end:var(--space-8);"><span style="font-size:var(--text-2xl);font-weight:900;letter-spacing:-0.04em;color:var(--text-primary);">Lumière</span></a>
+  <!-- ══ RIGHT: Form Panel ════════════════════════════════════════ -->
+  <main class="fp" id="main-content">
+    <div class="fp__inner">
 
-      <!-- SECTION 2: Tabs -->
-      <div class="auth-tabs" role="tablist" aria-label="Login or Register">
-        <button class="auth-tab active" id="tab-login" role="tab" aria-selected="true" aria-controls="panel-login" onclick="switchTab('login')">Sign In</button>
-        <button class="auth-tab" id="tab-register" role="tab" aria-selected="false" aria-controls="panel-register" onclick="switchTab('register')">Create Account</button>
+      <!-- Back link -->
+      <a href="index.html" class="fp__back">
+        <span class="fp__back-arrow">←</span> Back to site
+      </a>
+
+      <!-- Tab switcher -->
+      <div class="auth-tabs" role="tablist" aria-label="Sign in or register">
+        <button
+          class="auth-tab active"
+          id="tab-login"
+          role="tab"
+          aria-selected="true"
+          aria-controls="panel-login"
+          onclick="switchTab('login')"
+        >Sign In</button>
+        <button
+          class="auth-tab"
+          id="tab-register"
+          role="tab"
+          aria-selected="false"
+          aria-controls="panel-register"
+          onclick="switchTab('register')"
+        >Create Account</button>
       </div>
 
-      <!-- SECTION 2: Login Form -->
+      <!-- ─── LOGIN PANEL ─────────────────────────── -->
       <div id="panel-login" class="auth-form-section" role="tabpanel" aria-labelledby="tab-login">
-        <h1 style="font-size:var(--text-2xl);font-weight:800;margin-block-end:var(--space-2);">Welcome back</h1>
-        <p style="color:var(--text-muted);font-size:var(--text-sm);margin-block-end:var(--space-6);">Sign in to your Lumière account to continue.</p>
-        <form class="validated-form" id="login-form" novalidate>
-          <div class="form-field">
-            <label class="form-label" for="login-email">Email Address</label>
-            <input type="email" id="login-email" class="form-input" placeholder="hello@gallery.com" required aria-required="true">
+        <p class="fp__eyebrow">Welcome back</p>
+        <h1 class="fp__title">Sign in to<br>your account</h1>
+        <p class="fp__sub">
+          Don't have an account?
+          <a href="#" onclick="switchTab('register');return false;">Create one free</a>
+        </p>
+
+        <form id="login-form" novalidate>
+          <div class="field">
+            <label class="field-label" for="login-email">Email address</label>
+            <input type="email" id="login-email" class="field-input" placeholder="hello@gallery.com" required aria-required="true">
           </div>
-          <div class="form-field">
-            <label class="form-label" for="login-password">Password</label>
-            <input type="password" id="login-password" class="form-input" placeholder="••••••••" required aria-required="true">
+          <div class="field">
+            <label class="field-label" for="login-password">Password</label>
+            <input type="password" id="login-password" class="field-input" placeholder="••••••••" required aria-required="true">
           </div>
-          <div style="display:flex;align-items:center;justify-content:space-between;margin-block-end:var(--space-6);">
-            <label style="display:flex;align-items:center;gap:var(--space-2);font-size:var(--text-sm);cursor:pointer;"><input type="checkbox" id="remember-me" aria-label="Remember me"> Remember me</label>
-            <a href="#" style="font-size:var(--text-sm);color:var(--color-pink-dark);font-weight:500;">Forgot Password?</a>
+          <div class="options-row">
+            <label class="check-label">
+              <input type="checkbox" id="remember-me" aria-label="Remember me">
+              Remember me
+            </label>
+            <a href="#" class="forgot-link">Forgot password?</a>
           </div>
-          <button type="submit" class="btn btn--primary btn--full btn--lg">Sign In</button>
-          <p class="form-success-msg" style="display:none;color:#22a367;font-weight:600;text-align:center;margin-block-start:var(--space-4);">✓ Signed in! Redirecting…</p>
+          <button type="submit" class="auth-btn">Sign In →</button>
+          <p class="success-msg" id="login-success">✓ Signed in! Redirecting…</p>
         </form>
+
+        <div class="auth-divider"><span>or continue with</span></div>
+        <div class="social-row">
+          <button class="social-btn" aria-label="Google">🇬 Google</button>
+          <button class="social-btn" aria-label="Apple">🍎 Apple</button>
+          <button class="social-btn" aria-label="Facebook">📘 Meta</button>
+        </div>
       </div>
 
-      <!-- SECTION 3: Register Form -->
+      <!-- ─── REGISTER PANEL ──────────────────────── -->
       <div id="panel-register" class="auth-form-section" role="tabpanel" aria-labelledby="tab-register" style="display:none;">
-        <h2 style="font-size:var(--text-2xl);font-weight:800;margin-block-end:var(--space-2);">Create Account</h2>
-        <p style="color:var(--text-muted);font-size:var(--text-sm);margin-block-end:var(--space-6);">Join 10,000+ art enthusiasts in our community.</p>
-        <form class="validated-form" id="register-form" novalidate>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4);">
-            <div class="form-field">
-              <label class="form-label" for="reg-first">First Name</label>
-              <input type="text" id="reg-first" class="form-input" placeholder="First" required aria-required="true">
+        <p class="fp__eyebrow">Join Lumière</p>
+        <h1 class="fp__title">Create your<br>free account</h1>
+        <p class="fp__sub">
+          Already a member?
+          <a href="#" onclick="switchTab('login');return false;">Sign in here</a>
+        </p>
+
+        <form id="register-form" novalidate>
+          <div class="field-row field">
+            <div>
+              <label class="field-label" for="reg-first">First name</label>
+              <input type="text" id="reg-first" class="field-input" placeholder="First" required aria-required="true">
             </div>
-            <div class="form-field">
-              <label class="form-label" for="reg-last">Last Name</label>
-              <input type="text" id="reg-last" class="form-input" placeholder="Last" required aria-required="true">
+            <div>
+              <label class="field-label" for="reg-last">Last name</label>
+              <input type="text" id="reg-last" class="field-input" placeholder="Last" required aria-required="true">
             </div>
           </div>
-          <div class="form-field">
-            <label class="form-label" for="reg-email">Email Address</label>
-            <input type="email" id="reg-email" class="form-input" placeholder="hello@gallery.com" required aria-required="true">
+          <div class="field">
+            <label class="field-label" for="reg-email">Email address</label>
+            <input type="email" id="reg-email" class="field-input" placeholder="hello@gallery.com" required aria-required="true">
           </div>
-          <div class="form-field">
-            <label class="form-label" for="reg-password">Password</label>
-            <input type="password" id="reg-password" class="form-input" placeholder="Minimum 8 characters" required aria-required="true">
+          <div class="field">
+            <label class="field-label" for="reg-password">Password</label>
+            <input type="password" id="reg-password" class="field-input" placeholder="Minimum 8 characters" required aria-required="true">
           </div>
-          <div class="form-field">
-            <label class="form-label" for="reg-confirm">Confirm Password</label>
-            <input type="password" id="reg-confirm" class="form-input" placeholder="Repeat password" required aria-required="true">
+          <div class="field">
+            <label class="field-label" for="reg-confirm">Confirm password</label>
+            <input type="password" id="reg-confirm" class="field-input" placeholder="Repeat password" required aria-required="true">
           </div>
-          <label style="display:flex;align-items:flex-start;gap:var(--space-3);font-size:var(--text-sm);margin-block-end:var(--space-6);line-height:1.5;cursor:pointer;"><input type="checkbox" id="reg-terms" required aria-required="true" style="margin-block-start:2px;flex-shrink:0;"> I agree to the <a href="#" style="color:var(--color-pink-dark);">Terms of Service</a> and <a href="#" style="color:var(--color-pink-dark);">Privacy Policy</a></label>
-          <button type="submit" class="btn btn--primary btn--full btn--lg">Create Account</button>
-          <p class="form-success-msg" style="display:none;color:#22a367;font-weight:600;text-align:center;margin-block-start:var(--space-4);">✓ Account created! Welcome to Lumière.</p>
+          <label class="terms-label">
+            <input type="checkbox" id="reg-terms" required aria-required="true">
+            I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+          </label>
+          <button type="submit" class="auth-btn">Create Account →</button>
+          <p class="success-msg" id="register-success">✓ Account created! Welcome to Lumière.</p>
         </form>
-      </div>
 
-      <!-- SECTION 4: Social Login -->
-      <div style="margin-block-start:var(--space-6);">
-        <div style="position:relative;text-align:center;margin-block:var(--space-5);">
-          <hr style="border-color:var(--border-color);">
-          <span style="position:absolute;top:50%;inset-inline-start:50%;transform:translate(-50%,-50%);background:var(--bg-primary);padding:0 var(--space-3);font-size:var(--text-xs);color:var(--text-muted);">or continue with</span>
-        </div>
-        <div style="display:flex;flex-direction:column;gap:var(--space-3);">
-          <button class="social-btn" aria-label="Continue with Google">🇬 <span>Continue with Google</span></button>
-          <button class="social-btn" aria-label="Continue with Facebook">📘 <span>Continue with Facebook</span></button>
-          <button class="social-btn" aria-label="Continue with Apple">🍎 <span>Continue with Apple</span></button>
+        <div class="auth-divider"><span>or sign up with</span></div>
+        <div class="social-row">
+          <button class="social-btn" aria-label="Google">🇬 Google</button>
+          <button class="social-btn" aria-label="Apple">🍎 Apple</button>
+          <button class="social-btn" aria-label="Facebook">📘 Meta</button>
         </div>
       </div>
-    </div>
-  </div>
-</section>
 
-<!-- SECTION 5: BENEFITS LIST -->
-<section class="section" id="member-benefits" style="background:var(--bg-secondary);" aria-label="Member Benefits">
-  <div class="container">
-    <div class="section-header section-header--center reveal">
-      <span class="section-tag">Why Join?</span>
-      <h2 class="section-title">Member Benefits</h2>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:var(--space-6);" class="reveal-group">
-      <div class="reveal" style="text-align:center;padding:var(--space-6);">
-        <div style="font-size:2.5rem;margin-block-end:var(--space-4);">🎨</div>
-        <h3 style="font-size:var(--text-md);margin-block-end:var(--space-2);">Exclusive Access</h3>
-        <p style="font-size:var(--text-sm);color:var(--text-secondary);">Private previews, member-only openings, and first access to limited edition prints.</p>
-      </div>
-      <div class="reveal" style="text-align:center;padding:var(--space-6);">
-        <div style="font-size:2.5rem;margin-block-end:var(--space-4);">📅</div>
-        <h3 style="font-size:var(--text-md);margin-block-end:var(--space-2);">Event Updates</h3>
-        <p style="font-size:var(--text-sm);color:var(--text-secondary);">Be first to know about exhibitions, artist talks, and special events.</p>
-      </div>
-      <div class="reveal" style="text-align:center;padding:var(--space-6);">
-        <div style="font-size:2.5rem;margin-block-end:var(--space-4);">📊</div>
-        <h3 style="font-size:var(--text-md);margin-block-end:var(--space-2);">Personal Dashboard</h3>
-        <p style="font-size:var(--text-sm);color:var(--text-secondary);">Track your bookings, saved artworks, and personalise your gallery experience.</p>
-      </div>
-      <div class="reveal" style="text-align:center;padding:var(--space-6);">
-        <div style="font-size:2.5rem;margin-block-end:var(--space-4);">⭐</div>
-        <h3 style="font-size:var(--text-md);margin-block-end:var(--space-2);">Priority Support</h3>
-        <p style="font-size:var(--text-sm);color:var(--text-secondary);">Direct access to our team for purchasing advice and booking assistance.</p>
-      </div>
-    </div>
-  </div>
-</section>
+  </main>
 
-<!-- SECTION 6: HELP SECTION -->
-<section class="section" id="auth-help" aria-label="Account Help">
-  <div class="container" style="text-align:center;">
-    <div class="reveal">
-      <h2 style="font-size:var(--text-2xl);margin-block-end:var(--space-4);">Having trouble?</h2>
-      <p style="color:var(--text-secondary);margin-block-end:var(--space-6);">Our support team is here to help. Reach out and we'll get you sorted quickly.</p>
-      <div style="display:flex;flex-wrap:wrap;gap:var(--space-4);justify-content:center;">
-        <a href="mailto:support@lumieregallery.com" class="btn btn--secondary">Email Support</a>
-        <a href="contact.html" class="btn btn--secondary">Contact Page</a>
-        <a href="pricing.html" class="btn btn--secondary">Pricing & Plans</a>
-      </div>
-    </div>
-  </div>
-</section>
+  <!-- Floating theme toggle -->
+  <button
+    class="theme-float"
+    id="theme-toggle"
+    aria-label="Toggle dark/light mode"
+    title="Toggle theme"
+  >
+    <span class="theme-icon-label-sun" style="position:absolute;">☀️</span>
+    <span class="theme-icon-label-moon" style="position:absolute;display:none;">🌙</span>
+  </button>
 
-</main>
+  <script src="js/theme-toggle.js"></script>
+  <script>
+    /* ── Tab switch ── */
+    function switchTab(tab) {
+      const loginPanel    = document.getElementById('panel-login');
+      const registerPanel = document.getElementById('panel-register');
+      const loginTab      = document.getElementById('tab-login');
+      const registerTab   = document.getElementById('tab-register');
 
-<script src="js/theme-toggle.js"></script><script src="js/animations.js"></script>
-<script>
-function switchTab(tab) {
-  const loginPanel = document.getElementById('panel-login');
-  const registerPanel = document.getElementById('panel-register');
-  const loginTab = document.getElementById('tab-login');
-  const registerTab = document.getElementById('tab-register');
-  if (tab === 'login') {
-    loginPanel.style.display = 'block';
-    registerPanel.style.display = 'none';
-    loginTab.classList.add('active');
-    registerTab.classList.remove('active');
-    loginTab.setAttribute('aria-selected', 'true');
-    registerTab.setAttribute('aria-selected', 'false');
-  } else {
-    loginPanel.style.display = 'none';
-    registerPanel.style.display = 'block';
-    loginTab.classList.remove('active');
-    registerTab.classList.add('active');
-    loginTab.setAttribute('aria-selected', 'false');
-    registerTab.setAttribute('aria-selected', 'true');
-  }
-}
-</script>
+      if (tab === 'login') {
+        loginPanel.style.display    = 'block';
+        registerPanel.style.display = 'none';
+        loginTab.classList.add('active');
+        registerTab.classList.remove('active');
+        loginTab.setAttribute('aria-selected', 'true');
+        registerTab.setAttribute('aria-selected', 'false');
+      } else {
+        loginPanel.style.display    = 'none';
+        registerPanel.style.display = 'block';
+        loginTab.classList.remove('active');
+        registerTab.classList.add('active');
+        loginTab.setAttribute('aria-selected', 'false');
+        registerTab.setAttribute('aria-selected', 'true');
+      }
+    }
+
+    /* ── Form submit demos ── */
+    document.getElementById('login-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      document.getElementById('login-success').style.display = 'block';
+      setTimeout(() => { window.location.href = 'user-dashboard.html'; }, 1500);
+    });
+
+    document.getElementById('register-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      document.getElementById('register-success').style.display = 'block';
+      setTimeout(() => { window.location.href = 'user-dashboard.html'; }, 1800);
+    });
+  </script>
+
 </body>
 </html>
