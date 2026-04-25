@@ -20,17 +20,18 @@
 
   // ── Update globe button visual state ──────────────────────
   function updateGlobeState(dir) {
-    const btn = document.getElementById('globe-toggle');
-    if (!btn) return;
-    btn.setAttribute('aria-label', dir === 'rtl' ? 'Switch to LTR layout' : 'Switch to RTL layout');
-    btn.setAttribute('title', dir === 'rtl' ? 'Switch to LTR layout' : 'Switch to RTL layout');
-    btn.setAttribute('aria-pressed', dir === 'rtl');
+    const btns = document.querySelectorAll('.globe-toggle-btn, #globe-toggle');
+    btns.forEach(btn => {
+      btn.setAttribute('aria-label', dir === 'rtl' ? 'Switch to LTR layout' : 'Switch to RTL layout');
+      btn.setAttribute('title', dir === 'rtl' ? 'Switch to LTR layout' : 'Switch to RTL layout');
+      btn.setAttribute('aria-pressed', dir === 'rtl');
 
-    if (dir === 'rtl') {
-      btn.classList.add('rtl-active');
-    } else {
-      btn.classList.remove('rtl-active');
-    }
+      if (dir === 'rtl') {
+        btn.classList.add('rtl-active');
+      } else {
+        btn.classList.remove('rtl-active');
+      }
+    });
   }
 
   // ── Toggle handler ────────────────────────────────────────
@@ -56,18 +57,23 @@
     const stored = localStorage.getItem(STORAGE_KEY) || 'ltr';
     applyDir(stored);
 
-    function bindButton() {
-      const btn = document.getElementById('globe-toggle');
-      if (btn) {
+    function bindButtons() {
+      const btns = document.querySelectorAll('.globe-toggle-btn, #globe-toggle');
+      btns.forEach(btn => {
+        btn.removeEventListener('click', handleToggle);
         btn.addEventListener('click', handleToggle);
-      }
+      });
     }
 
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', bindButton);
+      document.addEventListener('DOMContentLoaded', bindButtons);
     } else {
-      bindButton();
+      bindButtons();
     }
+
+    // Also re-bind if content changes
+    const observer = new MutationObserver(bindButtons);
+    observer.observe(document.body, { childList: true, subtree: true });
   }
 
   init();

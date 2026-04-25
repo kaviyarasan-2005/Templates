@@ -19,7 +19,7 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     /* ── Full-viewport layout ── */
-    html, body { height: 100%; }
+    html, body { height: 100%; overflow-x: hidden; max-width: 100%; }
     body {
       font-family: var(--font-sans, 'Inter', system-ui, sans-serif);
       background: var(--bg-primary);
@@ -30,9 +30,12 @@
       overflow: hidden;
     }
 
+
     /* ══ LEFT — Art Panel ═════════════════════════════════ */
     .ap {
-      position: relative;
+      position: sticky;
+      top: 0;
+      height: 100vh;
       overflow: hidden;
       background: #1a1a1a;
     }
@@ -81,7 +84,7 @@
     .ap__logo-icon {
       width: 34px; height: 34px;
       border-radius: 8px;
-      background-image: url('images/favicons/favicon-32x32.png');
+      background-image: url('images/logo.png');
       background-size: cover;
       flex-shrink: 0;
       box-shadow: 0 2px 10px rgba(0,0,0,0.4);
@@ -148,12 +151,14 @@
     .fp {
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: clamp(2rem, 6vw, 4rem) clamp(1.5rem, 5vw, 3.5rem);
+      justify-content: flex-start;
+      align-items: stretch;
+      padding: 0;
       overflow-y: auto;
+      overflow-x: hidden;
       background: var(--bg-primary);
       position: relative;
+      width: 100%;
     }
 
     /* Subtle decorative circle */
@@ -167,39 +172,75 @@
       border-radius: 50%;
       background: radial-gradient(circle, rgba(232,207,197,0.18) 0%, transparent 70%);
       pointer-events: none;
+      /* Don't let decorative element cause overflow */
+      overflow: hidden;
+    }
+
+    .fp__brand-mobile {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      gap: 0.625rem;
+      text-decoration: none;
+      margin-block-end: 2.5rem;
+    }
+    .fp__brand-mobile-icon {
+      width: 32px; height: 32px;
+      border-radius: 8px;
+      background: url('images/logo.png') center/cover;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .fp__brand-mobile-text {
+      font-size: 1.25rem;
+      font-weight: 900;
+      color: var(--text-primary);
+      letter-spacing: -0.04em;
     }
 
     .fp__inner {
       width: 100%;
       max-width: 420px;
+      margin-inline: auto;
       position: relative;
       z-index: 1;
+      padding: 2rem clamp(1.5rem, 5vw, 3.5rem) 3rem;
     }
-
-    /* Back link */
-    .fp__back {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      color: var(--text-muted);
-      text-decoration: none;
-      margin-block-end: 2rem;
-      transition: color 0.2s, gap 0.2s;
-    }
-    .fp__back:hover { color: var(--text-primary); gap: 0.6rem; }
-    .fp__back-arrow { font-size: 1rem; }
 
     /* Heading group */
+    .fp__header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.25rem;
+      margin-block-end: 0.75rem;
+    }
+    .inline-ctrl {
+      display: none;
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      border: 1.5px solid var(--border-color, #e8e0da);
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      padding: 0;
+      transition: border-color 0.2s;
+      flex-shrink: 0;
+      position: relative;
+    }
+    .inline-ctrl:hover { border-color: var(--color-pink, #E8CFC5); }
+
     .fp__eyebrow {
       font-size: 0.7rem;
       font-weight: 700;
       letter-spacing: 0.16em;
       text-transform: uppercase;
       color: var(--color-pink-dark, #c9a49a);
-      margin-block-end: 0.5rem;
+      margin-block-end: 0;
+      text-align: center;
+      white-space: nowrap;
     }
     .fp__title {
       font-size: clamp(1.6rem, 3vw, 2rem);
@@ -208,12 +249,14 @@
       line-height: 1.15;
       color: var(--text-primary);
       margin-block-end: 0.5rem;
+      text-align: center;
     }
     .fp__sub {
       font-size: 0.875rem;
       color: var(--text-muted);
       line-height: 1.6;
       margin-block-end: 2rem;
+      text-align: center;
     }
     .fp__sub a {
       color: var(--color-pink-dark, #c9a49a);
@@ -222,6 +265,26 @@
     }
     .fp__sub a:hover { text-decoration: underline; }
 
+    /* Tab switcher wrapper — sticky FULL-WIDTH bar */
+    .fp__tab-bar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: var(--bg-primary);
+      border-bottom: 1px solid var(--border-color, #e8e0da);
+      padding: 1.25rem clamp(1.5rem, 5vw, 3.5rem) 1rem;
+      display: flex;
+      justify-content: center;
+      transition: box-shadow 0.2s;
+    }
+    .fp__tab-bar.is-sticky {
+      box-shadow: 0 6px 24px -4px rgba(47,47,47,0.1);
+    }
+    [data-theme="dark"] .fp__tab-bar {
+      background: var(--bg-primary);
+      border-bottom-color: rgba(255,255,255,0.08);
+    }
+
     /* Tab switcher */
     .auth-tabs {
       display: flex;
@@ -229,9 +292,10 @@
       background: var(--bg-secondary, #f9f5f1);
       border-radius: 999px;
       padding: 3px;
-      margin-block-end: 2rem;
+      width: 100%;
+      max-width: 420px;
     }
-    [data-theme="dark"] .auth-tabs { background: rgba(255,255,255,0.06); }
+    [data-theme="dark"] .auth-tabs { background: rgba(45,40,38,0.95); }
     .auth-tab {
       flex: 1;
       padding: 0.5rem 1.5rem;
@@ -411,14 +475,7 @@
     /* Success msg */
     .success-msg { display: none; font-size: 0.875rem; font-weight: 600; color: #22a367; text-align: center; padding: 0.75rem; background: rgba(34,163,103,0.08); border-radius: 8px; margin-block-start: 0.75rem; }
 
-    /* Responsive */
-    @media (max-width: 768px) {
-      body { grid-template-columns: 1fr; overflow: auto; }
-      .ap { display: none; }
-      .fp { padding: 2.5rem 1.5rem 3rem; overflow: visible; }
-      .fp::before { display: none; }
-      .social-row { grid-template-columns: 1fr; }
-    }
+
 
     /* Dark mode tweaks */
     [data-theme="dark"] .fp::before {
@@ -426,10 +483,9 @@
     }
 
     /* Theme toggle floating */
-    .theme-float {
+    .ctrl-float {
       position: fixed;
       top: 1.25rem;
-      inset-inline-end: 1.25rem;
       z-index: 100;
       width: 40px; height: 40px;
       border-radius: 50%;
@@ -444,7 +500,29 @@
       box-shadow: var(--shadow-sm);
       transition: border-color 0.2s, box-shadow 0.2s;
     }
-    .theme-float:hover { border-color: var(--color-pink, #E8CFC5); box-shadow: var(--shadow-md); }
+    .ctrl-float:hover { border-color: var(--color-pink, #E8CFC5); box-shadow: var(--shadow-md); }
+    
+    #theme-toggle { inset-inline-end: 1.25rem; }
+    #globe-toggle { inset-inline-end: 4.5rem; }
+
+    /* Responsive: Controls switch at 1100px to avoid tab-bar overlap */
+    @media (max-width: 1100px) {
+      .ctrl-float { display: none; }
+      .inline-ctrl { display: flex; }
+      .fp__header { margin-block-end: 1rem; }
+    }
+
+    /* Responsive: Layout collapse at 1024px (Tablet & Mobile) */
+    @media (max-width: 1024px) {
+      body { grid-template-columns: 1fr; overflow: auto; }
+      .ap { display: none; }
+      .fp { padding: 0 0 3rem; overflow: visible; }
+      .fp__tab-bar { padding: 1rem 1.5rem 0.75rem; }
+      .fp__inner { padding: 1.5rem 1.5rem 0; }
+      .fp::before { display: none; }
+      .social-row { grid-template-columns: 1fr; }
+      .fp__brand-mobile { display: flex; }
+    }
   </style>
 </head>
 <body>
@@ -482,15 +560,10 @@
 
   <!-- ══ RIGHT: Form Panel ════════════════════════════════════════ -->
   <main class="fp" id="main-content">
-    <div class="fp__inner">
 
-      <!-- Back link -->
-      <a href="index.html" class="fp__back">
-        <span class="fp__back-arrow">←</span> Back to site
-      </a>
-
-      <!-- Tab switcher -->
-      <div class="auth-tabs" role="tablist" aria-label="Sign in or register">
+    <!-- Sticky tab bar — full-width, sits OUTSIDE fp__inner so it covers the full panel on scroll -->
+    <div class="fp__tab-bar" id="fp-tab-bar" role="tablist" aria-label="Sign in or register">
+      <div class="auth-tabs">
         <button
           class="auth-tab active"
           id="tab-login"
@@ -508,10 +581,25 @@
           onclick="switchTab('register')"
         >Create Account</button>
       </div>
+    </div>
+
+    <div class="fp__inner">
+      <a href="index.html" class="fp__brand-mobile">
+        <div class="fp__brand-mobile-icon"></div>
+        <span class="fp__brand-mobile-text">Lumière</span>
+      </a>
+
 
       <!-- ─── LOGIN PANEL ─────────────────────────── -->
       <div id="panel-login" class="auth-form-section" role="tabpanel" aria-labelledby="tab-login">
-        <p class="fp__eyebrow">Welcome back</p>
+        <div class="fp__header">
+          <button class="globe-toggle-btn inline-ctrl" aria-label="Toggle RTL">🌐</button>
+          <p class="fp__eyebrow">Welcome back</p>
+          <button class="theme-toggle-btn inline-ctrl" aria-label="Toggle Theme">
+            <span class="theme-icon-label-sun" style="position:absolute;">☀️</span>
+            <span class="theme-icon-label-moon" style="position:absolute;display:none;">🌙</span>
+          </button>
+        </div>
         <h1 class="fp__title">Sign in to<br>your account</h1>
         <p class="fp__sub">
           Don't have an account?
@@ -548,7 +636,14 @@
 
       <!-- ─── REGISTER PANEL ──────────────────────── -->
       <div id="panel-register" class="auth-form-section" role="tabpanel" aria-labelledby="tab-register" style="display:none;">
-        <p class="fp__eyebrow">Join Lumière</p>
+        <div class="fp__header">
+          <button class="globe-toggle-btn inline-ctrl" aria-label="Toggle RTL">🌐</button>
+          <p class="fp__eyebrow">Join Lumière</p>
+          <button class="theme-toggle-btn inline-ctrl" aria-label="Toggle Theme">
+            <span class="theme-icon-label-sun" style="position:absolute;">☀️</span>
+            <span class="theme-icon-label-moon" style="position:absolute;display:none;">🌙</span>
+          </button>
+        </div>
         <h1 class="fp__title">Create your<br>free account</h1>
         <p class="fp__sub">
           Already a member?
@@ -597,9 +692,17 @@
     </div>
   </main>
 
-  <!-- Floating theme toggle -->
+  <!-- Floating controls -->
   <button
-    class="theme-float"
+    class="ctrl-float"
+    id="globe-toggle"
+    aria-label="Toggle RTL/LTR layout direction"
+    aria-pressed="false"
+    title="Toggle RTL/LTR"
+  >🌐</button>
+
+  <button
+    class="ctrl-float"
     id="theme-toggle"
     aria-label="Toggle dark/light mode"
     title="Toggle theme"
@@ -609,7 +712,20 @@
   </button>
 
   <script src="js/theme-toggle.js"></script>
+  <script src="js/rtl-toggle.js"></script>
   <script>
+    /* ── Sticky shadow on scroll ── */
+    const fp      = document.querySelector('.fp');
+    const tabBar  = document.getElementById('fp-tab-bar');
+
+    fp.addEventListener('scroll', () => {
+      if (fp.scrollTop > 4) {
+        tabBar.classList.add('is-sticky');
+      } else {
+        tabBar.classList.remove('is-sticky');
+      }
+    }, { passive: true });
+
     /* ── Tab switch ── */
     function switchTab(tab) {
       const loginPanel    = document.getElementById('panel-login');
@@ -632,6 +748,9 @@
         loginTab.setAttribute('aria-selected', 'false');
         registerTab.setAttribute('aria-selected', 'true');
       }
+
+      /* Scroll form panel back to top when switching so sticky bar sits flush */
+      fp.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     /* ── Form submit demos ── */
@@ -650,3 +769,4 @@
 
 </body>
 </html>
+
