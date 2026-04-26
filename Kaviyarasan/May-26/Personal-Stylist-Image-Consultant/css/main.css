@@ -299,15 +299,23 @@ input, textarea, select {
   transition:
     background-color var(--transition-slow),
     backdrop-filter var(--transition-slow),
-    box-shadow var(--transition-slow);
-  background-color: transparent;
+    box-shadow var(--transition-slow),
+    border-color var(--transition-slow);
+  background-color: rgba(244, 237, 228, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-block-end: 1px solid rgba(47, 47, 47, 0.05);
+}
+
+[data-theme="dark"] .site-header {
+  background-color: rgba(26, 26, 26, 0.8);
+  border-block-end-color: rgba(244, 237, 228, 0.05);
 }
 
 .site-header.scrolled {
   background-color: var(--bg-primary);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
   box-shadow: var(--shadow-sm);
+  border-block-end-color: var(--border-color);
 }
 
 .header-inner {
