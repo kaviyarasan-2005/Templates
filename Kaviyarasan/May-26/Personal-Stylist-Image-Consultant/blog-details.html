@@ -117,33 +117,50 @@
 
 <main id="main-content">
 
-  <!-- SECTION 1: ARTICLE HERO -->
-  <section class="section" id="article-hero" style="padding-block-start:calc(var(--header-height) + var(--space-12));background:var(--bg-secondary);" aria-label="Article Hero">
-    <div class="container container--narrow">
-      <nav class="breadcrumb reveal" aria-label="Breadcrumb"><a href="index.html">Home</a><span class="breadcrumb__separator">›</span><a href="blog.html">Blog</a><span class="breadcrumb__separator">›</span><span class="breadcrumb__current">Article</span></nav>
-      <span class="card__tag reveal" style="margin-block:var(--space-4);">Interviews</span>
-      <h1 class="reveal" style="font-size:var(--text-hero);font-weight:900;letter-spacing:-0.04em;line-height:1.05;margin-block-end:var(--space-5);">Inside the Studio: Marcus Chen on Painting Process and Creative Solitude</h1>
-      <p class="reveal" style="font-size:var(--text-xl);color:var(--text-secondary);line-height:1.75;margin-block-end:var(--space-6);">The acclaimed abstract painter opens the doors of his Brooklyn studio and reflects on solitude, failure, and the unexpected gifts of creative block.</p>
-      <div class="reveal" style="display:flex;align-items:center;gap:var(--space-4);flex-wrap:wrap;padding-block-end:var(--space-8);border-block-end:1px solid var(--border-color);">
-        <img src="images/team/team-1.png" alt="Eleanor Whitfield, author portrait" loading="lazy" style="width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid var(--color-pink);">
-        <div>
-          <p style="font-weight:700;font-size:var(--text-sm);">Eleanor Whitfield</p>
-          <p style="font-size:var(--text-xs);color:var(--text-muted);">Gallery Director · March 22, 2025</p>
-        </div>
-        <div style="margin-inline-start:auto;display:flex;gap:var(--space-3);">
-          <span style="font-size:var(--text-xs);color:var(--text-muted);align-self:center;">7 min read</span>
-          <button class="btn btn--secondary btn--sm" onclick="navigator.clipboard.writeText(window.location.href);this.textContent='✓ Copied!';setTimeout(()=>this.textContent='Share',2000);" aria-label="Copy article link">Share</button>
-          <button class="btn btn--secondary btn--sm" onclick="window.print();" aria-label="Print article">Print</button>
-        </div>
-      </div>
-    </div>
-  </section>
+  <!-- SECTION 1: MODERN EDITORIAL HERO -->
+  <section id="blog-details-hero" style="position:relative; padding-block-start:calc(var(--header-height) + var(--space-16)); padding-block-end:var(--space-12); overflow:hidden; background:var(--bg-secondary);" aria-label="Article Hero">
+    <!-- Background Decor -->
+    <div style="position:absolute; top:-10%; right:-5%; width:40%; height:80%; background:radial-gradient(circle, var(--color-pink-subtle) 0%, transparent 70%); z-index:0; opacity:0.6;"></div>
+    
+    <div class="container" style="position:relative; z-index:1;">
+      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap:var(--space-12); align-items:center;">
+        
+        <!-- Content Side -->
+        <div class="reveal">
+          <nav class="breadcrumb" aria-label="Breadcrumb" style="margin-block-end:var(--space-6);"><a href="index.html">Home</a><span class="breadcrumb__separator">›</span><a href="blog.html">Blog</a><span class="breadcrumb__separator">›</span><span class="breadcrumb__current">Interviews</span></nav>
+          
+          <div style="display:flex; align-items:center; gap:var(--space-3); margin-block-end:var(--space-6);">
+            <span class="card__tag" style="background:var(--color-pink); color:var(--color-charcoal);">Interviews</span>
+            <span style="font-size:var(--text-xs); color:var(--text-muted); font-weight:600; text-transform:uppercase; letter-spacing:0.05em;">Studio Visit</span>
+          </div>
 
-  <!-- SECTION 2: HERO IMAGE -->
-  <section class="section" id="article-image" style="padding-block:0;background:var(--bg-secondary);" aria-label="Article Feature Image">
-    <div class="container reveal">
-      <img src="images/blog/blog-1.png" alt="Marcus Chen's Brooklyn studio — paint-covered walls, large canvases, and natural light" fetchpriority="high" loading="eager" style="width:100%;height:clamp(280px,55vh,560px);object-fit:cover;border-radius:var(--radius-2xl);box-shadow:var(--shadow-xl);margin-block-end:var(--space-3);">
-      <p style="font-size:var(--text-xs);color:var(--text-muted);text-align:center;">Marcus Chen's studio in Bushwick, Brooklyn. Photo by Lumière Gallery, 2025.</p>
+          <h1 style="font-size:clamp(var(--text-4xl), 5vw, var(--text-hero)); font-weight:900; letter-spacing:-0.03em; line-height:1.1; margin-block-end:var(--space-6);">Inside the Studio: Marcus Chen on Painting Process and Creative Solitude</h1>
+          
+          <p style="font-size:var(--text-lg); color:var(--text-secondary); line-height:1.7; margin-block-end:var(--space-8); max-width:600px;">The acclaimed abstract painter opens the doors of his Brooklyn studio and reflects on solitude, failure, and the unexpected gifts of creative block.</p>
+          
+          <div style="display:flex; align-items:center; gap:var(--space-4); flex-wrap:wrap; padding-block-start:var(--space-6); border-block-start:1px solid var(--border-color);">
+            <img src="images/team/team-1.png" alt="Eleanor Whitfield" style="width:56px; height:56px; border-radius:50%; object-fit:cover; border:2px solid var(--color-pink);">
+            <div>
+              <p style="font-weight:700; font-size:var(--text-md); margin-block-end:2px;">Eleanor Whitfield</p>
+              <p style="font-size:var(--text-xs); color:var(--text-muted);">Gallery Director · March 22, 2025</p>
+            </div>
+            <div style="margin-inline-start:auto; display:flex; gap:var(--space-2);">
+              <button class="btn btn--secondary btn--sm" onclick="navigator.clipboard.writeText(window.location.href);this.textContent='✓ Copied!';setTimeout(()=>this.textContent='Share',2000);">Share</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Image Side -->
+        <div class="reveal reveal--from-end" style="position:relative;">
+          <div style="position:relative; z-index:2; border-radius:var(--radius-2xl); overflow:hidden; box-shadow:var(--shadow-2xl);">
+            <img src="images/blog/blog-1.png" alt="Marcus Chen's Brooklyn studio" fetchpriority="high" style="width:100%; height:clamp(300px, 60vh, 600px); object-fit:cover;">
+          </div>
+          <!-- Decorative Frame -->
+          <div style="position:absolute; inset:-var(--space-4); border:1px solid var(--color-pink); border-radius:var(--radius-2xl); z-index:1; transform:translate(var(--space-2), var(--space-2)); opacity:0.3;"></div>
+          <p style="font-size:var(--text-xs); color:var(--text-muted); text-align:right; margin-block-start:var(--space-4); font-style:italic;">Marcus Chen's studio in Bushwick, Brooklyn. Photo by Lumière Gallery.</p>
+        </div>
+
+      </div>
     </div>
   </section>
 

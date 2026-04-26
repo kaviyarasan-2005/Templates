@@ -13,9 +13,9 @@
   <meta name="theme-color" content="#2F2F2F">  <link rel="stylesheet" href="css/main.css"><link rel="stylesheet" href="css/dark-mode.css"><link rel="stylesheet" href="css/rtl.css"><link rel="stylesheet" href="css/animations.css">
   <script>(function(){var t=localStorage.getItem('lumiere-theme');if(!t)t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t);var d=localStorage.getItem('lumiere-dir')||'ltr';document.documentElement.setAttribute('dir',d);})();</script>
   <style>
-    .dashboard-layout { display: grid; grid-template-columns: 260px 1fr; min-height: 100vh; grid-template-rows: auto 1fr; }
-    .dashboard-sidebar { background: var(--bg-primary); border-inline-end: 1px solid var(--border-color); padding: var(--space-6) 0; position: sticky; top: var(--header-height); height: calc(100vh - var(--header-height)); overflow-y: auto; grid-row: 2; transition: transform var(--transition-base); }
-    .dashboard-main { padding: var(--space-8); background: var(--bg-secondary); min-height: calc(100vh - var(--header-height)); grid-row: 2; }
+    .dashboard-layout { display: grid; grid-template-columns: 260px 1fr; min-height: 100vh; }
+    .dashboard-sidebar { background: var(--bg-primary); border-inline-end: 1px solid var(--border-color); padding: var(--space-6) 0; position: sticky; top: 0; height: 100vh; overflow-y: auto; transition: transform var(--transition-base); }
+    .dashboard-main { padding: var(--space-8); background: var(--bg-secondary); min-height: 100vh; }
     .sidebar-link { display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3) var(--space-6); font-size: var(--text-sm); font-weight: 500; color: var(--text-secondary); text-decoration: none; transition: background var(--transition-fast), color var(--transition-fast); border-inline-start: 3px solid transparent; }
     .sidebar-link:hover, .sidebar-link.active { background: var(--bg-secondary); color: var(--text-primary); border-inline-start-color: var(--color-pink); }
     .sidebar-link.active { font-weight: 700; }
@@ -31,7 +31,7 @@
     .sidebar-badge { display: inline-flex; align-items: center; justify-content: center; min-width: 20px; height: 20px; background: var(--color-pink); color: var(--color-charcoal); font-size: 10px; font-weight: 700; border-radius: 999px; padding-inline: 5px; margin-inline-start: auto; }
     @media (max-width: 1023px) {
       .dashboard-layout { grid-template-columns: 1fr; }
-      .dashboard-sidebar { position: fixed; inset-block: 0; inset-inline-start: 0; z-index: 200; width: 280px; transform: translateX(calc(-100% - 10px)); box-shadow: var(--shadow-xl); height: 100%; top: 0; padding-block-start: calc(var(--header-height) + var(--space-4)); }
+      .dashboard-sidebar { position: fixed; inset-block: 0; inset-inline-start: 0; z-index: 200; width: 280px; transform: translateX(calc(-100% - 10px)); box-shadow: var(--shadow-xl); height: 100%; top: 0; padding-block-start: var(--space-4); }
       [dir="rtl"] .dashboard-sidebar { inset-inline-start: auto; inset-inline-end: 0; transform: translateX(calc(100% + 10px)); }
       .dashboard-sidebar.open { transform: translateX(0); }
       [dir="rtl"] .dashboard-sidebar.open { transform: translateX(0); }
@@ -47,111 +47,17 @@
 </head>
 <body>
 
-<!-- HEADER --><header class="site-header" role="banner">
-  <div class="header-inner">
-
-    <!-- Logo -->
-    <a href="index.html" class="site-logo" aria-label="Lumière Gallery Home">
-      <div>
-        <span class="site-logo__text">Lumière</span>
-        
-      </div>
-    </a>
-
-    <!-- Primary Navigation -->
-    <nav class="primary-nav" role="navigation" aria-label="Main navigation">
-
-      <!-- Home Dropdown -->
-      <div class="nav-dropdown">
-        <a href="index.html" class="nav-link nav-dropdown__trigger">Home</a>
-        <div class="nav-dropdown__menu" role="menu">
-          <a href="index.html" class="nav-dropdown__item" role="menuitem">
-            Home Page 1
-            <span class="item-sub">General Services Landing</span>
-          </a>
-          <a href="home-2.html" class="nav-dropdown__item" role="menuitem">
-            Home Page 2
-            <span class="item-sub">Digital Agency / SaaS</span>
-          </a>
-        </div>
-      </div>
-
-      <a href="about.html" class="nav-link">About Us</a>
-      <div class="nav-dropdown"><a href="services.html" class="nav-link nav-dropdown__trigger">Services</a><div class="nav-dropdown__menu" role="menu"><a href="services.html" class="nav-dropdown__item" role="menuitem">Services<span class="item-sub">All Services</span></a><a href="service-details.html" class="nav-dropdown__item" role="menuitem">Service Details<span class="item-sub">Individual Service</span></a></div></div>
-      <div class="nav-dropdown"><a href="blog.html" class="nav-link nav-dropdown__trigger">Blog</a><div class="nav-dropdown__menu" role="menu"><a href="blog.html" class="nav-dropdown__item" role="menuitem">Blog<span class="item-sub">All Articles</span></a><a href="blog-details.html" class="nav-dropdown__item" role="menuitem">Blog Details<span class="item-sub">Article View</span></a></div></div>
-      <a href="contact.html" class="nav-link">Contact</a>
-      <a href="pricing.html" class="nav-link">Pricing</a>
-
-      <!-- Dashboard Dropdown -->
-      <div class="nav-dropdown">
-        <span class="nav-link nav-dropdown__trigger" style="cursor:pointer;">Dashboard</span>
-        <div class="nav-dropdown__menu" role="menu">
-          <a href="admin-dashboard.html" class="nav-dropdown__item" role="menuitem">
-            Admin Dashboard
-            <span class="item-sub">Analytics & Management</span>
-          </a>
-          <a href="user-dashboard.html" class="nav-dropdown__item" role="menuitem">
-            User Dashboard
-            <span class="item-sub">Your Bookings & Activity</span>
-          </a>
-        </div>
-      </div>
-    </nav>
-
-    <!-- Controls -->
-    <div class="header-controls">
-      <!-- Globe / RTL Toggle -->
-      <button
-        id="globe-toggle"
-        class="ctrl-btn"
-        aria-label="Toggle RTL/LTR layout direction"
-        title="Toggle layout direction"
-        aria-pressed="false"
-      >🌐</button>
-
-      <!-- Theme Toggle -->
-      <button
-        id="theme-toggle"
-        class="ctrl-btn"
-        aria-label="Switch to dark mode"
-        title="Toggle dark/light mode"
-        style="position:relative;"
-      >
-        <span class="theme-icon-label-sun"  style="position:absolute;">☀️</span>
-        <span class="theme-icon-label-moon" style="position:absolute; display:none;">🌙</span>
-        <span class="sr-only">Toggle theme</span>
-      </button>
-
-      <!-- CTA -->
-      <a href="login.html" class="btn btn--primary btn--sm">Sign In</a>
-
-      <!-- Hamburger -->
-      <button
-        id="hamburger"
-        class="hamburger"
-        aria-label="Open navigation menu"
-        aria-expanded="false"
-        aria-controls="mobile-menu"
-      >
-        <span class="hamburger__line"></span>
-        <span class="hamburger__line"></span>
-        <span class="hamburger__line"></span>
-      </button>
-    </div>
-  </div>
-</header>
-
-
-<div id="menu-backdrop" class="mobile-menu__backdrop" aria-hidden="true"></div>
-<nav id="mobile-menu" class="mobile-menu"><div class="mobile-menu__header"><a href="index.html" class="site-logo"><span class="site-logo__text">Lumière</span></a><button id="mobile-menu-close" class="mobile-menu__close">✕</button></div><div class="mobile-menu__nav"><a href="index.html" class="mobile-nav-link">Home Page 1</a><a href="home-2.html" class="mobile-nav-link">Home Page 2</a><a href="about.html" class="mobile-nav-link">About Us</a><a href="services.html" class="mobile-nav-link">Services</a><a href="service-details.html" class="mobile-nav-link">Service Details</a><a href="blog.html" class="mobile-nav-link">Blog</a><a href="blog-details.html" class="mobile-nav-link">Blog Details</a><a href="contact.html" class="mobile-nav-link">Contact</a><a href="pricing.html" class="mobile-nav-link">Pricing</a><a href="admin-dashboard.html" class="mobile-nav-link">Admin Dashboard</a><a href="user-dashboard.html" class="mobile-nav-link">User Dashboard</a><a href="login.html" class="mobile-nav-link">Sign In</a></div></nav>
 <div id="sidebar-backdrop" style="position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:199;display:none;opacity:0;transition:opacity 0.3s;" onclick="document.querySelector('.dashboard-sidebar').classList.remove('open');this.style.opacity='0';setTimeout(()=>this.style.display='none',300);"></div>
 
 <main id="main-content">
-<div class="dashboard-layout" style="padding-block-start:var(--header-height);">
+<div class="dashboard-layout">
 
   <!-- SIDEBAR -->
   <aside class="dashboard-sidebar" role="navigation" aria-label="Dashboard navigation" id="dashboard-sidebar">
-    <div style="padding: var(--space-4) var(--space-6) var(--space-2);">
+    <div style="padding: var(--space-6) var(--space-6) var(--space-4); border-block-end: 1px solid var(--border-color); margin-block-end: var(--space-4);">
+      <a href="index.html" class="site-logo" style="margin-block-end: var(--space-6); display: block;">
+        <span class="site-logo__text">Lumière</span>
+      </a>
       <div style="display:flex;align-items:center;gap:var(--space-3);">
         <img src="images/team/team-1.png" alt="Admin user profile" style="width:40px;height:40px;border-radius:50%;object-fit:cover;border:2px solid var(--color-pink);" loading="lazy">
         <div><p style="font-weight:700;font-size:var(--text-sm);color:var(--text-primary);">Eleanor Whitfield</p><p style="font-size:var(--text-xs);color:var(--text-muted);">Gallery Director</p></div>
@@ -333,7 +239,6 @@
 </div><!-- /.dashboard-layout -->
 </main>
 
-<!-- FOOTER --><footer class="site-footer" role="contentinfo"><div class="container"><div class="footer-grid"><div class="footer-col"><a href="index.html" class="footer-brand"><span class="footer-logo__text">Lumière</span></a><p class="footer-description">Lumière Gallery & Exhibition Space is a premier curator of visual arts experiences, dedicated to connecting extraordinary artists with passionate audiences across the globe.</p></div><div class="footer-col"><h3 class="footer-col__title">Quick Links</h3><ul class="footer-links"><li><a href="index.html" class="footer-link">Home</a></li><li><a href="about.html" class="footer-link">About Us</a></li><li><a href="services.html" class="footer-link">Services</a></li><li><a href="blog.html" class="footer-link">Blog</a></li><li><a href="contact.html" class="footer-link">Contact</a></li><li><a href="pricing.html" class="footer-link">Pricing</a></li></ul></div><div class="footer-col"><h3 class="footer-col__title">Services</h3><ul class="footer-links"><li><a href="service-details.html" class="footer-link">Exhibition Curation</a></li><li><a href="service-details.html" class="footer-link">Digital Gallery</a></li><li><a href="service-details.html" class="footer-link">Art Consulting</a></li><li><a href="service-details.html" class="footer-link">Event Hosting</a></li><li><a href="admin-dashboard.html" class="footer-link">Admin Dashboard</a></li><li><a href="user-dashboard.html" class="footer-link">User Dashboard</a></li></ul></div><div class="footer-col"><h3 class="footer-col__title">Get In Touch</h3><div class="footer-contact-item"><span class="footer-contact-icon">✉</span><span>hello@lumieregallery.com</span></div><div class="footer-contact-item"><span class="footer-contact-icon">✆</span><span>+1 (555) ART-0101</span></div><div class="footer-contact-item"><span class="footer-contact-icon">⌂</span><span>42 Artisan Blvd, New York, NY 10001</span></div><div class="footer-newsletter" style="margin-block-start:var(--space-6);"><h3 class="footer-col__title">Newsletter</h3><form class="newsletter-form"><input type="email" class="form-input" placeholder="Your email" required aria-label="Newsletter email" style="margin-block-end:var(--space-3);"><button type="submit" class="btn btn--primary btn--full" style="background:var(--color-pink);color:var(--color-charcoal);border-color:var(--color-pink);">Subscribe</button><p class="newsletter-success" style="display:none;color:#4ade80;font-size:var(--text-xs);margin-block-start:var(--space-2);">✓ Subscribed!</p></form></div></div></div><div class="footer-bottom"><p class="footer-copyright">© 2025 Lumière Gallery & Exhibition Space. All rights reserved.</p></div></div></footer>
 
 <script src="js/theme-toggle.js"></script><script src="js/rtl-toggle.js"></script><script src="js/animations.js"></script><script src="js/main.js"></script><script src="js/charts.js"></script>
 <script>
