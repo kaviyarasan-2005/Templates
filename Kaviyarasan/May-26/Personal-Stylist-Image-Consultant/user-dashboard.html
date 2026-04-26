@@ -13,7 +13,7 @@
   <meta name="theme-color" content="#2F2F2F">  <link rel="stylesheet" href="css/main.css"><link rel="stylesheet" href="css/dark-mode.css"><link rel="stylesheet" href="css/rtl.css"><link rel="stylesheet" href="css/animations.css">
   <script>(function(){var t=localStorage.getItem('lumiere-theme');if(!t)t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t);var d=localStorage.getItem('lumiere-dir')||'ltr';document.documentElement.setAttribute('dir',d);})();</script>
   <style>
-    .dashboard-layout { display: grid; grid-template-columns: 240px 1fr; min-height: 100vh; }
+    .dashboard-layout { display: grid; grid-template-columns: 240px 1fr; min-height: 100vh; padding-block-start: 0; }
     .dashboard-sidebar { background: var(--bg-primary); border-inline-end: 1px solid var(--border-color); padding: var(--space-6) 0; position: sticky; top: 0; height: 100vh; overflow-y: auto; grid-row: 1; transition: transform var(--transition-base); }
     .dashboard-main { padding: var(--space-8); background: var(--bg-secondary); }
     .sidebar-link { display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3) var(--space-6); font-size: var(--text-sm); font-weight: 500; color: var(--text-secondary); text-decoration: none; transition: background var(--transition-fast), color var(--transition-fast); border-inline-start: 3px solid transparent; }
@@ -92,8 +92,8 @@
       </div>
     </section>
 
-    <!-- SECTION 2: ACTIVITY CHART + SAVED ARTWORKS -->
-    <section id="my-activity" style="display:grid;grid-template-columns:1.4fr 1fr;gap:var(--space-4);margin-block-end:var(--space-6);" aria-label="Activity and Saved Artworks">
+    <!-- SECTION 2: ANALYTICS GRID -->
+    <section id="my-activity" style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4);margin-block-end:var(--space-6);" aria-label="Activity and Insights">
       <div class="chart-container">
         <h2 style="font-size:var(--text-md);font-weight:700;margin-block-end:var(--space-4);">My Activity (2025)</h2>
         <canvas id="user-activity-chart" style="height:220px;" aria-label="Area chart showing user activity — views, saves, and event attendance over 2025" role="img"></canvas>
@@ -101,6 +101,14 @@
       <div class="chart-container">
         <h2 style="font-size:var(--text-md);font-weight:700;margin-block-end:var(--space-4);">Monthly Bookings</h2>
         <canvas id="booking-history-chart" style="height:220px;" aria-label="Bar chart showing monthly booking history" role="img"></canvas>
+      </div>
+      <div class="chart-container">
+        <h2 style="font-size:var(--text-md);font-weight:700;margin-block-end:var(--space-4);">Your Collection by Genre</h2>
+        <canvas id="user-genre-chart" style="height:220px;" aria-label="Donut chart showing art genre preferences" role="img"></canvas>
+      </div>
+      <div class="chart-container">
+        <h2 style="font-size:var(--text-md);font-weight:700;margin-block-end:var(--space-4);">Top Followed Artists</h2>
+        <canvas id="user-artist-chart" style="height:220px;" aria-label="Horizontal bar chart showing engagement with different artists" role="img"></canvas>
       </div>
     </section>
 

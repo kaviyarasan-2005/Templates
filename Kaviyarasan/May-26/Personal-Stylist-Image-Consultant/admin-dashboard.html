@@ -13,7 +13,7 @@
   <meta name="theme-color" content="#2F2F2F">  <link rel="stylesheet" href="css/main.css"><link rel="stylesheet" href="css/dark-mode.css"><link rel="stylesheet" href="css/rtl.css"><link rel="stylesheet" href="css/animations.css">
   <script>(function(){var t=localStorage.getItem('lumiere-theme');if(!t)t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t);var d=localStorage.getItem('lumiere-dir')||'ltr';document.documentElement.setAttribute('dir',d);})();</script>
   <style>
-    .dashboard-layout { display: grid; grid-template-columns: 260px 1fr; min-height: 100vh; }
+    .dashboard-layout { display: grid; grid-template-columns: 260px 1fr; min-height: 100vh; padding-block-start: 0; }
     .dashboard-sidebar { background: var(--bg-primary); border-inline-end: 1px solid var(--border-color); padding: var(--space-6) 0; position: sticky; top: 0; height: 100vh; overflow-y: auto; transition: transform var(--transition-base); }
     .dashboard-main { padding: var(--space-8); background: var(--bg-secondary); min-height: 100vh; }
     .sidebar-link { display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3) var(--space-6); font-size: var(--text-sm); font-weight: 500; color: var(--text-secondary); text-decoration: none; transition: background var(--transition-fast), color var(--transition-fast); border-inline-start: 3px solid transparent; }

@@ -421,6 +421,16 @@
       labels: ['Jan','Feb','Mar','Apr','May','Jun'],
       values: [2, 1, 3, 4, 2, 5]
     });
+
+    drawDonutChart('user-genre-chart', {
+      labels: ['Contemporary','Renaissance','Digital Art','Impressionism','Abstract'],
+      values: [45, 20, 15, 10, 10]
+    });
+
+    drawHBarChart('user-artist-chart', {
+      labels: ['Marcus Chen','Sofía Delacroix','Lara Vasquez','Amara Osei','Elena Rossi'],
+      values: [124, 98, 85, 72, 45]
+    });
   }
 
   // Observe section visibility so charts render on scroll
