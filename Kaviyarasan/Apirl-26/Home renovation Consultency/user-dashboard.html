@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" dir="ltr" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Renovo � Premium home renovation and contracting services. Transform your space with expert craftsmanship and modern design.">
+  <meta name="description" content="Renovo — Premium home renovation and contracting services. Transform your space with expert craftsmanship and modern design.">
   <title>Client Dashboard | Renovo</title>
   <!-- Favicons -->
   <link rel="icon" type="image/svg+xml" href="assets/images/favicons/favicon.svg">
@@ -108,7 +108,7 @@ body{margin:0;padding:0;background:var(--bg-primary);min-height:100vh;}
         <div class="topbar-search"><i class="ph ph-magnifying-glass"></i><input type="text" placeholder="Search My Projects..."></div>
       </div>
       <div class="topbar-right">
-        <button class="icon-btn theme-toggle-btn"><i class="ph ph-moon"></i></button>
+        <button class="btn btn-outline btn-sm rtl-toggle-btn" aria-label="Toggle RTL/LTR" title="Toggle RTL/LTR" style="padding: 0 12px; height: 36px; min-width: 50px; font-weight: 700; font-size: 0.75rem; border:1px solid var(--border-color); margin-right: 8px;">LTR</button><button class="icon-btn theme-toggle-btn"><i class="ph ph-moon"></i></button>
         <button class="icon-btn" style="position:relative;"><i class="ph ph-bell"></i><span style="position:absolute;top:0;right:0;width:8px;height:8px;background:var(--danger);border-radius:50%;"></span></button>
         <div class="user-dropdown">
           <button class="user-dropdown-btn"><div class="user-avatar">A</div><span style="font-size:0.9rem;font-weight:600;color:var(--text-primary);">Client</span><i class="ph ph-caret-down"></i></button>
@@ -122,64 +122,167 @@ body{margin:0;padding:0;background:var(--bg-primary);min-height:100vh;}
       </div>
     </header>
     
-    <div class="dashboard-content">
-      <h2 style="margin-bottom:24px;">Client Portal</h2>
+        <div class="dashboard-content">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:24px;">
+        <h2 style="margin:0;">Client Portal</h2>
+        <div style="font-size:0.85rem; color:var(--text-muted);">Welcome back, Sarah!</div>
+      </div>
       
-      <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(240px,1fr));gap:20px;">
+      <!-- TOP STATS -->
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:20px;">
         <div class="stat-card">
-          <div class="stat-icon" style="background:rgba(232,98,42,0.1);color:var(--primary);"><i class="ph-fill ph-briefcase"></i></div>
-          <div class="stat-info"><h4>My My Projects</h4><div class="val">24</div></div>
+          <div class="stat-icon" style="background:rgba(232,98,42,0.1); color:var(--primary);"><i class="ph-fill ph-briefcase"></i></div>
+          <div class="stat-info"><h4>Active Projects</h4><div class="val">03</div></div>
         </div>
         <div class="stat-card">
-          <div class="stat-icon" style="background:rgba(39,174,96,0.1);color:var(--success);"><i class="ph-fill ph-currency-dollar"></i></div>
-          <div class="stat-info"><h4>Total Spent</h4><div class="val">$142,500</div></div>
+          <div class="stat-icon" style="background:rgba(39,174,96,0.1); color:var(--success);"><i class="ph-fill ph-currency-dollar"></i></div>
+          <div class="stat-info"><h4>Total Invested</h4><div class="val">,500</div></div>
         </div>
         <div class="stat-card">
-          <div class="stat-icon" style="background:rgba(41,128,185,0.1);color:var(--info);"><i class="ph-fill ph-users"></i></div>
-          <div class="stat-info"><h4>Documents</h4><div class="val">48</div></div>
+          <div class="stat-icon" style="background:rgba(41,128,185,0.1); color:var(--info);"><i class="ph-fill ph-file-text"></i></div>
+          <div class="stat-info"><h4>Documents</h4><div class="val">12</div></div>
         </div>
         <div class="stat-card">
-          <div class="stat-icon" style="background:rgba(243,156,18,0.1);color:var(--warning);"><i class="ph-fill ph-receipt"></i></div>
-          <div class="stat-info"><h4>Messages</h4><div class="val">12</div></div>
+          <div class="stat-icon" style="background:rgba(243,156,18,0.1); color:var(--warning);"><i class="ph-fill ph-envelope-simple"></i></div>
+          <div class="stat-info"><h4>Messages</h4><div class="val">08</div></div>
         </div>
       </div>
       
+      <!-- MAIN GRID ROW 1: Project & Budget -->
       <div class="dashboard-grid">
         <div class="panel">
-          <div class="panel-header"><h3>Recent My Projects</h3><a href="#" style="color:var(--primary);font-size:0.875rem;">View All</a></div>
-          <div class="table-responsive">
-            <table class="table">
-              <thead><tr><th>Project</th><th>Client</th><th>Budget</th><th>Status</th></tr></thead>
-              <tbody>
-                <tr><td><strong>Kitchen Remodel</strong><br><span style="font-size:0.8rem;color:var(--text-muted);">Beverly Hills</span></td><td>Sarah Mitchell</td><td>$45,000</td><td><span class="status active">In Progress</span></td></tr>
-                <tr><td><strong>Full Home Renovation</strong><br><span style="font-size:0.8rem;color:var(--text-muted);">Santa Monica</span></td><td>James Rodriguez</td><td>$210,000</td><td><span class="status pending">Permits</span></td></tr>
-                <tr><td><strong>Master Bath Addition</strong><br><span style="font-size:0.8rem;color:var(--text-muted);">Malibu</span></td><td>Amara Chen</td><td>$35,000</td><td><span class="status active">In Progress</span></td></tr>
-                <tr><td><strong>Exterior Painting</strong><br><span style="font-size:0.8rem;color:var(--text-muted);">Pasadena</span></td><td>Robert Kim</td><td>$12,000</td><td><span class="status active">In Progress</span></td></tr>
-              </tbody>
-            </table>
+          <div class="panel-header"><h3>Project Timeline</h3></div>
+          <div style="padding-top: 10px;">
+            <div style="display:flex; gap:16px; margin-bottom: 24px;">
+              <div style="display:flex; flex-direction:column; align-items:center;">
+                <div style="width:24px; height:24px; border-radius:50%; background:var(--success); color:#fff; display:flex; align-items:center; justify-content:center; font-size:0.7rem;"><i class="ph ph-check"></i></div>
+                <div style="flex:1; width:2px; background:var(--success); margin: 4px 0;"></div>
+              </div>
+              <div><h4 style="margin:0; font-size:0.9rem;">Design Approved</h4><p style="margin:4px 0 0; font-size:0.75rem; color:var(--text-muted);">March 15, 2024</p></div>
+            </div>
+            <div style="display:flex; gap:16px; margin-bottom: 24px;">
+              <div style="display:flex; flex-direction:column; align-items:center;">
+                <div style="width:24px; height:24px; border-radius:50%; background:var(--primary); color:#fff; display:flex; align-items:center; justify-content:center; font-size:0.7rem;"><i class="ph ph-wrench"></i></div>
+                <div style="flex:1; width:2px; background:var(--border-color); margin: 4px 0;"></div>
+              </div>
+              <div><h4 style="margin:0; font-size:0.9rem;">Phase 1: Demolition</h4><p style="margin:4px 0 0; font-size:0.75rem; color:var(--text-muted);">In Progress - 75%</p></div>
+            </div>
+            <div style="display:flex; gap:16px;">
+              <div style="width:24px; height:24px; border-radius:50%; background:var(--bg-tertiary); color:var(--text-muted); display:flex; align-items:center; justify-content:center; font-size:0.75rem;">3</div>
+              <div><h4 style="margin:0; font-size:0.9rem;">Phase 2: Construction</h4><p style="margin:4px 0 0; font-size:0.75rem; color:var(--text-muted);">Starts April 05</p></div>
+            </div>
           </div>
         </div>
-        
+
         <div class="panel">
           <div class="panel-header"><h3>Budget Tracker</h3></div>
-          <div class="chart-container">
-            <div style="width:100%;"><div style="display:flex;justify-content:space-between;margin-bottom:8px;"><span>Spent: $45,000</span><span>Budget: $60,000</span></div><div style="height:12px;background:var(--bg-tertiary);border-radius:6px;overflow:hidden;"><div style="height:100%;width:75%;background:var(--primary);"></div></div></div>
-            <div class="chart-bar"><div class="chart-bar-fill" data-height="60%"></div><span class="chart-label">Feb</span></div>
-            <div class="chart-bar"><div class="chart-bar-fill" data-height="35%"></div><span class="chart-label">Mar</span></div>
-            <div class="chart-bar"><div class="chart-bar-fill" data-height="80%"></div><span class="chart-label">Apr</span></div>
-            <div class="chart-bar"><div class="chart-bar-fill" data-height="95%"></div><span class="chart-label">May</span></div>
-            <div class="chart-bar"><div class="chart-bar-fill" data-height="70%"></div><span class="chart-label">Jun</span></div>
+          <div style="display:flex; flex-direction:column; gap:24px; padding-top:10px;">
+            <div>
+              <div style="display:flex; justify-content:space-between; margin-bottom:8px; font-size:0.85rem;"><span>Spent: ,000</span><span>Budget: ,000</span></div>
+              <div style="height:10px; background:var(--bg-tertiary); border-radius:5px; overflow:hidden;"><div style="height:100%; width:75%; background:var(--primary);"></div></div>
+            </div>
+            <div class="chart-container" style="height:150px;">
+              <div class="chart-bar"><div class="chart-bar-fill" data-height="60%"></div><span class="chart-label">Feb</span></div>
+              <div class="chart-bar"><div class="chart-bar-fill" data-height="80%"></div><span class="chart-label">Mar</span></div>
+              <div class="chart-bar"><div class="chart-bar-fill" data-height="95%"></div><span class="chart-label">Apr</span></div>
+            </div>
           </div>
+        </div>
+      </div>
+
+      <!-- MAIN GRID ROW 2: Milestones & Docs -->
+      <div class="dashboard-grid">
+        <div class="panel" style="background: linear-gradient(135deg, var(--primary) 0%, #E8622A 100%); color: #fff; border:none; display:flex; flex-direction:column; justify-content:center;">
+          <div class="panel-header"><h3 style="color:#fff; margin:0;">Next Milestone</h3><i class="ph ph-calendar-check" style="font-size:1.5rem;"></i></div>
+          <div style="margin-top:20px;">
+            <div style="font-size:2.5rem; font-weight:800; line-height:1;">April 05</div>
+            <p style="margin:8px 0 24px; color:#fff;">Plumbing Inspection & Approval</p>
+            <a href="#" class="btn btn-outline-white w-100">Add to Calendar</a>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-header"><h3>Required Documents</h3></div>
+          <div style="display:flex; flex-direction:column; gap:12px;">
+            <div style="background:var(--bg-tertiary); padding:12px; border-radius:10px; display:flex; align-items:center; justify-content:space-between;">
+              <div style="display:flex; gap:10px; align-items:center;"><i class="ph ph-file-pdf" style="color:var(--danger);"></i><span style="font-size:0.8rem; font-weight:600;">Permit Approval</span></div>
+              <i class="ph ph-check-circle" style="color:var(--success);"></i>
+            </div>
+            <div style="background:var(--bg-tertiary); padding:12px; border-radius:10px; display:flex; align-items:center; justify-content:space-between;">
+              <div style="display:flex; gap:10px; align-items:center;"><i class="ph ph-file-pdf" style="color:var(--danger);"></i><span style="font-size:0.8rem; font-weight:600;">Insurance Cert</span></div>
+              <a href="#" style="font-size:0.75rem; color:var(--primary); font-weight:700;">Sign Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+      <!-- ROW 3: Extra Info & Messages -->
+      <div class="dashboard-grid">
+        <!-- Infographic: Your Impact / Satisfaction -->
+        <div class="panel" style="text-align:center; display:flex; flex-direction:column; justify-content:center;">
+          <div class="panel-header" style="justify-content:center;"><h3 style="margin:0;">Project Success</h3></div>
+          <div style="font-size:3rem; color:var(--success); margin: 10px 0;"><i class="ph-fill ph-hands-clapping"></i></div>
+          <div style="font-size:1.5rem; font-weight:800; margin-bottom:4px;">98%</div>
+          <p style="font-size:0.8rem; color:var(--text-muted); margin:0;">On-track for scheduled completion</p>
+        </div>
+
+        <!-- Infographic: Referral Program -->
+        <div class="panel" style="background:rgba(41,128,185,0.05); border:1px dashed var(--info); display:flex; flex-direction:column; justify-content:center; text-align:center;">
+          <div style="font-size:1.5rem; color:var(--info); margin-bottom:8px;"><i class="ph-fill ph-gift"></i></div>
+          <h4 style="margin:0 0 8px;">Refer a Friend</h4>
+          <p style="font-size:0.75rem; color:var(--text-muted); margin-bottom:16px;">Get a $500 credit on your next project for every successful referral.</p>
+          <a href="#" class="btn btn-outline btn-sm" style="color:var(--info); border-color:var(--info);">Get Invite Link</a>
+        </div>
+      </div>
+
+      <!-- RECENT MESSAGES -->
+      <div class="panel" style="margin-top:24px;">
+        <div class="panel-header"><h3>Recent Messages</h3><a href="#" style="color:var(--primary); font-size:0.875rem;">Open Inbox</a></div>
+        <div style="display:flex; flex-direction:column; gap:16px;">
+          <div style="display:flex; gap:16px; padding:16px; background:var(--bg-tertiary); border-radius:12px; align-items:center;">
+            <div style="width:40px; height:40px; border-radius:50%; background:var(--primary); color:#fff; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-weight:700;">DH</div>
+            <div style="flex:1;">
+              <div style="display:flex; justify-content:space-between; margin-bottom:4px;"><span style="font-size:0.9rem; font-weight:700;">Daniel Hayes</span><span style="font-size:0.75rem; color:var(--text-muted);">10:30 AM</span></div>
+              <p style="font-size:0.85rem; color:var(--text-secondary); margin:0; line-height:1.4;">The plumbing materials have arrived on site. We will begin the installation first thing tomorrow morning.</p>
+            </div>
+          </div>
+          <div style="display:flex; gap:16px; padding:16px; background:var(--bg-tertiary); border-radius:12px; align-items:center;">
+            <div style="width:40px; height:40px; border-radius:50%; background:var(--secondary); color:#fff; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-weight:700;">SR</div>
+            <div style="flex:1;">
+              <div style="display:flex; justify-content:space-between; margin-bottom:4px;"><span style="font-size:0.9rem; font-weight:700;">Sofia Reyes</span><span style="font-size:0.75rem; color:var(--text-muted);">Yesterday</span></div>
+              <p style="font-size:0.85rem; color:var(--text-secondary); margin:0; line-height:1.4;">I have uploaded the new floor plans with the bathroom adjustment. Please review and sign the approval.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RECENT PROJECTS -->
+      <div class="panel" style="margin-top:24px;">
+        <div class="panel-header"><h3>My Active Projects</h3></div>
+        <div class="table-responsive">
+          <table class="table">
+            <thead><tr><th>Project</th><th>Lead Designer</th><th>Budget</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Kitchen Remodel</strong><br><span style="font-size:0.8rem; color:var(--text-muted);">Beverly Hills</span></td><td>Daniel Hayes</td><td>,000</td><td><span class="status active">Construction</span></td></tr>
+              <tr><td><strong>Master Bath</strong><br><span style="font-size:0.8rem; color:var(--text-muted);">Malibu</span></td><td>Sofia Reyes</td><td>,000</td><td><span class="status active">Design</span></td></tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
-  </main>
+      </div>
+    </main>
 </div>
 <style>@media(max-width:1024px){#mobile-sidebar-toggle{display:block !important;}.dashboard-overlay.open{display:block !important;}}</style>
 <script src="assets/js/main.js"></script>
 <script src="assets/js/dashboard.js"></script>
 </body>
 </html>
+
+
+
+
 
 
 
