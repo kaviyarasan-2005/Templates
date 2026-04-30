@@ -1,39 +1,120 @@
-﻿/* ============================================
-   RenovoPro - RTL Overrides
+/* ============================================
+   Renovo - RTL Overrides
    rtl.css
    ============================================ */
-[dir="rtl"] body { direction: rtl; text-align: right; }
-[dir="rtl"] .navbar-inner { flex-direction: row-reverse; }
-[dir="rtl"] .navbar-nav { flex-direction: row-reverse; }
-[dir="rtl"] .dropdown-menu { left: auto; right: 0; }
-[dir="rtl"] .navbar-actions { flex-direction: row-reverse; }
-[dir="rtl"] .mobile-nav { right: auto; left: -100%; }
-[dir="rtl"] .mobile-nav.open { left: 0; right: auto; }
-[dir="rtl"] .footer-grid { direction: rtl; }
-[dir="rtl"] .footer-links a:hover { padding-left: 0; padding-right: 4px; }
-[dir="rtl"] .footer-bottom { flex-direction: row-reverse; }
-[dir="rtl"] .hero-content { direction: rtl; }
-[dir="rtl"] .hero-actions { flex-direction: row-reverse; }
-[dir="rtl"] .section-header { direction: rtl; }
-[dir="rtl"] .feature-item { flex-direction: row-reverse; text-align: right; }
-[dir="rtl"] .service-card .learn-more { flex-direction: row-reverse; }
-[dir="rtl"] .testimonial-author { flex-direction: row-reverse; }
-[dir="rtl"] .contact-card { flex-direction: row-reverse; text-align: right; }
-[dir="rtl"] .pricing-features { text-align: right; }
-[dir="rtl"] .pricing-features li { flex-direction: row-reverse; }
-[dir="rtl"] .breadcrumb { flex-direction: row-reverse; }
-[dir="rtl"] .accordion-header { flex-direction: row-reverse; }
-[dir="rtl"] .blog-meta { flex-direction: row-reverse; }
-[dir="rtl"] .grid-2, [dir="rtl"] .grid-3, [dir="rtl"] .grid-4 { direction: rtl; }
-[dir="rtl"] .form-label { text-align: right; }
-[dir="rtl"] .form-check { flex-direction: row-reverse; }
-[dir="rtl"] .mobile-nav-links { direction: rtl; }
-[dir="rtl"] .mobile-nav-link { flex-direction: row-reverse; }
-[dir="rtl"] .footer-contact-item { flex-direction: row-reverse; text-align: right; }
-[dir="rtl"] .team-info { direction: rtl; }
-[dir="rtl"] .blog-card-body { direction: rtl; text-align: right; }
-[dir="rtl"] .dashboard-sidebar { right: 0; left: auto; transform: translateX(100%); }
-[dir="rtl"] .dashboard-sidebar.open { transform: translateX(0); }
-[dir="rtl"] .dashboard-main { margin-left: 0; margin-right: 260px; }
-[dir="rtl"] .sidebar-link { flex-direction: row-reverse; }
-[dir="rtl"] .hero-stat { direction: ltr; }
+
+/* Global RTL */
+[dir="rtl"] {
+  direction: rtl;
+  unicode-bidi: charset;
+}
+
+[dir="rtl"] body {
+  direction: rtl;
+  text-align: right;
+}
+
+/* Navbar RTL Fixes */
+[dir="rtl"] .navbar-inner {
+  flex-direction: row; /* Let natural RTL handle direction */
+}
+
+[dir="rtl"] .navbar-nav {
+  flex-direction: row;
+  margin-right: 0;
+  margin-left: auto;
+}
+
+[dir="rtl"] .navbar-actions {
+  flex-direction: row;
+  margin-left: 0;
+  margin-right: auto;
+}
+
+[dir="rtl"] .nav-link i {
+  margin-right: 4px;
+  margin-left: 0;
+}
+
+[dir="rtl"] .dropdown-menu {
+  left: auto;
+  right: 0;
+  text-align: right;
+}
+
+[dir="rtl"] .dropdown-item i {
+  margin-left: 10px;
+  margin-right: 0;
+}
+
+/* Mobile Nav RTL */
+[dir="rtl"] .mobile-nav {
+  left: auto;
+  right: -100%;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[dir="rtl"] .mobile-nav.open {
+  right: 0;
+  left: auto;
+  transform: none;
+}
+
+[dir="rtl"] .mobile-nav-close {
+  left: 16px;
+  right: auto;
+}
+
+/* Footer RTL */
+[dir="rtl"] .footer-grid {
+  direction: rtl;
+}
+
+[dir="rtl"] .footer-links {
+  padding-right: 0;
+}
+
+[dir="rtl"] .footer-links a i {
+  margin-left: 8px;
+  margin-right: 0;
+}
+
+[dir="rtl"] .footer-bottom {
+  flex-direction: row;
+}
+
+/* Common Layout RTL */
+[dir="rtl"] .grid-2, 
+[dir="rtl"] .grid-3, 
+[dir="rtl"] .grid-4 {
+  direction: rtl;
+}
+
+[dir="rtl"] .feature-item {
+  flex-direction: row;
+  text-align: right;
+}
+
+[dir="rtl"] .feature-icon-wrap {
+  margin-left: 16px;
+  margin-right: 0;
+}
+
+/* Dashboard RTL */
+[dir="rtl"] .dashboard-sidebar {
+  right: 0;
+  left: auto;
+  border-right: none;
+  border-left: 1px solid var(--border-color);
+}
+
+[dir="rtl"] .dashboard-main {
+  margin-left: 0;
+  margin-right: 260px;
+}
+
+@media (max-width: 1024px) {
+  [dir="rtl"] .dashboard-main {
+    margin-right: 0;
+  }
+}
