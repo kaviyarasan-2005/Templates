@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" dir="ltr" data-theme="light">
 
 <head>
@@ -382,11 +382,13 @@
 
     /* Blog preview */
     .blog-preview-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-3); }
+    .blog-card-img { background: var(--bg-secondary); }
+    .blog-card-img img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
 
     /* Gallery */
-    .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
-    .gallery-item { position:relative; overflow:hidden; aspect-ratio:1; border-radius: var(--radius-lg); }
-    .gallery-item img { width:100%; height:100%; object-fit:cover; transition: transform 600ms ease; }
+    .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 260px; gap: 6px; }
+    .gallery-item { position:relative; overflow:hidden; border-radius: var(--radius-lg); }
+    .gallery-item img { width:100%; height:100%; object-fit:cover; object-position:center; display:block; transition: transform 600ms ease; }
     .gallery-item:hover img { transform: scale(1.08); }
     .gallery-item-overlay { position:absolute; inset:0; background: rgba(0,0,0,0.4); opacity:0; display:flex; align-items:center; justify-content:center; transition: opacity 300ms ease; }
     .gallery-item:hover .gallery-item-overlay { opacity:1; }
@@ -440,7 +442,7 @@
 
       .about-split { grid-template-columns: 1fr; }
       .blog-preview-grid { grid-template-columns: repeat(2,1fr); }
-      .gallery-grid { grid-template-columns: repeat(3,1fr); }
+      .gallery-grid { grid-template-columns: repeat(3,1fr); grid-auto-rows: 220px; }
       .gallery-item.gallery-wide { grid-column: span 1; }
       .newsletter-strip-inner { flex-direction: column; text-align: center; }
     }
@@ -463,7 +465,7 @@
       }
 
       .blog-preview-grid { grid-template-columns: 1fr; }
-      .gallery-grid { grid-template-columns: repeat(2,1fr); }
+      .gallery-grid { grid-template-columns: repeat(2,1fr); grid-auto-rows: 180px; }
     }
   </style>
   <!-- Structured Data -->
@@ -674,14 +676,7 @@
           </div>
         </div>
       </div>
-      <!-- Scroll Indicator -->
-      <div class="hero-scroll-indicator" onclick="document.getElementById('stats').scrollIntoView({behavior:'smooth'})">
-        <span>Scroll</span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <line x1="12" y1="5" x2="12" y2="19" />
-          <polyline points="19 12 12 19 5 12" />
-        </svg>
-      </div>
+
     </section>
 
     <!-- â•â•â• STATS BAR â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
@@ -1066,7 +1061,7 @@
     </section>
 
     <!-- â•â•â• PORTFOLIO GALLERY â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
-    <section class="section" aria-labelledby="gallery-heading">
+    <section class="section" aria-labelledby="gallery-heading" style="background: linear-gradient(135deg, var(--bg-secondary) 0%, rgba(109,76,65,0.06) 50%, var(--bg-secondary) 100%);">
       <div class="container">
         <div class="section-header">
           <span class="section-tag reveal">Portfolio</span>
