@@ -105,8 +105,8 @@
 .sidebar-nav-link {
   display: flex;
   align-items: center;
-  gap: var(--space-1);
-  padding: 0.625em 0.875em;
+  gap: var(--space-2);
+  padding: 0.5em 1em;
   border-radius: var(--radius-md);
   font-size: var(--text-sm);
   font-weight: 500;
