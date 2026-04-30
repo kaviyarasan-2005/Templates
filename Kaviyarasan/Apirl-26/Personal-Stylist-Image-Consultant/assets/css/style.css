@@ -67,6 +67,24 @@
   gap: 8px;
   z-index: var(--z-fixed);
 }
+
+/* Always high-contrast on the dark auth overlay */
+.auth-toggles .nav-action-btn {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.5);
+  color: #ffffff;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.auth-toggles .nav-action-btn:hover {
+  background: rgba(255, 255, 255, 0.30);
+  border-color: rgba(255, 255, 255, 0.85);
+  color: #ffffff;
+  transform: scale(1.05);
+}
+.auth-toggles .nav-action-btn svg {
+  stroke: #ffffff;
+}
 .auth-logo-mark {
   width: 44px; height: 44px; border-radius: 50%;
   background: linear-gradient(135deg, var(--color-brown), var(--color-brown-dark));
@@ -121,6 +139,42 @@
   .auth-header-wrap {
     flex-direction: column;
     gap: var(--space-3);
+  }
+
+  /* On mobile in LIGHT mode, card covers the dark overlay —
+     switch toggles to dark/brown for proper contrast */
+  .auth-toggles .nav-action-btn {
+    background: rgba(109, 76, 65, 0.1);
+    border-color: var(--color-brown);
+    color: var(--color-brown);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+  .auth-toggles .nav-action-btn:hover {
+    background: var(--color-brown);
+    border-color: var(--color-brown);
+    color: #ffffff;
+  }
+  .auth-toggles .nav-action-btn svg {
+    stroke: var(--color-brown);
+  }
+  .auth-toggles .nav-action-btn:hover svg {
+    stroke: #ffffff;
+  }
+
+  /* Dark mode on mobile: the card is dark, restore white buttons */
+  [data-theme="dark"] .auth-toggles .nav-action-btn {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.4);
+    color: #ffffff;
+  }
+  [data-theme="dark"] .auth-toggles .nav-action-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.8);
+    color: #ffffff;
+  }
+  [data-theme="dark"] .auth-toggles .nav-action-btn svg {
+    stroke: #ffffff;
   }
 }
 

@@ -1,6 +1,6 @@
-{
-  "name": "Élise Laurent Image Consulting",
-  "short_name": "Élise Laurent",
+﻿{
+  "name": "Ã‰lise Laurent Image Consulting",
+  "short_name": "Ã‰lise Laurent",
   "description": "Premium personal styling and image consulting services",
   "start_url": "/pages/index.html",
   "display": "standalone",
@@ -24,3 +24,4 @@
   "categories": ["lifestyle", "fashion", "beauty"],
   "lang": "en"
 }
+
