@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" dir="ltr" data-theme="light">
 <head>
   <meta charset="UTF-8">
@@ -23,22 +23,24 @@
 </head>
 
 <style>
-body{margin:0;padding:0;min-height:100vh;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;}
-@media(max-width:768px){body{grid-template-columns:1fr;overflow:auto;}}
-.auth-image{background:url("https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=900&q=80") center/cover no-repeat;position:relative;}
-.auth-image-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(15,40,64,0.85),rgba(232,98,42,0.25));display:flex;flex-direction:column;justify-content:flex-end;padding:48px;}
-.auth-panel{display:flex;flex-direction:column;justify-content:center;align-items:center;padding:48px 40px;background:var(--bg-secondary);overflow-y:auto;max-height:100vh;}
-.auth-card{width:100%;max-width:420px;}
+body{margin:0;padding:0;height:100vh;display:grid;grid-template-columns:1.1fr 0.9fr;overflow:hidden;}
+@media(max-width:1024px){body{grid-template-columns:1fr 1fr;}}
+@media(max-width:768px){body{grid-template-columns:1fr;height:auto;overflow:auto;}}
+.auth-image{background:url("https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=900&q=80") center/cover no-repeat;height:100vh;position:relative;}
+.auth-image-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(15,40,64,0.85),rgba(232,98,42,0.25));display:flex;flex-direction:column;justify-content:flex-end;padding:60px;}
+.auth-panel{display:flex;flex-direction:column;align-items:center;padding:80px 40px;background:var(--bg-secondary);height:100vh;overflow-y:auto;position:relative;}
+.auth-card{width:100%;max-width:420px;margin:auto;}
 .auth-logo{display:flex;flex-direction:column;align-items:center;margin-bottom:32px;}
 .auth-logo-icon{width:56px;height:56px;background:var(--primary);border-radius:12px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.5rem;margin-bottom:10px;}
 .auth-logo-name{font-family:var(--font-heading);font-size:1.5rem;font-weight:700;color:var(--secondary);}
 .auth-logo-name span{color:var(--primary);}
-.auth-divider{display:flex;align-items:center;gap:12px;margin:20px 0;}
+.auth-divider{display:flex;align-items:center;gap:12px;margin:24px 0;}
 .auth-divider::before,.auth-divider::after{content:"";flex:1;height:1px;background:var(--border-color);}
 .auth-divider span{font-size:0.8rem;color:var(--text-muted);white-space:nowrap;}
 .social-login-btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:12px;border:1.5px solid var(--border-color);border-radius:8px;font-size:0.875rem;font-weight:600;color:var(--text-primary);background:var(--bg-secondary);cursor:pointer;transition:all 0.3s;margin-bottom:10px;}
 .social-login-btn:hover{border-color:var(--primary);background:rgba(232,98,42,0.05);}
-@media(max-width:768px){.auth-image{display:none;}.auth-panel{max-height:none;overflow:visible;}}
+.auth-toggles{position:fixed;top:24px;right:24px;display:flex;gap:10px;z-index:100;}
+@media(max-width:768px){.auth-image{display:none;}.auth-panel{padding:60px 24px;}.auth-toggles{position:absolute;top:16px;right:16px;}}
 </style>
 
 <body>
@@ -91,7 +93,7 @@ body{margin:0;padding:0;min-height:100vh;overflow:hidden;display:grid;grid-templ
     <p style="text-align:center;font-size:0.9rem;color:var(--text-muted);">Do not have an account? <a href="signup.html" style="color:var(--primary);font-weight:600;">Create one free</a></p>
 
     <!-- Theme/RTL toggles -->
-    <div style="display:flex;justify-content:center;gap:8px;margin-top:24px;">
+    <div class="auth-toggles">
       <button class="icon-btn theme-toggle-btn" aria-label="Toggle theme"><i class="ph ph-moon"></i></button>
       <button class="icon-btn rtl-toggle-btn" aria-label="Toggle RTL"><i class="ph ph-globe"></i></button>
     </div>
