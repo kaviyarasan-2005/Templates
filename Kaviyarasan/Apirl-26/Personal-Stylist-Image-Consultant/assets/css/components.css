@@ -1366,7 +1366,7 @@ textarea.form-control { resize: vertical; min-height: 140px; }
   margin-bottom: 4px;
   line-height: 1;
 }
-.pricing-price sup { font-size: 1.25rem; vertical-align: top; margin-top: 0.5em; }
+.pricing-price sup { font-size: inherit; vertical-align: baseline; }
 .pricing-period { font-size: var(--text-sm); color: var(--text-muted); margin-bottom: var(--space-4); }
 .pricing-features { text-align: start; margin-bottom: var(--space-4); }
 .pricing-feature {
