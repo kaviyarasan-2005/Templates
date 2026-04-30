@@ -36,20 +36,45 @@
     </a>
     <!-- Desktop Nav -->
     <nav class="navbar-nav" aria-label="Main navigation">
+      <!-- Home Dropdown -->
       <div class="nav-item">
         <a href="index.html" class="nav-link" aria-haspopup="true" aria-expanded="false" id="nav-home">
           Home <i class="ph ph-caret-down"></i>
         </a>
         <div class="dropdown-menu" role="menu" aria-labelledby="nav-home">
-          <a href="index.html" class="dropdown-item" role="menuitem"><i class="ph ph-house"></i> Home Page 1 — General</a>
-          <a href="home-2.html" class="dropdown-item" role="menuitem"><i class="ph ph-buildings"></i> Home Page 2 — Agency Style</a>
+          <a href="index.html" class="dropdown-item" role="menuitem"><i class="ph ph-house"></i> Home Page 1</a>
+          <a href="home-2.html" class="dropdown-item" role="menuitem"><i class="ph ph-buildings"></i> Home Page 2</a>
         </div>
       </div>
+      
       <div class="nav-item"><a href="about.html" class="nav-link">About Us</a></div>
-      <div class="nav-item"><a href="services.html" class="nav-link">Services</a></div>
-      <div class="nav-item"><a href="blog.html" class="nav-link">Blog</a></div>
+      
+      <!-- Services Dropdown -->
+      <div class="nav-item">
+        <a href="services.html" class="nav-link" aria-haspopup="true" aria-expanded="false" id="nav-services">
+          Services <i class="ph ph-caret-down"></i>
+        </a>
+        <div class="dropdown-menu" role="menu" aria-labelledby="nav-services">
+          <a href="services.html" class="dropdown-item" role="menuitem"><i class="ph ph-wrench"></i> All Services</a>
+          <a href="service-details.html" class="dropdown-item" role="menuitem"><i class="ph ph-info"></i> Service Details</a>
+        </div>
+      </div>
+
+      <!-- Blogs Dropdown -->
+      <div class="nav-item">
+        <a href="blog.html" class="nav-link" aria-haspopup="true" aria-expanded="false" id="nav-blog">
+          Blogs <i class="ph ph-caret-down"></i>
+        </a>
+        <div class="dropdown-menu" role="menu" aria-labelledby="nav-blog">
+          <a href="blog.html" class="dropdown-item" role="menuitem"><i class="ph ph-article"></i> Blog List</a>
+          <a href="blog-details.html" class="dropdown-item" role="menuitem"><i class="ph ph-newspaper"></i> Blog Details</a>
+        </div>
+      </div>
+
       <div class="nav-item"><a href="contact.html" class="nav-link">Contact</a></div>
       <div class="nav-item"><a href="pricing.html" class="nav-link">Pricing</a></div>
+      
+      <!-- Dashboard Dropdown -->
       <div class="nav-item">
         <a href="admin-dashboard.html" class="nav-link" aria-haspopup="true" id="nav-dashboard">
           Dashboard <i class="ph ph-caret-down"></i>
@@ -83,31 +108,50 @@
     <button class="mobile-nav-close" aria-label="Close menu"><i class="ph ph-x"></i></button>
   </div>
   <div class="mobile-nav-links">
+    <!-- Mobile Home Dropdown -->
     <a href="#" class="mobile-nav-link" data-dropdown="#mobile-dropdown-home">Home <i class="ph ph-caret-down"></i></a>
     <div class="mobile-dropdown" id="mobile-dropdown-home">
-      <a href="index.html" class="mobile-dropdown-item">Home Page 1 — General</a>
-      <a href="home-2.html" class="mobile-dropdown-item">Home Page 2 — Agency</a>
+      <a href="index.html" class="mobile-dropdown-item">Home Page 1</a>
+      <a href="home-2.html" class="mobile-dropdown-item">Home Page 2</a>
     </div>
+
     <a href="about.html" class="mobile-nav-link">About Us</a>
-    <a href="services.html" class="mobile-nav-link">Services</a>
-    <a href="blog.html" class="mobile-nav-link">Blog</a>
+
+    <!-- Mobile Services Dropdown -->
+    <a href="#" class="mobile-nav-link" data-dropdown="#mobile-dropdown-services">Services <i class="ph ph-caret-down"></i></a>
+    <div class="mobile-dropdown" id="mobile-dropdown-services">
+      <a href="services.html" class="mobile-dropdown-item">All Services</a>
+      <a href="service-details.html" class="mobile-dropdown-item">Service Details</a>
+    </div>
+
+    <!-- Mobile Blogs Dropdown -->
+    <a href="#" class="mobile-nav-link" data-dropdown="#mobile-dropdown-blogs">Blogs <i class="ph ph-caret-down"></i></a>
+    <div class="mobile-dropdown" id="mobile-dropdown-blogs">
+      <a href="blog.html" class="mobile-dropdown-item">Blog List</a>
+      <a href="blog-details.html" class="mobile-dropdown-item">Blog Details</a>
+    </div>
+
     <a href="contact.html" class="mobile-nav-link">Contact</a>
     <a href="pricing.html" class="mobile-nav-link">Pricing</a>
+
+    <!-- Mobile Dashboard Dropdown -->
     <a href="#" class="mobile-nav-link" data-dropdown="#mobile-dropdown-dash">Dashboard <i class="ph ph-caret-down"></i></a>
     <div class="mobile-dropdown" id="mobile-dropdown-dash">
       <a href="admin-dashboard.html" class="mobile-dropdown-item">Admin Dashboard</a>
       <a href="user-dashboard.html" class="mobile-dropdown-item">User Dashboard</a>
     </div>
   </div>
-  <div class="mobile-nav-actions">
-    <div style="display:flex;gap:8px;margin-bottom:8px;">
-      <button class="icon-btn rtl-toggle-btn w-100" style="width:50%;border-radius:8px;" aria-label="Toggle RTL"><i class="ph ph-globe"></i> RTL/LTR</button>
-      <button class="icon-btn theme-toggle-btn w-100" style="width:50%;border-radius:8px;" aria-label="Toggle Theme"><i class="ph ph-moon"></i> Theme</button>
+  <div class="mobile-nav-actions" style="padding: 20px; border-top: 1px solid var(--border-color); margin-top: auto;">
+    <div style="display:flex;gap:8px;margin-bottom:12px;">
+      <button class="icon-btn rtl-toggle-btn w-100" style="width:50%; border:1px solid var(--border-color); border-radius:8px;" aria-label="Toggle RTL"><i class="ph ph-globe"></i> RTL/LTR</button>
+      <button class="icon-btn theme-toggle-btn w-100" style="width:50%; border:1px solid var(--border-color); border-radius:8px;" aria-label="Toggle Theme"><i class="ph ph-moon"></i> Theme</button>
     </div>
-    <a href="login.html" class="btn btn-outline w-100">Login</a>
-
+    <a href="login.html" class="btn btn-primary w-100">Sign In <i class="ph ph-sign-in"></i></a>
   </div>
 </nav>
+
+
+
 
 <main id="main-content">
 <!-- HERO SPLIT -->
@@ -251,6 +295,11 @@ True <footer class="footer" role="contentinfo">
 <script src="assets/js/main.js"></script>
 </body>
 </html>
+
+
+
+
+
 
 
 
