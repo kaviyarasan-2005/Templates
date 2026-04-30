@@ -19,10 +19,6 @@
   border-inline-end: 1px solid var(--border-color);
   display: flex;
   flex-direction: column;
-  position: sticky;
-  top: var(--nav-height);
-  height: calc(100vh - var(--nav-height));
-  overflow-y: auto;
   transition: transform var(--transition-base), opacity var(--transition-base);
   z-index: 10;
 }
@@ -483,6 +479,7 @@
     z-index: var(--z-fixed);
     transition: inset-inline-start var(--transition-slow);
     height: calc(100vh - var(--nav-height));
+    overflow-y: auto;
     /* Reset desktop overrides and ensure it takes zero layout space */
     width: 260px !important;
     flex-shrink: 0;
