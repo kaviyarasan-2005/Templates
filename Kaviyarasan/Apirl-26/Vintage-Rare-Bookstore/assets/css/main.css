@@ -235,15 +235,21 @@ em { font-style: italic; }
 
 .navbar__logo-text {
   font-family: var(--font-heading);
-  font-size: 1.125rem;
-  font-weight: 700;
-  color: var(--primary);
+  font-size: 1.25rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--accent) 0%, #D4AF37 50%, #8B4513 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
   line-height: 1.2;
   position: relative;
   top: 1px;
-  transition: color var(--transition-base);
+  transition: filter var(--transition-base);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
-.navbar__logo:hover .navbar__logo-text { color: var(--accent); }
+.navbar__logo:hover .navbar__logo-text { filter: brightness(1.2); }
 
 /* Nav Links */
 .navbar__nav {
@@ -800,10 +806,6 @@ em { font-style: italic; }
   border-bottom: 1px solid rgba(224, 213, 199, 0.15);
 }
 
-.footer__brand .navbar__logo-text {
-  color: var(--parchment);
-  font-size: 1.25rem;
-}
 
 .footer__logo {
   display: flex;
