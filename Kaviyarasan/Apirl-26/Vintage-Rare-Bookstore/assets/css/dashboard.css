@@ -58,17 +58,21 @@
   width: 36px;
   height: 36px;
   flex-shrink: 0;
-  color: var(--primary);
 }
 
 .sidebar__logo-text {
   font-family: var(--font-heading);
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--primary);
+  font-size: 1.125rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--accent) 0%, #D4AF37 50%, #8B4513 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
   white-space: nowrap;
-  opacity: 1;
-  transition: opacity var(--transition-base);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: opacity var(--transition-base), filter var(--transition-base);
 }
 
 .sidebar.collapsed .sidebar__logo-text,
