@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" dir="ltr" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Renovo � Premium home renovation and contracting services. Transform your space with expert craftsmanship and modern design.">
+  <meta name="description" content="Renovo — Premium home renovation and contracting services. Transform your space with expert craftsmanship and modern design.">
   <title>Admin Dashboard | Renovo</title>
   <!-- Favicons -->
   <link rel="icon" type="image/svg+xml" href="assets/images/favicons/favicon.svg">
@@ -108,7 +108,7 @@ body{margin:0;padding:0;background:var(--bg-primary);min-height:100vh;}
         <div class="topbar-search"><i class="ph ph-magnifying-glass"></i><input type="text" placeholder="Search projects..."></div>
       </div>
       <div class="topbar-right">
-        <button class="icon-btn theme-toggle-btn"><i class="ph ph-moon"></i></button>
+        <button class="btn btn-outline btn-sm rtl-toggle-btn" aria-label="Toggle RTL/LTR" title="Toggle RTL/LTR" style="padding: 0 12px; height: 36px; min-width: 50px; font-weight: 700; font-size: 0.75rem; border:1px solid var(--border-color); margin-right: 8px;">LTR</button><button class="icon-btn theme-toggle-btn"><i class="ph ph-moon"></i></button>
         <button class="icon-btn" style="position:relative;"><i class="ph ph-bell"></i><span style="position:absolute;top:0;right:0;width:8px;height:8px;background:var(--danger);border-radius:50%;"></span></button>
         <div class="user-dropdown">
           <button class="user-dropdown-btn"><div class="user-avatar">A</div><span style="font-size:0.9rem;font-weight:600;color:var(--text-primary);">Admin</span><i class="ph ph-caret-down"></i></button>
@@ -122,64 +122,162 @@ body{margin:0;padding:0;background:var(--bg-primary);min-height:100vh;}
       </div>
     </header>
     
-    <div class="dashboard-content">
-      <h2 style="margin-bottom:24px;">Admin Overview</h2>
+                <div class="dashboard-content">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:24px;">
+        <h2 style="margin:0;">Admin Overview</h2>
+        <div style="font-size:0.85rem; color:var(--text-muted);">Last updated: Today, 12:45 PM</div>
+      </div>
       
-      <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(240px,1fr));gap:20px;">
+      <!-- TOP STATS -->
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:20px;">
         <div class="stat-card">
-          <div class="stat-icon" style="background:rgba(232,98,42,0.1);color:var(--primary);"><i class="ph-fill ph-briefcase"></i></div>
+          <div class="stat-icon" style="background:rgba(232,98,42,0.1); color:var(--primary);"><i class="ph-fill ph-briefcase"></i></div>
           <div class="stat-info"><h4>Active Projects</h4><div class="val">24</div></div>
         </div>
         <div class="stat-card">
-          <div class="stat-icon" style="background:rgba(39,174,96,0.1);color:var(--success);"><i class="ph-fill ph-currency-dollar"></i></div>
-          <div class="stat-info"><h4>Monthly Revenue</h4><div class="val">$142,500</div></div>
+          <div class="stat-icon" style="background:rgba(39,174,96,0.1); color:var(--success);"><i class="ph-fill ph-currency-dollar"></i></div>
+          <div class="stat-info"><h4>Monthly Revenue</h4><div class="val">,500</div></div>
         </div>
         <div class="stat-card">
-          <div class="stat-icon" style="background:rgba(41,128,185,0.1);color:var(--info);"><i class="ph-fill ph-users"></i></div>
+          <div class="stat-icon" style="background:rgba(41,128,185,0.1); color:var(--info);"><i class="ph-fill ph-users"></i></div>
           <div class="stat-info"><h4>New Leads</h4><div class="val">48</div></div>
         </div>
         <div class="stat-card">
-          <div class="stat-icon" style="background:rgba(243,156,18,0.1);color:var(--warning);"><i class="ph-fill ph-receipt"></i></div>
-          <div class="stat-info"><h4>Pending Estimates</h4><div class="val">12</div></div>
+          <div class="stat-icon" style="background:rgba(155,89,182,0.1); color:#9b59b6;"><i class="ph-fill ph-check-circle"></i></div>
+          <div class="stat-info"><h4>Completed</h4><div class="val">185</div></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon" style="background:rgba(231,76,60,0.1); color:var(--danger);"><i class="ph-fill ph-warning"></i></div>
+          <div class="stat-info"><h4>Issues</h4><div class="val">03</div></div>
         </div>
       </div>
       
+      <!-- MAIN GRID ROW 1 -->
       <div class="dashboard-grid">
         <div class="panel">
-          <div class="panel-header"><h3>Recent Projects</h3><a href="#" style="color:var(--primary);font-size:0.875rem;">View All</a></div>
-          <div class="table-responsive">
-            <table class="table">
-              <thead><tr><th>Project</th><th>Client</th><th>Budget</th><th>Status</th></tr></thead>
-              <tbody>
-                <tr><td><strong>Kitchen Remodel</strong><br><span style="font-size:0.8rem;color:var(--text-muted);">Beverly Hills</span></td><td>Sarah Mitchell</td><td>$45,000</td><td><span class="status active">In Progress</span></td></tr>
-                <tr><td><strong>Full Home Renovation</strong><br><span style="font-size:0.8rem;color:var(--text-muted);">Santa Monica</span></td><td>James Rodriguez</td><td>$210,000</td><td><span class="status pending">Permits</span></td></tr>
-                <tr><td><strong>Master Bath Addition</strong><br><span style="font-size:0.8rem;color:var(--text-muted);">Malibu</span></td><td>Amara Chen</td><td>$35,000</td><td><span class="status active">In Progress</span></td></tr>
-                <tr><td><strong>Exterior Painting</strong><br><span style="font-size:0.8rem;color:var(--text-muted);">Pasadena</span></td><td>Robert Kim</td><td>$12,000</td><td><span class="status active">In Progress</span></td></tr>
-              </tbody>
-            </table>
+          <div class="panel-header"><h3>Revenue Chart</h3></div>
+          <div class="chart-container">
+            <div class="chart-bar"><div class="chart-bar-fill" data-height="45%"></div><span class="chart-label">Jan</span></div>
+            <div class="chart-bar"><div class="chart-bar-fill" data-height="65%"></div><span class="chart-label">Feb</span></div>
+            <div class="chart-bar"><div class="chart-bar-fill" data-height="40%"></div><span class="chart-label">Mar</span></div>
+            <div class="chart-bar"><div class="chart-bar-fill" data-height="85%"></div><span class="chart-label">Apr</span></div>
+            <div class="chart-bar"><div class="chart-bar-fill" data-height="95%"></div><span class="chart-label">May</span></div>
+            <div class="chart-bar"><div class="chart-bar-fill" data-height="75%"></div><span class="chart-label">Jun</span></div>
+            <div class="chart-bar"><div class="chart-bar-fill" data-height="60%"></div><span class="chart-label">Jul</span></div>
+            <div class="chart-bar"><div class="chart-bar-fill" data-height="80%"></div><span class="chart-label">Aug</span></div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-header"><h3>Recent Activity</h3></div>
+          <div style="display:flex; flex-direction:column; gap:16px;">
+            <div style="display:flex; gap:12px; align-items:start;">
+              <div style="width:32px; height:32px; border-radius:50%; background:rgba(39,174,96,0.1); color:var(--success); display:flex; align-items:center; justify-content:center; flex-shrink:0;"><i class="ph ph-check"></i></div>
+              <div><p style="font-size:0.85rem; margin:0;"><strong>Project Beta</strong> complete</p><span style="font-size:0.7rem; color:var(--text-muted);">2h ago</span></div>
+            </div>
+            <div style="display:flex; gap:12px; align-items:start;">
+              <div style="width:32px; height:32px; border-radius:50%; background:rgba(232,98,42,0.1); color:var(--primary); display:flex; align-items:center; justify-content:center; flex-shrink:0;"><i class="ph ph-plus"></i></div>
+              <div><p style="font-size:0.85rem; margin:0;"><strong>New Lead</strong> registered</p><span style="font-size:0.7rem; color:var(--text-muted);">5h ago</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MAIN GRID ROW 2 -->
+      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap:24px; margin-top:24px;">
+        <div class="panel">
+          <div class="panel-header"><h3>Project Phases</h3></div>
+          <div style="padding-top: 10px;">
+            <div style="margin-bottom: 20px;">
+              <div style="display:flex; justify-content:space-between; margin-bottom: 8px;"><span style="font-size:0.85rem;">Planning</span><span style="font-size:0.85rem; font-weight:600;">15%</span></div>
+              <div style="height:8px; background:var(--bg-tertiary); border-radius:4px; overflow:hidden;"><div style="width:15%; height:100%; background:var(--info);"></div></div>
+            </div>
+            <div style="margin-bottom: 20px;">
+              <div style="display:flex; justify-content:space-between; margin-bottom: 8px;"><span style="font-size:0.85rem;">Construction</span><span style="font-size:0.85rem; font-weight:600;">65%</span></div>
+              <div style="height:8px; background:var(--bg-tertiary); border-radius:4px; overflow:hidden;"><div style="width:65%; height:100%; background:var(--primary);"></div></div>
+            </div>
           </div>
         </div>
         
         <div class="panel">
-          <div class="panel-header"><h3>Revenue Chart</h3></div>
-          <div class="chart-container">
-            <div class="chart-bar"><div class="chart-bar-fill" data-height="40%"></div><span class="chart-label">Jan</span></div>
-            <div class="chart-bar"><div class="chart-bar-fill" data-height="60%"></div><span class="chart-label">Feb</span></div>
-            <div class="chart-bar"><div class="chart-bar-fill" data-height="35%"></div><span class="chart-label">Mar</span></div>
-            <div class="chart-bar"><div class="chart-bar-fill" data-height="80%"></div><span class="chart-label">Apr</span></div>
-            <div class="chart-bar"><div class="chart-bar-fill" data-height="95%"></div><span class="chart-label">May</span></div>
-            <div class="chart-bar"><div class="chart-bar-fill" data-height="70%"></div><span class="chart-label">Jun</span></div>
+          <div class="panel-header"><h3>Leads Source</h3></div>
+          <div style="display:flex; flex-direction:column; gap:12px;">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <span style="font-size:0.85rem;">Google</span>
+              <div style="flex:1; height:8px; background:var(--bg-tertiary); margin:0 12px; border-radius:4px; overflow:hidden;"><div style="width:75%; height:100%; background:var(--primary);"></div></div>
+              <span style="font-size:0.85rem; font-weight:600;">75%</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <span style="font-size:0.85rem;">Social</span>
+              <div style="flex:1; height:8px; background:var(--bg-tertiary); margin:0 12px; border-radius:4px; overflow:hidden;"><div style="width:45%; height:100%; background:var(--info);"></div></div>
+              <span style="font-size:0.85rem; font-weight:600;">45%</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel" style="display:flex; gap:20px; align-items:center; justify-content:center; text-align:center;">
+          <div>
+            <div style="width:80px; height:80px; border-radius:50%; border:6px solid var(--bg-tertiary); border-top-color:var(--success); display:flex; align-items:center; justify-content:center; margin:0 auto 8px;">
+              <span style="font-size:1.25rem; font-weight:800;">82%</span>
+            </div>
+            <h4 style="margin:0; font-size:0.85rem;">Efficiency</h4>
+          </div>
+          <div style="width:1px; height:60px; background:var(--border-color);"></div>
+          <div>
+            <div style="font-size:1.5rem; color:var(--warning); margin-bottom:4px;"><i class="ph-fill ph-star"></i></div>
+            <h4 style="margin:0; font-size:1.25rem;">4.8</h4>
+            <span style="font-size:0.7rem; color:var(--text-muted);">Satisfaction</span>
           </div>
         </div>
       </div>
+
+      <!-- RECENT PROJECTS -->
+      <div class="panel" style="margin-top:24px;">
+        <div class="panel-header"><h3>Recent Projects</h3><a href="#" style="color:var(--primary); font-size:0.875rem;">View All Projects <i class="ph ph-arrow-right"></i></a></div>
+        <div class="table-responsive">
+          <table class="table">
+            <thead><tr><th>Project</th><th>Client</th><th>Budget</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Kitchen Remodel</strong><br><span style="font-size:0.8rem; color:var(--text-muted);">Beverly Hills, CA</span></td><td>Sarah Mitchell</td><td>,000</td><td><span class="status active">In Progress</span></td></tr>
+              <tr><td><strong>Full Home Renovation</strong><br><span style="font-size:0.8rem; color:var(--text-muted);">Santa Monica, CA</span></td><td>James Rodriguez</td><td>,000</td><td><span class="status pending">Permits</span></td></tr>
+              <tr><td><strong>Master Bath Addition</strong><br><span style="font-size:0.8rem; color:var(--text-muted);">Malibu, CA</span></td><td>Amara Chen</td><td>,000</td><td><span class="status active">In Progress</span></td></tr>
+              <tr><td><strong>Exterior Painting</strong><br><span style="font-size:0.8rem; color:var(--text-muted);">Pasadena, CA</span></td><td>Robert Kim</td><td>,000</td><td><span class="status active">In Progress</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
-  </main>
+      </div>
+    </main>
 </div>
 <style>@media(max-width:1024px){#mobile-sidebar-toggle{display:block !important;}.dashboard-overlay.open{display:block !important;}}</style>
 <script src="assets/js/main.js"></script>
 <script src="assets/js/dashboard.js"></script>
+
+<script>
+  // Dashboard Chart Animation
+  document.addEventListener("DOMContentLoaded", () => {
+    setTimeout(() => {
+      document.querySelectorAll(".chart-bar-fill").forEach(bar => {
+        bar.style.height = bar.getAttribute("data-height");
+      });
+    }, 500);
+  });
+</script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
