@@ -1,536 +1,1049 @@
-﻿<!DOCTYPE html>
-<html lang="en" dir="ltr" data-theme="light">
-<head>
-  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Admin Dashboard - Elise</title>
-  <meta name="description" content="Elise Admin Dashboard - manage bookings, client profiles, analytics and messages."/>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
-  <link rel="icon" href="../assets/images/icons/favicon.svg" type="image/svg+xml"/><link rel="manifest" href="../manifest.json"/><link rel="stylesheet" href="../assets/css/main.css"/><link rel="stylesheet" href="../assets/css/components.css"/>
-  <link rel="stylesheet" href="../assets/css/animations.css"/><link rel="stylesheet" href="../assets/css/dark-mode.css"/>
-  <link rel="stylesheet" href="../assets/css/rtl.css"/><link rel="stylesheet" href="../assets/css/dashboard.css"/>
-  <style>
-    /* "€"€ Admin dashboard mobile fixes (360px) "€"€ */
-    .admin-chart-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-    .admin-chart-scroll svg { display: block; min-width: 340px; }
-    .admin-infogrid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3); }
-    @media(max-width:600px){
-      .admin-infogrid { grid-template-columns: 1fr; }
-      .admin-banner-top { flex-direction: column; align-items: stretch; gap: var(--space-2); }
-      .admin-banner-top .banner-actions { display: flex; gap: var(--space-1); }
-      .admin-banner-top .banner-actions .btn { flex: 1; text-align: center; }
-      .widget-header { flex-wrap: wrap; gap: 6px; }
-      .widget-header select { font-size: 11px !important; padding: 0.25em 0.5em !important; max-width: 130px; }
-      .admin-kpi-val { font-size: 1.4rem !important; }
-      .admin-kpi-delta { font-size: 10px !important; }
-      .schedule-item { align-items: flex-start; }
-      .activity-text { word-break: break-word; }
-      .dashboard-main { overflow-x: hidden; }
-      .widget, .table-widget { overflow: hidden; min-width: 0; box-sizing: border-box; }
-    }
-  </style>
-</head>
-<body>
-<!-- SIDEBAR OVERLAY -->
-<div class="sidebar-overlay" id="sidebar-overlay"></div>
-
-<!-- NAV (minimal - no menu items) -->
-<header class="site-nav" id="site-nav" style="z-index:100">
-  <nav class="nav-container" aria-label="Dashboard navigation">
-    <a href="index.html" class="nav-logo"><img src="../assets/images/icons/logo.svg" class="nav-logo-mark-img" alt="Logo" width="36" height="36" style="margin-right: 8px; flex-shrink: 0;" /><div class="nav-logo-text"><span class="nav-logo-name">Elise</span><span class="nav-logo-tagline">Admin</span></div></a>
-
-    <div class="nav-actions">
-      <button class="nav-action-btn hide-desktop" data-sidebar-toggle aria-label="Toggle sidebar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
-      <button class="nav-action-btn" data-dir-toggle aria-label="Toggle direction">RTL</button>
-      <button class="nav-action-btn" data-theme-toggle aria-label="Toggle theme">
-        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-      </button>
-    </div>
-  </nav>
-</header>
-
-<div class="dashboard-layout" id="dashboard-layout">
-  <!-- SIDEBAR -->
-  <aside class="dashboard-sidebar" id="dashboard-sidebar" aria-label="Admin navigation">
-    <div class="sidebar-user">
-      <img src="../assets/images/team/avatar-author.png" alt="Elise" class="sidebar-avatar" width="44" height="44" loading="lazy"/>
-      <div class="sidebar-user-info">
-        <div class="sidebar-user-name">Elise</div>
-        <div class="sidebar-user-role">Administrator</div>
-      </div>
-    </div>
-    <nav class="sidebar-nav" aria-label="Admin sidebar">
-      <p class="sidebar-section-title">Overview</p>
-      <a href="dashboard-admin.html" class="sidebar-nav-link active">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-        <span class="sidebar-label">Dashboard</span>
-      </a>
-      <a href="#" class="sidebar-nav-link">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-        <span class="sidebar-label">Bookings</span>
-        <span class="nav-badge">8</span>
-      </a>
-      <a href="#" class="sidebar-nav-link">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
-        <span class="sidebar-label">Clients</span>
-      </a>
-      <p class="sidebar-section-title">Content</p>
-      <a href="#" class="sidebar-nav-link">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-        <span class="sidebar-label">Blog Posts</span>
-      </a>
-      <a href="#" class="sidebar-nav-link">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-        <span class="sidebar-label">Messages</span>
-        <span class="nav-badge">3</span>
-      </a>
-      <p class="sidebar-section-title">Analytics</p>
-      <a href="#" class="sidebar-nav-link">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-        <span class="sidebar-label">Analytics</span>
-      </a>
-      <a href="#" class="sidebar-nav-link">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
-        <span class="sidebar-label">Revenue</span>
-      </a>
-      <p class="sidebar-section-title">Account</p>
-      <a href="#" class="sidebar-nav-link">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
-        <span class="sidebar-label">Settings</span>
-      </a>
-      <a href="login.html" class="sidebar-nav-link logout-nav-link" style="margin-top: auto; color: var(--color-error);">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
-        <span class="sidebar-label">Sign Out</span>
-      </a>
-    </nav>
-  </aside>
-
-  <!-- MAIN CONTENT - ADMIN COMMAND CENTER -->
-  <main class="dashboard-main" id="main-content">
-    <style>
-      /* "€"€ Admin-specific overrides "€"€ */
-      .admin-banner { 
-        background: linear-gradient(135deg,#1a0f0a 0%,#2d1a10 60%,#3d2416 100%); 
-        border-radius: var(--radius-lg); 
-        padding: clamp(var(--space-2), 3vw, var(--space-4)) clamp(var(--space-2), 4vw, var(--space-5)); 
-        margin-bottom: var(--space-4); 
-        display: flex; 
-        flex-direction: column; 
-        gap: var(--space-3); 
-      }
-      [data-theme="light"] .admin-banner { background: linear-gradient(135deg,#3d2416 0%,#6D4C41 60%,#8D6E63 100%); }
-      .admin-banner-top { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: var(--space-2); }
-      .admin-banner-greeting { font-family: var(--font-heading); font-size: clamp(1.4rem,3vw,2rem); color: white; font-weight: 400; }
-      .admin-banner-sub { color: rgba(255,255,255,0.6); font-size: var(--text-sm); margin-top: 4px; }
-      .admin-kpi-strip { display: grid; grid-template-columns: repeat(4,1fr); gap: var(--space-3); }
-      @media(max-width:700px){ .admin-kpi-strip { grid-template-columns:1fr 1fr; } }
-      .admin-kpi { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: var(--radius-md); padding: var(--space-3); }
-      .admin-kpi-val { font-family: var(--font-heading); font-size: clamp(1.6rem,3vw,2.2rem); font-weight: 700; color: white; line-height: 1; }
-      .admin-kpi-label { font-size: var(--text-xs); color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 4px; }
-      .admin-kpi-delta { font-size: var(--text-xs); margin-top: 6px; font-weight: 600; }
-      .delta-up { color: #4CAF50; } .delta-down { color: #ef5350; }
-
-      /* 3-column layout */
-      .admin-cols { display: grid; grid-template-columns: 1fr 320px; gap: var(--space-3); margin-bottom: var(--space-4); align-items: start; }
-      @media(max-width:900px){ .admin-cols { grid-template-columns: 1fr; } }
-      .admin-right { display: flex; flex-direction: column; gap: var(--space-3); }
-
-      /* Today's schedule */
-      .schedule-item { display: flex; gap: var(--space-2); padding: var(--space-2) 0; border-bottom: 1px solid var(--border-color-soft); }
-      .schedule-item:last-child { border-bottom: none; }
-      .schedule-time { font-size: var(--text-xs); color: var(--text-muted); white-space: nowrap; min-width: 52px; padding-top: 2px; }
-      .schedule-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; margin-top: 4px; }
-      .schedule-info-name { font-size: var(--text-sm); font-weight: 600; color: var(--text-primary); }
-      .schedule-info-svc { font-size: var(--text-xs); color: var(--text-muted); }
-
-      /* Activity feed */
-      .activity-item { display: flex; gap: var(--space-2); align-items: flex-start; padding: 10px 0; border-bottom: 1px solid var(--border-color-soft); }
-      .activity-item:last-child { border-bottom: none; }
-      .activity-icon { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-      .activity-icon svg { width: 14px; height: 14px; }
-      .activity-text { font-size: var(--text-xs); color: var(--text-secondary); line-height: 1.4; }
-      .activity-text strong { color: var(--text-primary); }
-      .activity-time { font-size: 10px; color: var(--text-muted); margin-top: 2px; }
-    </style>
-
-    <!-- "€"€ DARK COMMAND BANNER "€"€ -->
-    <div class="admin-banner">
-      <div class="admin-banner-top">
-        <div>
-          <h1 class="admin-banner-greeting">Good morning, Elise ✦</h1>
-          <p class="admin-banner-sub">Here's your business intelligence for today - April 9, 2026</p>
-        </div>
-        <div class="banner-actions">
-          <a href="contact.html" class="btn btn-sm" style="background:rgba(255,255,255,0.15);color:white;border:1px solid rgba(255,255,255,0.25)">+ Booking</a>
-          <a href="#" class="btn btn-sm" style="background:linear-gradient(135deg,#D9B8A6,#8D6E63);color:#1a0f0a;border:none;font-weight:700">Export Report</a>
-        </div>
-      </div>
-      <div class="admin-kpi-strip">
-        <div class="admin-kpi">
-          <div class="admin-kpi-val" data-counter data-target="24800" data-prefix="$">$0</div>
-          <div class="admin-kpi-label">Monthly Revenue</div>
-          <div class="admin-kpi-delta delta-up">-² +18.2% vs last month</div>
-        </div>
-        <div class="admin-kpi">
-          <div class="admin-kpi-val" data-counter data-target="142">0</div>
-          <div class="admin-kpi-label">Active Clients</div>
-          <div class="admin-kpi-delta delta-up">-² +7 new this month</div>
-        </div>
-        <div class="admin-kpi">
-          <div class="admin-kpi-val" data-counter data-target="38">0</div>
-          <div class="admin-kpi-label">Sessions This Month</div>
-          <div class="admin-kpi-delta delta-up">-² +4 vs last month</div>
-        </div>
-        <div class="admin-kpi">
-          <div class="admin-kpi-val" data-counter data-target="12">0</div>
-          <div class="admin-kpi-label">Unread Messages</div>
-          <div class="admin-kpi-delta delta-down">-¼ Needs attention</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- "€"€ 2-COLUMN ANALYTICS + RIGHT PANEL "€"€ -->
-    <div class="admin-cols">
-      <!-- LEFT: Revenue bar chart + Service infographics -->
-      <div style="display:flex;flex-direction:column;gap:var(--space-3)">
-        <!-- Revenue Chart -->
-        <div class="widget">
-          <div class="widget-header">
-            <p class="widget-title">Revenue Overview</p>
-            <div style="display:flex;gap:var(--space-1);align-items:center">
-              <select class="form-control" style="width:auto;padding:0.3em 0.7em;font-size:var(--text-xs)" aria-label="Chart period"><option>Last 6 months</option><option>Last year</option></select>
-              <a href="#" class="btn btn-ghost btn-sm">Export</a>
-            </div>
-          </div>
-          <!-- Scrollable chart wrapper so it never overflows the card -->
-          <div class="admin-chart-scroll">
-            <svg viewBox="0 0 480 210" style="width:100%;height:auto;display:block;min-width:300px" role="img" aria-label="Revenue bar chart showing monthly growth">
-              <defs>
-                <linearGradient id="barGrad" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="#6D4C41"/>
-                  <stop offset="100%" stop-color="#8D6E63"/>
-                </linearGradient>
-              </defs>
-              <line x1="40" y1="10" x2="40" y2="175" stroke="var(--border-color)" stroke-width="1"/>
-              <line x1="40" y1="175" x2="478" y2="175" stroke="var(--border-color)" stroke-width="1"/>
-              <line x1="40" y1="130" x2="478" y2="130" stroke="var(--border-color-soft)" stroke-width="1" stroke-dasharray="4,4"/>
-              <line x1="40" y1="90" x2="478" y2="90" stroke="var(--border-color-soft)" stroke-width="1" stroke-dasharray="4,4"/>
-              <line x1="40" y1="50" x2="478" y2="50" stroke="var(--border-color-soft)" stroke-width="1" stroke-dasharray="4,4"/>
-              <text x="30" y="179" text-anchor="end" font-size="10" fill="var(--text-muted)">$0</text>
-              <text x="30" y="134" text-anchor="end" font-size="10" fill="var(--text-muted)">$10k</text>
-              <text x="30" y="94" text-anchor="end" font-size="10" fill="var(--text-muted)">$18k</text>
-              <text x="30" y="54" text-anchor="end" font-size="10" fill="var(--text-muted)">$28k</text>
-              <g fill="var(--color-brown)" opacity="0.1">
-                <rect x="55" y="120" width="52" height="55" rx="5"/><rect x="130" y="100" width="52" height="75" rx="5"/>
-                <rect x="205" y="80" width="52" height="95" rx="5"/><rect x="280" y="60" width="52" height="115" rx="5"/>
-                <rect x="355" y="40" width="52" height="135" rx="5"/><rect x="430" y="25" width="42" height="150" rx="5"/>
-              </g>
-              <g fill="url(#barGrad)">
-                <rect x="55" y="145" width="52" height="30" rx="5"/><rect x="130" y="120" width="52" height="55" rx="5"/>
-                <rect x="205" y="105" width="52" height="70" rx="5"/><rect x="280" y="85" width="52" height="90" rx="5"/>
-                <rect x="355" y="65" width="52" height="110" rx="5"/><rect x="430" y="50" width="42" height="125" rx="5"/>
-              </g>
-              <g font-size="10" font-weight="700" text-anchor="middle" fill="#8D6E63">
-                <text x="81" y="140">$8.2k</text><text x="156" y="115">$12.1k</text>
-                <text x="231" y="100">$15.4k</text><text x="306" y="80">$18.9k</text>
-                <text x="381" y="60">$22.3k</text><text x="451" y="45">$24.8k</text>
-              </g>
-              <g font-size="11" text-anchor="middle" fill="var(--text-muted)">
-                <text x="81" y="193">Nov</text><text x="156" y="193">Dec</text>
-                <text x="231" y="193">Jan</text><text x="306" y="193">Feb</text>
-                <text x="381" y="193">Mar</text><text x="451" y="193">Apr</text>
-              </g>
-              <polyline points="81,145 156,120 231,105 306,85 381,65 451,50" fill="none" stroke="#D9B8A6" stroke-width="2" stroke-dasharray="5,3" opacity="0.8"/>
-            </svg>
-          </div>
-        </div>
-
-        <!-- Infographics - 2-col desktop, 1-col mobile -->
-        <div class="admin-infogrid">
-
-          <!-- Service Mix - compact stacked bar + legend list -->
-          <div class="widget">
-            <div class="widget-header"><p class="widget-title">Service Mix</p><span style="font-size:var(--text-xs);color:var(--text-muted)">This Month</span></div>
-            <!-- Stacked bar -->
-            <div style="height:14px;border-radius:99px;overflow:hidden;display:flex;margin-bottom:var(--space-2)">
-              <div style="width:32%;background:#6D4C41" title="Shopping 32%"></div>
-              <div style="width:24%;background:#8D6E63" title="Color 24%"></div>
-              <div style="width:20%;background:#D9B8A6" title="Bridal 20%"></div>
-              <div style="width:24%;background:#E8CFC5" title="Wardrobe 24%"></div>
-            </div>
-            <!-- Legend rows with mini progress -->
-            <div style="display:flex;flex-direction:column;gap:8px">
-              <div style="display:flex;align-items:center;justify-content:space-between;gap:8px">
-                <div style="display:flex;align-items:center;gap:6px;min-width:0">
-                  <span style="width:10px;height:10px;border-radius:2px;background:#6D4C41;flex-shrink:0"></span>
-                  <span style="font-size:12px;color:var(--text-secondary);white-space:nowrap">Shopping</span>
-                </div>
-                <div style="display:flex;align-items:center;gap:6px;flex:1;min-width:0">
-                  <div style="flex:1;height:6px;background:var(--border-color-soft);border-radius:99px;overflow:hidden">
-                    <div style="height:100%;width:32%;background:#6D4C41;border-radius:99px"></div>
-                  </div>
-                  <b style="font-size:11px;color:var(--text-primary);white-space:nowrap">32%</b>
-                </div>
-              </div>
-              <div style="display:flex;align-items:center;justify-content:space-between;gap:8px">
-                <div style="display:flex;align-items:center;gap:6px;min-width:0">
-                  <span style="width:10px;height:10px;border-radius:2px;background:#8D6E63;flex-shrink:0"></span>
-                  <span style="font-size:12px;color:var(--text-secondary);white-space:nowrap">Color</span>
-                </div>
-                <div style="display:flex;align-items:center;gap:6px;flex:1;min-width:0">
-                  <div style="flex:1;height:6px;background:var(--border-color-soft);border-radius:99px;overflow:hidden">
-                    <div style="height:100%;width:24%;background:#8D6E63;border-radius:99px"></div>
-                  </div>
-                  <b style="font-size:11px;color:var(--text-primary);white-space:nowrap">24%</b>
-                </div>
-              </div>
-              <div style="display:flex;align-items:center;justify-content:space-between;gap:8px">
-                <div style="display:flex;align-items:center;gap:6px;min-width:0">
-                  <span style="width:10px;height:10px;border-radius:2px;background:#D9B8A6;flex-shrink:0"></span>
-                  <span style="font-size:12px;color:var(--text-secondary);white-space:nowrap">Bridal</span>
-                </div>
-                <div style="display:flex;align-items:center;gap:6px;flex:1;min-width:0">
-                  <div style="flex:1;height:6px;background:var(--border-color-soft);border-radius:99px;overflow:hidden">
-                    <div style="height:100%;width:20%;background:#D9B8A6;border-radius:99px"></div>
-                  </div>
-                  <b style="font-size:11px;color:var(--text-primary);white-space:nowrap">20%</b>
-                </div>
-              </div>
-              <div style="display:flex;align-items:center;justify-content:space-between;gap:8px">
-                <div style="display:flex;align-items:center;gap:6px;min-width:0">
-                  <span style="width:10px;height:10px;border-radius:2px;background:#E8CFC5;flex-shrink:0"></span>
-                  <span style="font-size:12px;color:var(--text-secondary);white-space:nowrap">Wardrobe</span>
-                </div>
-                <div style="display:flex;align-items:center;gap:6px;flex:1;min-width:0">
-                  <div style="flex:1;height:6px;background:var(--border-color-soft);border-radius:99px;overflow:hidden">
-                    <div style="height:100%;width:24%;background:#E8CFC5;border-radius:99px"></div>
-                  </div>
-                  <b style="font-size:11px;color:var(--text-primary);white-space:nowrap">24%</b>
-                </div>
-              </div>
-            </div>
-            <div style="margin-top:var(--space-2);padding-top:var(--space-2);border-top:1px solid var(--border-color-soft);display:flex;justify-content:space-between;align-items:center">
-              <span style="font-size:11px;color:var(--text-muted)">Total sessions</span>
-              <span style="font-family:var(--font-heading);font-size:1.3rem;font-weight:700;color:var(--text-primary)">38</span>
-            </div>
-          </div>
-
-          <!-- Monthly Goals - labeled progress bars -->
-          <div class="widget">
-            <div class="widget-header"><p class="widget-title">Monthly Goals</p><span style="font-size:var(--text-xs);color:var(--text-muted)">April 2026</span></div>
-            <div style="display:flex;flex-direction:column;gap:12px">
-              <div>
-                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">
-                  <span style="font-size:12px;color:var(--text-secondary);font-weight:500">Revenue</span>
-                  <span style="font-size:12px;font-weight:700;color:#6D4C41">80%</span>
-                </div>
-                <div style="height:10px;background:var(--border-color-soft);border-radius:99px;overflow:hidden">
-                  <div style="height:100%;width:80%;background:linear-gradient(90deg,#6D4C41,#8D6E63);border-radius:99px"></div>
-                </div>
-              </div>
-              <div>
-                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">
-                  <span style="font-size:12px;color:var(--text-secondary);font-weight:500">Sessions</span>
-                  <span style="font-size:12px;font-weight:700;color:#8D6E63">75%</span>
-                </div>
-                <div style="height:10px;background:var(--border-color-soft);border-radius:99px;overflow:hidden">
-                  <div style="height:100%;width:75%;background:linear-gradient(90deg,#8D6E63,#D9B8A6);border-radius:99px"></div>
-                </div>
-              </div>
-              <div>
-                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">
-                  <span style="font-size:12px;color:var(--text-secondary);font-weight:500">Clients</span>
-                  <span style="font-size:12px;font-weight:700;color:#D9B8A6">90%</span>
-                </div>
-                <div style="height:10px;background:var(--border-color-soft);border-radius:99px;overflow:hidden">
-                  <div style="height:100%;width:90%;background:linear-gradient(90deg,#D9B8A6,#c8a48e);border-radius:99px"></div>
-                </div>
-              </div>
-              <div>
-                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">
-                  <span style="font-size:12px;color:var(--text-secondary);font-weight:500">Rating</span>
-                  <span style="font-size:12px;font-weight:700;color:#4CAF50">95%</span>
-                </div>
-                <div style="height:10px;background:var(--border-color-soft);border-radius:99px;overflow:hidden">
-                  <div style="height:100%;width:95%;background:linear-gradient(90deg,#4CAF50,#81C784);border-radius:99px"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Client Growth - compact sparkline + stat -->
-          <div class="widget">
-            <div class="widget-header"><p class="widget-title">Client Growth</p><span style="font-size:var(--text-xs);color:var(--text-muted)">8 Weeks</span></div>
-            <div style="display:flex;align-items:center;gap:var(--space-3);margin-bottom:var(--space-2)">
-              <div>
-                <div style="font-family:var(--font-heading);font-size:1.8rem;font-weight:700;color:var(--color-brown);line-height:1">+23</div>
-                <div style="font-size:10px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;margin-top:3px">New Clients</div>
-              </div>
-              <div style="flex:1;min-width:0">
-                <svg viewBox="0 0 180 60" style="width:100%;height:auto;display:block" role="img" aria-label="Client growth sparkline">
-                  <defs><linearGradient id="spkGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#6D4C41" stop-opacity="0.25"/><stop offset="100%" stop-color="#6D4C41" stop-opacity="0"/></linearGradient></defs>
-                  <polygon points="0,48 26,42 52,36 78,28 104,20 130,12 156,6 180,2 180,60 0,60" fill="url(#spkGrad)"/>
-                  <polyline points="0,48 26,42 52,36 78,28 104,20 130,12 156,6 180,2" fill="none" stroke="#6D4C41" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
-                  <circle cx="180" cy="2" r="4" fill="#6D4C41"/>
-                </svg>
-              </div>
-            </div>
-            <!-- Week labels strip -->
-            <div style="display:flex;justify-content:space-between;padding-top:4px;border-top:1px solid var(--border-color-soft)">
-              <span style="font-size:9px;color:var(--text-muted)">W1</span><span style="font-size:9px;color:var(--text-muted)">W2</span>
-              <span style="font-size:9px;color:var(--text-muted)">W3</span><span style="font-size:9px;color:var(--text-muted)">W4</span>
-              <span style="font-size:9px;color:var(--text-muted)">W5</span><span style="font-size:9px;color:var(--text-muted)">W6</span>
-              <span style="font-size:9px;color:var(--text-muted)">W7</span><span style="font-size:9px;color:var(--text-muted)">W8</span>
-            </div>
-          </div>
-
-          <!-- Top by Revenue - horizontal bars (already mobile-friendly) -->
-          <div class="widget">
-            <div class="widget-header"><p class="widget-title">Top by Revenue</p><span style="font-size:var(--text-xs);color:var(--text-muted)">This Month</span></div>
-            <div style="display:flex;flex-direction:column;gap:10px;padding-top:4px">
-              <div><div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:3px"><span style="color:var(--text-secondary)">Bridal</span><strong>$7,990</strong></div><div style="height:8px;background:var(--border-color-soft);border-radius:99px;overflow:hidden"><div style="height:100%;width:96%;background:linear-gradient(90deg,#6D4C41,#8D6E63);border-radius:99px"></div></div></div>
-              <div><div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:3px"><span style="color:var(--text-secondary)">Corporate</span><strong>$5,980</strong></div><div style="height:8px;background:var(--border-color-soft);border-radius:99px;overflow:hidden"><div style="height:100%;width:72%;background:linear-gradient(90deg,#8D6E63,#D9B8A6);border-radius:99px"></div></div></div>
-              <div><div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:3px"><span style="color:var(--text-secondary)">Shopping</span><strong>$4,990</strong></div><div style="height:8px;background:var(--border-color-soft);border-radius:99px;overflow:hidden"><div style="height:100%;width:60%;background:linear-gradient(90deg,#D9B8A6,#E8CFC5);border-radius:99px"></div></div></div>
-              <div><div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:3px"><span style="color:var(--text-secondary)">Wardrobe</span><strong>$3,180</strong></div><div style="height:8px;background:var(--border-color-soft);border-radius:99px;overflow:hidden"><div style="height:100%;width:38%;background:linear-gradient(90deg,#E8CFC5,#f0ddd6);border-radius:99px"></div></div></div>
-            </div>
-          </div>
-
-        </div><!-- /admin-infogrid -->
-      </div>
-
-      <!-- RIGHT PANEL -->
-      <div class="admin-right">
-        <!-- Today's Schedule -->
-        <div class="widget">
-          <div class="widget-header">
-            <p class="widget-title">Today's Schedule</p>
-            <span class="badge badge-success">4 Sessions</span>
-          </div>
-          <div class="schedule-list">
-            <div class="schedule-item"><span class="schedule-time">9:00 AM</span><span class="schedule-dot" style="background:#6D4C41"></span><div><div class="schedule-info-name">Sarah Mitchell</div><div class="schedule-info-svc">Personal Shopping Â· 3h</div></div></div>
-            <div class="schedule-item"><span class="schedule-time">11:00 AM</span><span class="schedule-dot" style="background:#8D6E63"></span><div><div class="schedule-info-name">Amelia Torres</div><div class="schedule-info-svc">Color Analysis Â· 90min</div></div></div>
-            <div class="schedule-item"><span class="schedule-time">1:30 PM</span><span class="schedule-dot" style="background:#D9B8A6"></span><div><div class="schedule-info-name">Priya Sharma</div><div class="schedule-info-svc">Bridal Styling Â· 2h</div></div></div>
-            <div class="schedule-item"><span class="schedule-time">4:00 PM</span><span class="schedule-dot" style="background:#4CAF50"></span><div><div class="schedule-info-name">Laura Kim</div><div class="schedule-info-svc">Wardrobe Audit Â· 2.5h</div></div></div>
-          </div>
-        </div>
-
-        <!-- Quick Actions -->
-        <div class="widget">
-          <div class="widget-header"><p class="widget-title">Quick Actions</p></div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-2)">
-            <a href="contact.html" class="btn btn-primary btn-sm" style="justify-content:center">+ Booking</a>
-            <a href="#" class="btn btn-ghost btn-sm" style="justify-content:center">Add Client</a>
-            <a href="#" class="btn btn-ghost btn-sm" style="justify-content:center">Blog Post</a>
-            <a href="#" class="btn btn-ghost btn-sm" style="justify-content:center">Send Invoice</a>
-          </div>
-        </div>
-
-        <!-- Activity Feed -->
-        <div class="widget">
-          <div class="widget-header">
-            <p class="widget-title">Live Activity</p>
-            <span class="nav-badge" style="position:static;margin-inline-start:8px">3</span>
-          </div>
-          <div class="activity-scroll-wrap">
-            <div class="activity-item">
-              <div class="activity-icon" style="background:rgba(109,76,65,0.15)"><svg viewBox="0 0 24 24" fill="none" stroke="#6D4C41" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
-              <div><div class="activity-text"><strong>Sarah Mitchell</strong> confirmed her Apr 8 session</div><div class="activity-time">2 hours ago</div></div>
-            </div>
-            <div class="activity-item">
-              <div class="activity-icon" style="background:rgba(141,110,99,0.15)"><svg viewBox="0 0 24 24" fill="none" stroke="#8D6E63" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
-              <div><div class="activity-text"><strong>Amelia Torres</strong> sent a reschedule request</div><div class="activity-time">5 hours ago</div></div>
-            </div>
-            <div class="activity-item">
-              <div class="activity-icon" style="background:rgba(76,175,80,0.15)"><svg viewBox="0 0 24 24" fill="none" stroke="#4CAF50" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
-              <div><div class="activity-text"><strong>$799</strong> payment received - Priya Sharma</div><div class="activity-time">1 day ago</div></div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- "€"€ FULL-WIDTH BOOKINGS TABLE "€"€ -->
-    <div class="table-widget" style="margin-bottom:var(--space-5)">
-      <div class="table-widget-header">
-        <p class="widget-title">Recent Bookings</p>
-        <div class="table-header-controls">
-          <div class="search-bar">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-            <input type="search" id="table-search" placeholder="Search clients€¦" aria-label="Search bookings"/>
-          </div>
-          <div class="table-action-row">
-            <select class="form-control" style="width:auto;padding:0.4em 0.8em;font-size:var(--text-xs)" aria-label="Filter status"><option>All Status</option><option>Confirmed</option><option>Pending</option><option>Completed</option></select>
-            <a href="#" class="btn btn-primary btn-sm">Export CSV</a>
-          </div>
-        </div>
-      </div>
-      <div class="table-wrapper">
-        <table class="data-table" id="bookings-table" aria-label="Recent bookings">
-          <thead><tr>
-            <th data-sort="name">Client <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:11px;height:11px;vertical-align:middle"><polyline points="6 9 12 15 18 9"/></svg></th>
-            <th>Service</th><th>Date</th><th>Duration</th><th>Amount</th><th>Status</th><th>Actions</th>
-          </tr></thead>
-          <tbody>
-            <tr><td><img src="../assets/images/team/avatar-1.png" alt="" class="table-avatar" width="32" height="32" loading="lazy"/><span class="table-name">Sarah Mitchell</span></td><td>Personal Shopping</td><td>Apr 8, 2026</td><td>3h</td><td><strong>$499</strong></td><td><span class="badge badge-success">Confirmed</span></td><td><a href="#" class="btn btn-ghost btn-sm">Edit</a></td></tr>
-            <tr><td><img src="../assets/images/team/avatar-2.png" alt="" class="table-avatar" width="32" height="32" loading="lazy"/><span class="table-name">Amelia Torres</span></td><td>Color Analysis</td><td>Apr 10, 2026</td><td>90min</td><td><strong>$149</strong></td><td><span class="badge badge-warning">Pending</span></td><td><a href="#" class="btn btn-ghost btn-sm">Edit</a></td></tr>
-            <tr><td><img src="../assets/images/team/avatar-3.png" alt="" class="table-avatar" width="32" height="32" loading="lazy"/><span class="table-name">Priya Sharma</span></td><td>Bridal Styling</td><td>Apr 12, 2026</td><td>4h</td><td><strong>$799</strong></td><td><span class="badge badge-success">Confirmed</span></td><td><a href="#" class="btn btn-ghost btn-sm">Edit</a></td></tr>
-            <tr><td><img src="../assets/images/team/avatar-1.png" alt="" class="table-avatar" width="32" height="32" loading="lazy"/><span class="table-name">Laura Kim</span></td><td>Wardrobe Audit</td><td>Apr 6, 2026</td><td>2.5h</td><td><strong>$199</strong></td><td><span class="badge badge-info">Completed</span></td><td><a href="#" class="btn btn-ghost btn-sm">Edit</a></td></tr>
-            <tr><td><img src="../assets/images/team/avatar-2.png" alt="" class="table-avatar" width="32" height="32" loading="lazy"/><span class="table-name">Maria Rossi</span></td><td>Corporate Styling</td><td>Apr 15, 2026</td><td>3h</td><td><strong>$499</strong></td><td><span class="badge badge-warning">Pending</span></td><td><a href="#" class="btn btn-ghost btn-sm">Edit</a></td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-    <div class="table-widget" style="margin-bottom:var(--space-4)">
-
-      <div class="table-widget-header">
-        <p class="widget-title">Messages <span class="nav-badge" style="position:static;margin-inline-start:8px">3</span></p>
-        <div class="table-header-controls">
-          <div class="search-bar">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-            <input type="search" id="message-search" placeholder="Search messages€¦" aria-label="Search messages"/>
-          </div>
-          <div class="table-action-row">
-            <select class="form-control" style="width:auto;padding:0.4em 0.8em;font-size:var(--text-xs)" aria-label="Filter status"><option>All Messages</option><option>Unread</option><option>Starred</option><option>Archived</option></select>
-            <a href="#" class="btn btn-primary btn-sm">Compose</a>
-          </div>
-        </div>
-      </div>
-      <div class="table-wrapper">
-        <table class="data-table" id="messages-table" aria-label="Inbox messages">
-          <thead><tr>
-            <th>Sender</th><th>Subject Preview</th><th>Received</th><th>Status</th><th>Actions</th>
-          </tr></thead>
-          <tbody>
-            <tr class="unread">
-              <td><img src="../assets/images/team/avatar-1.png" alt="" class="table-avatar" width="32" height="32" loading="lazy"/><span class="table-name">Sarah Mitchell</span></td>
-              <td><span style="font-weight:600">Booking Confirmation</span> - Thanks so much for today's session!</td>
-              <td>2 hours ago</td>
-              <td><span class="badge badge-warning">Unread</span></td>
-              <td><a href="#" class="btn btn-ghost btn-sm">View</a></td>
-            </tr>
-            <tr class="unread">
-              <td><img src="../assets/images/team/avatar-2.png" alt="" class="table-avatar" width="32" height="32" loading="lazy"/><span class="table-name">Amelia Torres</span></td>
-              <td><span style="font-weight:600">Reschedule Request</span> - Could we reschedule Thursday?</td>
-              <td>5 hours ago</td>
-              <td><span class="badge badge-warning">Unread</span></td>
-              <td><a href="#" class="btn btn-ghost btn-sm">View</a></td>
-            </tr>
-            <tr>
-              <td><img src="../assets/images/team/avatar-3.png" alt="" class="table-avatar" width="32" height="32" loading="lazy"/><span class="table-name">Priya Sharma</span></td>
-              <td><span style="font-weight:600">Inquiry</span> - Do you have availability on the 20th?</td>
-              <td>1 day ago</td>
-              <td><span class="badge badge-success">Read</span></td>
-              <td><a href="#" class="btn btn-ghost btn-sm">View</a></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </main>
-
-</div>
-<script src="../assets/js/theme.js"></script><script src="../assets/js/rtl.js"></script><script src="../assets/js/counters.js"></script><script src="../assets/js/dashboard.js"></script><script src="../assets/js/main.js"></script>
-</body>
-</html>
+﻿<!DOCTYPE html>
+
+<html lang="en" dir="ltr" data-theme="light">
+
+<head>
+
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>Admin Dashboard - Elise</title>
+
+  <meta name="description" content="Elise Admin Dashboard - manage bookings, client profiles, analytics and messages."/>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+
+  <link rel="icon" href="../assets/images/icons/favicon.svg" type="image/svg+xml"/><link rel="manifest" href="../manifest.json"/><link rel="stylesheet" href="../assets/css/main.css"/><link rel="stylesheet" href="../assets/css/components.css"/>
+
+  <link rel="stylesheet" href="../assets/css/animations.css"/><link rel="stylesheet" href="../assets/css/dark-mode.css"/>
+
+  <link rel="stylesheet" href="../assets/css/rtl.css"/><link rel="stylesheet" href="../assets/css/dashboard.css"/>
+
+  <style>
+
+    /* "€"€ Admin dashboard mobile fixes (360px) "€"€ */
+
+    .admin-chart-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+    .admin-chart-scroll svg { display: block; min-width: 340px; }
+
+    .admin-infogrid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3); }
+
+    @media(max-width:600px){
+
+      .admin-infogrid { grid-template-columns: 1fr; }
+
+      .admin-banner-top { flex-direction: column; align-items: stretch; gap: var(--space-2); }
+
+      .admin-banner-top .banner-actions { display: flex; gap: var(--space-1); }
+
+      .admin-banner-top .banner-actions .btn { flex: 1; text-align: center; }
+
+      .widget-header { flex-wrap: wrap; gap: 6px; }
+
+      .widget-header select { font-size: 11px !important; padding: 0.25em 0.5em !important; max-width: 130px; }
+
+      .admin-kpi-val { font-size: 1.4rem !important; }
+
+      .admin-kpi-delta { font-size: 10px !important; }
+
+      .schedule-item { align-items: flex-start; }
+
+      .activity-text { word-break: break-word; }
+
+      .dashboard-main { overflow-x: hidden; }
+
+      .widget, .table-widget { overflow: hidden; min-width: 0; box-sizing: border-box; }
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+<!-- SIDEBAR OVERLAY -->
+
+<div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+
+
+<div class="dashboard-layout" id="dashboard-layout">
+
+  <!-- SIDEBAR -->
+
+  <aside class="dashboard-sidebar" id="dashboard-sidebar" aria-label="Admin navigation">
+
+    <div class="sidebar-user">
+
+      <img src="../assets/images/team/avatar-author.png" alt="Elise" class="sidebar-avatar" width="44" height="44" loading="lazy"/>
+
+      <div class="sidebar-user-info">
+
+        <div class="sidebar-user-name">Elise</div>
+
+        <div class="sidebar-user-role">Administrator</div>
+
+      </div>
+
+    </div>
+
+    <nav class="sidebar-nav" aria-label="Admin sidebar">
+
+      <p class="sidebar-section-title">Overview</p>
+
+      <a href="dashboard-admin.html" class="sidebar-nav-link active">
+
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+
+        <span class="sidebar-label">Dashboard</span>
+
+      </a>
+
+      <a href="#" class="sidebar-nav-link">
+
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+
+        <span class="sidebar-label">Bookings</span>
+
+        <span class="nav-badge">8</span>
+
+      </a>
+
+      <a href="#" class="sidebar-nav-link">
+
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+
+        <span class="sidebar-label">Clients</span>
+
+      </a>
+
+      <p class="sidebar-section-title">Content</p>
+
+      <a href="#" class="sidebar-nav-link">
+
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+
+        <span class="sidebar-label">Blog Posts</span>
+
+      </a>
+
+      <a href="#" class="sidebar-nav-link">
+
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+
+        <span class="sidebar-label">Messages</span>
+
+        <span class="nav-badge">3</span>
+
+      </a>
+
+      <p class="sidebar-section-title">Analytics</p>
+
+      <a href="#" class="sidebar-nav-link">
+
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+
+        <span class="sidebar-label">Analytics</span>
+
+      </a>
+
+      <a href="#" class="sidebar-nav-link">
+
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+
+        <span class="sidebar-label">Revenue</span>
+
+      </a>
+
+      <p class="sidebar-section-title">Account</p>
+
+      <a href="#" class="sidebar-nav-link">
+
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+
+        <span class="sidebar-label">Settings</span>
+
+      </a>
+
+      <a href="login.html" class="sidebar-nav-link logout-nav-link" style="margin-top: auto; color: var(--color-error);">
+
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+
+        <span class="sidebar-label">Sign Out</span>
+
+      </a>
+
+    </nav>
+
+  </aside>
+
+
+
+  <!-- MAIN CONTENT - ADMIN COMMAND CENTER -->
+
+  <main class="dashboard-main" id="main-content">
+    <!-- TOGGLES -->
+    <div class="dashboard-top-actions">
+      <button class="nav-action-btn hide-desktop" data-sidebar-toggle aria-label="Toggle sidebar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+      <button class="nav-action-btn" data-dir-toggle aria-label="Toggle direction">RTL</button>
+      <button class="nav-action-btn" data-theme-toggle aria-label="Toggle theme">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+      </button>
+    </div>
+
+    <style>
+
+      /* "€"€ Admin-specific overrides "€"€ */
+
+      .admin-banner { 
+
+        background: linear-gradient(135deg,#1a0f0a 0%,#2d1a10 60%,#3d2416 100%); 
+
+        border-radius: var(--radius-lg); 
+
+        padding: clamp(var(--space-2), 3vw, var(--space-4)) clamp(var(--space-2), 4vw, var(--space-5)); 
+
+        margin-bottom: var(--space-4); 
+
+        display: flex; 
+
+        flex-direction: column; 
+
+        gap: var(--space-3); 
+
+      }
+
+      [data-theme="light"] .admin-banner { background: linear-gradient(135deg,#3d2416 0%,#6D4C41 60%,#8D6E63 100%); }
+
+      .admin-banner-top { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: var(--space-2); }
+
+      .admin-banner-greeting { font-family: var(--font-heading); font-size: clamp(1.4rem,3vw,2rem); color: white; font-weight: 400; }
+
+      .admin-banner-sub { color: rgba(255,255,255,0.6); font-size: var(--text-sm); margin-top: 4px; }
+
+      .admin-kpi-strip { display: grid; grid-template-columns: repeat(4,1fr); gap: var(--space-3); }
+
+      @media(max-width:700px){ .admin-kpi-strip { grid-template-columns:1fr 1fr; } }
+
+      .admin-kpi { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: var(--radius-md); padding: var(--space-3); }
+
+      .admin-kpi-val { font-family: var(--font-heading); font-size: clamp(1.6rem,3vw,2.2rem); font-weight: 700; color: white; line-height: 1; }
+
+      .admin-kpi-label { font-size: var(--text-xs); color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 4px; }
+
+      .admin-kpi-delta { font-size: var(--text-xs); margin-top: 6px; font-weight: 600; }
+
+      .delta-up { color: #4CAF50; } .delta-down { color: #ef5350; }
+
+
+
+      /* 3-column layout */
+
+      .admin-cols { display: grid; grid-template-columns: 1fr 320px; gap: var(--space-3); margin-bottom: var(--space-4); align-items: start; }
+
+      @media(max-width:900px){ .admin-cols { grid-template-columns: 1fr; } }
+
+      .admin-right { display: flex; flex-direction: column; gap: var(--space-3); }
+
+
+
+      /* Today's schedule */
+
+      .schedule-item { display: flex; gap: var(--space-2); padding: var(--space-2) 0; border-bottom: 1px solid var(--border-color-soft); }
+
+      .schedule-item:last-child { border-bottom: none; }
+
+      .schedule-time { font-size: var(--text-xs); color: var(--text-muted); white-space: nowrap; min-width: 52px; padding-top: 2px; }
+
+      .schedule-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; margin-top: 4px; }
+
+      .schedule-info-name { font-size: var(--text-sm); font-weight: 600; color: var(--text-primary); }
+
+      .schedule-info-svc { font-size: var(--text-xs); color: var(--text-muted); }
+
+
+
+      /* Activity feed */
+
+      .activity-item { display: flex; gap: var(--space-2); align-items: flex-start; padding: 10px 0; border-bottom: 1px solid var(--border-color-soft); }
+
+      .activity-item:last-child { border-bottom: none; }
+
+      .activity-icon { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+
+      .activity-icon svg { width: 14px; height: 14px; }
+
+      .activity-text { font-size: var(--text-xs); color: var(--text-secondary); line-height: 1.4; }
+
+      .activity-text strong { color: var(--text-primary); }
+
+      .activity-time { font-size: 10px; color: var(--text-muted); margin-top: 2px; }
+
+    </style>
+
+
+
+    <!-- "€"€ DARK COMMAND BANNER "€"€ -->
+
+    <div class="admin-banner">
+
+      <div class="admin-banner-top">
+
+        <div>
+
+          <h1 class="admin-banner-greeting">Good morning, Elise ✦</h1>
+
+          <p class="admin-banner-sub">Here's your business intelligence for today - April 9, 2026</p>
+
+        </div>
+
+        <div class="banner-actions">
+
+          <a href="contact.html" class="btn btn-sm" style="background:rgba(255,255,255,0.15);color:white;border:1px solid rgba(255,255,255,0.25)">+ Booking</a>
+
+          <a href="#" class="btn btn-sm" style="background:linear-gradient(135deg,#D9B8A6,#8D6E63);color:#1a0f0a;border:none;font-weight:700">Export Report</a>
+
+        </div>
+
+      </div>
+
+      <div class="admin-kpi-strip">
+
+        <div class="admin-kpi">
+
+          <div class="admin-kpi-val" data-counter data-target="24800" data-prefix="$">$0</div>
+
+          <div class="admin-kpi-label">Monthly Revenue</div>
+
+          <div class="admin-kpi-delta delta-up">-² +18.2% vs last month</div>
+
+        </div>
+
+        <div class="admin-kpi">
+
+          <div class="admin-kpi-val" data-counter data-target="142">0</div>
+
+          <div class="admin-kpi-label">Active Clients</div>
+
+          <div class="admin-kpi-delta delta-up">-² +7 new this month</div>
+
+        </div>
+
+        <div class="admin-kpi">
+
+          <div class="admin-kpi-val" data-counter data-target="38">0</div>
+
+          <div class="admin-kpi-label">Sessions This Month</div>
+
+          <div class="admin-kpi-delta delta-up">-² +4 vs last month</div>
+
+        </div>
+
+        <div class="admin-kpi">
+
+          <div class="admin-kpi-val" data-counter data-target="12">0</div>
+
+          <div class="admin-kpi-label">Unread Messages</div>
+
+          <div class="admin-kpi-delta delta-down">-¼ Needs attention</div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- "€"€ 2-COLUMN ANALYTICS + RIGHT PANEL "€"€ -->
+
+    <div class="admin-cols">
+
+      <!-- LEFT: Revenue bar chart + Service infographics -->
+
+      <div style="display:flex;flex-direction:column;gap:var(--space-3)">
+
+        <!-- Revenue Chart -->
+
+        <div class="widget">
+
+          <div class="widget-header">
+
+            <p class="widget-title">Revenue Overview</p>
+
+            <div style="display:flex;gap:var(--space-1);align-items:center">
+
+              <select class="form-control" style="width:auto;padding:0.3em 0.7em;font-size:var(--text-xs)" aria-label="Chart period"><option>Last 6 months</option><option>Last year</option></select>
+
+              <a href="#" class="btn btn-ghost btn-sm">Export</a>
+
+            </div>
+
+          </div>
+
+          <!-- Scrollable chart wrapper so it never overflows the card -->
+
+          <div class="admin-chart-scroll">
+
+            <svg viewBox="0 0 480 210" style="width:100%;height:auto;display:block;min-width:300px" role="img" aria-label="Revenue bar chart showing monthly growth">
+
+              <defs>
+
+                <linearGradient id="barGrad" x1="0" y1="0" x2="0" y2="1">
+
+                  <stop offset="0%" stop-color="#6D4C41"/>
+
+                  <stop offset="100%" stop-color="#8D6E63"/>
+
+                </linearGradient>
+
+              </defs>
+
+              <line x1="40" y1="10" x2="40" y2="175" stroke="var(--border-color)" stroke-width="1"/>
+
+              <line x1="40" y1="175" x2="478" y2="175" stroke="var(--border-color)" stroke-width="1"/>
+
+              <line x1="40" y1="130" x2="478" y2="130" stroke="var(--border-color-soft)" stroke-width="1" stroke-dasharray="4,4"/>
+
+              <line x1="40" y1="90" x2="478" y2="90" stroke="var(--border-color-soft)" stroke-width="1" stroke-dasharray="4,4"/>
+
+              <line x1="40" y1="50" x2="478" y2="50" stroke="var(--border-color-soft)" stroke-width="1" stroke-dasharray="4,4"/>
+
+              <text x="30" y="179" text-anchor="end" font-size="10" fill="var(--text-muted)">$0</text>
+
+              <text x="30" y="134" text-anchor="end" font-size="10" fill="var(--text-muted)">$10k</text>
+
+              <text x="30" y="94" text-anchor="end" font-size="10" fill="var(--text-muted)">$18k</text>
+
+              <text x="30" y="54" text-anchor="end" font-size="10" fill="var(--text-muted)">$28k</text>
+
+              <g fill="var(--color-brown)" opacity="0.1">
+
+                <rect x="55" y="120" width="52" height="55" rx="5"/><rect x="130" y="100" width="52" height="75" rx="5"/>
+
+                <rect x="205" y="80" width="52" height="95" rx="5"/><rect x="280" y="60" width="52" height="115" rx="5"/>
+
+                <rect x="355" y="40" width="52" height="135" rx="5"/><rect x="430" y="25" width="42" height="150" rx="5"/>
+
+              </g>
+
+              <g fill="url(#barGrad)">
+
+                <rect x="55" y="145" width="52" height="30" rx="5"/><rect x="130" y="120" width="52" height="55" rx="5"/>
+
+                <rect x="205" y="105" width="52" height="70" rx="5"/><rect x="280" y="85" width="52" height="90" rx="5"/>
+
+                <rect x="355" y="65" width="52" height="110" rx="5"/><rect x="430" y="50" width="42" height="125" rx="5"/>
+
+              </g>
+
+              <g font-size="10" font-weight="700" text-anchor="middle" fill="#8D6E63">
+
+                <text x="81" y="140">$8.2k</text><text x="156" y="115">$12.1k</text>
+
+                <text x="231" y="100">$15.4k</text><text x="306" y="80">$18.9k</text>
+
+                <text x="381" y="60">$22.3k</text><text x="451" y="45">$24.8k</text>
+
+              </g>
+
+              <g font-size="11" text-anchor="middle" fill="var(--text-muted)">
+
+                <text x="81" y="193">Nov</text><text x="156" y="193">Dec</text>
+
+                <text x="231" y="193">Jan</text><text x="306" y="193">Feb</text>
+
+                <text x="381" y="193">Mar</text><text x="451" y="193">Apr</text>
+
+              </g>
+
+              <polyline points="81,145 156,120 231,105 306,85 381,65 451,50" fill="none" stroke="#D9B8A6" stroke-width="2" stroke-dasharray="5,3" opacity="0.8"/>
+
+            </svg>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- Infographics - 2-col desktop, 1-col mobile -->
+
+        <div class="admin-infogrid">
+
+
+
+          <!-- Service Mix - compact stacked bar + legend list -->
+
+          <div class="widget">
+
+            <div class="widget-header"><p class="widget-title">Service Mix</p><span style="font-size:var(--text-xs);color:var(--text-muted)">This Month</span></div>
+
+            <!-- Stacked bar -->
+
+            <div style="height:14px;border-radius:99px;overflow:hidden;display:flex;margin-bottom:var(--space-2)">
+
+              <div style="width:32%;background:#6D4C41" title="Shopping 32%"></div>
+
+              <div style="width:24%;background:#8D6E63" title="Color 24%"></div>
+
+              <div style="width:20%;background:#D9B8A6" title="Bridal 20%"></div>
+
+              <div style="width:24%;background:#E8CFC5" title="Wardrobe 24%"></div>
+
+            </div>
+
+            <!-- Legend rows with mini progress -->
+
+            <div style="display:flex;flex-direction:column;gap:8px">
+
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:8px">
+
+                <div style="display:flex;align-items:center;gap:6px;min-width:0">
+
+                  <span style="width:10px;height:10px;border-radius:2px;background:#6D4C41;flex-shrink:0"></span>
+
+                  <span style="font-size:12px;color:var(--text-secondary);white-space:nowrap">Shopping</span>
+
+                </div>
+
+                <div style="display:flex;align-items:center;gap:6px;flex:1;min-width:0">
+
+                  <div style="flex:1;height:6px;background:var(--border-color-soft);border-radius:99px;overflow:hidden">
+
+                    <div style="height:100%;width:32%;background:#6D4C41;border-radius:99px"></div>
+
+                  </div>
+
+                  <b style="font-size:11px;color:var(--text-primary);white-space:nowrap">32%</b>
+
+                </div>
+
+              </div>
+
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:8px">
+
+                <div style="display:flex;align-items:center;gap:6px;min-width:0">
+
+                  <span style="width:10px;height:10px;border-radius:2px;background:#8D6E63;flex-shrink:0"></span>
+
+                  <span style="font-size:12px;color:var(--text-secondary);white-space:nowrap">Color</span>
+
+                </div>
+
+                <div style="display:flex;align-items:center;gap:6px;flex:1;min-width:0">
+
+                  <div style="flex:1;height:6px;background:var(--border-color-soft);border-radius:99px;overflow:hidden">
+
+                    <div style="height:100%;width:24%;background:#8D6E63;border-radius:99px"></div>
+
+                  </div>
+
+                  <b style="font-size:11px;color:var(--text-primary);white-space:nowrap">24%</b>
+
+                </div>
+
+              </div>
+
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:8px">
+
+                <div style="display:flex;align-items:center;gap:6px;min-width:0">
+
+                  <span style="width:10px;height:10px;border-radius:2px;background:#D9B8A6;flex-shrink:0"></span>
+
+                  <span style="font-size:12px;color:var(--text-secondary);white-space:nowrap">Bridal</span>
+
+                </div>
+
+                <div style="display:flex;align-items:center;gap:6px;flex:1;min-width:0">
+
+                  <div style="flex:1;height:6px;background:var(--border-color-soft);border-radius:99px;overflow:hidden">
+
+                    <div style="height:100%;width:20%;background:#D9B8A6;border-radius:99px"></div>
+
+                  </div>
+
+                  <b style="font-size:11px;color:var(--text-primary);white-space:nowrap">20%</b>
+
+                </div>
+
+              </div>
+
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:8px">
+
+                <div style="display:flex;align-items:center;gap:6px;min-width:0">
+
+                  <span style="width:10px;height:10px;border-radius:2px;background:#E8CFC5;flex-shrink:0"></span>
+
+                  <span style="font-size:12px;color:var(--text-secondary);white-space:nowrap">Wardrobe</span>
+
+                </div>
+
+                <div style="display:flex;align-items:center;gap:6px;flex:1;min-width:0">
+
+                  <div style="flex:1;height:6px;background:var(--border-color-soft);border-radius:99px;overflow:hidden">
+
+                    <div style="height:100%;width:24%;background:#E8CFC5;border-radius:99px"></div>
+
+                  </div>
+
+                  <b style="font-size:11px;color:var(--text-primary);white-space:nowrap">24%</b>
+
+                </div>
+
+              </div>
+
+            </div>
+
+            <div style="margin-top:var(--space-2);padding-top:var(--space-2);border-top:1px solid var(--border-color-soft);display:flex;justify-content:space-between;align-items:center">
+
+              <span style="font-size:11px;color:var(--text-muted)">Total sessions</span>
+
+              <span style="font-family:var(--font-heading);font-size:1.3rem;font-weight:700;color:var(--text-primary)">38</span>
+
+            </div>
+
+          </div>
+
+
+
+          <!-- Monthly Goals - labeled progress bars -->
+
+          <div class="widget">
+
+            <div class="widget-header"><p class="widget-title">Monthly Goals</p><span style="font-size:var(--text-xs);color:var(--text-muted)">April 2026</span></div>
+
+            <div style="display:flex;flex-direction:column;gap:12px">
+
+              <div>
+
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">
+
+                  <span style="font-size:12px;color:var(--text-secondary);font-weight:500">Revenue</span>
+
+                  <span style="font-size:12px;font-weight:700;color:#6D4C41">80%</span>
+
+                </div>
+
+                <div style="height:10px;background:var(--border-color-soft);border-radius:99px;overflow:hidden">
+
+                  <div style="height:100%;width:80%;background:linear-gradient(90deg,#6D4C41,#8D6E63);border-radius:99px"></div>
+
+                </div>
+
+              </div>
+
+              <div>
+
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">
+
+                  <span style="font-size:12px;color:var(--text-secondary);font-weight:500">Sessions</span>
+
+                  <span style="font-size:12px;font-weight:700;color:#8D6E63">75%</span>
+
+                </div>
+
+                <div style="height:10px;background:var(--border-color-soft);border-radius:99px;overflow:hidden">
+
+                  <div style="height:100%;width:75%;background:linear-gradient(90deg,#8D6E63,#D9B8A6);border-radius:99px"></div>
+
+                </div>
+
+              </div>
+
+              <div>
+
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">
+
+                  <span style="font-size:12px;color:var(--text-secondary);font-weight:500">Clients</span>
+
+                  <span style="font-size:12px;font-weight:700;color:#D9B8A6">90%</span>
+
+                </div>
+
+                <div style="height:10px;background:var(--border-color-soft);border-radius:99px;overflow:hidden">
+
+                  <div style="height:100%;width:90%;background:linear-gradient(90deg,#D9B8A6,#c8a48e);border-radius:99px"></div>
+
+                </div>
+
+              </div>
+
+              <div>
+
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">
+
+                  <span style="font-size:12px;color:var(--text-secondary);font-weight:500">Rating</span>
+
+                  <span style="font-size:12px;font-weight:700;color:#4CAF50">95%</span>
+
+                </div>
+
+                <div style="height:10px;background:var(--border-color-soft);border-radius:99px;overflow:hidden">
+
+                  <div style="height:100%;width:95%;background:linear-gradient(90deg,#4CAF50,#81C784);border-radius:99px"></div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+
+          <!-- Client Growth - compact sparkline + stat -->
+
+          <div class="widget">
+
+            <div class="widget-header"><p class="widget-title">Client Growth</p><span style="font-size:var(--text-xs);color:var(--text-muted)">8 Weeks</span></div>
+
+            <div style="display:flex;align-items:center;gap:var(--space-3);margin-bottom:var(--space-2)">
+
+              <div>
+
+                <div style="font-family:var(--font-heading);font-size:1.8rem;font-weight:700;color:var(--color-brown);line-height:1">+23</div>
+
+                <div style="font-size:10px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;margin-top:3px">New Clients</div>
+
+              </div>
+
+              <div style="flex:1;min-width:0">
+
+                <svg viewBox="0 0 180 60" style="width:100%;height:auto;display:block" role="img" aria-label="Client growth sparkline">
+
+                  <defs><linearGradient id="spkGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#6D4C41" stop-opacity="0.25"/><stop offset="100%" stop-color="#6D4C41" stop-opacity="0"/></linearGradient></defs>
+
+                  <polygon points="0,48 26,42 52,36 78,28 104,20 130,12 156,6 180,2 180,60 0,60" fill="url(#spkGrad)"/>
+
+                  <polyline points="0,48 26,42 52,36 78,28 104,20 130,12 156,6 180,2" fill="none" stroke="#6D4C41" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+
+                  <circle cx="180" cy="2" r="4" fill="#6D4C41"/>
+
+                </svg>
+
+              </div>
+
+            </div>
+
+            <!-- Week labels strip -->
+
+            <div style="display:flex;justify-content:space-between;padding-top:4px;border-top:1px solid var(--border-color-soft)">
+
+              <span style="font-size:9px;color:var(--text-muted)">W1</span><span style="font-size:9px;color:var(--text-muted)">W2</span>
+
+              <span style="font-size:9px;color:var(--text-muted)">W3</span><span style="font-size:9px;color:var(--text-muted)">W4</span>
+
+              <span style="font-size:9px;color:var(--text-muted)">W5</span><span style="font-size:9px;color:var(--text-muted)">W6</span>
+
+              <span style="font-size:9px;color:var(--text-muted)">W7</span><span style="font-size:9px;color:var(--text-muted)">W8</span>
+
+            </div>
+
+          </div>
+
+
+
+          <!-- Top by Revenue - horizontal bars (already mobile-friendly) -->
+
+          <div class="widget">
+
+            <div class="widget-header"><p class="widget-title">Top by Revenue</p><span style="font-size:var(--text-xs);color:var(--text-muted)">This Month</span></div>
+
+            <div style="display:flex;flex-direction:column;gap:10px;padding-top:4px">
+
+              <div><div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:3px"><span style="color:var(--text-secondary)">Bridal</span><strong>$7,990</strong></div><div style="height:8px;background:var(--border-color-soft);border-radius:99px;overflow:hidden"><div style="height:100%;width:96%;background:linear-gradient(90deg,#6D4C41,#8D6E63);border-radius:99px"></div></div></div>
+
+              <div><div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:3px"><span style="color:var(--text-secondary)">Corporate</span><strong>$5,980</strong></div><div style="height:8px;background:var(--border-color-soft);border-radius:99px;overflow:hidden"><div style="height:100%;width:72%;background:linear-gradient(90deg,#8D6E63,#D9B8A6);border-radius:99px"></div></div></div>
+
+              <div><div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:3px"><span style="color:var(--text-secondary)">Shopping</span><strong>$4,990</strong></div><div style="height:8px;background:var(--border-color-soft);border-radius:99px;overflow:hidden"><div style="height:100%;width:60%;background:linear-gradient(90deg,#D9B8A6,#E8CFC5);border-radius:99px"></div></div></div>
+
+              <div><div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:3px"><span style="color:var(--text-secondary)">Wardrobe</span><strong>$3,180</strong></div><div style="height:8px;background:var(--border-color-soft);border-radius:99px;overflow:hidden"><div style="height:100%;width:38%;background:linear-gradient(90deg,#E8CFC5,#f0ddd6);border-radius:99px"></div></div></div>
+
+            </div>
+
+          </div>
+
+
+
+        </div><!-- /admin-infogrid -->
+
+      </div>
+
+
+
+      <!-- RIGHT PANEL -->
+
+      <div class="admin-right">
+
+        <!-- Today's Schedule -->
+
+        <div class="widget">
+
+          <div class="widget-header">
+
+            <p class="widget-title">Today's Schedule</p>
+
+            <span class="badge badge-success">4 Sessions</span>
+
+          </div>
+
+          <div class="schedule-list">
+
+            <div class="schedule-item"><span class="schedule-time">9:00 AM</span><span class="schedule-dot" style="background:#6D4C41"></span><div><div class="schedule-info-name">Sarah Mitchell</div><div class="schedule-info-svc">Personal Shopping Â· 3h</div></div></div>
+
+            <div class="schedule-item"><span class="schedule-time">11:00 AM</span><span class="schedule-dot" style="background:#8D6E63"></span><div><div class="schedule-info-name">Amelia Torres</div><div class="schedule-info-svc">Color Analysis Â· 90min</div></div></div>
+
+            <div class="schedule-item"><span class="schedule-time">1:30 PM</span><span class="schedule-dot" style="background:#D9B8A6"></span><div><div class="schedule-info-name">Priya Sharma</div><div class="schedule-info-svc">Bridal Styling Â· 2h</div></div></div>
+
+            <div class="schedule-item"><span class="schedule-time">4:00 PM</span><span class="schedule-dot" style="background:#4CAF50"></span><div><div class="schedule-info-name">Laura Kim</div><div class="schedule-info-svc">Wardrobe Audit Â· 2.5h</div></div></div>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- Quick Actions -->
+
+        <div class="widget">
+
+          <div class="widget-header"><p class="widget-title">Quick Actions</p></div>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-2)">
+
+            <a href="contact.html" class="btn btn-primary btn-sm" style="justify-content:center">+ Booking</a>
+
+            <a href="#" class="btn btn-ghost btn-sm" style="justify-content:center">Add Client</a>
+
+            <a href="#" class="btn btn-ghost btn-sm" style="justify-content:center">Blog Post</a>
+
+            <a href="#" class="btn btn-ghost btn-sm" style="justify-content:center">Send Invoice</a>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- Activity Feed -->
+
+        <div class="widget">
+
+          <div class="widget-header">
+
+            <p class="widget-title">Live Activity</p>
+
+            <span class="nav-badge" style="position:static;margin-inline-start:8px">3</span>
+
+          </div>
+
+          <div class="activity-scroll-wrap">
+
+            <div class="activity-item">
+
+              <div class="activity-icon" style="background:rgba(109,76,65,0.15)"><svg viewBox="0 0 24 24" fill="none" stroke="#6D4C41" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+
+              <div><div class="activity-text"><strong>Sarah Mitchell</strong> confirmed her Apr 8 session</div><div class="activity-time">2 hours ago</div></div>
+
+            </div>
+
+            <div class="activity-item">
+
+              <div class="activity-icon" style="background:rgba(141,110,99,0.15)"><svg viewBox="0 0 24 24" fill="none" stroke="#8D6E63" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+
+              <div><div class="activity-text"><strong>Amelia Torres</strong> sent a reschedule request</div><div class="activity-time">5 hours ago</div></div>
+
+            </div>
+
+            <div class="activity-item">
+
+              <div class="activity-icon" style="background:rgba(76,175,80,0.15)"><svg viewBox="0 0 24 24" fill="none" stroke="#4CAF50" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
+
+              <div><div class="activity-text"><strong>$799</strong> payment received - Priya Sharma</div><div class="activity-time">1 day ago</div></div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+
+      </div>
+
+    </div>
+
+
+
+    <!-- "€"€ FULL-WIDTH BOOKINGS TABLE "€"€ -->
+
+    <div class="table-widget" style="margin-bottom:var(--space-5)">
+
+      <div class="table-widget-header">
+
+        <p class="widget-title">Recent Bookings</p>
+
+        <div class="table-header-controls">
+
+          <div class="search-bar">
+
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+
+            <input type="search" id="table-search" placeholder="Search clients€¦" aria-label="Search bookings"/>
+
+          </div>
+
+          <div class="table-action-row">
+
+            <select class="form-control" style="width:auto;padding:0.4em 0.8em;font-size:var(--text-xs)" aria-label="Filter status"><option>All Status</option><option>Confirmed</option><option>Pending</option><option>Completed</option></select>
+
+            <a href="#" class="btn btn-primary btn-sm">Export CSV</a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="table-wrapper">
+
+        <table class="data-table" id="bookings-table" aria-label="Recent bookings">
+
+          <thead><tr>
+
+            <th data-sort="name">Client <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:11px;height:11px;vertical-align:middle"><polyline points="6 9 12 15 18 9"/></svg></th>
+
+            <th>Service</th><th>Date</th><th>Duration</th><th>Amount</th><th>Status</th><th>Actions</th>
+
+          </tr></thead>
+
+          <tbody>
+
+            <tr><td><img src="../assets/images/team/avatar-1.png" alt="" class="table-avatar" width="32" height="32" loading="lazy"/><span class="table-name">Sarah Mitchell</span></td><td>Personal Shopping</td><td>Apr 8, 2026</td><td>3h</td><td><strong>$499</strong></td><td><span class="badge badge-success">Confirmed</span></td><td><a href="#" class="btn btn-ghost btn-sm">Edit</a></td></tr>
+
+            <tr><td><img src="../assets/images/team/avatar-2.png" alt="" class="table-avatar" width="32" height="32" loading="lazy"/><span class="table-name">Amelia Torres</span></td><td>Color Analysis</td><td>Apr 10, 2026</td><td>90min</td><td><strong>$149</strong></td><td><span class="badge badge-warning">Pending</span></td><td><a href="#" class="btn btn-ghost btn-sm">Edit</a></td></tr>
+
+            <tr><td><img src="../assets/images/team/avatar-3.png" alt="" class="table-avatar" width="32" height="32" loading="lazy"/><span class="table-name">Priya Sharma</span></td><td>Bridal Styling</td><td>Apr 12, 2026</td><td>4h</td><td><strong>$799</strong></td><td><span class="badge badge-success">Confirmed</span></td><td><a href="#" class="btn btn-ghost btn-sm">Edit</a></td></tr>
+
+            <tr><td><img src="../assets/images/team/avatar-1.png" alt="" class="table-avatar" width="32" height="32" loading="lazy"/><span class="table-name">Laura Kim</span></td><td>Wardrobe Audit</td><td>Apr 6, 2026</td><td>2.5h</td><td><strong>$199</strong></td><td><span class="badge badge-info">Completed</span></td><td><a href="#" class="btn btn-ghost btn-sm">Edit</a></td></tr>
+
+            <tr><td><img src="../assets/images/team/avatar-2.png" alt="" class="table-avatar" width="32" height="32" loading="lazy"/><span class="table-name">Maria Rossi</span></td><td>Corporate Styling</td><td>Apr 15, 2026</td><td>3h</td><td><strong>$499</strong></td><td><span class="badge badge-warning">Pending</span></td><td><a href="#" class="btn btn-ghost btn-sm">Edit</a></td></tr>
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </div>
+
+    <div class="table-widget" style="margin-bottom:var(--space-4)">
+
+
+
+      <div class="table-widget-header">
+
+        <p class="widget-title">Messages <span class="nav-badge" style="position:static;margin-inline-start:8px">3</span></p>
+
+        <div class="table-header-controls">
+
+          <div class="search-bar">
+
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+
+            <input type="search" id="message-search" placeholder="Search messages€¦" aria-label="Search messages"/>
+
+          </div>
+
+          <div class="table-action-row">
+
+            <select class="form-control" style="width:auto;padding:0.4em 0.8em;font-size:var(--text-xs)" aria-label="Filter status"><option>All Messages</option><option>Unread</option><option>Starred</option><option>Archived</option></select>
+
+            <a href="#" class="btn btn-primary btn-sm">Compose</a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="table-wrapper">
+
+        <table class="data-table" id="messages-table" aria-label="Inbox messages">
+
+          <thead><tr>
+
+            <th>Sender</th><th>Subject Preview</th><th>Received</th><th>Status</th><th>Actions</th>
+
+          </tr></thead>
+
+          <tbody>
+
+            <tr class="unread">
+
+              <td><img src="../assets/images/team/avatar-1.png" alt="" class="table-avatar" width="32" height="32" loading="lazy"/><span class="table-name">Sarah Mitchell</span></td>
+
+              <td><span style="font-weight:600">Booking Confirmation</span> - Thanks so much for today's session!</td>
+
+              <td>2 hours ago</td>
+
+              <td><span class="badge badge-warning">Unread</span></td>
+
+              <td><a href="#" class="btn btn-ghost btn-sm">View</a></td>
+
+            </tr>
+
+            <tr class="unread">
+
+              <td><img src="../assets/images/team/avatar-2.png" alt="" class="table-avatar" width="32" height="32" loading="lazy"/><span class="table-name">Amelia Torres</span></td>
+
+              <td><span style="font-weight:600">Reschedule Request</span> - Could we reschedule Thursday?</td>
+
+              <td>5 hours ago</td>
+
+              <td><span class="badge badge-warning">Unread</span></td>
+
+              <td><a href="#" class="btn btn-ghost btn-sm">View</a></td>
+
+            </tr>
+
+            <tr>
+
+              <td><img src="../assets/images/team/avatar-3.png" alt="" class="table-avatar" width="32" height="32" loading="lazy"/><span class="table-name">Priya Sharma</span></td>
+
+              <td><span style="font-weight:600">Inquiry</span> - Do you have availability on the 20th?</td>
+
+              <td>1 day ago</td>
+
+              <td><span class="badge badge-success">Read</span></td>
+
+              <td><a href="#" class="btn btn-ghost btn-sm">View</a></td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </div>
+
+  </main>
+
+
+
+</div>
+
+<script src="../assets/js/theme.js"></script><script src="../assets/js/rtl.js"></script><script src="../assets/js/counters.js"></script><script src="../assets/js/dashboard.js"></script><script src="../assets/js/main.js"></script>
+
+</body>
+
+</html>
+
