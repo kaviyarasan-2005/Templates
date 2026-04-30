@@ -1,16 +1,16 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" dir="ltr" data-theme="light">
 <head>
   <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Admin Dashboard — Élise Laurent</title>
-  <meta name="description" content="Élise Laurent Admin Dashboard — manage bookings, client profiles, analytics and messages."/>
+  <title>Admin Dashboard â€” Ã‰lise Laurent</title>
+  <meta name="description" content="Ã‰lise Laurent Admin Dashboard â€” manage bookings, client profiles, analytics and messages."/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
   <link rel="icon" href="../assets/images/icons/favicon.svg" type="image/svg+xml"/><link rel="manifest" href="../manifest.json"/><link rel="stylesheet" href="../assets/css/main.css"/><link rel="stylesheet" href="../assets/css/components.css"/>
   <link rel="stylesheet" href="../assets/css/animations.css"/><link rel="stylesheet" href="../assets/css/dark-mode.css"/>
   <link rel="stylesheet" href="../assets/css/rtl.css"/><link rel="stylesheet" href="../assets/css/dashboard.css"/>
   <style>
-    /* ── Admin dashboard mobile fixes (360px) ── */
+    /* â”€â”€ Admin dashboard mobile fixes (360px) â”€â”€ */
     .admin-chart-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
     .admin-chart-scroll svg { display: block; min-width: 340px; }
     .admin-infogrid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3); }
@@ -37,11 +37,11 @@
 <!-- NAV (minimal - no menu items) -->
 <header class="site-nav" id="site-nav" style="z-index:100">
   <nav class="nav-container" aria-label="Dashboard navigation">
-    <a href="index.html" class="nav-logo"><img src="../assets/images/icons/logo.svg" class="nav-logo-mark-img" alt="Logo" width="36" height="36" style="margin-right: 8px; flex-shrink: 0;" /><div class="nav-logo-text"><span class="nav-logo-name">Élise Laurent</span><span class="nav-logo-tagline">Admin</span></div></a>
+    <a href="index.html" class="nav-logo"><img src="../assets/images/icons/logo.svg" class="nav-logo-mark-img" alt="Logo" width="36" height="36" style="margin-right: 8px; flex-shrink: 0;" /><div class="nav-logo-text"><span class="nav-logo-name">Ã‰lise Laurent</span><span class="nav-logo-tagline">Admin</span></div></a>
 
     <div class="nav-actions">
       <button class="nav-action-btn hide-desktop" data-sidebar-toggle aria-label="Toggle sidebar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
-      <button class="nav-action-btn" data-dir-toggle aria-label="Toggle direction"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></button>
+      <button class="nav-action-btn" data-dir-toggle aria-label="Toggle direction">RTL</button>
       <button class="nav-action-btn" data-theme-toggle aria-label="Toggle theme">
         <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
         <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
@@ -54,9 +54,9 @@
   <!-- SIDEBAR -->
   <aside class="dashboard-sidebar" id="dashboard-sidebar" aria-label="Admin navigation">
     <div class="sidebar-user">
-      <img src="../assets/images/team/avatar-author.png" alt="Élise Laurent" class="sidebar-avatar" width="44" height="44" loading="lazy"/>
+      <img src="../assets/images/team/avatar-author.png" alt="Ã‰lise Laurent" class="sidebar-avatar" width="44" height="44" loading="lazy"/>
       <div class="sidebar-user-info">
-        <div class="sidebar-user-name">Élise Laurent</div>
+        <div class="sidebar-user-name">Ã‰lise Laurent</div>
         <div class="sidebar-user-role">Administrator</div>
       </div>
     </div>
@@ -106,10 +106,10 @@
     </nav>
   </aside>
 
-  <!-- MAIN CONTENT — ADMIN COMMAND CENTER -->
+  <!-- MAIN CONTENT â€” ADMIN COMMAND CENTER -->
   <main class="dashboard-main" id="main-content">
     <style>
-      /* ── Admin-specific overrides ── */
+      /* â”€â”€ Admin-specific overrides â”€â”€ */
       .admin-banner { 
         background: linear-gradient(135deg,#1a0f0a 0%,#2d1a10 60%,#3d2416 100%); 
         border-radius: var(--radius-lg); 
@@ -154,12 +154,12 @@
       .activity-time { font-size: 10px; color: var(--text-muted); margin-top: 2px; }
     </style>
 
-    <!-- ── DARK COMMAND BANNER ── -->
+    <!-- â”€â”€ DARK COMMAND BANNER â”€â”€ -->
     <div class="admin-banner">
       <div class="admin-banner-top">
         <div>
-          <h1 class="admin-banner-greeting">Good morning, Élise ✦</h1>
-          <p class="admin-banner-sub">Here's your business intelligence for today — April 9, 2026</p>
+          <h1 class="admin-banner-greeting">Good morning, Ã‰lise âœ¦</h1>
+          <p class="admin-banner-sub">Here's your business intelligence for today â€” April 9, 2026</p>
         </div>
         <div class="banner-actions">
           <a href="contact.html" class="btn btn-sm" style="background:rgba(255,255,255,0.15);color:white;border:1px solid rgba(255,255,255,0.25)">+ Booking</a>
@@ -170,27 +170,27 @@
         <div class="admin-kpi">
           <div class="admin-kpi-val" data-counter data-target="24800" data-prefix="$">$0</div>
           <div class="admin-kpi-label">Monthly Revenue</div>
-          <div class="admin-kpi-delta delta-up">▲ +18.2% vs last month</div>
+          <div class="admin-kpi-delta delta-up">â–² +18.2% vs last month</div>
         </div>
         <div class="admin-kpi">
           <div class="admin-kpi-val" data-counter data-target="142">0</div>
           <div class="admin-kpi-label">Active Clients</div>
-          <div class="admin-kpi-delta delta-up">▲ +7 new this month</div>
+          <div class="admin-kpi-delta delta-up">â–² +7 new this month</div>
         </div>
         <div class="admin-kpi">
           <div class="admin-kpi-val" data-counter data-target="38">0</div>
           <div class="admin-kpi-label">Sessions This Month</div>
-          <div class="admin-kpi-delta delta-up">▲ +4 vs last month</div>
+          <div class="admin-kpi-delta delta-up">â–² +4 vs last month</div>
         </div>
         <div class="admin-kpi">
           <div class="admin-kpi-val" data-counter data-target="12">0</div>
           <div class="admin-kpi-label">Unread Messages</div>
-          <div class="admin-kpi-delta delta-down">▼ Needs attention</div>
+          <div class="admin-kpi-delta delta-down">â–¼ Needs attention</div>
         </div>
       </div>
     </div>
 
-    <!-- ── 2-COLUMN ANALYTICS + RIGHT PANEL ── -->
+    <!-- â”€â”€ 2-COLUMN ANALYTICS + RIGHT PANEL â”€â”€ -->
     <div class="admin-cols">
       <!-- LEFT: Revenue bar chart + Service infographics -->
       <div style="display:flex;flex-direction:column;gap:var(--space-3)">
@@ -246,10 +246,10 @@
           </div>
         </div>
 
-        <!-- Infographics — 2-col desktop, 1-col mobile -->
+        <!-- Infographics â€” 2-col desktop, 1-col mobile -->
         <div class="admin-infogrid">
 
-          <!-- Service Mix — compact stacked bar + legend list -->
+          <!-- Service Mix â€” compact stacked bar + legend list -->
           <div class="widget">
             <div class="widget-header"><p class="widget-title">Service Mix</p><span style="font-size:var(--text-xs);color:var(--text-muted)">This Month</span></div>
             <!-- Stacked bar -->
@@ -316,7 +316,7 @@
             </div>
           </div>
 
-          <!-- Monthly Goals — labeled progress bars -->
+          <!-- Monthly Goals â€” labeled progress bars -->
           <div class="widget">
             <div class="widget-header"><p class="widget-title">Monthly Goals</p><span style="font-size:var(--text-xs);color:var(--text-muted)">April 2026</span></div>
             <div style="display:flex;flex-direction:column;gap:12px">
@@ -359,7 +359,7 @@
             </div>
           </div>
 
-          <!-- Client Growth — compact sparkline + stat -->
+          <!-- Client Growth â€” compact sparkline + stat -->
           <div class="widget">
             <div class="widget-header"><p class="widget-title">Client Growth</p><span style="font-size:var(--text-xs);color:var(--text-muted)">8 Weeks</span></div>
             <div style="display:flex;align-items:center;gap:var(--space-3);margin-bottom:var(--space-2)">
@@ -385,7 +385,7 @@
             </div>
           </div>
 
-          <!-- Top by Revenue — horizontal bars (already mobile-friendly) -->
+          <!-- Top by Revenue â€” horizontal bars (already mobile-friendly) -->
           <div class="widget">
             <div class="widget-header"><p class="widget-title">Top by Revenue</p><span style="font-size:var(--text-xs);color:var(--text-muted)">This Month</span></div>
             <div style="display:flex;flex-direction:column;gap:10px;padding-top:4px">
@@ -408,10 +408,10 @@
             <span class="badge badge-success">4 Sessions</span>
           </div>
           <div class="schedule-list">
-            <div class="schedule-item"><span class="schedule-time">9:00 AM</span><span class="schedule-dot" style="background:#6D4C41"></span><div><div class="schedule-info-name">Sarah Mitchell</div><div class="schedule-info-svc">Personal Shopping · 3h</div></div></div>
-            <div class="schedule-item"><span class="schedule-time">11:00 AM</span><span class="schedule-dot" style="background:#8D6E63"></span><div><div class="schedule-info-name">Amelia Torres</div><div class="schedule-info-svc">Color Analysis · 90min</div></div></div>
-            <div class="schedule-item"><span class="schedule-time">1:30 PM</span><span class="schedule-dot" style="background:#D9B8A6"></span><div><div class="schedule-info-name">Priya Sharma</div><div class="schedule-info-svc">Bridal Styling · 2h</div></div></div>
-            <div class="schedule-item"><span class="schedule-time">4:00 PM</span><span class="schedule-dot" style="background:#4CAF50"></span><div><div class="schedule-info-name">Laura Kim</div><div class="schedule-info-svc">Wardrobe Audit · 2.5h</div></div></div>
+            <div class="schedule-item"><span class="schedule-time">9:00 AM</span><span class="schedule-dot" style="background:#6D4C41"></span><div><div class="schedule-info-name">Sarah Mitchell</div><div class="schedule-info-svc">Personal Shopping Â· 3h</div></div></div>
+            <div class="schedule-item"><span class="schedule-time">11:00 AM</span><span class="schedule-dot" style="background:#8D6E63"></span><div><div class="schedule-info-name">Amelia Torres</div><div class="schedule-info-svc">Color Analysis Â· 90min</div></div></div>
+            <div class="schedule-item"><span class="schedule-time">1:30 PM</span><span class="schedule-dot" style="background:#D9B8A6"></span><div><div class="schedule-info-name">Priya Sharma</div><div class="schedule-info-svc">Bridal Styling Â· 2h</div></div></div>
+            <div class="schedule-item"><span class="schedule-time">4:00 PM</span><span class="schedule-dot" style="background:#4CAF50"></span><div><div class="schedule-info-name">Laura Kim</div><div class="schedule-info-svc">Wardrobe Audit Â· 2.5h</div></div></div>
           </div>
         </div>
 
@@ -443,7 +443,7 @@
             </div>
             <div class="activity-item">
               <div class="activity-icon" style="background:rgba(76,175,80,0.15)"><svg viewBox="0 0 24 24" fill="none" stroke="#4CAF50" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
-              <div><div class="activity-text"><strong>$799</strong> payment received — Priya Sharma</div><div class="activity-time">1 day ago</div></div>
+              <div><div class="activity-text"><strong>$799</strong> payment received â€” Priya Sharma</div><div class="activity-time">1 day ago</div></div>
             </div>
           </div>
         </div>
@@ -451,14 +451,14 @@
       </div>
     </div>
 
-    <!-- ── FULL-WIDTH BOOKINGS TABLE ── -->
+    <!-- â”€â”€ FULL-WIDTH BOOKINGS TABLE â”€â”€ -->
     <div class="table-widget" style="margin-bottom:var(--space-5)">
       <div class="table-widget-header">
         <p class="widget-title">Recent Bookings</p>
         <div class="table-header-controls">
           <div class="search-bar">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-            <input type="search" id="table-search" placeholder="Search clients…" aria-label="Search bookings"/>
+            <input type="search" id="table-search" placeholder="Search clientsâ€¦" aria-label="Search bookings"/>
           </div>
           <div class="table-action-row">
             <select class="form-control" style="width:auto;padding:0.4em 0.8em;font-size:var(--text-xs)" aria-label="Filter status"><option>All Status</option><option>Confirmed</option><option>Pending</option><option>Completed</option></select>
@@ -489,7 +489,7 @@
         <div class="table-header-controls">
           <div class="search-bar">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-            <input type="search" id="message-search" placeholder="Search messages…" aria-label="Search messages"/>
+            <input type="search" id="message-search" placeholder="Search messagesâ€¦" aria-label="Search messages"/>
           </div>
           <div class="table-action-row">
             <select class="form-control" style="width:auto;padding:0.4em 0.8em;font-size:var(--text-xs)" aria-label="Filter status"><option>All Messages</option><option>Unread</option><option>Starred</option><option>Archived</option></select>
@@ -505,21 +505,21 @@
           <tbody>
             <tr class="unread">
               <td><img src="../assets/images/team/avatar-1.png" alt="" class="table-avatar" width="32" height="32" loading="lazy"/><span class="table-name">Sarah Mitchell</span></td>
-              <td><span style="font-weight:600">Booking Confirmation</span> — Thanks so much for today's session!</td>
+              <td><span style="font-weight:600">Booking Confirmation</span> â€” Thanks so much for today's session!</td>
               <td>2 hours ago</td>
               <td><span class="badge badge-warning">Unread</span></td>
               <td><a href="#" class="btn btn-ghost btn-sm">View</a></td>
             </tr>
             <tr class="unread">
               <td><img src="../assets/images/team/avatar-2.png" alt="" class="table-avatar" width="32" height="32" loading="lazy"/><span class="table-name">Amelia Torres</span></td>
-              <td><span style="font-weight:600">Reschedule Request</span> — Could we reschedule Thursday?</td>
+              <td><span style="font-weight:600">Reschedule Request</span> â€” Could we reschedule Thursday?</td>
               <td>5 hours ago</td>
               <td><span class="badge badge-warning">Unread</span></td>
               <td><a href="#" class="btn btn-ghost btn-sm">View</a></td>
             </tr>
             <tr>
               <td><img src="../assets/images/team/avatar-3.png" alt="" class="table-avatar" width="32" height="32" loading="lazy"/><span class="table-name">Priya Sharma</span></td>
-              <td><span style="font-weight:600">Inquiry</span> — Do you have availability on the 20th?</td>
+              <td><span style="font-weight:600">Inquiry</span> â€” Do you have availability on the 20th?</td>
               <td>1 day ago</td>
               <td><span class="badge badge-success">Read</span></td>
               <td><a href="#" class="btn btn-ghost btn-sm">View</a></td>

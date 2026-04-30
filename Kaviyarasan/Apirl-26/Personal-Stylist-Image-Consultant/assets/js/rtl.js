@@ -28,9 +28,8 @@
       btn.setAttribute('aria-label', dir === 'rtl' ? 'Switch to LTR' : 'Switch to RTL');
       btn.setAttribute('title', dir === 'rtl' ? 'Switch to LTR (English)' : 'Switch to RTL (Arabic)');
 
-      // Swap label text if present
-      const label = btn.querySelector('.dir-label');
-      if (label) label.textContent = dir === 'rtl' ? 'EN' : 'ع';
+      // Update text content
+      btn.textContent = dir === 'rtl' ? 'LTR' : 'RTL';
     });
   }
 

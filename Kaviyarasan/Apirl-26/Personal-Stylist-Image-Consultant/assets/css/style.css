@@ -60,11 +60,12 @@
   width: 100%;
 }
 .auth-toggles {
-  position: absolute;
-  inset-inline-end: 0;
+  position: fixed;
+  top: var(--space-3);
+  inset-inline-end: var(--space-3);
   display: flex;
   gap: 8px;
-  z-index: 10;
+  z-index: var(--z-fixed);
 }
 .auth-logo-mark {
   width: 44px; height: 44px; border-radius: 50%;
@@ -120,11 +121,6 @@
   .auth-header-wrap {
     flex-direction: column;
     gap: var(--space-3);
-  }
-  .auth-toggles {
-    position: fixed;
-    top: var(--space-4);
-    inset-inline-end: var(--space-4);
   }
 }
 
