@@ -1,4 +1,4 @@
-﻿/* ============================================================
+/* ============================================================
    RV ADVEN RENTALS - Dark Mode Overrides
    Activated via: [data-theme="dark"] on <html> element
    ============================================================ */
@@ -11,9 +11,9 @@
   --color-border: #2A2F42;
   --color-border-light: #232840;
 
-  --color-text-primary: #E8EDF5;
-  --color-text-secondary: #94A3B8;
-  --color-text-muted: #64748B;
+  --color-text-primary: #F8FAFC;
+  --color-text-secondary: #CBD5E1;
+  --color-text-muted: #94A3B8;
 
   --shadow-sm: 0 1px 3px rgba(0,0,0,0.3), 0 1px 2px rgba(0,0,0,0.2);
   --shadow-md: 0 4px 12px rgba(0,0,0,0.4), 0 2px 4px rgba(0,0,0,0.2);
@@ -260,18 +260,19 @@
 }
 
 /* Dashboard sidebar */
-[data-theme="dark"] .sidebar {
-  background: #0F1420;
+[data-theme="dark"] .dash-sidebar {
+  background: var(--color-bg-card);
   border-color: var(--color-border);
 }
-
-[data-theme="dark"] .sidebar-link {
+[data-theme="dark"] .dash-nav-link {
   color: var(--color-text-secondary);
 }
-
-[data-theme="dark"] .sidebar-link:hover,
-[data-theme="dark"] .sidebar-link.active {
+[data-theme="dark"] .dash-nav-link:hover,
+[data-theme="dark"] .dash-nav-link.active {
   background: rgba(61, 122, 97, 0.12);
+  color: var(--color-primary-light);
+}
+[data-theme="dark"] .dash-nav-link.active i {
   color: var(--color-primary-light);
 }
 
