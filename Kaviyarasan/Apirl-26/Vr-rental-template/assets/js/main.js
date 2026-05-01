@@ -133,15 +133,18 @@ const DirectionManager = {
   },
 
   updateIcon(dir) {
-    $$('[data-dir-toggle]').forEach(btn => {
+    const selector = '[data-dir-toggle], #dir-toggle, #dir-toggle-btn';
+    $$(selector).forEach(btn => {
       btn.setAttribute('aria-label', dir === 'rtl' ? 'Switch to LTR' : 'Switch to RTL');
       btn.setAttribute('title', dir === 'rtl' ? 'Switch to LTR' : 'Switch to RTL');
-      const icon = btn.querySelector('i');
-      if (icon) {
-        icon.className = dir === 'rtl' ? 'fas fa-globe' : 'fas fa-globe';
+      
+      if (dir === 'rtl') {
+        btn.innerHTML = 'RTL';
+      } else {
+        btn.innerHTML = 'LTR';
       }
-      const label = btn.querySelector('.dir-label');
-      if (label) label.textContent = dir === 'rtl' ? 'LTR' : 'RTL';
+      
+      btn.classList.add('dir-toggle-text');
     });
   },
 
