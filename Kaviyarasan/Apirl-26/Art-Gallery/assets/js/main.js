@@ -136,10 +136,11 @@ function setDirection(dir) {
     }
   }
 
-  const toggle = $('#rtl-toggle');
-  if (toggle) {
+  const toggles = $$('#rtl-toggle, .rtl-toggle-mobile');
+  toggles.forEach(toggle => {
+    toggle.textContent = dir === 'rtl' ? 'LTR' : 'RTL';
     toggle.setAttribute('aria-label', dir === 'rtl' ? 'Switch to LTR (English)' : 'Switch to RTL (Arabic)');
-  }
+  });
 }
 
 /* ---------- ACTIVE NAV HIGHLIGHT ---------- */

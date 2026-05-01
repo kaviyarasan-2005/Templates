@@ -67,9 +67,7 @@
         </div>
       </div>
       <div class="navbar__actions">
-        <button class="navbar__icon-btn" id="rtl-toggle" aria-label="Toggle RTL/LTR">
-          <svg style="pointer-events:none" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-        </button>
+        <button class="navbar__icon-btn" id="rtl-toggle" aria-label="Toggle RTL/LTR">RTL</button>
         <button class="navbar__icon-btn" id="theme-toggle" aria-label="Toggle dark mode">
           <svg style="pointer-events:none" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
         </button>
@@ -96,7 +94,7 @@
       <a href="dashboard.html#user" class="navbar__link">User Dashboard</a>
       <a href="dashboard.html#admin" class="navbar__link">Admin Dashboard</a>
       <div style="display:flex;gap:12px;margin-top:16px;">
-        <button class="navbar__icon-btn" onclick="document.getElementById('rtl-toggle').click()"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></button>
+        <button class="rtl-toggle-mobile navbar__icon-btn" onclick="document.getElementById('rtl-toggle').click()">RTL</button>
         <button class="navbar__icon-btn" onclick="document.getElementById('theme-toggle').click()"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
       </div>
       <a href="login.html" class="btn btn--primary" style="margin-top:8px;">Login</a>
