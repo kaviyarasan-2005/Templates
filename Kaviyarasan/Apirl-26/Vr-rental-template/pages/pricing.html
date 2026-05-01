@@ -26,6 +26,8 @@
     .pricing-feature-disabled i { color: rgba(0,0,0,0.25); }
     .pricing-card.featured .pricing-feature-disabled i { color: rgba(255,255,255,0.3); }
     .pricing-card.featured .pricing-card-name { color: white; }
+    .pricing-card { text-align: center; }
+    .pricing-features { align-items: center; }
     .comparison-table { width: 100%; border-collapse: collapse; }
     .comparison-table th { background: var(--color-bg-section); padding: 16px; font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-text-primary); border-bottom: 2px solid var(--color-border); }
     .comparison-table th:first-child { text-align: left; }
@@ -40,8 +42,10 @@
     .addon-card:hover, .addon-card.selected { border-color: var(--color-primary); background: rgba(46,92,71,0.04); }
     .addon-card.selected .addon-checkbox { background: var(--color-primary); border-color: var(--color-primary); }
     .addon-checkbox { width: 20px; height: 20px; border: 2px solid var(--color-border); border-radius: 4px; margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.7rem; transition: all 0.2s; }
-    .faq-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-    .faq-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .faq-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; margin-top: 48px; }
+    .faq-category-card { background: var(--color-bg-card); border: 1px solid var(--color-border-light); border-radius: 24px; padding: 32px; box-shadow: var(--shadow-sm); }
+    .faq-category-title { font-size: 1.25rem; font-weight: 700; color: var(--color-text-primary); margin-bottom: 24px; display: flex; align-items: center; gap: 12px; }
+    .faq-category-title i { color: var(--color-primary); background: rgba(46,92,71,0.1); width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 12px; font-size: 1rem; }
     @media (max-width: 1024px) { .pricing-grid { grid-template-columns: repeat(2, 1fr); } .addons-grid { grid-template-columns: repeat(2, 1fr); } .faq-grid { grid-template-columns: 1fr; } }
     @media (max-width: 640px) { .pricing-grid { grid-template-columns: 1fr; } .addons-grid { grid-template-columns: 1fr 1fr; } }
   </style>
@@ -338,15 +342,21 @@
       <div class="container">
         <div class="section-header animate-fade-up"><div class="section-label"><i class="fas fa-question-circle"></i> FAQ</div><h2 id="pricing-faq-heading" class="section-title">Pricing FAQs</h2></div>
         <div class="faq-grid accordion-group animate-fade-up">
-          <div style="display:flex;flex-direction:column;gap:12px;">
-            <div class="accordion-item"><button class="accordion-header" aria-expanded="false">Are there any hidden fees?<span class="accordion-icon"><i class="fas fa-plus"></i></span></button><div class="accordion-body"><div class="accordion-content">Never. Our pricing is 100% transparent. The only extras are optional: damage waiver, mileage overages (clearly disclosed before booking), and any add-ons you choose.</div></div></div>
-            <div class="accordion-item"><button class="accordion-header" aria-expanded="false">What's included in the base price?<span class="accordion-icon"><i class="fas fa-plus"></i></span></button><div class="accordion-body"><div class="accordion-content">Your base price includes the vehicle, basic insurance, your choice of kitchen kit, generator fuel for the first tank, and 24/7 support access. No additional per-person fees.</div></div></div>
-            <div class="accordion-item"><button class="accordion-header" aria-expanded="false">Do you charge for extra miles?<span class="accordion-icon"><i class="fas fa-plus"></i></span></button><div class="accordion-body"><div class="accordion-content">Explorer and Adventurer plans include 100–150 miles/day at no charge. Once exceeded, the rate is $0.35/mile. Premier includes unlimited miles.</div></div></div>
+          <div class="faq-category-card">
+            <div class="faq-category-title"><i class="fas fa-rv"></i> Rental Basics</div>
+            <div style="display:flex;flex-direction:column;gap:12px;">
+              <div class="accordion-item"><button class="accordion-header" aria-expanded="false">Are there any hidden fees?<span class="accordion-icon"><i class="fas fa-plus"></i></span></button><div class="accordion-body"><div class="accordion-content">Never. Our pricing is 100% transparent. The only extras are optional: damage waiver, mileage overages (clearly disclosed before booking), and any add-ons you choose.</div></div></div>
+              <div class="accordion-item"><button class="accordion-header" aria-expanded="false">What's included in the base price?<span class="accordion-icon"><i class="fas fa-plus"></i></span></button><div class="accordion-body"><div class="accordion-content">Your base price includes the vehicle, basic insurance, your choice of kitchen kit, generator fuel for the first tank, and 24/7 support access. No additional per-person fees.</div></div></div>
+              <div class="accordion-item"><button class="accordion-header" aria-expanded="false">Do you charge for extra miles?<span class="accordion-icon"><i class="fas fa-plus"></i></span></button><div class="accordion-body"><div class="accordion-content">Explorer and Adventurer plans include 100–150 miles/day at no charge. Once exceeded, the rate is $0.35/mile. Premier includes unlimited miles.</div></div></div>
+            </div>
           </div>
-          <div style="display:flex;flex-direction:column;gap:12px;">
-            <div class="accordion-item"><button class="accordion-header" aria-expanded="false">What payment methods do you accept?<span class="accordion-icon"><i class="fas fa-plus"></i></span></button><div class="accordion-body"><div class="accordion-content">All major credit cards, debit cards, PayPal, and Apple/Google Pay. A credit card is required for the security deposit hold at the time of pickup.</div></div></div>
-            <div class="accordion-item"><button class="accordion-header" aria-expanded="false">Can I cancel or change my booking?<span class="accordion-icon"><i class="fas fa-plus"></i></span></button><div class="accordion-body"><div class="accordion-content">Changes and cancellations are free up to 72 hours before pickup for all plans. Cancellations within 72 hours receive a 50% refund. Premier plan gets an extended 5-day window.</div></div></div>
-            <div class="accordion-item"><button class="accordion-header" aria-expanded="false">Is a security deposit required?<span class="accordion-icon"><i class="fas fa-plus"></i></span></button><div class="accordion-body"><div class="accordion-content">Yes — a refundable hold of $500–$2,500 depending on vehicle class is placed on your credit card at pickup. It's released within 5–7 business days after satisfactory return.</div></div></div>
+          <div class="faq-category-card">
+            <div class="faq-category-title"><i class="fas fa-credit-card"></i> Payments & Logistics</div>
+            <div style="display:flex;flex-direction:column;gap:12px;">
+              <div class="accordion-item"><button class="accordion-header" aria-expanded="false">What payment methods do you accept?<span class="accordion-icon"><i class="fas fa-plus"></i></span></button><div class="accordion-body"><div class="accordion-content">All major credit cards, debit cards, PayPal, and Apple/Google Pay. A credit card is required for the security deposit hold at the time of pickup.</div></div></div>
+              <div class="accordion-item"><button class="accordion-header" aria-expanded="false">Can I cancel or change my booking?<span class="accordion-icon"><i class="fas fa-plus"></i></span></button><div class="accordion-body"><div class="accordion-content">Changes and cancellations are free up to 72 hours before pickup for all plans. Cancellations within 72 hours receive a 50% refund. Premier plan gets an extended 5-day window.</div></div></div>
+              <div class="accordion-item"><button class="accordion-header" aria-expanded="false">Is a security deposit required?<span class="accordion-icon"><i class="fas fa-plus"></i></span></button><div class="accordion-body"><div class="accordion-content">Yes — a refundable hold of $500–$2,500 depending on vehicle class is placed on your credit card at pickup. It's released within 5–7 business days after satisfactory return.</div></div></div>
+            </div>
           </div>
         </div>
       </div>
