@@ -197,7 +197,7 @@
       <i class="fas fa-moon"></i>
     </button>
     <button class="navbar-icon-btn" data-dir-toggle aria-label="Toggle RTL/LTR" style="background:rgba(255,255,255,0.1); backdrop-filter:blur(10px); color:white; border:1px solid rgba(255,255,255,0.2); width:40px; height:40px; border-radius:10px; cursor:pointer; display:flex; align-items:center; justify-content:center;">
-      
+      <i class="fas fa-language"></i>
     </button>
   </div>
 
@@ -211,7 +211,7 @@
       </a>
 
       <h1 class="register-title">Create Your Account</h1>
-      <p class="register-subtitle">Join free â€” no credit card required</p>
+      <p class="register-subtitle">Join free — no credit card required</p>
 
       <!-- Social Sign Up -->
       <div style="display:flex;gap:10px;margin-bottom:12px;">
@@ -267,9 +267,7 @@
       <div class="register-footer-text">
         Already have an account? <a href="login.html" style="color:var(--color-primary);font-weight:600;text-decoration:none;">Sign in</a>
       </div>
-      <div style="text-align:center;margin-top:16px;">
-        <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Home</a>
-      </div>
+
     </main>
   </div>
 
@@ -288,7 +286,7 @@
       if (/[^A-Za-z0-9]/.test(val)) score++;
       const levels = ['', 'weak', 'fair', 'good', 'strong'];
       const colors = ['', '#E74C3C', '#F39C12', '#3498DB', '#27AE60'];
-      const labels = ['enter a password', 'Weak â€” add numbers', 'Fair â€” add capitals', 'Good â€” almost there', 'Strong password âœ“'];
+      const labels = ['enter a password', 'Weak — add numbers', 'Fair — add capitals', 'Good — almost there', 'Strong password ✓'];
       fill.style.width = (score * 25) + '%';
       fill.style.background = colors[score] || '';
       label.textContent = 'Password strength: ' + (labels[score] || labels[0]);

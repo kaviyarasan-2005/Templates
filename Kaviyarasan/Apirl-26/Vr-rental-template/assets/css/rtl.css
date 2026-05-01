@@ -282,3 +282,19 @@
 [dir="rtl"] .avatar-group img:first-child {
   margin-right: 0;
 }
+
+/* Auth Pages (Login/Register) */
+[dir="rtl"] .auth-toggles {
+  right: auto !important;
+  left: 20px !important;
+}
+
+[dir="rtl"] button svg,
+[dir="rtl"] .btn svg {
+  margin-right: 0 !important;
+  margin-left: 8px !important;
+}
+
+
+
+
