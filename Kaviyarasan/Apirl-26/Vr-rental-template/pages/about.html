@@ -13,7 +13,7 @@
     .team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
     .team-card { background: var(--color-bg-card); border-radius: 20px; overflow: hidden; border: 1px solid var(--color-border-light); transition: all 0.3s ease; text-align: center; }
     .team-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
-    .team-img { width: 100%; height: 220px; object-fit: cover; object-position: top; }
+    .team-img { width: 100%; height: 280px; object-fit: cover; object-position: top; }
     .team-body { padding: 20px 16px 24px; }
     .team-name { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1rem; color: var(--color-text-primary); }
     .team-role { font-size: 0.8rem; color: var(--color-secondary); font-weight: 600; margin-top: 4px; }
@@ -32,7 +32,11 @@
     .mission-card { background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark)); border-radius: 24px; padding: 48px; color: white; }
     .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
     .value-card { padding: 32px; border-radius: 16px; border: 1px solid var(--color-border); background: var(--color-bg-card); }
-    @media (max-width: 1024px) { .team-grid { grid-template-columns: repeat(2, 1fr); } .values-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 1024px) { 
+      .team-grid { grid-template-columns: repeat(2, 1fr); } 
+      .values-grid { grid-template-columns: repeat(2, 1fr); } 
+      .team-img { height: 340px; object-position: top; }
+    }
     @media (max-width: 768px) {
       .timeline::before { left: 24px; }
       .timeline-item { grid-template-columns: auto 1fr; }
@@ -40,7 +44,10 @@
       .timeline-content.right { grid-column: 2; }
       .timeline-dot { grid-column: 1; }
     }
-    @media (max-width: 640px) { .team-grid, .values-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 640px) { 
+      .team-grid, .values-grid { grid-template-columns: 1fr; } 
+      .team-img { height: 400px; object-position: top; }
+    }
 
     /* RTL Alignment Fixes */
     [dir="rtl"] .timeline::before { left: auto; right: 50%; transform: translateX(50%); }
