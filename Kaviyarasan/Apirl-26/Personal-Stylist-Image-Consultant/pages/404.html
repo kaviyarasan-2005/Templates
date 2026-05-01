@@ -1,102 +1,102 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr" data-theme="light">
-<head>
-  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Page Not Found - Elise</title>
-  <meta name="description" content="Sorry, the page you're looking for doesn't exist. Return to Elise's homepage."/>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
-  <link rel="icon" href="../assets/images/icons/favicon.svg" type="image/svg+xml"/><link rel="manifest" href="../manifest.json"/><link rel="stylesheet" href="../assets/css/main.css"/><link rel="stylesheet" href="../assets/css/components.css"/>
-  <link rel="stylesheet" href="../assets/css/animations.css"/><link rel="stylesheet" href="../assets/css/dark-mode.css"/>
-  <link rel="stylesheet" href="../assets/css/rtl.css"/>
-  <style>
-    .error-page { min-height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; background: linear-gradient(135deg, var(--color-beige) 0%, var(--color-blush) 100%); text-align: center; padding: var(--space-4); }
-    [data-theme="dark"] .error-page { background: linear-gradient(135deg, #1a0f0a 0%, #2d1a10 40%, #3d2416 70%, #4e342e 100%); }
-    [data-theme="dark"] .error-title { color: var(--color-beige); }
-    .error-bg-num { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; pointer-events: none; font-family: var(--font-heading); font-size: clamp(12rem, 35vw, 28rem); font-weight: 900; color: transparent; -webkit-text-stroke: 1px var(--border-color); opacity: 0.4; user-select: none; line-height: 1; }
-    .error-content { position: relative; z-index: 1; max-width: 600px; }
-    .error-emoji { font-size: 4rem; margin-bottom: var(--space-3); display: block; animation: float 3s ease-in-out infinite; }
-    .error-title { font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: var(--space-2); }
-    .error-text { color: var(--text-muted); margin-bottom: var(--space-5); font-size: var(--text-lg); }
-    .error-links { display: flex; gap: var(--space-2); justify-content: center; flex-wrap: wrap; }
-    .error-suggestions { margin-top: var(--space-5); padding-top: var(--space-5); border-top: 1px solid var(--border-color); }
-    .error-suggestions-title { font-size: var(--text-sm); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: var(--space-3); }
-    .error-suggestion-links { display: flex; gap: var(--space-2); justify-content: center; flex-wrap: wrap; }
-    .error-suggestion-links .btn-ghost {
-      border: 1px solid rgba(109, 76, 65, 0.3);
-      color: var(--color-brown-dark);
-      background: rgba(255, 255, 255, 0.3);
-    }
-    [data-theme="dark"] .error-suggestion-links .btn-ghost {
-      border-color: rgba(232, 207, 197, 0.3);
-      color: var(--color-beige);
-      background: rgba(255, 255, 255, 0.05);
-    }
-    .error-suggestion-links .btn-ghost:hover {
-      background: var(--color-brown);
-      color: white;
-      border-color: var(--color-brown);
-    }
-    .floating-toggles {
-      position: fixed;
-      top: var(--space-3);
-      inset-inline-end: var(--space-3);
-      display: flex;
-      gap: 8px;
-      z-index: 100;
-    }
-    .floating-toggles .nav-action-btn {
-      background: rgba(255, 255, 255, 0.2);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(0, 0, 0, 0.1);
-      color: var(--text-primary);
-    }
-    [data-theme="dark"] .floating-toggles .nav-action-btn {
-      background: rgba(0, 0, 0, 0.2);
-      border-color: rgba(255, 255, 255, 0.1);
-      color: white;
-    }
-    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
-  </style>
-</head>
-<body>
-<a href="#main-content" class="skip-link">Skip to main content</a>
-
-<div class="floating-toggles">
-  <button class="nav-action-btn" data-dir-toggle aria-label="Toggle direction">RTL</button>
-  <button class="nav-action-btn" data-theme-toggle aria-label="Toggle theme">
-    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-  </button>
-</div>
-
-<main id="main-content">
-  <div class="error-page" aria-label="404 error page">
-    <div class="error-bg-num" aria-hidden="true">404</div>
-    <div class="error-content">
-      <a href="index.html" class="nav-logo" style="justify-content:center;margin-bottom:var(--space-5)">
-        <img src="../assets/images/icons/logo.svg" class="nav-logo-mark-img" alt="Logo" width="44" height="44" style="margin-right: 12px; flex-shrink: 0;" />
-        <div class="nav-logo-text"><span class="nav-logo-name" style="font-size:1.5rem">Elise</span></div>
-      </a>
-      <span class="error-emoji" aria-hidden="true">👗-</span>
-      <h1 class="error-title">This Page Got Lost in the Wardrobe</h1>
-      <p class="error-text">Even the most stylish wardrobes have missing pieces. The page you're looking for seems to have wandered off - but we'll help you find your way back.</p>
-      <div class="error-links">
-        <a href="index.html" class="btn btn-primary btn-lg" id="back-home-btn">Return to Homepage</a>
-        <a href="contact.html" class="btn btn-secondary btn-lg" id="get-help-btn">Get Help</a>
-      </div>
-      <div class="error-suggestions">
-        <p class="error-suggestions-title">Or explore these pages</p>
-        <div class="error-suggestion-links">
-          <a href="services.html" class="btn btn-ghost btn-sm">Services</a>
-          <a href="pricing.html" class="btn btn-ghost btn-sm">Pricing</a>
-          <a href="blog.html" class="btn btn-ghost btn-sm">Blog</a>
-          <a href="about.html" class="btn btn-ghost btn-sm">About Us</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</main>
-<script src="../assets/js/theme.js"></script><script src="../assets/js/rtl.js"></script>
-</body>
-</html>
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+ <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+ <title>Page Not Found - Elise</title>
+ <meta name="description" content="Sorry, the page you're looking for doesn't exist. Return to Elise's homepage."/>
+ <link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+ <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+ <link rel="icon" href="../assets/images/icons/favicon.svg" type="image/svg+xml"/><link rel="manifest" href="../manifest.json"/><link rel="stylesheet" href="../assets/css/main.css"/><link rel="stylesheet" href="../assets/css/components.css"/>
+ <link rel="stylesheet" href="../assets/css/animations.css"/><link rel="stylesheet" href="../assets/css/dark-mode.css"/>
+ <link rel="stylesheet" href="../assets/css/rtl.css"/>
+ <style>
+  .error-page { min-height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; background: linear-gradient(135deg, var(--color-beige) 0%, var(--color-blush) 100%); text-align: center; padding: var(--space-4); }
+  [data-theme="dark"] .error-page { background: linear-gradient(135deg, #1a0f0a 0%, #2d1a10 40%, #3d2416 70%, #4e342e 100%); }
+  [data-theme="dark"] .error-title { color: var(--color-beige); }
+  .error-bg-num { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; pointer-events: none; font-family: var(--font-heading); font-size: clamp(12rem, 35vw, 28rem); font-weight: 900; color: transparent; -webkit-text-stroke: 1px var(--border-color); opacity: 0.4; user-select: none; line-height: 1; }
+  .error-content { position: relative; z-index: 1; max-width: 600px; }
+  .error-emoji { font-size: 4rem; margin-bottom: var(--space-3); display: block; animation: float 3s ease-in-out infinite; }
+  .error-title { font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: var(--space-2); }
+  .error-text { color: var(--text-muted); margin-bottom: var(--space-5); font-size: var(--text-lg); }
+  .error-links { display: flex; gap: var(--space-2); justify-content: center; flex-wrap: wrap; }
+  .error-suggestions { margin-top: var(--space-5); padding-top: var(--space-5); border-top: 1px solid var(--border-color); }
+  .error-suggestions-title { font-size: var(--text-sm); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: var(--space-3); }
+  .error-suggestion-links { display: flex; gap: var(--space-2); justify-content: center; flex-wrap: wrap; }
+  .error-suggestion-links .btn-ghost {
+   border: 1px solid rgba(109, 76, 65, 0.3);
+   color: var(--color-brown-dark);
+   background: rgba(255, 255, 255, 0.3);
+  }
+  [data-theme="dark"] .error-suggestion-links .btn-ghost {
+   border-color: rgba(232, 207, 197, 0.3);
+   color: var(--color-beige);
+   background: rgba(255, 255, 255, 0.05);
+  }
+  .error-suggestion-links .btn-ghost:hover {
+   background: var(--color-brown);
+   color: white;
+   border-color: var(--color-brown);
+  }
+  .floating-toggles {
+   position: fixed;
+   top: var(--space-3);
+   inset-inline-end: var(--space-3);
+   display: flex;
+   gap: 8px;
+   z-index: 100;
+  }
+  .floating-toggles .nav-action-btn {
+   background: rgba(255, 255, 255, 0.2);
+   backdrop-filter: blur(8px);
+   border: 1px solid rgba(0, 0, 0, 0.1);
+   color: var(--text-primary);
+  }
+  [data-theme="dark"] .floating-toggles .nav-action-btn {
+   background: rgba(0, 0, 0, 0.2);
+   border-color: rgba(255, 255, 255, 0.1);
+   color: white;
+  }
+  @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
+ </style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<div class="floating-toggles">
+ <button class="nav-action-btn" data-dir-toggle aria-label="Toggle direction">RTL</button>
+ <button class="nav-action-btn" data-theme-toggle aria-label="Toggle theme">
+  <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+  <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+ </button>
+</div>
+
+<main id="main-content">
+ <div class="error-page" aria-label="404 error page">
+  <div class="error-bg-num" aria-hidden="true">404</div>
+  <div class="error-content">
+   <a href="index.html" class="nav-logo" style="justify-content:center;margin-bottom:var(--space-5)">
+    <img src="../assets/images/icons/logo.svg" class="nav-logo-mark-img" alt="Logo" width="44" height="44" style="margin-right: 12px; flex-shrink: 0;" />
+    <div class="nav-logo-text"><span class="nav-logo-name" style="font-size:1.5rem">Elise</span></div>
+   </a>
+   <span class="error-emoji" aria-hidden="true">👗-</span>
+   <h1 class="error-title">This Page Got Lost in the Wardrobe</h1>
+   <p class="error-text">Even the most stylish wardrobes have missing pieces. The page you're looking for seems to have wandered off - but we'll help you find your way back.</p>
+   <div class="error-links">
+    <a href="index.html" class="btn btn-primary btn-lg" id="back-home-btn">Return to Homepage</a>
+    <a href="contact.html" class="btn btn-secondary btn-lg" id="get-help-btn">Get Help</a>
+   </div>
+   <div class="error-suggestions">
+    <p class="error-suggestions-title">Or explore these pages</p>
+    <div class="error-suggestion-links">
+     <a href="services.html" class="btn btn-ghost btn-sm">Services</a>
+     <a href="pricing.html" class="btn btn-ghost btn-sm">Pricing</a>
+     <a href="blog.html" class="btn btn-ghost btn-sm">Blog</a>
+     <a href="about.html" class="btn btn-ghost btn-sm">About Us</a>
+    </div>
+   </div>
+  </div>
+ </div>
+</main>
+<script src="../assets/js/theme.js"></script><script src="../assets/js/rtl.js"></script>
+</body>
+</html>

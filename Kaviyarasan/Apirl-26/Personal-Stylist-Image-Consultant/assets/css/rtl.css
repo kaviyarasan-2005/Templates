@@ -15,15 +15,26 @@
    NAVIGATION
    ============================================================ */
 
-/* Logo stays same order — mark then text */
-[dir="rtl"] .nav-logo { flex-direction: row-reverse; }
+/* Navigation */
+[dir="rtl"] .nav-logo { 
+  flex-direction: row; 
+}
+[dir="rtl"] .nav-logo img { 
+  margin-right: 0 !important; 
+  margin-left: 8px; 
+}
 
-/* Hamburger strips */
-[dir="rtl"] .nav-hamburger span:nth-child(2) { margin-inline-start: auto; margin-inline-end: 0; }
+/* Hamburger strips — ensuring perfect centering in RTL */
+[dir="rtl"] .nav-hamburger {
+  align-items: center;
+}
+[dir="rtl"] .nav-hamburger span {
+  margin: 0 !important;
+}
 
 /* Desktop menu positions naturally mirror with direction: rtl */
 [dir="rtl"] .nav-menu { flex-direction: row; }
-[dir="rtl"] .nav-actions { flex-direction: row; }
+[dir="rtl"] .nav-actions { flex-direction: row; gap: var(--space-1); }
 
 /* Dropdown opens to the right of the item in RTL */
 [dir="rtl"] .nav-dropdown {

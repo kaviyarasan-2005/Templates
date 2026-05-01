@@ -1,504 +1,1008 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr" data-theme="light">
-<head>
-  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Style Blog - Elise</title>
-  <meta name="description" content="Expert style tips, trend reports, and image consulting insights from Elise and her team of certified stylists."/>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
-  <link rel="icon" href="../assets/images/icons/favicon.svg" type="image/svg+xml"/><link rel="manifest" href="../manifest.json"/><link rel="stylesheet" href="../assets/css/main.css"/><link rel="stylesheet" href="../assets/css/components.css"/>
-  <link rel="stylesheet" href="../assets/css/animations.css"/><link rel="stylesheet" href="../assets/css/dark-mode.css"/>
-  <link rel="stylesheet" href="../assets/css/rtl.css"/><link rel="stylesheet" href="../assets/css/style.css"/>
-  <style>
-    .blog-filters-scroll { display: flex; overflow-x: auto; gap: var(--space-1); padding-bottom: var(--space-2); margin-bottom: var(--space-4); scrollbar-width: none; -ms-overflow-style: none; justify-content: center; }
-    .blog-filters-scroll::-webkit-scrollbar { display: none; }
-    .blog-search-wrap { position: relative; max-width: 500px; margin: 0 auto var(--space-4); }
-    .blog-search-input { width: 100%; border-radius: 100px; padding: var(--space-2) var(--space-5); border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-primary); transition: all 300ms ease; font-size: var(--text-base); }
-    .blog-search-input:focus { outline: none; border-color: var(--color-brown); box-shadow: 0 0 0 4px rgba(109,76,65,0.1); }
-    .blog-search-icon { position: absolute; left: 20px; top: 50%; transform: translateY(-50%); color: var(--text-muted); width: 18px; height: 18px; }
-    .blog-grid-masonry { display: grid; grid-template-columns: repeat(3,1fr); gap: var(--space-4); }
-    .blog-cats-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: var(--space-3); }
-    .blog-cat-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-xl); padding: var(--space-4); text-align: center; transition: all 300ms ease; }
-    .blog-cat-card:hover { border-color: var(--color-brown); transform: translateY(-4px); box-shadow: var(--shadow-lg); }
-    .blog-cat-icon { width: 48px; height: 48px; background: rgba(109,76,65,0.05); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-2); }
-    .blog-cat-icon svg { width: 24px; height: 24px; stroke: var(--color-brown); }
-    .blog-cat-title { font-weight: 700; font-size: var(--text-lg); margin-bottom: 4px; color: var(--text-primary); }
-    .blog-cat-count { font-size: var(--text-xs); color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
-    .author-card { display: flex; align-items: center; gap: var(--space-3); background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-xl); padding: var(--space-4); transition: all 300ms ease; }
-    .author-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
-    .author-card-img { width: 96px; height: 96px; border-radius: 50%; object-fit: cover; }
-    .popular-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3); }
-    .popular-post { display: flex; align-items: flex-start; gap: var(--space-2); padding: var(--space-2); border-radius: var(--radius-lg); transition: background 300ms ease; }
-    .popular-post:hover { background: rgba(109,76,65,0.05); }
-    .popular-num { font-family: var(--font-heading); font-size: 2rem; font-weight: 700; color: var(--color-brown); opacity: 0.2; line-height: 1; min-width: 40px; }
-    .popular-img { width: 80px; height: 80px; border-radius: 8px; overflow: hidden; flex-shrink: 0; }
-    .popular-img img { width: 100%; height: 100%; object-fit: cover; }
-    .popular-title { font-size: var(--text-base); font-weight: 600; line-height: 1.4; color: var(--text-primary); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin-bottom: 4px; }
-    .popular-meta { font-size: var(--text-xs); color: var(--text-muted); }
-    @media(max-width:1024px) { .blog-grid-masonry { grid-template-columns: 1fr 1fr; } .blog-cats-grid { grid-template-columns: 1fr 1fr; } .popular-grid { grid-template-columns: 1fr; } }
-    @media(max-width:640px) { .blog-grid-masonry { grid-template-columns: 1fr; } .blog-cats-grid { grid-template-columns: 1fr; } .author-card { flex-direction: column; text-align: center; } }
-    .blog-card-featured-wrap {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 0;
-      text-decoration: none;
-      overflow: hidden;
-    }
-    @media(max-width: 768px) {
-      .blog-card-featured-wrap { grid-template-columns: 1fr; }
-      .blog-card-featured-wrap .blog-card-img { height: 260px !important; }
-      .blog-card-featured-wrap .blog-card-body { padding: var(--space-3) !important; }
-      .blog-card-featured-wrap .blog-card-title { font-size: var(--text-2xl) !important; }
-    }
 
-    @media(max-width: 480px) {
-      .blog-filters-scroll {
-        flex-wrap: wrap;
-        justify-content: center;
-        overflow-x: visible;
-        gap: 8px;
-      }
-      .filter-pill {
-        font-size: var(--text-xs);
-        padding: 6px 12px;
-      }
-    }
-  </style>
+<html lang="en" dir="ltr" data-theme="light">
+
+<head>
+
+ <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+ <title>Style Blog - Elise</title>
+
+ <meta name="description" content="Expert style tips, trend reports, and image consulting insights from Elise and her team of certified stylists."/>
+
+ <link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+
+ <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+
+ <link rel="icon" href="../assets/images/icons/favicon.svg" type="image/svg+xml"/><link rel="manifest" href="../manifest.json"/><link rel="stylesheet" href="../assets/css/main.css"/><link rel="stylesheet" href="../assets/css/components.css"/>
+
+ <link rel="stylesheet" href="../assets/css/animations.css"/><link rel="stylesheet" href="../assets/css/dark-mode.css"/>
+
+ <link rel="stylesheet" href="../assets/css/rtl.css"/><link rel="stylesheet" href="../assets/css/style.css"/>
+
+ <style>
+
+  .blog-filters-scroll { display: flex; overflow-x: auto; gap: var(--space-1); padding-bottom: var(--space-2); margin-bottom: var(--space-4); scrollbar-width: none; -ms-overflow-style: none; justify-content: center; }
+
+  .blog-filters-scroll::-webkit-scrollbar { display: none; }
+
+  .blog-search-wrap { position: relative; max-width: 500px; margin: 0 auto var(--space-4); }
+
+  .blog-search-input { width: 100%; border-radius: 100px; padding: var(--space-2) var(--space-5); border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-primary); transition: all 300ms ease; font-size: var(--text-base); }
+
+  .blog-search-input:focus { outline: none; border-color: var(--color-brown); box-shadow: 0 0 0 4px rgba(109,76,65,0.1); }
+
+  .blog-search-icon { position: absolute; left: 20px; top: 50%; transform: translateY(-50%); color: var(--text-muted); width: 18px; height: 18px; }
+
+  .blog-grid-masonry { display: grid; grid-template-columns: repeat(3,1fr); gap: var(--space-4); }
+
+  .blog-cats-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: var(--space-3); }
+
+  .blog-cat-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-xl); padding: var(--space-4); text-align: center; transition: all 300ms ease; }
+
+  .blog-cat-card:hover { border-color: var(--color-brown); transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+
+  .blog-cat-icon { width: 48px; height: 48px; background: rgba(109,76,65,0.05); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-2); }
+
+  .blog-cat-icon svg { width: 24px; height: 24px; stroke: var(--color-brown); }
+
+  .blog-cat-title { font-weight: 700; font-size: var(--text-lg); margin-bottom: 4px; color: var(--text-primary); }
+
+  .blog-cat-count { font-size: var(--text-xs); color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
+
+  .author-card { display: flex; align-items: center; gap: var(--space-3); background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-xl); padding: var(--space-4); transition: all 300ms ease; }
+
+  .author-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+
+  .author-card-img { width: 96px; height: 96px; border-radius: 50%; object-fit: cover; }
+
+  .popular-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3); }
+
+  .popular-post { display: flex; align-items: flex-start; gap: var(--space-2); padding: var(--space-2); border-radius: var(--radius-lg); transition: background 300ms ease; }
+
+  .popular-post:hover { background: rgba(109,76,65,0.05); }
+
+  .popular-num { font-family: var(--font-heading); font-size: 2rem; font-weight: 700; color: var(--color-brown); opacity: 0.2; line-height: 1; min-width: 40px; }
+
+  .popular-img { width: 80px; height: 80px; border-radius: 8px; overflow: hidden; flex-shrink: 0; }
+
+  .popular-img img { width: 100%; height: 100%; object-fit: cover; }
+
+  .popular-title { font-size: var(--text-base); font-weight: 600; line-height: 1.4; color: var(--text-primary); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin-bottom: 4px; }
+
+  .popular-meta { font-size: var(--text-xs); color: var(--text-muted); }
+
+  @media(max-width:1024px) { .blog-grid-masonry { grid-template-columns: 1fr 1fr; } .blog-cats-grid { grid-template-columns: 1fr 1fr; } .popular-grid { grid-template-columns: 1fr; } }
+
+  @media(max-width:640px) { .blog-grid-masonry { grid-template-columns: 1fr; } .blog-cats-grid { grid-template-columns: 1fr; } .author-card { flex-direction: column; text-align: center; } }
+
+  .blog-card-featured-wrap {
+
+   display: grid;
+
+   grid-template-columns: 1.2fr 1fr;
+
+   gap: 0;
+
+   text-decoration: none;
+
+   overflow: hidden;
+
+  }
+
+  @media(max-width: 768px) {
+
+   .blog-card-featured-wrap { grid-template-columns: 1fr; }
+
+   .blog-card-featured-wrap .blog-card-img { height: 260px !important; }
+
+   .blog-card-featured-wrap .blog-card-body { padding: var(--space-3) !important; }
+
+   .blog-card-featured-wrap .blog-card-title { font-size: var(--text-2xl) !important; }
+
+  }
+
+
+
+  @media(max-width: 480px) {
+
+   .blog-filters-scroll {
+
+    flex-wrap: wrap;
+
+    justify-content: center;
+
+    overflow-x: visible;
+
+    gap: 8px;
+
+   }
+
+   .filter-pill {
+
+    font-size: var(--text-xs);
+
+    padding: 6px 12px;
+
+   }
+
+  }
+
+ </style>
+
 </head>
+
 <body>
+
 <a href="#main-content" class="skip-link">Skip to main content</a>
+
 <header class="site-nav" id="site-nav">
-  <nav class="nav-container" aria-label="Main navigation">
-    <a href="index.html" class="nav-logo"><img src="../assets/images/icons/logo.svg" class="nav-logo-mark-img" alt="Logo" width="36" height="36" style="margin-right: 8px; flex-shrink: 0;" /><div class="nav-logo-text"><span class="nav-logo-name">Elise</span></div></a>
-          <ul class="nav-menu">
-        <li class="nav-item">
-          <button class="nav-link">Home <svg class="chevron" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2">
-              <polyline points="6 9 12 15 18 9" />
-            </svg></button>
-          <div class="nav-dropdown">
-            <a href="index.html">Home 1</a>
-            <a href="home-2.html">Home 2</a>
-          </div>
-        </li>
-        <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-        <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
-        <li class="nav-item"><a href="blog.html" class="nav-link active">Blog</a></li>
-        <li class="nav-item"><a href="pricing.html" class="nav-link">Pricing</a></li>
-        <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-        <li class="nav-item">
-          <button class="nav-link">Dashboard <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="2">
-              <polyline points="6 9 12 15 18 9" />
-            </svg></button>
-          <div class="nav-dropdown">
-            <a href="dashboard-admin.html">Admin Dashboard</a>
-            <a href="dashboard-user.html">User Dashboard</a>
-          </div>
-        </li>
-      </ul>
-    <div class="nav-actions">
-      <button class="nav-action-btn" data-dir-toggle aria-label="Toggle direction">RTL</button>
-      <button class="nav-action-btn" data-theme-toggle aria-label="Toggle theme">
-        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-      </button>
-      <a href="login.html" class="btn btn-primary btn-sm d-none-mobile">Login</a>
-      <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-drawer"><span></span><span></span><span></span></button>
-    </div>
-  </nav>
+
+ <nav class="nav-container" aria-label="Main navigation">
+
+  <a href="index.html" class="nav-logo"><img src="../assets/images/icons/logo.svg" class="nav-logo-mark-img" alt="Logo" width="36" height="36" style="margin-right: 8px; flex-shrink: 0;" /><div class="nav-logo-text"><span class="nav-logo-name">Elise</span></div></a>
+
+     <ul class="nav-menu">
+
+    <li class="nav-item">
+
+     <button class="nav-link">Home <svg class="chevron" viewBox="0 0 24 24" fill="none"
+
+       stroke="currentColor" stroke-width="2">
+
+       <polyline points="6 9 12 15 18 9" />
+
+      </svg></button>
+
+     <div class="nav-dropdown">
+
+      <a href="index.html">Home 1</a>
+
+      <a href="home-2.html">Home 2</a>
+
+     </div>
+
+    </li>
+
+    <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+
+    <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
+
+    <li class="nav-item"><a href="blog.html" class="nav-link active">Blog</a></li>
+
+    <li class="nav-item"><a href="pricing.html" class="nav-link">Pricing</a></li>
+
+    <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+
+    <li class="nav-item">
+
+     <button class="nav-link">Dashboard <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+
+       stroke-width="2">
+
+       <polyline points="6 9 12 15 18 9" />
+
+      </svg></button>
+
+     <div class="nav-dropdown">
+
+      <a href="dashboard-admin.html">Admin Dashboard</a>
+
+      <a href="dashboard-user.html">User Dashboard</a>
+
+     </div>
+
+    </li>
+
+   </ul>
+
+  <div class="nav-actions">
+
+   <button class="nav-action-btn" data-dir-toggle aria-label="Toggle direction">RTL</button>
+
+   <button class="nav-action-btn" data-theme-toggle aria-label="Toggle theme">
+
+    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+
+    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+
+   </button>
+
+   <a href="login.html" class="btn btn-primary btn-sm d-none-mobile">Login</a>
+
+   <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-drawer"><span></span><span></span><span></span></button>
+
+  </div>
+
+ </nav>
+
 </header>
+
 <div class="nav-overlay" id="nav-overlay"></div>
+
 <aside class="nav-drawer" id="nav-drawer" role="dialog" aria-label="Mobile navigation">
-  <button class="drawer-close" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
-  <a href="index.html" class="nav-logo" style="margin-bottom:var(--space-3)"><img src="../assets/images/icons/logo.svg" class="nav-logo-mark-img" alt="Logo" width="36" height="36" style="margin-right: 8px; flex-shrink: 0;" /><div class="nav-logo-text"><span class="nav-logo-name">Elise</span></div></a>
-      <nav class="drawer-nav">
-      <div class="drawer-nav-item">
-        <div class="drawer-nav-link" tabindex="0">Home <svg class="chevron" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2">
-            <polyline points="6 9 12 15 18 9" />
-          </svg></div>
-        <div class="drawer-sub">
-          <a href="index.html">Home 1</a>
-          <a href="home-2.html">Home 2</a>
-        </div>
-      </div>
-      <div class="drawer-nav-item"><a href="about.html" class="drawer-nav-link">About</a></div>
-      <div class="drawer-nav-item"><a href="services.html" class="drawer-nav-link">Services</a></div>
-      <div class="drawer-nav-item"><a href="blog.html" class="drawer-nav-link">Blog</a></div>
-      <div class="drawer-nav-item"><a href="pricing.html" class="drawer-nav-link">Pricing</a></div>
-      <div class="drawer-nav-item"><a href="contact.html" class="drawer-nav-link">Contact</a></div>
-      <div class="drawer-nav-item">
-        <div class="drawer-nav-link" tabindex="0">Dashboard <svg class="chevron" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2">
-            <polyline points="6 9 12 15 18 9" />
-          </svg></div>
-        <div class="drawer-sub">
-          <a href="dashboard-admin.html">Admin Dashboard</a>
-          <a href="dashboard-user.html">User Dashboard</a>
-        </div>
-      </div>
-    </nav>
-  <div style="display:flex;gap:8px;margin-top:auto;padding-top:var(--space-3)">
-      <a href="login.html" class="btn btn-primary btn-block" style="width:100%">Login</a></div>
+
+ <button class="drawer-close" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+
+ <a href="index.html" class="nav-logo" style="margin-bottom:var(--space-3)"><img src="../assets/images/icons/logo.svg" class="nav-logo-mark-img" alt="Logo" width="36" height="36" style="margin-right: 8px; flex-shrink: 0;" /><div class="nav-logo-text"><span class="nav-logo-name">Elise</span></div></a>
+
+   <nav class="drawer-nav">
+
+   <div class="drawer-nav-item">
+
+    <div class="drawer-nav-link" tabindex="0">Home <svg class="chevron" viewBox="0 0 24 24" fill="none"
+
+      stroke="currentColor" stroke-width="2">
+
+      <polyline points="6 9 12 15 18 9" />
+
+     </svg></div>
+
+    <div class="drawer-sub">
+
+     <a href="index.html">Home 1</a>
+
+     <a href="home-2.html">Home 2</a>
+
+    </div>
+
+   </div>
+
+   <div class="drawer-nav-item"><a href="about.html" class="drawer-nav-link">About</a></div>
+
+   <div class="drawer-nav-item"><a href="services.html" class="drawer-nav-link">Services</a></div>
+
+   <div class="drawer-nav-item"><a href="blog.html" class="drawer-nav-link">Blog</a></div>
+
+   <div class="drawer-nav-item"><a href="pricing.html" class="drawer-nav-link">Pricing</a></div>
+
+   <div class="drawer-nav-item"><a href="contact.html" class="drawer-nav-link">Contact</a></div>
+
+   <div class="drawer-nav-item">
+
+    <div class="drawer-nav-link" tabindex="0">Dashboard <svg class="chevron" viewBox="0 0 24 24" fill="none"
+
+      stroke="currentColor" stroke-width="2">
+
+      <polyline points="6 9 12 15 18 9" />
+
+     </svg></div>
+
+    <div class="drawer-sub">
+
+     <a href="dashboard-admin.html">Admin Dashboard</a>
+
+     <a href="dashboard-user.html">User Dashboard</a>
+
+    </div>
+
+   </div>
+
+  </nav>
+
+ <div style="display:flex;gap:8px;margin-top:auto;padding-top:var(--space-3)">
+
+   <a href="login.html" class="btn btn-primary btn-block" style="width:100%">Login</a></div>
+
 </aside>
 
+
+
 <main id="main-content">
-  <section class="page-hero" aria-label="Blog hero">
-    <div class="container page-hero-content">
-      <span class="page-hero-tag">The Style Edit</span>
-      <h1 class="page-hero-title">Insights on Presence & <em>Personal Style</em></h1>
-      <p class="page-hero-text">- curated collection of expert advice, trend analysis, and transformation stories designed to inspire your image journey.</p>
+
+ <section class="page-hero" aria-label="Blog hero">
+
+  <div class="container page-hero-content">
+
+   <span class="page-hero-tag">The Style Edit</span>
+
+   <h1 class="page-hero-title">Insights on Presence & <em>Personal Style</em></h1>
+
+   <p class="page-hero-text">- curated collection of expert advice, trend analysis, and transformation stories designed to inspire your image journey.</p>
+
+  </div>
+
+ </section>
+
+
+
+ <section class="section" aria-labelledby="blog-main-heading">
+
+  <div class="container">
+
+   <h2 class="sr-only" id="blog-main-heading">Latest Articles</h2>
+
+   
+
+   <!-- Filter + Search -->
+
+   <div class="blog-filters-scroll reveal">
+
+    <button class="filter-pill active" data-filter="all">All Articles</button>
+
+    <button class="filter-pill" data-filter="style-tips">Style Tips</button>
+
+    <button class="filter-pill" data-filter="color">Color Theory</button>
+
+    <button class="filter-pill" data-filter="trends">Trend Reports</button>
+
+    <button class="filter-pill" data-filter="case-studies">Case Studies</button>
+
+   </div>
+
+
+
+   <div class="blog-search-wrap reveal delay-100">
+
+    <svg class="blog-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+
+    <input type="text" class="blog-search-input" placeholder="Search articles..." id="blog-search" aria-label="Search blog articles"/>
+
+   </div>
+
+
+
+   <div class="blog-grid-masonry" id="blog-grid">
+
+    <!-- Featured Article -->
+
+    <div style="grid-column: 1 / -1" data-filter-target data-category="trends" class="reveal">
+
+     <a href="blog-detail.html" class="blog-card featured blog-card-featured-wrap">
+
+      <div class="blog-card-img" style="height:100%"><img src="../assets/images/blog/blog-featured.png" alt="Featured article - the evolution of executive style" loading="eager" width="800" height="600" style="height:100%;object-fit:cover"/></div>
+
+      <div class="blog-card-body" style="padding:var(--space-5);display:flex;flex-direction:column;justify-content:center">
+
+       <div class="blog-card-meta"><span class="blog-card-category" style="background:var(--color-brown);color:white">Featured</span><span class="blog-card-readtime"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>8 min read</span></div>
+
+       <h3 class="blog-card-title" style="font-size:var(--text-3xl);margin-bottom:var(--space-3)">The 2026 Power Dressing Revolution: How Executive Style Is Evolving</h3>
+
+       <p class="blog-card-excerpt" style="font-size:var(--text-lg);margin-bottom:var(--space-4)">In a world of remote work and casual offices, personal presence is more critical than ever. We explore the new rules of authority.</p>
+
+       <div class="blog-card-author"><img src="../assets/images/team/avatar-author.png" alt="Elise" width="44" height="44" loading="eager"/><div class="blog-card-author-info"><span class="blog-card-author-name">Elise</span><span class="blog-card-author-role">Founder &amp; Principal Consultant</span></div></div>
+
+      </div>
+
+     </a>
+
     </div>
-  </section>
 
-  <section class="section" aria-labelledby="blog-main-heading">
-    <div class="container">
-      <h2 class="sr-only" id="blog-main-heading">Latest Articles</h2>
-      
-      <!-- Filter + Search -->
-      <div class="blog-filters-scroll reveal">
-        <button class="filter-pill active" data-filter="all">All Articles</button>
-        <button class="filter-pill" data-filter="style-tips">Style Tips</button>
-        <button class="filter-pill" data-filter="color">Color Theory</button>
-        <button class="filter-pill" data-filter="trends">Trend Reports</button>
-        <button class="filter-pill" data-filter="case-studies">Case Studies</button>
+
+
+    <!-- Article 2 -->
+
+    <div data-filter-target data-category="style-tips" class="reveal delay-100">
+
+     <a href="blog-detail.html" class="blog-card" style="text-decoration:none">
+
+      <div class="blog-card-img"><img src="../assets/images/blog/blog-1.png" alt="Ten wardrobe essentials every woman needs" loading="lazy" width="400" height="300"/></div>
+
+      <div class="blog-card-body">
+
+       <div class="blog-card-meta"><span class="blog-card-category">Style Tips</span><span class="blog-card-readtime"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>5 min</span></div>
+
+       <h3 class="blog-card-title">10 Wardrobe Essentials That Will Never Go Out of Style</h3>
+
+       <p class="blog-card-excerpt">Quality over quantity is the mantra. Discover the foundation pieces every professional wardrobe needs.</p>
+
+       <div class="blog-card-author"><img src="../assets/images/team/avatar-3.png" alt="Marcus Webb" width="36" height="36" loading="lazy"/><div class="blog-card-author-info"><span class="blog-card-author-name">Marcus Webb</span><span class="blog-card-author-role">Senior Stylist</span></div></div>
+
       </div>
 
-      <div class="blog-search-wrap reveal delay-100">
-        <svg class="blog-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        <input type="text" class="blog-search-input" placeholder="Search articles..." id="blog-search" aria-label="Search blog articles"/>
-      </div>
+     </a>
 
-      <div class="blog-grid-masonry" id="blog-grid">
-        <!-- Featured Article -->
-        <div style="grid-column: 1 / -1" data-filter-target data-category="trends" class="reveal">
-          <a href="blog-detail.html" class="blog-card featured blog-card-featured-wrap">
-            <div class="blog-card-img" style="height:100%"><img src="../assets/images/blog/blog-featured.png" alt="Featured article €- the evolution of executive style" loading="eager" width="800" height="600" style="height:100%;object-fit:cover"/></div>
-            <div class="blog-card-body" style="padding:var(--space-5);display:flex;flex-direction:column;justify-content:center">
-              <div class="blog-card-meta"><span class="blog-card-category" style="background:var(--color-brown);color:white">Featured</span><span class="blog-card-readtime"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>8 min read</span></div>
-              <h3 class="blog-card-title" style="font-size:var(--text-3xl);margin-bottom:var(--space-3)">The 2026 Power Dressing Revolution: How Executive Style Is Evolving</h3>
-              <p class="blog-card-excerpt" style="font-size:var(--text-lg);margin-bottom:var(--space-4)">In a world of remote work and casual offices, personal presence is more critical than ever. We explore the new rules of authority.</p>
-              <div class="blog-card-author"><img src="../assets/images/team/avatar-author.png" alt="Elise" width="44" height="44" loading="eager"/><div class="blog-card-author-info"><span class="blog-card-author-name">Elise</span><span class="blog-card-author-role">Founder &amp; Principal Consultant</span></div></div>
-            </div>
-          </a>
-        </div>
-
-        <!-- Article 2 -->
-        <div data-filter-target data-category="style-tips" class="reveal delay-100">
-          <a href="blog-detail.html" class="blog-card" style="text-decoration:none">
-            <div class="blog-card-img"><img src="../assets/images/blog/blog-1.png" alt="Ten wardrobe essentials every woman needs" loading="lazy" width="400" height="300"/></div>
-            <div class="blog-card-body">
-              <div class="blog-card-meta"><span class="blog-card-category">Style Tips</span><span class="blog-card-readtime"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>5 min</span></div>
-              <h3 class="blog-card-title">10 Wardrobe Essentials That Will Never Go Out of Style</h3>
-              <p class="blog-card-excerpt">Quality over quantity is the mantra. Discover the foundation pieces every professional wardrobe needs.</p>
-              <div class="blog-card-author"><img src="../assets/images/team/avatar-3.png" alt="Marcus Webb" width="36" height="36" loading="lazy"/><div class="blog-card-author-info"><span class="blog-card-author-name">Marcus Webb</span><span class="blog-card-author-role">Senior Stylist</span></div></div>
-            </div>
-          </a>
-        </div>
-
-        <!-- Article 3 -->
-        <div data-filter-target data-category="color" class="reveal delay-200">
-          <a href="blog-detail.html" class="blog-card" style="text-decoration:none">
-            <div class="blog-card-img"><img src="../assets/images/blog/blog-2.png" alt="Understanding your colour season" loading="lazy" width="400" height="300"/></div>
-            <div class="blog-card-body">
-              <div class="blog-card-meta"><span class="blog-card-category">Color Theory</span><span class="blog-card-readtime"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>6 min</span></div>
-              <h3 class="blog-card-title">How to Discover Your Colour Season in 5 Steps</h3>
-              <p class="blog-card-excerpt">Knowing your season changes everything - from your skin's radiance to your bank balance.</p>
-              <div class="blog-card-author"><img src="../assets/images/team/avatar-author.png" alt="Elise" width="36" height="36" loading="lazy"/><div class="blog-card-author-info"><span class="blog-card-author-name">Elise</span><span class="blog-card-author-role">Founder</span></div></div>
-            </div>
-          </a>
-        </div>
-
-        <!-- Article 4 -->
-        <div data-filter-target data-category="case-studies" class="reveal delay-300">
-          <a href="blog-detail.html" class="blog-card" style="text-decoration:none">
-            <div class="blog-card-img"><img src="../assets/images/blog/blog-3.png" alt="Case study: CEO image transformation" loading="lazy" width="400" height="300"/></div>
-            <div class="blog-card-body">
-              <div class="blog-card-meta"><span class="blog-card-category">Case Studies</span><span class="blog-card-readtime"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>10 min</span></div>
-              <h3 class="blog-card-title">From Invisible to Unforgettable: - CEO's Image Transformation</h3>
-              <p class="blog-card-excerpt">How a complete image overhaul helped one executive land a $2M board position.</p>
-              <div class="blog-card-author"><img src="../assets/images/team/avatar-2.png" alt="Sophia Chen" width="36" height="36" loading="lazy"/><div class="blog-card-author-info"><span class="blog-card-author-name">Sophia Chen</span></div></div>
-            </div>
-          </a>
-        </div>
-
-        <!-- Article 5 -->
-        <div data-filter-target data-category="trends" class="reveal">
-          <a href="blog-detail.html" class="blog-card" style="text-decoration:none">
-            <div class="blog-card-img"><img src="../assets/images/blog/blog-4.png" alt="Spring 2026 colour trends" loading="lazy" width="400" height="300"/></div>
-            <div class="blog-card-body">
-              <div class="blog-card-meta"><span class="blog-card-category">Trends</span><span class="blog-card-readtime"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>4 min</span></div>
-              <h3 class="blog-card-title">Spring 2026: The Colours That Will Define the Season</h3>
-              <p class="blog-card-excerpt">From quiet luxury to bold expressionism - what the runways tell us about the months ahead.</p>
-              <div class="blog-card-author"><img src="../assets/images/team/avatar-author.png" alt="Elise" width="36" height="36" loading="lazy"/><div class="blog-card-author-info"><span class="blog-card-author-name">Elise</span></div></div>
-            </div>
-          </a>
-        </div>
-
-        <!-- Article 6 -->
-        <div data-filter-target data-category="style-tips" class="reveal delay-200">
-          <a href="blog-detail.html" class="blog-card" style="text-decoration:none">
-            <div class="blog-card-img"><img src="../assets/images/blog/blog-5.png" alt="Packing light for business travel" loading="lazy" width="400" height="300"/></div>
-            <div class="blog-card-body">
-              <div class="blog-card-meta"><span class="blog-card-category">Style Tips</span><span class="blog-card-readtime"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>7 min</span></div>
-              <h3 class="blog-card-title">The Ultimate Travel Capsule: Looking Polished With Only a Carry-On</h3>
-              <p class="blog-card-excerpt">- seasoned jet-setter's guide to packing smart without sacrificing style.</p>
-              <div class="blog-card-author"><img src="../assets/images/team/avatar-3.png" alt="Marcus Webb" width="36" height="36" loading="lazy"/><div class="blog-card-author-info"><span class="blog-card-author-name">Marcus Webb</span></div></div>
-            </div>
-          </a>
-        </div>
-      </div>
-
-      <!-- No results -->
-      <div id="no-results" class="hidden" role="status" aria-live="polite">
-        <p style="font-size:var(--text-xl);color:var(--text-muted);margin-bottom:var(--space-2)">No articles found</p>
-        <p style="color:var(--text-muted)">Try a different search term or browse all categories above.</p>
-      </div>
     </div>
-  </section>
 
-  <!-- NEWSLETTER SIGNUP -->
-  <section class="section" style="background:var(--bg-secondary)" aria-labelledby="blog-newsletter-heading">
-    <div class="container" style="max-width:700px;text-align:center">
-      <span class="section-tag reveal">Stay in the Know</span>
-      <h2 class="section-title reveal delay-100" id="blog-newsletter-heading">Get Style Insights<br>Delivered Weekly</h2>
-      <p class="section-subtitle reveal delay-200">Join 12,000+ subscribers who receive our curated style tips, trend reports, and exclusive styling guides every week.</p>
-      <form class="newsletter-form reveal delay-300" aria-label="Blog newsletter" onsubmit="return false;" id="blog-newsletter-form">
-        <input type="email" class="newsletter-input" placeholder="Enter your email address" aria-label="Email address" required id="blog-nl-email"/>
-        <button type="submit" class="btn btn-primary btn-lg">Subscribe Free</button>
-      </form>
-      <p style="margin-top:var(--space-2);font-size:var(--text-xs);color:var(--text-muted)">No spam. Unsubscribe at any time. 12,000+ readers.</p>
-    </div>
-  </section>
 
-  <!-- FEATURED CATEGORIES -->
-  <section class="section" aria-labelledby="blog-cats-heading">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag reveal">Browse by Topic</span>
-        <h2 class="section-title reveal delay-100" id="blog-cats-heading">Explore Our Style Guides</h2>
-        <p class="section-subtitle reveal delay-200">Deep-dive into the topics that matter most to your style journey.</p>
-      </div>
-      <div class="blog-cats-grid">
-        <a href="blog.html" class="blog-cat-card reveal" style="text-decoration:none">
-          <div class="blog-cat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 16.5l-5-3V4l5 3m0 9.5V7m0 9.5l5-3m-5-9.5l5 3m0 0l5-3V10l-5 3m0-6.5v9.5"/></svg></div>
-          <h3 class="blog-cat-title">Style Tips</h3>
-          <p class="blog-cat-count">24 articles</p>
-        </a>
-        <a href="blog.html" class="blog-cat-card reveal delay-100" style="text-decoration:none">
-          <div class="blog-cat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="19" cy="15" r="2.5"/><circle cx="6.5" cy="15" r="2.5"/></svg></div>
-          <h3 class="blog-cat-title">Color Theory</h3>
-          <p class="blog-cat-count">18 articles</p>
-        </a>
-        <a href="blog.html" class="blog-cat-card reveal delay-200" style="text-decoration:none">
-          <div class="blog-cat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
-          <h3 class="blog-cat-title">Trend Reports</h3>
-          <p class="blog-cat-count">15 articles</p>
-        </a>
-        <a href="blog.html" class="blog-cat-card reveal delay-300" style="text-decoration:none">
-          <div class="blog-cat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
-          <h3 class="blog-cat-title">Case Studies</h3>
-          <p class="blog-cat-count">12 articles</p>
-        </a>
-      </div>
-    </div>
-  </section>
 
-  <!-- POPULAR POSTS SIDEBAR STYLE -->
-  <section class="section" style="background:var(--bg-secondary)" aria-labelledby="popular-heading">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag reveal">Most Read</span>
-        <h2 class="section-title reveal delay-100" id="popular-heading">Reader Favourites</h2>
-        <p class="section-subtitle reveal delay-200">The articles your fellow style-seekers can't stop sharing.</p>
-      </div>
-      <div class="popular-grid">
-        <a href="blog-detail.html" class="popular-post reveal" style="text-decoration:none">
-          <span class="popular-num">01</span>
-          <div class="popular-img"><img src="../assets/images/blog/blog-1.png" alt="Wardrobe essentials" loading="lazy" width="80" height="80"/></div>
-          <div class="popular-info"><h3 class="popular-title">10 Wardrobe Essentials That Will Never Go Out of Style</h3><span class="popular-meta">Style Tips &bull; 5 min read</span></div>
-        </a>
-        <a href="blog-detail.html" class="popular-post reveal delay-100" style="text-decoration:none">
-          <span class="popular-num">02</span>
-          <div class="popular-img"><img src="../assets/images/blog/blog-featured.png" alt="Power dressing" loading="lazy" width="80" height="80"/></div>
-          <div class="popular-info"><h3 class="popular-title">The 2026 Power Dressing Revolution: How Executive Style Is Evolving</h3><span class="popular-meta">Trends &bull; 8 min read</span></div>
-        </a>
-        <a href="blog-detail.html" class="popular-post reveal delay-200" style="text-decoration:none">
-          <span class="popular-num">03</span>
-          <div class="popular-img"><img src="../assets/images/blog/blog-2.png" alt="Colour season" loading="lazy" width="80" height="80"/></div>
-          <div class="popular-info"><h3 class="popular-title">How to Discover Your Colour Season in 5 Steps</h3><span class="popular-meta">Color Theory &bull; 6 min read</span></div>
-        </a>
-        <a href="blog-detail.html" class="popular-post reveal delay-300" style="text-decoration:none">
-          <span class="popular-num">04</span>
-          <div class="popular-img"><img src="../assets/images/blog/blog-3.png" alt="CEO transformation" loading="lazy" width="80" height="80"/></div>
-          <div class="popular-info"><h3 class="popular-title">From Invisible to Unforgettable: - CEO's Image Transformation</h3><span class="popular-meta">Case Study &bull; 10 min read</span></div>
-        </a>
-      </div>
-    </div>
-  </section>
+    <!-- Article 3 -->
 
-  <!-- MEET THE AUTHORS -->
-  <section class="section" aria-labelledby="authors-heading">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag reveal">Behind the Words</span>
-        <h2 class="section-title reveal delay-100" id="authors-heading">Meet Our Style Experts</h2>
-        <p class="section-subtitle reveal delay-200">Every article is crafted by a certified image consultant with real, hands-on experience.</p>
-      </div>
-      <div class="authors-grid">
-        <div class="author-card reveal">
-          <img src="../assets/images/team/avatar-author.png" alt="Elise" class="author-card-img" loading="lazy" width="96" height="96"/>
-          <div class="author-info">
-            <div class="author-name">Elise</div>
-            <div class="author-role">Founder &amp; Lead Stylist</div>
-            <p class="author-bio">With 12 years in luxury fashion and image consulting, Elise writes about style psychology, colour theory, and the power of personal presentation.</p>
-            <div class="author-stats"><span>32 articles</span><span>Founded 2014</span></div>
-          </div>
-        </div>
-        <div class="author-card reveal delay-200">
-          <img src="../assets/images/team/avatar-2.png" alt="Sophia Chen" class="author-card-img" loading="lazy" width="96" height="96"/>
-          <div class="author-info">
-            <div class="author-name">Sophia Chen</div>
-            <div class="author-role">Senior Stylist &amp; Colour Expert</div>
-            <p class="author-bio">Sophia specialises in colour analysis and sustainable fashion. She helps readers build capsule wardrobes that are both timeless and environmentally conscious.</p>
-            <div class="author-stats"><span>18 articles</span><span>FI- Certified</span></div>
-          </div>
-        </div>
-        <div class="author-card reveal delay-400">
-          <img src="../assets/images/team/avatar-3.png" alt="Marcus Webb" class="author-card-img" loading="lazy" width="96" height="96"/>
-          <div class="author-info">
-            <div class="author-name">Marcus Webb</div>
-            <div class="author-role">Corporate &amp; Menswear Stylist</div>
-            <p class="author-bio">Marcus brings a menswear perspective to executive dressing, writing about power dressing, suit fitting, and building authority through wardrobe choices.</p>
-            <div class="author-stats"><span>14 articles</span><span>10+ years exp.</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+    <div data-filter-target data-category="color" class="reveal delay-200">
 
-  <!-- CT- STRIP -->
-  <section class="section" style="background:linear-gradient(135deg,var(--color-brown-dark),var(--color-brown))" aria-label="Blog CTA">
-    <div class="container" style="text-align:center;max-width:700px">
-      <span class="section-tag reveal" style="color:var(--color-blush)">Ready for a Change?</span>
-      <h2 class="reveal delay-100" style="color:white;font-size:clamp(2rem,4vw,3rem);margin-bottom:var(--space-3)">Put the Knowledge<br>Into Action</h2>
-      <p class="reveal delay-200" style="color:rgba(255,255,255,0.8);margin-bottom:var(--space-4);font-size:var(--text-lg)">Reading about style is only the first step. Book a consultation and let us bring these insights to life through your wardrobe.</p>
-      <div class="reveal delay-300" style="display:flex;justify-content:center;gap:var(--space-2);flex-wrap:wrap">
-        <a href="contact.html" class="btn btn-light btn-lg" id="blog-cta-book">Book Free Consultation</a>
-        <a href="services.html" class="btn btn-ghost btn-lg" style="border-color:rgba(255,255,255,0.3);color:white" id="blog-cta-services">Explore Services</a>
+     <a href="blog-detail.html" class="blog-card" style="text-decoration:none">
+
+      <div class="blog-card-img"><img src="../assets/images/blog/blog-2.png" alt="Understanding your colour season" loading="lazy" width="400" height="300"/></div>
+
+      <div class="blog-card-body">
+
+       <div class="blog-card-meta"><span class="blog-card-category">Color Theory</span><span class="blog-card-readtime"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>6 min</span></div>
+
+       <h3 class="blog-card-title">How to Discover Your Colour Season in 5 Steps</h3>
+
+       <p class="blog-card-excerpt">Knowing your season changes everything - from your skin's radiance to your bank balance.</p>
+
+       <div class="blog-card-author"><img src="../assets/images/team/avatar-author.png" alt="Elise" width="36" height="36" loading="lazy"/><div class="blog-card-author-info"><span class="blog-card-author-name">Elise</span><span class="blog-card-author-role">Founder</span></div></div>
+
       </div>
+
+     </a>
+
     </div>
-  </section>
+
+
+
+    <!-- Article 4 -->
+
+    <div data-filter-target data-category="case-studies" class="reveal delay-300">
+
+     <a href="blog-detail.html" class="blog-card" style="text-decoration:none">
+
+      <div class="blog-card-img"><img src="../assets/images/blog/blog-3.png" alt="Case study: CEO image transformation" loading="lazy" width="400" height="300"/></div>
+
+      <div class="blog-card-body">
+
+       <div class="blog-card-meta"><span class="blog-card-category">Case Studies</span><span class="blog-card-readtime"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>10 min</span></div>
+
+       <h3 class="blog-card-title">From Invisible to Unforgettable: - CEO's Image Transformation</h3>
+
+       <p class="blog-card-excerpt">How a complete image overhaul helped one executive land a $2M board position.</p>
+
+       <div class="blog-card-author"><img src="../assets/images/team/avatar-2.png" alt="Sophia Chen" width="36" height="36" loading="lazy"/><div class="blog-card-author-info"><span class="blog-card-author-name">Sophia Chen</span></div></div>
+
+      </div>
+
+     </a>
+
+    </div>
+
+
+
+    <!-- Article 5 -->
+
+    <div data-filter-target data-category="trends" class="reveal">
+
+     <a href="blog-detail.html" class="blog-card" style="text-decoration:none">
+
+      <div class="blog-card-img"><img src="../assets/images/blog/blog-4.png" alt="Spring 2026 colour trends" loading="lazy" width="400" height="300"/></div>
+
+      <div class="blog-card-body">
+
+       <div class="blog-card-meta"><span class="blog-card-category">Trends</span><span class="blog-card-readtime"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>4 min</span></div>
+
+       <h3 class="blog-card-title">Spring 2026: The Colours That Will Define the Season</h3>
+
+       <p class="blog-card-excerpt">From quiet luxury to bold expressionism - what the runways tell us about the months ahead.</p>
+
+       <div class="blog-card-author"><img src="../assets/images/team/avatar-author.png" alt="Elise" width="36" height="36" loading="lazy"/><div class="blog-card-author-info"><span class="blog-card-author-name">Elise</span></div></div>
+
+      </div>
+
+     </a>
+
+    </div>
+
+
+
+    <!-- Article 6 -->
+
+    <div data-filter-target data-category="style-tips" class="reveal delay-200">
+
+     <a href="blog-detail.html" class="blog-card" style="text-decoration:none">
+
+      <div class="blog-card-img"><img src="../assets/images/blog/blog-5.png" alt="Packing light for business travel" loading="lazy" width="400" height="300"/></div>
+
+      <div class="blog-card-body">
+
+       <div class="blog-card-meta"><span class="blog-card-category">Style Tips</span><span class="blog-card-readtime"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>7 min</span></div>
+
+       <h3 class="blog-card-title">The Ultimate Travel Capsule: Looking Polished With Only a Carry-On</h3>
+
+       <p class="blog-card-excerpt">- seasoned jet-setter's guide to packing smart without sacrificing style.</p>
+
+       <div class="blog-card-author"><img src="../assets/images/team/avatar-3.png" alt="Marcus Webb" width="36" height="36" loading="lazy"/><div class="blog-card-author-info"><span class="blog-card-author-name">Marcus Webb</span></div></div>
+
+      </div>
+
+     </a>
+
+    </div>
+
+   </div>
+
+
+
+   <!-- No results -->
+
+   <div id="no-results" class="hidden" role="status" aria-live="polite">
+
+    <p style="font-size:var(--text-xl);color:var(--text-muted);margin-bottom:var(--space-2)">No articles found</p>
+
+    <p style="color:var(--text-muted)">Try a different search term or browse all categories above.</p>
+
+   </div>
+
+  </div>
+
+ </section>
+
+
+
+ <!-- NEWSLETTER SIGNUP -->
+
+ <section class="section" style="background:var(--bg-secondary)" aria-labelledby="blog-newsletter-heading">
+
+  <div class="container" style="max-width:700px;text-align:center">
+
+   <span class="section-tag reveal">Stay in the Know</span>
+
+   <h2 class="section-title reveal delay-100" id="blog-newsletter-heading">Get Style Insights<br>Delivered Weekly</h2>
+
+   <p class="section-subtitle reveal delay-200">Join 12,000+ subscribers who receive our curated style tips, trend reports, and exclusive styling guides every week.</p>
+
+   <form class="newsletter-form reveal delay-300" aria-label="Blog newsletter" onsubmit="return false;" id="blog-newsletter-form">
+
+    <input type="email" class="newsletter-input" placeholder="Enter your email address" aria-label="Email address" required id="blog-nl-email"/>
+
+    <button type="submit" class="btn btn-primary btn-lg">Subscribe Free</button>
+
+   </form>
+
+   <p style="margin-top:var(--space-2);font-size:var(--text-xs);color:var(--text-muted)">No spam. Unsubscribe at any time. 12,000+ readers.</p>
+
+  </div>
+
+ </section>
+
+
+
+ <!-- FEATURED CATEGORIES -->
+
+ <section class="section" aria-labelledby="blog-cats-heading">
+
+  <div class="container">
+
+   <div class="section-header">
+
+    <span class="section-tag reveal">Browse by Topic</span>
+
+    <h2 class="section-title reveal delay-100" id="blog-cats-heading">Explore Our Style Guides</h2>
+
+    <p class="section-subtitle reveal delay-200">Deep-dive into the topics that matter most to your style journey.</p>
+
+   </div>
+
+   <div class="blog-cats-grid">
+
+    <a href="blog.html" class="blog-cat-card reveal" style="text-decoration:none">
+
+     <div class="blog-cat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 16.5l-5-3V4l5 3m0 9.5V7m0 9.5l5-3m-5-9.5l5 3m0 0l5-3V10l-5 3m0-6.5v9.5"/></svg></div>
+
+     <h3 class="blog-cat-title">Style Tips</h3>
+
+     <p class="blog-cat-count">24 articles</p>
+
+    </a>
+
+    <a href="blog.html" class="blog-cat-card reveal delay-100" style="text-decoration:none">
+
+     <div class="blog-cat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="19" cy="15" r="2.5"/><circle cx="6.5" cy="15" r="2.5"/></svg></div>
+
+     <h3 class="blog-cat-title">Color Theory</h3>
+
+     <p class="blog-cat-count">18 articles</p>
+
+    </a>
+
+    <a href="blog.html" class="blog-cat-card reveal delay-200" style="text-decoration:none">
+
+     <div class="blog-cat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+
+     <h3 class="blog-cat-title">Trend Reports</h3>
+
+     <p class="blog-cat-count">15 articles</p>
+
+    </a>
+
+    <a href="blog.html" class="blog-cat-card reveal delay-300" style="text-decoration:none">
+
+     <div class="blog-cat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+
+     <h3 class="blog-cat-title">Case Studies</h3>
+
+     <p class="blog-cat-count">12 articles</p>
+
+    </a>
+
+   </div>
+
+  </div>
+
+ </section>
+
+
+
+ <!-- POPULAR POSTS SIDEBAR STYLE -->
+
+ <section class="section" style="background:var(--bg-secondary)" aria-labelledby="popular-heading">
+
+  <div class="container">
+
+   <div class="section-header">
+
+    <span class="section-tag reveal">Most Read</span>
+
+    <h2 class="section-title reveal delay-100" id="popular-heading">Reader Favourites</h2>
+
+    <p class="section-subtitle reveal delay-200">The articles your fellow style-seekers can't stop sharing.</p>
+
+   </div>
+
+   <div class="popular-grid">
+
+    <a href="blog-detail.html" class="popular-post reveal" style="text-decoration:none">
+
+     <span class="popular-num">01</span>
+
+     <div class="popular-img"><img src="../assets/images/blog/blog-1.png" alt="Wardrobe essentials" loading="lazy" width="80" height="80"/></div>
+
+     <div class="popular-info"><h3 class="popular-title">10 Wardrobe Essentials That Will Never Go Out of Style</h3><span class="popular-meta">Style Tips &bull; 5 min read</span></div>
+
+    </a>
+
+    <a href="blog-detail.html" class="popular-post reveal delay-100" style="text-decoration:none">
+
+     <span class="popular-num">02</span>
+
+     <div class="popular-img"><img src="../assets/images/blog/blog-featured.png" alt="Power dressing" loading="lazy" width="80" height="80"/></div>
+
+     <div class="popular-info"><h3 class="popular-title">The 2026 Power Dressing Revolution: How Executive Style Is Evolving</h3><span class="popular-meta">Trends &bull; 8 min read</span></div>
+
+    </a>
+
+    <a href="blog-detail.html" class="popular-post reveal delay-200" style="text-decoration:none">
+
+     <span class="popular-num">03</span>
+
+     <div class="popular-img"><img src="../assets/images/blog/blog-2.png" alt="Colour season" loading="lazy" width="80" height="80"/></div>
+
+     <div class="popular-info"><h3 class="popular-title">How to Discover Your Colour Season in 5 Steps</h3><span class="popular-meta">Color Theory &bull; 6 min read</span></div>
+
+    </a>
+
+    <a href="blog-detail.html" class="popular-post reveal delay-300" style="text-decoration:none">
+
+     <span class="popular-num">04</span>
+
+     <div class="popular-img"><img src="../assets/images/blog/blog-3.png" alt="CEO transformation" loading="lazy" width="80" height="80"/></div>
+
+     <div class="popular-info"><h3 class="popular-title">From Invisible to Unforgettable: - CEO's Image Transformation</h3><span class="popular-meta">Case Study &bull; 10 min read</span></div>
+
+    </a>
+
+   </div>
+
+  </div>
+
+ </section>
+
+
+
+ <!-- MEET THE AUTHORS -->
+
+ <section class="section" aria-labelledby="authors-heading">
+
+  <div class="container">
+
+   <div class="section-header">
+
+    <span class="section-tag reveal">Behind the Words</span>
+
+    <h2 class="section-title reveal delay-100" id="authors-heading">Meet Our Style Experts</h2>
+
+    <p class="section-subtitle reveal delay-200">Every article is crafted by a certified image consultant with real, hands-on experience.</p>
+
+   </div>
+
+   <div class="authors-grid">
+
+    <div class="author-card reveal">
+
+     <img src="../assets/images/team/avatar-author.png" alt="Elise" class="author-card-img" loading="lazy" width="96" height="96"/>
+
+     <div class="author-info">
+
+      <div class="author-name">Elise</div>
+
+      <div class="author-role">Founder &amp; Lead Stylist</div>
+
+      <p class="author-bio">With 12 years in luxury fashion and image consulting, Elise writes about style psychology, colour theory, and the power of personal presentation.</p>
+
+      <div class="author-stats"><span>32 articles</span><span>Founded 2014</span></div>
+
+     </div>
+
+    </div>
+
+    <div class="author-card reveal delay-200">
+
+     <img src="../assets/images/team/avatar-2.png" alt="Sophia Chen" class="author-card-img" loading="lazy" width="96" height="96"/>
+
+     <div class="author-info">
+
+      <div class="author-name">Sophia Chen</div>
+
+      <div class="author-role">Senior Stylist &amp; Colour Expert</div>
+
+      <p class="author-bio">Sophia specialises in colour analysis and sustainable fashion. She helps readers build capsule wardrobes that are both timeless and environmentally conscious.</p>
+
+      <div class="author-stats"><span>18 articles</span><span>FI- Certified</span></div>
+
+     </div>
+
+    </div>
+
+    <div class="author-card reveal delay-400">
+
+     <img src="../assets/images/team/avatar-3.png" alt="Marcus Webb" class="author-card-img" loading="lazy" width="96" height="96"/>
+
+     <div class="author-info">
+
+      <div class="author-name">Marcus Webb</div>
+
+      <div class="author-role">Corporate &amp; Menswear Stylist</div>
+
+      <p class="author-bio">Marcus brings a menswear perspective to executive dressing, writing about power dressing, suit fitting, and building authority through wardrobe choices.</p>
+
+      <div class="author-stats"><span>14 articles</span><span>10+ years exp.</span></div>
+
+     </div>
+
+    </div>
+
+   </div>
+
+  </div>
+
+ </section>
+
+
+
+ <!-- CTA STRIP -->
+
+ <section class="section" style="background:linear-gradient(135deg,var(--color-brown-dark),var(--color-brown))" aria-label="Blog CTA">
+
+  <div class="container" style="text-align:center;max-width:700px">
+
+   <span class="section-tag reveal" style="color:var(--color-blush)">Ready for a Change?</span>
+
+   <h2 class="reveal delay-100" style="color:white;font-size:clamp(2rem,4vw,3rem);margin-bottom:var(--space-3)">Put the Knowledge<br>Into Action</h2>
+
+   <p class="reveal delay-200" style="color:rgba(255,255,255,0.8);margin-bottom:var(--space-4);font-size:var(--text-lg)">Reading about style is only the first step. Book a consultation and let us bring these insights to life through your wardrobe.</p>
+
+   <div class="reveal delay-300" style="display:flex;justify-content:center;gap:var(--space-2);flex-wrap:wrap">
+
+    <a href="contact.html" class="btn btn-light btn-lg" id="blog-cta-book">Book Free Consultation</a>
+
+    <a href="services.html" class="btn btn-ghost btn-lg" style="border-color:rgba(255,255,255,0.3);color:white" id="blog-cta-services">Explore Services</a>
+
+   </div>
+
+  </div>
+
+ </section>
+
 </main>
 
-  <footer class="site-footer" role="contentinfo">
-    <div class="container">
-      <div class="footer-grid">
-        <div>
-          <a href="index.html" class="footer-brand-logo">
-            <img src="../assets/images/icons/logo.svg" class="footer-brand-logo-mark-img" alt="Logo" width="48"
-              height="48" style="margin-right: 12px; flex-shrink: 0;" />
-            <div>
-              <div class="footer-brand-name">Elise</div>
-              <div class="footer-tagline">Image Consultant</div>
-            </div>
-          </a>
-          <p class="footer-description">Transforming wardrobes and elevating presence for discerning clients worldwide.
-            Elegance is not a size - it's an attitude.</p>
-          <div class="footer-social">
-            <a href="#" rel="noopener noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2">
-                <rect x="2" y="2" width="20" height="20" rx="5" />
-                <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" />
-                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-              </svg></a>
-            <a href="#" rel="noopener noreferrer" aria-label="Pinterest"><svg viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2">
-                <path
-                  d="M12 2C6.48 2 2 6.48 2 12c0 4.24 2.65 7.86 6.39 9.29-.09-.78-.17-1.98.03-2.83.19-.77 1.27-5.38 1.27-5.38s-.32-.65-.32-1.61c0-1.51.88-2.64 1.97-2.64.93 0 1.38.7 1.38 1.54 0 .94-.6 2.34-.91 3.64-.26 1.09.54 1.97 1.61 1.97 1.93 0 3.22-2.47 3.22-5.39 0-2.24-1.52-3.8-3.69-3.8-2.51 0-3.99 1.88-3.99 3.83 0 .76.29 1.57.66 2.01.07.09.08.17.06.26l-.25 1c-.08.31-.27.38-.62.23-1.73-.81-2.81-3.35-2.81-5.4 0-3.13 2.28-6.01 6.58-6.01 3.45 0 6.14 2.46 6.14 5.75 0 3.43-2.16 6.19-5.17 6.19-1.01 0-1.96-.52-2.28-1.15l-.62 2.31c-.22.86-.83 1.94-1.24 2.59.93.29 1.92.45 2.95.45 5.52 0 10-4.48 10-10S17.52 2 12 2z" />
-              </svg></a>
-            <a href="#" rel="noopener noreferrer" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2">
-                <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z" />
-                <rect x="2" y="9" width="4" height="12" />
-                <circle cx="4" cy="4" r="2" />
-              </svg></a>
-            <a href="#" rel="noopener noreferrer" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2">
-                <path
-                  d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.96A29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z" />
-                <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" />
-              </svg></a>
-          </div>
-        </div>
-        <div>
-          <h3 class="footer-heading">Quick Links</h3>
-          <ul class="footer-links">
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="pricing.html">Pricing</a></li>
-            <li><a href="blog.html">Style Blog</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
-          </ul>
-        </div>
-        <div>
-          <h3 class="footer-heading">Services</h3>
-          <ul class="footer-links">
-            <li><a href="service-detail.html">Personal Shopping</a></li>
-            <li><a href="service-detail.html">Wardrobe Audit</a></li>
-            <li><a href="service-detail.html">Color Analysis</a></li>
-            <li><a href="service-detail.html">Corporate Styling</a></li>
-            <li><a href="service-detail.html">Bridal Styling</a></li>
-            <li><a href="coming-soon.html">Virtual Styling ✦ New</a></li>
-          </ul>
-        </div>
-        <div>
-          <h3 class="footer-heading">Stay Inspired</h3>
-          <p class="footer-newsletter-text">Get weekly style tips, trend alerts, and exclusive offers delivered to your
-            inbox.</p>
-          <form class="footer-newsletter-form" aria-label="Newsletter signup">
-            <input type="email" placeholder="Your email" aria-label="Email address" required />
-            <button type="submit">Subscribe</button>
-          </form>
-          <div style="margin-top:var(--space-3)">
-            <p style="font-size:var(--text-xs);color:rgba(255,255,255,0.4);margin-bottom:8px">OTHER PAGES</p>
-            <div style="display:flex;flex-direction:column;gap:6px">
-              <a href="404.html"
-                style="font-size:var(--text-xs);color:rgba(255,255,255,0.4);transition:color 300ms ease"
-                onmouseover="this.style.color='#E8CFC5'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">404
-                Page</a>
-              <a href="coming-soon.html"
-                style="font-size:var(--text-xs);color:rgba(255,255,255,0.4);transition:color 300ms ease"
-                onmouseover="this.style.color='#E8CFC5'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Coming
-                Soon</a>
-            </div>
-          </div>
-        </div>
+
+
+ <footer class="site-footer" role="contentinfo">
+
+  <div class="container">
+
+   <div class="footer-grid">
+
+    <div>
+
+     <a href="index.html" class="footer-brand-logo">
+
+      <img src="../assets/images/icons/logo.svg" class="footer-brand-logo-mark-img" alt="Logo" width="48"
+
+       height="48" style="margin-right: 12px; flex-shrink: 0;" />
+
+      <div>
+
+       <div class="footer-brand-name">Elise</div>
+
+       <div class="footer-tagline">Image Consultant</div>
+
       </div>
+
+     </a>
+
+     <p class="footer-description">Transforming wardrobes and elevating presence for discerning clients worldwide.
+
+      Elegance is not a size - it's an attitude.</p>
+
+     <div class="footer-social">
+
+      <a href="#" rel="noopener noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none"
+
+        stroke="currentColor" stroke-width="2">
+
+        <rect x="2" y="2" width="20" height="20" rx="5" />
+
+        <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" />
+
+        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+
+       </svg></a>
+
+      <a href="#" rel="noopener noreferrer" aria-label="Pinterest"><svg viewBox="0 0 24 24" fill="none"
+
+        stroke="currentColor" stroke-width="2">
+
+        <path
+
+         d="M12 2C6.48 2 2 6.48 2 12c0 4.24 2.65 7.86 6.39 9.29-.09-.78-.17-1.98.03-2.83.19-.77 1.27-5.38 1.27-5.38s-.32-.65-.32-1.61c0-1.51.88-2.64 1.97-2.64.93 0 1.38.7 1.38 1.54 0 .94-.6 2.34-.91 3.64-.26 1.09.54 1.97 1.61 1.97 1.93 0 3.22-2.47 3.22-5.39 0-2.24-1.52-3.8-3.69-3.8-2.51 0-3.99 1.88-3.99 3.83 0 .76.29 1.57.66 2.01.07.09.08.17.06.26l-.25 1c-.08.31-.27.38-.62.23-1.73-.81-2.81-3.35-2.81-5.4 0-3.13 2.28-6.01 6.58-6.01 3.45 0 6.14 2.46 6.14 5.75 0 3.43-2.16 6.19-5.17 6.19-1.01 0-1.96-.52-2.28-1.15l-.62 2.31c-.22.86-.83 1.94-1.24 2.59.93.29 1.92.45 2.95.45 5.52 0 10-4.48 10-10S17.52 2 12 2z" />
+
+       </svg></a>
+
+      <a href="#" rel="noopener noreferrer" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none"
+
+        stroke="currentColor" stroke-width="2">
+
+        <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z" />
+
+        <rect x="2" y="9" width="4" height="12" />
+
+        <circle cx="4" cy="4" r="2" />
+
+       </svg></a>
+
+      <a href="#" rel="noopener noreferrer" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none"
+
+        stroke="currentColor" stroke-width="2">
+
+        <path
+
+         d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.96A29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z" />
+
+        <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" />
+
+       </svg></a>
+
+     </div>
+
     </div>
-    <div style="border-top:1px solid rgba(255,255,255,0.1)">
-      <div class="container">
-        <div class="footer-bottom" style="justify-content: center; text-align: center;">
-          <p class="footer-bottom-text">© 2026 Elise Laurent. All rights reserved.</p>
-        </div>
+
+    <div>
+
+     <h3 class="footer-heading">Quick Links</h3>
+
+     <ul class="footer-links">
+
+      <li><a href="about.html">About Us</a></li>
+
+      <li><a href="services.html">Services</a></li>
+
+      <li><a href="pricing.html">Pricing</a></li>
+
+      <li><a href="blog.html">Style Blog</a></li>
+
+      <li><a href="contact.html">Contact Us</a></li>
+
+     </ul>
+
+    </div>
+
+    <div>
+
+     <h3 class="footer-heading">Services</h3>
+
+     <ul class="footer-links">
+
+      <li><a href="service-detail.html">Personal Shopping</a></li>
+
+      <li><a href="service-detail.html">Wardrobe Audit</a></li>
+
+      <li><a href="service-detail.html">Color Analysis</a></li>
+
+      <li><a href="service-detail.html">Corporate Styling</a></li>
+
+      <li><a href="service-detail.html">Bridal Styling</a></li>
+
+      <li><a href="coming-soon.html">Virtual Styling ✦ New</a></li>
+
+     </ul>
+
+    </div>
+
+    <div>
+
+     <h3 class="footer-heading">Stay Inspired</h3>
+
+     <p class="footer-newsletter-text">Get weekly style tips, trend alerts, and exclusive offers delivered to your
+
+      inbox.</p>
+
+     <form class="footer-newsletter-form" aria-label="Newsletter signup">
+
+      <input type="email" placeholder="Your email" aria-label="Email address" required />
+
+      <button type="submit">Subscribe</button>
+
+     </form>
+
+     <div style="margin-top:var(--space-3)">
+
+      <p style="font-size:var(--text-xs);color:rgba(255,255,255,0.4);margin-bottom:8px">OTHER PAGES</p>
+
+      <div style="display:flex;flex-direction:column;gap:6px">
+
+       <a href="404.html"
+
+        style="font-size:var(--text-xs);color:rgba(255,255,255,0.4);transition:color 300ms ease"
+
+        onmouseover="this.style.color='#E8CFC5'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">404
+
+        Page</a>
+
+       <a href="coming-soon.html"
+
+        style="font-size:var(--text-xs);color:rgba(255,255,255,0.4);transition:color 300ms ease"
+
+        onmouseover="this.style.color='#E8CFC5'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Coming
+
+        Soon</a>
+
       </div>
+
+     </div>
+
     </div>
-  </footer>
+
+   </div>
+
+  </div>
+
+  <div style="border-top:1px solid rgba(255,255,255,0.1)">
+
+   <div class="container">
+
+    <div class="footer-bottom" style="justify-content: center; text-align: center;">
+
+     <p class="footer-bottom-text">© 2026 Elise. All rights reserved.</p>
+
+    </div>
+
+   </div>
+
+  </div>
+
+ </footer>
+
+
 
 <script src="../assets/js/theme.js"></script><script src="../assets/js/rtl.js"></script><script src="../assets/js/navigation.js"></script><script src="../assets/js/main.js"></script>
+
 <script>
-  // Category filter + search
-  const pills2 = document.querySelectorAll('.filter-pills .filter-pill');
-  const items2 = document.querySelectorAll('[data-filter-target]');
-  pills2.forEach(pill => {
-    pill.addEventListener('click', () => {
-      pills2.forEach(p => p.classList.remove('active'));
-      pill.classList.add('active');
-      const filter = pill.dataset.filter;
-      items2.forEach(item => { item.style.display = (filter === 'all' || item.dataset.category === filter) ? '' : 'none'; });
-    });
+
+ // Category filter + search
+
+ const pills2 = document.querySelectorAll('.filter-pills .filter-pill');
+
+ const items2 = document.querySelectorAll('[data-filter-target]');
+
+ pills2.forEach(pill => {
+
+  pill.addEventListener('click', () => {
+
+   pills2.forEach(p => p.classList.remove('active'));
+
+   pill.classList.add('active');
+
+   const filter = pill.dataset.filter;
+
+   items2.forEach(item => { item.style.display = (filter === 'all' || item.dataset.category === filter) ? '' : 'none'; });
+
   });
+
+ });
+
 </script>
+
 </body>
+
 </html>
+

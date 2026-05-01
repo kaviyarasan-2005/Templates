@@ -612,7 +612,7 @@
 
 @media (max-width: 576px) {
   .site-nav .nav-logo-name, 
-  .site-nav .nav-logo-tagline { display: none !important; }
+  .site-nav .nav-logo-tagline { display: block !important; }
   .site-nav .nav-container { padding-inline: var(--space-1); }
   .site-nav .nav-actions { gap: 4px; }
   /* Allow toggles to show but keep them compact */

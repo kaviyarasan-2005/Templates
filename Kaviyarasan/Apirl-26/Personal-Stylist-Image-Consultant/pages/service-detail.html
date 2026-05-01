@@ -1,335 +1,335 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr" data-theme="light">
-<head>
-  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Personal Shopping Service - Elise</title>
-  <meta name="description" content="Our personal shopping service provides curated, handpicked selections tailored to your unique style profile. Book your session today."/>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
-  <link rel="icon" href="../assets/images/icons/favicon.svg" type="image/svg+xml"/><link rel="manifest" href="../manifest.json"/><link rel="stylesheet" href="../assets/css/main.css"/><link rel="stylesheet" href="../assets/css/components.css"/>
-  <link rel="stylesheet" href="../assets/css/animations.css"/><link rel="stylesheet" href="../assets/css/dark-mode.css"/>
-  <link rel="stylesheet" href="../assets/css/rtl.css"/><link rel="stylesheet" href="../assets/css/style.css"/>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"Personal Shopping","provider":{"@type":"LocalBusiness","name":"Elise"},"description":"Curated personal shopping service tailored to your style profile","offers":{"@type":"Offer","price":"299","priceCurrency":"USD"}}</script>
-  <style>
-    .included-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-2); }
-    .package-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: var(--space-3); margin-bottom: var(--space-4); }
-
-    @media(max-width:768px) {
-      .package-grid { grid-template-columns: 1fr; }
-    }
-    @media(max-width:640px) {
-      .included-grid { grid-template-columns: 1fr; }
-    }
-  </style>
-</head>
-<body>
-<a href="#main-content" class="skip-link">Skip to main content</a>
-<header class="site-nav" id="site-nav">
-  <nav class="nav-container" aria-label="Main navigation">
-    <a href="index.html" class="nav-logo"><img src="../assets/images/icons/logo.svg" class="nav-logo-mark-img" alt="Logo" width="36" height="36" style="margin-right: 8px; flex-shrink: 0;" /><div class="nav-logo-text"><span class="nav-logo-name">Elise</span></div></a>
-          <ul class="nav-menu">
-        <li class="nav-item">
-          <button class="nav-link">Home <svg class="chevron" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2">
-              <polyline points="6 9 12 15 18 9" />
-            </svg></button>
-          <div class="nav-dropdown">
-            <a href="index.html">Home 1</a>
-            <a href="home-2.html">Home 2</a>
-          </div>
-        </li>
-        <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-        <li class="nav-item"><a href="services.html" class="nav-link active">Services</a></li>
-        <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
-        <li class="nav-item"><a href="pricing.html" class="nav-link">Pricing</a></li>
-        <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-        <li class="nav-item">
-          <button class="nav-link">Dashboard <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="2">
-              <polyline points="6 9 12 15 18 9" />
-            </svg></button>
-          <div class="nav-dropdown">
-            <a href="dashboard-admin.html">Admin Dashboard</a>
-            <a href="dashboard-user.html">User Dashboard</a>
-          </div>
-        </li>
-      </ul>
-    <div class="nav-actions">
-      <button class="nav-action-btn" data-dir-toggle aria-label="Toggle direction">RTL</button>
-      <button class="nav-action-btn" data-theme-toggle aria-label="Toggle theme">
-        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-      </button>
-      <a href="login.html" class="btn btn-primary btn-sm d-none-mobile">Login</a>
-      <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-drawer"><span></span><span></span><span></span></button>
-    </div>
-  </nav>
-</header>
-<div class="nav-overlay" id="nav-overlay"></div>
-<aside class="nav-drawer" id="nav-drawer" role="dialog" aria-label="Mobile navigation">
-  <button class="drawer-close" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
-  <a href="index.html" class="nav-logo" style="margin-bottom:var(--space-3)"><img src="../assets/images/icons/logo.svg" class="nav-logo-mark-img" alt="Logo" width="36" height="36" style="margin-right: 8px; flex-shrink: 0;" /><div class="nav-logo-text"><span class="nav-logo-name">Elise</span></div></a>
-      <nav class="drawer-nav">
-      <div class="drawer-nav-item">
-        <div class="drawer-nav-link" tabindex="0">Home <svg class="chevron" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2">
-            <polyline points="6 9 12 15 18 9" />
-          </svg></div>
-        <div class="drawer-sub">
-          <a href="index.html">Home 1</a>
-          <a href="home-2.html">Home 2</a>
-        </div>
-      </div>
-      <div class="drawer-nav-item"><a href="about.html" class="drawer-nav-link">About</a></div>
-      <div class="drawer-nav-item"><a href="services.html" class="drawer-nav-link">Services</a></div>
-      <div class="drawer-nav-item"><a href="blog.html" class="drawer-nav-link">Blog</a></div>
-      <div class="drawer-nav-item"><a href="pricing.html" class="drawer-nav-link">Pricing</a></div>
-      <div class="drawer-nav-item"><a href="contact.html" class="drawer-nav-link">Contact</a></div>
-      <div class="drawer-nav-item">
-        <div class="drawer-nav-link" tabindex="0">Dashboard <svg class="chevron" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2">
-            <polyline points="6 9 12 15 18 9" />
-          </svg></div>
-        <div class="drawer-sub">
-          <a href="dashboard-admin.html">Admin Dashboard</a>
-          <a href="dashboard-user.html">User Dashboard</a>
-        </div>
-      </div>
-    </nav>
-  <div style="display:flex;gap:8px;margin-top:auto;padding-top:var(--space-3)">
-      <a href="login.html" class="btn btn-primary btn-block" style="width:100%">Login</a></div>
-</aside>
-
-<main id="main-content">
-  <!-- BREADCRUMB + HERO -->
-  <div class="page-hero" aria-label="Service detail hero">
-    <div class="container page-hero-content">
-      <nav class="breadcrumb" aria-label="Breadcrumb" style="justify-content:center">
-        <span class="breadcrumb-item"><a href="index.html">Home</a></span>
-        <span class="breadcrumb-separator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></span>
-        <span class="breadcrumb-item"><a href="services.html">Services</a></span>
-        <span class="breadcrumb-separator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></span>
-        <span class="breadcrumb-item active">Personal Shopping</span>
-      </nav>
-      <h1 class="page-hero-title">Personal Shopping</h1>
-      <p class="page-hero-text">Curated, handpicked selections that perfectly match your style profile, body type, and lifestyle needs.</p>
-    </div>
-  </div>
-
-  <section class="section" aria-label="Service details">
-    <div class="container">
-      <div class="service-detail-grid">
-        <!-- Content -->
-        <article>
-          <!-- Featured Image -->
-          <div style="margin-bottom:var(--space-4);border-radius:var(--radius-xl);overflow:hidden;aspect-ratio:16/9">
-            <img src="../assets/images/services/personal-shopping.png" alt="Personal shopping session - stylist curating luxury wardrobe pieces" loading="eager" width="800" height="450" style="width:100%;height:100%;object-fit:cover"/>
-          </div>
-
-          <!-- Overview -->
-          <div style="margin-bottom:var(--space-4)">
-            <h2 style="font-size:var(--text-2xl);margin-bottom:var(--space-2)">What Is Personal Shopping?</h2>
-            <p>Our Personal Shopping service is a fully bespoke experience designed to take the stress out of shopping while elevating the quality of your wardrobe. Your dedicated stylist conducts a detailed pre-session analysis of your style goals, lifestyle needs, and body proportions.</p>
-            <p style="margin-top:var(--space-2)">During the session, we visit carefully selected boutiques and stores €- or curate an edit of online options €- choosing pieces that are precisely right for you. Every item selected adheres to your colour palette, body guidelines, and style identity.</p>
-          </div>
-
-          <!-- What's Included -->
-          <div style="background:var(--bg-secondary);border-radius:var(--radius-xl);padding:var(--space-4);margin-bottom:var(--space-4)">
-            <h2 style="font-size:var(--text-xl);margin-bottom:var(--space-3)">What's Included</h2>
-            <div class="included-grid">
-              <div class="pricing-feature included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Pre-session style questionnaire</div>
-              <div class="pricing-feature included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Body shape & proportion analysis</div>
-              <div class="pricing-feature included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>3€-4 hour shopping session</div>
-              <div class="pricing-feature included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Up to 5 store visits</div>
-              <div class="pricing-feature included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Outfit formula creation</div>
-              <div class="pricing-feature included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Post-session style guide PDF</div>
-            </div>
-          </div>
-
-          <!-- Pricing Tiers -->
-          <h2 style="font-size:var(--text-2xl);margin-bottom:var(--space-3)">Choose Your Package</h2>
-          <div class="package-grid">
-            <div class="pricing-card">
-              <p class="pricing-plan">Essential</p>
-              <div class="pricing-price"><sup>$</sup>299</div>
-              <p class="pricing-period">Single Session</p>
-              <ul class="pricing-features">
-                <li class="pricing-feature included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>3-hour session</li>
-                <li class="pricing-feature included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>2-3 stores</li>
-                <li class="pricing-feature excluded"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Style guide</li>
-              </ul>
-              <a href="contact.html" class="btn btn-secondary btn-block">Book</a>
-            </div>
-            <div class="pricing-card featured">
-              <span class="pricing-badge">Most Popular</span>
-              <p class="pricing-plan">Premium</p>
-              <div class="pricing-price"><sup>$</sup>499</div>
-              <p class="pricing-period">Full Experience</p>
-              <ul class="pricing-features">
-                <li class="pricing-feature included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>4-hour session</li>
-                <li class="pricing-feature included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>5 stores</li>
-                <li class="pricing-feature included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>PDF style guide</li>
-              </ul>
-              <a href="contact.html" class="btn btn-primary btn-block">Book</a>
-            </div>
-            <div class="pricing-card">
-              <p class="pricing-plan">Deluxe</p>
-              <div class="pricing-price"><sup>$</sup>899</div>
-              <p class="pricing-period">VIP Package</p>
-              <ul class="pricing-features">
-                <li class="pricing-feature included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Full day</li>
-                <li class="pricing-feature included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Unlimited stores</li>
-                <li class="pricing-feature included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Follow-up call</li>
-              </ul>
-              <a href="contact.html" class="btn btn-secondary btn-block">Book</a>
-            </div>
-          </div>
-
-          <!-- FAQ -->
-          <h2 style="font-size:var(--text-2xl);margin-bottom:var(--space-3)">Frequently Asked Questions</h2>
-          <div class="accordion" aria-label="Service FAQ">
-            <div class="accordion-item active">
-              <button class="accordion-header">Do I need to have a budget in mind?<span class="accordion-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
-              <div class="accordion-body"><p class="accordion-content">Yes, having a budget helps us make the most intentional choices. We work with all budgets from Â£200 to Â£20,000+ and will always recommend the best value for your investment.</p></div>
-            </div>
-            <div class="accordion-item">
-              <button class="accordion-header">Can sessions be done virtually?<span class="accordion-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
-              <div class="accordion-body"><p class="accordion-content">Absolutely. Our virtual personal shopping service includes a video consultation, curated look books, and direct shopping links. Ideal for international clients.</p></div>
-            </div>
-            <div class="accordion-item">
-              <button class="accordion-header">What should I bring to the session?<span class="accordion-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
-              <div class="accordion-body"><p class="accordion-content">Comfortable shoes for walking, any key pieces you want to build around, your measurements if you know them, and an open mind! We'll handle everything else.</p></div>
-            </div>
-          </div>
-        </article>
-
-        <!-- Sticky Sidebar -->
-        <aside class="service-sticky-sidebar">
-          <div class="booking-card">
-            <div style="text-align:center;padding-bottom:var(--space-3);border-bottom:1px solid var(--border-color);margin-bottom:var(--space-3)">
-              <p style="font-size:var(--text-sm);color:var(--text-muted);margin-bottom:4px">Starting from</p>
-              <div style="font-family:var(--font-heading);font-size:3rem;font-weight:700;color:var(--color-brown);line-height:1"><sup style="font-size:1.5rem">$</sup>299</div>
-              <p style="font-size:var(--text-sm);color:var(--text-muted)">per session</p>
-            </div>
-            <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:var(--space-3)">
-              <div style="display:flex;align-items:center;gap:8px;font-size:var(--text-sm)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;stroke:var(--color-brown)"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span>3-4 hours duration</span></div>
-              <div style="display:flex;align-items:center;gap:8px;font-size:var(--text-sm)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;stroke:var(--color-brown)"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><span>In-person or virtual</span></div>
-              <div style="display:flex;align-items:center;gap:8px;font-size:var(--text-sm)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;stroke:var(--color-brown)"><polyline points="20 6 9 17 4 12"/></svg><span>Includes style guide</span></div>
-            </div>
-            <a href="contact.html" class="btn btn-primary btn-block btn-lg" style="margin-bottom:var(--space-2)">Book This Service</a>
-            <a href="contact.html" class="btn btn-ghost btn-block">Free 30-min Discovery Call</a>
-            <p style="text-align:center;font-size:var(--text-xs);color:var(--text-muted);margin-top:var(--space-2)">✦ No-hassle rescheduling within 48 hours</p>
-          </div>
-
-          <!-- Related Services -->
-          <div class="sidebar-widget" style="margin-top:var(--space-3)">
-            <p class="sidebar-widget-title">Related Services</p>
-            <div style="display:flex;flex-direction:column;gap:8px;margin-top:var(--space-2)">
-              <a href="service-detail.html" class="btn btn-ghost btn-sm" style="justify-content:flex-start">Wardrobe Audit</a>
-              <a href="service-detail.html" class="btn btn-ghost btn-sm" style="justify-content:flex-start">Color Analysis</a>
-              <a href="service-detail.html" class="btn btn-ghost btn-sm" style="justify-content:flex-start">Style Consultation</a>
-            </div>
-          </div>
-        </aside>
-      </div>
-    </div>
-  </section>
-</main>
-
-  <footer class="site-footer" role="contentinfo">
-    <div class="container">
-      <div class="footer-grid">
-        <div>
-          <a href="index.html" class="footer-brand-logo">
-            <img src="../assets/images/icons/logo.svg" class="footer-brand-logo-mark-img" alt="Logo" width="48"
-              height="48" style="margin-right: 12px; flex-shrink: 0;" />
-            <div>
-              <div class="footer-brand-name">Elise</div>
-              <div class="footer-tagline">Image Consultant</div>
-            </div>
-          </a>
-          <p class="footer-description">Transforming wardrobes and elevating presence for discerning clients worldwide.
-            Elegance is not a size - it's an attitude.</p>
-          <div class="footer-social">
-            <a href="#" rel="noopener noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2">
-                <rect x="2" y="2" width="20" height="20" rx="5" />
-                <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" />
-                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-              </svg></a>
-            <a href="#" rel="noopener noreferrer" aria-label="Pinterest"><svg viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2">
-                <path
-                  d="M12 2C6.48 2 2 6.48 2 12c0 4.24 2.65 7.86 6.39 9.29-.09-.78-.17-1.98.03-2.83.19-.77 1.27-5.38 1.27-5.38s-.32-.65-.32-1.61c0-1.51.88-2.64 1.97-2.64.93 0 1.38.7 1.38 1.54 0 .94-.6 2.34-.91 3.64-.26 1.09.54 1.97 1.61 1.97 1.93 0 3.22-2.47 3.22-5.39 0-2.24-1.52-3.8-3.69-3.8-2.51 0-3.99 1.88-3.99 3.83 0 .76.29 1.57.66 2.01.07.09.08.17.06.26l-.25 1c-.08.31-.27.38-.62.23-1.73-.81-2.81-3.35-2.81-5.4 0-3.13 2.28-6.01 6.58-6.01 3.45 0 6.14 2.46 6.14 5.75 0 3.43-2.16 6.19-5.17 6.19-1.01 0-1.96-.52-2.28-1.15l-.62 2.31c-.22.86-.83 1.94-1.24 2.59.93.29 1.92.45 2.95.45 5.52 0 10-4.48 10-10S17.52 2 12 2z" />
-              </svg></a>
-            <a href="#" rel="noopener noreferrer" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2">
-                <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z" />
-                <rect x="2" y="9" width="4" height="12" />
-                <circle cx="4" cy="4" r="2" />
-              </svg></a>
-            <a href="#" rel="noopener noreferrer" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2">
-                <path
-                  d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.96A29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z" />
-                <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" />
-              </svg></a>
-          </div>
-        </div>
-        <div>
-          <h3 class="footer-heading">Quick Links</h3>
-          <ul class="footer-links">
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="pricing.html">Pricing</a></li>
-            <li><a href="blog.html">Style Blog</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
-          </ul>
-        </div>
-        <div>
-          <h3 class="footer-heading">Services</h3>
-          <ul class="footer-links">
-            <li><a href="service-detail.html">Personal Shopping</a></li>
-            <li><a href="service-detail.html">Wardrobe Audit</a></li>
-            <li><a href="service-detail.html">Color Analysis</a></li>
-            <li><a href="service-detail.html">Corporate Styling</a></li>
-            <li><a href="service-detail.html">Bridal Styling</a></li>
-            <li><a href="coming-soon.html">Virtual Styling ✦ New</a></li>
-          </ul>
-        </div>
-        <div>
-          <h3 class="footer-heading">Stay Inspired</h3>
-          <p class="footer-newsletter-text">Get weekly style tips, trend alerts, and exclusive offers delivered to your
-            inbox.</p>
-          <form class="footer-newsletter-form" aria-label="Newsletter signup">
-            <input type="email" placeholder="Your email" aria-label="Email address" required />
-            <button type="submit">Subscribe</button>
-          </form>
-          <div style="margin-top:var(--space-3)">
-            <p style="font-size:var(--text-xs);color:rgba(255,255,255,0.4);margin-bottom:8px">OTHER PAGES</p>
-            <div style="display:flex;flex-direction:column;gap:6px">
-              <a href="404.html"
-                style="font-size:var(--text-xs);color:rgba(255,255,255,0.4);transition:color 300ms ease"
-                onmouseover="this.style.color='#E8CFC5'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">404
-                Page</a>
-              <a href="coming-soon.html"
-                style="font-size:var(--text-xs);color:rgba(255,255,255,0.4);transition:color 300ms ease"
-                onmouseover="this.style.color='#E8CFC5'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Coming
-                Soon</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div style="border-top:1px solid rgba(255,255,255,0.1)">
-      <div class="container">
-        <div class="footer-bottom" style="justify-content: center; text-align: center;">
-          <p class="footer-bottom-text">© 2026 Elise Laurent. All rights reserved.</p>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-<script src="../assets/js/theme.js"></script><script src="../assets/js/rtl.js"></script><script src="../assets/js/navigation.js"></script><script src="../assets/js/main.js"></script>
-</body>
-</html>
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+ <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+ <title>Personal Shopping Service - Elise</title>
+ <meta name="description" content="Our personal shopping service provides curated, handpicked selections tailored to your unique style profile. Book your session today."/>
+ <link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+ <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+ <link rel="icon" href="../assets/images/icons/favicon.svg" type="image/svg+xml"/><link rel="manifest" href="../manifest.json"/><link rel="stylesheet" href="../assets/css/main.css"/><link rel="stylesheet" href="../assets/css/components.css"/>
+ <link rel="stylesheet" href="../assets/css/animations.css"/><link rel="stylesheet" href="../assets/css/dark-mode.css"/>
+ <link rel="stylesheet" href="../assets/css/rtl.css"/><link rel="stylesheet" href="../assets/css/style.css"/>
+ <script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"Personal Shopping","provider":{"@type":"LocalBusiness","name":"Elise"},"description":"Curated personal shopping service tailored to your style profile","offers":{"@type":"Offer","price":"299","priceCurrency":"USD"}}</script>
+ <style>
+  .included-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-2); }
+  .package-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: var(--space-3); margin-bottom: var(--space-4); }
+
+  @media(max-width:768px) {
+   .package-grid { grid-template-columns: 1fr; }
+  }
+  @media(max-width:640px) {
+   .included-grid { grid-template-columns: 1fr; }
+  }
+ </style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+<header class="site-nav" id="site-nav">
+ <nav class="nav-container" aria-label="Main navigation">
+  <a href="index.html" class="nav-logo"><img src="../assets/images/icons/logo.svg" class="nav-logo-mark-img" alt="Logo" width="36" height="36" style="margin-right: 8px; flex-shrink: 0;" /><div class="nav-logo-text"><span class="nav-logo-name">Elise</span></div></a>
+     <ul class="nav-menu">
+    <li class="nav-item">
+     <button class="nav-link">Home <svg class="chevron" viewBox="0 0 24 24" fill="none"
+       stroke="currentColor" stroke-width="2">
+       <polyline points="6 9 12 15 18 9" />
+      </svg></button>
+     <div class="nav-dropdown">
+      <a href="index.html">Home 1</a>
+      <a href="home-2.html">Home 2</a>
+     </div>
+    </li>
+    <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+    <li class="nav-item"><a href="services.html" class="nav-link active">Services</a></li>
+    <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+    <li class="nav-item"><a href="pricing.html" class="nav-link">Pricing</a></li>
+    <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+    <li class="nav-item">
+     <button class="nav-link">Dashboard <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+       stroke-width="2">
+       <polyline points="6 9 12 15 18 9" />
+      </svg></button>
+     <div class="nav-dropdown">
+      <a href="dashboard-admin.html">Admin Dashboard</a>
+      <a href="dashboard-user.html">User Dashboard</a>
+     </div>
+    </li>
+   </ul>
+  <div class="nav-actions">
+   <button class="nav-action-btn" data-dir-toggle aria-label="Toggle direction">RTL</button>
+   <button class="nav-action-btn" data-theme-toggle aria-label="Toggle theme">
+    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+   </button>
+   <a href="login.html" class="btn btn-primary btn-sm d-none-mobile">Login</a>
+   <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-drawer"><span></span><span></span><span></span></button>
+  </div>
+ </nav>
+</header>
+<div class="nav-overlay" id="nav-overlay"></div>
+<aside class="nav-drawer" id="nav-drawer" role="dialog" aria-label="Mobile navigation">
+ <button class="drawer-close" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+ <a href="index.html" class="nav-logo" style="margin-bottom:var(--space-3)"><img src="../assets/images/icons/logo.svg" class="nav-logo-mark-img" alt="Logo" width="36" height="36" style="margin-right: 8px; flex-shrink: 0;" /><div class="nav-logo-text"><span class="nav-logo-name">Elise</span></div></a>
+   <nav class="drawer-nav">
+   <div class="drawer-nav-item">
+    <div class="drawer-nav-link" tabindex="0">Home <svg class="chevron" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2">
+      <polyline points="6 9 12 15 18 9" />
+     </svg></div>
+    <div class="drawer-sub">
+     <a href="index.html">Home 1</a>
+     <a href="home-2.html">Home 2</a>
+    </div>
+   </div>
+   <div class="drawer-nav-item"><a href="about.html" class="drawer-nav-link">About</a></div>
+   <div class="drawer-nav-item"><a href="services.html" class="drawer-nav-link">Services</a></div>
+   <div class="drawer-nav-item"><a href="blog.html" class="drawer-nav-link">Blog</a></div>
+   <div class="drawer-nav-item"><a href="pricing.html" class="drawer-nav-link">Pricing</a></div>
+   <div class="drawer-nav-item"><a href="contact.html" class="drawer-nav-link">Contact</a></div>
+   <div class="drawer-nav-item">
+    <div class="drawer-nav-link" tabindex="0">Dashboard <svg class="chevron" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2">
+      <polyline points="6 9 12 15 18 9" />
+     </svg></div>
+    <div class="drawer-sub">
+     <a href="dashboard-admin.html">Admin Dashboard</a>
+     <a href="dashboard-user.html">User Dashboard</a>
+    </div>
+   </div>
+  </nav>
+ <div style="display:flex;gap:8px;margin-top:auto;padding-top:var(--space-3)">
+   <a href="login.html" class="btn btn-primary btn-block" style="width:100%">Login</a></div>
+</aside>
+
+<main id="main-content">
+ <!-- BREADCRUMB + HERO -->
+ <div class="page-hero" aria-label="Service detail hero">
+  <div class="container page-hero-content">
+   <nav class="breadcrumb" aria-label="Breadcrumb" style="justify-content:center">
+    <span class="breadcrumb-item"><a href="index.html">Home</a></span>
+    <span class="breadcrumb-separator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></span>
+    <span class="breadcrumb-item"><a href="services.html">Services</a></span>
+    <span class="breadcrumb-separator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></span>
+    <span class="breadcrumb-item active">Personal Shopping</span>
+   </nav>
+   <h1 class="page-hero-title">Personal Shopping</h1>
+   <p class="page-hero-text">Curated, handpicked selections that perfectly match your style profile, body type, and lifestyle needs.</p>
+  </div>
+ </div>
+
+ <section class="section" aria-label="Service details">
+  <div class="container">
+   <div class="service-detail-grid">
+    <!-- Content -->
+    <article>
+     <!-- Featured Image -->
+     <div style="margin-bottom:var(--space-4);border-radius:var(--radius-xl);overflow:hidden;aspect-ratio:16/9">
+      <img src="../assets/images/services/personal-shopping.png" alt="Personal shopping session - stylist curating luxury wardrobe pieces" loading="eager" width="800" height="450" style="width:100%;height:100%;object-fit:cover"/>
+     </div>
+
+     <!-- Overview -->
+     <div style="margin-bottom:var(--space-4)">
+      <h2 style="font-size:var(--text-2xl);margin-bottom:var(--space-2)">What Is Personal Shopping?</h2>
+      <p>Our Personal Shopping service is a fully bespoke experience designed to take the stress out of shopping while elevating the quality of your wardrobe. Your dedicated stylist conducts a detailed pre-session analysis of your style goals, lifestyle needs, and body proportions.</p>
+      <p style="margin-top:var(--space-2)">During the session, we visit carefully selected boutiques and stores - or curate an edit of online options - choosing pieces that are precisely right for you. Every item selected adheres to your colour palette, body guidelines, and style identity.</p>
+     </div>
+
+     <!-- What's Included -->
+     <div style="background:var(--bg-secondary);border-radius:var(--radius-xl);padding:var(--space-4);margin-bottom:var(--space-4)">
+      <h2 style="font-size:var(--text-xl);margin-bottom:var(--space-3)">What's Included</h2>
+      <div class="included-grid">
+       <div class="pricing-feature included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Pre-session style questionnaire</div>
+       <div class="pricing-feature included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Body shape & proportion analysis</div>
+       <div class="pricing-feature included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>3-4 hour shopping session</div>
+       <div class="pricing-feature included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Up to 5 store visits</div>
+       <div class="pricing-feature included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Outfit formula creation</div>
+       <div class="pricing-feature included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Post-session style guide PDF</div>
+      </div>
+     </div>
+
+     <!-- Pricing Tiers -->
+     <h2 style="font-size:var(--text-2xl);margin-bottom:var(--space-3)">Choose Your Package</h2>
+     <div class="package-grid">
+      <div class="pricing-card">
+       <p class="pricing-plan">Essential</p>
+       <div class="pricing-price"><sup>$</sup>299</div>
+       <p class="pricing-period">Single Session</p>
+       <ul class="pricing-features">
+        <li class="pricing-feature included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>3-hour session</li>
+        <li class="pricing-feature included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>2-3 stores</li>
+        <li class="pricing-feature excluded"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Style guide</li>
+       </ul>
+       <a href="contact.html" class="btn btn-secondary btn-block">Book</a>
+      </div>
+      <div class="pricing-card featured">
+       <span class="pricing-badge">Most Popular</span>
+       <p class="pricing-plan">Premium</p>
+       <div class="pricing-price"><sup>$</sup>499</div>
+       <p class="pricing-period">Full Experience</p>
+       <ul class="pricing-features">
+        <li class="pricing-feature included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>4-hour session</li>
+        <li class="pricing-feature included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>5 stores</li>
+        <li class="pricing-feature included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>PDF style guide</li>
+       </ul>
+       <a href="contact.html" class="btn btn-primary btn-block">Book</a>
+      </div>
+      <div class="pricing-card">
+       <p class="pricing-plan">Deluxe</p>
+       <div class="pricing-price"><sup>$</sup>899</div>
+       <p class="pricing-period">VIP Package</p>
+       <ul class="pricing-features">
+        <li class="pricing-feature included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Full day</li>
+        <li class="pricing-feature included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Unlimited stores</li>
+        <li class="pricing-feature included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Follow-up call</li>
+       </ul>
+       <a href="contact.html" class="btn btn-secondary btn-block">Book</a>
+      </div>
+     </div>
+
+     <!-- FAQ -->
+     <h2 style="font-size:var(--text-2xl);margin-bottom:var(--space-3)">Frequently Asked Questions</h2>
+     <div class="accordion" aria-label="Service FAQ">
+      <div class="accordion-item active">
+       <button class="accordion-header">Do I need to have a budget in mind?<span class="accordion-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
+       <div class="accordion-body"><p class="accordion-content">Yes, having a budget helps us make the most intentional choices. We work with all budgets from Â£200 to Â£20,000+ and will always recommend the best value for your investment.</p></div>
+      </div>
+      <div class="accordion-item">
+       <button class="accordion-header">Can sessions be done virtually?<span class="accordion-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
+       <div class="accordion-body"><p class="accordion-content">Absolutely. Our virtual personal shopping service includes a video consultation, curated look books, and direct shopping links. Ideal for international clients.</p></div>
+      </div>
+      <div class="accordion-item">
+       <button class="accordion-header">What should I bring to the session?<span class="accordion-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
+       <div class="accordion-body"><p class="accordion-content">Comfortable shoes for walking, any key pieces you want to build around, your measurements if you know them, and an open mind! We'll handle everything else.</p></div>
+      </div>
+     </div>
+    </article>
+
+    <!-- Sticky Sidebar -->
+    <aside class="service-sticky-sidebar">
+     <div class="booking-card">
+      <div style="text-align:center;padding-bottom:var(--space-3);border-bottom:1px solid var(--border-color);margin-bottom:var(--space-3)">
+       <p style="font-size:var(--text-sm);color:var(--text-muted);margin-bottom:4px">Starting from</p>
+       <div style="font-family:var(--font-heading);font-size:3rem;font-weight:700;color:var(--color-brown);line-height:1"><sup style="font-size:1.5rem">$</sup>299</div>
+       <p style="font-size:var(--text-sm);color:var(--text-muted)">per session</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:var(--space-3)">
+       <div style="display:flex;align-items:center;gap:8px;font-size:var(--text-sm)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;stroke:var(--color-brown)"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span>3-4 hours duration</span></div>
+       <div style="display:flex;align-items:center;gap:8px;font-size:var(--text-sm)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;stroke:var(--color-brown)"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><span>In-person or virtual</span></div>
+       <div style="display:flex;align-items:center;gap:8px;font-size:var(--text-sm)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;stroke:var(--color-brown)"><polyline points="20 6 9 17 4 12"/></svg><span>Includes style guide</span></div>
+      </div>
+      <a href="contact.html" class="btn btn-primary btn-block btn-lg" style="margin-bottom:var(--space-2)">Book This Service</a>
+      <a href="contact.html" class="btn btn-ghost btn-block">Free 30-min Discovery Call</a>
+      <p style="text-align:center;font-size:var(--text-xs);color:var(--text-muted);margin-top:var(--space-2)">✦ No-hassle rescheduling within 48 hours</p>
+     </div>
+
+     <!-- Related Services -->
+     <div class="sidebar-widget" style="margin-top:var(--space-3)">
+      <p class="sidebar-widget-title">Related Services</p>
+      <div style="display:flex;flex-direction:column;gap:8px;margin-top:var(--space-2)">
+       <a href="service-detail.html" class="btn btn-ghost btn-sm" style="justify-content:flex-start">Wardrobe Audit</a>
+       <a href="service-detail.html" class="btn btn-ghost btn-sm" style="justify-content:flex-start">Color Analysis</a>
+       <a href="service-detail.html" class="btn btn-ghost btn-sm" style="justify-content:flex-start">Style Consultation</a>
+      </div>
+     </div>
+    </aside>
+   </div>
+  </div>
+ </section>
+</main>
+
+ <footer class="site-footer" role="contentinfo">
+  <div class="container">
+   <div class="footer-grid">
+    <div>
+     <a href="index.html" class="footer-brand-logo">
+      <img src="../assets/images/icons/logo.svg" class="footer-brand-logo-mark-img" alt="Logo" width="48"
+       height="48" style="margin-right: 12px; flex-shrink: 0;" />
+      <div>
+       <div class="footer-brand-name">Elise</div>
+       <div class="footer-tagline">Image Consultant</div>
+      </div>
+     </a>
+     <p class="footer-description">Transforming wardrobes and elevating presence for discerning clients worldwide.
+      Elegance is not a size - it's an attitude.</p>
+     <div class="footer-social">
+      <a href="#" rel="noopener noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2">
+        <rect x="2" y="2" width="20" height="20" rx="5" />
+        <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" />
+        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+       </svg></a>
+      <a href="#" rel="noopener noreferrer" aria-label="Pinterest"><svg viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2">
+        <path
+         d="M12 2C6.48 2 2 6.48 2 12c0 4.24 2.65 7.86 6.39 9.29-.09-.78-.17-1.98.03-2.83.19-.77 1.27-5.38 1.27-5.38s-.32-.65-.32-1.61c0-1.51.88-2.64 1.97-2.64.93 0 1.38.7 1.38 1.54 0 .94-.6 2.34-.91 3.64-.26 1.09.54 1.97 1.61 1.97 1.93 0 3.22-2.47 3.22-5.39 0-2.24-1.52-3.8-3.69-3.8-2.51 0-3.99 1.88-3.99 3.83 0 .76.29 1.57.66 2.01.07.09.08.17.06.26l-.25 1c-.08.31-.27.38-.62.23-1.73-.81-2.81-3.35-2.81-5.4 0-3.13 2.28-6.01 6.58-6.01 3.45 0 6.14 2.46 6.14 5.75 0 3.43-2.16 6.19-5.17 6.19-1.01 0-1.96-.52-2.28-1.15l-.62 2.31c-.22.86-.83 1.94-1.24 2.59.93.29 1.92.45 2.95.45 5.52 0 10-4.48 10-10S17.52 2 12 2z" />
+       </svg></a>
+      <a href="#" rel="noopener noreferrer" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2">
+        <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z" />
+        <rect x="2" y="9" width="4" height="12" />
+        <circle cx="4" cy="4" r="2" />
+       </svg></a>
+      <a href="#" rel="noopener noreferrer" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2">
+        <path
+         d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.96A29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z" />
+        <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" />
+       </svg></a>
+     </div>
+    </div>
+    <div>
+     <h3 class="footer-heading">Quick Links</h3>
+     <ul class="footer-links">
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="blog.html">Style Blog</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+     </ul>
+    </div>
+    <div>
+     <h3 class="footer-heading">Services</h3>
+     <ul class="footer-links">
+      <li><a href="service-detail.html">Personal Shopping</a></li>
+      <li><a href="service-detail.html">Wardrobe Audit</a></li>
+      <li><a href="service-detail.html">Color Analysis</a></li>
+      <li><a href="service-detail.html">Corporate Styling</a></li>
+      <li><a href="service-detail.html">Bridal Styling</a></li>
+      <li><a href="coming-soon.html">Virtual Styling ✦ New</a></li>
+     </ul>
+    </div>
+    <div>
+     <h3 class="footer-heading">Stay Inspired</h3>
+     <p class="footer-newsletter-text">Get weekly style tips, trend alerts, and exclusive offers delivered to your
+      inbox.</p>
+     <form class="footer-newsletter-form" aria-label="Newsletter signup">
+      <input type="email" placeholder="Your email" aria-label="Email address" required />
+      <button type="submit">Subscribe</button>
+     </form>
+     <div style="margin-top:var(--space-3)">
+      <p style="font-size:var(--text-xs);color:rgba(255,255,255,0.4);margin-bottom:8px">OTHER PAGES</p>
+      <div style="display:flex;flex-direction:column;gap:6px">
+       <a href="404.html"
+        style="font-size:var(--text-xs);color:rgba(255,255,255,0.4);transition:color 300ms ease"
+        onmouseover="this.style.color='#E8CFC5'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">404
+        Page</a>
+       <a href="coming-soon.html"
+        style="font-size:var(--text-xs);color:rgba(255,255,255,0.4);transition:color 300ms ease"
+        onmouseover="this.style.color='#E8CFC5'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Coming
+        Soon</a>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+  <div style="border-top:1px solid rgba(255,255,255,0.1)">
+   <div class="container">
+    <div class="footer-bottom" style="justify-content: center; text-align: center;">
+     <p class="footer-bottom-text">© 2026 Elise. All rights reserved.</p>
+    </div>
+   </div>
+  </div>
+ </footer>
+
+<script src="../assets/js/theme.js"></script><script src="../assets/js/rtl.js"></script><script src="../assets/js/navigation.js"></script><script src="../assets/js/main.js"></script>
+</body>
+</html>

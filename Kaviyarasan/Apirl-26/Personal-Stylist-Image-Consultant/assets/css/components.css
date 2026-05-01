@@ -159,7 +159,8 @@
   text-transform: uppercase;
 }
 @media (max-width: 480px) {
-  .nav-logo-name { display: none; }
+  /* Brand name "Elise" is short enough to keep visible on small mobile screens */
+  .nav-logo-name { display: block; }
 }
 
 /* Desktop Menu */

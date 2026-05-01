@@ -242,7 +242,15 @@
 [data-theme="dark"] .auth-footer-text { color: var(--text-muted); }
 [data-theme="dark"] .auth-footer-text a { color: var(--color-nude); }
 
-/* ── Skeleton ────────────────────────────────── */
+/* ── Contact Map Placeholder ────────────────── */
+[data-theme="dark"] .map-placeholder {
+  background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
+  color: var(--text-secondary);
+  border-color: var(--border-color);
+}
+[data-theme="dark"] .map-placeholder p { color: var(--text-primary); }
+[data-theme="dark"] .map-placeholder small { color: var(--color-nude) !important; }
+
 [data-theme="dark"] .skeleton {
   background: linear-gradient(90deg, #333 25%, #3D3D3D 50%, #333 75%);
   background-size: 200% 100%;
