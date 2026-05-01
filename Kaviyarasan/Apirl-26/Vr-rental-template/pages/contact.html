@@ -24,6 +24,7 @@
     .map-placeholder { border-radius: 20px; overflow: hidden; height: 400px; background: linear-gradient(135deg, #e0f2e9 0%, #b8ddc7 100%); display: flex; align-items: center; justify-content: center; border: 1px solid var(--color-border); position: relative; }
     .map-placeholder-content { text-align: center; color: var(--color-primary); }
     .map-placeholder iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
+    [data-theme="dark"] .map-placeholder iframe { filter: invert(90%) hue-rotate(180deg) brightness(95%) contrast(90%); }
     .locations-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
     .location-card { background: var(--color-bg-card); border: 1px solid var(--color-border-light); border-radius: 16px; padding: 24px; text-align: center; transition: all 0.3s ease; }
     .location-card:hover { border-color: var(--color-primary); box-shadow: var(--shadow-md); transform: translateY(-3px); }
@@ -252,11 +253,8 @@
         </div>
         <!-- Map placeholder - replace src with real Google Maps embed -->
         <div class="map-placeholder animate-fade-up">
-          <div class="map-placeholder-content">
-            <i class="fas fa-map-marked-alt" style="font-size: 3rem; margin-bottom: 16px; opacity: 0.5;"></i>
-            <div style="font-size: 1rem; font-weight: 600; opacity: 0.7;">Interactive Map</div>
-            <div style="font-size: 0.85rem; opacity: 0.5; margin-top: 6px;">Google Maps API key required<br />(data-maps-api-key="YOUR_API_KEY")</div>
-          </div>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d196238.15655513473!2d-105.0210344!3d39.7392358!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x876b80aa2354a73f%3A0x6a0f67a2167d6438!2sDenver%2C%20CO%2C%20USA!5e0!3m2!1sen!2sin!4v1714574600000!5m2!1sen!2sin" 
+            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="RV adven Rentals Locations"></iframe>
         </div>
       </div>
     </section>
