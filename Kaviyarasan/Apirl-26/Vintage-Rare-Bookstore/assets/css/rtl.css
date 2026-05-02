@@ -260,6 +260,13 @@
     margin-right: 0 !important;
     margin-left: 0 !important;
   }
+
+  /* Timeline RTL mobile/tablet fix - line and dots align on right */
+  [dir="rtl"] .timeline::before {
+    left: auto;
+    right: 24px;
+    transform: translateX(50%);
+  }
 }
 
 @media (max-width: 768px) {
