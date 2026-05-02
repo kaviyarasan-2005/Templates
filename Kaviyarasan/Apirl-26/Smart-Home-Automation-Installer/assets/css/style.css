@@ -311,6 +311,13 @@ p { color: var(--text-secondary); line-height: var(--lh-relaxed); }
 }
 .navbar__icon-btn svg { width: 20px; height: 20px; }
 
+#rtl-toggle {
+  font-family: var(--font-heading);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.5px;
+}
+
 /* Hamburger */
 .navbar__hamburger {
   display: none;

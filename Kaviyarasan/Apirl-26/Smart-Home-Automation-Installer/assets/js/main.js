@@ -48,15 +48,17 @@
     apply(dir) {
       document.documentElement.setAttribute('dir', dir);
       localStorage.setItem('dir', dir);
+      document.querySelectorAll('#rtl-toggle').forEach(btn => {
+        btn.textContent = dir === 'rtl' ? 'LTR' : 'RTL';
+      });
     },
     bindToggle() {
-      const btn = document.getElementById('rtl-toggle');
-      if (btn) {
+      document.querySelectorAll('#rtl-toggle').forEach(btn => {
         btn.addEventListener('click', () => {
           const current = document.documentElement.getAttribute('dir') || 'rtl';
           this.apply(current === 'rtl' ? 'ltr' : 'rtl');
         });
-      }
+      });
     }
   };
 
