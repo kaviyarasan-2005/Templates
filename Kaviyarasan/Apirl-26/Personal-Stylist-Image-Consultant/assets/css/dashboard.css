@@ -476,7 +476,7 @@
 /* ── Responsive ──────────────────────────────── */
 @media (max-width: 1024px) {
   .dashboard-widgets { grid-template-columns: 1fr; }
-  .dashboard-layout { padding-top: 0; }
+  .dashboard-layout { padding-top:  0; }
   .dashboard-main { padding-top: 0 !important; }
   .admin-banner, .user-hero { margin-top: 0 !important; }
 
@@ -485,10 +485,10 @@
   .dashboard-sidebar {
     position: fixed;
     inset-inline-start: -260px;
-    top: var(--nav-height);
+    top:  0;
     z-index: var(--z-fixed);
     transition: inset-inline-start var(--transition-slow);
-    height: calc(100vh - var(--nav-height));
+    height:  100vh;
     overflow-y: auto;
     /* Reset desktop overrides and ensure it takes zero layout space */
     width: 260px !important;
@@ -768,4 +768,12 @@
 .sidebar-logout-btn svg {
   width: 16px;
   height: 16px;
+}
+
+/* Global Top Gap Fix */
+@media (max-width: 1024px) {
+  .dashboard-layout, body { padding-top: 0 !important; margin-top: 0 !important; }
+  .dashboard-sidebar { top: 0 !important; height: 100vh !important; }
+  .dashboard-main { padding-top: 0 !important; }
+  .admin-banner, .user-hero { margin-top: 0 !important; }
 }
