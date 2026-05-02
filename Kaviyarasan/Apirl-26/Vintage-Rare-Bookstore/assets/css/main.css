@@ -381,15 +381,15 @@ em { font-style: italic; }
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 42px;
-  height: 42px;
+  height: 36px;
+  min-width: 44px;
+  padding: 0 12px;
   border: 1px solid var(--border);
   background: rgba(212, 175, 55, 0.05);
   cursor: pointer;
   border-radius: var(--border-radius);
   color: var(--text-secondary);
   transition: all var(--transition-base);
-  margin-top: 2px;
 }
 
 .nav-icon-btn:hover {
