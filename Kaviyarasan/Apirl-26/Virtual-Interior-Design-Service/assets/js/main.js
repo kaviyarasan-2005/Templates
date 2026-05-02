@@ -62,6 +62,24 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // Accordion Toggles
+  const accordionHeaders = document.querySelectorAll('.accordion-header');
+  accordionHeaders.forEach(header => {
+    header.addEventListener('click', () => {
+      const item = header.parentElement;
+      const isActive = item.classList.contains('active');
+      
+      // Close other items
+      document.querySelectorAll('.accordion-item').forEach(otherItem => {
+        otherItem.classList.remove('active');
+      });
+      
+      if (!isActive) {
+        item.classList.add('active');
+      }
+    });
+  });
+
   // Navbar blur and shrink on scroll
   const navbar = document.querySelector('.navbar');
   if (navbar) {
