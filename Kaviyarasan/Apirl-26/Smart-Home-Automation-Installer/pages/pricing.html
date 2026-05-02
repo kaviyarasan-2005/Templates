@@ -20,7 +20,8 @@
     .page-hero p{color:rgba(255,255,255,0.8);max-width:560px;margin:0 auto;}
     @media(max-width:400px){
       .page-hero{padding:var(--space-6) var(--space-2);}
-      .pricing-toggle{gap:var(--space-1);flex-wrap:wrap;justify-content:center;}
+      .pricing-toggle{gap:var(--space-1);flex-wrap:nowrap;justify-content:center; align-items: center;}
+      .pricing-toggle__label .badge { font-size: 9px; padding: 2px 4px; }
       .pricing-card{padding:var(--space-3) var(--space-2);}
       .pricing-card__price{font-size:var(--fs-4xl);}
     }
