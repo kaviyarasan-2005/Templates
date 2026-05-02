@@ -21,7 +21,8 @@
       grid-template-columns: 55% 45%;
       align-items: center;
       background: var(--cream);
-      padding-top: var(--nav-height);
+      padding-top: 0;
+      margin-top: 0;
       overflow: hidden;
     }
 
@@ -31,6 +32,7 @@
 
     .saas-hero__left {
       padding: var(--space-4xl);
+      padding-top: calc(var(--nav-height) + var(--space-xl));
       text-align: center;
     }
 
@@ -39,7 +41,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(135deg, rgba(139, 69, 19, 0.4), rgba(212, 175, 55, 0.2)), url('assets/images/backgrounds/bright-hero-library.png') center/cover;
+      background: linear-gradient(135deg, rgba(139, 69, 19, 0.4), rgba(212, 175, 55, 0.2)), url('assets/images/backgrounds/bright-hero-library.png') center top/cover;
       min-height: 100vh;
       overflow: hidden;
     }
@@ -57,7 +59,7 @@
       font-weight: 700;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--accent-hover);
+      color: var(--primary-dark);
       margin-bottom: var(--space-xl);
     }
 
@@ -69,11 +71,11 @@
     }
 
     .saas-hero__subtitle {
-      font-size: 1.125rem;
-      color: var(--text-secondary);
+      color: var(--text-primary);
       max-width: 520px;
       line-height: 1.7;
       margin: 0 auto var(--space-2xl);
+      opacity: 0.9;
     }
 
     .saas-hero__metrics {
@@ -306,7 +308,7 @@
       font-weight: 700;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--accent-hover);
+      color: var(--primary);
       margin-bottom: var(--space-sm);
     }
 
@@ -322,7 +324,7 @@
     .pricing-mini__period {
       font-family: var(--font-ui);
       font-size: 0.875rem;
-      color: var(--text-muted);
+      color: var(--text-secondary);
       margin-bottom: var(--space-lg);
     }
 
@@ -352,8 +354,8 @@
       font-family: var(--font-heading);
       font-size: 1.125rem;
       font-weight: 700;
-      color: var(--text-muted);
-      opacity: 0.6;
+      color: var(--text-secondary);
+      opacity: 0.8;
       transition: opacity var(--transition-base);
       white-space: nowrap;
     }
@@ -584,17 +586,14 @@
       <div class="saas-hero__left">
         <div class="saas-eyebrow reveal"> The Platform for Book Collectors</div>
         <h1 class="saas-hero__title reveal">
-          <span data-typewriter="Curate.|Collect.|Connect.|Discover."></span>
+          Discover & Connect<br>Rare Treasures
         </h1>
         <p class="saas-hero__subtitle reveal">A sophisticated platform that connects rare book collectors, dealers, and
           institutions — powered by decades of expertise and a passion for literary heritage.</p>
         <div class="saas-hero__metrics reveal">
-          <div class="saas-metric"><span class="saas-metric__num" data-counter data-target="46"
-              data-suffix="+">0+</span><span class="saas-metric__label">Years Experience</span></div>
-          <div class="saas-metric"><span class="saas-metric__num" data-counter data-target="24500"
-              data-suffix="+">0+</span><span class="saas-metric__label">Books Curated</span></div>
-          <div class="saas-metric"><span class="saas-metric__num" data-counter data-target="98"
-              data-suffix="%">0%</span><span class="saas-metric__label">Satisfied Clients</span></div>
+          <div class="saas-metric"><span class="saas-metric__num">12K+</span><span class="saas-metric__label">Books Discovered</span></div>
+          <div class="saas-metric"><span class="saas-metric__num">5K+</span><span class="saas-metric__label">Collectors Connected</span></div>
+          <div class="saas-metric"><span class="saas-metric__num">98%</span><span class="saas-metric__label">Success Rate</span></div>
         </div>
         <div style="display:flex;gap:var(--space-md);flex-wrap:wrap;justify-content:center" class="reveal">
           <a href="register.html" class="btn btn-accent btn-lg">Start Free Trial</a>
@@ -612,17 +611,17 @@
         <!-- Floating UI cards -->
         <div class="float-card float-card--1" aria-hidden="true">
           <div style="font-weight:700;color:var(--success);font-size:1rem;margin-bottom:2px">+24%</div>
-          <div style="color:var(--text-muted);font-size:0.75rem">Collection value this month</div>
+          <div style="color:var(--text-primary);font-size:0.75rem;font-weight:500">Collection value this month</div>
         </div>
         <div class="float-card float-card--2" aria-hidden="true">
           <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">
             <div style="width:10px;height:10px;border-radius:50%;background:var(--success)"></div>
             <span style="font-weight:600;font-size:0.8125rem">New Rare Find</span>
           </div>
-          <div style="color:var(--text-muted);font-size:0.75rem">1st Ed. Ulysses — £12,400</div>
+          <div style="color:var(--text-primary);font-size:0.75rem;font-weight:500">1st Ed. Ulysses — £12,400</div>
         </div>
         <div class="float-card float-card--3" aria-hidden="true">
-          <div style="font-size:0.75rem;color:var(--text-muted);margin-bottom:4px">Excellent Rating</div>
+          <div style="font-size:0.75rem;color:var(--text-primary);font-weight:600;margin-bottom:4px">Excellent Rating</div>
           <div style="font-weight:600;font-size:0.8125rem">"Finest appraisal service"</div>
         </div>
       </div>
@@ -850,7 +849,7 @@
                     <li><a href="404.html">404 Page</a></li>
                   </ul>
                   <div style="margin-top:var(--space-lg)">
-                    <p style="color:rgba(245,230,211,0.5);font-size:0.8125rem;font-family:var(--font-ui);">42 Antiquarian Lane<br>London, WC2B 5NA</p>
+                    <p style="color:rgba(245,230,211,0.7);font-size:0.8125rem;font-family:var(--font-ui);">42 Antiquarian Lane<br>London, WC2B 5NA</p>
                   </div>
                 </div>
               </div>
