@@ -214,6 +214,10 @@
   font-weight: 700;
 }
 
+.header-icon-btn svg {
+  fill: currentColor;
+}
+
 .header-icon-btn:hover { 
   background: var(--color-primary); 
   color: var(--color-bg); 
@@ -613,6 +617,17 @@
     display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 199;
   }
   .sidebar-overlay.active { display: block; }
+}
+
+[data-theme="dark"] .header-icon-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .header-icon-btn:hover {
+  background: var(--color-primary);
+  color: var(--color-bg);
+  border-color: var(--color-primary);
 }
 
 /* RTL Dashboard Fixes */

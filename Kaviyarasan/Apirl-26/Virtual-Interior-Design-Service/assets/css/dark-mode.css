@@ -154,15 +154,29 @@
   color: #ffffff !important;
 }
 
-/* Theme Toggle Icons */
+/* Icon Buttons in Dark Mode */
+[data-theme="dark"] .icon-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .icon-btn:hover {
+  background: var(--color-primary);
+  color: var(--color-bg);
+  border-color: var(--color-primary);
+}
+
 [data-theme="dark"] .sun-icon {
   color: #FFD700; /* Golden sun color */
 }
+
 [data-theme="dark"] .moon-icon {
   color: var(--color-primary);
 }
-[data-theme="dark"] #themeToggle:hover {
-  background: rgba(255, 255, 255, 0.1);
+
+[data-theme="dark"] .icon-btn:hover .sun-icon,
+[data-theme="dark"] .icon-btn:hover .moon-icon {
+  color: var(--color-bg);
 }
 
 

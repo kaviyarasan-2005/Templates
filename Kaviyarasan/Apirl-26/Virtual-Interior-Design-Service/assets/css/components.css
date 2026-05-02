@@ -199,6 +199,10 @@
   font-weight: 700;
 }
 
+.icon-btn svg {
+  fill: currentColor;
+}
+
 .icon-btn:hover {
   background: var(--color-primary);
   color: var(--color-bg);
