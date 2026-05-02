@@ -164,7 +164,7 @@ function highlightActiveNav() {
 
 /* ---------- MAGNETIC ELEMENTS ---------- */
 function initMagnetic() {
-  const magnets = $$('.navbar__logo, .navbar__icon-btn, .btn--primary');
+  const magnets = $$('.navbar__icon-btn, .btn--primary');
   magnets.forEach(el => {
     el.addEventListener('mousemove', (e) => {
       const { left, top, width, height } = el.getBoundingClientRect();
