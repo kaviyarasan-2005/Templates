@@ -264,6 +264,16 @@
   background: rgba(var(--color-primary-rgb), 0.08);
 }
 
+.navbar__action-btn[data-rtl-toggle] {
+  width: auto;
+  min-width: 40px;
+  padding: 0 var(--space-2);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  font-family: var(--font-body);
+  letter-spacing: 0.5px;
+}
+
 /* Mobile Toggle */
 .navbar__mobile-toggle {
   display: none;

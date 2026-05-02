@@ -50,6 +50,7 @@ const RTLManager = (() => {
     // Update active states on toggles
     document.querySelectorAll('[data-rtl-toggle]').forEach(btn => {
       btn.classList.toggle('active', lang === 'ar');
+      btn.textContent = lang === 'en' ? 'RTL' : 'LTR';
     });
   }
 

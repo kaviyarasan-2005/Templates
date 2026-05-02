@@ -38,9 +38,7 @@ const getActions = (isRoot) => {
         <div class="navbar__actions">
           <a href="${p}login.html" class="btn btn--ghost btn--sm">Sign In</a>
           <a href="${p}register.html" class="btn btn--primary btn--sm">Sign Up</a>
-          <button class="navbar__action-btn" data-rtl-toggle aria-label="Toggle RTL">
-            <i class="fas fa-globe"></i>
-          </button>
+          <button class="navbar__action-btn" data-rtl-toggle aria-label="Toggle RTL">RTL</button>
           <button class="navbar__action-btn" data-theme-toggle aria-label="Toggle theme">
             <i class="fas fa-moon"></i>
           </button>
