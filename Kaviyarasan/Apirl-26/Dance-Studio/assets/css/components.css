@@ -406,6 +406,7 @@
 }
 
 .btn--primary:hover {
+  background: linear-gradient(135deg, #553C9A 0%, #E53E3E 100%);
   transform: translateY(-2px);
   box-shadow: var(--shadow-glow);
 }
