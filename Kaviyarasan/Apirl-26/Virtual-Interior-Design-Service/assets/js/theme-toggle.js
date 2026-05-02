@@ -14,9 +14,9 @@
 
   function applyDir(dir) {
     document.documentElement.setAttribute('dir', dir);
-    const globeBtn = document.getElementById('langToggle');
-    if (globeBtn) {
-      globeBtn.style.transform = dir === 'rtl' ? 'rotate(180deg)' : 'rotate(0deg)';
+    const langToggle = document.getElementById('langToggle');
+    if (langToggle) {
+      langToggle.textContent = dir === 'rtl' ? 'LTR' : 'RTL';
     }
   }
 
