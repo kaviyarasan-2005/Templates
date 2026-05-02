@@ -1,1176 +1,2349 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr" data-theme="light">
-
-<head>
- <meta charset="UTF-8" />
- <meta name="viewport" content="width=device-width, initial-scale=1.0" />
- <title>Elise - Personal Stylist & Image Consultant</title>
- <meta name="description"
-  content="Premium personal styling and image consulting services. Transform your wardrobe, refine your look, and elevate your confidence with Elise." />
- <meta property="og:title" content="Elise - Personal Stylist & Image Consultant" />
- <meta property="og:description" content="Premium personal styling and image consulting services." />
- <meta property="og:type" content="website" />
- <meta name="theme-color" content="#6D4C41" />
- <link rel="preconnect" href="https://fonts.googleapis.com" />
- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
- <link
-  href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap"
-  rel="stylesheet" />
- <link rel="icon" href="../assets/images/icons/favicon.svg" type="image/svg+xml" />
- <link rel="manifest" href="../manifest.json" />
- <link rel="stylesheet" href="../assets/css/main.css" />
- <link rel="stylesheet" href="../assets/css/components.css" />
- <link rel="stylesheet" href="../assets/css/animations.css" />
- <link rel="stylesheet" href="../assets/css/dark-mode.css" />
- <link rel="stylesheet" href="../assets/css/rtl.css" />
- <style>
-  /* "" Page-specific styles "" */
-  .hero-home {
-   min-height: 100vh;
-   position: relative;
-   display: flex;
-   align-items: center;
-   overflow: hidden;
-  }
-
-  .hero-bg-gradient {
-   position: absolute;
-   inset: 0;
-   z-index: 0;
-   background: linear-gradient(135deg, #2C1A16 0%, #4E342E 40%, #6D4C41 70%, #8D6E63 100%);
-  }
-
-  .hero-pattern {
-   position: absolute;
-   inset: 0;
-   z-index: 1;
-   opacity: 0.06;
-   background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-  }
-
-  .hero-glow {
-   position: absolute;
-   inset: 0;
-   z-index: 2;
-   background: radial-gradient(ellipse at 70% 50%, rgba(232, 207, 197, 0.12) 0%, transparent 60%);
-  }
-
-  .hero-home .hero-content {
-   position: relative;
-   z-index: 3;
-   padding-block: var(--space-8);
-  }
-
-  .hero-grid {
-   display: grid;
-   grid-template-columns: 1fr 1fr;
-   gap: var(--space-6);
-   align-items: center;
-  }
-
-  .hero-visual {
-   position: relative;
-  }
-
-  .hero-img-frame {
-   width: 100%;
-   aspect-ratio: 3/4;
-   border-radius: 40% 60% 60% 40% / 60% 40% 60% 40%;
-   overflow: hidden;
-   position: relative;
-   box-shadow: 0 32px 80px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.1);
-  }
-
-  .hero-img-frame img {
-   width: 100%;
-   height: 100%;
-   object-fit: cover;
-  }
-
-  .hero-badge-float {
-   position: absolute;
-   bottom: -20px;
-   inset-inline-start: -20px;
-   background: var(--color-white);
-   border-radius: var(--radius-xl);
-   padding: var(--space-2) var(--space-3);
-   box-shadow: var(--shadow-xl);
-   display: flex;
-   align-items: center;
-   gap: var(--space-1);
-  }
-
-  [data-theme="dark"] .hero-badge-float {
-   background: var(--color-dark-surface);
-  }
-
-  .hero-badge-num {
-   font-family: var(--font-heading);
-   font-size: var(--text-2xl);
-   font-weight: 700;
-   color: var(--color-brown);
-   line-height: 1;
-  }
-
-  .hero-badge-text {
-   font-size: var(--text-xs);
-   color: var(--text-secondary);
-   line-height: 1.3;
-  }
-
-  .hero-badge-icon {
-   width: 36px;
-   height: 36px;
-   background: rgba(109, 76, 65, 0.1);
-   border-radius: 50%;
-   display: flex;
-   align-items: center;
-   justify-content: center;
-  }
-
-  .hero-badge-icon svg {
-   width: 18px;
-   height: 18px;
-   stroke: var(--color-brown);
-  }
-
-  .hero-small-badge {
-   position: absolute;
-   top: var(--space-3);
-   inset-inline-end: -16px;
-   background: var(--color-brown);
-   color: white;
-   border-radius: var(--radius-xl);
-   padding: var(--space-1) var(--space-2);
-   box-shadow: var(--shadow-lg);
-   font-size: var(--text-xs);
-   font-weight: 600;
-   white-space: nowrap;
-  }
-
-  /* Stats bar */
-  .stats-bar {
-   background: var(--bg-secondary);
-   border-top: 1px solid var(--border-color);
-   border-bottom: 1px solid var(--border-color);
-  }
-
-  .stats-bar-inner {
-   display: grid;
-   grid-template-columns: repeat(4, 1fr);
-  }
-
-  .stats-bar-item {
-   text-align: center;
-   padding: var(--space-4);
-   border-inline-end: 1px solid var(--border-color);
-  }
-
-  .stats-bar-item:last-child {
-   border-inline-end: none;
-  }
-
-  /* Services section */
-  .services-grid {
-   display: grid;
-   grid-template-columns: repeat(3, 1fr);
-   gap: var(--space-3);
-  }
-
-  /* Testimonial carousel */
-  .testimonial-wrap {
-   overflow: hidden;
-  }
-
-  .testimonial-track {
-   display: flex;
-   gap: var(--space-3);
-   transition: transform 500ms ease;
-  }
-
-  .testimonial-track .testimonial-card {
-   flex: 0 0 calc(33.333% - var(--space-2));
-  }
-
-  .carousel-controls {
-   display: flex;
-   justify-content: center;
-   gap: var(--space-1);
-   margin-top: var(--space-4);
-  }
-
-  .carousel-prev,
-  .carousel-next {
-   width: 44px;
-   height: 44px;
-   border-radius: 50%;
-   border: 2px solid var(--border-color);
-   background: var(--bg-card);
-   cursor: pointer;
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   color: var(--text-secondary);
-   transition: all var(--transition-fast);
-  }
-
-  .carousel-prev:hover,
-  .carousel-next:hover {
-   background: var(--color-brown);
-   color: white;
-   border-color: var(--color-brown);
-  }
-
-  .carousel-prev svg,
-  .carousel-next svg {
-   width: 20px;
-   height: 20px;
-  }
-
-  /* CT- split */
-  .cta-split {
-   display: grid;
-   grid-template-columns: 1fr 1fr;
-   gap: 0;
-  }
-
-  .cta-split-img {
-   position: relative;
-   min-height: 500px;
-   overflow: hidden;
-  }
-
-  .cta-split-img img {
-   width: 100%;
-   height: 100%;
-   object-fit: cover;
-   position: absolute;
-   inset: 0;
-  }
-
-  .cta-split-content {
-   background: linear-gradient(135deg, var(--color-brown-dark), var(--color-brown));
-   padding: var(--space-7) var(--space-6);
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
-  }
-
-  .cta-clip {
-   clip-path: polygon(8% 0, 100% 0, 100% 100%, 0% 100%);
-  }
-
-  [dir="rtl"] .cta-clip {
-   clip-path: polygon(0 0, 92% 0, 100% 100%, 0% 100%);
-  }
-
-  /* Process steps */
-  .process-steps {
-   display: grid;
-   grid-template-columns: repeat(4, 1fr);
-   gap: var(--space-3);
-   position: relative;
-  }
-
-  .process-steps::before {
-   content: '';
-   position: absolute;
-   top: 24px;
-   left: 12.5%;
-   right: 12.5%;
-   height: 2px;
-   background: linear-gradient(90deg, var(--color-brown), var(--color-nude));
-   z-index: 0;
-  }
-
-  .process-step {
-   text-align: center;
-   position: relative;
-   z-index: 1;
-  }
-
-  .process-num {
-   width: 48px;
-   height: 48px;
-   border-radius: 50%;
-   background: var(--color-brown);
-   color: white;
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   font-family: var(--font-heading);
-   font-size: var(--text-xl);
-   font-weight: 700;
-   margin: 0 auto var(--space-2);
-   box-shadow: 0 0 0 8px var(--bg-primary);
-   transition: transform var(--transition-bounce);
-  }
-
-  .process-step:hover .process-num {
-   transform: scale(1.1);
-  }
-
-  .process-step-title {
-   font-weight: 600;
-   color: var(--text-primary);
-   margin-bottom: var(--space-1);
-  }
-
-  .process-step-text {
-   font-size: var(--text-sm);
-   color: var(--text-muted);
-  }
-
-  /* Publications */
-  .publications {
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   gap: var(--space-5);
-   flex-wrap: wrap;
-  }
-
-  .pub-logo {
-   opacity: 0.35;
-   filter: grayscale(1);
-   transition: all var(--transition-base);
-   font-family: var(--font-heading);
-   font-size: var(--text-xl);
-   font-weight: 700;
-   color: var(--text-primary);
-   letter-spacing: -0.02em;
-  }
-
-  .pub-logo:hover {
-   opacity: 0.7;
-   filter: grayscale(0);
-  }
-
-  /* Hero dots */
-  .hero-dots {
-   display: flex;
-   justify-content: center;
-   gap: 8px;
-   margin-top: var(--space-4);
-  }
-
-  .hero-dot {
-   width: 8px;
-   height: 8px;
-   border-radius: 50%;
-   background: rgba(255, 255, 255, 0.3);
-   border: none;
-   cursor: pointer;
-   transition: all var(--transition-base);
-  }
-
-  .hero-dot.active {
-   width: 24px;
-   border-radius: 4px;
-   background: var(--color-blush);
-  }
-
-  /* About teaser */
-  .about-split { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-6); align-items: center; }
-  .about-img-wrap { position: relative; }
-  .about-img-wrap img { width: 100%; border-radius: var(--radius-2xl); object-fit: cover; aspect-ratio: 4/5; box-shadow: var(--shadow-xl); }
-  .about-award-badge { position: absolute; bottom: var(--space-3); inset-inline-end: -var(--space-3); background: var(--color-brown); color: white; border-radius: var(--radius-xl); padding: var(--space-2) var(--space-3); font-size: var(--text-sm); font-weight: 600; box-shadow: var(--shadow-lg); }
-  .about-signature { font-family: var(--font-heading); font-size: var(--text-2xl); font-style: italic; color: var(--color-brown); margin-top: var(--space-3); }
-  .about-credentials { display: flex; gap: var(--space-3); flex-wrap: wrap; margin-top: var(--space-3); }
-  .credential-chip { display: flex; align-items: center; gap: 6px; padding: var(--space-1) var(--space-2); background: var(--bg-secondary); border-radius: var(--radius-full); font-size: var(--text-xs); font-weight: 600; color: var(--text-secondary); border: 1px solid var(--border-color); }
-  .credential-chip svg { width: 14px; height: 14px; stroke: var(--color-brown); }
-
-  /* Blog preview */
-  .blog-preview-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-3); }
-  .blog-card-img { background: var(--bg-secondary); }
-  .blog-card-img img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
-
-  /* Gallery */
-  .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 260px; gap: 6px; }
-  .gallery-item { position:relative; overflow:hidden; border-radius: var(--radius-lg); }
-  .gallery-item img { width:100%; height:100%; object-fit:cover; object-position:center; display:block; transition: transform 600ms ease; }
-  .gallery-item:hover img { transform: scale(1.08); }
-  .gallery-item-overlay { position:absolute; inset:0; background: rgba(0,0,0,0.4); opacity:0; display:flex; align-items:center; justify-content:center; transition: opacity 300ms ease; }
-  .gallery-item:hover .gallery-item-overlay { opacity:1; }
-  .gallery-item-overlay svg { width:28px; height:28px; stroke:white; }
-  .gallery-item.gallery-wide { grid-column: span 2; }
-
-  /* Newsletter strip */
-  .newsletter-strip { background: linear-gradient(135deg, var(--color-brown-dark), var(--color-brown)); padding: var(--space-6) 0; }
-  .newsletter-strip-inner { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); flex-wrap: wrap; }
-  .newsletter-strip-form { display: flex; gap: var(--space-2); flex-wrap: wrap; }
-  .newsletter-strip-input { flex: 1; min-width: 240px; padding: 12px 16px; border-radius: var(--radius-full); border: 2px solid rgba(255,255,255,0.25); background: rgba(255,255,255,0.12); color: white; font-size: var(--text-base); outline: none; transition: border-color var(--transition-fast); }
-  .newsletter-strip-input::placeholder { color: rgba(255,255,255,0.55); }
-  .newsletter-strip-input:focus { border-color: rgba(255,255,255,0.6); }
-
-  @media(max-width:1024px) {
-   .hero-grid {
-    grid-template-columns: 1fr;
-   }
-
-   .hero-visual {
-    display: none;
-   }
-
-   .services-grid {
-    grid-template-columns: repeat(2, 1fr);
-   }
-
-   .process-steps {
-    grid-template-columns: repeat(2, 1fr);
-   }
-
-   .process-steps::before {
-    display: none;
-   }
-
-   .cta-split {
-    grid-template-columns: 1fr;
-   }
-
-   .cta-split-img {
-    min-height: 300px;
-   }
-
-   .cta-clip {
-    clip-path: none;
-   }
-
-   .stats-bar-inner {
-    grid-template-columns: repeat(2, 1fr);
-   }
-
-   .about-split { grid-template-columns: 1fr; }
-   .blog-preview-grid { grid-template-columns: repeat(2,1fr); }
-   .gallery-grid { grid-template-columns: repeat(3,1fr); grid-auto-rows: 220px; }
-   .gallery-item.gallery-wide { grid-column: span 1; }
-   .newsletter-strip-inner { flex-direction: column; text-align: center; }
-  }
-
-  @media(max-width:640px) {
-   .services-grid {
-    grid-template-columns: 1fr;
-   }
-
-   .process-steps {
-    grid-template-columns: 1fr;
-   }
-
-   .testimonial-track .testimonial-card {
-    flex: 0 0 100%;
-   }
-
-   .stats-bar-inner {
-    grid-template-columns: 1fr 1fr;
-   }
-
-   .blog-preview-grid { grid-template-columns: 1fr; }
-   .gallery-grid { grid-template-columns: repeat(2,1fr); grid-auto-rows: 180px; }
-  }
- </style>
- <!-- Structured Data -->
- <script type="application/ld+json">
- {"@context":"https://schema.org","@type":"LocalBusiness","name":"Elise","description":"Premium personal styling and image consulting services","url":"https://example.com","telephone":"+1-555-0100","address":{"@type":"PostalAddress","addressLocality":"New York","addressRegion":"NY","addressCountry":"US"},"openingHours":"Mo-Fr 09:00-18:00","priceRange":"$$$","serviceType":"Personal Styling"}
- </script>
-</head>
-
-<body>
-
- <!-- NAV -->
- <a href="#main-content" class="skip-link">Skip to main content</a>
- <header class="site-nav" id="site-nav">
-  <nav class="nav-container" aria-label="Main navigation">
-   <a href="index.html" class="nav-logo" aria-label="Elise Home">
-    <img src="../assets/images/icons/logo.svg" class="nav-logo-mark-img" alt="Logo" width="36" height="36"
-     style="margin-right: 8px; flex-shrink: 0;" />
-    <div class="nav-logo-text">
-     <span class="nav-logo-name">Elise</span>
-     
-    </div>
-   </a>
-   <ul class="nav-menu">
-    <li class="nav-item">
-     <button class="nav-link active">Home <svg class="chevron" viewBox="0 0 24 24" fill="none"
-       stroke="currentColor" stroke-width="2">
-       <polyline points="6 9 12 15 18 9" />
-      </svg></button>
-     <div class="nav-dropdown">
-      <a href="index.html">Home 1</a>
-      <a href="home-2.html">Home 2</a>
-     </div>
-    </li>
-    <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-    <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
-    <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
-    <li class="nav-item"><a href="pricing.html" class="nav-link">Pricing</a></li>
-    <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-    <li class="nav-item">
-     <button class="nav-link">Dashboard <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-       stroke-width="2">
-       <polyline points="6 9 12 15 18 9" />
-      </svg></button>
-     <div class="nav-dropdown">
-      <a href="dashboard-admin.html">Admin Dashboard</a>
-      <a href="dashboard-user.html">User Dashboard</a>
-     </div>
-    </li>
-   </ul>
-   <div class="nav-actions">
-    <button class="nav-action-btn" data-dir-toggle aria-label="Toggle RTL" title="Switch language direction">RTL</button>
-    <button class="nav-action-btn" data-theme-toggle aria-label="Toggle theme">
-     <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <circle cx="12" cy="12" r="5" />
-      <line x1="12" y1="1" x2="12" y2="3" />
-      <line x1="12" y1="21" x2="12" y2="23" />
-      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-      <line x1="1" y1="12" x2="3" y2="12" />
-      <line x1="21" y1="12" x2="23" y2="12" />
-      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-     </svg>
-     <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none">
-      <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
-     </svg>
-    </button>
-    <a href="login.html" class="btn btn-primary btn-sm d-none-mobile">Login</a>
-    <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-drawer">
-     <span></span><span></span><span></span>
-    </button>
-   </div>
-  </nav>
- </header>
-
- <!-- Mobile Overlay & Drawer -->
- <div class="nav-overlay" id="nav-overlay"></div>
- <aside class="nav-drawer" id="nav-drawer" role="dialog" aria-label="Mobile navigation">
-  <button class="drawer-close" aria-label="Close menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-    stroke-width="2">
-    <line x1="18" y1="6" x2="6" y2="18" />
-    <line x1="6" y1="6" x2="18" y2="18" />
-   </svg></button>
-  <a href="index.html" class="nav-logo" style="margin-bottom:var(--space-3)"><img
-    src="../assets/images/icons/logo.svg" class="nav-logo-mark-img" alt="Logo" width="36" height="36"
-    style="margin-right: 8px; flex-shrink: 0;" />
-   <div class="nav-logo-text"><span class="nav-logo-name">Elise</span></div>
-  </a>
-  <nav class="drawer-nav">
-   <div class="drawer-nav-item">
-    <div class="drawer-nav-link" tabindex="0">Home <svg class="chevron" viewBox="0 0 24 24" fill="none"
-      stroke="currentColor" stroke-width="2">
-      <polyline points="6 9 12 15 18 9" />
-     </svg></div>
-    <div class="drawer-sub">
-     <a href="index.html">Home 1</a>
-     <a href="home-2.html">Home 2</a>
-    </div>
-   </div>
-   <div class="drawer-nav-item"><a href="about.html" class="drawer-nav-link">About</a></div>
-   <div class="drawer-nav-item"><a href="services.html" class="drawer-nav-link">Services</a></div>
-   <div class="drawer-nav-item"><a href="blog.html" class="drawer-nav-link">Blog</a></div>
-   <div class="drawer-nav-item"><a href="pricing.html" class="drawer-nav-link">Pricing</a></div>
-   <div class="drawer-nav-item"><a href="contact.html" class="drawer-nav-link">Contact</a></div>
-   <div class="drawer-nav-item">
-    <div class="drawer-nav-link" tabindex="0">Dashboard <svg class="chevron" viewBox="0 0 24 24" fill="none"
-      stroke="currentColor" stroke-width="2">
-      <polyline points="6 9 12 15 18 9" />
-     </svg></div>
-    <div class="drawer-sub">
-     <a href="dashboard-admin.html">Admin Dashboard</a>
-     <a href="dashboard-user.html">User Dashboard</a>
-    </div>
-   </div>
-  </nav>
-  <div style="display:flex;gap:8px;margin-top:auto;padding-top:var(--space-3)">
-   <a href="login.html" class="btn btn-primary btn-block" style="width:100%">Login</a>
-  </div>
- </aside>
-
- <main id="main-content">
-
-  <!-- --- HERO -------------------------------------------- -->
-  <section class="hero-home" aria-label="Hero">
-   <div class="hero-bg-gradient"></div>
-   <div class="hero-pattern"></div>
-   <div class="hero-glow"></div>
-   <div class="container hero-content">
-    <div class="hero-grid">
-     <!-- Text -->
-     <div>
-      <span class="hero-tag hero-animate-1">✦ Premium Image Consulting</span>
-      <h1 class="hero-title hero-animate-2">
-       Style Is<br><em>Not What You Wear</em><br>It's Who You Are
-      </h1>
-      <p class="hero-subtitle hero-animate-3">We craft signature looks that reflect your authentic self. From
-       wardrobe audits to complete style transformations - your journey to effortless elegance starts here.</p>
-      <div class="hero-cta hero-animate-4">
-       <a href="contact.html" class="btn btn-primary btn-lg" id="hero-book-btn">Book a Consultation</a>
-       <a href="services.html" class="btn btn-light btn-lg" id="hero-services-btn">Explore Services</a>
-      </div>
-      <div class="hero-dots" id="hero-dots"></div>
-     </div>
-     <!-- Visual -->
-     <div class="hero-visual float-1">
-      <div class="hero-img-frame">
-       <img src="../assets/images/hero/hero-main.png"
-        alt="Elegantly styled fashion consultant curating a luxurious wardrobe" loading="eager" width="600"
-        height="800" />
-      </div>
-      <div class="hero-badge-float reveal">
-       <div class="hero-badge-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-         <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
-         <circle cx="9" cy="7" r="4" />
-         <path d="M23 21v-2a4 4 0 00-3-3.87" />
-         <path d="M16 3.13a4 4 0 010 7.75" />
-        </svg></div>
-       <div>
-        <div class="hero-badge-num" data-counter data-target="500" data-suffix="+">0+</div>
-        <div class="hero-badge-text">Clients<br>Transformed</div>
-       </div>
-      </div>
-      <div class="hero-small-badge">­ 4.9 Rating · 200+ Reviews</div>
-     </div>
-    </div>
-   </div>
-
-  </section>
-
-  <!-- --- STATS BAR --------------------------------------- -->
-  <section class="stats-bar" id="stats" aria-label="Key statistics">
-   <div class="container container-fluid">
-    <div class="stats-bar-inner">
-     <div class="stats-bar-item reveal">
-      <span class="stat-number" data-counter data-target="500" data-suffix="+">0+</span>
-      <p class="stat-label">Clients Served</p>
-     </div>
-     <div class="stats-bar-item reveal delay-200">
-      <span class="stat-number" data-counter data-target="12">0</span>
-      <p class="stat-label">Years Experience</p>
-     </div>
-     <div class="stats-bar-item reveal delay-300">
-      <span class="stat-number" data-counter data-target="98" data-suffix="%">0%</span>
-      <p class="stat-label">Satisfaction Rate</p>
-     </div>
-     <div class="stats-bar-item reveal delay-400">
-      <span class="stat-number" data-counter data-target="15" data-suffix="+">0+</span>
-      <p class="stat-label">Awards Won</p>
-     </div>
-    </div>
-   </div>
-  </section>
-
-  <!-- --- SERVICES PREVIEW -------------------------------- -->
-  <section class="section" id="services-preview" aria-labelledby="services-heading">
-   <div class="container">
-    <div class="section-header">
-     <span class="section-tag reveal">What We Offer</span>
-     <h2 class="section-title reveal delay-100" id="services-heading">Elevate Every Aspect<br>of Your Image</h2>
-     <p class="section-subtitle reveal delay-200">From personal shopping to complete wardrobe transformations, our
-      bespoke services are tailored to your unique lifestyle and goals.</p>
-    </div>
-    <div class="services-grid">
-     <div class="service-card tilt-card reveal" data-category="shopping">
-      <div class="service-card-img">
-       <img src="../assets/images/services/personal-shopping.png"
-        alt="Personal shopping service - curated fashion selections" loading="lazy" width="600" height="400" />
-       <div class="service-card-overlay">
-        <a href="service-detail.html" class="btn btn-light btn-sm">View Details →</a>
-       </div>
-      </div>
-      <div class="service-card-body">
-       <div class="service-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-         stroke-width="2">
-         <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" />
-         <line x1="3" y1="6" x2="21" y2="6" />
-         <path d="M16 10a4 4 0 01-8 0" />
-        </svg></div>
-       <h3 class="service-card-title">Personal Shopping</h3>
-       <p class="service-card-text">Curated selections handpicked to match your style profile, body type, and
-        lifestyle perfectly.</p>
-       <div style="display:flex;align-items:center;justify-content:space-between;margin-top:var(--space-2)">
-        <span class="service-card-price">From <strong>$299</strong></span>
-        <span class="service-card-badge">3-4 hrs</span>
-       </div>
-      </div>
-     </div>
-
-     <div class="service-card tilt-card reveal delay-200" data-category="audit">
-      <div class="service-card-img">
-       <img src="../assets/images/services/wardrobe-audit.png"
-        alt="Wardrobe audit service - organized and curated closet" loading="lazy" width="600" height="400" />
-       <div class="service-card-overlay">
-        <a href="service-detail.html" class="btn btn-light btn-sm">View Details →</a>
-       </div>
-      </div>
-      <div class="service-card-body">
-       <div class="service-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-         stroke-width="2">
-         <polyline points="9 11 12 14 22 4" />
-         <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" />
-        </svg></div>
-       <h3 class="service-card-title">Wardrobe Audit</h3>
-       <p class="service-card-text">- thorough review of your existing wardrobe to identify gaps and maximise
-        outfit potential.</p>
-       <div style="display:flex;align-items:center;justify-content:space-between;margin-top:var(--space-2)">
-        <span class="service-card-price">From <strong>$199</strong></span>
-        <span class="service-card-badge">2-3 hrs</span>
-       </div>
-      </div>
-     </div>
-
-     <div class="service-card tilt-card reveal delay-400" data-category="color">
-      <div class="service-card-img">
-       <img src="../assets/images/services/color-analysis.png"
-        alt="Color analysis service - seasonal colour palette consultation" loading="lazy" width="600"
-        height="400" />
-       <div class="service-card-overlay">
-        <a href="service-detail.html" class="btn btn-light btn-sm">View Details →</a>
-       </div>
-      </div>
-      <div class="service-card-body">
-       <div class="service-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-         stroke-width="2">
-         <circle cx="12" cy="12" r="10" />
-         <path d="M12 2a10 10 0 010 20" />
-         <path d="M2 12h10" />
-        </svg></div>
-       <h3 class="service-card-title">Color Analysis</h3>
-       <p class="service-card-text">Discover your seasonal colour palette and learn which shades enhance your
-        natural radiance.</p>
-       <div style="display:flex;align-items:center;justify-content:space-between;margin-top:var(--space-2)">
-        <span class="service-card-price">From <strong>$149</strong></span>
-        <span class="service-card-badge">90 mins</span>
-       </div>
-      </div>
-     </div>
-    </div>
-    <div style="text-align:center;margin-top:var(--space-5)" class="reveal">
-     <a href="services.html" class="btn btn-secondary btn-lg" id="all-services-btn">View All Services</a>
-    </div>
-   </div>
-  </section>
-
-  <!-- --- PROCESS STEPS ----------------------------------- -->
-  <section class="section" style="background:var(--bg-secondary)" aria-labelledby="process-heading">
-   <div class="container">
-    <div class="section-header">
-     <span class="section-tag reveal">How It Works</span>
-     <h2 class="section-title reveal delay-100" id="process-heading">Your Transformation Journey</h2>
-     <p class="section-subtitle reveal delay-200">- seamless, four-step process designed around your unique needs
-      and vision.</p>
-    </div>
-    <div class="process-steps">
-     <div class="process-step reveal">
-      <div class="process-num">1</div>
-      <h3 class="process-step-title">Discovery</h3>
-      <p class="process-step-text">In-depth consultation to understand your lifestyle, goals, and style vision.
-      </p>
-     </div>
-     <div class="process-step reveal delay-200">
-      <div class="process-num">2</div>
-      <h3 class="process-step-title">Analysis</h3>
-      <p class="process-step-text">Body shape, colour season, and personal brand assessment.</p>
-     </div>
-     <div class="process-step reveal delay-300">
-      <div class="process-num">3</div>
-      <h3 class="process-step-title">Transformation</h3>
-      <p class="process-step-text">Hands-on styling sessions, shopping, and wardrobe curation.</p>
-     </div>
-     <div class="process-step reveal delay-400">
-      <div class="process-num">4</div>
-      <h3 class="process-step-title">Follow-up</h3>
-      <p class="process-step-text">Ongoing support, style guides, and maintenance check-ins.</p>
-     </div>
-    </div>
-   </div>
-  </section>
-
-  <!-- --- CT- SECTION ------------------------------------- -->
-  <section class="cta-split" aria-label="Call to action">
-   <div class="cta-split-img reveal-left">
-    <img src="../assets/images/hero/cta-image.png" alt="- confident woman in an elegant, perfectly styled outfit"
-     loading="lazy" width="800" height="600" />
-   </div>
-   <div class="cta-split-content cta-clip">
-    <span class="hero-tag reveal" style="color:var(--color-blush)">✦ Start Today</span>
-    <h2 class="reveal delay-100" style="color:white;font-size:clamp(2rem,4vw,3rem);margin-bottom:var(--space-3)">
-     Ready to Transform Your Image?</h2>
-    <p class="reveal delay-200"
-     style="color:rgba(255,255,255,0.8);margin-bottom:var(--space-4);font-size:var(--text-lg)">Book your
-     complimentary 30-minute discovery call and take the first step toward the image you've always envisioned.</p>
-    <div class="reveal delay-300" style="display:flex;gap:var(--space-2);flex-wrap:wrap">
-     <a href="contact.html" class="btn btn-light btn-lg">Book Free Call</a>
-     <a href="pricing.html" class="btn btn-ghost btn-lg" style="border-color:rgba(255,255,255,0.3);color:white">See
-      Packages</a>
-    </div>
-   </div>
-  </section>
-
-  <!-- --- TESTIMONIALS ------------------------------------ -->
-  <section class="section" aria-labelledby="testimonials-heading">
-   <div class="container">
-    <div class="section-header">
-     <span class="section-tag reveal">Client Stories</span>
-     <h2 class="section-title reveal delay-100" id="testimonials-heading">What Our Clients Say</h2>
-     <p class="section-subtitle reveal delay-200">Real transformations, real confidence, real results.</p>
-    </div>
-    <div class="testimonial-carousel reveal">
-     <div class="testimonial-wrap">
-      <div class="testimonial-track" id="testimonial-track">
-       <div class="testimonial-card tilt-card">
-        <div class="testimonial-stars">
-         <svg viewBox="0 0 24 24">
-          <polygon
-           points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-         </svg>
-         <svg viewBox="0 0 24 24">
-          <polygon
-           points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-         </svg>
-         <svg viewBox="0 0 24 24">
-          <polygon
-           points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-         </svg>
-         <svg viewBox="0 0 24 24">
-          <polygon
-           points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-         </svg>
-         <svg viewBox="0 0 24 24">
-          <polygon
-           points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-         </svg>
-        </div>
-        <p class="testimonial-text">"Elise completely transformed how I present myself in executive meetings. My
-         wardrobe now speaks confidence before I even say a word. Truly life-changing."</p>
-        <div class="testimonial-author">
-         <img src="../assets/images/team/avatar-1.png" alt="Sarah Mitchell" width="48" height="48" />
-         <div>
-          <div class="testimonial-author-name">Sarah Mitchell</div>
-          <div class="testimonial-author-role">CEO, Meridian Group</div>
-         </div>
-        </div>
-       </div>
-       <div class="testimonial-card tilt-card">
-        <div class="testimonial-stars">
-         <svg viewBox="0 0 24 24">
-          <polygon
-           points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-         </svg>
-         <svg viewBox="0 0 24 24">
-          <polygon
-           points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-         </svg>
-         <svg viewBox="0 0 24 24">
-          <polygon
-           points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-         </svg>
-         <svg viewBox="0 0 24 24">
-          <polygon
-           points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-         </svg>
-         <svg viewBox="0 0 24 24">
-          <polygon
-           points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-         </svg>
-        </div>
-        <p class="testimonial-text">"The colour analysis session was eye-opening. I now know exactly what works
-         for my complexion and I've stopped making expensive wardrobe mistakes."</p>
-        <div class="testimonial-author">
-         <img src="../assets/images/team/avatar-2.png" alt="Amelia Torres" width="48" height="48" />
-         <div>
-          <div class="testimonial-author-name">Amelia Torres</div>
-          <div class="testimonial-author-role">Senior Architect</div>
-         </div>
-        </div>
-       </div>
-       <div class="testimonial-card tilt-card">
-        <div class="testimonial-stars">
-         <svg viewBox="0 0 24 24">
-          <polygon
-           points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-         </svg>
-         <svg viewBox="0 0 24 24">
-          <polygon
-           points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-         </svg>
-         <svg viewBox="0 0 24 24">
-          <polygon
-           points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-         </svg>
-         <svg viewBox="0 0 24 24">
-          <polygon
-           points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-         </svg>
-         <svg viewBox="0 0 24 24">
-          <polygon
-           points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-         </svg>
-        </div>
-        <p class="testimonial-text">"For my bridal styling, Elise found pieces I never would have chosen myself
-         - and I looked absolutely stunning on my wedding day. Worth every penny."</p>
-        <div class="testimonial-author">
-         <img src="../assets/images/team/avatar-3.png" alt="Priya Sharma" width="48" height="48" />
-         <div>
-          <div class="testimonial-author-name">Priya Sharma</div>
-          <div class="testimonial-author-role">Entrepreneur & Bride</div>
-         </div>
-        </div>
-       </div>
-      </div>
-     </div>
-     <div class="carousel-controls">
-      <button class="carousel-prev" aria-label="Previous testimonial"><svg viewBox="0 0 24 24" fill="none"
-        stroke="currentColor" stroke-width="2">
-        <polyline points="15 18 9 12 15 6" />
-       </svg></button>
-      <button class="carousel-next" aria-label="Next testimonial"><svg viewBox="0 0 24 24" fill="none"
-        stroke="currentColor" stroke-width="2">
-        <polyline points="9 18 15 12 9 6" />
-       </svg></button>
-     </div>
-    </div>
-   </div>
-  </section>
-
-  <!-- --- AS FEATURED IN ---------------------------------- -->
-  <section class="section-sm" style="background:var(--bg-secondary);border-top:1px solid var(--border-color)"
-   aria-label="Publications">
-   <div class="container">
-    <p class="text-center text-muted text-sm"
-     style="margin-bottom:var(--space-4);letter-spacing:0.15em;text-transform:uppercase;font-weight:600">As
-     Featured In</p>
-    <div class="publications">
-     <span class="pub-logo">Vogue</span>
-     <span class="pub-logo">Harper's Bazaar</span>
-     <span class="pub-logo">Elle</span>
-     <span class="pub-logo">The Times</span>
-     <span class="pub-logo">Forbes</span>
-     <span class="pub-logo">Tatler</span>
-    </div>
-   </div>
-  </section>
-
-  <!-- --- ABOUT TEASER ------------------------------------ -->
-  <section class="section" aria-labelledby="about-teaser-heading">
-   <div class="container">
-    <div class="about-split">
-     <div class="about-img-wrap reveal">
-      <img src="../assets/images/team/avatar-author.png" alt="Elise - founder and lead image consultant" loading="lazy" width="600" height="750" />
-      <div class="about-award-badge">ðŸ Best Image Consultant 2024</div>
-     </div>
-     <div class="reveal delay-200">
-      <span class="section-tag">Meet Your Stylist</span>
-      <h2 class="section-title" id="about-teaser-heading">Hello, I'm Elise.<br><em>Let's Rewrite Your Story.</em></h2>
-      <p style="color:var(--text-secondary);margin-bottom:var(--space-3);line-height:1.8">With over 12 years crafting signature looks for executives, brides, and public figures, I believe style is the most powerful non-verbal language you speak. My mission is simple: to help you dress with intention and live with confidence.</p>
-      <p style="color:var(--text-secondary);margin-bottom:var(--space-4);line-height:1.8">Every client receives a bespoke experience rooted in deep personal analysis - not trends. Because true elegance is timeless, and so are you.</p>
-      <div class="about-credentials">
-       <span class="credential-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>FI- Certified Stylist</span>
-       <span class="credential-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>12+ Years Experience</span>
-       <span class="credential-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>500+ Clients Transformed</span>
-       <span class="credential-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Vogue & Elle Featured</span>
-      </div>
-      <div class="about-signature">Elise</div>
-      <a href="about.html" class="btn btn-secondary" style="margin-top:var(--space-3)" id="about-learn-more-btn">Learn More About Me →</a>
-     </div>
-    </div>
-   </div>
-  </section>
-
-  <!-- --- BLOG PREVIEW ------------------------------------ -->
-  <section class="section" style="background:var(--bg-secondary)" aria-labelledby="blog-preview-heading">
-   <div class="container">
-    <div class="section-header">
-     <span class="section-tag reveal">Style Insights</span>
-     <h2 class="section-title reveal delay-100" id="blog-preview-heading">From the Style Edit</h2>
-     <p class="section-subtitle reveal delay-200">Expert articles on fashion, colour theory, and image consulting - updated weekly.</p>
-    </div>
-    <div class="blog-preview-grid">
-     <a href="blog-detail.html" class="blog-card reveal" style="text-decoration:none">
-      <div class="blog-card-img"><img src="../assets/images/blog/blog-featured.png" alt="2026 power dressing trends" loading="lazy" width="400" height="280"/></div>
-      <div class="blog-card-body">
-       <div class="blog-card-meta"><span class="blog-card-category">Trends</span><span class="blog-card-readtime"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>8 min</span></div>
-       <h3 class="blog-card-title">The 2026 Power Dressing Revolution</h3>
-       <p class="blog-card-excerpt">How executive style is evolving beyond the rigid suit into authoritative elegance.</p>
-      </div>
-     </a>
-     <a href="blog-detail.html" class="blog-card reveal delay-200" style="text-decoration:none">
-      <div class="blog-card-img"><img src="../assets/images/blog/blog-1.png" alt="10 timeless wardrobe essentials" loading="lazy" width="400" height="280"/></div>
-      <div class="blog-card-body">
-       <div class="blog-card-meta"><span class="blog-card-category">Style Tips</span><span class="blog-card-readtime"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>5 min</span></div>
-       <h3 class="blog-card-title">10 Wardrobe Essentials That Will Never Go Out of Style</h3>
-       <p class="blog-card-excerpt">Build a wardrobe that transcends seasons with these timeless investment pieces.</p>
-      </div>
-     </a>
-     <a href="blog-detail.html" class="blog-card reveal delay-400" style="text-decoration:none">
-      <div class="blog-card-img"><img src="../assets/images/blog/blog-2.png" alt="Discover your colour season" loading="lazy" width="400" height="280"/></div>
-      <div class="blog-card-body">
-       <div class="blog-card-meta"><span class="blog-card-category">Color Theory</span><span class="blog-card-readtime"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>6 min</span></div>
-       <h3 class="blog-card-title">How to Discover Your Colour Season in 5 Steps</h3>
-       <p class="blog-card-excerpt">Knowing your season changes everything - from your skin's radiance to your bank balance.</p>
-      </div>
-     </a>
-    </div>
-    <div style="text-align:center;margin-top:var(--space-5)" class="reveal">
-     <a href="blog.html" class="btn btn-secondary btn-lg" id="view-all-posts-btn">View All Articles →</a>
-    </div>
-   </div>
-  </section>
-
-  <!-- --- PORTFOLIO GALLERY ------------------------------ -->
-  <section class="section" aria-labelledby="gallery-heading" style="background: linear-gradient(135deg, var(--bg-secondary) 0%, rgba(109,76,65,0.06) 50%, var(--bg-secondary) 100%);">
-   <div class="container">
-    <div class="section-header">
-     <span class="section-tag reveal">Portfolio</span>
-     <h2 class="section-title reveal delay-100" id="gallery-heading">Transformations That<br>Speak for Themselves</h2>
-     <p class="section-subtitle reveal delay-200">- curated glimpse into our most memorable styling sessions.</p>
-    </div>
-    <div class="gallery-grid reveal">
-     <div class="gallery-item gallery-wide">
-      <img src="../assets/images/services/corporate-styling.png" alt="Corporate styling transformation" loading="lazy" width="800" height="600"/>
-      <div class="gallery-item-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
-     </div>
-     <div class="gallery-item">
-      <img src="../assets/images/services/bridal-styling.png" alt="Bridal styling session" loading="lazy" width="400" height="400"/>
-      <div class="gallery-item-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
-     </div>
-     <div class="gallery-item">
-      <img src="../assets/images/services/color-analysis.png" alt="Color analysis consultation" loading="lazy" width="400" height="400"/>
-      <div class="gallery-item-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
-     </div>
-     <div class="gallery-item">
-      <img src="../assets/images/services/personal-shopping.png" alt="Personal shopping session" loading="lazy" width="400" height="400"/>
-      <div class="gallery-item-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
-     </div>
-     <div class="gallery-item gallery-wide">
-      <img src="../assets/images/services/style-consultation.png" alt="Style consultation" loading="lazy" width="800" height="400"/>
-      <div class="gallery-item-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
-     </div>
-     <div class="gallery-item">
-      <img src="../assets/images/services/wardrobe-audit.png" alt="Wardrobe audit" loading="lazy" width="400" height="400"/>
-      <div class="gallery-item-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
-     </div>
-    </div>
-   </div>
-  </section>
-
-  <!-- --- NEWSLETTER STRIP ------------------------------- -->
-  <section class="newsletter-strip" aria-label="Newsletter signup">
-   <div class="container">
-    <div class="newsletter-strip-inner">
-     <div class="reveal">
-      <h2 style="color:white;font-size:clamp(1.5rem,3vw,2.25rem);margin-bottom:var(--space-1)">Stay Ahead of Every Trend</h2>
-      <p style="color:rgba(255,255,255,0.75);font-size:var(--text-base)">Weekly style tips, exclusive lookbooks, and VIP offers - straight to your inbox.</p>
-     </div>
-     <form class="newsletter-form reveal delay-200" aria-label="Newsletter form" onsubmit="return false;" id="home-newsletter-form">
-      <input type="email" class="newsletter-input" placeholder="Enter your email address" aria-label="Email address" required id="home-newsletter-email"/>
-      <button type="submit" class="btn btn-light btn-lg">Subscribe Free</button>
-     </form>
-    </div>
-   </div>
-  </section>
-
- </main>
-
- <!-- --- FOOTER ------------------------------------------ -->
- <footer class="site-footer" role="contentinfo">
-  <div class="container">
-   <div class="footer-grid">
-    <div>
-     <a href="index.html" class="footer-brand-logo">
-      <img src="../assets/images/icons/logo.svg" class="footer-brand-logo-mark-img" alt="Logo" width="48"
-       height="48" style="margin-right: 12px; flex-shrink: 0;" />
-      <div>
-       <div class="footer-brand-name">Elise</div>
-       <div class="footer-tagline">Image Consultant</div>
-      </div>
-     </a>
-     <p class="footer-description">Transforming wardrobes and elevating presence for discerning clients worldwide.
-      Elegance is not a size - it's an attitude.</p>
-     <div class="footer-social">
-      <a href="#" rel="noopener noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none"
-        stroke="currentColor" stroke-width="2">
-        <rect x="2" y="2" width="20" height="20" rx="5" />
-        <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" />
-        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-       </svg></a>
-      <a href="#" rel="noopener noreferrer" aria-label="Pinterest"><svg viewBox="0 0 24 24" fill="none"
-        stroke="currentColor" stroke-width="2">
-        <path
-         d="M12 2C6.48 2 2 6.48 2 12c0 4.24 2.65 7.86 6.39 9.29-.09-.78-.17-1.98.03-2.83.19-.77 1.27-5.38 1.27-5.38s-.32-.65-.32-1.61c0-1.51.88-2.64 1.97-2.64.93 0 1.38.7 1.38 1.54 0 .94-.6 2.34-.91 3.64-.26 1.09.54 1.97 1.61 1.97 1.93 0 3.22-2.47 3.22-5.39 0-2.24-1.52-3.8-3.69-3.8-2.51 0-3.99 1.88-3.99 3.83 0 .76.29 1.57.66 2.01.07.09.08.17.06.26l-.25 1c-.08.31-.27.38-.62.23-1.73-.81-2.81-3.35-2.81-5.4 0-3.13 2.28-6.01 6.58-6.01 3.45 0 6.14 2.46 6.14 5.75 0 3.43-2.16 6.19-5.17 6.19-1.01 0-1.96-.52-2.28-1.15l-.62 2.31c-.22.86-.83 1.94-1.24 2.59.93.29 1.92.45 2.95.45 5.52 0 10-4.48 10-10S17.52 2 12 2z" />
-       </svg></a>
-      <a href="#" rel="noopener noreferrer" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none"
-        stroke="currentColor" stroke-width="2">
-        <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z" />
-        <rect x="2" y="9" width="4" height="12" />
-        <circle cx="4" cy="4" r="2" />
-       </svg></a>
-      <a href="#" rel="noopener noreferrer" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none"
-        stroke="currentColor" stroke-width="2">
-        <path
-         d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.96A29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z" />
-        <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" />
-       </svg></a>
-     </div>
-    </div>
-    <div>
-     <h3 class="footer-heading">Quick Links</h3>
-     <ul class="footer-links">
-      <li><a href="about.html">About Us</a></li>
-      <li><a href="services.html">Services</a></li>
-      <li><a href="pricing.html">Pricing</a></li>
-      <li><a href="blog.html">Style Blog</a></li>
-      <li><a href="contact.html">Contact Us</a></li>
-     </ul>
-    </div>
-    <div>
-     <h3 class="footer-heading">Services</h3>
-     <ul class="footer-links">
-      <li><a href="service-detail.html">Personal Shopping</a></li>
-      <li><a href="service-detail.html">Wardrobe Audit</a></li>
-      <li><a href="service-detail.html">Color Analysis</a></li>
-      <li><a href="service-detail.html">Corporate Styling</a></li>
-      <li><a href="service-detail.html">Bridal Styling</a></li>
-      <li><a href="coming-soon.html">Virtual Styling ✦ New</a></li>
-     </ul>
-    </div>
-    <div>
-     <h3 class="footer-heading">Stay Inspired</h3>
-     <p class="footer-newsletter-text">Get weekly style tips, trend alerts, and exclusive offers delivered to your
-      inbox.</p>
-     <form class="footer-newsletter-form" aria-label="Newsletter signup">
-      <input type="email" placeholder="Your email" aria-label="Email address" required />
-      <button type="submit">Subscribe</button>
-     </form>
-     <div style="margin-top:var(--space-3)">
-      <p style="font-size:var(--text-xs);color:rgba(255,255,255,0.4);margin-bottom:8px">OTHER PAGES</p>
-      <div style="display:flex;flex-direction:column;gap:6px">
-       <a href="404.html"
-        style="font-size:var(--text-xs);color:rgba(255,255,255,0.4);transition:color 300ms ease"
-        onmouseover="this.style.color='#E8CFC5'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">404
-        Page</a>
-       <a href="coming-soon.html"
-        style="font-size:var(--text-xs);color:rgba(255,255,255,0.4);transition:color 300ms ease"
-        onmouseover="this.style.color='#E8CFC5'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Coming
-        Soon</a>
-      </div>
-     </div>
-    </div>
-   </div>
-  </div>
-  <div style="border-top:1px solid rgba(255,255,255,0.1)">
-   <div class="container">
-    <div class="footer-bottom" style="justify-content: center; text-align: center;">
-     <p class="footer-bottom-text">© 2026 Elise. All rights reserved.</p>
-    </div>
-   </div>
-  </div>
- </footer>
-
- <script src="../assets/js/theme.js"></script>
- <script src="../assets/js/rtl.js"></script>
- <script src="../assets/js/navigation.js"></script>
- <script src="../assets/js/counters.js"></script>
- <script src="../assets/js/main.js"></script>
-</body>
-
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr" data-theme="light">
+
+
+
+<head>
+
+ <meta charset="UTF-8" />
+
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+ <title>Elise - Personal Stylist & Image Consultant</title>
+
+ <meta name="description"
+
+  content="Premium personal styling and image consulting services. Transform your wardrobe, refine your look, and elevate your confidence with Elise." />
+
+ <meta property="og:title" content="Elise - Personal Stylist & Image Consultant" />
+
+ <meta property="og:description" content="Premium personal styling and image consulting services." />
+
+ <meta property="og:type" content="website" />
+
+ <meta name="theme-color" content="#6D4C41" />
+
+ <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+ <link
+
+  href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap"
+
+  rel="stylesheet" />
+
+ <link rel="icon" href="../assets/images/icons/favicon.svg" type="image/svg+xml" />
+
+ <link rel="manifest" href="../manifest.json" />
+
+ <link rel="stylesheet" href="../assets/css/main.css" />
+
+ <link rel="stylesheet" href="../assets/css/components.css" />
+
+ <link rel="stylesheet" href="../assets/css/animations.css" />
+
+ <link rel="stylesheet" href="../assets/css/dark-mode.css" />
+
+ <link rel="stylesheet" href="../assets/css/rtl.css" />
+
+ <style>
+
+  /* "" Page-specific styles "" */
+
+  .hero-home {
+
+   min-height: 100vh;
+
+   position: relative;
+
+   display: flex;
+
+   align-items: center;
+
+   overflow: hidden;
+
+  }
+
+
+
+  .hero-bg-gradient {
+
+   position: absolute;
+
+   inset: 0;
+
+   z-index: 0;
+
+   background: linear-gradient(135deg, #2C1A16 0%, #4E342E 40%, #6D4C41 70%, #8D6E63 100%);
+
+  }
+
+
+
+  .hero-pattern {
+
+   position: absolute;
+
+   inset: 0;
+
+   z-index: 1;
+
+   opacity: 0.06;
+
+   background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+
+  }
+
+
+
+  .hero-glow {
+
+   position: absolute;
+
+   inset: 0;
+
+   z-index: 2;
+
+   background: radial-gradient(ellipse at 70% 50%, rgba(232, 207, 197, 0.12) 0%, transparent 60%);
+
+  }
+
+
+
+  .hero-home .hero-content {
+
+   position: relative;
+
+   z-index: 3;
+
+   padding-block: var(--space-8);
+
+  }
+
+
+
+  .hero-grid {
+
+   display: grid;
+
+   grid-template-columns: 1fr 1fr;
+
+   gap: var(--space-6);
+
+   align-items: center;
+
+  }
+
+
+
+  .hero-visual {
+
+   position: relative;
+
+  }
+
+
+
+  .hero-img-frame {
+
+   width: 100%;
+
+   aspect-ratio: 3/4;
+
+   border-radius: 40% 60% 60% 40% / 60% 40% 60% 40%;
+
+   overflow: hidden;
+
+   position: relative;
+
+   box-shadow: 0 32px 80px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.1);
+
+  }
+
+
+
+  .hero-img-frame img {
+
+   width: 100%;
+
+   height: 100%;
+
+   object-fit: cover;
+
+  }
+
+
+
+  .hero-badge-float {
+
+   position: absolute;
+
+   bottom: -20px;
+
+   inset-inline-start: -20px;
+
+   background: var(--color-white);
+
+   border-radius: var(--radius-xl);
+
+   padding: var(--space-2) var(--space-3);
+
+   box-shadow: var(--shadow-xl);
+
+   display: flex;
+
+   align-items: center;
+
+   gap: var(--space-1);
+
+  }
+
+
+
+  [data-theme="dark"] .hero-badge-float {
+
+   background: var(--color-dark-surface);
+
+  }
+
+
+
+  .hero-badge-num {
+
+   font-family: var(--font-heading);
+
+   font-size: var(--text-2xl);
+
+   font-weight: 700;
+
+   color: var(--color-brown);
+
+   line-height: 1;
+
+  }
+
+
+
+  .hero-badge-text {
+
+   font-size: var(--text-xs);
+
+   color: var(--text-secondary);
+
+   line-height: 1.3;
+
+  }
+
+
+
+  .hero-badge-icon {
+
+   width: 36px;
+
+   height: 36px;
+
+   background: rgba(109, 76, 65, 0.1);
+
+   border-radius: 50%;
+
+   display: flex;
+
+   align-items: center;
+
+   justify-content: center;
+
+  }
+
+
+
+  .hero-badge-icon svg {
+
+   width: 18px;
+
+   height: 18px;
+
+   stroke: var(--color-brown);
+
+  }
+
+
+
+  .hero-small-badge {
+
+   position: absolute;
+
+   top: var(--space-3);
+
+   inset-inline-end: -16px;
+
+   background: var(--color-brown);
+
+   color: white;
+
+   border-radius: var(--radius-xl);
+
+   padding: var(--space-1) var(--space-2);
+
+   box-shadow: var(--shadow-lg);
+
+   font-size: var(--text-xs);
+
+   font-weight: 600;
+
+   white-space: nowrap;
+
+  }
+
+
+
+  /* Stats bar */
+
+  .stats-bar {
+
+   background: var(--bg-secondary);
+
+   border-top: 1px solid var(--border-color);
+
+   border-bottom: 1px solid var(--border-color);
+
+  }
+
+
+
+  .stats-bar-inner {
+
+   display: grid;
+
+   grid-template-columns: repeat(4, 1fr);
+
+  }
+
+
+
+  .stats-bar-item {
+
+   text-align: center;
+
+   padding: var(--space-4);
+
+   border-inline-end: 1px solid var(--border-color);
+
+  }
+
+
+
+  .stats-bar-item:last-child {
+
+   border-inline-end: none;
+
+  }
+
+
+
+  /* Services section */
+
+  .services-grid {
+
+   display: grid;
+
+   grid-template-columns: repeat(3, 1fr);
+
+   gap: var(--space-3);
+
+  }
+
+
+
+  /* Testimonial carousel */
+
+  .testimonial-wrap {
+
+   overflow: hidden;
+
+  }
+
+
+
+  .testimonial-track {
+
+   display: flex;
+
+   gap: var(--space-3);
+
+   transition: transform 500ms ease;
+
+  }
+
+
+
+  .testimonial-track .testimonial-card {
+
+   flex: 0 0 calc(33.333% - var(--space-2));
+
+  }
+
+
+
+  .carousel-controls {
+
+   display: flex;
+
+   justify-content: center;
+
+   gap: var(--space-1);
+
+   margin-top: var(--space-4);
+
+  }
+
+
+
+  .carousel-prev,
+
+  .carousel-next {
+
+   width: 44px;
+
+   height: 44px;
+
+   border-radius: 50%;
+
+   border: 2px solid var(--border-color);
+
+   background: var(--bg-card);
+
+   cursor: pointer;
+
+   display: flex;
+
+   align-items: center;
+
+   justify-content: center;
+
+   color: var(--text-secondary);
+
+   transition: all var(--transition-fast);
+
+  }
+
+
+
+  .carousel-prev:hover,
+
+  .carousel-next:hover {
+
+   background: var(--color-brown);
+
+   color: white;
+
+   border-color: var(--color-brown);
+
+  }
+
+
+
+  .carousel-prev svg,
+
+  .carousel-next svg {
+
+   width: 20px;
+
+   height: 20px;
+
+  }
+
+
+
+  /* CT- split */
+
+  .cta-split {
+
+   display: grid;
+
+   grid-template-columns: 1fr 1fr;
+
+   gap: 0;
+
+  }
+
+
+
+  .cta-split-img {
+
+   position: relative;
+
+   min-height: 500px;
+
+   overflow: hidden;
+
+  }
+
+
+
+  .cta-split-img img {
+
+   width: 100%;
+
+   height: 100%;
+
+   object-fit: cover;
+
+   position: absolute;
+
+   inset: 0;
+
+  }
+
+
+
+  .cta-split-content {
+
+   background: linear-gradient(135deg, var(--color-brown-dark), var(--color-brown));
+
+   padding: var(--space-7) var(--space-6);
+
+   display: flex;
+
+   flex-direction: column;
+
+   justify-content: center;
+
+  }
+
+
+
+  .cta-clip {
+
+   clip-path: polygon(8% 0, 100% 0, 100% 100%, 0% 100%);
+
+  }
+
+
+
+  [dir="rtl"] .cta-clip {
+
+   clip-path: polygon(0 0, 92% 0, 100% 100%, 0% 100%);
+
+  }
+
+
+
+  /* Process steps */
+
+  .process-steps {
+
+   display: grid;
+
+   grid-template-columns: repeat(4, 1fr);
+
+   gap: var(--space-3);
+
+   position: relative;
+
+  }
+
+
+
+  .process-steps::before {
+
+   content: '';
+
+   position: absolute;
+
+   top: 24px;
+
+   left: 12.5%;
+
+   right: 12.5%;
+
+   height: 2px;
+
+   background: linear-gradient(90deg, var(--color-brown), var(--color-nude));
+
+   z-index: 0;
+
+  }
+
+
+
+  .process-step {
+
+   text-align: center;
+
+   position: relative;
+
+   z-index: 1;
+
+  }
+
+
+
+  .process-num {
+
+   width: 48px;
+
+   height: 48px;
+
+   border-radius: 50%;
+
+   background: var(--color-brown);
+
+   color: white;
+
+   display: flex;
+
+   align-items: center;
+
+   justify-content: center;
+
+   font-family: var(--font-heading);
+
+   font-size: var(--text-xl);
+
+   font-weight: 700;
+
+   margin: 0 auto var(--space-2);
+
+   box-shadow: 0 0 0 8px var(--bg-primary);
+
+   transition: transform var(--transition-bounce);
+
+  }
+
+
+
+  .process-step:hover .process-num {
+
+   transform: scale(1.1);
+
+  }
+
+
+
+  .process-step-title {
+
+   font-weight: 600;
+
+   color: var(--text-primary);
+
+   margin-bottom: var(--space-1);
+
+  }
+
+
+
+  .process-step-text {
+
+   font-size: var(--text-sm);
+
+   color: var(--text-muted);
+
+  }
+
+
+
+  /* Publications */
+
+  .publications {
+
+   display: flex;
+
+   align-items: center;
+
+   justify-content: center;
+
+   gap: var(--space-5);
+
+   flex-wrap: wrap;
+
+  }
+
+
+
+  .pub-logo {
+
+   opacity: 0.35;
+
+   filter: grayscale(1);
+
+   transition: all var(--transition-base);
+
+   font-family: var(--font-heading);
+
+   font-size: var(--text-xl);
+
+   font-weight: 700;
+
+   color: var(--text-primary);
+
+   letter-spacing: -0.02em;
+
+  }
+
+
+
+  .pub-logo:hover {
+
+   opacity: 0.7;
+
+   filter: grayscale(0);
+
+  }
+
+
+
+  /* Hero dots */
+
+  .hero-dots {
+
+   display: flex;
+
+   justify-content: center;
+
+   gap: 8px;
+
+   margin-top: var(--space-4);
+
+  }
+
+
+
+  .hero-dot {
+
+   width: 8px;
+
+   height: 8px;
+
+   border-radius: 50%;
+
+   background: rgba(255, 255, 255, 0.3);
+
+   border: none;
+
+   cursor: pointer;
+
+   transition: all var(--transition-base);
+
+  }
+
+
+
+  .hero-dot.active {
+
+   width: 24px;
+
+   border-radius: 4px;
+
+   background: var(--color-blush);
+
+  }
+
+
+
+  /* About teaser */
+
+  .about-split { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-6); align-items: center; }
+
+  .about-img-wrap { position: relative; }
+
+  .about-img-wrap img { width: 100%; border-radius: var(--radius-2xl); object-fit: cover; aspect-ratio: 4/5; box-shadow: var(--shadow-xl); }
+
+  .about-award-badge { position: absolute; bottom: var(--space-3); inset-inline-end: -var(--space-3); background: var(--color-brown); color: white; border-radius: var(--radius-xl); padding: var(--space-2) var(--space-3); font-size: var(--text-sm); font-weight: 600; box-shadow: var(--shadow-lg); }
+
+  .about-signature { font-family: var(--font-heading); font-size: var(--text-2xl); font-style: italic; color: var(--color-brown); margin-top: var(--space-3); }
+
+  .about-credentials { display: flex; gap: var(--space-3); flex-wrap: wrap; margin-top: var(--space-3); }
+
+  .credential-chip { display: flex; align-items: center; gap: 6px; padding: var(--space-1) var(--space-2); background: var(--bg-secondary); border-radius: var(--radius-full); font-size: var(--text-xs); font-weight: 600; color: var(--text-secondary); border: 1px solid var(--border-color); }
+
+  .credential-chip svg { width: 14px; height: 14px; stroke: var(--color-brown); }
+
+
+
+  /* Blog preview */
+
+  .blog-preview-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-3); }
+
+  .blog-card-img { background: var(--bg-secondary); }
+
+  .blog-card-img img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+
+
+
+  /* Gallery */
+
+  .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 260px; gap: 6px; }
+
+  .gallery-item { position:relative; overflow:hidden; border-radius: var(--radius-lg); }
+
+  .gallery-item img { width:100%; height:100%; object-fit:cover; object-position:center; display:block; transition: transform 600ms ease; }
+
+  .gallery-item:hover img { transform: scale(1.08); }
+
+  .gallery-item-overlay { position:absolute; inset:0; background: rgba(0,0,0,0.4); opacity:0; display:flex; align-items:center; justify-content:center; transition: opacity 300ms ease; }
+
+  .gallery-item:hover .gallery-item-overlay { opacity:1; }
+
+  .gallery-item-overlay svg { width:28px; height:28px; stroke:white; }
+
+  .gallery-item.gallery-wide { grid-column: span 2; }
+
+
+
+  /* Newsletter strip */
+
+  .newsletter-strip { background: linear-gradient(135deg, var(--color-brown-dark), var(--color-brown)); padding: var(--space-6) 0; }
+
+  .newsletter-strip-inner { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); flex-wrap: wrap; }
+
+  .newsletter-strip-form { display: flex; gap: var(--space-2); flex-wrap: wrap; }
+
+  .newsletter-strip-input { flex: 1; min-width: 240px; padding: 12px 16px; border-radius: var(--radius-full); border: 2px solid rgba(255,255,255,0.25); background: rgba(255,255,255,0.12); color: white; font-size: var(--text-base); outline: none; transition: border-color var(--transition-fast); }
+
+  .newsletter-strip-input::placeholder { color: rgba(255,255,255,0.55); }
+
+  .newsletter-strip-input:focus { border-color: rgba(255,255,255,0.6); }
+
+
+
+  @media(max-width:1024px) {
+
+   .hero-grid {
+
+    grid-template-columns: 1fr;
+
+   }
+
+
+
+   .hero-visual {
+
+    display: none;
+
+   }
+
+
+
+   .services-grid {
+
+    grid-template-columns: repeat(2, 1fr);
+
+   }
+
+
+
+   .process-steps {
+
+    grid-template-columns: repeat(2, 1fr);
+
+   }
+
+
+
+   .process-steps::before {
+
+    display: none;
+
+   }
+
+
+
+   .cta-split {
+
+    grid-template-columns: 1fr;
+
+   }
+
+
+
+   .cta-split-img {
+
+    min-height: 300px;
+
+   }
+
+
+
+   .cta-clip {
+
+    clip-path: none;
+
+   }
+
+
+
+   .stats-bar-inner {
+
+    grid-template-columns: repeat(2, 1fr);
+
+   }
+
+
+
+   .about-split { grid-template-columns: 1fr; }
+
+   .blog-preview-grid { grid-template-columns: repeat(2,1fr); }
+
+   .gallery-grid { grid-template-columns: repeat(3,1fr); grid-auto-rows: 220px; }
+
+   .gallery-item.gallery-wide { grid-column: span 1; }
+
+   .newsletter-strip-inner { flex-direction: column; text-align: center; }
+
+  }
+
+
+
+  @media(max-width:640px) {
+
+   .services-grid {
+
+    grid-template-columns: 1fr;
+
+   }
+
+
+
+   .process-steps {
+
+    grid-template-columns: 1fr;
+
+   }
+
+
+
+   .testimonial-track .testimonial-card {
+
+    flex: 0 0 100%;
+
+   }
+
+
+
+   .stats-bar-inner {
+
+    grid-template-columns: 1fr 1fr;
+
+   }
+
+
+
+   .blog-preview-grid { grid-template-columns: 1fr; }
+
+   .gallery-grid { grid-template-columns: repeat(2,1fr); grid-auto-rows: 180px; }
+
+  }
+
+ </style>
+
+ <!-- Structured Data -->
+
+ <script type="application/ld+json">
+
+ {"@context":"https://schema.org","@type":"LocalBusiness","name":"Elise","description":"Premium personal styling and image consulting services","url":"https://example.com","telephone":"+1-555-0100","address":{"@type":"PostalAddress","addressLocality":"New York","addressRegion":"NY","addressCountry":"US"},"openingHours":"Mo-Fr 09:00-18:00","priceRange":"$$$","serviceType":"Personal Styling"}
+
+ </script>
+
+</head>
+
+
+
+<body>
+
+
+
+ <!-- NAV -->
+
+ <a href="#main-content" class="skip-link">Skip to main content</a>
+
+ <header class="site-nav" id="site-nav">
+
+  <nav class="nav-container" aria-label="Main navigation">
+
+   <a href="index.html" class="nav-logo" aria-label="Elise Home">
+
+    <img src="../assets/images/icons/logo.svg" class="nav-logo-mark-img" alt="Logo" width="36" height="36"
+
+     style="margin-right: 8px; flex-shrink: 0;" />
+
+    <div class="nav-logo-text">
+
+     <span class="nav-logo-name">Elise</span>
+
+     
+
+    </div>
+
+   </a>
+
+   <ul class="nav-menu">
+
+    <li class="nav-item">
+
+     <button class="nav-link active">Home <svg class="chevron" viewBox="0 0 24 24" fill="none"
+
+       stroke="currentColor" stroke-width="2">
+
+       <polyline points="6 9 12 15 18 9" />
+
+      </svg></button>
+
+     <div class="nav-dropdown">
+
+      <a href="index.html">Home 1</a>
+
+      <a href="home-2.html">Home 2</a>
+
+     </div>
+
+    </li>
+
+    <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+
+    <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
+
+    <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+
+    <li class="nav-item"><a href="pricing.html" class="nav-link">Pricing</a></li>
+
+    <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+
+    <li class="nav-item">
+
+     <button class="nav-link">Dashboard <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+
+       stroke-width="2">
+
+       <polyline points="6 9 12 15 18 9" />
+
+      </svg></button>
+
+     <div class="nav-dropdown">
+
+      <a href="dashboard-admin.html">Admin Dashboard</a>
+
+      <a href="dashboard-user.html">User Dashboard</a>
+
+     </div>
+
+    </li>
+
+   </ul>
+
+   <div class="nav-actions">
+
+    <button class="nav-action-btn" data-dir-toggle aria-label="Toggle RTL" title="Switch language direction">RTL</button>
+
+    <button class="nav-action-btn" data-theme-toggle aria-label="Toggle theme">
+
+     <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+
+      <circle cx="12" cy="12" r="5" />
+
+      <line x1="12" y1="1" x2="12" y2="3" />
+
+      <line x1="12" y1="21" x2="12" y2="23" />
+
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+
+      <line x1="1" y1="12" x2="3" y2="12" />
+
+      <line x1="21" y1="12" x2="23" y2="12" />
+
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+
+     </svg>
+
+     <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none">
+
+      <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+
+     </svg>
+
+    </button>
+
+    <a href="login.html" class="btn btn-primary btn-sm d-none-mobile">Login</a>
+
+    <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-drawer">
+
+     <span></span><span></span><span></span>
+
+    </button>
+
+   </div>
+
+  </nav>
+
+ </header>
+
+
+
+ <!-- Mobile Overlay & Drawer -->
+
+ <div class="nav-overlay" id="nav-overlay"></div>
+
+ <aside class="nav-drawer" id="nav-drawer" role="dialog" aria-label="Mobile navigation">
+
+  <button class="drawer-close" aria-label="Close menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+
+    stroke-width="2">
+
+    <line x1="18" y1="6" x2="6" y2="18" />
+
+    <line x1="6" y1="6" x2="18" y2="18" />
+
+   </svg></button>
+
+  <a href="index.html" class="nav-logo" style="margin-bottom:var(--space-3)"><img
+
+    src="../assets/images/icons/logo.svg" class="nav-logo-mark-img" alt="Logo" width="36" height="36"
+
+    style="margin-right: 8px; flex-shrink: 0;" />
+
+   <div class="nav-logo-text"><span class="nav-logo-name">Elise</span></div>
+
+  </a>
+
+  <nav class="drawer-nav">
+
+   <div class="drawer-nav-item">
+
+    <div class="drawer-nav-link" tabindex="0">Home <svg class="chevron" viewBox="0 0 24 24" fill="none"
+
+      stroke="currentColor" stroke-width="2">
+
+      <polyline points="6 9 12 15 18 9" />
+
+     </svg></div>
+
+    <div class="drawer-sub">
+
+     <a href="index.html">Home 1</a>
+
+     <a href="home-2.html">Home 2</a>
+
+    </div>
+
+   </div>
+
+   <div class="drawer-nav-item"><a href="about.html" class="drawer-nav-link">About</a></div>
+
+   <div class="drawer-nav-item"><a href="services.html" class="drawer-nav-link">Services</a></div>
+
+   <div class="drawer-nav-item"><a href="blog.html" class="drawer-nav-link">Blog</a></div>
+
+   <div class="drawer-nav-item"><a href="pricing.html" class="drawer-nav-link">Pricing</a></div>
+
+   <div class="drawer-nav-item"><a href="contact.html" class="drawer-nav-link">Contact</a></div>
+
+   <div class="drawer-nav-item">
+
+    <div class="drawer-nav-link" tabindex="0">Dashboard <svg class="chevron" viewBox="0 0 24 24" fill="none"
+
+      stroke="currentColor" stroke-width="2">
+
+      <polyline points="6 9 12 15 18 9" />
+
+     </svg></div>
+
+    <div class="drawer-sub">
+
+     <a href="dashboard-admin.html">Admin Dashboard</a>
+
+     <a href="dashboard-user.html">User Dashboard</a>
+
+    </div>
+
+   </div>
+
+  </nav>
+
+  <div style="display:flex;gap:8px;margin-top:auto;padding-top:var(--space-3)">
+
+   <a href="login.html" class="btn btn-primary btn-block" style="width:100%">Login</a>
+
+  </div>
+
+ </aside>
+
+
+
+ <main id="main-content">
+
+
+
+  <!-- --- HERO -------------------------------------------- -->
+
+  <section class="hero-home" aria-label="Hero">
+
+   <div class="hero-bg-gradient"></div>
+
+   <div class="hero-pattern"></div>
+
+   <div class="hero-glow"></div>
+
+   <div class="container hero-content">
+
+    <div class="hero-grid">
+
+     <!-- Text -->
+
+     <div>
+
+      <span class="hero-tag hero-animate-1">✦ Premium Image Consulting</span>
+
+      <h1 class="hero-title hero-animate-2">
+
+       Style Is<br><em>Not What You Wear</em><br>It's Who You Are
+
+      </h1>
+
+      <p class="hero-subtitle hero-animate-3">We craft signature looks that reflect your authentic self. From
+
+       wardrobe audits to complete style transformations - your journey to effortless elegance starts here.</p>
+
+      <div class="hero-cta hero-animate-4">
+
+       <a href="contact.html" class="btn btn-primary btn-lg" id="hero-book-btn">Book a Consultation</a>
+
+       <a href="services.html" class="btn btn-light btn-lg" id="hero-services-btn">Explore Services</a>
+
+      </div>
+
+      <div class="hero-dots" id="hero-dots"></div>
+
+     </div>
+
+     <!-- Visual -->
+
+     <div class="hero-visual float-1">
+
+      <div class="hero-img-frame">
+
+       <img src="../assets/images/hero/hero-main.png"
+
+        alt="Elegantly styled fashion consultant curating a luxurious wardrobe" loading="eager" width="600"
+
+        height="800" />
+
+      </div>
+
+      <div class="hero-badge-float reveal">
+
+       <div class="hero-badge-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+
+         <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
+
+         <circle cx="9" cy="7" r="4" />
+
+         <path d="M23 21v-2a4 4 0 00-3-3.87" />
+
+         <path d="M16 3.13a4 4 0 010 7.75" />
+
+        </svg></div>
+
+       <div>
+
+        <div class="hero-badge-num" data-counter data-target="500" data-suffix="+">0+</div>
+
+        <div class="hero-badge-text">Clients<br>Transformed</div>
+
+       </div>
+
+      </div>
+
+      <div class="hero-small-badge">­ 4.9 Rating · 200+ Reviews</div>
+
+     </div>
+
+    </div>
+
+   </div>
+
+
+
+  </section>
+
+
+
+  <!-- --- STATS BAR --------------------------------------- -->
+
+  <section class="stats-bar" id="stats" aria-label="Key statistics">
+
+   <div class="container container-fluid">
+
+    <div class="stats-bar-inner">
+
+     <div class="stats-bar-item reveal">
+
+      <span class="stat-number" data-counter data-target="500" data-suffix="+">0+</span>
+
+      <p class="stat-label">Clients Served</p>
+
+     </div>
+
+     <div class="stats-bar-item reveal delay-200">
+
+      <span class="stat-number" data-counter data-target="12">0</span>
+
+      <p class="stat-label">Years Experience</p>
+
+     </div>
+
+     <div class="stats-bar-item reveal delay-300">
+
+      <span class="stat-number" data-counter data-target="98" data-suffix="%">0%</span>
+
+      <p class="stat-label">Satisfaction Rate</p>
+
+     </div>
+
+     <div class="stats-bar-item reveal delay-400">
+
+      <span class="stat-number" data-counter data-target="15" data-suffix="+">0+</span>
+
+      <p class="stat-label">Awards Won</p>
+
+     </div>
+
+    </div>
+
+   </div>
+
+  </section>
+
+
+
+  <!-- --- SERVICES PREVIEW -------------------------------- -->
+
+  <section class="section" id="services-preview" aria-labelledby="services-heading">
+
+   <div class="container">
+
+    <div class="section-header">
+
+     <span class="section-tag reveal">What We Offer</span>
+
+     <h2 class="section-title reveal delay-100" id="services-heading">Elevate Every Aspect<br>of Your Image</h2>
+
+     <p class="section-subtitle reveal delay-200">From personal shopping to complete wardrobe transformations, our
+
+      bespoke services are tailored to your unique lifestyle and goals.</p>
+
+    </div>
+
+    <div class="services-grid">
+
+     <div class="service-card tilt-card reveal" data-category="shopping">
+
+      <div class="service-card-img">
+
+       <img src="../assets/images/services/personal-shopping.png"
+
+        alt="Personal shopping service - curated fashion selections" loading="lazy" width="600" height="400" />
+
+       <div class="service-card-overlay">
+
+        <a href="service-detail.html" class="btn btn-light btn-sm">View Details →</a>
+
+       </div>
+
+      </div>
+
+      <div class="service-card-body">
+
+       <div class="service-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+
+         stroke-width="2">
+
+         <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" />
+
+         <line x1="3" y1="6" x2="21" y2="6" />
+
+         <path d="M16 10a4 4 0 01-8 0" />
+
+        </svg></div>
+
+       <h3 class="service-card-title">Personal Shopping</h3>
+
+       <p class="service-card-text">Curated selections handpicked to match your style profile, body type, and
+
+        lifestyle perfectly.</p>
+
+       <div style="display:flex;align-items:center;justify-content:space-between;margin-top:var(--space-2)">
+
+        <span class="service-card-price">From <strong>$299</strong></span>
+
+        <span class="service-card-badge">3-4 hrs</span>
+
+       </div>
+
+      </div>
+
+     </div>
+
+
+
+     <div class="service-card tilt-card reveal delay-200" data-category="audit">
+
+      <div class="service-card-img">
+
+       <img src="../assets/images/services/wardrobe-audit.png"
+
+        alt="Wardrobe audit service - organized and curated closet" loading="lazy" width="600" height="400" />
+
+       <div class="service-card-overlay">
+
+        <a href="service-detail.html" class="btn btn-light btn-sm">View Details →</a>
+
+       </div>
+
+      </div>
+
+      <div class="service-card-body">
+
+       <div class="service-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+
+         stroke-width="2">
+
+         <polyline points="9 11 12 14 22 4" />
+
+         <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" />
+
+        </svg></div>
+
+       <h3 class="service-card-title">Wardrobe Audit</h3>
+
+       <p class="service-card-text">- thorough review of your existing wardrobe to identify gaps and maximise
+
+        outfit potential.</p>
+
+       <div style="display:flex;align-items:center;justify-content:space-between;margin-top:var(--space-2)">
+
+        <span class="service-card-price">From <strong>$199</strong></span>
+
+        <span class="service-card-badge">2-3 hrs</span>
+
+       </div>
+
+      </div>
+
+     </div>
+
+
+
+     <div class="service-card tilt-card reveal delay-400" data-category="color">
+
+      <div class="service-card-img">
+
+       <img src="../assets/images/services/color-analysis.png"
+
+        alt="Color analysis service - seasonal colour palette consultation" loading="lazy" width="600"
+
+        height="400" />
+
+       <div class="service-card-overlay">
+
+        <a href="service-detail.html" class="btn btn-light btn-sm">View Details →</a>
+
+       </div>
+
+      </div>
+
+      <div class="service-card-body">
+
+       <div class="service-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+
+         stroke-width="2">
+
+         <circle cx="12" cy="12" r="10" />
+
+         <path d="M12 2a10 10 0 010 20" />
+
+         <path d="M2 12h10" />
+
+        </svg></div>
+
+       <h3 class="service-card-title">Color Analysis</h3>
+
+       <p class="service-card-text">Discover your seasonal colour palette and learn which shades enhance your
+
+        natural radiance.</p>
+
+       <div style="display:flex;align-items:center;justify-content:space-between;margin-top:var(--space-2)">
+
+        <span class="service-card-price">From <strong>$149</strong></span>
+
+        <span class="service-card-badge">90 mins</span>
+
+       </div>
+
+      </div>
+
+     </div>
+
+    </div>
+
+    <div style="text-align:center;margin-top:var(--space-5)" class="reveal">
+
+     <a href="services.html" class="btn btn-secondary btn-lg" id="all-services-btn">View All Services</a>
+
+    </div>
+
+   </div>
+
+  </section>
+
+
+
+  <!-- --- PROCESS STEPS ----------------------------------- -->
+
+  <section class="section" style="background:var(--bg-secondary)" aria-labelledby="process-heading">
+
+   <div class="container">
+
+    <div class="section-header">
+
+     <span class="section-tag reveal">How It Works</span>
+
+     <h2 class="section-title reveal delay-100" id="process-heading">Your Transformation Journey</h2>
+
+     <p class="section-subtitle reveal delay-200">- seamless, four-step process designed around your unique needs
+
+      and vision.</p>
+
+    </div>
+
+    <div class="process-steps">
+
+     <div class="process-step reveal">
+
+      <div class="process-num">1</div>
+
+      <h3 class="process-step-title">Discovery</h3>
+
+      <p class="process-step-text">In-depth consultation to understand your lifestyle, goals, and style vision.
+
+      </p>
+
+     </div>
+
+     <div class="process-step reveal delay-200">
+
+      <div class="process-num">2</div>
+
+      <h3 class="process-step-title">Analysis</h3>
+
+      <p class="process-step-text">Body shape, colour season, and personal brand assessment.</p>
+
+     </div>
+
+     <div class="process-step reveal delay-300">
+
+      <div class="process-num">3</div>
+
+      <h3 class="process-step-title">Transformation</h3>
+
+      <p class="process-step-text">Hands-on styling sessions, shopping, and wardrobe curation.</p>
+
+     </div>
+
+     <div class="process-step reveal delay-400">
+
+      <div class="process-num">4</div>
+
+      <h3 class="process-step-title">Follow-up</h3>
+
+      <p class="process-step-text">Ongoing support, style guides, and maintenance check-ins.</p>
+
+     </div>
+
+    </div>
+
+   </div>
+
+  </section>
+
+
+
+  <!-- --- CT- SECTION ------------------------------------- -->
+
+  <section class="cta-split" aria-label="Call to action">
+
+   <div class="cta-split-img reveal-left">
+
+    <img src="../assets/images/hero/cta-image.png" alt="- confident woman in an elegant, perfectly styled outfit"
+
+     loading="lazy" width="800" height="600" />
+
+   </div>
+
+   <div class="cta-split-content cta-clip">
+
+    <span class="hero-tag reveal" style="color:var(--color-blush)">✦ Start Today</span>
+
+    <h2 class="reveal delay-100" style="color:white;font-size:clamp(2rem,4vw,3rem);margin-bottom:var(--space-3)">
+
+     Ready to Transform Your Image?</h2>
+
+    <p class="reveal delay-200"
+
+     style="color:rgba(255,255,255,0.8);margin-bottom:var(--space-4);font-size:var(--text-lg)">Book your
+
+     complimentary 30-minute discovery call and take the first step toward the image you've always envisioned.</p>
+
+    <div class="reveal delay-300" style="display:flex;gap:var(--space-2);flex-wrap:wrap">
+
+     <a href="contact.html" class="btn btn-light btn-lg">Book Free Call</a>
+
+     <a href="pricing.html" class="btn btn-ghost btn-lg" style="border-color:rgba(255,255,255,0.3);color:white">See
+
+      Packages</a>
+
+    </div>
+
+   </div>
+
+  </section>
+
+
+
+  <!-- --- TESTIMONIALS ------------------------------------ -->
+
+  <section class="section" aria-labelledby="testimonials-heading">
+
+   <div class="container">
+
+    <div class="section-header">
+
+     <span class="section-tag reveal">Client Stories</span>
+
+     <h2 class="section-title reveal delay-100" id="testimonials-heading">What Our Clients Say</h2>
+
+     <p class="section-subtitle reveal delay-200">Real transformations, real confidence, real results.</p>
+
+    </div>
+
+    <div class="testimonial-carousel reveal">
+
+     <div class="testimonial-wrap">
+
+      <div class="testimonial-track" id="testimonial-track">
+
+       <div class="testimonial-card tilt-card">
+
+        <div class="testimonial-stars">
+
+         <svg viewBox="0 0 24 24">
+
+          <polygon
+
+           points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+
+         </svg>
+
+         <svg viewBox="0 0 24 24">
+
+          <polygon
+
+           points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+
+         </svg>
+
+         <svg viewBox="0 0 24 24">
+
+          <polygon
+
+           points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+
+         </svg>
+
+         <svg viewBox="0 0 24 24">
+
+          <polygon
+
+           points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+
+         </svg>
+
+         <svg viewBox="0 0 24 24">
+
+          <polygon
+
+           points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+
+         </svg>
+
+        </div>
+
+        <p class="testimonial-text">"Elise completely transformed how I present myself in executive meetings. My
+
+         wardrobe now speaks confidence before I even say a word. Truly life-changing."</p>
+
+        <div class="testimonial-author">
+
+         <img src="../assets/images/team/avatar-1.png" alt="Sarah Mitchell" width="48" height="48" />
+
+         <div>
+
+          <div class="testimonial-author-name">Sarah Mitchell</div>
+
+          <div class="testimonial-author-role">CEO, Meridian Group</div>
+
+         </div>
+
+        </div>
+
+       </div>
+
+       <div class="testimonial-card tilt-card">
+
+        <div class="testimonial-stars">
+
+         <svg viewBox="0 0 24 24">
+
+          <polygon
+
+           points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+
+         </svg>
+
+         <svg viewBox="0 0 24 24">
+
+          <polygon
+
+           points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+
+         </svg>
+
+         <svg viewBox="0 0 24 24">
+
+          <polygon
+
+           points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+
+         </svg>
+
+         <svg viewBox="0 0 24 24">
+
+          <polygon
+
+           points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+
+         </svg>
+
+         <svg viewBox="0 0 24 24">
+
+          <polygon
+
+           points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+
+         </svg>
+
+        </div>
+
+        <p class="testimonial-text">"The colour analysis session was eye-opening. I now know exactly what works
+
+         for my complexion and I've stopped making expensive wardrobe mistakes."</p>
+
+        <div class="testimonial-author">
+
+         <img src="../assets/images/team/avatar-2.png" alt="Amelia Torres" width="48" height="48" />
+
+         <div>
+
+          <div class="testimonial-author-name">Amelia Torres</div>
+
+          <div class="testimonial-author-role">Senior Architect</div>
+
+         </div>
+
+        </div>
+
+       </div>
+
+       <div class="testimonial-card tilt-card">
+
+        <div class="testimonial-stars">
+
+         <svg viewBox="0 0 24 24">
+
+          <polygon
+
+           points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+
+         </svg>
+
+         <svg viewBox="0 0 24 24">
+
+          <polygon
+
+           points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+
+         </svg>
+
+         <svg viewBox="0 0 24 24">
+
+          <polygon
+
+           points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+
+         </svg>
+
+         <svg viewBox="0 0 24 24">
+
+          <polygon
+
+           points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+
+         </svg>
+
+         <svg viewBox="0 0 24 24">
+
+          <polygon
+
+           points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+
+         </svg>
+
+        </div>
+
+        <p class="testimonial-text">"For my bridal styling, Elise found pieces I never would have chosen myself
+
+         - and I looked absolutely stunning on my wedding day. Worth every penny."</p>
+
+        <div class="testimonial-author">
+
+         <img src="../assets/images/team/avatar-3.png" alt="Priya Sharma" width="48" height="48" />
+
+         <div>
+
+          <div class="testimonial-author-name">Priya Sharma</div>
+
+          <div class="testimonial-author-role">Entrepreneur & Bride</div>
+
+         </div>
+
+        </div>
+
+       </div>
+
+      </div>
+
+     </div>
+
+     <div class="carousel-controls">
+
+      <button class="carousel-prev" aria-label="Previous testimonial"><svg viewBox="0 0 24 24" fill="none"
+
+        stroke="currentColor" stroke-width="2">
+
+        <polyline points="15 18 9 12 15 6" />
+
+       </svg></button>
+
+      <button class="carousel-next" aria-label="Next testimonial"><svg viewBox="0 0 24 24" fill="none"
+
+        stroke="currentColor" stroke-width="2">
+
+        <polyline points="9 18 15 12 9 6" />
+
+       </svg></button>
+
+     </div>
+
+    </div>
+
+   </div>
+
+  </section>
+
+
+
+  <!-- --- AS FEATURED IN ---------------------------------- -->
+
+  <section class="section-sm" style="background:var(--bg-secondary);border-top:1px solid var(--border-color)"
+
+   aria-label="Publications">
+
+   <div class="container">
+
+    <p class="text-center text-muted text-sm"
+
+     style="margin-bottom:var(--space-4);letter-spacing:0.15em;text-transform:uppercase;font-weight:600">As
+
+     Featured In</p>
+
+    <div class="publications">
+
+     <span class="pub-logo">Vogue</span>
+
+     <span class="pub-logo">Harper's Bazaar</span>
+
+     <span class="pub-logo">Elle</span>
+
+     <span class="pub-logo">The Times</span>
+
+     <span class="pub-logo">Forbes</span>
+
+     <span class="pub-logo">Tatler</span>
+
+    </div>
+
+   </div>
+
+  </section>
+
+
+
+  <!-- --- ABOUT TEASER ------------------------------------ -->
+
+  <section class="section" aria-labelledby="about-teaser-heading">
+
+   <div class="container">
+
+    <div class="about-split">
+
+     <div class="about-img-wrap reveal">
+
+      <img src="../assets/images/team/avatar-author.png" alt="Elise - founder and lead image consultant" loading="lazy" width="600" height="750" />
+
+      <div class="about-award-badge">ðŸ Best Image Consultant 2024</div>
+
+     </div>
+
+     <div class="reveal delay-200">
+
+      <span class="section-tag">Meet Your Stylist</span>
+
+      <h2 class="section-title" id="about-teaser-heading">Hello, I'm Elise.<br><em>Let's Rewrite Your Story.</em></h2>
+
+      <p style="color:var(--text-secondary);margin-bottom:var(--space-3);line-height:1.8">With over 12 years crafting signature looks for executives, brides, and public figures, I believe style is the most powerful non-verbal language you speak. My mission is simple: to help you dress with intention and live with confidence.</p>
+
+      <p style="color:var(--text-secondary);margin-bottom:var(--space-4);line-height:1.8">Every client receives a bespoke experience rooted in deep personal analysis - not trends. Because true elegance is timeless, and so are you.</p>
+
+      <div class="about-credentials">
+
+       <span class="credential-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>FI- Certified Stylist</span>
+
+       <span class="credential-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>12+ Years Experience</span>
+
+       <span class="credential-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>500+ Clients Transformed</span>
+
+       <span class="credential-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Vogue & Elle Featured</span>
+
+      </div>
+
+      <div class="about-signature">Elise</div>
+
+      <a href="about.html" class="btn btn-secondary" style="margin-top:var(--space-3)" id="about-learn-more-btn">Learn More About Me →</a>
+
+     </div>
+
+    </div>
+
+   </div>
+
+  </section>
+
+
+
+  <!-- --- BLOG PREVIEW ------------------------------------ -->
+
+  <section class="section" style="background:var(--bg-secondary)" aria-labelledby="blog-preview-heading">
+
+   <div class="container">
+
+    <div class="section-header">
+
+     <span class="section-tag reveal">Style Insights</span>
+
+     <h2 class="section-title reveal delay-100" id="blog-preview-heading">From the Style Edit</h2>
+
+     <p class="section-subtitle reveal delay-200">Expert articles on fashion, colour theory, and image consulting - updated weekly.</p>
+
+    </div>
+
+    <div class="blog-preview-grid">
+
+     <a href="blog-detail.html" class="blog-card reveal" style="text-decoration:none">
+
+      <div class="blog-card-img"><img src="../assets/images/blog/blog-featured.png" alt="2026 power dressing trends" loading="lazy" width="400" height="280"/></div>
+
+      <div class="blog-card-body">
+
+       <div class="blog-card-meta"><span class="blog-card-category">Trends</span><span class="blog-card-readtime"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>8 min</span></div>
+
+       <h3 class="blog-card-title">The 2026 Power Dressing Revolution</h3>
+
+       <p class="blog-card-excerpt">How executive style is evolving beyond the rigid suit into authoritative elegance.</p>
+
+      </div>
+
+     </a>
+
+     <a href="blog-detail.html" class="blog-card reveal delay-200" style="text-decoration:none">
+
+      <div class="blog-card-img"><img src="../assets/images/blog/blog-1.png" alt="10 timeless wardrobe essentials" loading="lazy" width="400" height="280"/></div>
+
+      <div class="blog-card-body">
+
+       <div class="blog-card-meta"><span class="blog-card-category">Style Tips</span><span class="blog-card-readtime"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>5 min</span></div>
+
+       <h3 class="blog-card-title">10 Wardrobe Essentials That Will Never Go Out of Style</h3>
+
+       <p class="blog-card-excerpt">Build a wardrobe that transcends seasons with these timeless investment pieces.</p>
+
+      </div>
+
+     </a>
+
+     <a href="blog-detail.html" class="blog-card reveal delay-400" style="text-decoration:none">
+
+      <div class="blog-card-img"><img src="../assets/images/blog/blog-2.png" alt="Discover your colour season" loading="lazy" width="400" height="280"/></div>
+
+      <div class="blog-card-body">
+
+       <div class="blog-card-meta"><span class="blog-card-category">Color Theory</span><span class="blog-card-readtime"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>6 min</span></div>
+
+       <h3 class="blog-card-title">How to Discover Your Colour Season in 5 Steps</h3>
+
+       <p class="blog-card-excerpt">Knowing your season changes everything - from your skin's radiance to your bank balance.</p>
+
+      </div>
+
+     </a>
+
+    </div>
+
+    <div style="text-align:center;margin-top:var(--space-5)" class="reveal">
+
+     <a href="blog.html" class="btn btn-secondary btn-lg" id="view-all-posts-btn">View All Articles →</a>
+
+    </div>
+
+   </div>
+
+  </section>
+
+
+
+  <!-- --- PORTFOLIO GALLERY ------------------------------ -->
+
+  <section class="section" aria-labelledby="gallery-heading" style="background: linear-gradient(135deg, var(--bg-secondary) 0%, rgba(109,76,65,0.06) 50%, var(--bg-secondary) 100%);">
+
+   <div class="container">
+
+    <div class="section-header">
+
+     <span class="section-tag reveal">Portfolio</span>
+
+     <h2 class="section-title reveal delay-100" id="gallery-heading">Transformations That<br>Speak for Themselves</h2>
+
+     <p class="section-subtitle reveal delay-200">- curated glimpse into our most memorable styling sessions.</p>
+
+    </div>
+
+    <div class="gallery-grid reveal">
+
+     <div class="gallery-item gallery-wide">
+
+      <img src="../assets/images/services/corporate-styling.png" alt="Corporate styling transformation" loading="lazy" width="800" height="600"/>
+
+      <div class="gallery-item-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+
+     </div>
+
+     <div class="gallery-item">
+
+      <img src="../assets/images/services/bridal-styling.png" alt="Bridal styling session" loading="lazy" width="400" height="400"/>
+
+      <div class="gallery-item-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+
+     </div>
+
+     <div class="gallery-item">
+
+      <img src="../assets/images/services/color-analysis.png" alt="Color analysis consultation" loading="lazy" width="400" height="400"/>
+
+      <div class="gallery-item-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+
+     </div>
+
+     <div class="gallery-item">
+
+      <img src="../assets/images/services/personal-shopping.png" alt="Personal shopping session" loading="lazy" width="400" height="400"/>
+
+      <div class="gallery-item-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+
+     </div>
+
+     <div class="gallery-item gallery-wide">
+
+      <img src="../assets/images/services/style-consultation.png" alt="Style consultation" loading="lazy" width="800" height="400"/>
+
+      <div class="gallery-item-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+
+     </div>
+
+     <div class="gallery-item">
+
+      <img src="../assets/images/services/wardrobe-audit.png" alt="Wardrobe audit" loading="lazy" width="400" height="400"/>
+
+      <div class="gallery-item-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+
+     </div>
+
+    </div>
+
+   </div>
+
+  </section>
+
+
+
+  <!-- --- NEWSLETTER STRIP ------------------------------- -->
+
+  <section class="newsletter-strip" aria-label="Newsletter signup">
+
+   <div class="container">
+
+    <div class="newsletter-strip-inner">
+
+     <div class="reveal">
+
+      <h2 style="color:white;font-size:clamp(1.5rem,3vw,2.25rem);margin-bottom:var(--space-1)">Stay Ahead of Every Trend</h2>
+
+      <p style="color:rgba(255,255,255,0.75);font-size:var(--text-base)">Weekly style tips, exclusive lookbooks, and VIP offers - straight to your inbox.</p>
+
+     </div>
+
+     <form class="newsletter-form reveal delay-200" aria-label="Newsletter form" onsubmit="return false;" id="home-newsletter-form">
+
+      <input type="email" class="newsletter-input" placeholder="Enter your email address" aria-label="Email address" required id="home-newsletter-email"/>
+
+      <button type="submit" class="btn btn-light btn-lg">Subscribe Free</button>
+
+     </form>
+
+    </div>
+
+   </div>
+
+  </section>
+
+
+
+ </main>
+
+
+
+ <!-- --- FOOTER ------------------------------------------ -->
+
+ <footer class="site-footer" role="contentinfo">
+
+  <div class="container">
+
+   <div class="footer-grid">
+
+    <div>
+
+     <a href="index.html" class="footer-brand-logo">
+
+      <img src="../assets/images/icons/logo.svg" class="footer-brand-logo-mark-img" alt="Logo" width="48"
+
+       height="48" style="margin-right: 12px; flex-shrink: 0;" />
+
+      <div>
+
+       <div class="footer-brand-name">Elise</div>
+
+      </div>
+
+     </a>
+
+     <p class="footer-description">Transforming wardrobes and elevating presence for discerning clients worldwide.
+
+      Elegance is not a size - it's an attitude.</p>
+
+     <div class="footer-social">
+
+      <a href="#" rel="noopener noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none"
+
+        stroke="currentColor" stroke-width="2">
+
+        <rect x="2" y="2" width="20" height="20" rx="5" />
+
+        <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" />
+
+        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+
+       </svg></a>
+
+      <a href="#" rel="noopener noreferrer" aria-label="Pinterest"><svg viewBox="0 0 24 24" fill="none"
+
+        stroke="currentColor" stroke-width="2">
+
+        <path
+
+         d="M12 2C6.48 2 2 6.48 2 12c0 4.24 2.65 7.86 6.39 9.29-.09-.78-.17-1.98.03-2.83.19-.77 1.27-5.38 1.27-5.38s-.32-.65-.32-1.61c0-1.51.88-2.64 1.97-2.64.93 0 1.38.7 1.38 1.54 0 .94-.6 2.34-.91 3.64-.26 1.09.54 1.97 1.61 1.97 1.93 0 3.22-2.47 3.22-5.39 0-2.24-1.52-3.8-3.69-3.8-2.51 0-3.99 1.88-3.99 3.83 0 .76.29 1.57.66 2.01.07.09.08.17.06.26l-.25 1c-.08.31-.27.38-.62.23-1.73-.81-2.81-3.35-2.81-5.4 0-3.13 2.28-6.01 6.58-6.01 3.45 0 6.14 2.46 6.14 5.75 0 3.43-2.16 6.19-5.17 6.19-1.01 0-1.96-.52-2.28-1.15l-.62 2.31c-.22.86-.83 1.94-1.24 2.59.93.29 1.92.45 2.95.45 5.52 0 10-4.48 10-10S17.52 2 12 2z" />
+
+       </svg></a>
+
+      <a href="#" rel="noopener noreferrer" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none"
+
+        stroke="currentColor" stroke-width="2">
+
+        <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z" />
+
+        <rect x="2" y="9" width="4" height="12" />
+
+        <circle cx="4" cy="4" r="2" />
+
+       </svg></a>
+
+      <a href="#" rel="noopener noreferrer" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none"
+
+        stroke="currentColor" stroke-width="2">
+
+        <path
+
+         d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.96A29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z" />
+
+        <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" />
+
+       </svg></a>
+
+     </div>
+
+    </div>
+
+    <div>
+
+     <h3 class="footer-heading">Quick Links</h3>
+
+     <ul class="footer-links">
+
+      <li><a href="about.html">About Us</a></li>
+
+      <li><a href="services.html">Services</a></li>
+
+      <li><a href="pricing.html">Pricing</a></li>
+
+      <li><a href="blog.html">Style Blog</a></li>
+
+      <li><a href="contact.html">Contact Us</a></li>
+
+     </ul>
+
+    </div>
+
+    <div>
+
+     <h3 class="footer-heading">Services</h3>
+
+     <ul class="footer-links">
+
+      <li><a href="service-detail.html">Personal Shopping</a></li>
+
+      <li><a href="service-detail.html">Wardrobe Audit</a></li>
+
+      <li><a href="service-detail.html">Color Analysis</a></li>
+
+      <li><a href="service-detail.html">Corporate Styling</a></li>
+
+      <li><a href="service-detail.html">Bridal Styling</a></li>
+
+      <li><a href="coming-soon.html">Virtual Styling ✦ New</a></li>
+
+     </ul>
+
+    </div>
+
+    <div>
+
+     <h3 class="footer-heading">Stay Inspired</h3>
+
+     <p class="footer-newsletter-text">Get weekly style tips, trend alerts, and exclusive offers delivered to your
+
+      inbox.</p>
+
+     <form class="footer-newsletter-form" aria-label="Newsletter signup">
+
+      <input type="email" placeholder="Your email" aria-label="Email address" required />
+
+      <button type="submit">Subscribe</button>
+
+     </form>
+
+     <div style="margin-top:var(--space-3)">
+
+      <p style="font-size:var(--text-xs);color:rgba(255,255,255,0.4);margin-bottom:8px">OTHER PAGES</p>
+
+      <div style="display:flex;flex-direction:column;gap:6px">
+
+       <a href="404.html"
+
+        style="font-size:var(--text-xs);color:rgba(255,255,255,0.4);transition:color 300ms ease"
+
+        onmouseover="this.style.color='#E8CFC5'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">404
+
+        Page</a>
+
+       <a href="coming-soon.html"
+
+        style="font-size:var(--text-xs);color:rgba(255,255,255,0.4);transition:color 300ms ease"
+
+        onmouseover="this.style.color='#E8CFC5'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Coming
+
+        Soon</a>
+
+      </div>
+
+     </div>
+
+    </div>
+
+   </div>
+
+  </div>
+
+  <div style="border-top:1px solid rgba(255,255,255,0.1)">
+
+   <div class="container">
+
+    <div class="footer-bottom" style="justify-content: center; text-align: center;">
+
+     <p class="footer-bottom-text">© 2026 Elise. All rights reserved.</p>
+
+    </div>
+
+   </div>
+
+  </div>
+
+ </footer>
+
+
+
+ <script src="../assets/js/theme.js"></script>
+
+ <script src="../assets/js/rtl.js"></script>
+
+ <script src="../assets/js/navigation.js"></script>
+
+ <script src="../assets/js/counters.js"></script>
+
+ <script src="../assets/js/main.js"></script>
+
+</body>
+
+
+
 </html>
