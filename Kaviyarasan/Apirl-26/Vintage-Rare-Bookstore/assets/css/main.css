@@ -389,6 +389,7 @@ em { font-style: italic; }
   border-radius: var(--border-radius);
   color: var(--text-secondary);
   transition: all var(--transition-base);
+  margin-top: 2px;
 }
 
 .nav-icon-btn:hover {
