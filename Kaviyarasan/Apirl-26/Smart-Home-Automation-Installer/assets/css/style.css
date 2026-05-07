@@ -1067,6 +1067,8 @@ textarea.form-input { resize: vertical; min-height: 120px; }
   overflow-y: auto;
   z-index: 100;
   transition: transform var(--transition-base);
+  display: flex;
+  flex-direction: column;
 }
 .dashboard__sidebar.collapsed { transform: translateX(-100%); }
 .dashboard__main {
@@ -1132,10 +1134,14 @@ textarea.form-input { resize: vertical; min-height: 120px; }
   color: var(--text-secondary);
   transition: all var(--transition-base);
   margin-bottom: 2px;
+  text-decoration: none;
 }
 .sidebar-nav__item:hover { background: var(--bg-card-hover); color: var(--text-primary); }
-.sidebar-nav__item.active { background: rgba(37,99,235,0.1); color: var(--color-primary); }
-.sidebar-nav__item svg { width: 20px; height: 20px; }
+.sidebar-nav__item.active { background: rgba(37,99,235,0.1); color: var(--color-primary); font-weight: var(--fw-semibold); }
+.sidebar-nav__item.active svg { color: var(--color-primary); }
+.sidebar-nav__item svg { width: 20px; height: 20px; flex-shrink: 0; }
+.sidebar-nav__item--logout { color: var(--color-danger, #EF4444); }
+.sidebar-nav__item--logout:hover { background: rgba(239,68,68,0.08); color: var(--color-danger, #EF4444); }
 
 @media (max-width: 1024px) {
   .dashboard__sidebar {
