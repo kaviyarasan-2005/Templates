@@ -35,7 +35,24 @@
   </script>
   <style>
     /* Home-specific overrides */
-    .services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+
+    /* Hero — slightly taller for more visual impact */
+    .hero { min-height: 110vh; }
+
+    /* Fleet cards: 2 columns, 3rd card centred below */
+    .services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; justify-items: center; }
+
+
+    /* Uniform card text — prevent description breaks */
+    .services-grid .card-body p {
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      min-height: 4.2em; /* 3 lines × 1.4 line-height */
+    }
+
     .why-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
     .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
     .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
@@ -63,6 +80,7 @@
     .card:hover .card-title { color: var(--color-primary); }
     @media (max-width: 1024px) {
       .services-grid, .fleet-grid { grid-template-columns: repeat(2, 1fr); }
+      .services-grid > .card:last-child { max-width: 100%; }
       .why-grid { grid-template-columns: repeat(2, 1fr); }
       .process-grid { grid-template-columns: repeat(2, 1fr); }
       .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
@@ -70,9 +88,11 @@
       .dest-card-big { grid-row: auto; }
       .dest-card-big img { height: 250px; }
       .process-step::after { display: none; }
+      .hero { min-height: 100vh; }
     }
     @media (max-width: 640px) {
       .services-grid, .fleet-grid, .why-grid, .process-grid, .testimonials-grid { grid-template-columns: 1fr; }
+      .services-grid > .card:last-child { max-width: 100%; }
       .destinations-grid { grid-template-columns: 1fr; }
       .newsletter-form { flex-direction: column; }
     }
@@ -291,42 +311,7 @@
             </div>
           </a>
 
-          <a href="service-detail.html" class="card animate-fade-up" data-search-item data-category="motorhome">
-            <div class="card-image-wrap">
-              <img src="../assets/images/IMG_8244.webp" alt="Class C luxurious campervan side profile" loading="lazy" />
-              <span class="card-badge" style="background: var(--color-info);">Elite Luxury</span>
-            </div>
-            <div class="card-body">
-              <h3 class="card-title">Class C Motorhome</h3>
-              <p>The perfect balance of size and luxury. Easy to drive like a van, but with the amenities of a full-scale motorhome. Preferred by many couples.</p>
-              <div class="card-meta">
-                <span class="rv-spec"><i class="fas fa-users"></i> Up to 5</span>
-                <span class="rv-spec"><i class="fas fa-ruler-combined"></i> 24–32 ft</span>
-                <span class="rv-spec"><i class="fas fa-gas-pump"></i> Diesel/Gas</span>
-              </div>
-            </div>
-            <div class="card-footer">
-              <div class="card-price">$289<span>/day</span></div>
-            </div>
-          </a>
 
-          <a href="service-detail.html" class="card animate-fade-up" data-search-item data-category="trailer">
-            <div class="card-image-wrap">
-              <img src="../assets/images/travel-homes-scaled.webp" alt="Travel trailer by a calm lake" loading="lazy" />
-            </div>
-            <div class="card-body">
-              <h3 class="card-title">Travel Trailer</h3>
-              <p>Spacious living at a great price. Detach at camp and explore with your tow vehicle. Great for families and couples alike.</p>
-              <div class="card-meta">
-                <span class="rv-spec"><i class="fas fa-users"></i> Up to 6</span>
-                <span class="rv-spec"><i class="fas fa-ruler-combined"></i> 18–35 ft</span>
-                <span class="rv-spec"><i class="fas fa-plug"></i> Full Hook-up</span>
-              </div>
-            </div>
-            <div class="card-footer">
-              <div class="card-price">$149<span>/day</span></div>
-            </div>
-          </a>
         </div>
         <div style="text-align: center; margin-top: 40px;">
           <a href="services.html" class="btn btn-outline btn-lg" id="view-all-fleet-btn"><i class="fas fa-th-large"></i> View All 500+ Vehicles</a>
