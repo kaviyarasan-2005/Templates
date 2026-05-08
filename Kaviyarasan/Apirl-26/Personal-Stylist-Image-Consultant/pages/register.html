@@ -94,41 +94,41 @@
 
     <form id="register-form" data-validate-form novalidate aria-label="Registration form">
 
-     <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-2)">
+     <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-2);margin-bottom:var(--space-3)">
 
-      <div class="form-group">
+      <div class="form-group" style="margin-bottom:0">
 
        <label class="form-label" for="reg-firstname">First Name *</label>
 
        <input type="text" id="reg-firstname" name="first_name" class="form-control" placeholder="Sophia" data-validate="required" required aria-required="true" autocomplete="given-name"/>
 
-       <p class="form-error" role="alert"></p>
+       <p class="form-error" role="alert" style="margin:0"></p>
 
       </div>
 
-      <div class="form-group">
+      <div class="form-group" style="margin-bottom:0">
 
        <label class="form-label" for="reg-lastname">Last Name *</label>
 
        <input type="text" id="reg-lastname" name="last_name" class="form-control" placeholder="Chen" data-validate="required" required aria-required="true" autocomplete="family-name"/>
 
-       <p class="form-error" role="alert"></p>
+       <p class="form-error" role="alert" style="margin:0"></p>
 
       </div>
 
      </div>
 
-     <div class="form-group">
+     <div class="form-group" style="margin-bottom:var(--space-3)">
 
       <label class="form-label" for="reg-email">Email Address *</label>
 
       <input type="email" id="reg-email" name="email" class="form-control" placeholder="sophia@example.com" data-validate="required,email" required aria-required="true" autocomplete="email"/>
 
-      <p class="form-error" role="alert"></p>
+      <p class="form-error" role="alert" style="margin:0"></p>
 
      </div>
 
-     <div class="form-group">
+     <div class="form-group" style="margin-bottom:var(--space-3)">
 
       <label class="form-label" for="reg-password">Password *</label>
 
@@ -146,15 +146,15 @@
 
       </div>
 
-      <div class="password-strength-bar"><div class="password-strength-fill" id="pw-strength-fill"></div></div>
+      <div class="password-strength-bar" style="margin-top:8px"><div class="password-strength-fill" id="pw-strength-fill"></div></div>
 
-      <p class="password-strength-text" id="pw-strength-text"></p>
+      <p class="password-strength-text" id="pw-strength-text" style="margin:0;font-size:var(--text-xs)"></p>
 
-      <p class="form-error" role="alert"></p>
+      <p class="form-error" role="alert" style="margin:0"></p>
 
      </div>
 
-     <div class="form-group">
+     <div class="form-group" style="margin-bottom:var(--space-3)">
 
       <label class="form-label" for="reg-interest">I'm interested in (optional)</label>
 
@@ -176,7 +176,7 @@
 
      </div>
 
-     <div class="form-group">
+     <div class="form-group" style="margin-bottom:var(--space-2)">
 
       <label class="form-check">
 
@@ -188,7 +188,7 @@
 
      </div>
 
-     <div class="form-group">
+     <div class="form-group" style="margin-bottom:var(--space-4)">
 
       <label class="form-check">
 
