@@ -60,13 +60,6 @@
 [dir="rtl"] .hero-subtitle { margin-inline-start: auto; margin-inline-end: 0; }
 
 /* ============================================================
-   SECTION HEADER
-   ============================================================ */
-[dir="rtl"] .section-header { text-align: right; }
-[dir="rtl"] .section-header.text-center { text-align: center; }
-[dir="rtl"] .divider-left { margin-inline-start: auto; margin-inline-end: 0; }
-
-/* ============================================================
    CARDS
    ============================================================ */
 [dir="rtl"] .blog-card-meta { flex-direction: row-reverse; justify-content: flex-end; }
