@@ -14,7 +14,7 @@ const Animations = (() => {
   function init() {
     initScrollReveals();
     initParallax();
-    initCustomCursor();
+    // initCustomCursor(); // Disabled for better visibility
     initButtonRipple();
     initCardTilt();
     initCounters();
@@ -68,20 +68,20 @@ const Animations = (() => {
 
   /* === Custom Cursor === */
   function initCustomCursor() {
-    cursorEl = document.querySelector('.custom-cursor');
     if (!cursorEl || window.matchMedia('(pointer: coarse)').matches) return;
 
     document.addEventListener('mousemove', (e) => {
       cursorEl.style.left = e.clientX + 'px';
       cursorEl.style.top = e.clientY + 'px';
     });
-
-    // Expand on interactive elements
+    // Custom cursor expansion removed for better visibility
+    /*
     const interactiveEls = document.querySelectorAll('a, button, input, textarea, select, [role="button"], .card, .btn');
     interactiveEls.forEach(el => {
       el.addEventListener('mouseenter', () => cursorEl.classList.add('expanded'));
       el.addEventListener('mouseleave', () => cursorEl.classList.remove('expanded'));
     });
+    */
   }
 
   /* === Button Ripple Effect === */

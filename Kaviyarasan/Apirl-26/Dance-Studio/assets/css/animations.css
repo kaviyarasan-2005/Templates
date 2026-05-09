@@ -324,24 +324,35 @@
 
 /* === Custom Cursor === */
 .custom-cursor {
+  display: none !important;
+}
+
+/* 
+.custom-cursor {
   position: fixed;
-  width: 20px;
-  height: 20px;
-  border: 2px solid var(--color-primary);
+  width: 8px;
+  height: 8px;
+  background-color: var(--color-primary);
   border-radius: 50%;
   pointer-events: none;
   z-index: var(--z-cursor);
   transform: translate(-50%, -50%);
-  transition: width 0.3s ease, height 0.3s ease, background-color 0.3s ease;
-  mix-blend-mode: difference;
+  transition: width 0.3s cubic-bezier(0.23, 1, 0.32, 1), 
+              height 0.3s cubic-bezier(0.23, 1, 0.32, 1), 
+              background-color 0.3s ease,
+              border 0.3s ease;
 }
+*/
 
+/* Custom cursor expanded state removed for better visibility */
+/*
 .custom-cursor.expanded {
-  width: 50px;
-  height: 50px;
-  background-color: rgba(var(--color-primary-rgb), 0.15);
-  border-color: var(--color-accent);
+  width: 45px;
+  height: 45px;
+  background-color: transparent;
+  border: 1px solid var(--color-primary);
 }
+*/
 
 @media (pointer: coarse) {
   .custom-cursor { display: none; }
