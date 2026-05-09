@@ -1118,7 +1118,6 @@
   .navbar__inner { padding: 0 var(--space-4); }
   .navbar__menu { gap: var(--space-4); }
   .navbar__link { font-size: var(--font-size-sm); }
-  .navbar__logo-text { display: none; } /* Show only icon on small tablets to save space */
 }
 
 /* ========================================
