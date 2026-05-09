@@ -132,14 +132,14 @@
   <!-- FEATURED SPOTLIGHT ARTICLE -->
   <section class="section" id="featured-post" aria-labelledby="featured-heading">
     <div class="container">
-      <div class="section__header reveal" style="text-align:left;margin-bottom:32px;">
-        <h2 id="featured-heading" style="font-size:2rem;">Editor's Pick</h2>
+      <div class="section__header reveal" style="margin-bottom:32px;">
+        <h2 id="featured-heading" style="font-size:clamp(1.75rem,4vw,2.5rem);">Editor's Pick</h2>
       </div>
-      <div style="display:grid;grid-template-columns:1.5fr 1fr;gap:40px;align-items:center;background:var(--color-bg);border:1px solid var(--color-border);border-radius:16px;overflow:hidden;box-shadow:var(--shadow-md);" class="reveal">
-        <a href="blog-detail.html" style="display:block;height:100%;min-height:350px;">
-          <img src="../assets/images/blog/featured-spotlight.png" alt="Featured art gallery exhibition" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+      <div class="featured-card reveal">
+        <a href="blog-detail.html" class="featured-card__image">
+          <img src="../assets/images/blog/featured-spotlight.png" alt="Featured art gallery exhibition" loading="lazy">
         </a>
-        <div style="padding:40px 40px 40px 0;">
+        <div class="featured-card__content">
           <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
             <span class="badge badge--gold">In-Depth Review</span>
             <span style="font-size:0.875rem;color:var(--color-text-secondary);">Oct 20, 2026</span>
@@ -379,6 +379,52 @@
       grid-template-columns: repeat(2, 1fr);
       gap: 24px;
     }
+    .featured-card {
+      display: grid;
+      grid-template-columns: 1fr;
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+    }
+    .featured-card__image {
+      display: block;
+      height: 250px;
+    }
+    .featured-card__image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .featured-card__content {
+      padding: 24px;
+    }
+    
+    @media (min-width: 768px) {
+      .featured-card {
+        grid-template-columns: 1.2fr 1fr;
+        gap: 0;
+      }
+      .featured-card__image {
+        height: 100%;
+        min-height: 350px;
+      }
+      .featured-card__content {
+        padding: 40px 40px 40px 0;
+      }
+    }
+    
+    @media (min-width: 1024px) {
+      .featured-card {
+        grid-template-columns: 1.5fr 1fr;
+        gap: 40px;
+      }
+      .featured-card__content {
+        padding: 40px 40px 40px 0;
+      }
+    }
+
     @media (max-width: 1024px) {
       .masonry { grid-template-columns: repeat(2, 1fr) !important; }
     }
