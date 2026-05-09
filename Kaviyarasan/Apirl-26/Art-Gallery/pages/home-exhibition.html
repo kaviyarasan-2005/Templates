@@ -194,52 +194,70 @@
         <button class="filter-pill" data-filter="digital">Digital</button>
       </div>
 
-      <div class="masonry" id="gallery-grid" data-stagger>
-        <div class="stagger-child" data-category="painting" style="border-radius:12px;overflow:hidden;cursor:pointer;" data-lightbox="../assets/images/artworks/painting-1.png">
-          <img src="../assets/images/artworks/painting-1.png" alt="Abstract composition in gold, burgundy and copper tones" loading="lazy" style="width:100%;display:block;">
-          <div style="padding:12px;background:var(--color-bg);border:1px solid var(--color-border);border-top:none;border-radius:0 0 12px 12px;">
-            <h4 style="font-size:1rem;">Chromatic Reverie</h4>
-            <p style="font-size:0.8125rem;color:var(--color-text-secondary);">Oil on canvas — Lucia Feretti</p>
+      <div class="grid grid--3" id="gallery-grid" data-stagger>
+        <!-- Work 1 -->
+        <div class="card stagger-child" data-category="painting" style="cursor:pointer;" data-lightbox="../assets/images/artworks/painting-1.png">
+          <div class="card__image" style="aspect-ratio:1/1;">
+            <img src="../assets/images/artworks/painting-1.png" alt="Abstract composition in gold, burgundy and copper tones" loading="lazy">
+          </div>
+          <div class="card__body" style="padding:20px;">
+            <h4 style="font-size:1.125rem;margin-bottom:4px;">Chromatic Reverie</h4>
+            <p style="font-size:0.875rem;color:var(--color-text-secondary);margin-top:auto;">Oil on canvas — Lucia Feretti</p>
           </div>
         </div>
 
-        <div class="stagger-child" data-category="sculpture" style="border-radius:12px;overflow:hidden;cursor:pointer;" data-lightbox="../assets/images/artworks/sculpture-1.png">
-          <img src="../assets/images/artworks/sculpture-1.png" alt="Bronze abstract human figure sculpture" loading="lazy" style="width:100%;display:block;">
-          <div style="padding:12px;background:var(--color-bg);border:1px solid var(--color-border);border-top:none;border-radius:0 0 12px 12px;">
-            <h4 style="font-size:1rem;">The Ascent</h4>
-            <p style="font-size:0.8125rem;color:var(--color-text-secondary);">Bronze — Kenji Nakamura</p>
+        <!-- Work 2 -->
+        <div class="card stagger-child" data-category="sculpture" style="cursor:pointer;" data-lightbox="../assets/images/artworks/sculpture-1.png">
+          <div class="card__image" style="aspect-ratio:1/1;">
+            <img src="../assets/images/artworks/sculpture-1.png" alt="Bronze abstract human figure sculpture" loading="lazy">
+          </div>
+          <div class="card__body" style="padding:20px;">
+            <h4 style="font-size:1.125rem;margin-bottom:4px;">The Ascent</h4>
+            <p style="font-size:0.875rem;color:var(--color-text-secondary);margin-top:auto;">Bronze — Kenji Nakamura</p>
           </div>
         </div>
 
-        <div class="stagger-child" data-category="painting" style="border-radius:12px;overflow:hidden;cursor:pointer;" data-lightbox="../assets/images/artworks/painting-2.png">
-          <img src="../assets/images/artworks/painting-2.png" alt="Impressionist golden sunset landscape painting" loading="lazy" style="width:100%;display:block;">
-          <div style="padding:12px;background:var(--color-bg);border:1px solid var(--color-border);border-top:none;border-radius:0 0 12px 12px;">
-            <h4 style="font-size:1rem;">Amber Fields</h4>
-            <p style="font-size:0.8125rem;color:var(--color-text-secondary);">Oil on linen — Sofia Andersson</p>
+        <!-- Work 3 -->
+        <div class="card stagger-child" data-category="painting" style="cursor:pointer;" data-lightbox="../assets/images/artworks/painting-2.png">
+          <div class="card__image" style="aspect-ratio:1/1;">
+            <img src="../assets/images/artworks/painting-2.png" alt="Impressionist golden sunset landscape painting" loading="lazy">
+          </div>
+          <div class="card__body" style="padding:20px;">
+            <h4 style="font-size:1.125rem;margin-bottom:4px;">Amber Fields</h4>
+            <p style="font-size:0.875rem;color:var(--color-text-secondary);margin-top:auto;">Oil on linen — Sofia Andersson</p>
           </div>
         </div>
 
-        <div class="stagger-child" data-category="digital" style="border-radius:12px;overflow:hidden;cursor:pointer;" data-lightbox="https://images.unsplash.com/photo-1561214115-f2f134cc4912?w=800">
-          <img src="https://images.unsplash.com/photo-1561214115-f2f134cc4912?w=500&h=600&fit=crop" alt="Vibrant digital art with geometric patterns" loading="lazy" style="width:100%;display:block;">
-          <div style="padding:12px;background:var(--color-bg);border:1px solid var(--color-border);border-top:none;border-radius:0 0 12px 12px;">
-            <h4 style="font-size:1rem;">Neural Bloom</h4>
-            <p style="font-size:0.8125rem;color:var(--color-text-secondary);">Digital print — Alex Rivera</p>
+        <!-- Work 4 -->
+        <div class="card stagger-child" data-category="digital" style="cursor:pointer;" data-lightbox="https://images.unsplash.com/photo-1561214115-f2f134cc4912?w=800">
+          <div class="card__image" style="aspect-ratio:1/1;">
+            <img src="https://images.unsplash.com/photo-1561214115-f2f134cc4912?w=500&h=600&fit=crop" alt="Vibrant digital art with geometric patterns" loading="lazy">
+          </div>
+          <div class="card__body" style="padding:20px;">
+            <h4 style="font-size:1.125rem;margin-bottom:4px;">Neural Bloom</h4>
+            <p style="font-size:0.875rem;color:var(--color-text-secondary);margin-top:auto;">Digital print — Alex Rivera</p>
           </div>
         </div>
 
-        <div class="stagger-child" data-category="painting" style="border-radius:12px;overflow:hidden;cursor:pointer;" data-lightbox="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=800">
-          <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=500&h=400&fit=crop" alt="Vivid modern abstract color field painting" loading="lazy" style="width:100%;display:block;">
-          <div style="padding:12px;background:var(--color-bg);border:1px solid var(--color-border);border-top:none;border-radius:0 0 12px 12px;">
-            <h4 style="font-size:1rem;">Color Field No. 7</h4>
-            <p style="font-size:0.8125rem;color:var(--color-text-secondary);">Acrylic on canvas — Mia Tanaka</p>
+        <!-- Work 5 -->
+        <div class="card stagger-child" data-category="painting" style="cursor:pointer;" data-lightbox="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=800">
+          <div class="card__image" style="aspect-ratio:1/1;">
+            <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=500&h=400&fit=crop" alt="Vivid modern abstract color field painting" loading="lazy">
+          </div>
+          <div class="card__body" style="padding:20px;">
+            <h4 style="font-size:1.125rem;margin-bottom:4px;">Color Field No. 7</h4>
+            <p style="font-size:0.875rem;color:var(--color-text-secondary);margin-top:auto;">Acrylic on canvas — Mia Tanaka</p>
           </div>
         </div>
 
-        <div class="stagger-child" data-category="sculpture" style="border-radius:12px;overflow:hidden;cursor:pointer;" data-lightbox="https://images.unsplash.com/photo-1544531586-fde5298cdd40?w=800">
-          <img src="https://images.unsplash.com/photo-1544531586-fde5298cdd40?w=500&h=650&fit=crop" alt="Modern marble sculpture in gallery setting" loading="lazy" style="width:100%;display:block;">
-          <div style="padding:12px;background:var(--color-bg);border:1px solid var(--color-border);border-top:none;border-radius:0 0 12px 12px;">
-            <h4 style="font-size:1rem;">Equilibrium</h4>
-            <p style="font-size:0.8125rem;color:var(--color-text-secondary);">Marble — Daniel Okafor</p>
+        <!-- Work 6 -->
+        <div class="card stagger-child" data-category="sculpture" style="cursor:pointer;" data-lightbox="https://images.unsplash.com/photo-1544531586-fde5298cdd40?w=800">
+          <div class="card__image" style="aspect-ratio:1/1;">
+            <img src="https://images.unsplash.com/photo-1544531586-fde5298cdd40?w=500&h=650&fit=crop" alt="Modern marble sculpture in gallery setting" loading="lazy">
+          </div>
+          <div class="card__body" style="padding:20px;">
+            <h4 style="font-size:1.125rem;margin-bottom:4px;">Equilibrium</h4>
+            <p style="font-size:0.875rem;color:var(--color-text-secondary);margin-top:auto;">Marble — Daniel Okafor</p>
           </div>
         </div>
       </div>
@@ -259,19 +277,19 @@
           <div style="font-size:0.875rem;color:var(--color-primary);font-weight:600;margin-bottom:8px;">Every Saturday | 11:00 AM</div>
           <h3 style="font-size:1.25rem;margin-bottom:12px;">Curator-Led Tour</h3>
           <p style="font-size:0.875rem;color:var(--color-text-secondary);margin-bottom:16px;">Join Dr. Marcus Webb for an in-depth walkthrough exploring the thematic connections between the works.</p>
-          <a href="#" class="btn btn--secondary btn--sm">Register</a>
+          <a href="#" class="btn btn--secondary btn--sm" style="margin-top:auto;">Register</a>
         </div>
         <div class="card stagger-child" style="padding:24px;background:var(--color-muted);">
           <div style="font-size:0.875rem;color:var(--color-primary);font-weight:600;margin-bottom:8px;">Feb 12, 2026 | 6:00 PM</div>
           <h3 style="font-size:1.25rem;margin-bottom:12px;">Artist Talk: Lucia Feretti</h3>
           <p style="font-size:0.875rem;color:var(--color-text-secondary);margin-bottom:16px;">The acclaimed painter discusses her creative process and the inspiration behind Chromatic Reverie.</p>
-          <a href="#" class="btn btn--secondary btn--sm">Register</a>
+          <a href="#" class="btn btn--secondary btn--sm" style="margin-top:auto;">Register</a>
         </div>
         <div class="card stagger-child" style="padding:24px;">
           <div style="font-size:0.875rem;color:var(--color-primary);font-weight:600;margin-bottom:8px;">Mar 05, 2026 | 2:00 PM</div>
           <h3 style="font-size:1.25rem;margin-bottom:12px;">Color Theory Workshop</h3>
           <p style="font-size:0.875rem;color:var(--color-text-secondary);margin-bottom:16px;">A hands-on session exploring the emotional resonance of color palettes used in the exhibition.</p>
-          <a href="#" class="btn btn--secondary btn--sm">Register</a>
+          <a href="#" class="btn btn--secondary btn--sm" style="margin-top:auto;">Register</a>
         </div>
       </div>
     </div>
