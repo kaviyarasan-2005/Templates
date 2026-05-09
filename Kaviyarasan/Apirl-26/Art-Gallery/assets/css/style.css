@@ -74,6 +74,13 @@
   /* Cursor */
   --cursor-size: 20px;
   --cursor-size-hover: 60px;
+  --container-padding: var(--space-4);
+}
+
+@media (max-width: 1024px) {
+  :root {
+    --container-padding: var(--space-2);
+  }
 }
 
 /* Hide scrollbars globally but keep functionality */
@@ -149,14 +156,11 @@ p { color: var(--color-text-secondary); line-height: var(--body-line-height); }
   width: 100%;
   max-width: var(--container-max);
   margin-inline: auto;
-  padding-inline: var(--space-4);
-  overflow-x: hidden;
+  padding-inline: var(--container-padding);
+  
 }
 .container--narrow { max-width: var(--container-narrow); }
 
-@media (max-width: 1024px) {
-  .container { padding-inline: var(--space-2); }
-}
 
 .section {
   padding-block: var(--section-padding);
@@ -205,9 +209,10 @@ p { color: var(--color-text-secondary); line-height: var(--body-line-height); }
   align-items: center;
   justify-content: space-between;
   height: 100%;
+  width: 100%;
   max-width: var(--container-max);
   margin-inline: auto;
-  padding-inline: var(--space-4);
+  padding-inline: var(--container-padding);
 }
 .navbar__logo {
   display: flex;
@@ -461,13 +466,13 @@ p { color: var(--color-text-secondary); line-height: var(--body-line-height); }
     justify-content: center;
   }
   .navbar { height: var(--nav-height-mobile); width: 100vw !important; overflow: hidden; }
-  .navbar__inner { padding-inline: var(--space-4); width: 100% !important; max-width: 100% !important; }
+  .navbar__inner { padding-inline: var(--container-padding); width: 100% !important; max-width: 100% !important; }
   .navbar__logo { font-size: 1.125rem !important; gap: 4px; }
   .navbar__logo svg { width: 28px; height: 28px; }
   /* Hide RTL & theme toggles from the navbar bar at tablet/mobile; they appear in the mobile menu overlay */
   .navbar__actions #rtl-toggle,
   .navbar__actions #theme-toggle { display: none !important; }
-  .navbar__actions { gap: 4px; margin-left: auto; margin-right: 16px; }
+  .navbar__actions { gap: 4px; margin-left: auto; }
   .navbar__actions .navbar__icon-btn { width: 32px; height: 32px; }
   .navbar__actions .navbar__icon-btn svg { width: 18px; height: 18px; }
   .mobile-hidden { display: none !important; }
@@ -625,7 +630,7 @@ p { color: var(--color-text-secondary); line-height: var(--body-line-height); }
   text-align: center;
   color: #fff;
   max-width: 800px;
-  padding: var(--space-4);
+  padding: var(--space-4) var(--container-padding);
 }
 .hero__content h1 { color: #fff; margin-bottom: var(--space-3); }
 .hero__content p {
@@ -638,9 +643,9 @@ p { color: var(--color-text-secondary); line-height: var(--body-line-height); }
   .hero__content {
     background: rgba(0, 0, 0, 0.7);
     border-radius: 12px;
-    padding: 32px 24px;
-    width: calc(100% - 24px);
-    margin-inline: 12px;
+    padding: 32px var(--container-padding);
+    width: calc(100% - 32px);
+    margin-inline: 16px;
     box-shadow: 0 8px 32px rgba(0,0,0,0.3);
   }
   .hero__content h1 { font-size: 1.75rem; margin-bottom: 16px; }
@@ -1085,9 +1090,10 @@ textarea.form-group__input {
 
 .auth-social-btn {
   display: flex;
+  flex-direction: row-reverse;
   align-items: center;
   justify-content: center;
-  gap: var(--space-1);
+  gap: var(--space-2);
   width: 100%;
   height: var(--btn-height);
   border-radius: var(--btn-radius);
@@ -1096,10 +1102,16 @@ textarea.form-group__input {
   transition: all var(--duration-fast);
   border: 1px solid var(--color-border);
 }
-.auth-social-btn--google { background: #fff; color: #333; }
-.auth-social-btn--google:hover { background: #f8f8f8; box-shadow: var(--shadow-md); }
-.auth-social-btn--apple { background: #000; color: #fff; border-color: #000; }
-.auth-social-btn--apple:hover { background: #222; }
+.auth-social-btn--google, .auth-social-btn--apple { 
+  background: var(--color-bg); 
+  color: var(--color-text); 
+  border: 1px solid var(--color-border);
+}
+.auth-social-btn--google:hover, .auth-social-btn--apple:hover { 
+  background: var(--color-bg-alt); 
+  box-shadow: var(--shadow-sm); 
+  border-color: var(--color-primary);
+}
 
 .auth-divider {
   display: flex;
