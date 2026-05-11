@@ -137,18 +137,54 @@
       }
     }
 
-    /* ─── Dashboard User Profile ─── */
+    /* ─── Dashboard User Profile (compact horizontal) ─── */
     .db-user-profile {
-      display: flex; flex-direction: column; align-items: center; gap: 12px;
-      padding: 0 16px 24px; margin-bottom: 24px; border-bottom: 1px solid var(--color-border);
-      text-align: center;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 20px;
+      margin: 8px 12px 8px;
+      border-radius: 14px;
+      background: rgba(212,175,55,0.06);
+      border: 1px solid rgba(212,175,55,0.18);
     }
+    .db-user-profile__avatar-wrap { position: relative; flex-shrink: 0; }
     .db-user-profile__avatar {
-      width: 82px; height: 82px; border-radius: 50%; border: 3px solid var(--color-primary);
-      padding: 4px; background: var(--color-bg); transition: transform 0.3s;
+      width: 46px; height: 46px; border-radius: 50%;
+      border: 2px solid var(--color-primary);
+      padding: 2px; background: var(--color-bg);
+      display: block; object-fit: cover;
     }
-    .db-user-profile__name { font-weight: 700; color: var(--color-text); font-size: 1.15rem; font-family: var(--font-heading); margin-bottom: 2px; }
-    .db-user-profile__email { font-size: 0.85rem; color: var(--color-text-secondary); }
+    .db-user-profile__online {
+      position: absolute; bottom: 2px; right: 2px;
+      width: 10px; height: 10px;
+      background: var(--color-success,#22c55e);
+      border: 2px solid var(--color-bg);
+      border-radius: 50%;
+    }
+    .db-user-profile__info { min-width: 0; flex: 1; }
+    .db-user-profile__name {
+      font-weight: 700; color: var(--color-text);
+      font-size: 0.92rem; font-family: var(--font-heading);
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+      line-height: 1.2;
+    }
+    .db-user-profile__email {
+      font-size: 0.72rem; color: var(--color-text-secondary);
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+      margin-top: 2px;
+    }
+    .db-user-profile__badge {
+      display: inline-block;
+      margin-top: 5px;
+      background: rgba(212,175,55,0.15);
+      color: var(--color-primary);
+      border: 1px solid rgba(212,175,55,0.3);
+      font-size: 0.58rem; font-weight: 700;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      padding: 2px 7px; border-radius: 99px;
+    }
 
     /* ─── Sidebar Navigation ─── */
     .db-sidebar__section-label {
@@ -493,16 +529,16 @@
   <div class="container db-layout">
 
     <aside class="db-sidebar">
-      <!-- Sidebar Profile -->
+      <!-- Sidebar Profile (compact) -->
       <div class="db-user-profile">
-        <div style="position:relative;">
+        <div class="db-user-profile__avatar-wrap">
           <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=120&h=120&fit=crop" alt="David Kim" class="db-user-profile__avatar">
-          <span style="position:absolute;bottom:4px;right:4px;width:14px;height:14px;background:var(--color-success);border:2px solid var(--color-bg);border-radius:50%;"></span>
+          <span class="db-user-profile__online"></span>
         </div>
         <div class="db-user-profile__info">
           <div class="db-user-profile__name">David Kim</div>
           <div class="db-user-profile__email">david@example.com</div>
-          <div style="margin-top:8px;"><span class="badge badge--gold" style="font-size:0.6rem;">Gold Patron</span></div>
+          <span class="db-user-profile__badge">⭐ Gold Patron</span>
         </div>
       </div>
 
@@ -511,23 +547,9 @@
         <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
         Dashboard
       </a>
-      <a href="home-main.html" class="db-nav-link">
-        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-        Home
-      </a>
-
-      <div class="db-sidebar__section-label">Collection</div>
       <a href="#" class="db-nav-link">
         <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
         My Artworks
-      </a>
-      <a href="#" class="db-nav-link">
-        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
-        Saved Artworks
-      </a>
-      <a href="#" class="db-nav-link">
-        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        Wishlist
       </a>
 
       <div class="db-sidebar__section-label">Activity</div>
@@ -539,10 +561,6 @@
         <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
         Messages
         <span style="margin-left:auto;background:var(--color-primary);color:#fff;font-size:0.6rem;font-weight:700;padding:1px 6px;border-radius:99px;">3</span>
-      </a>
-      <a href="#" class="db-nav-link">
-        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-        Purchases
       </a>
 
 
