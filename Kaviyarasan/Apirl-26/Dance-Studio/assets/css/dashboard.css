@@ -468,10 +468,16 @@
 }
 
 /* === Stats Grid === */
-.dashboard__stats,
 .dashboard__grid {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
+  gap: var(--space-6);
+  margin-bottom: var(--space-6);
+}
+
+.dashboard__stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: var(--space-6);
   margin-bottom: var(--space-6);
 }
@@ -969,6 +975,14 @@
   .dashboard__stats,
   .dashboard__grid {
     grid-template-columns: 1fr !important;
+    gap: var(--space-4);
+  }
+
+  .dashboard__card--large,
+  .dashboard__card--small,
+  .dashboard__card--full,
+  .dashboard__grid > .dashboard__card {
+    grid-column: 1 / -1 !important;
   }
 
   /* Mobile Bottom Nav */
