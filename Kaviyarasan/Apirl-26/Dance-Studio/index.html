@@ -129,6 +129,8 @@
       overflow: hidden;
       transform-style: preserve-3d;
       perspective: 1000px;
+      display: flex;
+      flex-direction: column;
     }
     .service-card::before {
       content: '';
@@ -179,8 +181,10 @@
       color: var(--color-primary);
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: var(--space-2);
       transition: gap 0.3s ease;
+      margin-top: auto;
     }
     .service-card__link:hover { gap: var(--space-3); }
 
@@ -662,7 +666,7 @@
             </div>
           </div>
           <div class="program-card">
-            <div class="program-card__img" style="background-image:url('https://images.unsplash.com/photo-1576791558246-f0a23f5d2087?w=600&q=80&fit=crop')"></div>
+            <div class="program-card__img" style="background-image:url('https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600&q=80&fit=crop')"></div>
             <div class="program-card__overlay"></div>
             <div class="program-card__body">
               <span class="program-card__level">Beginner</span>
