@@ -88,11 +88,11 @@
     /* ============ TESTIMONIALS ============ */
     .testimonials-section { background:var(--bg-secondary); }
     .testimonials-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:var(--space-6); }
-    .tcard { background:var(--bg-card); border:1px solid var(--border-color); border-radius:var(--radius-md); padding:var(--space-6); transition:transform .3s ease,box-shadow .3s ease; }
+    .tcard { display:flex; flex-direction:column; background:var(--bg-card); border:1px solid var(--border-color); border-radius:var(--radius-md); padding:var(--space-6); transition:transform .3s ease,box-shadow .3s ease; height: 100%; }
     .tcard:hover { transform:translateY(-6px); box-shadow:var(--shadow-lg); }
     .tcard__stars { color:#F59E0B; font-size:var(--font-size-sm); margin-bottom:var(--space-4); }
     .tcard__text { font-size:var(--font-size-sm); color:var(--text-secondary); font-style:italic; line-height:1.75; margin-bottom:var(--space-5); }
-    .tcard__author { display:flex; align-items:center; gap:var(--space-3); }
+    .tcard__author { margin-top:auto; display:flex; align-items:center; gap:var(--space-3); }
     .tcard__avatar { width:44px; height:44px; border-radius:50%; object-fit:cover; border:2px solid var(--color-primary); }
     .tcard__name { font-weight:700; font-size:var(--font-size-sm); color:var(--text-primary); }
     .tcard__role { font-size:var(--font-size-xs); color:var(--text-tertiary); }
