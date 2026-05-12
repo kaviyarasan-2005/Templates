@@ -173,7 +173,7 @@
     var(--accent) 100%
   );
   background-size: 200% auto;
-  color: var(--text-primary);
+  color: var(--btn-primary-text);
   border: none;
   animation: goldShimmer 3s linear infinite;
 }

@@ -23,6 +23,7 @@
   --text-primary: #2C2416;
   --text-secondary: #6B5B45;
   --text-muted: #9B8B7B;
+  --btn-primary-text: #1A1410;
 
   /* Semantic Colors */
   --success: #2E7D32;
@@ -609,26 +610,26 @@ em { font-style: italic; }
 
 .btn-primary {
   background: var(--accent);
-  color: var(--text-primary);
+  color: var(--btn-primary-text);
   border-color: var(--accent);
 }
 .btn-primary:hover {
   background: var(--accent-hover);
   border-color: var(--accent-hover);
-  color: var(--text-primary);
+  color: var(--btn-primary-text);
   transform: translateY(-2px);
   box-shadow: var(--shadow-lg), var(--shadow-gold);
 }
 
 .btn-accent {
   background: var(--accent);
-  color: var(--text-primary);
+  color: var(--btn-primary-text);
   border-color: var(--accent);
 }
 .btn-accent:hover {
   background: var(--accent-hover);
   border-color: var(--accent-hover);
-  color: var(--text-primary);
+  color: var(--btn-primary-text);
   transform: translateY(-2px);
   box-shadow: var(--shadow-lg), var(--shadow-gold);
 }
@@ -652,7 +653,7 @@ em { font-style: italic; }
 }
 .btn-outline-accent:hover {
   background: var(--accent);
-  color: var(--text-primary);
+  color: var(--btn-primary-text);
   transform: translateY(-2px);
 }
 
