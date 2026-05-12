@@ -296,23 +296,23 @@
   </section>
 
   <!-- PUBLICATIONS -->
-  <section class="section" style="background:var(--color-bg-alt);" id="publications" aria-labelledby="publications-heading">
-    <div class="container">
+  <section class="section" style="background:var(--color-bg-alt);overflow:hidden;" id="publications" aria-labelledby="publications-heading">
+    <div class="container" style="overflow:hidden;">
       <div class="grid grid--2" style="gap:var(--space-8);align-items:center;">
-        <div class="reveal-left">
+        <div class="reveal-left" style="min-width:0;">
           <p style="color:var(--color-primary);font-weight:600;letter-spacing:0.15em;text-transform:uppercase;font-size:0.875rem;margin-bottom:12px;">Gallery Shop</p>
           <h2 id="publications-heading" style="margin-bottom:20px;">Exhibition Catalogue</h2>
           <p style="margin-bottom:24px;line-height:1.8;">Take home the official Abstract Horizons catalogue. This 120-page hardcover volume features high-resolution plates of all 24 artworks, exclusive artist interviews, and critical essays by our curatorial team.</p>
           <ul style="display:flex;flex-direction:column;gap:12px;margin-bottom:32px;">
             <li style="display:flex;align-items:center;gap:8px;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Hardcover, 120 pages</li>
             <li style="display:flex;align-items:center;gap:8px;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Limited edition of 500</li>
-            <li style="display:flex;align-items:center;gap:8px;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Available in English & French</li>
+            <li style="display:flex;align-items:center;gap:8px;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Available in English &amp; French</li>
           </ul>
           <a href="#" class="btn btn--primary">Purchase for $45</a>
         </div>
-        <div class="reveal-right">
-          <div style="border-radius:12px;overflow:hidden;box-shadow:var(--shadow-lg);padding:32px;background:#fff;display:flex;justify-content:center;align-items:center;">
-            <img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=500&h=600&fit=crop" alt="Abstract Horizons Hardcover Catalogue" style="max-width:100%;height:auto;box-shadow:0 10px 30px rgba(0,0,0,0.15);" loading="lazy">
+        <div class="reveal-right" style="min-width:0;width:100%;">
+          <div style="border-radius:12px;box-shadow:var(--shadow-lg);padding:clamp(12px, 4vw, 32px);background:#fff;display:flex;justify-content:center;align-items:center;max-width:100%;box-sizing:border-box;">
+            <img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=500&h=600&fit=crop" alt="Abstract Horizons Hardcover Catalogue" style="max-width:100%;width:100%;height:auto;box-shadow:0 10px 30px rgba(0,0,0,0.15);display:block;" loading="lazy">
           </div>
         </div>
       </div>
