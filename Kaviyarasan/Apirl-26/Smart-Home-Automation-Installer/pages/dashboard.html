@@ -16,9 +16,7 @@
     .sidebar-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:1000;}
     .sidebar-overlay.open{display:block;}
     .sidebar-logo{display:flex;align-items:center;gap:var(--space-1);text-decoration:none;padding:var(--space-2);margin-bottom:var(--space-2);border-bottom:1px solid var(--border-color);}
-    .sidebar-logo img{height:32px;width:32px;}
-    .sidebar-logo span{font-family:var(--font-heading);font-size:var(--fs-lg);font-weight:var(--fw-bold);color:var(--text-primary);}
-    .sidebar-logo span span{color:var(--color-primary);}
+
     .sidebar-section{font-size:var(--fs-xs);text-transform:uppercase;letter-spacing:1.5px;color:var(--text-tertiary);margin:var(--space-2) 0 var(--space-1);padding:0 var(--space-2);}
     .view-toggle{display:flex;background:var(--bg-card-hover);border-radius:var(--border-radius);padding:4px;margin-bottom:var(--space-3);}
     .view-toggle button{flex:1;padding:8px;border-radius:6px;font-size:var(--fs-sm);font-weight:var(--fw-medium);color:var(--text-secondary);transition:all var(--transition-base);background:none;border:none;cursor:pointer;}
@@ -155,7 +153,7 @@
 
     <!-- SIDEBAR -->
     <aside class="dashboard__sidebar" id="dashboard-sidebar" aria-label="Dashboard sidebar">
-      <a href="index.html" class="sidebar-logo" aria-label="SmartNest Home">
+      <a href="index.html" class="brand-logo sidebar-logo" aria-label="SmartNest Home">
         <img src="../assets/images/logo.svg" alt="SmartNest Logo" />
         Smart<span>Nest</span>
       </a>
