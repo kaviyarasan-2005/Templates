@@ -30,6 +30,9 @@
 [data-theme="dark"] img {
   filter: brightness(0.92) contrast(1.05);
 }
+[data-theme="dark"] iframe {
+  filter: grayscale(1) invert(0.9) hue-rotate(180deg) brightness(0.9);
+}
 
 /* Navbar — black background, white text */
 [data-theme="dark"] .navbar {
