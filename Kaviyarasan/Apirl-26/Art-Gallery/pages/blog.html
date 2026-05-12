@@ -136,23 +136,40 @@
   <!-- FEATURED SPOTLIGHT ARTICLE -->
   <section class="section" id="featured-post" aria-labelledby="featured-heading">
     <div class="container">
-      <div class="section__header reveal" style="margin-bottom:32px;">
-        <h2 id="featured-heading" style="font-size:clamp(1.75rem,4vw,2.5rem);">Editor's Pick</h2>
-      </div>
       <div class="featured-card reveal">
-        <a href="blog-detail.html" class="featured-card__image">
-          <img src="../assets/images/blog/featured-spotlight.png" alt="Featured art gallery exhibition" loading="lazy">
-        </a>
+        <!-- Background Image -->
+        <img src="../assets/images/blog/featured-spotlight.png" alt="Featured art gallery exhibition" class="featured-card__bg" loading="lazy">
+        <!-- Gradient Overlay -->
+        <div class="featured-card__overlay"></div>
+        <!-- Floating Editor's Pick Tag -->
+        <div class="featured-card__tag">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          Editor's Pick
+        </div>
+        <!-- Content Overlay -->
         <div class="featured-card__content">
-          <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;flex-wrap:wrap;">
             <span class="badge badge--gold">In-Depth Review</span>
-            <span style="font-size:0.875rem;color:var(--color-text-secondary);">Oct 20, 2026</span>
+            <span style="font-size:0.8125rem;color:rgba(255,255,255,0.7);display:flex;align-items:center;gap:6px;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              Oct 20, 2026
+            </span>
+            <span style="font-size:0.8125rem;color:rgba(255,255,255,0.7);display:flex;align-items:center;gap:6px;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              5 min read
+            </span>
           </div>
-          <h3 style="font-size:1.75rem;line-height:1.3;margin-bottom:16px;font-family:var(--font-heading);">
-            <a href="blog-detail.html" style="color:var(--color-text);">The Resurgence of Abstract Expressionism in the Digital Age</a>
-          </h3>
-          <p style="color:var(--color-text-secondary);font-size:1rem;margin-bottom:24px;line-height:1.7;">Exploring how digital media has redefined the emotional landscapes of contemporary artists, featuring an exclusive look into the creative process behind 'Abstract Horizons'.</p>
-          <a href="blog-detail.html" class="btn btn--primary">Read Full Story</a>
+          <h2 id="featured-heading" style="font-size:clamp(1.5rem,3.5vw,2.25rem);line-height:1.25;margin-bottom:16px;font-family:var(--font-heading);color:#fff;">
+            <a href="blog-detail.html" style="color:#fff;text-decoration:none;">The Resurgence of Abstract Expressionism in the Digital Age</a>
+          </h2>
+          <p style="color:rgba(255,255,255,0.82);font-size:1rem;margin-bottom:28px;line-height:1.7;max-width:560px;">Exploring how digital media has redefined the emotional landscapes of contemporary artists, featuring an exclusive look into the creative process behind 'Abstract Horizons'.</p>
+          <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
+            <a href="blog-detail.html" class="btn btn--primary">Read Full Story</a>
+            <div style="display:flex;align-items:center;gap:10px;">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=36&h=36&fit=crop" style="width:36px;height:36px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,0.4);" alt="Author">
+              <span style="color:rgba(255,255,255,0.85);font-size:0.875rem;font-weight:500;">Dr. Marcus Webb</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -383,50 +400,66 @@
       grid-template-columns: repeat(2, 1fr);
       gap: 24px;
     }
+    /* === EDITOR'S PICK CARD === */
     .featured-card {
-      display: grid;
-      grid-template-columns: 1fr;
-      background: var(--color-bg);
-      border: 1px solid var(--color-border);
-      border-radius: 16px;
+      position: relative;
+      border-radius: 20px;
       overflow: hidden;
-      box-shadow: var(--shadow-md);
+      min-height: 420px;
+      display: flex;
+      align-items: flex-end;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
     }
-    .featured-card__image {
-      display: block;
-      height: 250px;
-    }
-    .featured-card__image img {
+    .featured-card__bg {
+      position: absolute;
+      inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
+      z-index: 0;
+      transition: transform 0.6s ease;
+    }
+    .featured-card:hover .featured-card__bg {
+      transform: scale(1.04);
+    }
+    .featured-card__overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: linear-gradient(
+        to top,
+        rgba(0,0,0,0.88) 0%,
+        rgba(0,0,0,0.5) 45%,
+        rgba(0,0,0,0.08) 100%
+      );
+    }
+    .featured-card__tag {
+      position: absolute;
+      top: 24px;
+      left: 24px;
+      z-index: 3;
+      background: rgba(212,175,55,0.95);
+      color: #1a1a1a;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      backdrop-filter: blur(4px);
     }
     .featured-card__content {
-      padding: 24px;
+      position: relative;
+      z-index: 2;
+      padding: clamp(24px, 5vw, 48px);
+      width: 100%;
     }
-    
-    @media (min-width: 768px) {
-      .featured-card {
-        grid-template-columns: 1.2fr 1fr;
-        gap: 0;
-      }
-      .featured-card__image {
-        height: 100%;
-        min-height: 350px;
-      }
-      .featured-card__content {
-        padding: 40px;
-      }
-    }
-    
-    @media (min-width: 1024px) {
-      .featured-card {
-        grid-template-columns: 1.5fr 1fr;
-        gap: 40px;
-      }
-      .featured-card__content {
-        padding: 40px;
-      }
+    @media (min-width: 1025px) {
+      .featured-card { min-height: 500px; }
+      .featured-card__content { max-width: 70%; }
     }
 
     @media (max-width: 1024px) {
