@@ -44,10 +44,12 @@
     
     /* FAQ Section */
     .faq-grid{max-width:800px;margin:0 auto;}
-    .faq-item{background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--border-radius);margin-bottom:var(--space-1);overflow:hidden;}
-    .faq-question{width:100%;padding:var(--space-2) var(--space-3);text-align:right;background:none;border:none;display:flex;justify-content:space-between;align-items:center;font-weight:var(--fw-semibold);cursor:pointer;}
+    .faq-item{background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--border-radius);margin-bottom:var(--space-1);overflow:hidden;transition:all var(--transition-base);}
+    .faq-question{width:100%;padding:var(--space-2) var(--space-3);text-align:right;background:none;border:none;display:flex;justify-content:space-between;align-items:center;font-weight:var(--fw-semibold);color:var(--text-primary);cursor:pointer;transition:background var(--transition-base);}
+    .faq-question:hover{background:var(--bg-card-hover);}
     .faq-answer{padding:0 var(--space-3) var(--space-2);font-size:var(--fs-sm);color:var(--text-secondary);display:none;}
     .faq-item.active .faq-answer{display:block;}
+    .faq-item.active .faq-question{background:var(--bg-card-hover);}
     .faq-item.active .faq-question svg{transform:rotate(180deg);}
 
     @media(max-width:1024px){

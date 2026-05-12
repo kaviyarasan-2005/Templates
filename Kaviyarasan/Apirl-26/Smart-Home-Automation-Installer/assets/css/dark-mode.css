@@ -143,6 +143,12 @@
 [data-theme="dark"] .data-table th { color: var(--text-secondary); border-bottom-color: #2A2A2A; }
 [data-theme="dark"] .data-table td { border-bottom-color: #2A2A2A; color: var(--text-secondary); }
 
+/* FAQ dark */
+[data-theme="dark"] .faq-item { border-color: #2A2A2A; background: #1A1A1A; }
+[data-theme="dark"] .faq-question { color: var(--text-primary); }
+[data-theme="dark"] .faq-question:hover { background: #2A2A2A; }
+[data-theme="dark"] .faq-answer { color: var(--text-secondary); }
+
 /* Stats bar — darker gradient in dark mode */
 [data-theme="dark"] .stats-bar {
   background: linear-gradient(135deg, #1E3A8A, #1E40AF);
