@@ -86,13 +86,14 @@
     /* -- Heading -- */
     .auth-heading { text-align: center; margin-bottom: 1.5rem; }
     .auth-heading h1 { font-family: var(--font-heading, Georgia, serif); font-size: 1.5rem; font-weight: 700; color: #fff; margin-bottom: 5px; }
-    .auth-heading p { font-size: 0.875rem; color: rgba(255,255,255,0.45); }
+    .auth-heading p { font-size: 0.875rem; color: #fff; }
+
 
 
 
     /* -- Form -- */
     .form-group { display: flex; flex-direction: column; gap: 5px; }
-    .field-label { font-size: 0.8rem; font-weight: 600; color: rgba(255,255,255,0.65); font-family: var(--font-ui); }
+    .field-label { font-size: 0.8rem; font-weight: 600; color: #fff; font-family: var(--font-ui); }
     .field-label .req { color: rgba(212,175,55,0.7); }
     .field-wrap { position: relative; }
     .field-icon {
@@ -105,7 +106,7 @@
       border-radius: 11px; color: #fff; font-family: var(--font-ui); font-size: 0.9rem;
       transition: border-color 0.2s, background 0.2s, box-shadow 0.2s; outline: none;
     }
-    .form-input::placeholder { color: rgba(255,255,255,0.25); }
+    .form-input::placeholder { color: rgba(255,255,255,0.7); }
     .form-input:focus { border-color: rgba(212,175,55,0.5); background: rgba(255,255,255,0.08); box-shadow: 0 0 0 3px rgba(212,175,55,0.1); }
     .field-action {
       position: absolute; right: 11px; top: 50%; transform: translateY(-50%);
@@ -125,16 +126,19 @@
     /* Terms */
     .check-label { display: flex; align-items: flex-start; gap: 9px; cursor: pointer; }
     .check-label input { width: 15px; height: 15px; accent-color: #D4AF37; flex-shrink: 0; margin-top: 2px; }
-    .check-label span { font-family: var(--font-ui); font-size: 0.8125rem; color: rgba(255,255,255,0.45); line-height: 1.5; }
+    .check-label span { font-family: var(--font-ui); font-size: 0.8125rem; color: #fff; line-height: 1.5; }
     .check-label a { color: rgba(212,175,55,0.8); font-weight: 600; text-decoration: none; }
     .check-label a:hover { color: #D4AF37; }
+    .check-label { margin-bottom: 1.5rem; }
+
 
     /* Submit */
     .btn-submit {
       width: 100%; padding: 13px;
       background: linear-gradient(135deg, #D4AF37, #c9991f);
-      border: none; border-radius: 12px; color: #1a0e06;
+      border: none; border-radius: 12px; color: #fff;
       font-family: var(--font-ui); font-size: 1rem; font-weight: 700;
+
       cursor: pointer; transition: all 0.25s ease;
       box-shadow: 0 4px 18px rgba(212,175,55,0.35); position: relative; overflow: hidden;
     }
@@ -143,7 +147,7 @@
     .btn-submit:hover::after { opacity: 1; }
 
     /* Footer */
-    .auth-switch { text-align: center; margin-top: 1.1rem; font-family: var(--font-ui); font-size: 0.875rem; color: rgba(255,255,255,0.38); }
+    .auth-switch { text-align: center; margin-top: 1.1rem; font-family: var(--font-ui); font-size: 0.875rem; color: #fff; }
     .auth-switch a { color: rgba(212,175,55,0.85); font-weight: 600; text-decoration: none; }
     .auth-switch a:hover { color: #D4AF37; }
 
