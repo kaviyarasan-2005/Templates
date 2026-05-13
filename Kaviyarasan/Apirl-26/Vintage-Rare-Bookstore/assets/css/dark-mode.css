@@ -14,8 +14,8 @@
   --cream: #1A1410;
 
   --text-primary: #F0E8DC;
-  --text-secondary: #C4B09A;
-  --text-muted: #8A7A6A;
+  --text-secondary: #E8DCD0;
+  --text-muted: #BBA795;
   --btn-primary-text: #120F0B;
 
   --bg-primary: #1A1410;
@@ -103,7 +103,7 @@
   background: #0D0A07;
 }
 [data-theme="dark"] .footer__links a {
-  color: rgba(192,170,145,0.7);
+  color: rgba(220,200,180,0.9);
 }
 [data-theme="dark"] .footer__social a {
   background: rgba(255,255,255,0.04);
