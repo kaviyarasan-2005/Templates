@@ -130,4 +130,12 @@
   .navbar-link::after {
     transform-origin: right;
   }
+
+  /* Auth Pages */
+  .auth-page { direction: rtl; }
+  .auth-controls { right: auto !important; left: 24px !important; }
+  .visual-content { text-align: right !important; }
+  .form-label { text-align: right !important; }
+  .pass-toggle { right: auto !important; left: 14px !important; }
+  .remember-me, .terms-label { flex-direction: row !important; text-align: right !important; }
 }
