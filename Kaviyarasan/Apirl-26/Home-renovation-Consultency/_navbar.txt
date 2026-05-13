@@ -62,7 +62,7 @@
     <div class="navbar-actions">
       <button class="btn btn-outline btn-sm rtl-toggle-btn" aria-label="Toggle RTL/LTR" title="Toggle RTL/LTR" style="padding: 0 12px; height: 36px; min-width: 50px; font-weight: 700; font-size: 0.75rem;">LTR</button>
       <button class="icon-btn theme-toggle-btn" aria-label="Toggle dark mode" title="Toggle theme"><i class="ph ph-moon"></i></button>
-      <a href="login.html" class="btn btn-outline btn-sm">Login</a>
+      <a href="login.html" class="btn btn-primary btn-sm">Login</a>
 
       <button class="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
         <span></span><span></span><span></span>
