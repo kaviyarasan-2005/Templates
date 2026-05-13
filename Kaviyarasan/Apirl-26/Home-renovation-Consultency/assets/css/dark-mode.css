@@ -3,30 +3,31 @@
    dark-mode.css
    ============================================ */
 [data-theme="dark"] {
-  --text-primary: #F0EDE8;
-  --text-secondary: #B8B4AE;
-  --text-muted: #8A8680;
-  --text-light: #6B6760;
-  --bg-primary: #0F1923;
-  --bg-secondary: #162230;
-  --bg-tertiary: #1C2D3D;
-  --border-color: #243347;
+  --text-primary: #FFFFFF;
+  --text-secondary: #B0B0B0;
+  --text-muted: #707070;
+  --text-light: #505050;
+  --bg-primary: #000000;
+  --bg-secondary: #1E1E1E; /* Card Backgrounds */
+  --bg-tertiary: #121212;  /* Alternate Section Backgrounds */
+  --border-color: #2A2A2A;
   --secondary: #2E5F8A;
   --secondary-dark: #1A3C5E;
   --secondary-light: #3A74A8;
 }
-[data-theme="dark"] body { background-color: var(--bg-primary); }
+[data-theme="dark"] body { background-color: var(--bg-primary); color: var(--text-secondary); }
 [data-theme="dark"] .navbar {
-  background: rgba(15,25,35,0.95);
+  background: rgba(0,0,0,0.9);
   border-bottom-color: var(--border-color);
+  backdrop-filter: blur(10px);
 }
-[data-theme="dark"] .navbar-brand .brand-name { color: #F0EDE8; }
+[data-theme="dark"] .navbar-brand .brand-name { color: #FFFFFF; }
 [data-theme="dark"] .nav-link { color: var(--text-secondary); }
 [data-theme="dark"] .nav-link:hover, [data-theme="dark"] .nav-link.active { color: var(--primary); background: rgba(232,98,42,0.12); }
-[data-theme="dark"] .dropdown-menu { background: #162230; border-color: var(--border-color); }
+[data-theme="dark"] .dropdown-menu { background: var(--bg-secondary); border-color: var(--border-color); }
 [data-theme="dark"] .dropdown-item { color: var(--text-secondary); }
 [data-theme="dark"] .dropdown-item:hover { color: var(--primary); background: rgba(232,98,42,0.1); }
-[data-theme="dark"] .mobile-nav { background: #162230; }
+[data-theme="dark"] .mobile-nav { background: var(--bg-secondary); }
 [data-theme="dark"] .card, [data-theme="dark"] .service-card,
 [data-theme="dark"] .testimonial-card, [data-theme="dark"] .blog-card,
 [data-theme="dark"] .pricing-card, [data-theme="dark"] .team-card,
@@ -43,13 +44,13 @@
 [data-theme="dark"] .form-control:focus { border-color: var(--primary); }
 [data-theme="dark"] .form-control::placeholder { color: var(--text-muted); }
 [data-theme="dark"] .form-label { color: var(--text-primary); }
-[data-theme="dark"] .footer { background: #0A1520; }
+[data-theme="dark"] .footer { background: #080808; border-top: 1px solid var(--border-color); }
 [data-theme="dark"] .icon-btn { border-color: var(--border-color); color: var(--text-secondary); }
 [data-theme="dark"] .icon-btn:hover { border-color: var(--primary); color: var(--primary); }
 [data-theme="dark"] .hamburger span { background: var(--text-primary); }
 [data-theme="dark"] .bg-light { background: var(--bg-tertiary) !important; }
-[data-theme="dark"] .page-header:not(.has-image) { background: linear-gradient(135deg, #08121C 0%, #0F2840 100%); }
-[data-theme="dark"] .stats-section { background: #0A1520; }
+[data-theme="dark"] .page-header:not(.has-image) { background: #0A0A0A; }
+[data-theme="dark"] .stats-section { background: #080808; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
 [data-theme="dark"] .mobile-nav-link { color: var(--text-primary); }
 [data-theme="dark"] .mobile-dropdown-item { color: var(--text-secondary); }
 [data-theme="dark"] .mobile-nav-link.active, [data-theme="dark"] .mobile-nav-link:hover { color: var(--primary); }
@@ -59,5 +60,25 @@
 [data-theme="dark"] .pricing-name { color: var(--text-primary); }
 [data-theme="dark"] .contact-info h4 { color: var(--text-primary); }
 
+/* Buttons in Dark Mode */
+[data-theme="dark"] .btn-outline {
+  color: var(--text-primary);
+  border-color: var(--border-color);
+}
+[data-theme="dark"] .btn-outline:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #FFFFFF;
+}
+[data-theme="dark"] .btn-outline-white {
+  border-color: rgba(255,255,255,0.3);
+  color: #FFFFFF;
+}
+[data-theme="dark"] .btn-outline-white:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: #FFFFFF;
+}
+
 /* Auth Pages Dark Mode */
 [data-theme="dark"] .auth-logo-name { color: #FFFFFF; }
+[data-theme="dark"] .auth-card { background: var(--bg-secondary); border-color: var(--border-color); }
