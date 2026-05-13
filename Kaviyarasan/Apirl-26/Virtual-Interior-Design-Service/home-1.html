@@ -161,6 +161,20 @@
       color: #FFFFFF;
       margin-bottom: var(--space-4);
     }
+    /* Button on teal background — white with teal text for contrast */
+    .cta-band .btn-primary {
+      background-color: #ffffff !important;
+      color: var(--color-primary) !important;
+      border-color: #ffffff !important;
+    }
+    .cta-band .btn-primary:hover {
+      background-color: transparent !important;
+      color: #ffffff !important;
+      border-color: #ffffff !important;
+      border-width: 2px;
+      box-shadow: none;
+      transform: translateY(-2px);
+    }
     @media (max-width: 768px) {
       .hero-badges { justify-content: center; }
       .service-card { opacity: 1; transform: none; }
@@ -422,7 +436,7 @@
   <section class="section cta-band">
     <div class="container animate-on-scroll scale-in">
       <h2>Ready to reinvent your reality?</h2>
-      <a href="pricing.html" class="btn btn-primary" style="background: var(--color-secondary); color: #000;">Start Your Project</a>
+      <a href="pricing.html" class="btn btn-primary">Start Your Project</a>
     </div>
   </section>
 
