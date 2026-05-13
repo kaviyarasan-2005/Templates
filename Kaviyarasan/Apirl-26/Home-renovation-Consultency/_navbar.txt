@@ -15,8 +15,8 @@
           Home <i class="ph ph-caret-down"></i>
         </a>
         <div class="dropdown-menu" role="menu" aria-labelledby="nav-home">
-          <a href="index.html" class="dropdown-item" role="menuitem"><i class="ph ph-house"></i> Home Page 1</a>
-          <a href="home-2.html" class="dropdown-item" role="menuitem"><i class="ph ph-buildings"></i> Home Page 2</a>
+          <a href="index.html" class="dropdown-item" role="menuitem">Home Page 1</a>
+          <a href="home-2.html" class="dropdown-item" role="menuitem">Home Page 2</a>
         </div>
       </div>
       
