@@ -638,6 +638,12 @@
   margin-right: auto;
 }
 
+/* Push the 72% progress widget to the far (left) end of the welcome row in RTL */
+[dir="rtl"] .user-progress-widget {
+  margin-left: 0;
+  margin-right: auto;
+}
+
 [dir="rtl"] .dash-sidebar {
   left: auto;
   right: 0;
