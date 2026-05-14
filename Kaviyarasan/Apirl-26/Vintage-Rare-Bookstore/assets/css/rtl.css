@@ -135,6 +135,19 @@
   flex-direction: row-reverse;
 }
 
+/* ===== PRICING TOGGLE RTL ===== */
+[dir="rtl"] .billing-nav {
+  flex-direction: row-reverse;
+}
+[dir="rtl"] .billing-pill {
+  left: auto;
+  right: 2px;
+}
+[dir="rtl"] .billing-pill.annual {
+  transform: translateX(-110px) !important;
+}
+[dir="rtl"] .billing-btn { text-align: center; }
+
 /* ===== BREADCRUMB RTL ===== */
 [dir="rtl"] .breadcrumb {
   flex-direction: row-reverse;
