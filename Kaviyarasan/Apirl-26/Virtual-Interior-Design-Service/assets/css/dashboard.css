@@ -240,7 +240,7 @@
 /* Stat Cards */
 .stat-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-3); margin-bottom: var(--space-4); }
 @media (max-width: 1200px) { .stat-cards { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 640px) { .stat-cards { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 640px)  { .stat-cards { grid-template-columns: 1fr; } }
 
 .stat-card {
   background: var(--color-bg);
@@ -738,11 +738,134 @@
 }
 
 @media (max-width: 1024px) {
+  /* ── RTL mobile/tablet sidebar – fully consolidated ──
+     Must re-declare positioning here so the base mobile block's
+     left:0 / translateX(-100%) never bleeds into RTL layout. */
   [dir="rtl"] .dash-sidebar {
-    transform: translateX(100%);
+    left: auto !important;         /* cancel base left:0 */
+    right: 0 !important;           /* anchor to right edge */
+    transform: translateX(100%);   /* slide fully off-screen to the right */
   }
+
+  /* When hamburger opens the sidebar, slide it back into view */
   [dir="rtl"] .dash-sidebar.mobile-open {
     transform: translateX(0);
   }
-  [dir="rtl"] .dash-main { margin-right: 0 !important; }
+
+  /* No desktop margin offsets in overlay mode */
+  [dir="rtl"] .dash-main {
+    margin-right: 0 !important;
+    margin-left:  0 !important;
+  }
+}
+
+/* Prevent horizontal scrollbar while RTL sidebar is hidden off-screen right */
+[dir="rtl"] .dash-wrapper {
+  overflow-x: hidden;
+}
+
+/* ═══════════════════════════════════════════════════════
+   SMALL MOBILE FIX  ≤ 480px  (covers 360px devices)
+   Stops header & card overflow in both LTR and RTL mode
+═══════════════════════════════════════════════════════ */
+@media (max-width: 480px) {
+
+  /* --- Global overflow guard --- */
+  html, body {
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+
+  /* --- Header: shrink padding & gaps --- */
+  .dash-header {
+    padding: 0 var(--space-2);   /* 8px each side instead of 24px */
+    gap: var(--space-2);
+    height: 56px;
+  }
+
+  /* Hide the search bar — too wide for 360px alongside 3 icon btns */
+  .dash-search {
+    display: none;
+  }
+
+  /* Shrink icon buttons slightly */
+  .header-icon-btn {
+    width: 32px;
+    height: 32px;
+  }
+
+  /* Shrink avatar slightly */
+  .user-avatar {
+    width: 30px;
+    height: 30px;
+  }
+
+  /* Tighten action group gap */
+  .dash-header-actions {
+    gap: var(--space-1);
+  }
+
+  /* --- Content area: reduce padding --- */
+  .dash-content {
+    padding: var(--space-2);
+  }
+
+  /* --- Stat cards: single column, no overflow --- */
+  .stat-cards {
+    grid-template-columns: 1fr;
+    gap: var(--space-2);
+  }
+
+  .stat-card {
+    padding: var(--space-3);
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  /* Reduce oversized stat value font on tiny screens */
+  .stat-value {
+    font-size: var(--text-xl);
+  }
+
+  /* --- Chart / info cards: single column, no overflow --- */
+  .charts-grid-expanded {
+    grid-template-columns: 1fr;
+    gap: var(--space-2);
+  }
+
+  .chart-card {
+    min-width: 0;
+    box-sizing: border-box;
+    padding: var(--space-3);
+  }
+
+  /* --- Table cards: guard overflow --- */
+  .table-card {
+    min-width: 0;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  /* Table header: stack search + export button on small screens */
+  .table-header {
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-3);
+  }
+
+  /* --- Project cards: single column --- */
+  .project-cards {
+    grid-template-columns: 1fr;
+  }
+
+  /* --- RTL-specific: ensure no side margin causes bleed --- */
+  [dir="rtl"] .dash-header-actions {
+    gap: var(--space-1);
+  }
+
+  /* RTL progress widget: full width on tiny screens */
+  [dir="rtl"] .user-progress-widget {
+    width: 100%;
+    margin-right: 0 !important;
+  }
 }
