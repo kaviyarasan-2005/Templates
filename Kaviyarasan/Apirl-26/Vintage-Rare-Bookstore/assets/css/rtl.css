@@ -33,6 +33,8 @@
   left: auto;
   right: 0;
   transform: translateX(100%);
+  border-right: none;
+  border-left: 1px solid var(--border);
 }
 [dir="rtl"] .mobile-nav.open {
   transform: translateX(0);
@@ -116,6 +118,12 @@
 }
 [dir="rtl"] .form-error {
   flex-direction: row-reverse;
+}
+
+/* ===== AUTH PAGES RTL ===== */
+[dir="rtl"] .auth-topbar {
+  right: auto;
+  left: 1rem;
 }
 
 /* ===== BREADCRUMB RTL ===== */
