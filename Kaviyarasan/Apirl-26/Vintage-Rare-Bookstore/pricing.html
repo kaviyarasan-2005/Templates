@@ -12,13 +12,14 @@
   <style>
     .pricing-section{padding:var(--space-4xl) 0;position:relative;background:radial-gradient(circle at top left, rgba(212,175,55,0.05), transparent 40%), radial-gradient(circle at bottom right, rgba(93,58,26,0.05), transparent 40%)}
     .billing-toggle-wrapper{display:flex;justify-content:center;align-items:center;margin:0 auto var(--space-4xl);width:100%;text-align:center}
-    .billing-nav{display:inline-flex;background:rgba(0,0,0,0.03);padding:2px;border-radius:12px;position:relative;border:1px solid var(--border);box-shadow:inset 0 1px 3px rgba(0,0,0,0.05);box-sizing:content-box}
-    .billing-btn{width:110px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:10px;font-family:var(--font-ui);font-size:0.8125rem;font-weight:800;text-transform:uppercase;letter-spacing:0.05em;color:var(--text-muted);cursor:pointer;transition:all 0.3s ease;background:none;border:none;z-index:2;position:relative;margin:0;padding:0}
-    .billing-btn.active{color:var(--text-primary)}
-    .billing-pill{position:absolute;top:2px;left:2px;width:110px;height:40px;background:var(--bg-card);border-radius:10px;transition:transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);box-shadow:var(--shadow-sm);border:1px solid var(--border);z-index:1}
-    .billing-pill.annual{transform:translateX(110px)}
-    [data-theme="dark"] .billing-pill { background: rgba(255,255,255,0.1); border-color: rgba(212,175,55,0.3); }
-    [data-theme="dark"] .billing-btn.active { color: var(--accent); }
+    .billing-nav{display:inline-flex;background:var(--bg-secondary);padding:6px;border-radius:100px;position:relative;border:1px solid var(--border);box-shadow:var(--shadow-lg);box-sizing:content-box;overflow:hidden}
+    .billing-btn{width:120px;height:44px;display:flex;align-items:center;justify-content:center;border-radius:100px;font-family:var(--font-ui);font-size:0.875rem;font-weight:700;letter-spacing:0.02em;color:var(--text-muted);cursor:pointer;transition:all 0.4s cubic-bezier(0.23, 1, 0.32, 1);background:none;border:none;z-index:2;position:relative;margin:0;padding:0}
+    .billing-btn.active{color:#fff}
+    .billing-pill{position:absolute;top:6px;left:6px;width:120px;height:44px;background:linear-gradient(135deg, var(--accent), #B8860B);border-radius:100px;transition:transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);box-shadow:0 4px 15px rgba(212,175,55,0.4);z-index:1}
+    .billing-pill.annual{transform:translateX(120px)}
+    [data-theme="dark"] .billing-nav { background: #000; border-color: rgba(212,175,55,0.2); }
+    [data-theme="dark"] .billing-btn.active { color: #fff; }
+    [data-theme="light"] .billing-btn.active { color: #000; }
     .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-xl);margin-bottom:var(--space-4xl)}
     .price-card{background:var(--bg-card);border:1px solid var(--border);border-radius:32px;padding:var(--space-3xl) var(--space-2xl);position:relative;transition:all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);display:flex;flex-direction:column;height:100%}
     .price-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-xl);border-color:rgba(212,175,55,0.3)}
@@ -322,7 +323,7 @@
         // Update UI
         btns.forEach(b => b.classList.toggle('active', b === btn));
         pill.classList.toggle('annual', annual);
-        pill.style.transform = annual ? 'translateX(110px)' : 'translateX(0)';
+        pill.style.transform = annual ? 'translateX(120px)' : 'translateX(0)';
 
         // Update Prices
         document.querySelectorAll('.price-num[data-monthly]').forEach(el => {

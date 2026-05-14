@@ -141,10 +141,10 @@
 }
 [dir="rtl"] .billing-pill {
   left: auto;
-  right: 2px;
+  right: 6px;
 }
 [dir="rtl"] .billing-pill.annual {
-  transform: translateX(-110px) !important;
+  transform: translateX(-120px) !important;
 }
 [dir="rtl"] .billing-btn { text-align: center; }
 
