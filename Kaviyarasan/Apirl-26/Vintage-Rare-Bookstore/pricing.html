@@ -36,8 +36,8 @@
     .feat-icon{width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:10px}
     .feat-icon.included{background:rgba(34,197,94,0.1);color:#22c55e;border:1px solid rgba(34,197,94,0.2)}
     .feat-icon.excluded{background:rgba(0,0,0,0.05);color:var(--text-muted);border:1px solid var(--border)}
-    .price-card .btn{border-radius:16px;padding:16px;font-weight:700;letter-spacing:0.02em}
-    .price-card.featured .btn{background:var(--accent);color:var(--text-primary)}
+    .price-card .btn{border-radius:16px;padding:16px;font-weight:700;letter-spacing:0.02em;background:linear-gradient(135deg,var(--accent),#B8860B);color:#fff;border:none;transition:all 0.3s ease}
+    .price-card .btn:hover{opacity:0.9;transform:translateY(-2px);box-shadow:0 8px 24px rgba(212,175,55,0.35)}
     @media(max-width:1024px){.pricing-grid{grid-template-columns:1fr;gap:var(--space-2xl)}.price-card.featured{transform:none}}
     .compare-table{width:100%;border-collapse:collapse;font-family:var(--font-ui);font-size:0.9375rem}
     .compare-table th,.compare-table td{padding:14px 20px;text-align:center;border-bottom:1px solid var(--border)}
@@ -173,7 +173,7 @@
             <li><span class="feat-icon excluded">✖</span>Restoration discounts</li>
             <li><span class="feat-icon excluded">✖</span>Dedicated advisor</li>
           </ul>
-          <a href="register.html" class="btn btn-outline btn-full">Select Plan</a>
+          <a href="register.html" class="btn btn-accent btn-full">Select Plan</a>
         </div>
 
         <!-- Curator (Featured) -->
@@ -216,7 +216,7 @@
             <li><span class="feat-icon included">✔</span>Annual collection review report</li>
             <li><span class="feat-icon included">✔</span>Collectors' Gala invitation</li>
           </ul>
-          <a href="register.html" class="btn btn-outline btn-full">Select Plan</a>
+          <a href="register.html" class="btn btn-accent btn-full">Select Plan</a>
         </div>
       </div>
 
